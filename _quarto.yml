@@ -8,9 +8,9 @@ book:
   favicon: Kondrashov_Comp.jpeg
   twitter-card: true
   search: true
-  repo-url: https://github.com/dkon1/quant_life_quatro
+  repo-url: https://github.com/dkon1/quant_life_quarto
   downloads: [pdf, epub]
-  site-url: https://dkon1.github.io/quant_life_quatro
+  site-url: https://dkon1.github.io/quant_life_quarto
   page-navigation: true
   chapters:
     - index.qmd
