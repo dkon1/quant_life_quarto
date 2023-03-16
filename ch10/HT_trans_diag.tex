@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes.geometric}
+\begin{document}
+%\begin{tikzpicture}
+%[every node/.style={inner sep=0pt}]
+%\node (17) [circle, minimum size=50.0pt, fill=lightgray, line width=1.875pt, draw=black] at (125.0pt, -87.5pt) {\textcolor{black}{\large Q}};
+%\node (18) [circle, minimum size=50.0pt, fill=lightgray, line width=1.875pt, draw=black] at (237.5pt, -87.5pt) {\textcolor{black}{\large R}};
+%\draw [line width=3.125, ->, color=black] (17) to  [in=210, out=331] (18);
+%\draw [line width=3.125, ->, color=black] (18) to  [in=40, out=140] (17);
+%\draw [line width=3.125, ->, color=black, loop right] (18) to (18);
+%\draw [line width=3.125, ->, color=black, loop left] (17) to (17);
+%\node at (181.25pt, -116.875pt) {\textcolor{black}{0.05}};
+%\node at (181.25pt, -49.375pt) {\textcolor{black}{0.1}};
+%\node at (304.375pt, -87.5pt) {\textcolor{black}{0.9}};
+%\node at (55.0pt, -87.5pt) {\textcolor{black}{0.95}};
+%\end{tikzpicture}
+
+\begin{tikzpicture}
+[every node/.style={inner sep=0pt}]
+\node (17) [circle, minimum size=50.0pt, fill=cyan, line width=1.875pt, draw=black] at (125.0pt, -87.5pt) {\textcolor{black}{\large H}};
+\node (18) [circle, minimum size=50.0pt, fill=magenta, line width=1.875pt, draw=black] at (125.0pt, -175.0pt) {\textcolor{black}{\large T}};
+\draw [line width=3.125, ->, color=black] (17) to  [in=119, out=241] (18);
+\draw [line width=3.125, ->, color=black] (18) to  [in=310, out=50] (17);
+\draw [line width=3.125, ->, color=black, loop below] (18) to (18);
+\draw [line width=3.125, ->, color=black, loop above] (17) to (17);
+\node at (92pt, -136pt) {\textcolor{black}{\large 0.5}};
+\node at (163pt, -137pt) {\textcolor{black}{\large 0.5}};
+\node at (125.0pt, -240pt) {\textcolor{black}{\large 0.5}};
+\node at (125.0pt, -22pt) {\textcolor{black}{\large 0.5}};
+\end{tikzpicture}
+\end{document}

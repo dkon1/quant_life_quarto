@@ -1,0 +1,76 @@
+% Venn diagram with magnifier
+% Author: Dennis Heidsiek
+\documentclass{minimal}
+
+\usepackage{tikz}
+\usetikzlibrary{spy}
+
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{comment}
+:Title: Venn diagram with magnifier
+
+This example shows how to add a glass to magnify a special part of a pictures.
+It makes use of the new spy library, so you'll need a recent TikZ version [1]
+to compile it.
+
+It was created by Dennis Heidsiek [2], based on the example [3],
+inspired by a sketch in [4].
+
+- [1] http://www.texample.net/tikz/builds/
+- [2] http://www.google.com/profiles/Dennis.Heidsiek
+- [3] http://www.texample.net/tikz/examples/venn-diagram/
+- [4] http://wiki.the-big-bang-theory.com/wiki/Psychic_Vortex
+
+\end{comment}
+
+% First, we define three circles:
+\def\firstcircle{(-2,0) circle (2.4)}
+\def\secondcircle{(2,0) circle (2.4)}
+\pgfmathparse{-(2.4^2-2^2)^0.5} % by pythagoras
+\let\h\pgfmathresult % shortcut for further use
+\def\thirdcircle{(0,\h) circle (0.2cm)}
+
+\colorlet{circle edge}{black!90}
+\colorlet{circle area1}{blue!30}
+\colorlet{circle area2}{red!30}
+
+\tikzset{filled/.style={fill=circle area1, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+
+\begin{tikzpicture}
+ % Let's draw the scene (to magnify):
+  \begin{scope}[spy using outlines=
+      {magnification=16, size=8cm, connect spies, rounded corners}]
+    
+    % the border:
+    \draw[thick, rounded corners] (-5,-4) rectangle (5,4);
+    \draw (0,3.3) node[scale=2] {all people};
+    
+    % The transparency:
+        \begin{scope}
+%        \clip \firstcircle;
+        \draw[outline] \secondcircle node {people who like tea};
+         \draw[outline] \firstcircle node {tall people};
+    \end{scope}
+    
+    \begin{scope}[fill opacity=0.3]
+    \draw[outline,fill=red] \firstcircle;
+    \draw[outline,fill=green] \secondcircle ;
+   %\node[anchor=south] at (current bounding box.north) {$\overline{A \cap B}$};
+    
+ %     \fill[red] \firstcircle;
+   %   \fill[green] \secondcircle;
+    %  \fill[blue] \thirdcircle;
+    \end{scope}
+    \end{scope}
+\end{tikzpicture}  
+  
+
+\end{document}

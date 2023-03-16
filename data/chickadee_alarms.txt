@@ -1,0 +1,1 @@
+species	mass	deesNorthern_pygmy-owl	0.07	3.95Saw-whet_owl	0.08	4.08American_kestrel	0.12	2.75Merlin	0.19	3.03Short-eared_owl	0.35	2.27Coopers_hawk	0.45	3.16Prairie_falcon	0.72	2.19Peregrine_falcon	0.72	2.8Great_horned_owl	1.4	2.45Rough-legged_hawk	0.99	1.33Gyrfalcon	1.4	2.24Red-tailed_hawk	1.08	2.56Great_gray_owl	1.08	2.06

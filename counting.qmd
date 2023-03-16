@@ -1,0 +1,290 @@
+# Arithmetic and variables
+
+> You can add up the parts, but you won't have the sum;\
+> You can strike up the march, there is no drum.\
+> Every heart, every heart to love will come\
+> But like a refugee.\
+> --Leonard Cohen, *Anthem*
+
+Mathematical modeling begins with a set of *assumptions*. In fact, one may say that a mathematical model is a bunch of assumptions translated into mathematics. These assumptions may be more or less reasonable, and they may come from different sources. For instance, many physical models are so well-established that we refer to them as laws; we are pretty sure they apply to molecules, cells, and organisms as well as to inanimate objects. Thus we may use physical laws as the foundation on which to build models of biological entities; these are often known as *first-principles* (theory-based) models. Other times we have experimental evidence which suggests a certain kind of relationship between quantities, perhaps we find that the amount of administered drug and the time until the drug is completely removed from the bloodstream are proportional to each other. This observation can be turned into an *empirical* (experiment-based) model. Yet another type of model assumption is not based on either theory or experiment, but simply on convenience: e.g. let us assume that the mutation rates in two different loci are independent, and see what the implications are. These are sometimes called *toy* or *cartoon* models. \cite{jungck_mathematical_2010}
+
+This leads to the question: how do you decide whether a model is good? It is surprisingly difficult to give a straightforward answer to this question. Of course, one major goal of a model is to capture some essential features of reality, so in most biological modeling studies you will see a comparison between experimental results and predictions of the model. But it is not enough for a model to be faithful to experimental data! Think of a simple example: suppose your experiment produced 5 data points as a function of time; it is possible to find a polynomial (of fourth degree) that passes exactly through all 5 points, by specifying the coefficients of its 5 terms. This is called \index{fitting} *data fitting* and it has a large role to play in mathematical modeling of biology. However, I think you will agree that in this case we have learned very little: we just substituted 5 values in the data set with 5 values of the coefficients of the mathematical model. To heighten the absurdity, imagine a data set of 1001 points that you have modeled using a 1000-degree polynomial. This is an example of overfitting, or making the model agree with the data by making it overly complex.
+
+Substituting a complicated model for a complicated real situation does not help understand it. One necessary ingredient of a useful model is *simplicity of assumptions*. Simplicity in modeling has at least two virtues: simple models can be grasped by our limited minds, and simple assumptions can be tested against evidence. A simple model that fails to reproduce experimental data can be more informative than a complex model that fits the data perfectly. If a simple model fails, you have learned that you are missing something in your assumptions; but a complex model can be right for the wrong reasons, like erroneous assumptions canceling each other, or it may contain needless assumptions. This is why good modeling is a difficult skill that balances simplicity of assumptions against fidelity to empirical data \cite{cohen_mathematics_2004}. In this chapter you will learn how to do the following:
+
+-   distinguish variables and parameters in models
+
+-   describe the state space of a model
+
+-   perform arithmetic operations in R
+
+-   assign variables in R
+
+## Blood circulation and mathematical modeling {#sec:bio1}
+
+Galen was one of the great physicians of antiquity. He studied how the body works by performing experiments on humans and animals. Among other things, he was famous for a careful study of the heart and how blood traveled through the body. Galen observed that there were different types of blood: arterial blood that flowed out of the heart, which was bright red, and venous blood that flowed in the opposite direction, which was a darker color. This naturally led to questions: what is the difference between venous and arterial blood? where does each one come from and where does it go?
+
+You, a reader of the 21st century, likely already know the answer: blood *circulates* through the body, bringing oxygen and nutrients to the tissues through the arteries, and returns back through the veins carrying carbon dioxide and waste products, as shown in figure \ref{fig:circulation}. Arterial blood contains a lot of oxygen while venous blood carries more carbon dioxide, but otherwise they are the same fluid. The heart does the physical work of pushing arterial blood out of the heart, to the tissues and organs, as well as pushing venous blood through the second circulatory loop that goes through the lungs, where it picks up oxygen and releases carbon dioxide, becoming arterial blood again. This may seem like a very natural picture to you, but it is far from easy to deduce by simple observation.
+
+![Human blood circulates throughout the body and returns to the heart, veins shown in blue and arteries in red. *Circulatory System en* by LadyofHats in public domain via Wikimedia Commons.](ch1/Circulatory_System_no_tags_cropped.png)
+
+### Galen's theory of blood
+
+Galen came up with a different explanation based on the notion of *humors*, or fluids, that was fundamental to the Greek conception of the body. He proposed that the venous and arterial blood were different humors: venous blood, or *natural spirits*, was produced by the liver, while arterial blood, or *vital spirits*, was produced by the heart and carried by the arteries, as shown in figure \ref{fig:galen_blood}. The heart consisted of two halves, and it warmed the blood and pushed both the natural and vital spirits out to the organs; the two spirits could mix through pores in the septum separating its right and left halves. The vital and natural spirits were both consumed by the organs, and regenerated by the liver and the heart. The purpose of the lungs was to serve as bellows, cooling the blood after it was heated by the heart.
+
+![Illustration of Galen's conception of the blood system, showing different spirits traveling in one direction, but not circulating. Reproduced by permission of [Barbara Becker](https://faculty.humanities.uci.edu/bjbecker/).](ch1/galenheartc.png)
+
+Is this a good theory of how the heart, lungs, and blood work? Doctors in Europe thought so for over one thousand years! Galen's textbook on physiology was the standard for medical students through the 17th century. The theory seemed to make sense, and explain what was observable. Many great scientists and physicians, including Leonardo DaVinci and Avicenna, did not challenge the inaccuracies such as the porous septum in the heart, even though they could not see the pores themselves. It took both better observations and a quantitative testing of the hypothesis to challenge the orthodoxy.
+
+### Mathematical testing of the theory
+
+William Harvey \index{Harvey, William} was born in England and studied medicine in Padua under the great physician Hieronymus Fabricius. He became famous, and would perform public demonstrations of physiology, using live animals for experiments that would not be approved today. He also studied the heart and the blood vessels, and measured the volume of the blood that can be contained in the human heart. He was quite accurate in estimating the correct volume, which we now know to be about 70 ml (1.5 oz). What is even more impressive is that he used this quantitative information to test Galen's theory.
+
+Let us assume that all of the blood that is pumped out by the heart is consumed by the tissues, as Galen proposed; let us further assume that the heart beats at constant rate of 60 beats per minute, with a constant ejection volume of 70 ml. Then over the course of a day, the human body would consume about 
+$$\mathrm{Volume} = 70 \ \mathrm {mL} \times 60 \ \mathrm {(beats \ per \ minute)} \times 60 \ \mathrm {(minutes \ per \ hour)}  \times 24 \ \mathrm {(hours \ per \ day)}$$ 
+
+or over 6,000 liters of blood! You may quibble over the exact numbers (some hearts beat faster or slower, some hearts may be larger or smaller) but the impact of the calculation remains the same: it is an absurd conclusion. Galen's theory would require the human being to consume and produce a quantity of fluid many times the volume of the human body (about 100 liters) in a day! This is a physical impossibility, so the only possible conclusion in that Galen's model is wrong.
+
+This led Harvey to propose the \index{model!blood circulation}model that we know today: that blood is not consumed by the tissues, but instead returns to the heart and is re-used again \cite{schultz_william_2002}. This is why we call the heart and blood vessels part of the circulatory system of the body. This model was controversial at the time - some people proclaimed they would "rather be wrong with Galen, than right with Harvey" - but eventually became accepted as the standard model. What is remarkable is that Harvey's argument, despite being grounded in empirical data, was strictly mathematical. He adopted the assumptions of Galen, made the calculations, and got a result which was inconsistent with reality. This is an excellent example of how mathematical modeling can be useful, because it can provide clear evidence against a wrong hypothesis.
+
+## Parameters and variables in models {#sec:math1}
+
+Many biologists remain skeptical of mathematical modeling. The criticism can be summarized like this: a theoretical model either agrees with experiment, or it does not. In the former case, it is useless, because the data are already known; in the latter case, it is wrong! As I indicated above, the goal of mathematical modeling is not to reproduce experimental data; otherwise, indeed, it would only be of interest to theoreticians. The correct question to ask is, does a theoretical model help us understand the real thing? There are at least three ways in which a model can be useful:
+
+-   A model can help a scientist make sense of complex data, by testing whether a particular mechanism explains the observations. Thus, a model can help clarify our understanding by throwing away the non-essential features and focusing on the most important ones.
+
+-   A mathematical model makes predictions for situations that have not been observed. It is easy to change parameters in a mathematical model and calculate the effects. This can lead to new hypotheses that can be tested by experiments.
+
+-   Model predictions can lead to better experimental design. Instead of trying a whole bunch of conditions, the theoretical model can suggest which ones will produce big effects, and thus can save a lot of work for the lab scientist.
+
+In order to make a useful model of a complex living system, you have to simplify it. Even if you are only interested in a part of it, for instance a cell or a single molecule, you have to make simplifying choices. A small protein has thousands of atoms, a cell consists of millions of molecules, which all interact with each other; keeping track mathematically of every single component is daunting if not impossible. To build a useful mathematical model one must choose a few quantities which describe the system sufficiently to answer the questions of interest. For instance, if the positions of a couple of atoms in the protein you are studying determine its activity, those positions would make natural quantities to include in your model. You will find more specific examples of models later in this chapter.
+
+Once you have decided on the essential quantities to be included in the model, these are divided into \index{variable!definition} *variables* and \index{parameter} *parameters*. As suggested by the name, a variable typically varies over time and the model tracks the changes in its value, while parameters usually stay constant, or change more slowly. However, that is not always the case. The most important difference is that variables describe quantities **within the system** being modeled, while parameters usually refer to quantities which are controlled by something **outside the system**.
+
+As you can see from this definition, the same quantity can be a variable or a parameter depending on the scope of the model. Let's go back to our example of modeling a protein: usually the activity (and the structure) of a protein is influenced by external conditions such as pH and temperature; these would be natural parameters for a model of the molecule. However, if we model an entire organism, the pH (e.g. of the blood plasma) and temperature are controlled by physiological processes within the organism, and thus these quantities will now be considered variables.
+
+Perhaps the clearest way to differentiate between variables and parameters is to think about how you would present a data set visually. We will discuss plotting graphs of functions in chapter 2, and plotting data sets in chapter 3, but the reader has likely seen many such plots before. Consider which of the quantities you would to plot to describe the system you are modeling. If the quantity belongs on either axis, it is a variable, since it is important to describe how it changes. The rest of the quantities can be called parameters. Of course, depending on the question you ask, the same quantity may be plotted on an axis or not, which is why this classification is not absolute.
+
+After we have specified the essential variables for your model, we can describe a complex and evolving biological system in terms of its *state*. This is a very general term, but it usually means the values of all the variables that you have chosen for the model, which are often called \index{state!variable} *state variables*. For instance, an ion channel can be described with the state variable of conformation, which may be in a open state or in a closed state. The range, or collection of all different states of the system is called the \index{state!space} *state space* of the model. Below you will find examples of models of biological systems with diverse state spaces.
+
+### discrete state variables: genetics
+
+There are genes which are present in a population as two different versions, called \index{allele}\*alleles} - let us use letters $A$ and $B$ to label them. One may describe the genetic state of an individual based on which allele it carries. If this individual is haploid, e.g. a bacterium, then it only carries a single copy of the genome, and its state can be described by a single variable with the state space of $A$ or $B$.
+
+A diploid organism, like a human, possesses two copies of each gene (unless it is on one of the sex chromosomes, X or Y); each copy may be in either state $A$ or $B$. This may seem to suggest that there are four different values in the genetic state space, but if the order of the copies does not matter (which is usually the case), then $AB$ and $BA$ are effectively the same, so the state space consists of three values: $AA$, $BB$, and $AB$.
+
+### discrete state variables: population
+
+Consider the model of a population of individuals, with the variable of number of individuals (populations size) and parameters being the birth and death rates. The state space of this model is **all integers between 0 and infinity.**
+
+Consider the model of a population of individuals who may get infected. Assume that the total number of individuals does not change (that is, there are no births and deaths) and that these individuals can be in one of two states: healthy or sick (in epidemiology these are called *susceptible* or *infectious*). There are typically two parameters in such models: the probability of infection and the probability of recovery. Since the total population is fixed at some number $N$, the space space of the model is all pairs of integers between 0 and $N$ that add up to $N$.
+
+### continuous state variables: concentration
+
+Suppose that a biological molecule is produced with a certain rate and degraded with a different rate, and we would like to describe the quantity of the molecule, usually expressed as concentration. The relevant variables here are concentration and time, and you will see those variables on the axes of many plots in biochemistry. Concentration is a ratio of the number of molecules and the volume, so the state space can be any positive real number (although practically there is a limit as to how many molecules can fit inside a given volume, but for simplicity we can ignore this).
+
+Going even further, let us consider an entire cell, which contains a large number of different molecules. We can describe the state of a cell as the collection of all the molecular concentrations, with the parameters being the rates of all the reactions going on between those molecules. The state space for this model with $N$ different molecules is $N$ positive real numbers.
+
+### multiple variables in medicine
+
+Doctors take medical history from patients and measure vital signs to get a picture of a patient's health. These can be all be thought of as variables in a model of a person that physicians construct. Some of these variables are discrete, for instance whether there is family history of hypertension, which has only two values: yes or no. Other variables are numbers with a range, such as weight and blood pressure. The state space of this model is a combination of *categorical* values (such as yes/no) and *numerical* values (within a reasonable range).
+
+### Discussion questions
+
+Several biological models are indicated below. Based on what you know, divide the quantities into variables and parameters and describe the state space of the model. Note that there may be more than one correct interpretation
+
+1.  The volume of blood pumped by the heart over a certain amount of time, depending on the heart rate and the ejection volume.
+
+2.  The number of wolves in a national forest depending on the number of wolves in the previous year, the birth rate, the death rate, and the migration rate.
+
+3.  The fraction of hemes in hemoglobin (a transport protein in red blood cells) which are bound to oxygen depending on the partial pressure of oxygen and the binding cooperativity of hemoglobin.
+
+4.  The number of mutations that occur in a genome, depending on the mutation rate, the amount of time, and the length of the genome.
+
+5.  The concentration of a drug in the blood stream depending on the dose, time after administration, and the rate of metabolism (processing) of the drug.
+
+6.  Describing an outbreak of an infectious disease in a city in terms of the fractions of infected, healthy, and recovered people, depending on the rate of infection, rate of recovery, and the mortality rate of the disease.
+
+## First steps in R
+
+\label{sec:comp1} A central goal of this book is to help you, the reader, gain experience with computation, which requires learning some programming (cool kids call it "coding"). Programming is a way of interacting with computers through a symbolic language, unlike the graphic user interfaces that we're all familiar with. Basically, programming allows you to make a computer do exactly what you want it to do.
+
+There is a vast number of computer languages with distinct functionalities and personalities. Some are made to talk directly to the computer's "brain" (CPU and memory), e.g. Assembly, while others are better suited for human comprehension, e.g. python or Java. Programming in any language involves two parts: 1) writing a program (code) using the commands and the syntax for the language; 2) running the code by using a compiler or interpreter to translate the commands into machine language and then making the computer execute the actions. If your code has a mistake in it, the compiler or interpreter should catch it, and return an *error message* to you instead of executing the code. Sometimes, though, the code may pass muster with the interpreter/compiler, but it may still have a mistake (bug). This can be manifested in two different ways: either the code execution does not produce the result that you intended, or it hangs up or crashes the computer (the latter is hard to do with the kind of programming we will be doing). We will discuss errors and how to prevent and catch these bugs as you develop your programming skills.
+
+In this course, our goal is to compute mathematical models and to analyze data, so we choose a language that is designed specially for these tasks, which is called R. To proceed, you'll need to download and install R, which is freely available [here](cran.r-project.org/). In addition to downloading the language (which includes the interpreter that allows you to run R code on your computer) you will need to download a graphic interface for writing, editing, and running R code, called R Studio (coders call this an IDE, or an Integrated Developer Environment), which is also free and available [here](www.rstudio.com/products/rstudio/download/).
+
+### R Markdown and R Studio
+
+In this course you will use R using R Studio and R Markdown documents, which are text files with the extension `.Rmd`. Markdown is a simple formatting syntax for creating reports in HTML, PDF, or Word format by incorporating text with code and its output. More details on using R Markdown are [here](rmarkdown.rstudio.com). In fact, this whole book is written in R Markdown files and then compiled to produce the beautiful (I hope you agree) web book that you are reading.
+
+If you open an Rmd file in R Studio, you will see a **Knit** button on top of the Editor window. Clicking it initiates the processing of the file into an output document (in HTML, PDF, or Word format) that includes the text as well as the output of any embedded R code chunks within the document. You can embed an R *code chunk* like this:
+
+```{r}
+print("Hello there!") 
+```
+
+To run the code inside a single R code chunk, click the green arrow in the top right of the chunk. This will produce an output, in this case the text "Hello there!". Inside the generated output file, for example the web book you may be reading, the output of code chunks is shown below the box with the R code and indicated by two hashtags.
+
+You can make text **bold** or *italic* like so. You can also use mathematical notation called LaTeX, which you'll see used below to generate nice-looking equations. LaTeX commands are surrounded by dollar signs, for example \$e\^x\$ generates $e^x$. Mathematical types love LaTeX, but you can use R Markdown without it.
+
+### numbers and arithmetic operations
+
+When you get down to the brass tacks, all computation rests on performing \index{R programming!arithmetic} *arithmetic operations*: addition, subtraction, multiplication, division, exponentiation, etc. The symbols used for arithmetic operations are what you'd expect: `+`, `-`, `*`, `/` are the four standard operations, and `^` is the symbol for exponentiation. For example, type `2^3` in any R code chunk and execute it:
+
+```{r}
+2^3
+```
+
+You see that R returns the result by printing it out on the screen. The number in square brackets \[1\] is not important for now; it is useful when the answer contains many numbers and has to be printed out on many rows. The second number is the result of the calculation.
+
+For numbers that are either very large or very small, it's too cumbersome to write out all the digits, so R, like most computational platforms, uses the \index{R programming!scientific notation}*scientific notation*. For instance, if you want to represent 1.4 billion, you type in the following command; note that 10 to the ninth power is represented as `e+09` and the prefix 1.4 is written without any multiplication sign:
+
+```{r}
+1.4*10^9
+```
+
+There are also certain numbers built into the R language, most notably $\pi$ and $e$, which can be accessed as follows:
+
+```{r}
+pi
+exp(1)
+```
+
+The expression `exp()` is an example of a function, which we will discuss in section \ref{sec:comp2}; it returns the value of $e$ raised to the power of the number in parenthesis, hence `exp(1)` returns $e$. Notice that although both numbers are irrational, and thus have infinitely many decimal digits, R only prints out a few of them. This doesn't mean that it doesn't have more digits in memory, but it only displays a limited number to avoid clutter. The number of digits to be displayed can be changed, for example to display 10 digits, type in `options(digits=10)`.
+
+Computers are very good at computation, as their name suggests, but they have limitations. In order to manipulate numbers, they must be stored in computer memory, but computer memory is finite. There is a limit to the length of the number that is feasible to store on a computer. This has implications for both very large numbers and to very small numbers, which are close to zero, because both require many digits for storage.
+
+All programming languages have an upper limit on the biggest number it will store and work with. If an arithmetic operation results in a number larger than that limit, the computer will call it an *overflow* error. Depending on the language, this may stop the execution of the program, or else produce a non-numerical value, such as `NaN` (not a number) or `Inf` (infinite). Do exercise \ref{ex:overflow} to investigate the limitations of R for large numbers.
+
+On the other hand, very small numbers present their own challenges. As with very large numbers, a computer cannot store an arbitrary number of digits after the decimal (or binary) point. Therefore, there is also the smallest number that a programming language will accept and use, and storing a smaller number produces an *underflow* error. This will either cause the program execution to stop, or to return the value 0 instead of the correct answer. Do exercise \ref{ex:underflow} to investigate the limitations of R for small numbers.
+
+This last fact demonstrates that all computer operations are imprecise, as they are limited by what's called the \index{R programming!machine precision} *machine precision*, which is illustrated in exercise \ref{ex:mach_prec}. For instance, two similar numbers, if they are within the machine precision of one another, will be considered the same by the computer. Modern computers have large memories, and their machine precision is very good, but sometimes this error presents a problem, e.g. when subtracting two numbers. A detailed discussion of machine error is beyond the scope of this text, but anyone performing computations must be aware of its inherent limitations.
+
+### R Coding Exercises
+
+1.  Calculate the value of $\pi$ raised to the 10th power.
+
+2.  Use the scientific notation to multiply four billion by $\pi$.
+
+3.  Use the scientific notation with large exponents (e.g. 1e+100, 1e+500, etc.) to find out what happens when you give R a number that is too large for it to handle. Approximately at what order of magnitude does R produce an overflow error?
+
+4.  In the same fashion, find out what happens when you give R a number that is too small for it to handle. Approximately at what order of magnitude does R produce an underflow error?
+
+5.  How close can two numbers be before R thinks they are the same? Subtract two numbers which are close to each other, like 24 and 24.001, and keep making them closer to each other, until R returns a difference of zero. Report at what value of the actual difference this happens.
+
+### variable assignment
+
+Variables in programming languages are used to store and access numerical or other information. After \index{variable!assignment}*assigning*} it a value for the first time (*initializing*), a variable name can be used to represent the value we assigned to it. Invoking the name of variable recalls the stored value from computer's memory. There are a few rules about naming variables: a name cannot be a number or an arithmetic operator like `+`, in fact it cannot contain symbols for operators or spaces inside the name, or else confusion would reign. Variable names may contain numbers, but not as the first character. When writing code it is good practice to give variables informative names, like *height* or *city_pop*. \index{R programming!variable assignment}
+
+The symbol '=' is used to assign a value to a variable in most programming languages, and can be used in R too. However, it is customary for R to use the symbols `<-` together to indicate assignment, like this:
+
+```{r}
+var1 <- 5
+```
+
+After this command the variable `var1` has the value 5, which you can see in the upper right frame in R Studio called *Environment*. In order to display the value of the variable as an output on the screen, use the special command `print()` (it's actually a function, which we will discuss in the next chapter). The following two commands show that the value of a variable can be changed after it has been initialized:
+
+```{r}
+var1 <- 5
+var1 <- 6
+print(var1)
+```
+
+While seemingly contradictory, the commands are perfectly clear to the computer: first `var1` is assigned the value 5 and then it is assigned 6. After the second command, the first value is forgotten, so any operations that use the variable `var1` will be using the value of 6.
+
+Entire expressions can be placed on the right hand side of an assignment command: they could be arithmetic or logical operations as well as functions, which we will discuss later on. For example, the following commands result in the value 6 being assigned to the variable `var2`:
+
+```{r}
+var1 <- 5
+var2 <- var1+1
+print(var2)
+```
+
+Even more mind-blowing is that the same variable can be used on both sides of an assignment operator! The R interpreter first looks on the right hand side to evaluate the expression and then assigns the result to the variable name on the left hand side. So for instance, the following commands increase the value of `var1` by 1, and then assign the product of `var1` and `var2` to the variable `var2`:
+
+```{r}
+var1 <- var1 + 1
+print(var1)
+var2 <- var1-1
+print(var2)
+var2 <- var1*var2
+print(var2)
+```
+
+We have seen example of how to assign values to variables, so here is an example of how NOT to assign values, with the resulting error message:
+
+```{r, eval=FALSE}
+var1 + 1 <- var1
+```
+
+The left-hand side of an assignment command should contain only the variable to which you are assigning a value, not an arithmetic expression to be performed.
+
+### R Coding Exercises
+
+The following commands or scripts do not work as intended. Find the errors and correct them, then run them to make sure they do what they are intended to do:
+
+### Exercises:
+
+The following R commands or short scripts contain errors; your job is to fix them so they runs as described. (Remove the \# at the start of each line to "uncomment" the code first.)
+
+1.  Assign the value -10 to a variable
+
+```{r, eval=FALSE}
+neg -> -10
+```
+
+2.  Assign a variable the value 5 and then increase its value by 3:
+
+```{r, eval=FALSE}
+2pac <- 5
+2pac <- 2pac + 3
+```
+
+3.  Assign the values 4 and 7 to two variables, then add them together and assign the sum to a new variable:
+
+```{r, eval=FALSE}
+total <- part1 + part2
+part1 <- 4
+part2 <- 7
+```
+
+4.  Add 5 and 3 and save it into variable my.number
+
+```{r, eval=FALSE}
+5 + 3 <- my.number
+```
+
+5.  Print the value of my.number on the screen:
+
+```{r, eval=FALSE}
+print[my.number]
+```
+
+6.  Replace the value of my.number with 5 times its current value
+
+```{r, eval=FALSE}
+my.number <- 5my.number 
+```
+
+7.  Assign the values of 7 and 8 to variables a and b, respectively, multiply them and save the results in variable x
+
+```{r, eval=FALSE}
+a<-7
+b<-8
+x<-ab
+print(x)
+```
+
+9.  Assign the value 42 to a variable, then increase it by 1
+
+```{r, eval=FALSE}
+age <- 42
+age + 1 <- age
+```
+
+10. Assign the value 10 to variable radius, then calculate the area of the circle with that radius using the formula $A = \pi r^2$:
+
+```{r, eval=FALSE}
+r <- 10
+area <- pir^2 
+```
