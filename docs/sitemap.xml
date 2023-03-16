@@ -1,71 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://dkon1.github.io/quant_life_quatro/markov_eigen.html</loc>
-    <lastmod>2023-01-03T04:22:27.079Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dkon1.github.io/quant_life_quatro/index.html</loc>
-    <lastmod>2023-01-03T04:22:28.026Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dkon1.github.io/quant_life_quatro/summary.html</loc>
-    <lastmod>2023-01-03T04:22:27.079Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dkon1.github.io/quant_life_quatro/references.html</loc>
-    <lastmod>2023-01-03T04:22:27.079Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dkon1.github.io/quant_life_quatro/markov_evol.html</loc>
-    <lastmod>2023-01-03T04:22:27.077Z</lastmod>
+    <loc>https://dkon1.github.io/quant_life_quatro/bayes.html</loc>
+    <lastmod>2023-03-16T20:53:51.896Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quatro/counting.html</loc>
-    <lastmod>2022-12-24T21:45:38.523Z</lastmod>
+    <lastmod>2023-03-16T20:53:49.600Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dkon1.github.io/quant_life_quatro/functions.html</loc>
+    <lastmod>2023-03-16T20:53:49.602Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quatro/descriptive.html</loc>
-    <lastmod>2022-12-24T21:45:21.529Z</lastmod>
+    <lastmod>2023-03-16T20:53:49.603Z</lastmod>
   </url>
   <url>
-    <loc>https://dkon1.github.io/quant_life_quatro/sampling.html</loc>
-    <lastmod>2023-01-03T04:22:27.073Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dkon1.github.io/quant_life_quatro/bayes.html</loc>
-    <lastmod>2022-12-24T21:57:43.862Z</lastmod>
+    <loc>https://dkon1.github.io/quant_life_quatro/probdist.html</loc>
+    <lastmod>2023-03-16T20:53:49.604Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quatro/linreg.html</loc>
-    <lastmod>2023-01-03T04:22:27.071Z</lastmod>
+    <lastmod>2023-03-16T20:53:49.606Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quatro/independence.html</loc>
-    <lastmod>2023-01-03T04:22:27.072Z</lastmod>
+    <lastmod>2023-03-16T20:53:49.606Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quatro/hypo_test.html</loc>
-    <lastmod>2023-01-03T04:22:27.072Z</lastmod>
+    <lastmod>2023-03-16T20:53:49.607Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dkon1.github.io/quant_life_quatro/sampling.html</loc>
+    <lastmod>2023-03-16T20:53:49.608Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quatro/lindiff.html</loc>
-    <lastmod>2023-01-03T04:22:27.074Z</lastmod>
+    <lastmod>2023-03-16T20:53:49.609Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quatro/graph_odes.html</loc>
-    <lastmod>2023-01-03T04:22:27.075Z</lastmod>
+    <lastmod>2023-03-16T20:53:49.610Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quatro/ode_sols.html</loc>
-    <lastmod>2023-01-03T04:22:27.076Z</lastmod>
+    <lastmod>2023-03-16T20:53:49.611Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quatro/markov_model.html</loc>
-    <lastmod>2023-01-03T04:22:27.077Z</lastmod>
+    <lastmod>2023-03-16T20:53:49.612Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dkon1.github.io/quant_life_quatro/markov_evol.html</loc>
+    <lastmod>2023-03-16T20:53:49.612Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quatro/markov_stat.html</loc>
-    <lastmod>2023-01-03T04:22:27.078Z</lastmod>
+    <lastmod>2023-03-16T20:53:49.613Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dkon1.github.io/quant_life_quatro/markov_eigen.html</loc>
+    <lastmod>2023-03-16T20:53:49.614Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dkon1.github.io/quant_life_quatro/summary.html</loc>
+    <lastmod>2023-03-16T20:53:49.614Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dkon1.github.io/quant_life_quatro/references.html</loc>
+    <lastmod>2023-03-16T20:53:49.614Z</lastmod>
   </url>
 </urlset>

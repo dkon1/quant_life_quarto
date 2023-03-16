@@ -32,22 +32,19 @@ The perils of ignoring prior knowledge is illustrated in the xkcd cartoon shown 
 
 In this section we will formalize the process of incorporation of prior knowledge into probabilistic inference by going back to the notion of conditional probability in section \ref{sec:math6_1}. First, if you multiply both sides of the definition by $P(B)$, then we obtain the probability of the intersection of events $A$ and $B$: $$P(A \& B) = P(A|B) P(B); \;  P(A \& B) = P(B|A) P(A) $$ Second, we can partition a sample space into two complementary sets, $A$ and $-A$, and then the set of $B$ can be partitioned into two parts, that intersect with $A$ and $-A$, respectively, so that the probability of $B$ is $$P(B) = P(A \& B) + P(-A\& B)$$
 
-The two formulas together lead to a very important result called the *law of total probability*
-$$
+The two formulas together lead to a very important result called the *law of total probability* $$
 P(B) =  P(B|A) P(A) + P(B|-A)P(-A)
 $$
 
 It may not be clear at first glance why this is useful: after all, we replaced something simple ($P(B)$) with something much more complex on the right hand side. You will see how this formula enables us to calculate quantities that are not otherwise accessible.
 
-**Example: probability of a negative test result**. Suppose we know that the probability of a patient having a disease is 1% (called the *prevalence* of the disease in a population), and the sensitivity and specificity of the test are both 80%. What is the probability of obtaining a negative test result for a randomly selected patient? Let us call $P(H) = 0.99$ the probability of a healthy patient and $P(D) = 0.01$ the probability of a diseased patient. Then: 
+**Example: probability of a negative test result**. Suppose we know that the probability of a patient having a disease is 1% (called the *prevalence* of the disease in a population), and the sensitivity and specificity of the test are both 80%. What is the probability of obtaining a negative test result for a randomly selected patient? Let us call $P(H) = 0.99$ the probability of a healthy patient and $P(D) = 0.01$ the probability of a diseased patient. Then:
 
-$$ P(Neg) =  P(Neg | H) P(H) + P(Neg | D)P(D)  = $$ 
-$$ = 0.8 \times 0.99 + 0.2 \times 0.01 = 0.794$$
+$$ P(Neg) =  P(Neg | H) P(H) + P(Neg | D)P(D)  = $$ $$ = 0.8 \times 0.99 + 0.2 \times 0.01 = 0.794$$
 
-There is still more gold in the hills of conditional probability! Take the first formula in this section, which expresses the probability $P(A \& B)$ in two different ways. Since the expressions are equal, we can combine them into one equation, and by dividing both sides by $P(B)$, we obtain what's known as Bayes' formula: 
-$$ P(A|B) = \frac{P(B|A) P(A)}{P(B) }$$ 
+There is still more gold in the hills of conditional probability! Take the first formula in this section, which expresses the probability $P(A \& B)$ in two different ways. Since the expressions are equal, we can combine them into one equation, and by dividing both sides by $P(B)$, we obtain what's known as Bayes' formula: $$ P(A|B) = \frac{P(B|A) P(A)}{P(B) }$$
 
-We can rewrite the denominator in Bayes' using the Law of total probability so that it can calculated from conditional probabilities: 
+We can rewrite the denominator in Bayes' using the Law of total probability so that it can calculated from conditional probabilities:
 
 $$
 P(A|B) = \frac{P(B|A)P(A)}{P(B|A) P(A) + P(B|-A)P(-A)}
@@ -57,20 +54,19 @@ Bayes' formula gives us the probability of $A$ given $B$ from probabilities of $
 
 ### positive and negative predictive values
 
-In reality, a doctor doesn't have the true information about the patient's health, but rather the information from the test and hopefully some information about the population where she is working. Let us assume we know the rate of false positives $P(Pos | H$) and the rate of false negatives $P(Neg | D)$, as well as the prevalence of the disease in the whole population $P(D)$. Then we can use Bayes' formula to answer the practical question, if the test result is positive, what is the probability the patient is actually sick? This is called the *positive predictive value* of a test. The deep Bayesian fact is that one cannot make inferences about the health of the patient after the test without some *prior knowledge*, specifically the prevalence of the disease in the population: 
+In reality, a doctor doesn't have the true information about the patient's health, but rather the information from the test and hopefully some information about the population where she is working. Let us assume we know the rate of false positives $P(Pos | H$) and the rate of false negatives $P(Neg | D)$, as well as the prevalence of the disease in the whole population $P(D)$. Then we can use Bayes' formula to answer the practical question, if the test result is positive, what is the probability the patient is actually sick? This is called the *positive predictive value* of a test. The deep Bayesian fact is that one cannot make inferences about the health of the patient after the test without some *prior knowledge*, specifically the prevalence of the disease in the population:
 
 $$ P(D | Pos) =  \frac{P(Pos|D)P(D)}{P(Pos|D) P(D) + P(Pos | H)P(H)}$$
 
-**Example.** Suppose the test has a 0.01 probability of both false positive and false negatives, and the overall prevalence of the disease in the population 0.02. You may be surprised that from an epidemiological perspective, a positive result is far from definitive: 
+**Example.** Suppose the test has a 0.01 probability of both false positive and false negatives, and the overall prevalence of the disease in the population 0.02. You may be surprised that from an epidemiological perspective, a positive result is far from definitive:
 
-$$ P(D | Pos)  = \frac{0.99 \times 0.02}{0.99 \times 0.02 + 0.01 \times 0.98} = 0.67 $$ 
+$$ P(D | Pos)  = \frac{0.99 \times 0.02}{0.99 \times 0.02 + 0.01 \times 0.98} = 0.67 $$
 
 This is because the disease is so rare, that even though the test is quite accurate, there are going to be a lot of false positives (about 1/3 of the time) since 98% of the patients are healthy.
 
-We can also calculate the probability of a patient who tests negative of actually being healthy, which is called the negative predictive value. In this example, it is far more definitive: 
+We can also calculate the probability of a patient who tests negative of actually being healthy, which is called the negative predictive value. In this example, it is far more definitive:
 
-$$ P(H | Neg)  = \frac{P(Neg|H)P(H)}{P(Neg|H) P(H) + P(Neg | D)P(D)} = $$ 
-$$ = \frac{0.99 \times 0.98}{0.99 \times 0.98 + 0.01 \times 0.02} =  0.9998$$ 
+$$ P(H | Neg)  = \frac{P(Neg|H)P(H)}{P(Neg|H) P(H) + P(Neg | D)P(D)} = $$ $$ = \frac{0.99 \times 0.98}{0.99 \times 0.98 + 0.01 \times 0.02} =  0.9998$$
 
 This is again because this disease is quite rare in this population, so a negative test result is almost guaranteed to be correct. In another population, where disease is more prevalent, this may not be the case.
 
