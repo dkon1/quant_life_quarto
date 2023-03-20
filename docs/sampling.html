@@ -266,11 +266,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Summary</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
@@ -489,22 +484,22 @@ Definition
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.829950401 0.798861059 0.897096859 0.285684572 0.798823029 0.172139218
- [7] 0.898394426 0.501141970 0.007263335 0.132352124</code></pre>
+<pre><code> [1] 0.64714697 0.94990573 0.72484608 0.69994220 0.63904186 0.07412637
+ [7] 0.06313691 0.33434814 0.68741853 0.84301922</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5321707</code></pre>
+<pre><code>[1] 0.5662932</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0.8948011 0.6073890 0.9095946 0.6912064 0.4849666 0.4203886 0.6198879
- [8] 0.6552665 0.8283670 0.8195249</code></pre>
+<pre><code> [1] 0.8398458 0.5486067 0.5607983 0.0979107 0.9295529 0.3137251 0.9455661
+ [8] 0.1261539 0.2059179 0.1689212</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6931393</code></pre>
+<pre><code>[1] 0.4736999</code></pre>
 </div>
 </div>
 <p>If you copy this script and run it yourself, you will obtain different numbers and if you run it several times you will notice that the mean of sample of 10 values is prone to considerable volatility. This leads to two related questions: 1) how large does the sample need to be in order to obtain a good estimate of the true mean? 2) given a random sample and its sample mean, what is the reasonable range of values for the estimate of the true mean? We addressed these questions theoretically in section <span class="math inline">\(\ref{sec:math5_1}\)</span>, and here we investigate them by generating multiple random samples using R.</p>
@@ -589,11 +584,11 @@ Definition
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>right <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample)<span class="sc">-</span>s<span class="sc">*</span>z</span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(right)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7256601</code></pre>
+<pre><code>[1] 0.5530943</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(left)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3346708</code></pre>
+<pre><code>[1] 0.1700552</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>size <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># sample size</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sample<span class="ot">&lt;-</span><span class="fu">runif</span>(size)</span>
@@ -603,11 +598,11 @@ Definition
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>left <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample)<span class="sc">-</span>s<span class="sc">*</span>z</span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(right)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4746614</code></pre>
+<pre><code>[1] 0.4181845</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(left)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5866858</code></pre>
+<pre><code>[1] 0.5288445</code></pre>
 </div>
 </div>
 <p>Every time you run this script, it will produce new samples and therefore different confidence intervals, but most of the time (theoretically, 95% of the time, although that is not practically true) the confidence interval will contain the true mean of 0.5. As you would expect, the confidence interval for sample size 10 is much wider than the one for sample size 100. To obtain a reliable estimate of the true mean, you must obtain a sufficient number of measurements.</p>

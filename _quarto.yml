@@ -30,10 +30,9 @@ book:
     - markov_evol.qmd
     - markov_stat.qmd
     - markov_eigen.qmd
-    - summary.qmd
     - references.qmd
 
-bibliography: references.bib
+bibliography: ql_bibliography.bib
 
 format:
   html:

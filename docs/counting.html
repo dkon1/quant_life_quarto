@@ -83,6 +83,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -266,11 +285,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Summary</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
@@ -335,9 +349,9 @@ Every heart, every heart to love will come<br>
 But like a refugee.<br>
 –Leonard Cohen, <em>Anthem</em></p>
 </blockquote>
-<p>Mathematical modeling begins with a set of <em>assumptions</em>. In fact, one may say that a mathematical model is a bunch of assumptions translated into mathematics. These assumptions may be more or less reasonable, and they may come from different sources. For instance, many physical models are so well-established that we refer to them as laws; we are pretty sure they apply to molecules, cells, and organisms as well as to inanimate objects. Thus we may use physical laws as the foundation on which to build models of biological entities; these are often known as <em>first-principles</em> (theory-based) models. Other times we have experimental evidence which suggests a certain kind of relationship between quantities, perhaps we find that the amount of administered drug and the time until the drug is completely removed from the bloodstream are proportional to each other. This observation can be turned into an <em>empirical</em> (experiment-based) model. Yet another type of model assumption is not based on either theory or experiment, but simply on convenience: e.g.&nbsp;let us assume that the mutation rates in two different loci are independent, and see what the implications are. These are sometimes called <em>toy</em> or <em>cartoon</em> models. </p>
+<p>Mathematical modeling begins with a set of <em>assumptions</em>. In fact, one may say that a mathematical model is a bunch of assumptions translated into mathematics. These assumptions may be more or less reasonable, and they may come from different sources. For instance, many physical models are so well-established that we refer to them as laws; we are pretty sure they apply to molecules, cells, and organisms as well as to inanimate objects. Thus we may use physical laws as the foundation on which to build models of biological entities; these are often known as <em>first-principles</em> (theory-based) models. Other times we have experimental evidence which suggests a certain kind of relationship between quantities, perhaps we find that the amount of administered drug and the time until the drug is completely removed from the bloodstream are proportional to each other. This observation can be turned into an <em>empirical</em> (experiment-based) model. Yet another type of model assumption is not based on either theory or experiment, but simply on convenience: e.g.&nbsp;let us assume that the mutation rates in two different loci are independent, and see what the implications are. These are sometimes called <em>toy</em> or <em>cartoon</em> models. (see @jungck_mathematical_2010 )</p>
 <p>This leads to the question: how do you decide whether a model is good? It is surprisingly difficult to give a straightforward answer to this question. Of course, one major goal of a model is to capture some essential features of reality, so in most biological modeling studies you will see a comparison between experimental results and predictions of the model. But it is not enough for a model to be faithful to experimental data! Think of a simple example: suppose your experiment produced 5 data points as a function of time; it is possible to find a polynomial (of fourth degree) that passes exactly through all 5 points, by specifying the coefficients of its 5 terms. This is called <em>data fitting</em> and it has a large role to play in mathematical modeling of biology. However, I think you will agree that in this case we have learned very little: we just substituted 5 values in the data set with 5 values of the coefficients of the mathematical model. To heighten the absurdity, imagine a data set of 1001 points that you have modeled using a 1000-degree polynomial. This is an example of overfitting, or making the model agree with the data by making it overly complex.</p>
-<p>Substituting a complicated model for a complicated real situation does not help understand it. One necessary ingredient of a useful model is <em>simplicity of assumptions</em>. Simplicity in modeling has at least two virtues: simple models can be grasped by our limited minds, and simple assumptions can be tested against evidence. A simple model that fails to reproduce experimental data can be more informative than a complex model that fits the data perfectly. If a simple model fails, you have learned that you are missing something in your assumptions; but a complex model can be right for the wrong reasons, like erroneous assumptions canceling each other, or it may contain needless assumptions. This is why good modeling is a difficult skill that balances simplicity of assumptions against fidelity to empirical data . In this chapter you will learn how to do the following:</p>
+<p>Substituting a complicated model for a complicated real situation does not help understand it. One necessary ingredient of a useful model is <em>simplicity of assumptions</em>. Simplicity in modeling has at least two virtues: simple models can be grasped by our limited minds, and simple assumptions can be tested against evidence. A simple model that fails to reproduce experimental data can be more informative than a complex model that fits the data perfectly. If a simple model fails, you have learned that you are missing something in your assumptions; but a complex model can be right for the wrong reasons, like erroneous assumptions canceling each other, or it may contain needless assumptions. This is why good modeling is a difficult skill that balances simplicity of assumptions against fidelity to empirical data <span class="citation" data-cites="cohen_mathematics_2004">Cohen (<a href="references.html#ref-cohen_mathematics_2004" role="doc-biblioref">2004</a>)</span> . In this chapter you will learn how to do the following:</p>
 <ul>
 <li><p>distinguish variables and parameters in models</p></li>
 <li><p>describe the state space of a model</p></li>
@@ -347,27 +361,27 @@ But like a refugee.<br>
 <section id="sec:bio1" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="sec:bio1"><span class="header-section-number">1.1</span> Blood circulation and mathematical modeling</h2>
 <p>Galen was one of the great physicians of antiquity. He studied how the body works by performing experiments on humans and animals. Among other things, he was famous for a careful study of the heart and how blood traveled through the body. Galen observed that there were different types of blood: arterial blood that flowed out of the heart, which was bright red, and venous blood that flowed in the opposite direction, which was a darker color. This naturally led to questions: what is the difference between venous and arterial blood? where does each one come from and where does it go?</p>
-<p>You, a reader of the 21st century, likely already know the answer: blood <em>circulates</em> through the body, bringing oxygen and nutrients to the tissues through the arteries, and returns back through the veins carrying carbon dioxide and waste products, as shown in figure <span class="math inline">\(\ref{fig:circulation}\)</span>. Arterial blood contains a lot of oxygen while venous blood carries more carbon dioxide, but otherwise they are the same fluid. The heart does the physical work of pushing arterial blood out of the heart, to the tissues and organs, as well as pushing venous blood through the second circulatory loop that goes through the lungs, where it picks up oxygen and releases carbon dioxide, becoming arterial blood again. This may seem like a very natural picture to you, but it is far from easy to deduce by simple observation.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>You, a reader of the 21st century, likely already know the answer: blood <em>circulates</em> through the body, bringing oxygen and nutrients to the tissues through the arteries, and returns back through the veins carrying carbon dioxide and waste products, as shown in figure <a href="#fig-blood-circ">Figure&nbsp;<span>1.1</span></a>. Arterial blood contains a lot of oxygen while venous blood carries more carbon dioxide, but otherwise they are the same fluid. The heart does the physical work of pushing arterial blood out of the heart, to the tissues and organs, as well as pushing venous blood through the second circulatory loop that goes through the lungs, where it picks up oxygen and releases carbon dioxide, becoming arterial blood again. This may seem like a very natural picture to you, but it is far from easy to deduce by simple observation.</p>
+<div id="fig-blood-circ" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="ch1/Circulatory_System_no_tags_cropped.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Human blood circulates throughout the body and returns to the heart, veins shown in blue and arteries in red. <em>Circulatory System en</em> by LadyofHats in public domain via Wikimedia Commons.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.1: Human blood circulates throughout the body and returns to the heart, veins shown in blue and arteries in red. <em>Circulatory System en</em> by LadyofHats in public domain via Wikimedia Commons.</figcaption><p></p>
 </figure>
 </div>
 <section id="galens-theory-of-blood" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="galens-theory-of-blood"><span class="header-section-number">1.1.1</span> Galen’s theory of blood</h3>
-<p>Galen came up with a different explanation based on the notion of <em>humors</em>, or fluids, that was fundamental to the Greek conception of the body. He proposed that the venous and arterial blood were different humors: venous blood, or <em>natural spirits</em>, was produced by the liver, while arterial blood, or <em>vital spirits</em>, was produced by the heart and carried by the arteries, as shown in figure <span class="math inline">\(\ref{fig:galen_blood}\)</span>. The heart consisted of two halves, and it warmed the blood and pushed both the natural and vital spirits out to the organs; the two spirits could mix through pores in the septum separating its right and left halves. The vital and natural spirits were both consumed by the organs, and regenerated by the liver and the heart. The purpose of the lungs was to serve as bellows, cooling the blood after it was heated by the heart.</p>
-<div class="quarto-figure quarto-figure-center">
+<p>Galen came up with a different explanation based on the notion of <em>humors</em>, or fluids, that was fundamental to the Greek conception of the body. He proposed that the venous and arterial blood were different humors: venous blood, or <em>natural spirits</em>, was produced by the liver, while arterial blood, or <em>vital spirits</em>, was produced by the heart and carried by the arteries, as shown in figure <a href="#fig-galen">Figure&nbsp;<span>1.2</span></a>. The heart consisted of two halves, and it warmed the blood and pushed both the natural and vital spirits out to the organs; the two spirits could mix through pores in the septum separating its right and left halves. The vital and natural spirits were both consumed by the organs, and regenerated by the liver and the heart. The purpose of the lungs was to serve as bellows, cooling the blood after it was heated by the heart.</p>
+<div id="fig-galen" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="ch1/galenheartc.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Illustration of Galen’s conception of the blood system, showing different spirits traveling in one direction, but not circulating. Reproduced by permission of <a href="https://faculty.humanities.uci.edu/bjbecker/">Barbara Becker</a>.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1.2: Illustration of Galen’s conception of the blood system, showing different spirits traveling in one direction, but not circulating. Reproduced by permission of <a href="https://faculty.humanities.uci.edu/bjbecker/">Barbara Becker</a>.</figcaption><p></p>
 </figure>
 </div>
 <p>Is this a good theory of how the heart, lungs, and blood work? Doctors in Europe thought so for over one thousand years! Galen’s textbook on physiology was the standard for medical students through the 17th century. The theory seemed to make sense, and explain what was observable. Many great scientists and physicians, including Leonardo DaVinci and Avicenna, did not challenge the inaccuracies such as the porous septum in the heart, even though they could not see the pores themselves. It took both better observations and a quantitative testing of the hypothesis to challenge the orthodoxy.</p>
 </section>
 <section id="mathematical-testing-of-the-theory" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="mathematical-testing-of-the-theory"><span class="header-section-number">1.1.2</span> Mathematical testing of the theory</h3>
-<p>William Harvey was born in England and studied medicine in Padua under the great physician Hieronymus Fabricius. He became famous, and would perform public demonstrations of physiology, using live animals for experiments that would not be approved today. He also studied the heart and the blood vessels, and measured the volume of the blood that can be contained in the human heart. He was quite accurate in estimating the correct volume, which we now know to be about 70 ml (1.5 oz). What is even more impressive is that he used this quantitative information to test Galen’s theory.</p>
+<p>William Harvey was born in England and studied medicine in Padua under the great physician Hieronymus Fabricius. He became famous, and would perform public demonstrations of physiology, using live animals for experiments that would not be approved today. He also studied the heart and the blood vessels, and measured the volume of the blood that can be contained in the human heart. He was quite accurate in estimating the correct volume, which we now know to be about 70 mL (1.5 oz). What is even more impressive is that he used this quantitative information to test Galen’s theory.</p>
 <p>Let us assume that all of the blood that is pumped out by the heart is consumed by the tissues, as Galen proposed; let us further assume that the heart beats at constant rate of 60 beats per minute, with a constant ejection volume of 70 ml. Then over the course of a day, the human body would consume about <span class="math display">\[\mathrm{Volume} = 70 \ \mathrm {mL} \times 60 \ \mathrm {(beats \ per \ minute)} \times 60 \ \mathrm {(minutes \ per \ hour)}  \times 24 \ \mathrm {(hours \ per \ day)}\]</span></p>
 <p>or over 6,000 liters of blood! You may quibble over the exact numbers (some hearts beat faster or slower, some hearts may be larger or smaller) but the impact of the calculation remains the same: it is an absurd conclusion. Galen’s theory would require the human being to consume and produce a quantity of fluid many times the volume of the human body (about 100 liters) in a day! This is a physical impossibility, so the only possible conclusion in that Galen’s model is wrong.</p>
 <p>This led Harvey to propose the model that we know today: that blood is not consumed by the tissues, but instead returns to the heart and is re-used again . This is why we call the heart and blood vessels part of the circulatory system of the body. This model was controversial at the time - some people proclaimed they would “rather be wrong with Galen, than right with Harvey” - but eventually became accepted as the standard model. What is remarkable is that Harvey’s argument, despite being grounded in empirical data, was strictly mathematical. He adopted the assumptions of Galen, made the calculations, and got a result which was inconsistent with reality. This is an excellent example of how mathematical modeling can be useful, because it can provide clear evidence against a wrong hypothesis.</p>
@@ -601,6 +615,11 @@ But like a refugee.<br>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-cohen_mathematics_2004" class="csl-entry" role="doc-biblioentry">
+Cohen, Joel E. 2004. <span>“Mathematics <span>Is</span> <span>Biology</span>’s <span>Next</span> <span>Microscope</span>, <span>Only</span> <span>Better</span>; <span>Biology</span> <span>Is</span> <span>Mathematics</span>’ <span>Next</span> <span>Physics</span>, <span>Only</span> <span>Better</span>.”</span> <em>PLoS Biol</em> 2 (12): e439. <a href="https://doi.org/10.1371/journal.pbio.0020439">https://doi.org/10.1371/journal.pbio.0020439</a>.
+</div>
+</div>
 </section>
 </section>
 
