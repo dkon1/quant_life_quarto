@@ -1,0 +1,139 @@
+% Venn diagram with magnifier
+% Author: Dennis Heidsiek
+\documentclass{minimal}
+
+\usepackage{tikz}
+\usetikzlibrary{spy}
+
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{comment}
+:Title: Venn diagram with magnifier
+
+This example shows how to add a glass to magnify a special part of a pictures.
+It makes use of the new spy library, so you'll need a recent TikZ version [1]
+to compile it.
+
+It was created by Dennis Heidsiek [2], based on the example [3],
+inspired by a sketch in [4].
+
+- [1] http://www.texample.net/tikz/builds/
+- [2] http://www.google.com/profiles/Dennis.Heidsiek
+- [3] http://www.texample.net/tikz/examples/venn-diagram/
+- [4] http://wiki.the-big-bang-theory.com/wiki/Psychic_Vortex
+
+\end{comment}
+
+% First, we define three circles:
+\def\firstcircle{(-2,0) circle (1.9)}
+\def\secondcircle{(2,0) circle (1.9)}
+\pgfmathparse{-(2.4^2-2^2)^0.5} % by pythagoras
+\let\h\pgfmathresult % shortcut for further use
+\def\thirdcircle{(0,\h) circle (0.2cm)}
+
+\colorlet{circle edge}{black!90}
+\colorlet{circle area1}{blue!30}
+\colorlet{circle area2}{red!30}
+
+\tikzset{filled/.style={fill=circle area1, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+
+\begin{tikzpicture}
+ % Let's draw the scene (to magnify):
+  \begin{scope}[spy using outlines=
+      {magnification=16, size=8cm, connect spies, rounded corners}]
+    
+    % the border:
+    \draw[thick, rounded corners] (-5,-4) rectangle (5,4);
+  %  \draw (0,3.3) node[scale=2] {all people};
+    
+    % The transparency:
+        \begin{scope}
+%        \clip \firstcircle;
+ 	   \begin{scope}[fill opacity=0.5]
+      	\fill[red] \firstcircle;
+      	\fill[green] \secondcircle;
+     % \fill[blue] \thirdcircle;
+    \end{scope}
+
+    
+    \draw[align=center] \firstcircle node {P=0.2};
+    \draw[align=center] \secondcircle node {P=0.2} ;
+%\draw (0.4,0) node[align=center] {P=0.1};
+
+    \end{scope}
+    \end{scope}
+\end{tikzpicture}  
+ 
+ 
+\def\firstcircle{(-2,0) circle (2.9)}
+\def\secondcircle{(2,0) circle (2.5)}
+\pgfmathparse{-(2.4^2-2^2)^0.5} % by pythagoras
+\let\h\pgfmathresult % shortcut for further use
+
+\begin{tikzpicture}
+ % Let's draw the scene (to magnify):
+  \begin{scope}[spy using outlines=
+      {magnification=16, size=8cm, connect spies, rounded corners}]
+    
+     the border:
+    \draw[thick, rounded corners] (-5,-4) rectangle (5,4);
+%    \draw (0,3.3) node[scale=2] {all people};
+    
+    % The transparency:
+        \begin{scope}
+%        \clip \firstcircle;
+ 	   \begin{scope}[fill opacity=0.5]
+      	\fill[red] \firstcircle;
+      	\fill[green] \secondcircle;
+     % \fill[blue] \thirdcircle;
+    \end{scope}
+    
+    \draw[align=center] \firstcircle node {P=0.4};
+    \draw[align=center] \secondcircle node {P=0.3} ;
+\draw (0.2,0) node[align=center] {P=0.12};
+
+    \end{scope}
+    \end{scope}
+\end{tikzpicture}   
+ 
+\def\firstcircle{(0,0) circle (3.8)}
+\def\secondcircle{(0,0) circle (2)}
+\pgfmathparse{-(2.4^2-2^2)^0.5} % by pythagoras
+\let\h\pgfmathresult % shortcut for further use 
+ 
+\begin{tikzpicture}
+ % Let's draw the scene (to magnify):
+  \begin{scope}[spy using outlines=
+      {magnification=16, size=8cm, connect spies, rounded corners}]
+    
+     the border:
+    \draw[thick, rounded corners] (-5,-4) rectangle (5,4);
+%    \draw (0,3.3) node[scale=2] {all people};
+    
+    % The transparency:
+        \begin{scope}
+%        \clip \firstcircle;
+ 	   \begin{scope}[fill opacity=0.5]
+      	\fill[red] \firstcircle;
+      	\fill[green] \secondcircle;
+     % \fill[blue] \thirdcircle;
+    \end{scope}
+    
+    \draw (0,3) node {P=0.7};
+    \draw[align=center] \secondcircle node {P=0.3} ;
+%\draw (0.2,0) node[align=center] {P=0.12};
+
+    \end{scope}
+    \end{scope}
+\end{tikzpicture}   
+
+
+
+\end{document}
