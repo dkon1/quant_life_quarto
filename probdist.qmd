@@ -24,7 +24,7 @@ Stochastic models may not sound very promising: after all, we want to make predi
 
 In this section we will develop the terminology used in the mathematical study of randomness called probability. This begins with a *random experiment* which is a very broad term that can describe any natural or theoretical process whose outcome cannot be predicted with certainty. If the outcomes are numeric, they may be *discrete* (can be counted by integers) or *continuous* (corresponding to real numbers); they may also be *categorical*, meaning that they do not have a numeric meaning, like eye color. We will stick to experiments that have discrete outcomes in this chapter, but many important experiments produce continuous outcomes. The first step for studying a random process is to describe all of the outcomes it can produce:
 
-::: callout-note
+::: {#def-sample-space .callout-note}
 ## Definition
 
 The collection of all possible outcomes of an experiment is called its *sample space* $\Omega$. An *event* is a subset of the sample space, which means an event may contain one or more experimental outcomes.
@@ -70,39 +70,45 @@ The probability $P(A)$ of an event $A$ in a sample space $\Omega$ is a number be
 
 Let us define some notation for sets: $A \cup B$ is called the *union* of two sets, which contains all outcomes that belong to either $A$ or $B$, this is equivalent to the logical OR operator because it is true if either A or B is true. $A\cap B$ is called the *intersection* of two sets, which contains all outcomes that are in both $A$ and $B$, this is is equivalent to the logical AND operator because it is true if both A and B are true. The $\emptyset$ denotes the empty set. Any event $A$ has its *complement*, denoted $-A$, which contains all outcomes of $\Omega$ which are not in $A$.
 
-Applying them to the sample space and events in figure \ref{fig:ch4_sample_space}, the union of the two sets $A \cup B$ are all people who are either tall or like tea, the intersection of the two sets $A\cap B$ are all the tall people who like tea, and the intersection of the first set with the complement of the second $A \cup - B$ are all tall people who do not like tea.
+Applying them to the sample space and events in @fig-sets-prob, the union of the two sets $A \cup B$ are all people who are either tall or like tea, the intersection of the two sets $A\cap B$ are all the tall people who like tea, and the intersection of the first set with the complement of the second $A \cup - B$ are all tall people who do not like tea.
 
-![An illustration of the operation of intersection of sets A and B.](ch4/set_intersection.png)
 
-![An illustration of the operation of the union of sets A and B.](ch4/set_union.png)
+::: {#fig-sets-prob layout-ncol=3}
 
-![An illustration of the intersection of A with -B](ch4/set_subtraction.png)
+![Intersection of A and B](ch4/set_intersection.png)
 
-The first two axioms connect easily with our intuition about probability: the first axiom says that the probability of some outcome from the sample space occurring is 1, while the second says that the probability of nothing in the sample space occurring is 0. The intuition behind axiom three is less transparent, but it can be see in a Venn diagram of two subsets $A$ and $B$ of the larger set $\Omega$, as in figure \ref{fig:ch4_sample_space}. Compare the size of the union of $A$ and $B$ and the sum of the sizes of sets $A$ and $B$ separately, and you will see that the intersection $A\cap B$ occurs in both $A$ and $B$, but is only counted once in the union. This is why it needs to be subtracted from the sum of $P(A)$ and $P(B)$.
+![Union of A and B](ch4/set_union.png)
+
+![Intersection of A with -B](ch4/set_subtraction.png)
+
+Illustration of set combinations
+:::
+
+The first two axioms connect easily with our intuition about probability: the first axiom says that the probability of some outcome from the sample space occurring is 1, while the second says that the probability of nothing in the sample space occurring is 0. The intuition behind axiom three is less transparent, but it can be see in a Venn diagram of two subsets $A$ and $B$ of the larger set $\Omega$, as in @fig-sets-prob. Compare the size of the union of $A$ and $B$ and the sum of the sizes of sets $A$ and $B$ separately, and you will see that the intersection $A\cap B$ occurs in both $A$ and $B$, but is only counted once in the union. This is why it needs to be subtracted from the sum of $P(A)$ and $P(B)$.
 
 There are several useful rules that immediately follow from the axioms. First, if two events are mutually exclusive, meaning their intersection is empty ($A\cap B = \emptyset$), then the probability of either of them happening is the sum of their respective probabilities: $P(A \cup B) = P(A) + P(B)$ (from axiom 3). Further, since an event $A$ and its complement $-A$ are mutually exclusive, their union is the entire sample space $\Omega$: $P(A) + P(-A) = P(A \cup -A) = P(\Omega) = 1$, therefore $P(A) = 1-P(-A)$.
 
 **Example.** Assume one is using a fair coin, so the probability of a single head and a single tail is 1/2. The probability of getting two heads in a row is 1/4, because exactly half of those coins that come up heads once will come up heads again. In fact, the probability of getting any particular sequence of two coin toss results is 1/4. Here are some examples of what we can calculate:
 
 -   the probability of getting one head of out of two tosses is $1-1/4-1/4=1/2$ (by the complement rule).
--   the probability of \emph{not} getting two heads is $1-1/4 = 3/4$ (by the complement rule).\
+-   the probability of **not** getting two heads is $1-1/4 = 3/4$ (by the complement rule).
 -   the probability of getting either 0, 1, or 2 heads is 1 (by axiom 1).
 -   the probability of getting three heads is 0 (since this event is not in the sample space).
 
 **Example.** Suppose one is testing people for a mutation which has the probability (prevalence) of 0.2 in the population, so for each person there are two possible outcomes: normal or mutant. The probability of drawing two mutants in a row is $0.2*0.2=0.04$ by the same argument as above; the probability of drawing two normal people is $0.8*0.8 =0.64$. Based on this, we can calculate the following
 
 -   the probability of one mutant of out two people is $1-0.04-0.64=0.32$ (by the complement rule).
--   the probability of not having two mutants is $1-0.04 = 0.96$ (by the complement rule).\
+-   the probability of not having two mutants is $1-0.04 = 0.96$ (by the complement rule).
 -   the probability of either 0, 1, or 2 mutants is 1 (by axiom 1).
 -   the probability of getting three mutants is 0 (since this event is not in the sample space).
 
-**Example** (from Danny and Gaines Sarcastic fringeheads are a tropical ocea fish that engage in aggressive mouth-wrestling matches for their rocky residences. Let us treat each match as a stochastic experiment with two outcomes: win or loss. Then the sample space is equivalent to our coin-tossing experiment, e.g. for two matches the sample space is $\{ WW, WL, LW, LL \}$. However, the probability distribution may different, for example if a particular fringehead wins 3/4 of its matches, then the probability distribution would be: $P(\{ WW \}) = 9/16$, $P(\{ LW \}) = P(\{ WL \}) = 3/16$, and \$ P({ LL }) = 1/16\$. Thus, the same sample space may have different probability distributions defined on it.
+**Example** [@denny_chance_2002] Sarcastic fringeheads are tropical ocean fish that engage in aggressive mouth-wrestling matches for their rocky residences. Let us treat each match as a stochastic experiment with two outcomes: win or loss. Then the sample space is equivalent to our coin-tossing experiment, e.g. for two matches the sample space is $\{ WW, WL, LW, LL \}$. However, the probability distribution may different, for example if a particular fringehead wins 3/4 of its matches, then the probability distribution would be: $P(\{ WW \}) = 9/16$, $P(\{ LW \}) = P(\{WL\}) = 3/16$, and $P(\{LL\}) = 1/16$. Thus, the same sample space may have different probability distributions defined on it.
 
 ### random variables
 
-The outcomes of experiments may be expressed in numbers or words, but we generally need numbers in order to report and analyze results. One can describe this mathematically as a function (recall its definition form section \ref{sec:math2}) that assigns numbers to random outcomes \cite{feller_introduction_????}. In practice, a random variable describes the measurement that one makes to describe the outcomes of a random experiment.
+The outcomes of experiments may be expressed in numbers or words, but we generally need numbers in order to report and analyze results. One can describe this mathematically as a function (recall its definition from section 2.2) that assigns numbers to random outcomes [@feller_introduction_nodate]. In practice, a random variable describes the measurement that one makes to describe the outcomes of a random experiment.
 
-::: callout-note
+::: {#def-rv .callout-note}
 ## Definition
 
 A *random variable* is a number or category associated to each outcome in a sample space $\Omega$. This association has to follow the rules of a function as defined in chapter 2.
@@ -110,19 +116,19 @@ A *random variable* is a number or category associated to each outcome in a samp
 
 **Example.** Define the random variable to be the number of heads out of two coin tosses. This random variable will return numbers 0, 1, or 2, corresponding to different events. The random variable of the number of mutants out of two people (assuming there are only two outcomes, mutant and normal) has the same set of values. This random variable is a function on the sample space because it returns a unique value for each outcome.
 
-**Example.** (Danny and Gaines) Suppose that our sarcastic fringehead, upon losing a wrestling match, has to search for another home for three hours. Then we can define the random variable of time wasted over two wrestling matches, which can be either 0, 3, or 6 hours, depending on the events defined above. Once again, this is a function because there is an unambiguous number associated with each outcome.
+**Example.** [@denny_chance_2002] Suppose that our sarcastic fringehead, upon losing a wrestling match, has to search for another home for three hours. Then we can define the random variable of time wasted over two wrestling matches, which can be either 0, 3, or 6 hours, depending on the events defined above. Once again, this is a function because there is an unambiguous number associated with each outcome.
 
 A random variable has a set of possible values, and each of those values may come up more or less frequently in an random experiment. The frequency of each measurement corresponds to the probability of the outcomes in the sample space that produce that particular value of the random variable. One can describe the behavior of the random variable in terms of the collection of the probabilities of its outcomes.
 
-::: callout-note
-## Definition
-
-The probability of a random variable $X$ taking some value $a$, written as $P(X=a)$, but usually simplified to $P(a)$ is the probability of the event corresponding to the value $a$ of the random variable. This function $P(a)$ is called the *probability distribution* of the random variable $X$.
+::: {#def-prob-dist .callout-note} 
+The probability of a random variable $X$ taking some value $a$, written as $P(X=a)$, but usually simplified to $P(a)$ is the probability of the event corresponding to the value $a$ of the random variable. This function $P(a)$ is called the *probability distribution* of the random variable $X$. 
 :::
 
 One important property of probability distribution functions for a discrete random variable is that all of its values have to add up to 1:
 
-$$\sum_{i=1}^N P(a_i) =1$$ The graph of a probability distribution function lies above zero because all probabilities are between 0 and 1. The graph of a probability distribution is very similar to a histogram, in that it represents the frequency of occurrence of each value of the random variable. A histogram of a variable from a data set can be thought is an approximation of the true probability distribution based on the sample. For a large sample size, the histogram approaches the graph of the probability distribution function, something which we will discuss in chapter 9.
+$$\sum_{i=1}^N P(a_i) =1$$
+
+The graph of a probability distribution function lies above zero because all probabilities are between 0 and 1. The graph of a probability distribution is very similar to a histogram, in that it represents the frequency of occurrence of each value of the random variable. A histogram of a variable from a data set can be thought is an approximation of the true probability distribution based on the sample. For a large sample size, the histogram approaches the graph of the probability distribution function, something which we will discuss in chapter 9.
 
 **Example.** Assuming that each coin toss has probability 1/2 of resulting in heads, the probability distribution function for the number of heads out of two coin tosses is $P(0) = 1/4; \; P(1) = 1/2; \; P(2) = 1/4$ (as we computed in the example in the previous section). Note that the probabilities add up to 1, as they should.
 
@@ -132,11 +138,10 @@ $$\sum_{i=1}^N P(a_i) =1$$ The graph of a probability distribution function lies
 
 ### expectation of random variables
 
-::: callout-note
-## Definition
-
+::: {#def-exp-val .callout-note}
 The *expected value* (or mean) of a discrete random variable $X$ with probability distribution $P(X)$ is defined as: $$ E(X) = \mu_X = \sum_{i=1}^N  a_i P(a_i)$$
 :::
+
 
 This sum is over all values $\{a_i\}$ that the random variable $X$ can take, multiplied by the probability of the random variable taking that value (meaning the probability of the event in sample space that corresponds to that value). This corresponds to the definition of the mean of a data set given in section \ref{sec:math3}, if you consider $P(a_i)$ to be the number of times $a_i$ occurs divided by the number of total measurements $N$. As in the case of the histogram and the distribution function, the mean of a sample for a large sample size $N$ approaches the mean of the random variable, which we will discuss in more detail in the next chapter. Sometimes we will use the more concise $\mu_X = E(X)$ to represent the mean (expected) value. Here are some mathematical properties of the expectation:
 
@@ -167,9 +172,7 @@ Knowledge of the expected value says nothing about how the random variable actua
 
 $$ E(X-\mu_X) =  \sum_i (x_i-\mu_x)P(x_i) = \sum_i x_i P(x_i) - \mu_x \sum_i P(x_i) = \mu_x - \mu_x = 0$$ The problem is, if we add up all the differences from the mean, the positive ones end up canceling the negative ones and the expected value of those deviations is exactly zero. This is why it makes sense to square the differences and add them up:
 
-::: callout-note
-## Definition
-
+::: {#def-var-prob .callout-note}
 The *variance* of a discrete random variable $X$ with probability distribution $P(x)$ is $$ Var(X) = E((X-\mu_X)^2) = \sum_{i=1}^N (x_i-\mu_x)^2P(x_i)$$
 :::
 
@@ -179,7 +182,7 @@ $$Var(X+Y) = E \left[ (X+Y)-(\mu_X+\mu_Y) \right]^2 =$$
 
 $$ = E[ (X-\mu_X)^2 +(Y-\mu_Y)^2 - 2(X-\mu_X)(Y-\mu_Y)] = $$ $$=E (X-\mu_X)^2 +  E(Y-\mu_Y)^2   -2 E[(X-\mu_X)(Y-\mu_Y)] = $$
 
-$$ = Var(X) + Var(Y)  -2 E[(X-\mu_X)(Y-\mu_Y)] $$ If you write out the last term as a sum, it is none other than the *covariance* of the two random variables $X$ and $Y$, which we saw in the chapter on linear regression. So for any two random variables that have zero covariance, their variance is additive!
+$$ = Var(X) + Var(Y)  -2 E[(X-\mu_X)(Y-\mu_Y)] $$The last term is a special number called the *covariance* of the two random variables $X$ and $Y$, which we will see in the chapter on linear regression. So for any two random variables that have zero covariance, their variance is additive!
 
 **Example.** The variance of the number of heads out of two coin tosses can be calculated using its probability distribution function and the expected value (1) from above: $$ Var(X) = (0-1)^2 \times P(0) + (1-1)^2 \times P(1) + (2-1)^2 \times P(2) = 1/4+0+1/4 = 1/2$$ Since the variance is 1/2, the standard deviation, or the expected distance from the mean value is $\sigma= \sqrt{1/2}$.
 
@@ -215,23 +218,29 @@ $$
 E(U) = \sum_{i=1}^n  a_i P(a_i) = \frac{1}{n}  \sum_{i=1}^n  a_i 
 $$ So the expected value is the mean of all the values of the uniform random variable.
 
-**Example.** In the special case of the uniform distribution of $n+1$ integers between 0 and $n$ ($a_i = i$, for $i=0,..., n$), each value has probability $P = 1/(n+1)$. The expected value is the average of the maximum and minimum values (using the fact that $\sum_{i=0}^n i = n(n+1)/2$): $$ E(U) = \frac{n(n+1)}{2(n+1)} = \frac{n}{2} $$
+**Example.** In the special case of the uniform distribution of $n+1$ integers between 0 and $n$ ($a_i = i$, for $i=0,..., n$), each value has probability $P = 1/(n+1)$. The expected value is the average of the maximum and minimum values (using the fact that $\sum_{i=0}^n i = n(n+1)/2$): $$ E(U) = \frac{n(n+1)}{2(n+1)} = \frac{n}{2} $$ {#eq-unif-exp}
 
-Generalizing, for a random variable on integers between $a$ and $b$, the expectation is $$ E(U) = \frac{a+b}{2}$$
+Generalizing, for a random variable on integers between $a$ and $b$, the expectation is $$ E(U) = \frac{a+b}{2}$$ {#eq-unif-exp-gen}
 
 We can also write down the expression for the variance of the discrete uniform distribution as follows:
 
 $$ Var(U) = E(U^2) - E(U)^2 =  \frac{1}{n} \sum_{i=1}^n  a_i^2  -  \frac{1}{n^2} \left(\sum_{i=1}^n  a_i \right)^2$$ **Example.** In the special case of the uniform distribution of $n+1$ integers between 0 and $n$ ($a_i = i$, for $i=0,..., n$), each value has probability $P = 1/(n+1)$. The variance can be calculated using the formula for the sum of squares: $\sum_{i=0}^n i^2 =n(n+1)(2n+1)/6$.
 
 $$ Var(U) = \frac{(n+1)(2n+1)n}{6(n+1)} - \frac{n^2}{4} =   \frac{2n^2+n}{6} - \frac{n^2}{4} = \frac{n(n+2)}{12}
-$$
+$$ {#eq-unif-var}
 
 This can be generalize to a uniform random variable on integers between $a$ and $b$ (omitting the algebraic details) so the variance for that uniform random variable is:
 
 $$ Var(U) = \frac{(b-a+1)^2 - 1}{12} = \frac{(b-a)^2 + 2(b-a)}{12}
-$$
+$$ {#eq-unif-var-gen}
 
-```{r unif-dist, echo=FALSE, fig.show='hold', out.width='50%', fig.asp=.75, fig.align='center', fig.cap = 'Two uniform random distributions with integer values with different ranges.'}
+```{r unif-dist, echo=FALSE}
+#| label: fig-unif-dist
+#| fig-cap: "Two uniform random distributions with different ranges."
+#| fig-subcap: 
+#|   - "Uniform distribution on integers from 0 to 3" 
+#|   - "Uniform distribution on integers from -6 to 3"
+#| layout-ncol: 2
 n <- 4
 unif.dist <- rep(1/n,n)
 values <- 0:(n-1)
@@ -256,7 +265,7 @@ One can extend this scenario and ask what happens in a string of Bernoulli trial
 Given $n$ independent Bernoulli trials $X$ with the same probability of success $p$, the *binomial random variable* is defined as: $$B = \sum_{i=1}^n X_i$$ where $X_i$ is the random variable from the i-th Bernoulli trial, which takes values of 1 and 0.
 :::
 
-In this definition I use the term independence without defining it properly, which will be done in chapter 10. Intuitively, independence between two Bernoulli trials (e.g. coin tosses) means that the outcome of one trial does not change the probability of the outcomes of any other trials. This amounts to the assumption that the probability of an outcome followed by another one is the product of the separate probabilities of the two outcomes. For example, if the two outcomes are wins and losses, then $P(\{WL\}) = P(W)P(L)$. This will be used below in the calculation of the variance of the binomial random variable.
+In this definition I use the term independence without defining it properly, which will be done in chapter 6. Intuitively, independence between two Bernoulli trials (e.g. coin tosses) means that the outcome of one trial does not change the probability of the outcomes of any other trials. This amounts to the assumption that the probability of an outcome followed by another one is the product of the separate probabilities of the two outcomes. For example, if the two outcomes are wins and losses, then $P(\{WL\}) = P(W)P(L)$. This will be used below in the calculation of the variance of the binomial random variable.
 
 To find the probability distribution of the binomial random variable, we need to define the event of $k$ wins out of $n$ trials. Consider the case of 4 trials. It is easy to find the event of 4 wins, as it is comprised only of the outcome $\{WWWW\}$. Then, $P(4) = p^4$, based on the independence assumption. The event of winning 3 times consists of four strings: $\{LWWW, WLWW, WWLW, WWWL\}$ so the probability of obtaining 3 wins is the sum of the four probabilities, each equal to \$ p\^3(1-p)\$ from the independence assumption above, so $P(3) = 4p^3(1-p)$. The event of winning 2 times is even more cumbersome, and consists of six strings: $\{ LLWW, WLLW, WWLL, WLWL, LWLW, LWWL\}$, so $P(2) = 6p^2(1-p)^2$ by the same reasoning.
 
@@ -272,7 +281,7 @@ We can now calculate the general probability of winning $k$ times out of $n$ tri
 
 $$
  P(\mathrm{k \; wins \; in \; n \; trials}) =  P(B=k)= \binom{n}{k}  p^k (1-p)^{n-k}
-$$
+$$ {#eq-binom-rv}
 
 This is the probability distribution of the binomial random variable $B$.
 
@@ -280,7 +289,7 @@ The binomial random variable has much simpler formulas for the mean and the vari
 
 $$
 E(B) = E\left[\sum_{i=1}^n X\right] = \sum_{i=1}^n E(X) = \sum_{i=1}^n p = np 
-$$ This means that the expected number of heads/successes is the product of the probability of 1 head/success and the number of trials, e.g. if the probability of success is 0.3, then the expected number of successes out of 100 is 30.
+$$ {#eq-binom-exp} This means that the expected number of heads/successes is the product of the probability of 1 head/success and the number of trials, e.g. if the probability of success is 0.3, then the expected number of successes out of 100 is 30.
 
 Now let us calculate the variance, for which in general the same additive property is not true. But remember that in the section on variance above we showed that the variance of a sum of two random variables is the sum of their two separate variances as long as their covariance is zero. It turns out that for random variables that satisfy the product rule $P(x, y) = P(x)P(y)$ their covariance is 0:
 
@@ -292,11 +301,18 @@ The demonstrates that for independent variables the variance of their sum is the
 
 $$
 Var(B) = Var\left[\sum_{i=1}^n X\right]  = \sum_{i=1}^n Var(X) =\sum_{i=1}^n p(1-p) = np(1-p)
-$$
+$$ {#eq-binom-var}
 
 For any given number of Bernoulli trials, the variance has a quadratic dependence on probability of success $p$: if $p=1$ or $p=0$, corresponding to all successes, or all failures, respectively, then the variance is zero, since there is no spread in the outcome. For a fair coin $p=1/2$ the variance is highest. This can be seen in the plots of binomial random variables for $n=2$, $n=5$, and $n=50$, shown in figures below.
 
-```{r bin-dist-1, echo=FALSE, fig.show='hold', out.width='50%', fig.asp=.75, fig.align='center', fig.cap = 'The binomial distribution for $n=2$ and $p=0.2$ and $p=0.5$ (you should be able to tell which one is which!)'}
+```{r bin-dist-1, echo=FALSE}
+#| label: fig-binom-dist-1
+#| fig-cap: "Binomial random distributions with two trials."
+#| fig-subcap: 
+#|   - "Binomial distribution with p=0.2" 
+#|   - "Binomial distribution with p=0.5"
+#| layout-ncol: 2
+
 n <- 2
 p<-0.2
 values <- 0:n
@@ -308,7 +324,14 @@ prob.dist <- dbinom(values,n,p)
 barplot(prob.dist,names.arg=values,cex.axis=1.5,cex.lab=1.5,xlab='binomial RV',ylab='probability')
 ```
 
-```{r bin-dist-2, echo=FALSE, fig.show='hold', out.width='50%', fig.asp=.75, fig.align='center', fig.cap = 'The binomial distribution for $n=5$ and $p=0.2$ and $p=0.5$ (you should be able to tell which one is which!)'}
+```{r bin-dist-2, echo=FALSE}
+#| label: fig-binom-dist-2
+#| fig-cap: "Binomial random distributions with five trials."
+#| fig-subcap: 
+#|   - "Binomial distribution with p=0.2" 
+#|   - "Binomial distribution with p=0.5"
+#| layout-ncol: 2
+
 n <- 5
 p<-0.2
 values <- 0:n
@@ -320,7 +343,15 @@ prob.dist <- dbinom(values,n,p)
 barplot(prob.dist,names.arg=values,cex.axis=1.5,cex.lab=1.5,xlab='binomial RV',ylab='probability')
 ```
 
-```{r bin-dist-3, echo=FALSE, fig.show='hold', out.width='50%', fig.asp=.75, fig.align='center', fig.cap = 'The binomial distribution for $n=50$ and $p=0.2$ and $p=0.5$ (you should be able to tell which one is which!)'}
+```{r bin-dist-3, echo=FALSE}
+#| label: fig-binom-dist-3
+#| fig-cap: "Binomial random distributions with fifty trials."
+#| fig-subcap: 
+#|   - "Binomial distribution with p=0.2" 
+#|   - "Binomial distribution with p=0.5"
+#| layout-ncol: 2
+
+
 n <- 50
 p<-0.2
 values <- 0:n
@@ -334,15 +365,15 @@ barplot(prob.dist,names.arg=values,cex.axis=1.5,cex.lab=1.5,xlab='binomial RV',y
 
 ### Exercises
 
-Calculate the means and variances based on the plotted distributions using the definitions \ref{def:ch4_mean} and \ref{def:ch4_var} and compare your calculations against equations \ref{eq:ch4_mean_unif} and \ref{eq:ch4_var_unif} (for uniform random variables) and equations \ref{eq:ch4_binom_mean} and \ref{eq:ch4_binom_var} (for binomial random variables)
+Calculate the expected values and variances based on the plotted distributions using the definitions @def-exp-val and @def-var-prob and compare your calculations against equations @eq-unif-exp and @eq-unif-var (for uniform random variable) and equations @eq-binom-rv and @eq-binom-var (for binomial random variable).
 
-1.  Calculate the mean and the variance for the two uniform distributions plotted in figure \@ref(fig:unif-dist).
+1.  Calculate the mean and the variance for the two uniform distributions plotted in @fig-unif-dist.
 
-2.  Calculate the mean and the variance for the two binomial distributions plotted in figure \@ref(fig:bin-dist-1).
+2.  Calculate the mean and the variance for the two binomial distributions plotted in @fig-binom-dist-1.
 
-3.  Calculate the mean and the variance for the two binomial distributions plotted figure \@ref(fig:bin-dist-2).
+3.  Calculate the mean and the variance for the two binomial distributions plotted in @fig-binom-dist-2.
 
-4.  Estimate (approximately) the mean and the variance for the two binomial distributions plotted in figure \@ref(fig:bin-dist-3).
+4.  Calculate the mean and the variance for the two binomial distributions plotted in @fig-binom-dist-3.
 
 ### testing for mutants
 

@@ -83,6 +83,25 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 
@@ -336,7 +355,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="definition-of-probability" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="definition-of-probability"><span class="header-section-number">4.1.1</span> definition of probability</h3>
 <p>In this section we will develop the terminology used in the mathematical study of randomness called probability. This begins with a <em>random experiment</em> which is a very broad term that can describe any natural or theoretical process whose outcome cannot be predicted with certainty. If the outcomes are numeric, they may be <em>discrete</em> (can be counted by integers) or <em>continuous</em> (corresponding to real numbers); they may also be <em>categorical</em>, meaning that they do not have a numeric meaning, like eye color. We will stick to experiments that have discrete outcomes in this chapter, but many important experiments produce continuous outcomes. The first step for studying a random process is to describe all of the outcomes it can produce:</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div id="def-sample-space" class="callout-note callout callout-style-default callout-captioned theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.2 </strong></span>&nbsp;</p>
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -345,8 +365,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Definition
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>The collection of all possible outcomes of an experiment is called its <em>sample space</em> <span class="math inline">\(\Omega\)</span>. An <em>event</em> is a subset of the sample space, which means an event may contain one or more experimental outcomes.</p>
+<div id="def-sample-space" class="callout-body-container callout-body theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.1 </strong></span>The collection of all possible outcomes of an experiment is called its <em>sample space</em> <span class="math inline">\(\Omega\)</span>. An <em>event</em> is a subset of the sample space, which means an event may contain one or more experimental outcomes.</p>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -409,49 +429,61 @@ Definition
 </div>
 </div>
 <p>Let us define some notation for sets: <span class="math inline">\(A \cup B\)</span> is called the <em>union</em> of two sets, which contains all outcomes that belong to either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>, this is equivalent to the logical OR operator because it is true if either A or B is true. <span class="math inline">\(A\cap B\)</span> is called the <em>intersection</em> of two sets, which contains all outcomes that are in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, this is is equivalent to the logical AND operator because it is true if both A and B are true. The <span class="math inline">\(\emptyset\)</span> denotes the empty set. Any event <span class="math inline">\(A\)</span> has its <em>complement</em>, denoted <span class="math inline">\(-A\)</span>, which contains all outcomes of <span class="math inline">\(\Omega\)</span> which are not in <span class="math inline">\(A\)</span>.</p>
-<p>Applying them to the sample space and events in figure <span class="math inline">\(\ref{fig:ch4_sample_space}\)</span>, the union of the two sets <span class="math inline">\(A \cup B\)</span> are all people who are either tall or like tea, the intersection of the two sets <span class="math inline">\(A\cap B\)</span> are all the tall people who like tea, and the intersection of the first set with the complement of the second <span class="math inline">\(A \cup - B\)</span> are all tall people who do not like tea.</p>
+<p>Applying them to the sample space and events in <a href="#fig-sets-prob">Figure&nbsp;<span>4.1</span></a>, the union of the two sets <span class="math inline">\(A \cup B\)</span> are all people who are either tall or like tea, the intersection of the two sets <span class="math inline">\(A\cap B\)</span> are all the tall people who like tea, and the intersection of the first set with the complement of the second <span class="math inline">\(A \cup - B\)</span> are all tall people who do not like tea.</p>
+<div id="fig-sets-prob" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ch4/set_intersection.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">An illustration of the operation of intersection of sets A and B.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Intersection of A and B</figcaption><p></p>
 </figure>
 </div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ch4/set_union.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">An illustration of the operation of the union of sets A and B.</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Union of A and B</figcaption><p></p>
 </figure>
 </div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ch4/set_subtraction.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">An illustration of the intersection of A with -B</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Intersection of A with -B</figcaption><p></p>
 </figure>
 </div>
-<p>The first two axioms connect easily with our intuition about probability: the first axiom says that the probability of some outcome from the sample space occurring is 1, while the second says that the probability of nothing in the sample space occurring is 0. The intuition behind axiom three is less transparent, but it can be see in a Venn diagram of two subsets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of the larger set <span class="math inline">\(\Omega\)</span>, as in figure <span class="math inline">\(\ref{fig:ch4_sample_space}\)</span>. Compare the size of the union of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and the sum of the sizes of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> separately, and you will see that the intersection <span class="math inline">\(A\cap B\)</span> occurs in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, but is only counted once in the union. This is why it needs to be subtracted from the sum of <span class="math inline">\(P(A)\)</span> and <span class="math inline">\(P(B)\)</span>.</p>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.1: Illustration of set combinations</figcaption><p></p>
+</figure>
+</div>
+<p>The first two axioms connect easily with our intuition about probability: the first axiom says that the probability of some outcome from the sample space occurring is 1, while the second says that the probability of nothing in the sample space occurring is 0. The intuition behind axiom three is less transparent, but it can be see in a Venn diagram of two subsets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of the larger set <span class="math inline">\(\Omega\)</span>, as in <a href="#fig-sets-prob">Figure&nbsp;<span>4.1</span></a>. Compare the size of the union of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and the sum of the sizes of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> separately, and you will see that the intersection <span class="math inline">\(A\cap B\)</span> occurs in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, but is only counted once in the union. This is why it needs to be subtracted from the sum of <span class="math inline">\(P(A)\)</span> and <span class="math inline">\(P(B)\)</span>.</p>
 <p>There are several useful rules that immediately follow from the axioms. First, if two events are mutually exclusive, meaning their intersection is empty (<span class="math inline">\(A\cap B = \emptyset\)</span>), then the probability of either of them happening is the sum of their respective probabilities: <span class="math inline">\(P(A \cup B) = P(A) + P(B)\)</span> (from axiom 3). Further, since an event <span class="math inline">\(A\)</span> and its complement <span class="math inline">\(-A\)</span> are mutually exclusive, their union is the entire sample space <span class="math inline">\(\Omega\)</span>: <span class="math inline">\(P(A) + P(-A) = P(A \cup -A) = P(\Omega) = 1\)</span>, therefore <span class="math inline">\(P(A) = 1-P(-A)\)</span>.</p>
 <p><strong>Example.</strong> Assume one is using a fair coin, so the probability of a single head and a single tail is 1/2. The probability of getting two heads in a row is 1/4, because exactly half of those coins that come up heads once will come up heads again. In fact, the probability of getting any particular sequence of two coin toss results is 1/4. Here are some examples of what we can calculate:</p>
 <ul>
 <li>the probability of getting one head of out of two tosses is <span class="math inline">\(1-1/4-1/4=1/2\)</span> (by the complement rule).</li>
-<li>the probability of getting two heads is <span class="math inline">\(1-1/4 = 3/4\)</span> (by the complement rule).<br>
-</li>
+<li>the probability of <strong>not</strong> getting two heads is <span class="math inline">\(1-1/4 = 3/4\)</span> (by the complement rule).</li>
 <li>the probability of getting either 0, 1, or 2 heads is 1 (by axiom 1).</li>
 <li>the probability of getting three heads is 0 (since this event is not in the sample space).</li>
 </ul>
 <p><strong>Example.</strong> Suppose one is testing people for a mutation which has the probability (prevalence) of 0.2 in the population, so for each person there are two possible outcomes: normal or mutant. The probability of drawing two mutants in a row is <span class="math inline">\(0.2*0.2=0.04\)</span> by the same argument as above; the probability of drawing two normal people is <span class="math inline">\(0.8*0.8 =0.64\)</span>. Based on this, we can calculate the following</p>
 <ul>
 <li>the probability of one mutant of out two people is <span class="math inline">\(1-0.04-0.64=0.32\)</span> (by the complement rule).</li>
-<li>the probability of not having two mutants is <span class="math inline">\(1-0.04 = 0.96\)</span> (by the complement rule).<br>
-</li>
+<li>the probability of not having two mutants is <span class="math inline">\(1-0.04 = 0.96\)</span> (by the complement rule).</li>
 <li>the probability of either 0, 1, or 2 mutants is 1 (by axiom 1).</li>
 <li>the probability of getting three mutants is 0 (since this event is not in the sample space).</li>
 </ul>
-<p><strong>Example</strong> (from Danny and Gaines Sarcastic fringeheads are a tropical ocea fish that engage in aggressive mouth-wrestling matches for their rocky residences. Let us treat each match as a stochastic experiment with two outcomes: win or loss. Then the sample space is equivalent to our coin-tossing experiment, e.g.&nbsp;for two matches the sample space is <span class="math inline">\(\{ WW, WL, LW, LL \}\)</span>. However, the probability distribution may different, for example if a particular fringehead wins 3/4 of its matches, then the probability distribution would be: <span class="math inline">\(P(\{ WW \}) = 9/16\)</span>, <span class="math inline">\(P(\{ LW \}) = P(\{ WL \}) = 3/16\)</span>, and $ P({ LL }) = 1/16$. Thus, the same sample space may have different probability distributions defined on it.</p>
+<p><strong>Example</strong> <span class="citation" data-cites="denny_chance_2002">(<a href="references.html#ref-denny_chance_2002" role="doc-biblioref">Denny and Gaines 2002</a>)</span> Sarcastic fringeheads are tropical ocean fish that engage in aggressive mouth-wrestling matches for their rocky residences. Let us treat each match as a stochastic experiment with two outcomes: win or loss. Then the sample space is equivalent to our coin-tossing experiment, e.g.&nbsp;for two matches the sample space is <span class="math inline">\(\{ WW, WL, LW, LL \}\)</span>. However, the probability distribution may different, for example if a particular fringehead wins 3/4 of its matches, then the probability distribution would be: <span class="math inline">\(P(\{ WW \}) = 9/16\)</span>, <span class="math inline">\(P(\{ LW \}) = P(\{WL\}) = 3/16\)</span>, and <span class="math inline">\(P(\{LL\}) = 1/16\)</span>. Thus, the same sample space may have different probability distributions defined on it.</p>
 </section>
 <section id="random-variables" class="level3" data-number="4.1.3">
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="random-variables"><span class="header-section-number">4.1.3</span> random variables</h3>
-<p>The outcomes of experiments may be expressed in numbers or words, but we generally need numbers in order to report and analyze results. One can describe this mathematically as a function (recall its definition form section <span class="math inline">\(\ref{sec:math2}\)</span>) that assigns numbers to random outcomes . In practice, a random variable describes the measurement that one makes to describe the outcomes of a random experiment.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<p>The outcomes of experiments may be expressed in numbers or words, but we generally need numbers in order to report and analyze results. One can describe this mathematically as a function (recall its definition from section 2.2) that assigns numbers to random outcomes <span class="citation" data-cites="feller_introduction_nodate">(<a href="references.html#ref-feller_introduction_nodate" role="doc-biblioref">Feller, n.d.</a>)</span>. In practice, a random variable describes the measurement that one makes to describe the outcomes of a random experiment.</p>
+<div id="def-rv" class="callout-note callout callout-style-default callout-captioned theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.4 </strong></span>&nbsp;</p>
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -460,45 +492,48 @@ Definition
 Definition
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>A <em>random variable</em> is a number or category associated to each outcome in a sample space <span class="math inline">\(\Omega\)</span>. This association has to follow the rules of a function as defined in chapter 2.</p>
+<div id="def-rv" class="callout-body-container callout-body theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.3 </strong></span>A <em>random variable</em> is a number or category associated to each outcome in a sample space <span class="math inline">\(\Omega\)</span>. This association has to follow the rules of a function as defined in chapter 2.</p>
 </div>
 </div>
 <p><strong>Example.</strong> Define the random variable to be the number of heads out of two coin tosses. This random variable will return numbers 0, 1, or 2, corresponding to different events. The random variable of the number of mutants out of two people (assuming there are only two outcomes, mutant and normal) has the same set of values. This random variable is a function on the sample space because it returns a unique value for each outcome.</p>
-<p><strong>Example.</strong> (Danny and Gaines) Suppose that our sarcastic fringehead, upon losing a wrestling match, has to search for another home for three hours. Then we can define the random variable of time wasted over two wrestling matches, which can be either 0, 3, or 6 hours, depending on the events defined above. Once again, this is a function because there is an unambiguous number associated with each outcome.</p>
+<p><strong>Example.</strong> <span class="citation" data-cites="denny_chance_2002">(<a href="references.html#ref-denny_chance_2002" role="doc-biblioref">Denny and Gaines 2002</a>)</span> Suppose that our sarcastic fringehead, upon losing a wrestling match, has to search for another home for three hours. Then we can define the random variable of time wasted over two wrestling matches, which can be either 0, 3, or 6 hours, depending on the events defined above. Once again, this is a function because there is an unambiguous number associated with each outcome.</p>
 <p>A random variable has a set of possible values, and each of those values may come up more or less frequently in an random experiment. The frequency of each measurement corresponds to the probability of the outcomes in the sample space that produce that particular value of the random variable. One can describe the behavior of the random variable in terms of the collection of the probabilities of its outcomes.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div id="def-prob-dist" class="callout-note callout callout-style-default callout-captioned theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.6 </strong></span>&nbsp;</p>
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Definition
+Note
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>The probability of a random variable <span class="math inline">\(X\)</span> taking some value <span class="math inline">\(a\)</span>, written as <span class="math inline">\(P(X=a)\)</span>, but usually simplified to <span class="math inline">\(P(a)\)</span> is the probability of the event corresponding to the value <span class="math inline">\(a\)</span> of the random variable. This function <span class="math inline">\(P(a)\)</span> is called the <em>probability distribution</em> of the random variable <span class="math inline">\(X\)</span>.</p>
+<div id="def-prob-dist" class="callout-body-container callout-body theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.5 </strong></span>The probability of a random variable <span class="math inline">\(X\)</span> taking some value <span class="math inline">\(a\)</span>, written as <span class="math inline">\(P(X=a)\)</span>, but usually simplified to <span class="math inline">\(P(a)\)</span> is the probability of the event corresponding to the value <span class="math inline">\(a\)</span> of the random variable. This function <span class="math inline">\(P(a)\)</span> is called the <em>probability distribution</em> of the random variable <span class="math inline">\(X\)</span>.</p>
 </div>
 </div>
 <p>One important property of probability distribution functions for a discrete random variable is that all of its values have to add up to 1:</p>
-<p><span class="math display">\[\sum_{i=1}^N P(a_i) =1\]</span> The graph of a probability distribution function lies above zero because all probabilities are between 0 and 1. The graph of a probability distribution is very similar to a histogram, in that it represents the frequency of occurrence of each value of the random variable. A histogram of a variable from a data set can be thought is an approximation of the true probability distribution based on the sample. For a large sample size, the histogram approaches the graph of the probability distribution function, something which we will discuss in chapter 9.</p>
+<p><span class="math display">\[\sum_{i=1}^N P(a_i) =1\]</span></p>
+<p>The graph of a probability distribution function lies above zero because all probabilities are between 0 and 1. The graph of a probability distribution is very similar to a histogram, in that it represents the frequency of occurrence of each value of the random variable. A histogram of a variable from a data set can be thought is an approximation of the true probability distribution based on the sample. For a large sample size, the histogram approaches the graph of the probability distribution function, something which we will discuss in chapter 9.</p>
 <p><strong>Example.</strong> Assuming that each coin toss has probability 1/2 of resulting in heads, the probability distribution function for the number of heads out of two coin tosses is <span class="math inline">\(P(0) = 1/4; \; P(1) = 1/2; \; P(2) = 1/4\)</span> (as we computed in the example in the previous section). Note that the probabilities add up to 1, as they should.</p>
 <p><strong>Example.</strong> For the random variable of the number of mutants out of two people, for mutation prevalence of 0.2, the probability distribution function is <span class="math inline">\(P(0) = 0.64; \; P(1) = 0.32; \; P(2) = 0.04\)</span> (as we computed in the example in the previous section). Note that the probabilities add up to 1, as they should.</p>
 <p><strong>Example.</strong> For the time wasted by a fringehead, the distribution is <span class="math inline">\(P(0)= 9/16; \; P(3) = 3/16; \; P(6) = 1/16\)</span>. Note that other values of the random variable have probability 0, because they correspond to the empty set in sample space.</p>
 </section>
 <section id="expectation-of-random-variables" class="level3" data-number="4.1.4">
 <h3 data-number="4.1.4" class="anchored" data-anchor-id="expectation-of-random-variables"><span class="header-section-number">4.1.4</span> expectation of random variables</h3>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div id="def-exp-val" class="callout-note callout callout-style-default callout-captioned theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.8 </strong></span>&nbsp;</p>
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Definition
+Note
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>The <em>expected value</em> (or mean) of a discrete random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(P(X)\)</span> is defined as: <span class="math display">\[ E(X) = \mu_X = \sum_{i=1}^N  a_i P(a_i)\]</span></p>
+<div id="def-exp-val" class="callout-body-container callout-body theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.7 </strong></span>The <em>expected value</em> (or mean) of a discrete random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(P(X)\)</span> is defined as: <span class="math display">\[ E(X) = \mu_X = \sum_{i=1}^N  a_i P(a_i)\]</span></p>
 </div>
 </div>
 <p>This sum is over all values <span class="math inline">\(\{a_i\}\)</span> that the random variable <span class="math inline">\(X\)</span> can take, multiplied by the probability of the random variable taking that value (meaning the probability of the event in sample space that corresponds to that value). This corresponds to the definition of the mean of a data set given in section <span class="math inline">\(\ref{sec:math3}\)</span>, if you consider <span class="math inline">\(P(a_i)\)</span> to be the number of times <span class="math inline">\(a_i\)</span> occurs divided by the number of total measurements <span class="math inline">\(N\)</span>. As in the case of the histogram and the distribution function, the mean of a sample for a large sample size <span class="math inline">\(N\)</span> approaches the mean of the random variable, which we will discuss in more detail in the next chapter. Sometimes we will use the more concise <span class="math inline">\(\mu_X = E(X)\)</span> to represent the mean (expected) value. Here are some mathematical properties of the expectation:</p>
@@ -522,23 +557,24 @@ Definition
 <h3 data-number="4.1.5" class="anchored" data-anchor-id="variance-of-random-variables"><span class="header-section-number">4.1.5</span> variance of random variables</h3>
 <p>Knowledge of the expected value says nothing about how the random variable actually varies: expectation does not distinguish between a random variable which is constant and one which can deviate far from the mean. In order to quantify this variation, one might be tempted to compute the mean differences from the mean value, but it does not work:</p>
 <p><span class="math display">\[ E(X-\mu_X) =  \sum_i (x_i-\mu_x)P(x_i) = \sum_i x_i P(x_i) - \mu_x \sum_i P(x_i) = \mu_x - \mu_x = 0\]</span> The problem is, if we add up all the differences from the mean, the positive ones end up canceling the negative ones and the expected value of those deviations is exactly zero. This is why it makes sense to square the differences and add them up:</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div id="def-var-prob" class="callout-note callout callout-style-default callout-captioned theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.10 </strong></span>&nbsp;</p>
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Definition
+Note
 </div>
 </div>
-<div class="callout-body-container callout-body">
-<p>The <em>variance</em> of a discrete random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(P(x)\)</span> is <span class="math display">\[ Var(X) = E((X-\mu_X)^2) = \sum_{i=1}^N (x_i-\mu_x)^2P(x_i)\]</span></p>
+<div id="def-var-prob" class="callout-body-container callout-body theorem definition">
+<p><span class="theorem-title"><strong>Definition 4.9 </strong></span>The <em>variance</em> of a discrete random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(P(x)\)</span> is <span class="math display">\[ Var(X) = E((X-\mu_X)^2) = \sum_{i=1}^N (x_i-\mu_x)^2P(x_i)\]</span></p>
 </div>
 </div>
 <p>One useful property of the variance is: <span class="math display">\[ Var(X) = \sum_i (x_i^2 - 2x_i\mu_x + \mu_x^2)P(x_i) =\]</span> <span class="math display">\[= \sum_i x_i^2 P(x_i) - 2\mu_x\sum_i x_i P(x_i) + \mu_x^2 \sum_i P(x_i) = E(X^2) - E(X)^2 \]</span> So variance can be calculated as the difference between the expectation of the variable squared and the squared expectation. Note that the variance is given in units of the variable squared, so in order to measure the spread of the variable in the same units, we take the square root of the variance and call it the <em>standard deviation</em>: <span class="math display">\[\sigma_x = \sqrt{Var(X)}\]</span> While the expectation of a sum of random variables is the sum of their expectations, for any random variables, the same is not true for the variance. However, there is a special condition under which this is true. First, let us write the variance of a sum of two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>:</p>
 <p><span class="math display">\[Var(X+Y) = E \left[ (X+Y)-(\mu_X+\mu_Y) \right]^2 =\]</span></p>
 <p><span class="math display">\[ = E[ (X-\mu_X)^2 +(Y-\mu_Y)^2 - 2(X-\mu_X)(Y-\mu_Y)] = \]</span> <span class="math display">\[=E (X-\mu_X)^2 +  E(Y-\mu_Y)^2   -2 E[(X-\mu_X)(Y-\mu_Y)] = \]</span></p>
-<p><span class="math display">\[ = Var(X) + Var(Y)  -2 E[(X-\mu_X)(Y-\mu_Y)] \]</span> If you write out the last term as a sum, it is none other than the <em>covariance</em> of the two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, which we saw in the chapter on linear regression. So for any two random variables that have zero covariance, their variance is additive!</p>
+<p><span class="math display">\[ = Var(X) + Var(Y)  -2 E[(X-\mu_X)(Y-\mu_Y)] \]</span>The last term is a special number called the <em>covariance</em> of the two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, which we will see in the chapter on linear regression. So for any two random variables that have zero covariance, their variance is additive!</p>
 <p><strong>Example.</strong> The variance of the number of heads out of two coin tosses can be calculated using its probability distribution function and the expected value (1) from above: <span class="math display">\[ Var(X) = (0-1)^2 \times P(0) + (1-1)^2 \times P(1) + (2-1)^2 \times P(2) = 1/4+0+1/4 = 1/2\]</span> Since the variance is 1/2, the standard deviation, or the expected distance from the mean value is <span class="math inline">\(\sigma= \sqrt{1/2}\)</span>.</p>
 <p><strong>Example.</strong> The variance of the number of mutants out of two people can be calculated using its probability distribution function and the expected value (0.4) from above: <span class="math display">\[ E(X) = (0-0.4)^2 \times P(0) + (1-0.4)^2 \times P(1) + (2-0.4)^2 \times P(2) =\]</span> <span class="math display">\[ = 0.4^2 \times 0.64+0.6^2 \times 0.32+1.6^2 \times 0.04 = 0.32\]</span> Since the variance is 0.32, the standard deviation, or the expected distance from the mean value is <span class="math inline">\(\sigma= \sqrt{0.32}\)</span>.</p>
 <p><strong>Example.</strong> We have computed the expected value for the number of wins in two fringehead fights, so now let us find the variance and standard deviation. We already know the possible values of <span class="math inline">\(X\)</span>, and the associated probabilities, so we calculate: <span class="math display">\[ E(X^2) = 0^2 \times 1/16 + 1^2 \times 6/16 + 2^2 \times 9/16 = 42/16\]</span> Then the variance is: <span class="math display">\[ Var(X) = E(X^2)  - E(X)^2 = 42/12 - 9/4 = (42-27)/16 = 15/16\]</span> and the standard deviation is <span class="math inline">\(\sigma = \sqrt{15}/4\)</span> or just under 1.</p>
@@ -565,32 +601,37 @@ Definition
 <p><span class="math display">\[
 E(U) = \sum_{i=1}^n  a_i P(a_i) = \frac{1}{n}  \sum_{i=1}^n  a_i
 \]</span> So the expected value is the mean of all the values of the uniform random variable.</p>
-<p><strong>Example.</strong> In the special case of the uniform distribution of <span class="math inline">\(n+1\)</span> integers between 0 and <span class="math inline">\(n\)</span> (<span class="math inline">\(a_i = i\)</span>, for <span class="math inline">\(i=0,..., n\)</span>), each value has probability <span class="math inline">\(P = 1/(n+1)\)</span>. The expected value is the average of the maximum and minimum values (using the fact that <span class="math inline">\(\sum_{i=0}^n i = n(n+1)/2\)</span>): <span class="math display">\[ E(U) = \frac{n(n+1)}{2(n+1)} = \frac{n}{2} \]</span></p>
-<p>Generalizing, for a random variable on integers between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, the expectation is <span class="math display">\[ E(U) = \frac{a+b}{2}\]</span></p>
+<p><strong>Example.</strong> In the special case of the uniform distribution of <span class="math inline">\(n+1\)</span> integers between 0 and <span class="math inline">\(n\)</span> (<span class="math inline">\(a_i = i\)</span>, for <span class="math inline">\(i=0,..., n\)</span>), each value has probability <span class="math inline">\(P = 1/(n+1)\)</span>. The expected value is the average of the maximum and minimum values (using the fact that <span class="math inline">\(\sum_{i=0}^n i = n(n+1)/2\)</span>): <span id="eq-unif-exp"><span class="math display">\[ E(U) = \frac{n(n+1)}{2(n+1)} = \frac{n}{2}  \tag{4.1}\]</span></span></p>
+<p>Generalizing, for a random variable on integers between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, the expectation is <span id="eq-unif-exp-gen"><span class="math display">\[ E(U) = \frac{a+b}{2} \tag{4.2}\]</span></span></p>
 <p>We can also write down the expression for the variance of the discrete uniform distribution as follows:</p>
 <p><span class="math display">\[ Var(U) = E(U^2) - E(U)^2 =  \frac{1}{n} \sum_{i=1}^n  a_i^2  -  \frac{1}{n^2} \left(\sum_{i=1}^n  a_i \right)^2\]</span> <strong>Example.</strong> In the special case of the uniform distribution of <span class="math inline">\(n+1\)</span> integers between 0 and <span class="math inline">\(n\)</span> (<span class="math inline">\(a_i = i\)</span>, for <span class="math inline">\(i=0,..., n\)</span>), each value has probability <span class="math inline">\(P = 1/(n+1)\)</span>. The variance can be calculated using the formula for the sum of squares: <span class="math inline">\(\sum_{i=0}^n i^2 =n(n+1)(2n+1)/6\)</span>.</p>
-<p><span class="math display">\[ Var(U) = \frac{(n+1)(2n+1)n}{6(n+1)} - \frac{n^2}{4} =   \frac{2n^2+n}{6} - \frac{n^2}{4} = \frac{n(n+2)}{12}
-\]</span></p>
+<p><span id="eq-unif-var"><span class="math display">\[ Var(U) = \frac{(n+1)(2n+1)n}{6(n+1)} - \frac{n^2}{4} =   \frac{2n^2+n}{6} - \frac{n^2}{4} = \frac{n(n+2)}{12}
+\tag{4.3}\]</span></span></p>
 <p>This can be generalize to a uniform random variable on integers between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> (omitting the algebraic details) so the variance for that uniform random variable is:</p>
-<p><span class="math display">\[ Var(U) = \frac{(b-a+1)^2 - 1}{12} = \frac{(b-a)^2 + 2(b-a)}{12}
-\]</span></p>
-<div class="cell" data-layout-align="center" data-fig.asp="0.75">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<p><span id="eq-unif-var-gen"><span class="math display">\[ Var(U) = \frac{(b-a+1)^2 - 1}{12} = \frac{(b-a)^2 + 2(b-a)}{12}
+\tag{4.4}\]</span></span></p>
+<div id="fig-unif-dist" class="cell quarto-layout-panel">
 <figure class="figure">
-<p><img src="probdist_files/figure-html/unif-dist-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">Two uniform random distributions with integer values with different ranges.</figcaption><p></p>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-unif-dist-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="probdist_files/figure-html/fig-unif-dist-1.png" class="img-fluid figure-img" data-ref-parent="fig-unif-dist" width="672"></p>
+<p></p><figcaption class="figure-caption">(a) Uniform distribution on integers from 0 to 3</figcaption><p></p>
 </figure>
 </div>
 </div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-unif-dist-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="probdist_files/figure-html/unif-dist-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">Two uniform random distributions with integer values with different ranges.</figcaption><p></p>
+<p><img src="probdist_files/figure-html/fig-unif-dist-2.png" class="img-fluid figure-img" data-ref-parent="fig-unif-dist" width="672"></p>
+<p></p><figcaption class="figure-caption">(b) Uniform distribution on integers from -6 to 3</figcaption><p></p>
 </figure>
 </div>
 </div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.2: Two uniform random distributions with different ranges.</figcaption><p></p>
+</figure>
 </div>
 </section>
 <section id="binomial-distribution" class="level3" data-number="4.2.2">
@@ -611,92 +652,107 @@ Definition
 <p>Given <span class="math inline">\(n\)</span> independent Bernoulli trials <span class="math inline">\(X\)</span> with the same probability of success <span class="math inline">\(p\)</span>, the <em>binomial random variable</em> is defined as: <span class="math display">\[B = \sum_{i=1}^n X_i\]</span> where <span class="math inline">\(X_i\)</span> is the random variable from the i-th Bernoulli trial, which takes values of 1 and 0.</p>
 </div>
 </div>
-<p>In this definition I use the term independence without defining it properly, which will be done in chapter 10. Intuitively, independence between two Bernoulli trials (e.g.&nbsp;coin tosses) means that the outcome of one trial does not change the probability of the outcomes of any other trials. This amounts to the assumption that the probability of an outcome followed by another one is the product of the separate probabilities of the two outcomes. For example, if the two outcomes are wins and losses, then <span class="math inline">\(P(\{WL\}) = P(W)P(L)\)</span>. This will be used below in the calculation of the variance of the binomial random variable.</p>
+<p>In this definition I use the term independence without defining it properly, which will be done in chapter 6. Intuitively, independence between two Bernoulli trials (e.g.&nbsp;coin tosses) means that the outcome of one trial does not change the probability of the outcomes of any other trials. This amounts to the assumption that the probability of an outcome followed by another one is the product of the separate probabilities of the two outcomes. For example, if the two outcomes are wins and losses, then <span class="math inline">\(P(\{WL\}) = P(W)P(L)\)</span>. This will be used below in the calculation of the variance of the binomial random variable.</p>
 <p>To find the probability distribution of the binomial random variable, we need to define the event of <span class="math inline">\(k\)</span> wins out of <span class="math inline">\(n\)</span> trials. Consider the case of 4 trials. It is easy to find the event of 4 wins, as it is comprised only of the outcome <span class="math inline">\(\{WWWW\}\)</span>. Then, <span class="math inline">\(P(4) = p^4\)</span>, based on the independence assumption. The event of winning 3 times consists of four strings: <span class="math inline">\(\{LWWW, WLWW, WWLW, WWWL\}\)</span> so the probability of obtaining 3 wins is the sum of the four probabilities, each equal to $ p^3(1-p)$ from the independence assumption above, so <span class="math inline">\(P(3) = 4p^3(1-p)\)</span>. The event of winning 2 times is even more cumbersome, and consists of six strings: <span class="math inline">\(\{ LLWW, WLLW, WWLL, WLWL, LWLW, LWWL\}\)</span>, so <span class="math inline">\(P(2) = 6p^2(1-p)^2\)</span> by the same reasoning.</p>
 <p>Now imagine doing this to calculate 50 wins out of 100 trials. The counting gets ugly very fast. We need a general formula to help us count the number of ways of winning <span class="math inline">\(k\)</span> times out of <span class="math inline">\(n\)</span> trials. We denote this number <span class="math inline">\(\binom{n}{k}\)</span>, also known as “<span class="math inline">\(n\)</span> choose <span class="math inline">\(k\)</span>” because it corresponds to the number of ways of choosing <span class="math inline">\(k\)</span> distinct objects out of <span class="math inline">\(n\)</span> without regard to order. The connection is as follows: let us label each trial from 1 to <span class="math inline">\(n\)</span>. Then to construct a string with <span class="math inline">\(k\)</span> wins, we need to specify which trials resulted in a win (the rest are of course losses). It does not matter in which order those wins are selected - it still results in the same string. Therefore the number of different strings of <span class="math inline">\(n\)</span> binary trials with <span class="math inline">\(k\)</span> successes is the same as the number of ways of selecting <span class="math inline">\(k\)</span> different objects out of <span class="math inline">\(n\)</span> different ones.</p>
 <p>The number itself can be derived as follows: there are <span class="math inline">\(n\)</span> possibilities for choosing the number of the first win, then <span class="math inline">\(n-1\)</span> possibilities for choosing the number of the second win, etc, and finally when choosing the <span class="math inline">\(k\)</span>-th win there are <span class="math inline">\(n-k+1\)</span> possibilities (note that <span class="math inline">\(k \leq n\)</span>, and if <span class="math inline">\(n=k\)</span> there is only one option left for the last choice.) Thus, the total number of such selections is: <span class="math inline">\(n(n-1)...(n-k+1) = n!/(n-k)!\)</span></p>
 <p>But note that we overcounted, because we considered different strings of wins depending on the order in which a win was selected, even if the resulting strings are the same (example: <span class="math inline">\(n=4\)</span> and <span class="math inline">\(k=4\)</span> gives us <span class="math inline">\(4!\)</span> although there is only one string of 4 wins out of 4). In order to correct for the overcounting, we need to divide by the total number of ways of selecting the same string of <span class="math inline">\(k\)</span> wins out of <span class="math inline">\(n\)</span>. This is number of ways of rearranging <span class="math inline">\(k\)</span> wins, or <span class="math inline">\(k!\)</span> Thus, the number we seek is:</p>
 <p><span class="math display">\[\binom{n}{k} = \frac{n!}{k! (n-k)!}\]</span></p>
 <p>We can now calculate the general probability of winning <span class="math inline">\(k\)</span> times out of <span class="math inline">\(n\)</span> trials. First, each string of <span class="math inline">\(k\)</span> wins and <span class="math inline">\(n-k\)</span> losses has the probability <span class="math inline">\(p^k (1-p)^{n-k}\)</span>. Since we now know that the number of such strings is <span class="math inline">\(C^n_k\)</span>, the probability is:</p>
-<p><span class="math display">\[
+<p><span id="eq-binom-rv"><span class="math display">\[
 P(\mathrm{k \; wins \; in \; n \; trials}) =  P(B=k)= \binom{n}{k}  p^k (1-p)^{n-k}
-\]</span></p>
+\tag{4.5}\]</span></span></p>
 <p>This is the probability distribution of the binomial random variable <span class="math inline">\(B\)</span>.</p>
 <p>The binomial random variable has much simpler formulas for the mean and the variance. First, we know that the mean of a sum of random variables is the sum of the means and the binomial random variable is a sum of <span class="math inline">\(n\)</span> Bernoulli random variables <span class="math inline">\(X\)</span>. Let us say <span class="math inline">\(X\)</span> takes only the values of 0 and 1 with probabilities <span class="math inline">\(1-p\)</span> and <span class="math inline">\(p\)</span>, so we can use the additive property of expected value to calculate <span class="math inline">\(E(B)\)</span>:</p>
-<p><span class="math display">\[
+<p><span id="eq-binom-exp"><span class="math display">\[
 E(B) = E\left[\sum_{i=1}^n X\right] = \sum_{i=1}^n E(X) = \sum_{i=1}^n p = np
-\]</span> This means that the expected number of heads/successes is the product of the probability of 1 head/success and the number of trials, e.g.&nbsp;if the probability of success is 0.3, then the expected number of successes out of 100 is 30.</p>
+\tag{4.6}\]</span></span> This means that the expected number of heads/successes is the product of the probability of 1 head/success and the number of trials, e.g.&nbsp;if the probability of success is 0.3, then the expected number of successes out of 100 is 30.</p>
 <p>Now let us calculate the variance, for which in general the same additive property is not true. But remember that in the section on variance above we showed that the variance of a sum of two random variables is the sum of their two separate variances as long as their covariance is zero. It turns out that for random variables that satisfy the product rule <span class="math inline">\(P(x, y) = P(x)P(y)\)</span> their covariance is 0:</p>
 <p><span class="math display">\[E((X-\mu_X)(Y-\mu_Y))  =  \sum_i \sum_j (x_i-\mu_X) (y_j-\mu_Y) P(x_i, y_j) =  \]</span> <span class="math display">\[ = \sum_i(x_i-\mu_X)P(x_i) \sum_j (y_j-\mu_Y) P(y_j) \]</span> We saw in section on variance above that the expected value of deviations from the mean is zero, which gives us:</p>
 <p><span class="math display">\[E((X-\mu_X)(Y-\mu_Y))  = E(X-\mu_X)E(Y-\mu_Y) = 0\]</span></p>
 <p>The demonstrates that for independent variables the variance of their sum is the sum of the variances and we can use this to compute the variance of the binomial random variable:</p>
-<p><span class="math display">\[
+<p><span id="eq-binom-var"><span class="math display">\[
 Var(B) = Var\left[\sum_{i=1}^n X\right]  = \sum_{i=1}^n Var(X) =\sum_{i=1}^n p(1-p) = np(1-p)
-\]</span></p>
+\tag{4.7}\]</span></span></p>
 <p>For any given number of Bernoulli trials, the variance has a quadratic dependence on probability of success <span class="math inline">\(p\)</span>: if <span class="math inline">\(p=1\)</span> or <span class="math inline">\(p=0\)</span>, corresponding to all successes, or all failures, respectively, then the variance is zero, since there is no spread in the outcome. For a fair coin <span class="math inline">\(p=1/2\)</span> the variance is highest. This can be seen in the plots of binomial random variables for <span class="math inline">\(n=2\)</span>, <span class="math inline">\(n=5\)</span>, and <span class="math inline">\(n=50\)</span>, shown in figures below.</p>
-<div class="cell" data-layout-align="center" data-fig.asp="0.75">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div id="fig-binom-dist-1" class="cell quarto-layout-panel">
 <figure class="figure">
-<p><img src="probdist_files/figure-html/bin-dist-1-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">The binomial distribution for <span class="math inline">\(n=2\)</span> and <span class="math inline">\(p=0.2\)</span> and <span class="math inline">\(p=0.5\)</span> (you should be able to tell which one is which!)</figcaption><p></p>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-binom-dist-1-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="probdist_files/figure-html/fig-binom-dist-1-1.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-1" width="672"></p>
+<p></p><figcaption class="figure-caption">(a) Binomial distribution with p=0.2</figcaption><p></p>
 </figure>
 </div>
 </div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-binom-dist-1-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="probdist_files/figure-html/bin-dist-1-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">The binomial distribution for <span class="math inline">\(n=2\)</span> and <span class="math inline">\(p=0.2\)</span> and <span class="math inline">\(p=0.5\)</span> (you should be able to tell which one is which!)</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center" data-fig.asp="0.75">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="probdist_files/figure-html/bin-dist-2-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">The binomial distribution for <span class="math inline">\(n=5\)</span> and <span class="math inline">\(p=0.2\)</span> and <span class="math inline">\(p=0.5\)</span> (you should be able to tell which one is which!)</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="probdist_files/figure-html/bin-dist-2-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">The binomial distribution for <span class="math inline">\(n=5\)</span> and <span class="math inline">\(p=0.2\)</span> and <span class="math inline">\(p=0.5\)</span> (you should be able to tell which one is which!)</figcaption><p></p>
+<p><img src="probdist_files/figure-html/fig-binom-dist-1-2.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-1" width="672"></p>
+<p></p><figcaption class="figure-caption">(b) Binomial distribution with p=0.5</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-fig.asp="0.75">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.3: Binomial random distributions with two trials.</figcaption><p></p>
+</figure>
+</div>
+<div id="fig-binom-dist-2" class="cell quarto-layout-panel">
 <figure class="figure">
-<p><img src="probdist_files/figure-html/bin-dist-3-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">The binomial distribution for <span class="math inline">\(n=50\)</span> and <span class="math inline">\(p=0.2\)</span> and <span class="math inline">\(p=0.5\)</span> (you should be able to tell which one is which!)</figcaption><p></p>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-binom-dist-2-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="probdist_files/figure-html/fig-binom-dist-2-1.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-2" width="672"></p>
+<p></p><figcaption class="figure-caption">(a) Binomial distribution with p=0.2</figcaption><p></p>
 </figure>
 </div>
 </div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-binom-dist-2-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="probdist_files/figure-html/bin-dist-3-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">The binomial distribution for <span class="math inline">\(n=50\)</span> and <span class="math inline">\(p=0.2\)</span> and <span class="math inline">\(p=0.5\)</span> (you should be able to tell which one is which!)</figcaption><p></p>
+<p><img src="probdist_files/figure-html/fig-binom-dist-2-2.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-2" width="672"></p>
+<p></p><figcaption class="figure-caption">(b) Binomial distribution with p=0.5</figcaption><p></p>
 </figure>
 </div>
 </div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.4: Binomial random distributions with five trials.</figcaption><p></p>
+</figure>
+</div>
+<div id="fig-binom-dist-3" class="cell quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-binom-dist-3-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="probdist_files/figure-html/fig-binom-dist-3-1.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-3" width="672"></p>
+<p></p><figcaption class="figure-caption">(a) Binomial distribution with p=0.2</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-binom-dist-3-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="probdist_files/figure-html/fig-binom-dist-3-2.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-3" width="672"></p>
+<p></p><figcaption class="figure-caption">(b) Binomial distribution with p=0.5</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4.5: Binomial random distributions with fifty trials.</figcaption><p></p>
+</figure>
 </div>
 </section>
 <section id="exercises-1" class="level3" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">4.2.3</span> Exercises</h3>
-<p>Calculate the means and variances based on the plotted distributions using the definitions <span class="math inline">\(\ref{def:ch4_mean}\)</span> and <span class="math inline">\(\ref{def:ch4_var}\)</span> and compare your calculations against equations <span class="math inline">\(\ref{eq:ch4_mean_unif}\)</span> and <span class="math inline">\(\ref{eq:ch4_var_unif}\)</span> (for uniform random variables) and equations <span class="math inline">\(\ref{eq:ch4_binom_mean}\)</span> and <span class="math inline">\(\ref{eq:ch4_binom_var}\)</span> (for binomial random variables)</p>
+<p>Calculate the expected values and variances based on the plotted distributions using the definitions <a href="#def-exp-val">Definition&nbsp;<span>4.8</span></a> and <a href="#def-var-prob">Definition&nbsp;<span>4.10</span></a> and compare your calculations against equations <a href="#eq-unif-exp">Equation&nbsp;<span>4.1</span></a> and <a href="#eq-unif-var">Equation&nbsp;<span>4.3</span></a> (for uniform random variable) and equations <a href="#eq-binom-rv">Equation&nbsp;<span>4.5</span></a> and <a href="#eq-binom-var">Equation&nbsp;<span>4.7</span></a> (for binomial random variable).</p>
 <ol type="1">
-<li><p>Calculate the mean and the variance for the two uniform distributions plotted in figure @ref(fig:unif-dist).</p></li>
-<li><p>Calculate the mean and the variance for the two binomial distributions plotted in figure @ref(fig:bin-dist-1).</p></li>
-<li><p>Calculate the mean and the variance for the two binomial distributions plotted figure @ref(fig:bin-dist-2).</p></li>
-<li><p>Estimate (approximately) the mean and the variance for the two binomial distributions plotted in figure @ref(fig:bin-dist-3).</p></li>
+<li><p>Calculate the mean and the variance for the two uniform distributions plotted in <a href="#fig-unif-dist">Figure&nbsp;<span>4.2</span></a>.</p></li>
+<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-1">Figure&nbsp;<span>4.3</span></a>.</p></li>
+<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-2">Figure&nbsp;<span>4.4</span></a>.</p></li>
+<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-3">Figure&nbsp;<span>4.5</span></a>.</p></li>
 </ol>
 </section>
 <section id="testing-for-mutants" class="level3" data-number="4.2.4">
@@ -717,11 +773,11 @@ Var(B) = Var\left[\sum_{i=1}^n X\right]  = \sum_{i=1}^n Var(X) =\sum_{i=1}^n p(1
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,<span class="dv">1</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 16</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code>[1] 7</code></pre>
 </div>
 </div>
 <p>To generate 10 randomly chosen integers between 1 and 20, see the following two commands, which differ in setting the value of the option <code>replace</code>. The first command doesn’t specify the value for replace, and by default it is set to FALSE, so the command draws numbers without replacing them (meaning that all the numbers in the sample are unique). In the second command <code>replace</code> is set to TRUE, so the numbers that were selected can be chosen again. In both cases, repeatedly running the command results in a different set of randomly chosen numbers, which you should investigate by copying the commands into R and running them yourself.</p>
@@ -729,12 +785,12 @@ Var(B) = Var\left[\sum_{i=1}^n X\right]  = \sum_{i=1}^n Var(X) =\sum_{i=1}^n p(1
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,<span class="dv">10</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  2  5  8 11 19 16 13  6 10 17</code></pre>
+<pre><code> [1]  9 16 15 20  1 18  7 10 19  6</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,<span class="dv">10</span>,<span class="at">replace=</span><span class="cn">TRUE</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 19  2 17 18 17 10 10 15 20  1</code></pre>
+<pre><code> [1]  2  7 20 16  2 14 15  9 11 11</code></pre>
 </div>
 </div>
 <p>If you need to generate a random number from the binomial distribution, R has you covered. The command is <code>rbinom(s, n, p)</code> and it requires three input values: s is the number of observations (sample size), n is the number of binary trials in one observation, and p is the probability of success in one binary trial. The following two commands generate a single random number, the number of successes out of 20 trials with probability of success 0.2 and 0.6:</p>
@@ -742,12 +798,12 @@ Var(B) = Var\left[\sum_{i=1}^n X\right]  = \sum_{i=1}^n Var(X) =\sum_{i=1}^n p(1
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>,<span class="dv">20</span>,<span class="fl">0.2</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
+<pre><code>[1] 3</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1</span>,<span class="dv">20</span>,<span class="fl">0.6</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10</code></pre>
+<pre><code>[1] 14</code></pre>
 </div>
 </div>
 <p>To generate an entire sample of random numbers, change the first input parameter to 10. As you’d expect, the samples of 10 observations are (most likely) noticeably different: when the probability p is 0.2, the number of successes tend to be less than 6, while for probability 0.6, the numbers are usually greater than 10.</p>
@@ -755,12 +811,12 @@ Var(B) = Var\left[\sum_{i=1}^n X\right]  = \sum_{i=1}^n Var(X) =\sum_{i=1}^n p(1
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="fl">0.2</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 6 4 5 3 1 3 4 2 2 4</code></pre>
+<pre><code> [1] 4 8 3 2 6 3 6 0 2 5</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="fl">0.6</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 13 12 14 12 13 12 11 13 14 13</code></pre>
+<pre><code> [1] 11  7 17 17 12  9 11 15 11 17</code></pre>
 </div>
 </div>
 <p>Notice that the range of possible values of this random variable is between 0 and 20, but unlike the uniform random numbers produced with the <code>sample()</code> function, the probability of obtaining different numbers are different, and depend on the parameter p.&nbsp;Calculation and plotting of the binomial distribution function can be accomplished with the command <code>dbinom(x,n,p)</code>, where <span class="math inline">\(x\)</span> is the value of the random variable (between 0 and n), <span class="math inline">\(n\)</span> is the number of trials, and p is the probability of success. For instance, the following script calculate the probability of obtaining 1 success out of 20 with probability <span class="math inline">\(p=0.2\)</span>:</p>
@@ -801,6 +857,14 @@ Var(B) = Var\left[\sum_{i=1}^n X\right]  = \sum_{i=1}^n Var(X) =\sum_{i=1}^n p(1
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-denny_chance_2002" class="csl-entry" role="doc-biblioentry">
+Denny, Mark, and Steven Gaines. 2002. <em>Chance in <span>Biology</span>: <span>Using</span> <span>Probability</span> to <span>Explore</span> <span>Nature</span></em>. Princeton: Princeton University Press.
+</div>
+<div id="ref-feller_introduction_nodate" class="csl-entry" role="doc-biblioentry">
+Feller, William. n.d. <em>An <span>Introduction</span> to <span>Probability</span> <span>Theory</span> and <span>Its</span> <span>Applications</span>, <span>Vol</span>. 1, 3rd <span>Edition</span></em>. 3rd edition. New York; London: Wiley.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
