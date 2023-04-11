@@ -1,497 +1,638 @@
-Season,Height,Tea,Continent
-Autumn (September - November),Short,"Yes, all the time",North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Winter (December - February),Tall,"Yes, all the time",North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",South America
-Autumn (September - November),Medium,"Yes, all the time",South America
-Summer (June - August),Medium,"Yes, all the time",North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Autumn (September - November),Tall,"Yes, all the time",North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Spring (March - May),Tall,Never,North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Winter (December - February),Short,"Yes, all the time",North America
-Autumn (September - November),Tall,Never,North America
-Spring (March - May),Tall,I like certain types sometimes,North America
-Spring (March - May),Medium,Never,North America
-Winter (December - February),Short,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Autumn (September - November),Tall,"Yes, all the time",North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Summer (June - August),Tall,"Yes, all the time",North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Autumn (September - November),Tall,"Yes, all the time",Europe
-Autumn (September - November),Medium,Never,North America
-Autumn (September - November),Tall,"Yes, all the time",North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,I like certain types sometimes,Asia or Oceania
-Summer (June - August),Tall,Never,North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Winter (December - February),Short,Never,North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Summer (June - August),Medium,Never,North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Spring (March - May),Tall,I like certain types sometimes,South America
-Winter (December - February),Tall,I like certain types sometimes,Asia or Oceania
-Spring (March - May),Medium,"Yes, all the time",North America
-Winter (December - February),Tall,Never,North America
-Summer (June - August),Short,I like certain types sometimes,North America
-Winter (December - February),Short,"Yes, all the time",North America
-Summer (June - August),Short,"Yes, all the time",North America
-Winter (December - February),Short,"Yes, all the time",North America
-Winter (December - February),Tall,"Yes, all the time",North America
-Autumn (September - November),Tall,"Yes, all the time",North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Winter (December - February),Short,"Yes, all the time",North America
-Winter (December - February),Short,"Yes, all the time",North America
-Summer (June - August),Tall,"Yes, all the time",North America
-Winter (December - February),Short,"Yes, all the time",North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Spring (March - May),Tall,Never,North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Winter (December - February),Tall,"Yes, all the time",Europe
-Spring (March - May),Medium,Never,North America
-Summer (June - August),Short,I like certain types sometimes,Asia or Oceania
-Winter (December - February),Medium,I like certain types sometimes,North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Winter (December - February),Tall,I like certain types sometimes,Asia or Oceania
-Spring (March - May),Tall,"Yes, all the time",North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Autumn (September - November),Tall,"Yes, all the time",Europe
-Autumn (September - November),Medium,"Yes, all the time",North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Winter (December - February),Short,"Yes, all the time",North America
-Spring (March - May),Short,"Yes, all the time",North America
-Autumn (September - November),Short,I like certain types sometimes,Asia or Oceania
-Summer (June - August),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,Never,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Summer (June - August),Tall,"Yes, all the time",Europe
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Autumn (September - November),Short,"Yes, all the time",North America
-Spring (March - May),Tall,I like certain types sometimes,North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Autumn (September - November),Tall,"Yes, all the time",North America
-Spring (March - May),Tall,I like certain types sometimes,Europe
-Spring (March - May),Medium,"Yes, all the time",North America
-Summer (June - August),Medium,"Yes, all the time",Asia or Oceania
-Summer (June - August),Tall,I like certain types sometimes,Europe
-Summer (June - August),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,Never,North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Spring (March - May),Tall,"Yes, all the time",Europe
-Spring (March - May),Medium,"Yes, all the time",North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Summer (June - August),Short,"Yes, all the time",North America
-Spring (March - May),Short,"Yes, all the time",North America
-Autumn (September - November),Tall,Never,North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Spring (March - May),Tall,"Yes, all the time",North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Autumn (September - November),Medium,I like certain types sometimes,Asia or Oceania
-Spring (March - May),Short,"Yes, all the time",North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Summer (June - August),Medium,Never,North America
-Autumn (September - November),Tall,"Yes, all the time",North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Autumn (September - November),Short,"Yes, all the time",North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Spring (March - May),Short,"Yes, all the time",North America
-Spring (March - May),Medium,I like certain types sometimes,Asia or Oceania
-Spring (March - May),Medium,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Summer (June - August),Short,I like certain types sometimes,North America
-Autumn (September - November),Short,"Yes, all the time",North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Autumn (September - November),Short,"Yes, all the time",North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Spring (March - May),Short,"Yes, all the time",North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Spring (March - May),Tall,"Yes, all the time",North America
-Summer (June - August),Short,"Yes, all the time",North America
-Winter (December - February),Short,"Yes, all the time",North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Autumn (September - November),Tall,Never,North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Spring (March - May),Short,Never,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Autumn (September - November),Medium,"Yes, all the time",Asia or Oceania
-Autumn (September - November),Tall,"Yes, all the time",North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Spring (March - May),Tall,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Spring (March - May),Short,"Yes, all the time",North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Winter (December - February),Short,"Yes, all the time",North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Spring (March - May),Medium,I like certain types sometimes,Asia or Oceania
-Autumn (September - November),Short,I like certain types sometimes,North America
-Winter (December - February),Tall,"Yes, all the time",North America
-Spring (March - May),Tall,Never,North America
-Winter (December - February),Short,"Yes, all the time",North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Spring (March - May),Medium,I like certain types sometimes,Asia or Oceania
-Autumn (September - November),Short,"Yes, all the time",North America
-Spring (March - May),Medium,I like certain types sometimes,Asia or Oceania
-Autumn (September - November),Short,I like certain types sometimes,North America
-Summer (June - August),Short,I like certain types sometimes,North America
-Winter (December - February),Medium,Never,North America
-Summer (June - August),Short,"Yes, all the time",Asia or Oceania
-Summer (June - August),Tall,Never,North America
-Spring (March - May),Tall,I like certain types sometimes,North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Winter (December - February),Medium,I like certain types sometimes,Europe
-Autumn (September - November),Medium,I like certain types sometimes,Asia or Oceania
-Autumn (September - November),Tall,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Spring (March - May),Tall,"Yes, all the time",North America
-Summer (June - August),Tall,"Yes, all the time",North America
-Spring (March - May),Tall,"Yes, all the time",North America
-Winter (December - February),Tall,"Yes, all the time",Asia or Oceania
-Autumn (September - November),Short,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Spring (March - May),Medium,Never,North America
-Winter (December - February),Short,"Yes, all the time",North America
-Summer (June - August),Medium,I like certain types sometimes,Asia or Oceania
-Winter (December - February),Medium,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,Never,North America
-Winter (December - February),Short,Never,Asia or Oceania
-Spring (March - May),Medium,"Yes, all the time",Asia or Oceania
-Summer (June - August),Medium,Never,North America
-Autumn (September - November),Medium,"Yes, all the time",Asia or Oceania
-Autumn (September - November),Medium,I like certain types sometimes,Asia or Oceania
-Summer (June - August),Medium,"Yes, all the time",Asia or Oceania
-Summer (June - August),Medium,I like certain types sometimes,North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Autumn (September - November),Tall,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Summer (June - August),Short,"Yes, all the time",North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",Asia or Oceania
-Winter (December - February),Medium,I like certain types sometimes,North America
-Summer (June - August),Tall,"Yes, all the time",North America
-Winter (December - February),Medium,Never,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Winter (December - February),Short,"Yes, all the time",North America
-Summer (June - August),Tall,"Yes, all the time",North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Autumn (September - November),Short,"Yes, all the time",North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Winter (December - February),Tall,I like certain types sometimes,North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Summer (June - August),Short,Never,North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Spring (March - May),Medium,Never,North America
-Spring (March - May),Medium,I like certain types sometimes,Asia or Oceania
-Spring (March - May),Short,"Yes, all the time",North America
-Autumn (September - November),Medium,Never,North America
-Winter (December - February),Medium,Never,North America
-Spring (March - May),Short,"Yes, all the time",Asia or Oceania
-Spring (March - May),Medium,"Yes, all the time",North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Autumn (September - November),Short,"Yes, all the time",Asia or Oceania
-Spring (March - May),Medium,I like certain types sometimes,Asia or Oceania
-Summer (June - August),Medium,"Yes, all the time",North America
-Autumn (September - November),Tall,"Yes, all the time",North America
-Spring (March - May),Short,Never,North America
-Winter (December - February),Tall,"Yes, all the time",North America
-Autumn (September - November),Short,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Autumn (September - November),Tall,"Yes, all the time",North America
-Summer (June - August),Tall,"Yes, all the time",North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Winter (December - February),Tall,I like certain types sometimes,North America
-Winter (December - February),Short,"Yes, all the time",North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Spring (March - May),Tall,I like certain types sometimes,North America
-Winter (December - February),Short,Never,North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Winter (December - February),Tall,"Yes, all the time",North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Summer (June - August),Medium,"Yes, all the time",Asia or Oceania
-Summer (June - August),Tall,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Spring (March - May),Short,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Summer (June - August),Tall,"Yes, all the time",North America
-Winter (December - February),Tall,Never,North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Autumn (September - November),Medium,"Yes, all the time",Asia or Oceania
-Spring (March - May),Short,I like certain types sometimes,North America
-Winter (December - February),Tall,Never,North America
-Spring (March - May),Medium,I like certain types sometimes,South America
-Summer (June - August),Short,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,Asia or Oceania
-Spring (March - May),Tall,Never,North America
-Summer (June - August),Short,Never,North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Spring (March - May),Tall,"Yes, all the time",North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Winter (December - February),Tall,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Autumn (September - November),Tall,Never,Europe
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Autumn (September - November),Medium,Never,North America
-Spring (March - May),Medium,Never,North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Winter (December - February),Medium,Never,North America
-Winter (December - February),Tall,I like certain types sometimes,North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Spring (March - May),Short,"Yes, all the time",North America
-Winter (December - February),Short,"Yes, all the time",North America
-Summer (June - August),Short,Never,North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Summer (June - August),Tall,Never,North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Summer (June - August),Short,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Summer (June - August),Short,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",Asia or Oceania
-Winter (December - February),Short,"Yes, all the time",North America
-Summer (June - August),Short,I like certain types sometimes,Asia or Oceania
-Winter (December - February),Short,Never,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Autumn (September - November),Tall,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Summer (June - August),Tall,Never,North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Autumn (September - November),Medium,Never,North America
-Winter (December - February),Short,I like certain types sometimes,Asia or Oceania
-Winter (December - February),Tall,"Yes, all the time",North America
-Autumn (September - November),Short,"Yes, all the time",North America
-Autumn (September - November),Tall,"Yes, all the time",North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Autumn (September - November),Medium,Never,North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Autumn (September - November),Medium,Never,North America
-Winter (December - February),Tall,I like certain types sometimes,North America
-Winter (December - February),Tall,I like certain types sometimes,North America
-Summer (June - August),Short,"Yes, all the time",North America
-Autumn (September - November),Medium,Never,North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Winter (December - February),Tall,I like certain types sometimes,North America
-Summer (June - August),Medium,Never,North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Summer (June - August),Short,I like certain types sometimes,North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Winter (December - February),Tall,Never,North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Spring (March - May),Medium,I like certain types sometimes,Asia or Oceania
-Summer (June - August),Tall,"Yes, all the time",North America
-Summer (June - August),Tall,"Yes, all the time",North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,Never,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Winter (December - February),Medium,I like certain types sometimes,Asia or Oceania
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Spring (March - May),Tall,"Yes, all the time",North America
-Summer (June - August),Short,I like certain types sometimes,North America
-Winter (December - February),Short,"Yes, all the time",Africa
-Autumn (September - November),Medium,"Yes, all the time",Asia or Oceania
-Summer (June - August),Tall,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",Asia or Oceania
-Summer (June - August),Medium,I like certain types sometimes,North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Winter (December - February),Tall,"Yes, all the time",North America
-Winter (December - February),Tall,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Summer (June - August),Short,Never,Asia or Oceania
-Spring (March - May),Tall,"Yes, all the time",North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Spring (March - May),Tall,I like certain types sometimes,North America
-Autumn (September - November),Short,Never,North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Summer (June - August),Medium,Never,North America
-Autumn (September - November),Medium,Never,North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Winter (December - February),Tall,I like certain types sometimes,North America
-Summer (June - August),Short,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Autumn (September - November),Short,"Yes, all the time",Asia or Oceania
-Spring (March - May),Medium,"Yes, all the time",North America
-Autumn (September - November),Medium,I like certain types sometimes,Africa
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Autumn (September - November),Tall,I like certain types sometimes,Africa
-Autumn (September - November),Medium,Never,North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Summer (June - August),Tall,"Yes, all the time",North America
-Spring (March - May),Short,Never,North America
-Spring (March - May),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",Asia or Oceania
-Spring (March - May),Tall,"Yes, all the time",Asia or Oceania
-Spring (March - May),Medium,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Spring (March - May),Short,"Yes, all the time",Asia or Oceania
-Spring (March - May),Tall,I like certain types sometimes,Asia or Oceania
-Spring (March - May),Tall,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Winter (December - February),Tall,I like certain types sometimes,North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,Asia or Oceania
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Winter (December - February),Tall,I like certain types sometimes,North America
-Spring (March - May),Tall,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Autumn (September - November),Medium,"Yes, all the time",North America
-Winter (December - February),Short,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Spring (March - May),Tall,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Winter (December - February),Short,"Yes, all the time",North America
-Summer (June - August),Tall,"Yes, all the time",Europe
-Spring (March - May),Medium,"Yes, all the time",Asia or Oceania
-Winter (December - February),Medium,I like certain types sometimes,North America
-Autumn (September - November),Short,Never,North America
-Spring (March - May),Medium,"Yes, all the time",North America
-Autumn (September - November),Short,"Yes, all the time",North America
-Summer (June - August),Tall,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,Europe
-Winter (December - February),Tall,I like certain types sometimes,North America
-Winter (December - February),Medium,"Yes, all the time",North America
-Autumn (September - November),Short,"Yes, all the time",North America
-Spring (March - May),Tall,"Yes, all the time",North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Spring (March - May),Short,I like certain types sometimes,North America
-Summer (June - August),Short,"Yes, all the time",North America
-Autumn (September - November),Short,"Yes, all the time",North America
-Winter (December - February),Medium,I like certain types sometimes,North America
-Autumn (September - November),Short,I like certain types sometimes,North America
-Spring (March - May),Tall,I like certain types sometimes,North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Winter (December - February),Short,"Yes, all the time",North America
-Summer (June - August),Medium,"Yes, all the time",North America
-Summer (June - August),Medium,I like certain types sometimes,North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Autumn (September - November),Medium,I like certain types sometimes,North America
-Spring (March - May),Tall,"Yes, all the time",North America
-Winter (December - February),Medium,"Yes, all the time",Asia or Oceania
-Summer (June - August),Tall,I like certain types sometimes,North America
-Autumn (September - November),Tall,I like certain types sometimes,North America
-Winter (December - February),Medium,I like certain types sometimes,Asia or Oceania
-Summer (June - August),Tall,"Yes, all the time",North America
+Season,Height,Tea,Continent,Handedness
+Autumn (September - November),Short,Yes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Winter (December - February),Tall,Yes,North America,
+Summer (June - August),Medium,Yes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Autumn (September - November),Medium,Yes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Spring (March - May),Medium,Yes,South America,
+Autumn (September - November),Medium,Yes,South America,
+Summer (June - August),Medium,Yes,North America,
+Summer (June - August),Medium,Yes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Winter (December - February),Short,Sometimes,North America,
+Autumn (September - November),Tall,Yes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Spring (March - May),Medium,Yes,North America,
+Spring (March - May),Tall,Never,North America,
+Autumn (September - November),Medium,Yes,North America,
+Winter (December - February),Short,Yes,North America,
+Autumn (September - November),Tall,Never,North America,
+Spring (March - May),Tall,Sometimes,North America,
+Spring (March - May),Medium,Never,North America,
+Winter (December - February),Short,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Autumn (September - November),Tall,Yes,North America,
+Spring (March - May),Medium,Yes,North America,
+Winter (December - February),Medium,Yes,North America,
+Summer (June - August),Tall,Yes,North America,
+Autumn (September - November),Medium,Yes,North America,
+Summer (June - August),Medium,Yes,North America,
+Autumn (September - November),Tall,Yes,Europe,
+Autumn (September - November),Medium,Never,North America,
+Autumn (September - November),Tall,Yes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Winter (December - February),Short,Sometimes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Summer (June - August),Medium,Sometimes,Asia or Oceania,
+Summer (June - August),Tall,Never,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Winter (December - February),Short,Sometimes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Winter (December - February),Short,Never,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Summer (June - August),Medium,Never,North America,
+Winter (December - February),Medium,Yes,North America,
+Spring (March - May),Tall,Sometimes,South America,
+Winter (December - February),Tall,Sometimes,Asia or Oceania,
+Spring (March - May),Medium,Yes,North America,
+Winter (December - February),Tall,Never,North America,
+Summer (June - August),Short,Sometimes,North America,
+Winter (December - February),Short,Yes,North America,
+Summer (June - August),Short,Yes,North America,
+Winter (December - February),Short,Yes,North America,
+Winter (December - February),Tall,Yes,North America,
+Autumn (September - November),Tall,Yes,North America,
+Summer (June - August),Medium,Yes,North America,
+Spring (March - May),Medium,Yes,North America,
+Winter (December - February),Short,Yes,North America,
+Winter (December - February),Short,Yes,North America,
+Summer (June - August),Tall,Yes,North America,
+Winter (December - February),Short,Yes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Autumn (September - November),Medium,Yes,North America,
+Spring (March - May),Tall,Never,North America,
+Summer (June - August),Medium,Yes,North America,
+Winter (December - February),Tall,Yes,Europe,
+Spring (March - May),Medium,Never,North America,
+Summer (June - August),Short,Sometimes,Asia or Oceania,
+Winter (December - February),Medium,Sometimes,North America,
+Winter (December - February),Short,Sometimes,North America,
+Spring (March - May),Medium,Yes,North America,
+Winter (December - February),Tall,Sometimes,Asia or Oceania,
+Spring (March - May),Tall,Yes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Autumn (September - November),Tall,Yes,Europe,
+Autumn (September - November),Medium,Yes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Spring (March - May),Medium,Yes,North America,
+Winter (December - February),Short,Yes,North America,
+Spring (March - May),Short,Yes,North America,
+Autumn (September - November),Short,Sometimes,Asia or Oceania,
+Summer (June - August),Medium,Sometimes,North America,
+Summer (June - August),Medium,Never,North America,
+Spring (March - May),Medium,Yes,North America,
+Summer (June - August),Tall,Yes,Europe,
+Autumn (September - November),Medium,Sometimes,North America,
+Autumn (September - November),Short,Yes,North America,
+Spring (March - May),Tall,Sometimes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Autumn (September - November),Tall,Yes,North America,
+Spring (March - May),Tall,Sometimes,Europe,
+Spring (March - May),Medium,Yes,North America,
+Summer (June - August),Medium,Yes,Asia or Oceania,
+Summer (June - August),Tall,Sometimes,Europe,
+Summer (June - August),Medium,Sometimes,North America,
+Summer (June - August),Medium,Never,North America,
+Autumn (September - November),Medium,Yes,North America,
+Spring (March - May),Tall,Yes,Europe,
+Spring (March - May),Medium,Yes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Spring (March - May),Medium,Yes,North America,
+Summer (June - August),Short,Yes,North America,
+Spring (March - May),Short,Yes,North America,
+Autumn (September - November),Tall,Never,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Winter (December - February),Medium,Yes,North America,
+Spring (March - May),Tall,Yes,North America,
+Spring (March - May),Medium,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Autumn (September - November),Medium,Sometimes,Asia or Oceania,
+Spring (March - May),Short,Yes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Summer (June - August),Medium,Never,North America,
+Autumn (September - November),Tall,Yes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Autumn (September - November),Short,Yes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Spring (March - May),Short,Yes,North America,
+Spring (March - May),Medium,Sometimes,Asia or Oceania,
+Spring (March - May),Medium,Sometimes,North America,
+Winter (December - February),Medium,Yes,North America,
+Winter (December - February),Medium,Yes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Winter (December - February),Medium,Yes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Autumn (September - November),Medium,Yes,North America,
+Summer (June - August),Short,Sometimes,North America,
+Autumn (September - November),Short,Yes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Autumn (September - November),Short,Yes,North America,
+Autumn (September - November),Medium,Yes,North America,
+Winter (December - February),Short,Sometimes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Spring (March - May),Short,Yes,North America,
+Autumn (September - November),Medium,Yes,North America,
+Spring (March - May),Tall,Yes,North America,
+Summer (June - August),Short,Yes,North America,
+Winter (December - February),Short,Yes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Autumn (September - November),Tall,Never,North America,
+Winter (December - February),Short,Sometimes,North America,
+Spring (March - May),Short,Never,North America,
+Spring (March - May),Medium,Yes,North America,
+Autumn (September - November),Medium,Yes,Asia or Oceania,
+Autumn (September - November),Tall,Yes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Summer (June - August),Medium,Yes,North America,
+Spring (March - May),Tall,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Autumn (September - November),Medium,Yes,North America,
+Winter (December - February),Medium,Yes,North America,
+Spring (March - May),Short,Yes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Winter (December - February),Short,Yes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Spring (March - May),Medium,Sometimes,Asia or Oceania,
+Autumn (September - November),Short,Sometimes,North America,
+Winter (December - February),Tall,Yes,North America,
+Spring (March - May),Tall,Never,North America,
+Winter (December - February),Short,Yes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Spring (March - May),Medium,Sometimes,Asia or Oceania,
+Autumn (September - November),Short,Yes,North America,
+Spring (March - May),Medium,Sometimes,Asia or Oceania,
+Autumn (September - November),Short,Sometimes,North America,
+Summer (June - August),Short,Sometimes,North America,
+Winter (December - February),Medium,Never,North America,
+Summer (June - August),Short,Yes,Asia or Oceania,
+Summer (June - August),Tall,Never,North America,
+Spring (March - May),Tall,Sometimes,North America,
+Winter (December - February),Short,Sometimes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Winter (December - February),Medium,Sometimes,Europe,
+Autumn (September - November),Medium,Sometimes,Asia or Oceania,
+Autumn (September - November),Tall,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Spring (March - May),Tall,Yes,North America,
+Summer (June - August),Tall,Yes,North America,
+Spring (March - May),Tall,Yes,North America,
+Winter (December - February),Tall,Yes,Asia or Oceania,
+Autumn (September - November),Short,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Spring (March - May),Medium,Never,North America,
+Winter (December - February),Short,Yes,North America,
+Summer (June - August),Medium,Sometimes,Asia or Oceania,
+Winter (December - February),Medium,Sometimes,North America,
+Spring (March - May),Medium,Yes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Summer (June - August),Medium,Never,North America,
+Winter (December - February),Short,Never,Asia or Oceania,
+Spring (March - May),Medium,Yes,Asia or Oceania,
+Summer (June - August),Medium,Never,North America,
+Autumn (September - November),Medium,Yes,Asia or Oceania,
+Autumn (September - November),Medium,Sometimes,Asia or Oceania,
+Summer (June - August),Medium,Yes,Asia or Oceania,
+Summer (June - August),Medium,Sometimes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Summer (June - August),Medium,Yes,North America,
+Autumn (September - November),Tall,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Summer (June - August),Short,Yes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Spring (March - May),Medium,Yes,Asia or Oceania,
+Winter (December - February),Medium,Sometimes,North America,
+Summer (June - August),Tall,Yes,North America,
+Winter (December - February),Medium,Never,North America,
+Spring (March - May),Short,Sometimes,North America,
+Winter (December - February),Short,Yes,North America,
+Summer (June - August),Tall,Yes,North America,
+Spring (March - May),Medium,Yes,North America,
+Autumn (September - November),Short,Yes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Winter (December - February),Tall,Sometimes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Summer (June - August),Short,Never,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Spring (March - May),Medium,Never,North America,
+Spring (March - May),Medium,Sometimes,Asia or Oceania,
+Spring (March - May),Short,Yes,North America,
+Autumn (September - November),Medium,Never,North America,
+Winter (December - February),Medium,Never,North America,
+Spring (March - May),Short,Yes,Asia or Oceania,
+Spring (March - May),Medium,Yes,North America,
+Spring (March - May),Medium,Yes,North America,
+Autumn (September - November),Short,Yes,Asia or Oceania,
+Spring (March - May),Medium,Sometimes,Asia or Oceania,
+Summer (June - August),Medium,Yes,North America,
+Autumn (September - November),Tall,Yes,North America,
+Spring (March - May),Short,Never,North America,
+Winter (December - February),Tall,Yes,North America,
+Autumn (September - November),Short,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Autumn (September - November),Tall,Yes,North America,
+Summer (June - August),Tall,Yes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Winter (December - February),Tall,Sometimes,North America,
+Winter (December - February),Short,Yes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Winter (December - February),Medium,Yes,North America,
+Spring (March - May),Tall,Sometimes,North America,
+Winter (December - February),Short,Never,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Spring (March - May),Medium,Yes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Winter (December - February),Tall,Yes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Summer (June - August),Medium,Yes,Asia or Oceania,
+Summer (June - August),Tall,Sometimes,North America,
+Spring (March - May),Medium,Yes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Spring (March - May),Short,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Summer (June - August),Tall,Yes,North America,
+Winter (December - February),Tall,Never,North America,
+Summer (June - August),Medium,Yes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Autumn (September - November),Medium,Yes,Asia or Oceania,
+Spring (March - May),Short,Sometimes,North America,
+Winter (December - February),Tall,Never,North America,
+Spring (March - May),Medium,Sometimes,South America,
+Summer (June - August),Short,Sometimes,North America,
+Spring (March - May),Short,Sometimes,Asia or Oceania,
+Spring (March - May),Tall,Never,North America,
+Summer (June - August),Short,Never,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Winter (December - February),Short,Sometimes,North America,
+Spring (March - May),Tall,Yes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Winter (December - February),Medium,Yes,North America,
+Winter (December - February),Short,Sometimes,North America,
+Winter (December - February),Short,Sometimes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Winter (December - February),Tall,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Winter (December - February),Medium,Yes,North America,
+Summer (June - August),Medium,Yes,North America,
+Spring (March - May),Medium,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Autumn (September - November),Tall,Never,Europe,
+Autumn (September - November),Medium,Sometimes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Autumn (September - November),Medium,Never,North America,
+Spring (March - May),Medium,Never,North America,
+Autumn (September - November),Medium,Yes,North America,
+Winter (December - February),Medium,Never,North America,
+Winter (December - February),Tall,Sometimes,North America,
+Summer (June - August),Medium,Yes,North America,
+Spring (March - May),Short,Yes,North America,
+Winter (December - February),Short,Yes,North America,
+Summer (June - August),Short,Never,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Summer (June - August),Tall,Never,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Summer (June - August),Short,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Summer (June - August),Short,Sometimes,North America,
+Winter (December - February),Medium,Yes,Asia or Oceania,
+Winter (December - February),Short,Yes,North America,
+Summer (June - August),Short,Sometimes,Asia or Oceania,
+Winter (December - February),Short,Never,North America,
+Spring (March - May),Medium,Yes,North America,
+Autumn (September - November),Tall,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Summer (June - August),Tall,Never,North America,
+Winter (December - February),Short,Sometimes,North America,
+Autumn (September - November),Medium,Never,North America,
+Winter (December - February),Short,Sometimes,Asia or Oceania,
+Winter (December - February),Tall,Yes,North America,
+Autumn (September - November),Short,Yes,North America,
+Autumn (September - November),Tall,Yes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Winter (December - February),Short,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Winter (December - February),Medium,Yes,North America,
+Autumn (September - November),Medium,Never,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Spring (March - May),Medium,Yes,North America,
+Autumn (September - November),Medium,Never,North America,
+Winter (December - February),Tall,Sometimes,North America,
+Winter (December - February),Tall,Sometimes,North America,
+Summer (June - August),Short,Yes,North America,
+Autumn (September - November),Medium,Never,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Winter (December - February),Tall,Sometimes,North America,
+Summer (June - August),Medium,Never,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Summer (June - August),Short,Sometimes,North America,
+Winter (December - February),Short,Sometimes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Winter (December - February),Tall,Never,North America,
+Autumn (September - November),Medium,Yes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Summer (June - August),Medium,Yes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Spring (March - May),Medium,Sometimes,Asia or Oceania,
+Summer (June - August),Tall,Yes,North America,
+Summer (June - August),Tall,Yes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Summer (June - August),Medium,Never,North America,
+Spring (March - May),Medium,Yes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Winter (December - February),Medium,Sometimes,Asia or Oceania,
+Autumn (September - November),Tall,Sometimes,North America,
+Winter (December - February),Medium,Yes,North America,
+Spring (March - May),Tall,Yes,North America,
+Summer (June - August),Short,Sometimes,North America,
+Winter (December - February),Short,Yes,Africa,
+Autumn (September - November),Medium,Yes,Asia or Oceania,
+Summer (June - August),Tall,Sometimes,North America,
+Winter (December - February),Medium,Yes,Asia or Oceania,
+Summer (June - August),Medium,Sometimes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Winter (December - February),Tall,Yes,North America,
+Winter (December - February),Tall,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Summer (June - August),Short,Never,Asia or Oceania,
+Spring (March - May),Tall,Yes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Summer (June - August),Medium,Yes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Autumn (September - November),Medium,Yes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Spring (March - May),Tall,Sometimes,North America,
+Autumn (September - November),Short,Never,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Spring (March - May),Medium,Yes,North America,
+Summer (June - August),Medium,Never,North America,
+Autumn (September - November),Medium,Never,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Autumn (September - November),Medium,Yes,North America,
+Winter (December - February),Tall,Sometimes,North America,
+Summer (June - August),Short,Sometimes,North America,
+Spring (March - May),Medium,Yes,North America,
+Spring (March - May),Medium,Yes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Summer (June - August),Medium,Yes,North America,
+Autumn (September - November),Short,Yes,Asia or Oceania,
+Spring (March - May),Medium,Yes,North America,
+Autumn (September - November),Medium,Sometimes,Africa,
+Autumn (September - November),Tall,Sometimes,North America,
+Autumn (September - November),Tall,Sometimes,Africa,
+Autumn (September - November),Medium,Never,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Autumn (September - November),Medium,Yes,North America,
+Summer (June - August),Tall,Yes,North America,
+Spring (March - May),Short,Never,North America,
+Spring (March - May),Medium,Sometimes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Winter (December - February),Medium,Yes,Asia or Oceania,
+Spring (March - May),Tall,Yes,Asia or Oceania,
+Spring (March - May),Medium,Sometimes,North America,
+Spring (March - May),Medium,Yes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Spring (March - May),Short,Yes,Asia or Oceania,
+Spring (March - May),Tall,Sometimes,Asia or Oceania,
+Spring (March - May),Tall,Sometimes,North America,
+Winter (December - February),Medium,Yes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Winter (December - February),Tall,Sometimes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Spring (March - May),Medium,Yes,North America,
+Winter (December - February),Medium,Sometimes,Asia or Oceania,
+Autumn (September - November),Tall,Sometimes,North America,
+Winter (December - February),Tall,Sometimes,North America,
+Spring (March - May),Tall,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Autumn (September - November),Medium,Yes,North America,
+Winter (December - February),Short,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Spring (March - May),Tall,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Winter (December - February),Short,Yes,North America,
+Summer (June - August),Tall,Yes,Europe,
+Spring (March - May),Medium,Yes,Asia or Oceania,
+Winter (December - February),Medium,Sometimes,North America,
+Autumn (September - November),Short,Never,North America,
+Spring (March - May),Medium,Yes,North America,
+Autumn (September - November),Short,Yes,North America,
+Summer (June - August),Tall,Sometimes,North America,
+Spring (March - May),Short,Sometimes,Europe,
+Winter (December - February),Tall,Sometimes,North America,
+Winter (December - February),Medium,Yes,North America,
+Autumn (September - November),Short,Yes,North America,
+Spring (March - May),Tall,Yes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Spring (March - May),Short,Sometimes,North America,
+Summer (June - August),Short,Yes,North America,
+Autumn (September - November),Short,Yes,North America,
+Winter (December - February),Medium,Sometimes,North America,
+Autumn (September - November),Short,Sometimes,North America,
+Spring (March - May),Tall,Sometimes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Winter (December - February),Short,Yes,North America,
+Summer (June - August),Medium,Yes,North America,
+Summer (June - August),Medium,Sometimes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Autumn (September - November),Medium,Sometimes,North America,
+Spring (March - May),Tall,Yes,North America,
+Winter (December - February),Medium,Yes,Asia or Oceania,
+Summer (June - August),Tall,Sometimes,North America,
+Autumn (September - November),Tall,Sometimes,North America,
+Winter (December - February),Medium,Sometimes,Asia or Oceania,
+Summer (June - August),Tall,Yes,North America,
+Summer (June - August),Tall,Never,North America,Right-handed
+Autumn (September - November),Medium,Never,North America,Left-handed
+Spring (March - May),Medium,Sometimes,North America,Right-handed
+Autumn (September - November),Tall,Sometimes,North America,Right-handed
+Spring (March - May),Short,Yes,North America,Right-handed
+Autumn (September - November),Medium,Sometimes,North America,Right-handed
+Autumn (September - November),Medium,Yes,North America,Right-handed
+Winter (December - February),Medium,Yes,Asia or Oceania,Right-handed
+Spring (March - May),Short,Yes,Europe,Right-handed
+Summer (June - August),Short,Yes,North America,Right-handed
+Summer (June - August),Medium,Yes,North America,Right-handed
+Summer (June - August),Tall,Yes,Asia or Oceania,Right-handed
+Spring (March - May),Medium,Yes,Africa,Right-handed
+Autumn (September - November),Medium,Yes,Africa,Right-handed
+Summer (June - August),Medium,Yes,North America,Right-handed
+Summer (June - August),Medium,Sometimes,North America,Right-handed
+Summer (June - August),Short,Yes,South America,Right-handed
+Spring (March - May),Medium,Yes,North America,Right-handed
+Spring (March - May),Medium,Sometimes,North America,Right-handed
+Spring (March - May),Short,Yes,North America,Right-handed
+Autumn (September - November),Tall,Yes,North America,Right-handed
+Winter (December - February),Short,Yes,North America,Right-handed
+Autumn (September - November),Medium,Sometimes,North America,Right-handed
+Summer (June - August),Medium,Sometimes,North America,Right-handed
+Summer (June - August),Short,Sometimes,North America,Right-handed
+Winter (December - February),Medium,Sometimes,North America,Right-handed
+Winter (December - February),Tall,Sometimes,North America,Right-handed
+Spring (March - May),Medium,Yes,North America,Right-handed
+Autumn (September - November),Medium,Yes,Africa,Right-handed
+Summer (June - August),Medium,Never,South America,Left-handed
+Autumn (September - November),Medium,Yes,North America,Right-handed
+Autumn (September - November),Tall,Yes,North America,Right-handed
+Winter (December - February),Short,Never,Asia or Oceania,Left-handed
+Winter (December - February),Tall,Yes,North America,Right-handed
+Spring (March - May),Tall,Never,North America,Right-handed
+Spring (March - May),Medium,Yes,North America,Right-handed
+Autumn (September - November),Medium,Sometimes,North America,Right-handed
+Autumn (September - November),Short,Yes,Asia or Oceania,Right-handed
+Spring (March - May),Tall,Yes,North America,Right-handed
+Summer (June - August),Medium,Yes,North America,Right-handed
+Autumn (September - November),Tall,Yes,North America,Right-handed
+Summer (June - August),Short,Yes,North America,Right-handed
+Autumn (September - November),Tall,Yes,North America,Right-handed
+Autumn (September - November),Tall,Yes,North America,Right-handed
+Winter (December - February),Medium,Sometimes,Asia or Oceania,Right-handed
+Summer (June - August),Medium,Yes,North America,Right-handed
+Winter (December - February),Medium,Yes,North America,Right-handed
+Spring (March - May),Tall,Yes,North America,Right-handed
+Autumn (September - November),Medium,Yes,North America,Right-handed
+Autumn (September - November),Short,Yes,North America,Right-handed
+Spring (March - May),Short,Yes,North America,Left-handed
+Autumn (September - November),Medium,Never,North America,Right-handed
+Autumn (September - November),Medium,Sometimes,Asia or Oceania,Right-handed
+Spring (March - May),Medium,Yes,North America,Right-handed
+Summer (June - August),Medium,Never,North America,Left-handed
+Spring (March - May),Medium,Yes,Asia or Oceania,Right-handed
+Winter (December - February),Tall,Sometimes,North America,Right-handed
+Summer (June - August),Medium,Yes,North America,Right-handed
+Spring (March - May),Tall,Yes,North America,Right-handed
+Winter (December - February),Tall,Yes,Asia or Oceania,Right-handed
+Winter (December - February),Medium,Yes,North America,Right-handed
+Spring (March - May),Medium,Yes,Asia or Oceania,Right-handed
+Autumn (September - November),Short,Sometimes,North America,Right-handed
+Spring (March - May),Tall,Yes,North America,Right-handed
+Winter (December - February),Tall,Yes,North America,Right-handed
+Spring (March - May),Medium,Yes,North America,Right-handed
+Spring (March - May),Medium,Sometimes,North America,Right-handed
+Spring (March - May),Tall,Yes,Asia or Oceania,Right-handed
+Spring (March - May),Medium,Sometimes,North America,Right-handed
+Spring (March - May),Medium,Sometimes,North America,Right-handed
+Autumn (September - November),Medium,Sometimes,North America,Right-handed
+Spring (March - May),Short,Never,North America,Right-handed
+Summer (June - August),Medium,Yes,Europe,Right-handed
+Summer (June - August),Medium,Yes,Asia or Oceania,Right-handed
+Summer (June - August),Medium,Yes,North America,Right-handed
+Winter (December - February),Tall,Never,Asia or Oceania,Right-handed
+Spring (March - May),Medium,Yes,North America,Right-handed
+Summer (June - August),Short,Sometimes,North America,Right-handed
+Autumn (September - November),Short,Sometimes,North America,Right-handed
+Autumn (September - November),Medium,Sometimes,North America,Right-handed
+Summer (June - August),Short,Sometimes,North America,Right-handed
+Winter (December - February),Medium,Yes,North America,Right-handed
+Winter (December - February),Tall,Never,Asia or Oceania,Right-handed
+Winter (December - February),Medium,Yes,North America,Left-handed
+Winter (December - February),Tall,Yes,North America,Right-handed
+Spring (March - May),Medium,Sometimes,North America,Right-handed
+Spring (March - May),Tall,Sometimes,North America,Right-handed
+Summer (June - August),Medium,Yes,North America,Right-handed
+Winter (December - February),Tall,Sometimes,North America,Right-handed
+Summer (June - August),Medium,Yes,North America,Right-handed
+Spring (March - May),Tall,Yes,North America,Right-handed
+Spring (March - May),Medium,Sometimes,North America,Right-handed
+Autumn (September - November),Medium,Yes,Asia or Oceania,Right-handed
+Autumn (September - November),Tall,Yes,North America,Right-handed
+Winter (December - February),Tall,Yes,Asia or Oceania,Right-handed
+Autumn (September - November),Medium,Sometimes,North America,Left-handed
+Spring (March - May),Medium,Never,North America,Right-handed
+Spring (March - May),Short,Yes,North America,Right-handed
+Winter (December - February),Short,Yes,North America,Right-handed
+Spring (March - May),Tall,Never,North America,Left-handed
+Autumn (September - November),Medium,Sometimes,North America,Right-handed
+Winter (December - February),Tall,Yes,North America,Right-handed
+Spring (March - May),Tall,Yes,North America,Right-handed
+Autumn (September - November),Short,Yes,North America,Right-handed
+Spring (March - May),Medium,Yes,North America,Right-handed
+Summer (June - August),Medium,Sometimes,North America,Right-handed
+Winter (December - February),Tall,Sometimes,North America,Left-handed
+Winter (December - February),Short,Sometimes,North America,Right-handed
+Winter (December - February),Medium,Yes,North America,Left-handed
+Summer (June - August),Short,Sometimes,North America,Right-handed
+Winter (December - February),Medium,Yes,Asia or Oceania,Left-handed
+Spring (March - May),Tall,Yes,North America,Right-handed
+Winter (December - February),Medium,Yes,North America,Right-handed
+Autumn (September - November),Tall,Yes,North America,Right-handed
+Spring (March - May),Tall,Sometimes,North America,Right-handed
+Autumn (September - November),Short,Yes,North America,Right-handed
+Summer (June - August),Tall,Yes,North America,Right-handed
+Spring (March - May),Medium,Sometimes,North America,Right-handed
+Winter (December - February),Medium,Never,North America,Right-handed
+Spring (March - May),Short,Yes,North America,Right-handed
+Summer (June - August),Short,Never,North America,Right-handed
+Summer (June - August),Medium,Yes,North America,Right-handed
+Autumn (September - November),Tall,Yes,North America,Right-handed
+Summer (June - August),Medium,Sometimes,North America,Right-handed
+Winter (December - February),Medium,Yes,North America,Right-handed
+Autumn (September - November),Short,Sometimes,North America,Right-handed
+Autumn (September - November),Medium,Yes,North America,Right-handed
+Winter (December - February),Tall,Never,North America,Right-handed
+Summer (June - August),Short,Sometimes,North America,Right-handed
+Summer (June - August),Short,Sometimes,North America,Right-handed
+Spring (March - May),Medium,Yes,North America,Right-handed
+Autumn (September - November),Medium,Yes,North America,Right-handed
+Autumn (September - November),Tall,Yes,North America,Right-handed
+Winter (December - February),Tall,Yes,North America,Right-handed
+Summer (June - August),Medium,Sometimes,Europe,Left-handed
+Winter (December - February),Medium,Sometimes,North America,Right-handed
+Summer (June - August),Short,Sometimes,North America,Right-handed
+Autumn (September - November),Tall,Sometimes,North America,Right-handed
+Winter (December - February),Medium,Yes,Europe,Right-handed
+Spring (March - May),Medium,Sometimes,North America,Right-handed
+Winter (December - February),Tall,Never,North America,Right-handed
