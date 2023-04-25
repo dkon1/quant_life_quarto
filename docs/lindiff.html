@@ -293,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#population-growth-and-decline" id="toc-population-growth-and-decline" class="nav-link" data-scroll-target="#population-growth-and-decline"><span class="toc-section-number">10.2.3</span>  population growth and decline</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">10.2.4</span>  Exercises</a></li>
   </ul></li>
-  <li><a href="#numerical-solutions-in-r" id="toc-numerical-solutions-in-r" class="nav-link" data-scroll-target="#numerical-solutions-in-r"><span class="toc-section-number">10.3</span>  Numerical solutions in R</a>
+  <li><a href="#numeric-solutions-in-r" id="toc-numeric-solutions-in-r" class="nav-link" data-scroll-target="#numeric-solutions-in-r"><span class="toc-section-number">10.3</span>  Numeric solutions in R</a>
   <ul class="collapse">
   <li><a href="#for-loops" id="toc-for-loops" class="nav-link" data-scroll-target="#for-loops"><span class="toc-section-number">10.3.1</span>  for loops</a></li>
   <li><a href="#using-vectors-with-loops" id="toc-using-vectors-with-loops" class="nav-link" data-scroll-target="#using-vectors-with-loops"><span class="toc-section-number">10.3.2</span>  using vectors with loops</a></li>
@@ -475,17 +475,17 @@ N(t) = c r^t  + \frac{a}{1-r}
 <li><p>Suppose hunters kill 50 deer in a national forest every hunting season, while the deer by themselves have equal birth and death rates. If there are initially 500 deer in the forest, predict how many there will be in 5 years.</p></li>
 <li><p>The number of infected people in a population grows by 8% per day and those who become infected remain infected. If initially there are 8 infected, how many individuals will be infected in 45 days?</p></li>
 <li><p>Suppose bacteria in a population divide in 2 every hour and 90% of the current population dies after reproduction, not including the new offspring. If the population initially has 10 million bacteria, predict how many there will be in 12 hours.</p></li>
-<li><p>In a rabbit population, each pair produces 2.2 offspring every year (i.e.&nbsp;1.1 per capita) and the adults have a 0.9 annual death rate after reproduction (and assume the whole population is paired up into mating pairs.) If initially there are 55 rabbits, predict how many there will be in 5 years.</p></li>
-<li><p>Consider the same rabbit population, but now a python that lives nearby eats exactly 1 rabbit a month. If initially there are 55 rabbits, how many do you predict will be in 10 years?</p></li>
+<li><p>In a rabbit population, each pair produces 1.2 offspring every year (i.e.&nbsp;0.6 per capita) and the adults have a 0.5 annual death rate after reproduction (and assume the whole population is paired up into mating pairs.) If initially there are 100 rabbits, predict how many there will be in 5 years.</p></li>
+<li><p>Consider the same rabbit population, but now a python that lives nearby eats exactly 1 rabbit a month. If initially there are 100 rabbits, how many do you predict will be in 10 years?</p></li>
 <li><p>10 fish are added to an aquarium every month, while 80% of those present survive every month and there is no reproduction. If initially there are 10 fish in the aquarium, predict how many there will be in 2 years.</p></li>
-<li><p>A Mardi Gras parade marches down the street, and every block 50 new revelers join the parade, while 20% of parade leaves for various reasons. Suppose the parade starts with 12 people, predict how many there will be after 30 blocks.</p></li>
+<li><p>A gene has length of 10000 nucleotides, some of them are ancestral (A) and others are mutant letters (M). Every generation 3% of the ancestral letters turn mutate and become M and 1% of the mutant letters revert to the ancestral state. Write a discrete time model for the number of the mutant nucleotides M (Hint: <span class="math inline">\(A = 10000 - M\)</span>). If initially there are 0 mutant letters (all 10000 are ancestral), predict how many there will be in 10 generations.</p></li>
 <li><p>Twenty flies fly into a house every day, and half of the flies in the house at beginning of each day find their way out (no births or deaths happen in the house.) If there are 10 files in the house initially, how many will there be in 12 days?</p></li>
-<li><p>Every day someone eats 10 pieces of candy from a bowl, while someone else adds half as many pieces as are currently in the bowl (before 10 pieces are removed.) If there are currently 20 pieces of candy in the bowl, how many will there be in 7 days?</p></li>
+<li><p>Suppose a branch grows at 10 cm a month (year round, assume it’s a climate with no seasonal variations), and that every month a gardener trims 25% of the length of the branch. If initially the branch is 10 cm long, what will be its length in 6 months?</p></li>
 </ol>
 </section>
 </section>
-<section id="numerical-solutions-in-r" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="numerical-solutions-in-r"><span class="header-section-number">10.3</span> Numerical solutions in R</h2>
+<section id="numeric-solutions-in-r" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="numeric-solutions-in-r"><span class="header-section-number">10.3</span> Numeric solutions in R</h2>
 <p></p>
 <section id="for-loops" class="level3" data-number="10.3.1">
 <h3 data-number="10.3.1" class="anchored" data-anchor-id="for-loops"><span class="header-section-number">10.3.1</span> for loops</h3>
