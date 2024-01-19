@@ -92,7 +92,9 @@ Independence is not a straightforward concept. It may be confused with mutual ex
 
 A useful way to think about independence is in terms of fractions of outcomes. The probability of $A$ is the fraction of outcomes out of the entire sample space which is in $A$, while the probability of $A$ given $B$ is the fraction of outcomes in $B$ which are also in $A$. The definition of independence equates the two fractions, therefore, if $A$ occupies 1/2 of sample space, in order for $A$ and $B$ to be independent, events in $A$ must constitute 1/2 of the event $B$. In the illustration in figure \ref{fig:ch6_cond_prob}, the fraction of tall people is 0.5 of the sample space, but the fraction of tea-drinkers who are tall is $0.1/0.3=1/3$. Since the two fractions are different, $A$ and $B$ are not independent.
 
-![Example of two events inside a sample space that are mutually exclusive](ch6/indep_ex1.png) ![Example of two events inside a sample space that are partially overlapping](ch6/indep_ex2.png)
+![Example of two events inside a sample space that are mutually exclusive](ch6/indep_ex1.png)
+
+![Example of two events inside a sample space that are partially overlapping](ch6/indep_ex2.png)
 
 ![Illustration of two events inside a sample space where one is entirely contained in the other](ch6/indep_ex3.png)
 
