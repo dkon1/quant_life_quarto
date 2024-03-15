@@ -104,7 +104,7 @@ Several biological models are indicated below. Based on what you know, divide th
 
 6.  Describing an outbreak of an infectious disease in a city in terms of the fractions of infected, healthy, and recovered people, depending on the rate of infection, rate of recovery, and the mortality rate of the disease.
 
-## Beginning coding in R
+## First steps for coding in R
 
 A central goal of this book is to help you, the reader, gain experience with computation, which requires learning some programming (a.k.a. "coding"). Programming is a way of interacting with computers through a symbolic language, unlike the graphic user interfaces that we're all familiar with. Basically, programming allows you to make a computer do exactly what you want it to do.
 
@@ -128,6 +128,7 @@ To run the code inside a single R code chunk, click the green arrow in the top r
 
 ::: callout-note
 ### arithmetic
+
 Numbers are stored on computers using **floating-point arithmetic** which has a limited amount of memory to represent a number. This means that doing calculations in R can produce different types of arithmetic errors, such as *overflow* (number too large and is considered infinite), *underflow* (number too small and is considered zero), or *relative error* (two numbers too close together to distinguish.)
 :::
 
@@ -218,6 +219,7 @@ Hint: Use the scientific notation, e.g. 100 - (100+1e-5)
 
 ::: callout-note
 ### variables
+
 **Variables** in programming languages are used to store and access numerical or other information. After *assigning* it a value for the first time (*initializing*), a variable name can be used to represent the value we assigned to it. Invoking the name of variable recalls the stored value from computer's memory.
 :::
 
@@ -237,18 +239,7 @@ After this command the variable `var1` has the value 5, which you can see in the
 print(var1)
 ```
 
-You can see the output under the code box, indicated in Markdown documents with `##`. The `print()` function always adds `[1]` at the beginning of the line, which indicates that this is the first value in the variable. In this case, the variable contains only one value, so it does not contain any useful information, but if there are multiple values in the variable (called a vector variable that are discussed in Tutorial 2) and they take up more than one line, the bracketed value at the start of the next line will indicate the ordered number (index) of the first value on that line.
-
-You can also display variable values using the function `cat()`. It doesn't add the clunky numbers in brackets, which can be visually nicer, but it also does not start a new line after the value, so it can lead to numbers piling up on top of each other, for example:
-
-```{webr-r}
-ex <- 10
-am <- -3
-cat(ex)
-cat(am)
-```
-
-Instead of two separate numbers 10 and -3 you see the output as `10-3`. Both of these functions are useful, depending on the situation.
+You can see the output under the code box. The `print()` function always adds `[1]` at the beginning of the line, which indicates that this is the first value in the variable. In this case, the variable contains only one value, so it does not contain any useful information, but if there are multiple values in the variable (called a vector variable that are discussed in Tutorial 2) and they take up more than one line, the bracketed value at the start of the next line will indicate the ordered number (index) of the first value on that line.
 
 ### Changing variable values
 
@@ -257,7 +248,7 @@ The following two commands show that the value of a variable can be changed afte
 ```{webr-r}
 var1 <- 5
 var1 <- 6
-cat(var1)
+print(var1)
 ```
 
 While seemingly contradictory, the commands are perfectly clear to the computer: first `var1` is assigned the value 5 and then it is assigned 6. After the second command, the first value is forgotten, so any operations that use the variable `var1` will be using the value of 6.
@@ -267,16 +258,16 @@ Entire expressions can be placed on the right hand side of an assignment command
 ```{webr-r}
 var1 <- 5
 var2 <- var1+1
-cat(var2)
+print(var2)
 ```
 
 Even more mind-blowing is that the same variable can be used on both sides of an assignment operator! The R interpreter first looks on the right hand side to evaluate the expression and then assigns the result to the variable name on the left hand side. So for instance, the following commands increase the value of `var1` by 1, and then assign the product of `var1` and `var2` to the variable `var2`:
 
 ```{webr-r}
 var1 <- var1 + 1
-cat(var1)
+print(var1)
 var2 <- var1*var2
-cat(var2)
+print(var2)
 ```
 
 ### What can go wrong
@@ -304,7 +295,7 @@ The assignment operation does only one thing: it changes the value of the left-h
 
 ```{webr-r}
 prod <- big*small
-cat(prod)
+print(prod)
 ```
 
 ### Exercises:
