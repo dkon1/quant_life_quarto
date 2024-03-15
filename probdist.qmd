@@ -24,7 +24,7 @@ Stochastic models may not sound very promising: after all, we want to make predi
 
 In this section we will develop the terminology used in the mathematical study of randomness called probability. This begins with a *random experiment* which is a very broad term that can describe any natural or theoretical process whose outcome cannot be predicted with certainty. If the outcomes are numeric, they may be *discrete* (can be counted by integers) or *continuous* (corresponding to real numbers); they may also be *categorical*, meaning that they do not have a numeric meaning, like eye color. We will stick to experiments that have discrete outcomes in this chapter, but many important experiments produce continuous outcomes. The first step for studying a random process is to describe all of the outcomes it can produce:
 
-::: {#def-sample-space .callout-note}
+::: callout-note
 ## Definition
 
 The collection of all possible outcomes of an experiment is called its *sample space* $\Omega$. An *event* is a subset of the sample space, which means an event may contain one or more experimental outcomes.
@@ -108,7 +108,7 @@ There are several useful rules that immediately follow from the axioms. First, i
 
 The outcomes of experiments may be expressed in numbers or words, but we generally need numbers in order to report and analyze results. One can describe this mathematically as a function (recall its definition from section 2.2) that assigns numbers to random outcomes [@feller_introduction_nodate]. In practice, a random variable describes the measurement that one makes to describe the outcomes of a random experiment.
 
-::: {#def-rv .callout-note}
+::: {.callout-note}
 ## Definition
 
 A *random variable* is a number or category associated to each outcome in a sample space $\Omega$. This association has to follow the rules of a function as defined in chapter 2.
@@ -120,7 +120,7 @@ A *random variable* is a number or category associated to each outcome in a samp
 
 A random variable has a set of possible values, and each of those values may come up more or less frequently in an random experiment. The frequency of each measurement corresponds to the probability of the outcomes in the sample space that produce that particular value of the random variable. One can describe the behavior of the random variable in terms of the collection of the probabilities of its outcomes.
 
-::: {#def-prob-dist .callout-note} 
+::: {.callout-note} 
 The probability of a random variable $X$ taking some value $a$, written as $P(X=a)$, but usually simplified to $P(a)$ is the probability of the event corresponding to the value $a$ of the random variable. This function $P(a)$ is called the *probability distribution* of the random variable $X$. 
 :::
 
@@ -138,7 +138,7 @@ The graph of a probability distribution function lies above zero because all pro
 
 ### expectation of random variables
 
-::: {#def-exp-val .callout-note}
+::: {.callout-note}
 The *expected value* (or mean) of a discrete random variable $X$ with probability distribution $P(X)$ is defined as: $$ E(X) = \mu_X = \sum_{i=1}^N  a_i P(a_i)$$
 :::
 
@@ -172,7 +172,7 @@ Knowledge of the expected value says nothing about how the random variable actua
 
 $$ E(X-\mu_X) =  \sum_i (x_i-\mu_x)P(x_i) = \sum_i x_i P(x_i) - \mu_x \sum_i P(x_i) = \mu_x - \mu_x = 0$$ The problem is, if we add up all the differences from the mean, the positive ones end up canceling the negative ones and the expected value of those deviations is exactly zero. This is why it makes sense to square the differences and add them up:
 
-::: {#def-var-prob .callout-note}
+::: {.callout-note}
 The *variance* of a discrete random variable $X$ with probability distribution $P(x)$ is $$ Var(X) = E((X-\mu_X)^2) = \sum_{i=1}^N (x_i-\mu_x)^2P(x_i)$$
 :::
 

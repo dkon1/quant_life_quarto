@@ -1,0 +1,245 @@
+---
+title: "Quantifying Life R Tutorial 1"
+filters: 
+ - webr
+output: html
+editor: visual
+---
+
+## First steps in R coding
+
+In this tutorial you will learn to:
+
+-   Perform arithmetic operations in R
+
+-   Assign values to variables and perform calculations
+
+## Arithmetic in R
+
+::: callout-note
+### Computer arithmetic
+
+Numbers are stored on computers using **floating-point arithmetic** which has a limited amount of memory to represent a number. This means that doing calculations in R can produce different types of arithmetic errors, such as *overflow* (number too large and is considered infinite), *underflow* (number too small and is considered zero), or *relative error* (two numbers too close together to distinguish.)
+:::
+
+Arithmetic operations are necessary for any computation. R uses the expected symbols: `+`, `-`, `*`, `/`for addition, subtraction, multiplication, and division. The symbol `^` is used for raising a number to a power, like this:
+
+```{webr-r}
+10^2 
+7^3
+```
+
+The gray boxes above contain the *R code* and the *output* is printed below. Each line starts with `[1]`, which will be explained in the next section.
+
+There are some built-in numbers, in particular pi and e. The first is defined by the two letters `pi`, but e is obtained using the function `exp()`, which gives the value of e raised to the power of the number in parentheses. For example:
+
+```{webr-r}
+pi
+exp(1)
+exp(2)
+```
+
+### Scientific notation
+
+Try typing a large number with all the digits, like 10 million:
+
+```{webr-r}
+10000000
+```
+
+It gets pretty tedious to type in all the zeros, so if you don't have as many *significant figures* as there are digits, the **scientific notation** is very handy. The code chunk above produces the output `1e+07`, which indicates 1 times 10 to the seventh power.
+
+For a small number, the power is negative:
+
+```{webr-r}
+0.000006
+```
+
+This produces the output `6e-06`, or six times ten to the negative sixth power. Please note that this notation does not use the multiplication symbol `*` or the power symbol `^`; using them would produce an error.
+
+### What can go wrong: overflow, underflow, and relative error
+
+Computers were designed to perform calculations and they are really good at it, but even powerful modern machines have limits. Numbers are stored in computer memory and have to be handled by the processor, both finite resources. Essentially, there are numbers too large for a computer to handle, and if you try to use one beyond the limit, you will cause an *overflow error*. In R, if you try to use a number that is too large, it will be considered infinite and instead of the number you will get the value `Inf`.
+
+Surprisingly, a number that is too small will also cause a similar problem, called an *underflow error*. This is because storing a small number also requires storage space, in part to indicate how many zeros there are after the decimal (or binary) point. In R, if you try to use a number that is too small, it will be considered 0.
+
+There is another limitation of computer arithmetic, also caused by the finite nature of computation. Numbers in computers are stored using *floating-point arithmetic*, which represents numbers using a finite number of digits (or binary bits). Thus numbers that are close together will be represented the same, which is particularly problematic for trying to calculate their difference. The largest difference that is not distinguished by computer arithmetic is called the *machine epsilon* (with a nod to mathematicians), in other words, subtract the numbers 1 and $1+\epsilon$ and find the largest value of $\epsilon$ for which this operation returns 0. Note that this value is very different than the threshold for underflow error, as you will explore in the exercises below.
+
+### Exercises:
+
+1.  Calculate the value of pi raised to the 10th power.
+
+```{webr-r}
+
+```
+
+2.  Use the scientific notation to multiply 45 million by pi cubed.
+
+```{webr-r}
+
+```
+
+3.  In R the function `exp(x)` is used to raise the number e to the power x. Try putting increasingly larger numbers into the function until R can't handle it and returns `Inf` (infinity). Report the power of e at which this happens and the estimate the largest number that R can handle.
+
+```{webr-r}
+
+```
+
+Hint: Try increasing the powers by 100, e.g. exp(100), exp(200), etc. \# once you see Inf (infinity) then go back down to see where it changes
+
+4.  In the same fashion, try increasingly large negative powers of e to find out what happens when you give R a number that is too small for it to handle and it returns 0. Report the power of e at which this happens and the smallest value and estimate the smallest value that R can handle.
+
+```{webr-r}
+
+```
+
+Hint: Try increasing the negative powers by 100, e.g. exp(-100), exp(-200), etc., and once you get the result of 0 then dial back the power to see where it changes
+
+5.  How close can two numbers be before R thinks they are the same? Subtract 100 and a number increasingly close to it (e.g. 100 and 100.0001) until R returns a difference of zero. Report at what value of the actual difference this happens.
+
+```{webr-r}
+
+```
+
+Hint: Use the scientific notation, e.g. 100 - (100+1e-5)
+
+## Assigning variables
+
+::: callout-note
+### Variables
+
+**Variables** in programming languages are used to store and access numerical or other information. After *assigning* it a value for the first time (*initializing*), a variable name can be used to represent the value we assigned to it. Invoking the name of variable recalls the stored value from computer's memory.
+:::
+
+There are a few rules about naming variables: a name cannot be a number or an arithmetic operator like +, in fact it cannot contain symbols for operators or spaces inside the name, or else confusion would reign. Variable names may contain numbers, but not as the first character. When writing code it is good practice to give variables informative names, like `height` or `city_pop`.
+
+The symbol `=` is used to assign a value to a variable in most programming languages, and can be used in R too. However, it is customary for R to use the symbols `<-` together to indicate assignment, like this:
+
+```{webr-r}
+var1 <- 5
+```
+
+### Displaying variable values
+
+After this command the variable `var1` has the value 5, which you can see in the upper right frame in R Studio called Environment. In order to display the value of the variable as an output on the screen, use the special command `print()` (it's actually a function, as we'll discuss later).
+
+```{webr-r}
+print(var1)
+```
+
+You can see the output under the code box, indicated in Markdown documents with `##`. The `print()` function always adds `[1]` at the beginning of the line, which indicates that this is the first value in the variable. In this case, the variable contains only one value, so it does not contain any useful information, but if there are multiple values in the variable (called a vector variable that are discussed in Tutorial 2) and they take up more than one line, the bracketed value at the start of the next line will indicate the ordered number (index) of the first value on that line.
+
+You can also display variable values using the function `cat()`. It doesn't add the clunky numbers in brackets, which can be visually nicer, but it also does not start a new line after the value, so it can lead to numbers piling up on top of each other, for example:
+
+```{webr-r}
+ex <- 10
+am <- -3
+cat(ex)
+cat(am)
+```
+
+Instead of two separate numbers 10 and -3 you see the output as `10-3`. Both of these functions are useful, depending on the situation.
+
+### Changing variable values
+
+The following two commands show that the value of a variable can be changed after it has been initialized:
+
+```{webr-r}
+var1 <- 5
+var1 <- 6
+cat(var1)
+```
+
+While seemingly contradictory, the commands are perfectly clear to the computer: first `var1` is assigned the value 5 and then it is assigned 6. After the second command, the first value is forgotten, so any operations that use the variable `var1` will be using the value of 6.
+
+Entire expressions can be placed on the right hand side of an assignment command: they could be arithmetic or logical operations as well as functions, which we will discuss later on. For example, the following commands result in the value 6 being assigned to the variable `var2`:
+
+```{webr-r}
+var1 <- 5
+var2 <- var1+1
+cat(var2)
+```
+
+Even more mind-blowing is that the same variable can be used on both sides of an assignment operator! The R interpreter first looks on the right hand side to evaluate the expression and then assigns the result to the variable name on the left hand side. So for instance, the following commands increase the value of `var1` by 1, and then assign the product of `var1` and `var2` to the variable `var2`:
+
+```{webr-r}
+var1 <- var1 + 1
+cat(var1)
+var2 <- var1*var2
+cat(var2)
+```
+
+### What can go wrong
+
+We have seen examples of how to assign values to variables, so here is an example of how NOT to assign values:
+
+```{webr-r}
+var1 + 1 <- var1
+```
+
+The assignment operation is not symmetric and the left-hand side of an assignment command should contain only the variable to which you are assigning a value, not an arithmetic expression to be performed.
+
+Another common mistake is expecting the assignment to connect the variables on the right hand side with the variable in some permanent way. For example, the following script multiplies variables `big` and `small` and assigns them to `prod`, and then changes the value of `small`, but this does NOT change the value of `prod`:
+
+```{webr-r}
+big <- 100
+small <- 2
+prod <- big*small
+print(prod)
+small <- 3
+print(prod)
+```
+
+The assignment operation does only one thing: it changes the value of the left-hand-side variable at the time when the R interpreter reads that line. If you want the value of `prod` to reflect the new value of `small`, you need to perform the assignment operation again:
+
+```{webr-r}
+prod <- big*small
+cat(prod)
+```
+
+### Exercises:
+
+The following R commands or scripts contain errors; your job is to fix them so they do what each exercise asks you to do.
+
+1.  Assign the value -10 to the variable `neg`
+
+```{webr-r}
+neg -> -10
+```
+
+2.  Assign the value 5 to the variable `pac` and then increase its value by 3
+
+```{webr-r}
+2pac <- 5
+pac <- +3
+```
+
+Hint: 2pac was a great artist, not a variable. Use the variable pac on both sides of the \<-
+
+3.  Assign the values 4 and 7 to two variables `part1` and `part2`, then add them together and assign the sum to a new variable
+
+```{webr-r}
+total <- part1 + part2
+part1 <- 4
+part2 <- 7
+```
+
+Hint: Switch around the order of the commands
+
+4.  Assign the value 43 to the variable `age`, then increase it by 1 and assign it to the same variable
+
+```{webr-r}
+age <- 43
+age + 1
+```
+
+Hint: Assign the calculation in the last line to the same variable
+
+5.  Assign the value 10 to variable `rad`, then calculate the area of the circle with that radius using the formula $A = \pi r^2$ and assign it to a new variable
+
+```{webr-r}
+rad <- 10
+area <- pi r^2 
+```
+
+Hint: Need to use the multiplication symbol `*`; Check that variable names match
