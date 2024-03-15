@@ -104,9 +104,9 @@ Several biological models are indicated below. Based on what you know, divide th
 
 6.  Describing an outbreak of an infectious disease in a city in terms of the fractions of infected, healthy, and recovered people, depending on the rate of infection, rate of recovery, and the mortality rate of the disease.
 
-## First steps in R
+## Beginning coding in R
 
-\label{sec:comp1} A central goal of this book is to help you, the reader, gain experience with computation, which requires learning some programming (a.k.a. "coding"). Programming is a way of interacting with computers through a symbolic language, unlike the graphic user interfaces that we're all familiar with. Basically, programming allows you to make a computer do exactly what you want it to do.
+A central goal of this book is to help you, the reader, gain experience with computation, which requires learning some programming (a.k.a. "coding"). Programming is a way of interacting with computers through a symbolic language, unlike the graphic user interfaces that we're all familiar with. Basically, programming allows you to make a computer do exactly what you want it to do.
 
 There is a vast number of computer languages with distinct functionalities and personalities. Some are made to talk directly to the computer's "brain" (CPU and memory), e.g. Assembly, while others are better suited for human comprehension, e.g. python or Java. Programming in any language involves two parts: 1) writing a program (code) using the commands and the syntax for the language; 2) running the code by using a compiler or interpreter to translate the commands into machine language and then making the computer execute the actions. If your code has a mistake in it, the compiler or interpreter should catch it, and return an *error message* to you instead of executing the code. Sometimes, though, the code may pass muster with the interpreter/compiler, but it may still have a mistake (bug). This can be manifested in two different ways: either the code execution does not produce the result that you intended, or it hangs up or crashes the computer (the latter is hard to do with the kind of programming we will be doing). We will discuss errors and how to prevent and catch these bugs as you develop your programming skills.
 
@@ -124,19 +124,12 @@ print("Hello there!")
 
 To run the code inside a single R code chunk, click the green arrow in the top right of the chunk. This will produce an output, in this case the text "Hello there!". Inside the generated output file, for example the web book you may be reading, the output of code chunks is shown below the box with the R code and indicated by two hashtags.
 
-## First steps in R coding
-
-In this tutorial you will learn to:
-
--   Perform arithmetic operations in R
-
--   Assign values to variables and perform calculations
-
-## Arithmetic in R
-
 ### Computer arithmetic
 
+::: callout-note
+### arithmetic
 Numbers are stored on computers using **floating-point arithmetic** which has a limited amount of memory to represent a number. This means that doing calculations in R can produce different types of arithmetic errors, such as *overflow* (number too large and is considered infinite), *underflow* (number too small and is considered zero), or *relative error* (two numbers too close together to distinguish.)
+:::
 
 Arithmetic operations are necessary for any computation. R uses the expected symbols: `+`, `-`, `*`, `/`for addition, subtraction, multiplication, and division. The symbol `^` is used for raising a number to a power, like this:
 
@@ -155,7 +148,7 @@ exp(1)
 exp(2)
 ```
 
-### Scientific notation
+#### Scientific notation
 
 Try typing a large number with all the digits, like 10 million:
 
@@ -173,7 +166,7 @@ For a small number, the power is negative:
 
 This produces the output `6e-06`, or six times ten to the negative sixth power. Please note that this notation does not use the multiplication symbol `*` or the power symbol `^`; using them would produce an error.
 
-### What can go wrong: overflow, underflow, and relative error
+#### What can go wrong
 
 Computers were designed to perform calculations and they are really good at it, but even powerful modern machines have limits. Numbers are stored in computer memory and have to be handled by the processor, both finite resources. Essentially, there are numbers too large for a computer to handle, and if you try to use one beyond the limit, you will cause an *overflow error*. In R, if you try to use a number that is too large, it will be considered infinite and instead of the number you will get the value `Inf`.
 
@@ -181,7 +174,7 @@ Surprisingly, a number that is too small will also cause a similar problem, call
 
 There is another limitation of computer arithmetic, also caused by the finite nature of computation. Numbers in computers are stored using *floating-point arithmetic*, which represents numbers using a finite number of digits (or binary bits). Thus numbers that are close together will be represented the same, which is particularly problematic for trying to calculate their difference. The largest difference that is not distinguished by computer arithmetic is called the *machine epsilon* (with a nod to mathematicians), in other words, subtract the numbers 1 and $1+\epsilon$ and find the largest value of $\epsilon$ for which this operation returns 0. Note that this value is very different than the threshold for underflow error, as you will explore in the exercises below.
 
-### Exercises:
+### Exercises
 
 1.  Calculate the value of pi raised to the 10th power.
 
@@ -219,11 +212,14 @@ Hint: Try increasing the negative powers by 100, e.g. exp(-100), exp(-200), etc.
 
 Hint: Use the scientific notation, e.g. 100 - (100+1e-5)
 
-## Assigning variables
+### Assigning variables
 
-### Variables
+#### Variable names
 
+::: callout-note
+### variables
 **Variables** in programming languages are used to store and access numerical or other information. After *assigning* it a value for the first time (*initializing*), a variable name can be used to represent the value we assigned to it. Invoking the name of variable recalls the stored value from computer's memory.
+:::
 
 There are a few rules about naming variables: a name cannot be a number or an arithmetic operator like +, in fact it cannot contain symbols for operators or spaces inside the name, or else confusion would reign. Variable names may contain numbers, but not as the first character. When writing code it is good practice to give variables informative names, like `height` or `city_pop`.
 
@@ -357,73 +353,3 @@ area <- pi r^2
 ```
 
 Hint: Need to use the multiplication symbol `*`; Check that variable names match
-
-### R Coding Exercises
-
-The following commands or scripts do not work as intended. Find the errors and correct them, then run them to make sure they do what they are intended to do:
-
-### Exercises:
-
-The following R commands or short scripts contain errors; your job is to fix them so they runs as described. (Remove the \# at the start of each line to "uncomment" the code first.)
-
-1.  Assign the value -10 to a variable
-
-```{r, eval=FALSE}
-neg -> -10
-```
-
-2.  Assign a variable the value 5 and then increase its value by 3:
-
-```{r, eval=FALSE}
-2pac <- 5
-2pac <- 2pac + 3
-```
-
-3.  Assign the values 4 and 7 to two variables, then add them together and assign the sum to a new variable:
-
-```{r, eval=FALSE}
-total <- part1 + part2
-part1 <- 4
-part2 <- 7
-```
-
-4.  Add 5 and 3 and save it into variable my.number
-
-```{r, eval=FALSE}
-5 + 3 <- my.number
-```
-
-5.  Print the value of my.number on the screen:
-
-```{r, eval=FALSE}
-print[my.number]
-```
-
-6.  Replace the value of my.number with 5 times its current value
-
-```{r, eval=FALSE}
-my.number <- 5my.number 
-```
-
-7.  Assign the values of 7 and 8 to variables a and b, respectively, multiply them and save the results in variable x
-
-```{r, eval=FALSE}
-a<-7
-b<-8
-x<-ab
-print(x)
-```
-
-9.  Assign the value 42 to a variable, then increase it by 1
-
-```{r, eval=FALSE}
-age <- 42
-age + 1 <- age
-```
-
-10. Assign the value 10 to variable radius, then calculate the area of the circle with that radius using the formula $A = \pi r^2$:
-
-```{r, eval=FALSE}
-r <- 10
-area <- pir^2 
-```

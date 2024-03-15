@@ -245,11 +245,11 @@ In this tutorial you will learn to:
 
 ## Vector variables and indexing
 
-Variables may contain more than a single number, they can also store a bunch of numbers, which is then called an *array*. When numbers in an array are organized as a single ordered list, this is called a *vector*.
 
-::::{.newbox}
+::: callout-tip
+array variables
 A variable that contains multiple numbers (or other values) is called an **array**. One-dimensional arrays called **vectors** have values arranged in an ordered list, and these **elements** can be located by their position in the list, called the **index** of the element.
-::::
+::: 
 
 ### c() function 
 There are several ways of producing a vector of numbers in R. The first is to put together several numbers by listing them inside the function `c()`:
