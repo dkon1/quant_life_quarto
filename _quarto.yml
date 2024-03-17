@@ -17,7 +17,9 @@ book:
   chapters:
     - index.qmd
     - counting.qmd
+    - tutorial1.qmd
     - functions.qmd
+    - tutorial2.qmd
     - descriptive.qmd
     - probdist.qmd
     - linreg.qmd
@@ -38,7 +40,7 @@ bibliography: ql_bibliography.bib
 
 format:
   html:
-    theme: cosmo
+    theme: materia
   pdf:
     documentclass: scrreprt
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - 16&nbsp; Dynamics of Markov models</title>
+<title>Quantifying Life - 18&nbsp; Dynamics of Markov models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,7 +127,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Quantifying Life - 16&nbsp; Dynamics of Markov models">
+<meta name="twitter:title" content="Quantifying Life - 18&nbsp; Dynamics of Markov models">
 <meta name="twitter:description" content="We have learned several approaches for analyzing the behavior of Markov models. We know that many Markov models converge to a single stationary distribution over time.">
 <meta name="twitter:card" content="summary">
 </head>
@@ -138,7 +138,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -191,77 +191,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
+  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tutorial 1: First steps for coding</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
+  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tutorial 2: Vectors and plotting</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
+  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sampling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling distribution and estimation</span></a>
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  <a href="./sampling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sampling distribution and estimation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
+  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
+  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -278,22 +288,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#phylogenetic-trees" id="toc-phylogenetic-trees" class="nav-link active" data-scroll-target="#phylogenetic-trees"><span class="toc-section-number">16.1</span>  Phylogenetic trees</a></li>
-  <li><a href="#eigenvalues-and-eigenvectors" id="toc-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#eigenvalues-and-eigenvectors"><span class="toc-section-number">16.2</span>  Eigenvalues and eigenvectors</a>
+  <li><a href="#phylogenetic-trees" id="toc-phylogenetic-trees" class="nav-link active" data-scroll-target="#phylogenetic-trees"><span class="toc-section-number">18.1</span>  Phylogenetic trees</a></li>
+  <li><a href="#eigenvalues-and-eigenvectors" id="toc-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#eigenvalues-and-eigenvectors"><span class="toc-section-number">18.2</span>  Eigenvalues and eigenvectors</a>
   <ul class="collapse">
-  <li><a href="#basic-linear-algebra" id="toc-basic-linear-algebra" class="nav-link" data-scroll-target="#basic-linear-algebra"><span class="toc-section-number">16.2.1</span>  basic linear algebra</a></li>
-  <li><a href="#calculation-of-eigenvalues-on-paper" id="toc-calculation-of-eigenvalues-on-paper" class="nav-link" data-scroll-target="#calculation-of-eigenvalues-on-paper"><span class="toc-section-number">16.2.2</span>  calculation of eigenvalues on paper</a></li>
-  <li><a href="#calculation-of-eigenvectors-on-paper" id="toc-calculation-of-eigenvectors-on-paper" class="nav-link" data-scroll-target="#calculation-of-eigenvectors-on-paper"><span class="toc-section-number">16.2.3</span>  calculation of eigenvectors on paper</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">16.2.4</span>  Exercises</a></li>
+  <li><a href="#basic-linear-algebra" id="toc-basic-linear-algebra" class="nav-link" data-scroll-target="#basic-linear-algebra"><span class="toc-section-number">18.2.1</span>  basic linear algebra</a></li>
+  <li><a href="#calculation-of-eigenvalues-on-paper" id="toc-calculation-of-eigenvalues-on-paper" class="nav-link" data-scroll-target="#calculation-of-eigenvalues-on-paper"><span class="toc-section-number">18.2.2</span>  calculation of eigenvalues on paper</a></li>
+  <li><a href="#calculation-of-eigenvectors-on-paper" id="toc-calculation-of-eigenvectors-on-paper" class="nav-link" data-scroll-target="#calculation-of-eigenvectors-on-paper"><span class="toc-section-number">18.2.3</span>  calculation of eigenvectors on paper</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">18.2.4</span>  Exercises</a></li>
   </ul></li>
-  <li><a href="#eigenvectors-in-r" id="toc-eigenvectors-in-r" class="nav-link" data-scroll-target="#eigenvectors-in-r"><span class="toc-section-number">16.3</span>  Eigenvectors in R</a></li>
-  <li><a href="#molecular-evolution" id="toc-molecular-evolution" class="nav-link" data-scroll-target="#molecular-evolution"><span class="toc-section-number">16.4</span>  Molecular evolution</a>
+  <li><a href="#eigenvectors-in-r" id="toc-eigenvectors-in-r" class="nav-link" data-scroll-target="#eigenvectors-in-r"><span class="toc-section-number">18.3</span>  Eigenvectors in R</a></li>
+  <li><a href="#molecular-evolution" id="toc-molecular-evolution" class="nav-link" data-scroll-target="#molecular-evolution"><span class="toc-section-number">18.4</span>  Molecular evolution</a>
   <ul class="collapse">
-  <li><a href="#time-since-divergence" id="toc-time-since-divergence" class="nav-link" data-scroll-target="#time-since-divergence"><span class="toc-section-number">16.4.1</span>  time since divergence</a></li>
-  <li><a href="#phylogenetic-distance" id="toc-phylogenetic-distance" class="nav-link" data-scroll-target="#phylogenetic-distance"><span class="toc-section-number">16.4.2</span>  phylogenetic distance</a></li>
-  <li><a href="#kimura-model" id="toc-kimura-model" class="nav-link" data-scroll-target="#kimura-model"><span class="toc-section-number">16.4.3</span>  Kimura model</a></li>
-  <li><a href="#divergence-of-human-and-chimp-genomes" id="toc-divergence-of-human-and-chimp-genomes" class="nav-link" data-scroll-target="#divergence-of-human-and-chimp-genomes"><span class="toc-section-number">16.4.4</span>  divergence of human and chimp genomes</a></li>
-  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="toc-section-number">16.4.5</span>  Discussion questions</a></li>
+  <li><a href="#time-since-divergence" id="toc-time-since-divergence" class="nav-link" data-scroll-target="#time-since-divergence"><span class="toc-section-number">18.4.1</span>  time since divergence</a></li>
+  <li><a href="#phylogenetic-distance" id="toc-phylogenetic-distance" class="nav-link" data-scroll-target="#phylogenetic-distance"><span class="toc-section-number">18.4.2</span>  phylogenetic distance</a></li>
+  <li><a href="#kimura-model" id="toc-kimura-model" class="nav-link" data-scroll-target="#kimura-model"><span class="toc-section-number">18.4.3</span>  Kimura model</a></li>
+  <li><a href="#divergence-of-human-and-chimp-genomes" id="toc-divergence-of-human-and-chimp-genomes" class="nav-link" data-scroll-target="#divergence-of-human-and-chimp-genomes"><span class="toc-section-number">18.4.4</span>  divergence of human and chimp genomes</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="toc-section-number">18.4.5</span>  Discussion questions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -303,7 +313,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></h1>
 </div>
 
 
@@ -329,8 +339,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>mixing times of Markov chains</li>
 <li>calculate the phylogenetic distance between two DNA sequences</li>
 </ul>
-<section id="phylogenetic-trees" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="phylogenetic-trees"><span class="header-section-number">16.1</span> Phylogenetic trees</h2>
+<section id="phylogenetic-trees" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="phylogenetic-trees"><span class="header-section-number">18.1</span> Phylogenetic trees</h2>
 <p>Over many generations, genomes of living creatures accumulate random mutations, as we previously discussed in chapters 3 and 6. Each individual genome in a population has its own polymorphisms, and thus some are more advantageous for survival in a particular environment than others. The process of natural selection is stochastic, and the notion of “survival of the fittest” is not a guarantee that the best-adapted always out-compete the rest - sometimes a more fit individual has a bad day and can’t find any food or gets eaten by a predator. However, over time the allele that are advantageous have a better chance of survival and become more common in the population, while other alleles become rare or vanish . This process never stops, because the environmental conditions change, and new mutations arise, so at any point in time the individual genomes in a species have some variations, although the vast majority of their genomes are identical.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -342,10 +352,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Figure <span class="math inline">\(\ref{fig:ch13_phylotree}\)</span> shows the phylogenetic tree for the lifeforms on Earth, divided into the three major kingdoms: Bacteria, Archea, ane Eukaryota, the latter includes all multicellular lifeforms, including plants, animals, and fungi. The nodes (end points) show the major groupings of life existing today, and the branches show the order of evolutionary divergence of lineages, starting with the hypothesized root of the tree at the bottom, known as LUCA (last universal common ancestor) . The order of splitting and the grouping of the nodes was determined by molecular sequence data (in particular ribosomal RNA) that has become available in the past 20 years.</p>
 <p>In the past, biologists studied observable traits of different life forms, such as anatomy, physiology, or developmental features, and determined similarity from these data. However, the wealth of molecular sequence data has offered a great amount of evidence which is the primary material of evolution. Phylogeny, particularly that of unicellular organisms, has been revolutionized by these data; we now know that prokaryotes are divided into kingdoms of Archea and Bacteria which are evolutionarily more distant than humans are from fungi. Sequence data are quantitative and they require mathematical models to interpret them and to infer phylogenies. In the last section of this chapter we will introduce mathematical tools that connect related sequences to the evolutionary divergence from their common ancestor.</p>
 </section>
-<section id="eigenvalues-and-eigenvectors" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="eigenvalues-and-eigenvectors"><span class="header-section-number">16.2</span> Eigenvalues and eigenvectors</h2>
-<section id="basic-linear-algebra" class="level3" data-number="16.2.1">
-<h3 data-number="16.2.1" class="anchored" data-anchor-id="basic-linear-algebra"><span class="header-section-number">16.2.1</span> basic linear algebra</h3>
+<section id="eigenvalues-and-eigenvectors" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="eigenvalues-and-eigenvectors"><span class="header-section-number">18.2</span> Eigenvalues and eigenvectors</h2>
+<section id="basic-linear-algebra" class="level3" data-number="18.2.1">
+<h3 data-number="18.2.1" class="anchored" data-anchor-id="basic-linear-algebra"><span class="header-section-number">18.2.1</span> basic linear algebra</h3>
 <p>In the past two chapters we have seen matrices and learned the definition of matrix multiplication, but now we are ready to go deeper into the branch of mathematics studying matrices and their generalizations, called linear algebra. It is fundamental to both pure and applied mathematics , and its tools are used in countless applications and fields. Let us define two useful numbers that help describe the properties of a matrix:</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -397,8 +407,8 @@ A  \times  \vec v = \lambda \vec v
 <p>Therefore, an eigenvector <span class="math inline">\(\vec v\)</span> is not unique, as any constant multiple <span class="math inline">\(c \vec v\)</span> is also an eigenvector. It is more useful to think not of a single eigenvector <span class="math inline">\(\vec v\)</span>, but of a collection of vectors that can be interconverted by scalar multiplication that are all essentially the same eigenvector. Another way to represent this, if the eigenvector is real, is that an eigenvector as a <strong>direction that remains unchanged by multiplication by the matrix</strong>, such as direction of the vector <span class="math inline">\(v\)</span> in figure <span class="math inline">\(\ref{fig:ch13_eigenvector}\)</span>. As mentioned above, this is true only for real eigenvalues and eigenvectors, since complex eigenvectors cannot be used to define a direction in a real space.</p>
 <p>To summarize, eigenvalues and eigenvectors of a matrix are a set of numbers and a set of vectors (up to scalar multiple) that describe the action of the matrix as a multiplicative operator on vectors. “Well-behaved” square <span class="math inline">\(n\)</span> by <span class="math inline">\(n\)</span> matrices have <span class="math inline">\(n\)</span> distinct eigenvalues and <span class="math inline">\(n\)</span> eigenvectors pointing in distinct directions. In a deep sense, the collection of eigenvectors and eigenvalues defines a matrix <span class="math inline">\(A\)</span>, which is why an older name for them is characteristic vectors and values.</p>
 </section>
-<section id="calculation-of-eigenvalues-on-paper" class="level3" data-number="16.2.2">
-<h3 data-number="16.2.2" class="anchored" data-anchor-id="calculation-of-eigenvalues-on-paper"><span class="header-section-number">16.2.2</span> calculation of eigenvalues on paper</h3>
+<section id="calculation-of-eigenvalues-on-paper" class="level3" data-number="18.2.2">
+<h3 data-number="18.2.2" class="anchored" data-anchor-id="calculation-of-eigenvalues-on-paper"><span class="header-section-number">18.2.2</span> calculation of eigenvalues on paper</h3>
 <p>Finding the eigenvalues and eigenvectors analytically, that is on paper, is quite laborious even for 3 by 3 or 4 by 4 matrices and for larger ones there is no analytical solution. In practice, the task is outsourced to a computer, and we will see how to do this using R in section <span class="math inline">\(\ref{sec:comp13}\)</span>. Nevertheless, it is useful to go through the process in 2 dimensions in order to gain an understanding of what is involved. From the definition <span class="math inline">\(\ref{def:eigen}\)</span> of eigenvalues and eigenvectors, the condition can be written in terms of the four elements of a 2 by 2 matrix:</p>
 <p><span class="math display">\[  \left(\begin{array}{cc}a &amp; b \\c &amp; d\end{array}\right)\left(\begin{array}{c}v_1 \\ v_2 \end{array}\right) = \left(\begin{array}{c}av_1 +b v_2\\ cv_1+ dv_2 \end{array}\right) = \lambda \left(\begin{array}{c}v_1 \\ v_2 \end{array}\right)  \]</span> This is now a system of two linear algebraic equations, which we can solve by substitution. First, let us solve for <span class="math inline">\(v_1\)</span> in the first row, to get <span class="math display">\[ v_1 = \frac{-bv_2}{a-\lambda}\]</span> Then we substitute this into the second equation and get: <span class="math display">\[\frac{-bcv_2}{a-\lambda} +(d-\lambda)v_2 = 0\]</span> Since <span class="math inline">\(v_2\)</span> multiplies both terms, and is not necessarily zero, we require that its multiplicative factor be zero. Doing a little algebra, we obtain the following, known as the <em>characteristic equation</em> of the matrix: <span class="math display">\[ -bc +(a-\lambda)(d-\lambda) = \lambda^2-(a+d)\lambda +ad-bc = 0\]</span> This equation can be simplified by using two quantities we defined at the beginning of the section: the sum of the diagonal elements called the trace <span class="math inline">\(\tau = a+d\)</span>, and the determinant <span class="math inline">\(\Delta = ad-bc\)</span>. The quadratic equation has two solutions, dependent solely on <span class="math inline">\(\tau\)</span> and <span class="math inline">\(\Delta\)</span>:</p>
 <p><span class="math display">\[
@@ -407,8 +417,8 @@ A  \times  \vec v = \lambda \vec v
 <p>This is the general expression for a 2 by 2 matrix, showing there are two possible eigenvalues. Note that if <span class="math inline">\(\tau^2-4\Delta&gt;0\)</span>, the eigenvalues are real, if <span class="math inline">\(\tau^2-4\Delta&lt;0\)</span>, they are complex (have real and imaginary parts), and if <span class="math inline">\(\tau^2-4\Delta=0\)</span>, there is only one eigenvalue. This situation is known as degenerate, because two eigenvectors share the same eigenvalue.</p>
 <p><strong>Example.</strong> Let us take the same matrix we looked at in the previous subsection: <span class="math display">\[ A = \left(\begin{array}{cc}2 &amp; 1 \\ 2&amp; 3\end{array}\right)\]</span> The trace of this matrix is <span class="math inline">\(\tau = 2+3 =5\)</span> and the determinant is <span class="math inline">\(\Delta = 6 - 2 = 4\)</span>. Then by our formula, the eigenvalues are: <span class="math display">\[\lambda = \frac{5 \pm \sqrt{5^2-4 \times 4}}{2}  =  \frac{5 \pm 3}{2}  = 4, 1\]</span> These are the multiples we found in the example above, as expected.</p>
 </section>
-<section id="calculation-of-eigenvectors-on-paper" class="level3" data-number="16.2.3">
-<h3 data-number="16.2.3" class="anchored" data-anchor-id="calculation-of-eigenvectors-on-paper"><span class="header-section-number">16.2.3</span> calculation of eigenvectors on paper</h3>
+<section id="calculation-of-eigenvectors-on-paper" class="level3" data-number="18.2.3">
+<h3 data-number="18.2.3" class="anchored" data-anchor-id="calculation-of-eigenvectors-on-paper"><span class="header-section-number">18.2.3</span> calculation of eigenvectors on paper</h3>
 <p>The surprising fact is that, as we saw in the last subsection, the eigenvalues of a matrix can be found without knowing its eigenvectors! However, the converse is not true: to find the eigenvectors, one first needs to know the eigenvalues. Given an eigenvalue <span class="math inline">\(\lambda\)</span>, let us again write down the defining equation of the eigenvector for a generic 2 by 2 matrix: <span class="math display">\[  \left(\begin{array}{cc}a &amp; b \\c &amp; d\end{array}\right)\left(\begin{array}{c}v_1 \\ v_2 \end{array}\right) = \left(\begin{array}{c}av_1 +b v_2\\ cv_1+ dv_2 \end{array}\right) = \lambda \left(\begin{array}{c}v_1 \\ v_2 \end{array}\right)  \]</span> This vector equation is equivalent to two algebraic equations: <span class="math display">\[
 av_1 + b v_2 = \lambda v_1
 \]</span> <span class="math display">\[
@@ -425,8 +435,8 @@ v_1 = - v_2 \times  1/(2-1) = - v_2
 \]</span> Therefore the eigenvector is characterized by the first and second elements being negatives of each other. We already saw in the example two subsections above that the vector <span class="math inline">\((1,-1)\)</span> is such as eigenvector, but it is also true of the vectors <span class="math inline">\((-1,1)\)</span>, <span class="math inline">\((-\pi, \pi)\)</span> and <span class="math inline">\((10^6, -10^6)\)</span>. This infinite collection of vectors, all along the same direction, can be described as the eigenvector (or eigendirection) corresponding to the eigenvalue 1.</p>
 <p>Repeating this procedure for <span class="math inline">\(\lambda = 4\)</span>, we obtain the linear relationship: <span class="math display">\[ v_1 = - v_2 \times  1/(2-4) = 0.5 v_2\]</span> Once again, the example vector we saw two subsections <span class="math inline">\((2,1)\)</span> is in agreement with our calculation. Other vectors that satisfy this relationship include <span class="math inline">\((10,5)\)</span>, <span class="math inline">\((-20,-10)\)</span>, and <span class="math inline">\((-0.4,-0.2)\)</span>. This is again a collection of vectors that are all considered the same eigenvector with eigenvalue 4 which are all pointing in the same direction, with the only difference being their length.</p>
 </section>
-<section id="exercises" class="level3" data-number="16.2.4">
-<h3 data-number="16.2.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">16.2.4</span> Exercises</h3>
+<section id="exercises" class="level3" data-number="18.2.4">
+<h3 data-number="18.2.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">18.2.4</span> Exercises</h3>
 <p><img src="ch10/AB_trans_diag.png" class="img-fluid" alt="Model 1">{width = 25%} <img src="ch10/CD_trans_diag.png" class="img-fluid" alt="Model 2">{width = 25%} <img src="ch10/EF_trans_diag.png" class="img-fluid" alt="Model 3">{width = 25%} <img src="ch10/GH_trans_diag.png" class="img-fluid" alt="Model 4">{width = 25%}</p>
 <p>For the following two-state Markov models a) calculate the eigenvalues of the transition matrix; b) calculate the corresponding eigenvectors and explain which one corresponds to the stationary distribution; c) use R to check that each of the eigenvectors obeys the definition <span class="math inline">\(\ref{def:eigen}\)</span> with its corresponding eigenvalue.</p>
 <ol type="1">
@@ -466,8 +476,8 @@ Theorem
 <p>All three eigenvectors, multiplied by their eigenvalues to the power <span class="math inline">\(t\)</span>, are present in the expression, but the third eigenvalue (0.6) decays much faster than the second one (0.7). After 5 time steps, <span class="math inline">\(0.7^5 = 0.168\)</span>, while <span class="math inline">\(0.6^5 = 0.078\)</span>, so the contribution of the third eigenvector is about half that of the second; after 10 time steps, <span class="math inline">\(0.7^{10} = 0.028\)</span>, while <span class="math inline">\(0.6^{10} = 0.006\)</span>, so the contribution of the third eigenvector is about one-fifth that of the second; after 20 time steps, <span class="math inline">\(0.7^{20} \approx 8 \times 10^{-4}\)</span>, while <span class="math inline">\(0.6^{20} \approx 4 \times 10^{-5}\)</span>, so the contribution of the third eigenvector is about one-twentieth that of the second. The trend is clear: although 0.6 and 0.7 are not that different, raising them to higher powers makes the ratio between them get smaller, until the contribution of the smaller of the two eigenvalues is negligible, however you’d like to define that term - less than 1%? less than 0.01%? - eventually the smaller eigenvalue will reach that level of insignificance. This is illustrates why the rate of convergence to the stationary distribution <span class="math inline">\((1/3, 5/12, 1/4)\)</span> is determined by the eigenvalue 0.7, and the smaller eigenvalue can be neglected.</p>
 </section>
 </section>
-<section id="eigenvectors-in-r" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="eigenvectors-in-r"><span class="header-section-number">16.3</span> Eigenvectors in R</h2>
+<section id="eigenvectors-in-r" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="eigenvectors-in-r"><span class="header-section-number">18.3</span> Eigenvectors in R</h2>
 <p>R has a standard set of functions to handle linear algebra computations. One of the most important of those is the calculation of eigenvectors and eigenvalues, also known as <em>diagonalization</em> of a matrix, for reasons you’ll understand if you take a proper linear algebra course, as I strongly recommend for anyone who intends to be involved in quantitative biology.</p>
 <p>The function to calculate the special numbers and vectors is <code>eigen()</code>, and the name of the matrix goes between the parentheses. The function returns a data frame as its output, with <code>$values</code> and <code>$vectors</code> storing the eigenvalues and the eigenvectors, respectively. Here is a script to define the matrix we analyzed in the examples in section <span class="math inline">\(\ref{sec:math13}\)</span> and then calculate and print out its eigenvalues and eigenvectors:</p>
 <div class="cell">
@@ -590,8 +600,8 @@ Theorem
 </div>
 </div>
 </section>
-<section id="molecular-evolution" class="level2" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="molecular-evolution"><span class="header-section-number">16.4</span> Molecular evolution</h2>
+<section id="molecular-evolution" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="molecular-evolution"><span class="header-section-number">18.4</span> Molecular evolution</h2>
 <p>Substitution mutations in DNA sequences can be modeled as a Markov process, where each base in the sequence mutates independently of others with a transition matrix <span class="math inline">\(M\)</span>. Let the bases A, G, C, T correspond to states 1 through 4, respectively. A classic model for base substitution from one generation to the next is based on the assumption that all substitution mutations are equally likely, and that the fraction <span class="math inline">\(a\)</span> of the sequence will be substituted each generation. This was proposed by Jukes and Cantor to calculate the rate of divergence of DNA (or protein) sequences from their common ancestor. The model is illustrated as a transition diagram in figure <span class="math inline">\(\ref{fig:ch13_jc_model}\)</span>, with the four letters representing the states of a particular site in a DNA sequence, and all transition probabilities equal to <span class="math inline">\(a\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -622,8 +632,8 @@ Theorem
 </div>
 </div>
 <p>Thus, the Jukes-Cantor model provides a prediction of the time-dependent evolution of the probability distribution of each letter, starting with an initial distribution. In reality, we would like to answer the following question: given two DNA sequences in the present (e.g.&nbsp;from different species), what is the length of time they spent evolving from a common ancestor?</p>
-<section id="time-since-divergence" class="level3" data-number="16.4.1">
-<h3 data-number="16.4.1" class="anchored" data-anchor-id="time-since-divergence"><span class="header-section-number">16.4.1</span> time since divergence</h3>
+<section id="time-since-divergence" class="level3" data-number="18.4.1">
+<h3 data-number="18.4.1" class="anchored" data-anchor-id="time-since-divergence"><span class="header-section-number">18.4.1</span> time since divergence</h3>
 <p>To do this, we need to some preliminary work. The first step is to compute the probability that a letter at a particular site remain unchanged after <span class="math inline">\(t\)</span> generations. Because all the nucleotides are equivalent in the Jukes-Cantor model, it’s the same as finding the probability that a nucleotide in state A remains in A after <span class="math inline">\(t\)</span> generations. As we saw in section <span class="math inline">\(\ref{sec:math13}\)</span>, we can calculate the frequency distribution after <span class="math inline">\(t\)</span> time steps by using the decomposition of the initial probability vector <span class="math inline">\(\vec P(0)\)</span> into a weighted sum of the eigenvectors. We take <span class="math inline">\(\vec P_0 = (1,0,0,0)\)</span> (the initial state is A) and this can be written as a sum of the four eigenvectors of the matrix <span class="math inline">\(M\)</span>:</p>
 <p><span class="math display">\[ \left(\begin{array}{c} 1 \\ 0 \\ 0 \\ 0 \end{array}\right) = \left(\begin{array}{c} 1/4 \\ 1/4 \\ 1/4 \\ 1/4 \end{array}\right) + \left(\begin{array}{c} 1/4 \\ -1/4 \\ 1/4 \\ -1/4 \end{array}\right) +  \left(\begin{array}{c} 1/4 \\ -1/4 \\ -1/4 \\ 1/4 \end{array}\right) + \left(\begin{array}{c} 1/4 \\ -1/4 \\ 1/4 \\ -1/4 \end{array}\right) \]</span></p>
 <p>Therefore, the transition matrix <span class="math inline">\(M\)</span> can be applied to each eigenvector separately, and each matrix multiplication is a multiplication by the appropriate eigenvalue. Thus, <span class="math display">\[ P(t) = M^t P(0) =  \]</span></p>
@@ -632,25 +642,25 @@ Theorem
 <p>Now let us get to the question of calculating the time that two sequences have evolved from each other. Denote by <span class="math inline">\(m\)</span> the fraction of sites in two aligned sequences with different letters, and <span class="math inline">\(q\)</span> is the probability of a nucleotide remaining the same, which is the given by the expression for <span class="math inline">\(P_A(t)\)</span>. Thus <span class="math inline">\(m = 1 - q = 3/4 - 3/4(1-\frac{4}{3}a)^t\)</span>. This can be solved for <span class="math inline">\(t\)</span>:</p>
 <p><span class="math display">\[ t = \frac{\log (1 -  \frac{4}{3} m)}{\log (1 -  \frac{4}{3} a)}\]</span></p>
 </section>
-<section id="phylogenetic-distance" class="level3" data-number="16.4.2">
-<h3 data-number="16.4.2" class="anchored" data-anchor-id="phylogenetic-distance"><span class="header-section-number">16.4.2</span> phylogenetic distance</h3>
+<section id="phylogenetic-distance" class="level3" data-number="18.4.2">
+<h3 data-number="18.4.2" class="anchored" data-anchor-id="phylogenetic-distance"><span class="header-section-number">18.4.2</span> phylogenetic distance</h3>
 <p>However, if we do not know the mutation rate <span class="math inline">\(a\)</span>, and until recently it was rarely known with any precision, this formula is of limited practical use. Jukes and Cantor neatly finessed the problem by calculating the <em>phylogenetic distance</em> between the two sequences, which is defined as <span class="math inline">\(d = a t\)</span>, or the mean number of substitutions that occurred per nucleotide during <span class="math inline">\(t\)</span> generations, with mutation rate <span class="math inline">\(a\)</span> (substitutions per nucleotide per generation). Note that this distance is not directly measurable from the fraction of different nucleotides in the two sequences, because it counts all substitutions, including those which reverse an earlier mutation, and cause the sequence to revert to its initial letter.</p>
 <p>Now, let us assume <span class="math inline">\(a\)</span> is small, as is usually the case; as you recall from section <span class="math inline">\(\ref{sec:bio3}\)</span>, for humans the rate of substitutions per generation per nucleotide is about <span class="math inline">\(10^{-8}\)</span>. By Taylor expansion of the logarithm around 1, <span class="math inline">\(\log (1 - \frac{4}{3} a) \approx - \frac{4}{3}a\)</span>. Using the formula for <span class="math inline">\(t\)</span> from above with this approximation, we find the Jukes-Cantor phylogenetic distance to be: <span class="math display">\[ d_{JC} = \frac{\log (1 -  \frac{4}{3} m)}{ - \frac{4}{3}a} a =  -\frac{3}{4}\log (1 -  \frac{4}{3} m)\]</span> This formula has the correct behavior in the two limits: when <span class="math inline">\(m = 0\)</span>, <span class="math inline">\(d_{JC} = 0\)</span> (identical sequences have zero distance), and when <span class="math inline">\(m \rightarrow 3/4\)</span>, <span class="math inline">\(d_{JC} \rightarrow \infty\)</span>, since 3/4 is the maximum possible fraction of differences under the Jukes-Cantor model. Thus, we have obtained an analytic formula for the phylogenetic distance based on the fraction of differences between two homologous sequences.</p>
 <p>A useful discussion of the details of connecting the Jukes-Cantor distance to phylogenetic distances can be found on the treethinkers blog , describing several possible adjustments that can be made to the formula. It can then be used to calculate a <em>distance matrix</em> that contains distances between all pairs from collection of sequences. There are algorithms that can generate phylogenetic trees based on a distance matrix, which minimize the total phylogenetic distance of all the branches. This is one approach that biologists use to infer evolutionary relationships from molecular sequence data, but there are many others, including maximum likelihood and parsimony models.</p>
 </section>
-<section id="kimura-model" class="level3" data-number="16.4.3">
-<h3 data-number="16.4.3" class="anchored" data-anchor-id="kimura-model"><span class="header-section-number">16.4.3</span> Kimura model</h3>
+<section id="kimura-model" class="level3" data-number="18.4.3">
+<h3 data-number="18.4.3" class="anchored" data-anchor-id="kimura-model"><span class="header-section-number">18.4.3</span> Kimura model</h3>
 <p>One can devise more sophisticated models of base substitution. There are two classes of nucleotide bases: purines (A,G) and pyrimidines (C,T). One may consider the difference in rates of <em>transitions</em> (substitutions within the classes) and <em>transversions</em> (substitutions of purines by pyrimidines and vice versa). This is known as the Kimura model and can be written as follows as Markov chain: <span class="math display">\[ \left(\begin{array}{c} P_A \\ P_G \\ P_C \\ P_T \end{array}\right)_{t+1}  = \left(\begin{array}{cccc}1-\beta-\gamma &amp; \beta &amp; \gamma/2 &amp;  \gamma/2 \\ \beta  &amp; 1-\beta-\gamma &amp; \gamma/2 &amp; \gamma/2 \\ \gamma/2 &amp; \gamma/2 &amp; 1-\beta-\gamma&amp; \beta  \\ \gamma/2 &amp;\gamma/2 &amp; \beta  &amp; 1-\beta-\gamma \end{array}\right) \left(\begin{array}{c} P_A \\ P_G \\ P_C \\ P_T \end{array}\right)_t \]</span></p>
 <p>where <span class="math inline">\(\beta\)</span> is the rate of transitions and <span class="math inline">\(\gamma\)</span> is the rate of transversions per generation. This model has two different parameters, and as those two rates are empirically different (transitions occur more frequently, since the bases are more chemically similar) the model is more realistic. Whether or not it is worth the additional complexity depends on the question at hand.</p>
 </section>
-<section id="divergence-of-human-and-chimp-genomes" class="level3" data-number="16.4.4">
-<h3 data-number="16.4.4" class="anchored" data-anchor-id="divergence-of-human-and-chimp-genomes"><span class="header-section-number">16.4.4</span> divergence of human and chimp genomes</h3>
+<section id="divergence-of-human-and-chimp-genomes" class="level3" data-number="18.4.4">
+<h3 data-number="18.4.4" class="anchored" data-anchor-id="divergence-of-human-and-chimp-genomes"><span class="header-section-number">18.4.4</span> divergence of human and chimp genomes</h3>
 <p>The human genome sequence was reported in 2001 and the genome of our closest living inter-species relative, the chimpanzee, was published in 2005 . Comparison between the two genomes has allowed us to peer into the evolutionary history of the two lineages. Although our genomes are quite similar, several large genome changes separate us and chimps. One particularly big difference is the number of chromosomes: human genome is organized into 23 chromosomes while chimps have 24. This suggests two options: either the common ancestor had 23 chromosomes and one of them split in the chimpanzee lineage, or the common ancestor has 24 and an two of them merged in the human lineage. Determining the complete sequences has answered that questions decisively: the human chromosome 2 is a result of a fusion of two ancestral chromosomes. This is supported by multiple observations, in particular that the two halves of human chromosome 2 can be matched to contiguous sequences in two separate chimp chromosomes, as well as the presence of telomere sequences, which form caps on the ends of chromosomes, in the middle of human chromosome 2. The entire story of great ape chromosomal is still in the process of being investigated, here is one recent study that examines the history of gorilla and orangutan chromosomal modification as well .</p>
 <p>Besides the large-scale changes, many point mutations have accumulated since the split of the two lineages. Large portions of the two genomes can be directly aligned, and the the differences measured as fractions of letters that do not match in a particular region. In the original report on the chimp genome , the authors calculated the divergence (mean fraction of different letters in an aligned sequence) to be 1.23%. The distribution of these divergences is shown in figure <span class="math inline">\(\ref{fig:ch13_human_chimp}\)</span>. This information allows us to calculate the likely time since the split of the two lineages to be about 6-7 million years. The model used to make that calculation is more sophisticated than the simple Jukes-Cantor substitution model, and uses a maximum-likelihood approach.</p>
 <p><img src="ch13/human_chimp1.png" class="img-fluid" alt="Histogram of divergence values between human and chimp gehnomes for 1 Mb long segments of the genome (blue indicates segments from autosomes, red - from the X chromosome and green - from the Y chromosome; (figure from , used by permission)"> <img src="ch13/human_chimp2.png" class="img-fluid" alt="Divergence values between human and chimp genomes distribution for different chromosomes (figure from , used by permission)"></p>
 </section>
-<section id="discussion-questions" class="level3" data-number="16.4.5">
-<h3 data-number="16.4.5" class="anchored" data-anchor-id="discussion-questions"><span class="header-section-number">16.4.5</span> Discussion questions</h3>
+<section id="discussion-questions" class="level3" data-number="18.4.5">
+<h3 data-number="18.4.5" class="anchored" data-anchor-id="discussion-questions"><span class="header-section-number">18.4.5</span> Discussion questions</h3>
 <p>The following questions refer to the study <a href="https://www.nature.com/articles/nature04072">Initial sequence of the chimpanzee genome and comparison with the human genome</a></p>
 <ol type="1">
 <li><p>Name some possible challenges in comparing genomes between two different species.</p></li>
@@ -800,7 +810,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./markov_stat.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

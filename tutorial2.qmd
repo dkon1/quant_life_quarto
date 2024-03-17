@@ -1,0 +1,449 @@
+# Tutorial 2: Vectors and plotting
+
+### Learning goals
+
+In this tutorial you will learn to:
+
+-   Assign vector variables 
+-   Perform calculations using vectors
+-   Use indexing with vectors
+-   Make plots using vectors
+-   Plot functions using expressions
+-   Add axis labels and legends to plots
+
+Programming means arranging a number of commands in a particular order to perform a task. Typing them one at a time into the command line is inefficient and error-prone. Instead, the commands are written into a file called a program or script (the name depends on the type of language; since R is a scripting language you will be writing scripts), which can be edited, saved, copied, etc. In this course we use Quarto documents with scripts contained within code chunks, but you can keep code in separate R script files that have extension `.R`. Now that you know how to create a script, **you should never type your R code into the command line**, unless you're testing a single command to see what it does, or looking up help.
+
+R comes equipped with many *functions* that correspond to standard mathematical functions. As we saw in section \ref{sec:comp1}, `exp()` is the exponential function that returns $e$ raised to the power of the input value. Other common ones are: `sqrt()` returns the square root of the input value; `sin()` and `cos()` return the sine and the cosine of the input value, respectively. Note that all of these function names are followed by parentheses, which is a hallmark of a function (in R as well as in mathematics). This indicates that the input value has to go there, for example `exp(5)`. To compute the value of $e^5$, save it into a variable called `var1` and then print out the value on the screen, you can create the following script:
+
+```{webr-r}
+var1 <- exp(5)
+print(var1)
+```
+
+If you run the above code chunk in R Studio you will see two things happen: a variable named var1 appears in the Environment window (top right) with the value 148.41... and the same value is printed out in the command line window (bottom left).
+
+::: callout-tip
+## programming principle
+
+In procedural programming languages (which includes R) the computer (that is, the compiler or interpreter) evaluates the commands one line at a time, from top to bottom. At each line, it uses variable values that are currently assigned. 
+:::
+
+For example, if one variable (`var1`) was assigned in terms of another (by dividing `var2` by 10), and then `var2` is changed later, this does not change the value of `var1`. This short script illustrates this:
+
+```{webr-r}
+var2 <- 20
+var1 <- var2/10
+print(var1)
+var2 <- 10
+print(var1)
+```
+
+Notice the value of `var1` doesn't change, because the R interpreter reads the commands one by one, and does not go back to re-evaluate the assignment for var1 after `var2` is changed. Learning to think in this methodical, literal manner is crucial for developing programming skills.
+
+## Vector variables
+
+::: callout-tip
+## Array variables
+
+A variable that contains multiple numbers (or other values) is called an **array**. One-dimensional arrays called **vectors** have values arranged in an ordered list, and these **elements** can be located by their position in the list, called the **index** of the element.
+:::
+
+### Assigning vectors and idexing
+
+There are several ways of creating a vector of numbers in R. The first is to put together several numbers by listing them inside the function `c()`:
+
+```{webr-r}
+vec<-c(pi,45,912.8, 0)
+print(vec)
+```
+
+`vec` is now a vector variable that contains four different numbers. Each of those numbers can be accessed individually by referencing its position in the vector, called the *index*. In the R language the the index for the first number in a vector is 1, the index for the second number is 2, etc. The index is placed in square brackets after the vector name, as follows:
+
+```{webr-r}
+print(vec[1])
+print(vec[4])
+```
+
+
+
+Another way to generate a sequence of numbers in a particular order is to use the colon operator, which produces a vector of integers from the first number to the last, inclusive. Here are two examples:
+
+```{webr-r}
+vec1<-1:20
+print(vec1)
+vec2<-0:-20
+print(vec2)
+```
+
+
+If you want to generate a sequence of numbers with a constant difference other than 1, you're in luck: R provides a function called `seq()`. It takes three inputs: the starting value, the ending value, and the step (difference between successive elements). For example, to generate a list of numbers starting at 20 up to 50, with a step size of 3, type the first command; to obtain the same sequence in reverse, use the second command:
+
+```{webr-r}
+vec1<-seq(20,50,3)
+print(vec1)
+vec2<-seq(50,20,-3)
+print(vec2)
+```
+
+
+Sometimes you want to create a vector of repeated values. For example, to create a variable with 10 zeros you can use `rep()` like this:
+
+```{webr-r}
+zeros <- rep(0,10)
+print(zeros)
+```
+
+You can repeat any value, say create a vector by repeating the number pi:
+
+```{webr-r}
+pies <- rep(pi,7)
+print(pies)
+```
+
+You can even repeat another vector, like the vector `vec` that was assigned above:
+
+```{webr-r}
+vecs <- rep(vec, 5)
+print(vecs)
+```
+
+### subsetting or slicing vectors
+
+It is often useful to extract only some of the vector elements, not just one but also not all. This is called *subsetting* or *slicing* a vector, and this is especially important when handling and analyzing large data vectors. In our simple (base R) examples, we will stick to using the `[]` and putting in a **vector of indices** to indicate which elements we want to extract. One can use the `c()` function:
+
+```{webr-r}
+vec1 <- 4:10
+print(vec1)
+print(vec1[c(5, 2)])
+```
+
+This command extracted the fifth and second element of the vector `vec1`, in that order. One can also use the colon to extract a range of vector elements, for example the fourth through the seventh element of `vec2` in order:
+
+```{webr-r}
+vec2 <- -5:10
+print(vec2)
+print(vec2[4:7])
+```
+
+
+Finally, one can also exclude certain elements of a vector by using negative numbers in indexing. For example, the following script assigns and prints all except for the first 4 elements of vector `vec3`:
+
+```{webr-r}
+vec3 <- seq(0,1,0.1)
+print(vec3)
+print(vec3[-(1:4)])
+```
+
+### using vector variables for calculations
+
+One of the main advantages of vector variables is that one can perform operations on all of the numbers stored in the vector at once. For instance, to multiply every element of the vector by the same number, it's enough to do the following:
+
+```{webr-r}
+vec<-c(pi,45,912.8, 0)
+NewVec <- 2*vec
+print(NewVec)
+```
+
+You can also perform calculations with multiple vector variables, but this requires extra care. R can perform any arithmetic operation with two vector variables, for instance adding two vectors results in a vector containing the sum of corresponding elements of the two vectors:
+
+```{webr-r}
+vec1<-0:3
+vec2<-1:4
+print(vec1)
+print(vec2)
+tot <- vec1 + vec2
+print(tot)
+```
+
+Here each of the numbers in `vec1` is added to the number in the same position in `vec2` and the result is a vector with the same number of elements.
+
+### What can go wrong
+
+When performing arithmetic on two vectors, you need to make sure that they have the same number of elements (length). Vector length can be obtained using the function `length()`. Suppose we assign `vec1` and `vec2` to have different lengths:
+
+```{webr-r}
+vec1<-1:3
+vec2<-0:4
+length(vec1)
+length(vec2)
+```
+
+You see that `vec1` has three elements, while `vec2` has five, so adding them together element by element is not possible. If you try to operate on (e.g. add) two vectors of different lengths, R will return a warning and the result will not be what you expect:
+
+```{webr-r}
+vec1<-1:2
+vec2<-0:4
+print(vec1)
+print(vec2)
+tot <- vec1 + vec2
+print(tot)
+```
+
+### Exercises
+
+The following R commands or scripts contain errors; your job is to fix them so they do what each exercise asks you to do. Try figuring out the errors on your own before clicking on the Hint box to expand it.
+
+1.  Assign a vector of three numbers to a variable
+
+```{webr-r}
+nums <- (3,8,16)
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+use the function `c()`
+:::
+
+2.  Assign a range of values from 1 to 10 to the vector variable `vals` and print out the third value in the vector
+
+```{webr-r}
+vals <- 1:10
+print[vals(3)]
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+print function requires `()`; indexing vectors requires `[ ]`.
+:::
+
+
+3.  Assign a range of integers from 0 to 20 to the vector variable `all_vals` and print out the third and nineteenth values:
+
+```{webr-r}
+all_vals <- 0:20
+print(all_vals[3,9])
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+use the function `c()` to combine indices 3 and 9.
+:::
+
+
+4.  Multiply the vector `vals` by the first ten elements of vector `all_vals` and assign the result to variable `product` and print it out:
+
+```{webr-r}
+vals <- 1:10
+all_vals <- 0:20
+product <- vals*all_vals
+print(product)
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+use `:` to create a vector of ten indices from 1 to 10 and subset the variable `all_vals`
+:::
+
+
+5.  Add the vector `vals` and the odd-numbered elements (with indices 1,3,..) of the vector `all_vals` and assign the result to variable `total` and it print out:
+
+```{webr-r}
+vals <- 1:10
+all_vals <- 0:20
+total <- vals + all_vals
+print(total)
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+use `seq()` to create a vector of odd numbered indices and subset the variable `all_vals`
+:::
+
+## Calculations and plotting with vectors
+
+The following chunk creates a vector variable `time`, then calculates a new variable `quad` using `time` in a single operation:
+
+```{webr-r}
+time <- seq(0,10,0.2)
+quad <- (time - 5)^2
+print(time)
+print(quad)
+```
+
+
+::: callout-tip
+## using vectors to plot
+Certain functions in R create graphical output, for example `plot()` makes an image with a plot of two vectors. These images can be embedded in a report file (like the HTML file you are viewing) or can be saved to a file and shared separately. Some functions create a new plot (e.g. `plot()`), while others can add more plots to an existing window (e.g. `lines()` or `points()`).
+:::
+
+### using plot()
+
+The function `plot()` takes the two vector variables assigned above and plots `time` on the x-axis and `quad` on the y-axis, then adds a title to the plot
+
+```{webr-r}
+plot(time, quad, main = 'Quadratic function of time')
+```
+
+`plot()` is a versatile function that has many options. One can change the type of plot to use continuous curves or lines, which is done with `type = 'l'` (NOTE this is a lower case letter L) and add labels for the axes to replace the generic labels. You can also control line width, color, and many other details by setting other options, for a full description type `help(plot)` in the console or type `plot` in the search bar of the `Help` pane in the bottom right window of RStudio.
+
+```{webr-r}
+plot(time,quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )
+```
+
+### using lines() or points()
+
+The `plot()` function creates a new plot window, so if you want to add another plot on top of the first one, you have to use another function. There are two ones available: `lines()` which produces continuous curves connecting the points, and `points()` which plots individual symbols at every point.
+
+```{webr-r}
+cubic <- 0.2*(time-6)^3 + 4
+plot(time,quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)' )
+lines(time, cubic, col = 'red')
+```
+
+The plot has a problem, because it doesn't show the full extent of the cubic function. This is because `plot()` automatically sets the limits window based on the variables given to it, and calling `lines()` does not adjust them. You can adjust them manually by specifying the x and y limits in the `plot()` function call, like this:
+
+```{webr-r}
+plot(time, quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )
+lines(time, cubic, col = 'red')
+```
+
+### adding a legend to a plot
+
+Having multiple graphs on the same plot strongly suggests that we need a legend to help identify the different curves. To create a legend in R we use the `legend` function that will create a little box to place on the plot and will add a label to identify each curve or symbol used to plot different graphs. For example, this will create a legend for two different colored curves and give the black curve the label `quadratic` and the red curve the label `cubic` and place it in the bottom right corner:
+
+```{webr-r}
+plot(time, quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )
+lines(time, cubic, col = 'red')
+legend("bottomright", legend = c('quadratic', 'cubic'), col = c('black', 'red'), lty=1)
+```
+
+We may want to plot one graph made up of symbols (e.g. circles) and another one as a curve, and this needs to be reflected in the legend. The option `pch=c(1,NA)` specifies the first one to be a symbol (circle) and the second one to have no symbol, while the option `lty=c(0,1)` specifies the first one to not have a line (0) and the second one to be a continuous line (1):
+
+```{webr-r}
+plot(time, quad, main = 'Quadratic and cubic functions of time', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )
+lines(time, cubic, col = 'red')
+legend("bottomright", legend = c('quadratic', 'cubic'), col = c('black', 'red'), pch = c(1, NA), lty = c(0, 1))
+```
+
+### using curve()
+
+There is another function in R for plotting graphs of functions, called `curve()`. It has three basic inputs: the function expression, the lower limit of the range of x (the independent function), and the upper limit of the range. Here is an example:
+
+```{webr-r}
+curve(x^2,0,3, xlab = 'x', ylab = 'f(x)')
+curve(5*x,0,3,add=TRUE,col='red')
+legend("topleft", legend = c('quadratic', 'linear'), col = c('black', 'red'), lty = 1)
+```
+
+Note that you can use the option `add=TRUE` to make sure the graph is overlaid on top of the current one.
+
+Once again, the second graph does not fit into the plot window so the x and y limits can be changed by setting the options `xlim` and `ylim` in the first `curve()` command:
+
+```{webr-r}
+curve(x^2,0,3, xlab = 'x', ylab = 'f(x)', xlim = c(0,3), ylim = c(0,15))
+curve(5*x,0,3,add=TRUE,col='red')
+legend("topleft", legend = c('quadratic', 'linear'), col = c('black', 'red'), lty = 1)
+```
+
+### What can go wrong
+
+One of the most common issues is switching the order of the two variables in `plot()` or related graphing functions. Let us switch the variables `time` and `quad` and see what happens:
+
+```{webr-r}
+plot(quad, time, main = 'NOT a quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )
+```
+
+Another common problem is trying to plot two vectors that have different lengths. This should not be a problem if you calculated the y-variable from the x-variable, like we did above, but what if we add one extra element to `time`:
+
+```{webr-r}
+time[52] <- 10.2
+plot(time, quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )
+```
+
+Running the code results in an error you see above. To fix it, you can recalculate `quad` using the new vector `time`:
+
+```{webr-r}
+quad <- (time - 5)^2
+plot(time, quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )
+```
+
+### Exercises
+
+The following R commands or scripts contain errors; your job is to fix them so they do what each exercise asks you to do. Try figuring out the errors on your own before clicking on the Hint box to expand it.
+
+1.  Assign an an array of values using `seq()` to the vector `vals`. Multiply this vector by 8, add 5 and assign the result to a vector `new_vals`
+
+```{webr-r}
+vals <- seq(0,5,0.1)
+new_vals <- 5 + 8vals
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+multiplication must be specified by `*`
+:::
+
+
+2.  Assign `range` to be a sequence of values from 0 to 100 with step of 0.1, and calculate the vector variable `result` as the square root of the vector variable `range`
+
+```{webr-r}
+range <- seq(0,0.1,100)
+result <- sqrt(range)
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+check the order of inputs in function `seq()`
+:::
+
+
+3.  Assign the same two variables and plot `result` as a function of `range`
+
+```{webr-r}
+range <- seq(0,100,0.1)
+result <- sqrt(range)
+plot(result, range, type='l')
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+the independent variable must be the first input and the dependent variable must be the second input of `plot()`
+:::
+
+
+4.  Plot the graph of the function $f(x) = (45-x)/(4x+3)$ over the range of 0 to 100 using `curve()`
+
+```{webr-r}
+curve((45-x)/(4x+3), 0, 100)
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+multiplication must be specified by `*`
+:::
+
+
+5.  This code assigns the independent variable `lig` and is supposed to plot the Hill function $f(lig) = lig^{10}/(5000+lig^{10})$ using circles and the linear function $g(lig) = 0.1lig$ using a continuous line on the same plot and create a legend the describes the two plots.
+
+```{webr-r}
+lig <- seq(0,10,0.2)
+f <- lig^10/(5000+lig^10)
+plot(lig,f, xlab = 'lig', ylab = 'functions')
+g <- 0.1*lig
+plot(lig,g)
+legend("bottomright", legend = c('Hill', 'linear'), col = c('black', 'red'), pch = c(1, 2), lty = c(2, 1))
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+the second graph should be made with `lines()` and color red; in `legend` change the 'pch' and 'lty' options.
+:::
+
+
+6.  Overlay two different plots of the logistic function with different values of the parameter $r$
+
+```{webr-r}
+time<-0:100
+a<-1000
+b<-50 
+r<-0.1
+Population<-a*exp(r*time)/(b+exp(r*time)) 
+plot(time,Population,type='l') 
+r<-10 
+lines(time,Population,col=2)
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+the vector `Population` needs to be reassigned using the new value of `r` before plotting it.
+:::

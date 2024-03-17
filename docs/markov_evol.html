@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - 14&nbsp; Probability distributions of Markov chains</title>
+<title>Quantifying Life - 16&nbsp; Probability distributions of Markov chains</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Quantifying Life - 14&nbsp; Probability distributions of Markov chains">
+<meta name="twitter:title" content="Quantifying Life - 16&nbsp; Probability distributions of Markov chains">
 <meta name="twitter:description" content="In the last chapter we learned to describe randomly changing biological systems using discrete-state Markov models.">
 <meta name="twitter:card" content="summary">
 </head>
@@ -75,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -128,77 +128,87 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
+  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tutorial 1: First steps for coding</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
+  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tutorial 2: Vectors and plotting</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
+  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sampling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling distribution and estimation</span></a>
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  <a href="./sampling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sampling distribution and estimation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
+  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
+  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -215,19 +225,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#probability-distribution-vectors" id="toc-probability-distribution-vectors" class="nav-link active" data-scroll-target="#probability-distribution-vectors"><span class="toc-section-number">14.1</span>  Probability distribution vectors</a>
+  <li><a href="#probability-distribution-vectors" id="toc-probability-distribution-vectors" class="nav-link active" data-scroll-target="#probability-distribution-vectors"><span class="toc-section-number">16.1</span>  Probability distribution vectors</a>
   <ul class="collapse">
-  <li><a href="#markov-chains" id="toc-markov-chains" class="nav-link" data-scroll-target="#markov-chains"><span class="toc-section-number">14.1.1</span>  Markov chains</a></li>
+  <li><a href="#markov-chains" id="toc-markov-chains" class="nav-link" data-scroll-target="#markov-chains"><span class="toc-section-number">16.1.1</span>  Markov chains</a></li>
   </ul></li>
-  <li><a href="#matrix-multiplication" id="toc-matrix-multiplication" class="nav-link" data-scroll-target="#matrix-multiplication"><span class="toc-section-number">14.2</span>  matrix multiplication</a>
+  <li><a href="#matrix-multiplication" id="toc-matrix-multiplication" class="nav-link" data-scroll-target="#matrix-multiplication"><span class="toc-section-number">16.2</span>  matrix multiplication</a>
   <ul class="collapse">
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">14.2.1</span>  Exercises</a></li>
-  <li><a href="#propagation-of-probability-vectors" id="toc-propagation-of-probability-vectors" class="nav-link" data-scroll-target="#propagation-of-probability-vectors"><span class="toc-section-number">14.2.2</span>  propagation of probability vectors</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="toc-section-number">14.2.3</span>  Exercises</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">16.2.1</span>  Exercises</a></li>
+  <li><a href="#propagation-of-probability-vectors" id="toc-propagation-of-probability-vectors" class="nav-link" data-scroll-target="#propagation-of-probability-vectors"><span class="toc-section-number">16.2.2</span>  propagation of probability vectors</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="toc-section-number">16.2.3</span>  Exercises</a></li>
   </ul></li>
-  <li><a href="#mutations-and-molecular-evolution" id="toc-mutations-and-molecular-evolution" class="nav-link" data-scroll-target="#mutations-and-molecular-evolution"><span class="toc-section-number">14.3</span>  Mutations and molecular evolution</a>
+  <li><a href="#mutations-and-molecular-evolution" id="toc-mutations-and-molecular-evolution" class="nav-link" data-scroll-target="#mutations-and-molecular-evolution"><span class="toc-section-number">16.3</span>  Mutations and molecular evolution</a>
   <ul class="collapse">
-  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="toc-section-number">14.3.1</span>  Discussion questions</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="toc-section-number">16.3.1</span>  Discussion questions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -237,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></h1>
 </div>
 
 
@@ -262,8 +272,8 @@ ul.task-list li input[type="checkbox"] {
 <li>multiply matrices and vectors</li>
 <li>use R scripts to calculate the probability distribution any number of time steps in the future</li>
 </ul>
-<section id="probability-distribution-vectors" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="probability-distribution-vectors"><span class="header-section-number">14.1</span> Probability distribution vectors</h2>
+<section id="probability-distribution-vectors" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="probability-distribution-vectors"><span class="header-section-number">16.1</span> Probability distribution vectors</h2>
 <p></p>
 <p>Consider a two-state Markov model }with a given transition matrix and a specified initial state. After one time step, the variable can be in either of two states - this can be simulated in R using a random number generator and a conditional statement. There are only two possible options: either the variable stays in the original state, or transitions from the original state to the other one. For the cell cycle model introduced in the last chapter, with initial state Q, the state space of this experiment contains two state strings: <span class="math inline">\(\{QQ, QR\}\)</span>. After two time steps, there are now four possible paths. For the cell cycle model with initial state <span class="math inline">\(Q\)</span>, the state space is <span class="math inline">\(\{QQQ, QRQ, QRR, QQR\}\)</span>. Based on the calculation of probabilities of a given state that we learned in the last chapter, we can find the probability of each of the paths and then calculate the probability of the cell being in the replicating state after two time steps.</p>
 <p>Let us make the problem a bit more general: take a two-state Markov model with a given transition matrix and a specified initial probability distribution, instead of a single state. In the cell cycle model, let the initial probability of <span class="math inline">\(Q\)</span> be <span class="math inline">\(Q_0\)</span> and the initial probability of <span class="math inline">\(R\)</span> be <span class="math inline">\(R_0\)</span>. Then the event of the cell being in state <span class="math inline">\(Q\)</span> after 1 time step is a combination of two different state strings: <span class="math inline">\(\{QQ, RQ\}\)</span> and the probability of that event is the sum of those two probabilities:</p>
@@ -281,8 +291,8 @@ P(X(1) = R) = p_{RQ}Q_0 + p_{RR}R_0
 </figure>
 </div>
 <p>The calculations are easy for a couple of time steps, but imagine having to do this for ten time steps, or a hundred - you would need to deal with thousands, or in the second case, about <span class="math inline">\(10^{30}\)</span> different state strings! One may use R to run a simulations for many different state strings and plot their histograms (which we will do in section <span class="math inline">\(\ref{sec:proj12}\)</span> in the next chapter). However, it is far more efficient to compute the probability of a cell being in a particular state at a particular time, that is, its probability distribution vector.</p>
-<section id="markov-chains" class="level3" data-number="14.1.1">
-<h3 data-number="14.1.1" class="anchored" data-anchor-id="markov-chains"><span class="header-section-number">14.1.1</span> Markov chains</h3>
+<section id="markov-chains" class="level3" data-number="16.1.1">
+<h3 data-number="16.1.1" class="anchored" data-anchor-id="markov-chains"><span class="header-section-number">16.1.1</span> Markov chains</h3>
 <p>While sometimes simulation of multiple random processes is necessary, it can get expensive. Probability offers us a theoretical way to make predictions for a Markov model, based on the notion of a <em>probability distribution vector</em>. First, let us define a few terms: a <em>Markov chain</em> is the mathematical manifestation of a Markov model. It was dubbed a chain because it consists of a string of linked random variables, the probability of each dependent on the previous one, and generating the next one.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -311,8 +321,8 @@ P(X(t+1) = R) = p_{RQ}P(X(t) = Q) + p_{RR}P(X(t) = R)
 <p>This gives us a predictive formula for the probability distribution of a Markov random variable at the next time point, given its current probability distribution. Notice that all four of the transition probabilities are used in the system of equations, and that they are arranged in the same way that I defined them in the transition matrix. This leads to a great simplification using matrices and vectors.</p>
 </section>
 </section>
-<section id="matrix-multiplication" class="level2" data-number="14.2">
-<h2 data-number="14.2" class="anchored" data-anchor-id="matrix-multiplication"><span class="header-section-number">14.2</span> matrix multiplication</h2>
+<section id="matrix-multiplication" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="matrix-multiplication"><span class="header-section-number">16.2</span> matrix multiplication</h2>
 <p>Now is a good time to properly define what matrices are and how we can operate on them. We have already seen transition matrices, but just to make sure all of the terms are clear:</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -376,8 +386,8 @@ c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + ... + a_{iN}b_{Nj} = \sum_{k=1}^q a_{ik} 
 </div>
 <p>We usually think of vectors as an ordered collection of numbers, but they can also be thought of as matrices, albeit very skinny ones. A <em>column vector</em> is a matrix that has only one column, and a <em>row vector</em> is a matrix with only one row. Even if a column vector and a row vector contain the same numbers in the same order, they are different matrices, because they function differently when multiplied. When multiplying an <span class="math inline">\(n\)</span> by <span class="math inline">\(m\)</span> matrix and a vector, one can multiply with the vector on the left, or on the right, depending on the type of vector: if it is a column vector, it must be on the right side of the matrix, while a row vector is multiplied on the left. Since the inner dimensions have to match, an <span class="math inline">\(n\)</span> by <span class="math inline">\(m\)</span> matrix can be multiplied by a <span class="math inline">\(m\)</span> by 1 column vector on the right, or by a 1 by <span class="math inline">\(n\)</span> row vector on the left.</p>
 <p>The rules of matrix multiplication may seem annoyingly baroque, but you will see the payoff in simplification of our Markov calculations.</p>
-<section id="exercises" class="level3" data-number="14.2.1">
-<h3 data-number="14.2.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">14.2.1</span> Exercises</h3>
+<section id="exercises" class="level3" data-number="16.2.1">
+<h3 data-number="16.2.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">16.2.1</span> Exercises</h3>
 <p>For the following pairs of matrices determine whether matrix multiplication is valid for <span class="math inline">\(A \times B\)</span> and <span class="math inline">\(B \times A\)</span>, and for the valid cases indicate the dimension of the resulting matrix.</p>
 <ol type="1">
 <li><p><span class="math display">\[
@@ -399,8 +409,8 @@ A =  \left(\begin{array}{ccc} -1 &amp;  2 &amp; -9 \end{array}\right);  \;  B = 
 \]</span></p></li>
 </ol>
 </section>
-<section id="propagation-of-probability-vectors" class="level3" data-number="14.2.2">
-<h3 data-number="14.2.2" class="anchored" data-anchor-id="propagation-of-probability-vectors"><span class="header-section-number">14.2.2</span> propagation of probability vectors</h3>
+<section id="propagation-of-probability-vectors" class="level3" data-number="16.2.2">
+<h3 data-number="16.2.2" class="anchored" data-anchor-id="propagation-of-probability-vectors"><span class="header-section-number">16.2.2</span> propagation of probability vectors</h3>
 <p>To calculate the probability of states in the future, we need to start with an initial probability distribution - let us call it <span class="math inline">\(P(0)\)</span>. To advance it by one time step, multiply it by the transition matrix, and obtain the probability distribution at <span class="math inline">\(P(1)\)</span>. To calculate the probability distribution after two time steps, multiply the distribution vector <span class="math inline">\(P(1)\)</span> by the transition matrix and obtain the vector <span class="math inline">\(P(2)\)</span>.</p>
 <p><strong>Example.</strong> Take the case of the cell cycle model where the cell is initially in the quiescent state, the vector propagation looks as follows: <span class="math display">\[ P(1) = M \times  P(0) = \left(\begin{array}{cc}0.95 &amp; 0.1 \\0.05 &amp; 0.9\end{array}\right)  \left(\begin{array}{c}1  \\ 0\end{array}\right) = \left(\begin{array}{c} 0.95 \\ 0.05\end{array}\right) \]</span> The Markov property allows us to calculate the probability distribution at the next step (<span class="math inline">\(t+1\)</span>) given the distribution at the current step (<span class="math inline">\(t\)</span>). This means to find the distribution of the cell cycle model after two time steps, we multiply the present distribution vector by the matrix <span class="math inline">\(M\)</span>: <span class="math display">\[ P(2) = M   \times  P(1) =  \left(\begin{array}{cc}0.95 &amp; 0.1 \\0.05 &amp; 0.9\end{array}\right)\left(\begin{array}{c} 0.95 \\ 0.05\end{array}\right) = \left(\begin{array}{c} 0.9075 \\ 0.0925\end{array}\right) \]</span></p>
 <p>One can calculate the probability distribution vectors for as many time steps as needed by repeatedly multiplying the current probability distribution vector by the transition matrix. The general formula for the probability distribution of a Markov chain at any time <span class="math inline">\(t\)</span> is: <span class="math display">\[
@@ -408,8 +418,8 @@ P(t) = M \times P(t-1) = M^{t}  \times  P(0)
 \label{eq:Markov_chain}
 \]</span> which may be expressed in terms of repeated matrix multiplications (or matrix <span class="math inline">\(M\)</span> raised to the power <span class="math inline">\(t\)</span>) of the initial distribution vector <span class="math inline">\(P(0)\)</span>. This shows that in order to predict the distribution in the future, we need to know only two things: the initial distribution and the transition matrix of the Markov model.</p>
 </section>
-<section id="exercises-1" class="level3" data-number="14.2.3">
-<h3 data-number="14.2.3" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">14.2.3</span> Exercises</h3>
+<section id="exercises-1" class="level3" data-number="16.2.3">
+<h3 data-number="16.2.3" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">16.2.3</span> Exercises</h3>
 <p>Use the transition matrices you constructed for these models in the previous chapter to calculate the probability distribution for two time steps into the future.</p>
 <p><img src="ch10/AB_trans_diag.png" class="img-fluid" alt="Model 1"> <img src="ch10/CD_trans_diag.png" class="img-fluid" alt="Model 2"> <img src="ch10/EF_trans_diag.png" class="img-fluid" alt="Model 3"> <img src="ch10/GH_trans_diag.png" class="img-fluid" alt="Model 4"></p>
 <ol type="1">
@@ -425,12 +435,12 @@ P(t) = M \times P(t-1) = M^{t}  \times  P(0)
 </ol>
 </section>
 </section>
-<section id="mutations-and-molecular-evolution" class="level2" data-number="14.3">
-<h2 data-number="14.3" class="anchored" data-anchor-id="mutations-and-molecular-evolution"><span class="header-section-number">14.3</span> Mutations and molecular evolution</h2>
+<section id="mutations-and-molecular-evolution" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="mutations-and-molecular-evolution"><span class="header-section-number">16.3</span> Mutations and molecular evolution</h2>
 <p>Think of a genetic sequence (either of nucleotides or amino acids) evolving over many generations. Once in a while, a mutation will change one of the letters in the sequence; the most common mutations, as we discussed in chapter 3, are substitutions. Although each position can contain multiple letters (4 for DNA, 20 for amino acids), let us simplify the question as follows: if we know the ancestral sequence, what fraction of the sequence is unchanged after a given number of generations? To answer this question we only need two states to describe each position in the sequence: ancestral (A) and mutant (M). The transition probability from A to M is the substitution mutation rate, which has units of mutations per nucleotide per generation. The transition probability from M to A is the rate of reversion to ancestral state, which is reasonably assumed to be less than the overall mutation rate, since for DNA there are three options for mutation from an ancestral letter, but only one option for reversion (only one ancestral letter). Thus, under the simple assumption that all substitution mutations are equally probable, we can postulate that for a mutation rate <span class="math inline">\(a\)</span>, the reversion rate is <span class="math inline">\(a/3\)</span>.</p>
 <p>Figure <span class="math inline">\(\ref{fig:bio11}\)</span> shows the evolution of probability vectors for this model for two different values of mutation rate <span class="math inline">\(a\)</span>. In both calculations initially 100% of the sequence is made up of ancestral letters, and then some fraction acquires mutations. Not surprisingly, if the mutation rate is greater, mutations are acquired faster and the fraction of ancestral letter declines faster: in the plot on the left (<span class="math inline">\(a=0.0001\)</span>) more than 90% of the sequence is indistinguishable from the ancestor after 1000 generations, and in the plot on the right (<span class="math inline">\(a=0.001\)</span>) less than half remains in the ancestral state after the same time passed. This model is a simplification of the famous Jukes-Cantor model of molecular evolution, which we will investigate in section <span class="math inline">\(\ref{sec:bio13}\)</span>, where we will use it to predict the time of divergence of two sequences from a common ancestor.</p>
-<section id="discussion-questions" class="level3" data-number="14.3.1">
-<h3 data-number="14.3.1" class="anchored" data-anchor-id="discussion-questions"><span class="header-section-number">14.3.1</span> Discussion questions</h3>
+<section id="discussion-questions" class="level3" data-number="16.3.1">
+<h3 data-number="16.3.1" class="anchored" data-anchor-id="discussion-questions"><span class="header-section-number">16.3.1</span> Discussion questions</h3>
 <p>These questions refer to the two-state Jukes-Cantor model presented above.</p>
 <div class="cell" data-layout-align="center" data-fig.asp="0.75">
 <div class="cell-output-display">
@@ -598,12 +608,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./markov_model.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./markov_stat.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
