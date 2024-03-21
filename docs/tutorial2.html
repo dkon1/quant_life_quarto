@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - 4&nbsp; Tutorial 2: Vectors and plotting</title>
+<title>Quantifying Life - Tutorial 2: Vectors and plotting</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -227,7 +227,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"var1 <- exp(5)\nprint(var1)","id":1,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-1","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"var2 <- 20\nvar1 <- var2/10\nprint(var1)\nvar2 <- 10\nprint(var1)","id":2,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-2","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vec<-c(pi,45,912.8, 0)\nprint(vec)","id":3,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-3","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"print(vec[1])\nprint(vec[4])","id":4,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-4","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vec1<-1:20\nprint(vec1)\nvec2<-0:-20\nprint(vec2)","id":5,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-5","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vec1<-seq(20,50,3)\nprint(vec1)\nvec2<-seq(50,20,-3)\nprint(vec2)","id":6,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-6","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"zeros <- rep(0,10)\nprint(zeros)","id":7,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-7","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"pies <- rep(pi,7)\nprint(pies)","id":8,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-8","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vecs <- rep(vec, 5)\nprint(vecs)","id":9,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-9","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vec1 <- 4:10\nprint(vec1)\nprint(vec1[c(5, 2)])","id":10,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-10","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vec2 <- -5:10\nprint(vec2)\nprint(vec2[4:7])","id":11,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-11","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vec3 <- seq(0,1,0.1)\nprint(vec3)\nprint(vec3[-(1:4)])","id":12,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-12","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vec<-c(pi,45,912.8, 0)\nNewVec <- 2*vec\nprint(NewVec)","id":13,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-13","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vec1<-0:3\nvec2<-1:4\nprint(vec1)\nprint(vec2)\ntot <- vec1 + vec2\nprint(tot)","id":14,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-14","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vec1<-1:3\nvec2<-0:4\nlength(vec1)\nlength(vec2)","id":15,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-15","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vec1<-1:2\nvec2<-0:4\nprint(vec1)\nprint(vec2)\ntot <- vec1 + vec2\nprint(tot)","id":16,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-16","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"nums <- (3,8,16)","id":17,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-17","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vals <- 1:10\nprint[vals(3)]","id":18,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-18","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"all_vals <- 0:20\nprint(all_vals[3,9])","id":19,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-19","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vals <- 1:10\nall_vals <- 0:20\nproduct <- vals*all_vals\nprint(product)","id":20,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-20","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vals <- 1:10\nall_vals <- 0:20\ntotal <- vals + all_vals\nprint(total)","id":21,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-21","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"time <- seq(0,10,0.2)\nquad <- (time - 5)^2\nprint(time)\nprint(quad)","id":22,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-22","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"plot(time, quad, main = 'Quadratic function of time')","id":23,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-23","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"plot(time,quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","id":24,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-24","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"cubic <- 0.2*(time-6)^3 + 4\nplot(time,quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)' )\nlines(time, cubic, col = 'red')","id":25,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-25","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')","id":26,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-26","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')\nlegend(\"bottomright\", legend = c('quadratic', 'cubic'), col = c('black', 'red'), lty=1)","id":27,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-27","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')\nlegend(\"bottomright\", legend = c('quadratic', 'cubic'), col = c('black', 'red'), pch = c(1, NA), lty = c(0, 1))","id":28,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-28","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"curve(x^2,0,3, xlab = 'x', ylab = 'f(x)')\ncurve(5*x,0,3,add=TRUE,col='red')\nlegend(\"topleft\", legend = c('quadratic', 'linear'), col = c('black', 'red'), lty = 1)","id":29,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-29","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"curve(x^2,0,3, xlab = 'x', ylab = 'f(x)', xlim = c(0,3), ylim = c(0,15))\ncurve(5*x,0,3,add=TRUE,col='red')\nlegend(\"topleft\", legend = c('quadratic', 'linear'), col = c('black', 'red'), lty = 1)","id":30,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-30","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"plot(quad, time, main = 'NOT a quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","id":31,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-31","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"time[52] <- 10.2\nplot(time, quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","id":32,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-32","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"quad <- (time - 5)^2\nplot(time, quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","id":33,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-33","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"vals <- seq(0,5,0.1)\nnew_vals <- 5 + 8vals","id":34,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-34","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"range <- seq(0,0.1,100)\nresult <- sqrt(range)","id":35,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-35","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"range <- seq(0,100,0.1)\nresult <- sqrt(range)\nplot(result, range, type='l')","id":36,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-36","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"curve((45-x)/(4x+3), 0, 100)","id":37,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-37","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"lig <- seq(0,10,0.2)\nf <- lig^10/(5000+lig^10)\nplot(lig,f, xlab = 'lig', ylab = 'functions')\ng <- 0.1*lig\nplot(lig,g)\nlegend(\"bottomright\", legend = c('Hill', 'linear'), col = c('black', 'red'), pch = c(1, 2), lty = c(2, 1))","id":38,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-38","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}},{"code":"time<-0:100\na<-1000\nb<-50 \nr<-0.1\nPopulation<-a*exp(r*time)/(b+exp(r*time)) \nplot(time,Population,type='l') \nr<-10 \nlines(time,Population,col=2)","id":39,"options":{"message":"true","output":"true","autorun":"false","results":"markup","fig-height":5,"warning":"true","comment":"","label":"unnamed-chunk-39","out-height":"","classes":"","read-only":"false","context":"interactive","dpi":72,"fig-width":7,"fig-cap":"","out-width":"700px"}}];
+globalThis.qwebrCellDetails = [{"code":"var1 <- exp(5)\nprint(var1)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-1","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":1},{"code":"var2 <- 20\nvar1 <- var2/10\nprint(var1)\nvar2 <- 10\nprint(var1)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-2","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":2},{"code":"vec<-c(pi,45,912.8, 0)\nprint(vec)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-3","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":3},{"code":"print(vec[1])\nprint(vec[4])","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-4","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":4},{"code":"vec1<-1:20\nprint(vec1)\nvec2<-0:-20\nprint(vec2)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-5","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":5},{"code":"vec1<-seq(20,50,3)\nprint(vec1)\nvec2<-seq(50,20,-3)\nprint(vec2)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-6","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":6},{"code":"zeros <- rep(0,10)\nprint(zeros)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-7","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":7},{"code":"pies <- rep(pi,7)\nprint(pies)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-8","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":8},{"code":"vecs <- rep(vec, 5)\nprint(vecs)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-9","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":9},{"code":"vec1 <- 4:10\nprint(vec1)\nprint(vec1[c(5, 2)])","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-10","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":10},{"code":"vec2 <- -5:10\nprint(vec2)\nprint(vec2[4:7])","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-11","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":11},{"code":"vec3 <- seq(0,1,0.1)\nprint(vec3)\nprint(vec3[-(1:4)])","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-12","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":12},{"code":"vec<-c(pi,45,912.8, 0)\nNewVec <- 2*vec\nprint(NewVec)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-13","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":13},{"code":"vec1<-0:3\nvec2<-1:4\nprint(vec1)\nprint(vec2)\ntot <- vec1 + vec2\nprint(tot)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-14","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":14},{"code":"vec1<-1:3\nvec2<-0:4\nlength(vec1)\nlength(vec2)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-15","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":15},{"code":"vec1<-1:2\nvec2<-0:4\nprint(vec1)\nprint(vec2)\ntot <- vec1 + vec2\nprint(tot)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-16","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":16},{"code":"nums <- (3,8,16)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-17","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":17},{"code":"vals <- 1:10\nprint[vals(3)]","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-18","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":18},{"code":"all_vals <- 0:20\nprint(all_vals[3,9])","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-19","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":19},{"code":"vals <- 1:10\nall_vals <- 0:20\nproduct <- vals*all_vals\nprint(product)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-20","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":20},{"code":"vals <- 1:10\nall_vals <- 0:20\ntotal <- vals + all_vals\nprint(total)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-21","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":21},{"code":"time <- seq(0,10,0.2)\nquad <- (time - 5)^2\nprint(time)\nprint(quad)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-22","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":22},{"code":"plot(time, quad, main = 'Quadratic function of time')","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-23","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":23},{"code":"plot(time,quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-24","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":24},{"code":"cubic <- 0.2*(time-6)^3 + 4\nplot(time,quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)' )\nlines(time, cubic, col = 'red')","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-25","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":25},{"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-26","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":26},{"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')\nlegend(\"bottomright\", legend = c('quadratic', 'cubic'), col = c('black', 'red'), lty=1)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-27","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":27},{"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')\nlegend(\"bottomright\", legend = c('quadratic', 'cubic'), col = c('black', 'red'), pch = c(1, NA), lty = c(0, 1))","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-28","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":28},{"code":"curve(x^2,0,3, xlab = 'x', ylab = 'f(x)')\ncurve(5*x,0,3,add=TRUE,col='red')\nlegend(\"topleft\", legend = c('quadratic', 'linear'), col = c('black', 'red'), lty = 1)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-29","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":29},{"code":"curve(x^2,0,3, xlab = 'x', ylab = 'f(x)', xlim = c(0,3), ylim = c(0,15))\ncurve(5*x,0,3,add=TRUE,col='red')\nlegend(\"topleft\", legend = c('quadratic', 'linear'), col = c('black', 'red'), lty = 1)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-30","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":30},{"code":"plot(quad, time, main = 'NOT a quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-31","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":31},{"code":"time[52] <- 10.2\nplot(time, quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-32","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":32},{"code":"quad <- (time - 5)^2\nplot(time, quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-33","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":33},{"code":"vals <- seq(0,5,0.1)\nnew_vals <- 5 + 8vals","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-34","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":34},{"code":"range <- seq(0,0.1,100)\nresult <- sqrt(range)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-35","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":35},{"code":"range <- seq(0,100,0.1)\nresult <- sqrt(range)\nplot(result, range, type='l')","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-36","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":36},{"code":"curve((45-x)/(4x+3), 0, 100)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-37","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":37},{"code":"lig <- seq(0,10,0.2)\nf <- lig^10/(5000+lig^10)\nplot(lig,f, xlab = 'lig', ylab = 'functions')\ng <- 0.1*lig\nplot(lig,g)\nlegend(\"bottomright\", legend = c('Hill', 'linear'), col = c('black', 'red'), pch = c(1, 2), lty = c(2, 1))","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-38","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":38},{"code":"time<-0:100\na<-1000\nb<-50 \nr<-0.1\nPopulation<-a*exp(r*time)/(b+exp(r*time)) \nplot(time,Population,type='l') \nr<-10 \nlines(time,Population,col=2)","options":{"comment":"","classes":"","warning":"true","read-only":"false","out-width":"700px","context":"interactive","label":"unnamed-chunk-39","dpi":72,"fig-height":5,"fig-width":7,"autorun":"false","message":"true","out-height":"","output":"true","results":"markup","fig-cap":""},"id":39}];
 
 </script>
 <script type="module">
@@ -946,7 +946,7 @@ globalThis.qwebrExecuteCode = async function (
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Quantifying Life - 4&nbsp; Tutorial 2: Vectors and plotting">
+<meta name="twitter:title" content="Quantifying Life - Tutorial 2: Vectors and plotting">
 <meta name="twitter:description" content="In this tutorial you will learn to:">
 <meta name="twitter:card" content="summary">
 </head>
@@ -957,7 +957,7 @@ globalThis.qwebrExecuteCode = async function (
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tutorial 2: Vectors and plotting</span></h1>
+      <h1 class="quarto-secondary-nav-title">Tutorial 2: Vectors and plotting</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -1010,87 +1010,87 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tutorial 1: First steps for coding</span></a>
+  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">Tutorial 1: First steps for coding</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
+  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tutorial 2: Vectors and plotting</span></a>
+  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link active">Tutorial 2: Vectors and plotting</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
+  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
+  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sampling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sampling distribution and estimation</span></a>
+  <a href="./sampling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling distribution and estimation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
+  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
+  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
+  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
+  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1107,23 +1107,23 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals"><span class="toc-section-number">4.0.1</span>  Learning goals</a></li>
-  <li><a href="#vector-variables" id="toc-vector-variables" class="nav-link" data-scroll-target="#vector-variables"><span class="toc-section-number">4.1</span>  Vector variables</a>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
+  <li><a href="#vector-variables" id="toc-vector-variables" class="nav-link" data-scroll-target="#vector-variables">Vector variables</a>
   <ul class="collapse">
-  <li><a href="#assigning-vectors-and-idexing" id="toc-assigning-vectors-and-idexing" class="nav-link" data-scroll-target="#assigning-vectors-and-idexing"><span class="toc-section-number">4.1.1</span>  Assigning vectors and idexing</a></li>
-  <li><a href="#subsetting-or-slicing-vectors" id="toc-subsetting-or-slicing-vectors" class="nav-link" data-scroll-target="#subsetting-or-slicing-vectors"><span class="toc-section-number">4.1.2</span>  subsetting or slicing vectors</a></li>
-  <li><a href="#using-vector-variables-for-calculations" id="toc-using-vector-variables-for-calculations" class="nav-link" data-scroll-target="#using-vector-variables-for-calculations"><span class="toc-section-number">4.1.3</span>  using vector variables for calculations</a></li>
-  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="toc-section-number">4.1.4</span>  What can go wrong</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">4.1.5</span>  Exercises</a></li>
+  <li><a href="#assigning-vectors-and-idexing" id="toc-assigning-vectors-and-idexing" class="nav-link" data-scroll-target="#assigning-vectors-and-idexing">Assigning vectors and idexing</a></li>
+  <li><a href="#subsetting-or-slicing-vectors" id="toc-subsetting-or-slicing-vectors" class="nav-link" data-scroll-target="#subsetting-or-slicing-vectors">subsetting or slicing vectors</a></li>
+  <li><a href="#using-vector-variables-for-calculations" id="toc-using-vector-variables-for-calculations" class="nav-link" data-scroll-target="#using-vector-variables-for-calculations">using vector variables for calculations</a></li>
+  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong">What can go wrong</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul></li>
-  <li><a href="#calculations-and-plotting-with-vectors" id="toc-calculations-and-plotting-with-vectors" class="nav-link" data-scroll-target="#calculations-and-plotting-with-vectors"><span class="toc-section-number">4.2</span>  Calculations and plotting with vectors</a>
+  <li><a href="#calculations-and-plotting-with-vectors" id="toc-calculations-and-plotting-with-vectors" class="nav-link" data-scroll-target="#calculations-and-plotting-with-vectors">Calculations and plotting with vectors</a>
   <ul class="collapse">
-  <li><a href="#using-plot" id="toc-using-plot" class="nav-link" data-scroll-target="#using-plot"><span class="toc-section-number">4.2.1</span>  using plot()</a></li>
-  <li><a href="#using-lines-or-points" id="toc-using-lines-or-points" class="nav-link" data-scroll-target="#using-lines-or-points"><span class="toc-section-number">4.2.2</span>  using lines() or points()</a></li>
-  <li><a href="#adding-a-legend-to-a-plot" id="toc-adding-a-legend-to-a-plot" class="nav-link" data-scroll-target="#adding-a-legend-to-a-plot"><span class="toc-section-number">4.2.3</span>  adding a legend to a plot</a></li>
-  <li><a href="#using-curve" id="toc-using-curve" class="nav-link" data-scroll-target="#using-curve"><span class="toc-section-number">4.2.4</span>  using curve()</a></li>
-  <li><a href="#what-can-go-wrong-1" id="toc-what-can-go-wrong-1" class="nav-link" data-scroll-target="#what-can-go-wrong-1"><span class="toc-section-number">4.2.5</span>  What can go wrong</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="toc-section-number">4.2.6</span>  Exercises</a></li>
+  <li><a href="#using-plot" id="toc-using-plot" class="nav-link" data-scroll-target="#using-plot">using plot()</a></li>
+  <li><a href="#using-lines-or-points" id="toc-using-lines-or-points" class="nav-link" data-scroll-target="#using-lines-or-points">using lines() or points()</a></li>
+  <li><a href="#adding-a-legend-to-a-plot" id="toc-adding-a-legend-to-a-plot" class="nav-link" data-scroll-target="#adding-a-legend-to-a-plot">adding a legend to a plot</a></li>
+  <li><a href="#using-curve" id="toc-using-curve" class="nav-link" data-scroll-target="#using-curve">using curve()</a></li>
+  <li><a href="#what-can-go-wrong-1" id="toc-what-can-go-wrong-1" class="nav-link" data-scroll-target="#what-can-go-wrong-1">What can go wrong</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">Exercises</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1307,7 +1307,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tutorial 2: Vectors and plotting</span></h1>
+<h1 class="title d-none d-lg-block">Tutorial 2: Vectors and plotting</h1>
 </div>
 
 
@@ -1322,8 +1322,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 </header>
 
-<section id="learning-goals" class="level3" data-number="4.0.1">
-<h3 data-number="4.0.1" class="anchored" data-anchor-id="learning-goals"><span class="header-section-number">4.0.1</span> Learning goals</h3>
+<section id="learning-goals" class="level3">
+<h3 class="anchored" data-anchor-id="learning-goals">Learning goals</h3>
 <p>In this tutorial you will learn to:</p>
 <ul>
 <li>Assign vector variables</li>
@@ -1356,8 +1356,8 @@ programming principle
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Notice the value of <code>var1</code> doesn’t change, because the R interpreter reads the commands one by one, and does not go back to re-evaluate the assignment for var1 after <code>var2</code> is changed. Learning to think in this methodical, literal manner is crucial for developing programming skills.</p>
 </section>
-<section id="vector-variables" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="vector-variables"><span class="header-section-number">4.1</span> Vector variables</h2>
+<section id="vector-variables" class="level2">
+<h2 class="anchored" data-anchor-id="vector-variables">Vector variables</h2>
 <div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1371,8 +1371,8 @@ Array variables
 <p>A variable that contains multiple numbers (or other values) is called an <strong>array</strong>. One-dimensional arrays called <strong>vectors</strong> have values arranged in an ordered list, and these <strong>elements</strong> can be located by their position in the list, called the <strong>index</strong> of the element.</p>
 </div>
 </div>
-<section id="assigning-vectors-and-idexing" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="assigning-vectors-and-idexing"><span class="header-section-number">4.1.1</span> Assigning vectors and idexing</h3>
+<section id="assigning-vectors-and-idexing" class="level3">
+<h3 class="anchored" data-anchor-id="assigning-vectors-and-idexing">Assigning vectors and idexing</h3>
 <p>There are several ways of creating a vector of numbers in R. The first is to put together several numbers by listing them inside the function <code>c()</code>:</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1395,8 +1395,8 @@ Array variables
 <div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="subsetting-or-slicing-vectors" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="subsetting-or-slicing-vectors"><span class="header-section-number">4.1.2</span> subsetting or slicing vectors</h3>
+<section id="subsetting-or-slicing-vectors" class="level3">
+<h3 class="anchored" data-anchor-id="subsetting-or-slicing-vectors">subsetting or slicing vectors</h3>
 <p>It is often useful to extract only some of the vector elements, not just one but also not all. This is called <em>subsetting</em> or <em>slicing</em> a vector, and this is especially important when handling and analyzing large data vectors. In our simple (base R) examples, we will stick to using the <code>[]</code> and putting in a <strong>vector of indices</strong> to indicate which elements we want to extract. One can use the <code>c()</code> function:</p>
 <div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1407,8 +1407,8 @@ Array variables
 <div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="using-vector-variables-for-calculations" class="level3" data-number="4.1.3">
-<h3 data-number="4.1.3" class="anchored" data-anchor-id="using-vector-variables-for-calculations"><span class="header-section-number">4.1.3</span> using vector variables for calculations</h3>
+<section id="using-vector-variables-for-calculations" class="level3">
+<h3 class="anchored" data-anchor-id="using-vector-variables-for-calculations">using vector variables for calculations</h3>
 <p>One of the main advantages of vector variables is that one can perform operations on all of the numbers stored in the vector at once. For instance, to multiply every element of the vector by the same number, it’s enough to do the following:</p>
 <div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1417,8 +1417,8 @@ Array variables
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Here each of the numbers in <code>vec1</code> is added to the number in the same position in <code>vec2</code> and the result is a vector with the same number of elements.</p>
 </section>
-<section id="what-can-go-wrong" class="level3" data-number="4.1.4">
-<h3 data-number="4.1.4" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">4.1.4</span> What can go wrong</h3>
+<section id="what-can-go-wrong" class="level3">
+<h3 class="anchored" data-anchor-id="what-can-go-wrong">What can go wrong</h3>
 <p>When performing arithmetic on two vectors, you need to make sure that they have the same number of elements (length). Vector length can be obtained using the function <code>length()</code>. Suppose we assign <code>vec1</code> and <code>vec2</code> to have different lengths:</p>
 <div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1426,8 +1426,8 @@ Array variables
 <div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="exercises" class="level3" data-number="4.1.5">
-<h3 data-number="4.1.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.1.5</span> Exercises</h3>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
 <p>The following R commands or scripts contain errors; your job is to fix them so they do what each exercise asks you to do. Try figuring out the errors on your own before clicking on the Hint box to expand it.</p>
 <ol type="1">
 <li>Assign a vector of three numbers to a variable</li>
@@ -1536,8 +1536,8 @@ Hint
 </div>
 </section>
 </section>
-<section id="calculations-and-plotting-with-vectors" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="calculations-and-plotting-with-vectors"><span class="header-section-number">4.2</span> Calculations and plotting with vectors</h2>
+<section id="calculations-and-plotting-with-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="calculations-and-plotting-with-vectors">Calculations and plotting with vectors</h2>
 <p>The following chunk creates a vector variable <code>time</code>, then calculates a new variable <code>quad</code> using <code>time</code> in a single operation:</p>
 <div id="qwebr-insertion-location-22"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1554,8 +1554,8 @@ using vectors to plot
 <p>Certain functions in R create graphical output, for example <code>plot()</code> makes an image with a plot of two vectors. These images can be embedded in a report file (like the HTML file you are viewing) or can be saved to a file and shared separately. Some functions create a new plot (e.g.&nbsp;<code>plot()</code>), while others can add more plots to an existing window (e.g.&nbsp;<code>lines()</code> or <code>points()</code>).</p>
 </div>
 </div>
-<section id="using-plot" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="using-plot"><span class="header-section-number">4.2.1</span> using plot()</h3>
+<section id="using-plot" class="level3">
+<h3 class="anchored" data-anchor-id="using-plot">using plot()</h3>
 <p>The function <code>plot()</code> takes the two vector variables assigned above and plots <code>time</code> on the x-axis and <code>quad</code> on the y-axis, then adds a title to the plot</p>
 <div id="qwebr-insertion-location-23"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1563,8 +1563,8 @@ using vectors to plot
 <div id="qwebr-insertion-location-24"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="using-lines-or-points" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="using-lines-or-points"><span class="header-section-number">4.2.2</span> using lines() or points()</h3>
+<section id="using-lines-or-points" class="level3">
+<h3 class="anchored" data-anchor-id="using-lines-or-points">using lines() or points()</h3>
 <p>The <code>plot()</code> function creates a new plot window, so if you want to add another plot on top of the first one, you have to use another function. There are two ones available: <code>lines()</code> which produces continuous curves connecting the points, and <code>points()</code> which plots individual symbols at every point.</p>
 <div id="qwebr-insertion-location-25"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1572,8 +1572,8 @@ using vectors to plot
 <div id="qwebr-insertion-location-26"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="adding-a-legend-to-a-plot" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="adding-a-legend-to-a-plot"><span class="header-section-number">4.2.3</span> adding a legend to a plot</h3>
+<section id="adding-a-legend-to-a-plot" class="level3">
+<h3 class="anchored" data-anchor-id="adding-a-legend-to-a-plot">adding a legend to a plot</h3>
 <p>Having multiple graphs on the same plot strongly suggests that we need a legend to help identify the different curves. To create a legend in R we use the <code>legend</code> function that will create a little box to place on the plot and will add a label to identify each curve or symbol used to plot different graphs. For example, this will create a legend for two different colored curves and give the black curve the label <code>quadratic</code> and the red curve the label <code>cubic</code> and place it in the bottom right corner:</p>
 <div id="qwebr-insertion-location-27"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1581,8 +1581,8 @@ using vectors to plot
 <div id="qwebr-insertion-location-28"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="using-curve" class="level3" data-number="4.2.4">
-<h3 data-number="4.2.4" class="anchored" data-anchor-id="using-curve"><span class="header-section-number">4.2.4</span> using curve()</h3>
+<section id="using-curve" class="level3">
+<h3 class="anchored" data-anchor-id="using-curve">using curve()</h3>
 <p>There is another function in R for plotting graphs of functions, called <code>curve()</code>. It has three basic inputs: the function expression, the lower limit of the range of x (the independent function), and the upper limit of the range. Here is an example:</p>
 <div id="qwebr-insertion-location-29"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1591,8 +1591,8 @@ using vectors to plot
 <div id="qwebr-insertion-location-30"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="what-can-go-wrong-1" class="level3" data-number="4.2.5">
-<h3 data-number="4.2.5" class="anchored" data-anchor-id="what-can-go-wrong-1"><span class="header-section-number">4.2.5</span> What can go wrong</h3>
+<section id="what-can-go-wrong-1" class="level3">
+<h3 class="anchored" data-anchor-id="what-can-go-wrong-1">What can go wrong</h3>
 <p>One of the most common issues is switching the order of the two variables in <code>plot()</code> or related graphing functions. Let us switch the variables <code>time</code> and <code>quad</code> and see what happens:</p>
 <div id="qwebr-insertion-location-31"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1603,8 +1603,8 @@ using vectors to plot
 <div id="qwebr-insertion-location-33"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="exercises-1" class="level3" data-number="4.2.6">
-<h3 data-number="4.2.6" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">4.2.6</span> Exercises</h3>
+<section id="exercises-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercises-1">Exercises</h3>
 <p>The following R commands or scripts contain errors; your job is to fix them so they do what each exercise asks you to do. Try figuring out the errors on your own before clicking on the Hint box to expand it.</p>
 <ol type="1">
 <li>Assign an an array of values using <code>seq()</code> to the vector <code>vals</code>. Multiply this vector by 8, add 5 and assign the result to a vector <code>new_vals</code></li>
@@ -1874,12 +1874,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./functions.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./descriptive.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Describing data sets</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
