@@ -93,7 +93,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./probdist.html" rel="next">
+<link href="./tutorial3.html" rel="next">
 <link href="./tutorial2.html" rel="prev">
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -211,7 +211,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">Tutorial 4: Data frames and descriptive statistics</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 4: random number generators</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -297,12 +307,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="toc-section-number">3.2.4</span>  Exercises:</a></li>
   <li><a href="#describing-data-sets-in-graphs" id="toc-describing-data-sets-in-graphs" class="nav-link" data-scroll-target="#describing-data-sets-in-graphs"><span class="toc-section-number">3.2.5</span>  describing data sets in graphs</a></li>
   <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2"><span class="toc-section-number">3.2.6</span>  Exercises</a></li>
-  </ul></li>
-  <li><a href="#working-with-data-in-r" id="toc-working-with-data-in-r" class="nav-link" data-scroll-target="#working-with-data-in-r"><span class="toc-section-number">3.3</span>  Working with data in R</a>
-  <ul class="collapse">
-  <li><a href="#reading-in-data-into-data-frames" id="toc-reading-in-data-into-data-frames" class="nav-link" data-scroll-target="#reading-in-data-into-data-frames"><span class="toc-section-number">3.3.1</span>  reading in data into data frames</a></li>
-  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics"><span class="toc-section-number">3.3.2</span>  descriptive statistics</a></li>
-  <li><a href="#exercises-3" id="toc-exercises-3" class="nav-link" data-scroll-target="#exercises-3"><span class="toc-section-number">3.3.3</span>  Exercises:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -506,148 +510,6 @@ Var(X) = \frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="working-with-data-in-r" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="working-with-data-in-r"><span class="header-section-number">3.3</span> Working with data in R</h2>
-<p></p>
-<section id="reading-in-data-into-data-frames" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="reading-in-data-into-data-frames"><span class="header-section-number">3.3.1</span> reading in data into data frames</h3>
-<p>One way to input data into R is to read in a text file, where several variables are stored in columns. For instance, the file <code>HR_temp.txt</code> contains three variables: body temperature (in Fahrenheit), sex (1 for male, 2 for female), and heart rate (in beats per minute). The values for the variables are arranged in columns, while first row of the file contains the names of the variables (Temp, Sex, and HR, respectively). Note that the data file has to be saved into the same folder as the .Rmd file week1.Rmd for this to work.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>vitals <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">"data/HR_temp.txt"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(vitals<span class="sc">$</span>HR, vitals<span class="sc">$</span>Temp, <span class="at">main =</span> <span class="st">'Body temp as function of heart rate'</span>, <span class="at">xlab=</span> <span class="st">'heart rate (bpm)'</span>, <span class="at">ylab=</span> <span class="st">'body temperature (F)'</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>mTemp <span class="ot">&lt;-</span> <span class="fu">mean</span>(vitals<span class="sc">$</span>Temp)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>sdTemp <span class="ot">&lt;-</span> <span class="fu">sd</span>(vitals<span class="sc">$</span>Temp)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(mTemp,<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="descriptive_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vitals<span class="sc">$</span>HR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 73.76154</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(vitals<span class="sc">$</span>HR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 7.062077</code></pre>
-</div>
-</div>
-<p>The R command read.table() reads this file and and puts it into a <em>data frame</em> called data. The three variables are stored inside the data frame, and can be accessed by appending the dollar sign and variable name to the data frame, so <code>data$HR</code> refers to only the heart rates, and <code>data$Temp</code> refers to the body temperatures. The plot shows the relationship of the two data variables, and the function <code>abline(98.6,0)</code> plots a line with the intercept 98.6a and slope 0 on top of the scatterplot.</p>
-<p>You can also load data from a package, e.g.&nbsp;<code>HistData</code>, which contains many classic data sets. Got to the Packages tab in the lower right window in R Studio, click Install and type <code>HistData</code>. We will use the data set called <code>Galton</code> that contains the heights of parents (the mean of mother’s and father’s) and their children, in variables parent and child. The script below plots the two variables, with parent as the independent (explanatory) variable and child as the dependent (response) variable.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(HistData)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Galton<span class="sc">$</span>parent, Galton<span class="sc">$</span>child, <span class="at">main =</span> <span class="st">'Height of child vs average height of parents'</span>, <span class="at">xlab=</span> <span class="st">'parent height (inches)'</span>, <span class="at">ylab=</span> <span class="st">'child height (inches)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="descriptive_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Galton<span class="sc">$</span>parent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  64.00   67.50   68.50   68.31   69.50   73.00 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(Galton<span class="sc">$</span>child)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  61.70   66.20   68.20   68.09   70.20   73.70 </code></pre>
-</div>
-</div>
-</section>
-<section id="descriptive-statistics" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="descriptive-statistics"><span class="header-section-number">3.3.2</span> descriptive statistics</h3>
-<p>One can also calculate basic descriptive statistics as follows:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"The mean parental height is:"</span>, <span class="fu">mean</span>(Galton<span class="sc">$</span>parent))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "The mean parental height is: 68.3081896551724"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"The mean child height is:"</span>, <span class="fu">mean</span>(Galton<span class="sc">$</span>child))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "The mean child height is: 68.0884698275862"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"The standard deviation of parental height is:"</span>, <span class="fu">sd</span>(Galton<span class="sc">$</span>parent))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "The standard deviation of parental height is: 1.78733340172202"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">"The standard deviation of  child height is:"</span>, <span class="fu">sd</span>(Galton<span class="sc">$</span>child))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "The standard deviation of  child height is: 2.51794136627677"</code></pre>
-</div>
-</div>
-<p>Why do you think the standard deviation of parental height is much smaller?</p>
-<p>R has histogram function <code>hist()</code>, which does a passable job of representing the distribution of a variable such as child height or parent height. Compare the width of the two distributions and consider why they are different.</p>
-<div class="cell" data-layout-align="center" data-fig.asp="0.7">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Galton<span class="sc">$</span>child)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Galton<span class="sc">$</span>parent)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="descriptive_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="descriptive_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="exercises-3" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="exercises-3"><span class="header-section-number">3.3.3</span> Exercises:</h3>
-<p>The following code chunks contain errors. Find and fix them so they work as intended.</p>
-<ol type="1">
-<li>Calculate the mean and standard deviation of the heart rates of the first 30 individuals in the data frame vitals:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vitals<span class="sc">$</span>HR[<span class="dv">30</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 64</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(vitals<span class="sc">$</span>HR[<span class="dv">30</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] NA</code></pre>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Calculate the mean and standard deviation of the ratio of heart rates to body temperatures for the data set vitals:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vitals<span class="sc">$</span>HR<span class="sc">/</span>Temp)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(vitals<span class="sc">$</span>HR<span class="sc">/</span>Temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="3" type="1">
-<li>Plot a scatterplot of the child heights as the response variable and the parent heights and the explanatory variable, and overlay the line y=x on top.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(parent, child, <span class="at">main =</span> <span class="st">'Height of child vs average height of parents'</span>, <span class="at">xlab=</span> <span class="st">'child height (inches)'</span>, <span class="at">ylab=</span> <span class="st">'parent height (inches)'</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">1</span>,<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="4" type="1">
-<li>Calculate the median of both parent and child heights:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(Galton)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="5" type="1">
-<li>Plot the histogram of parent heights of the first half of the group:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Galton<span class="sc">$</span>parent<span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="6" type="1">
-<li>Plot the histogram for the ratio of parent and child heights for the entire data set and calculate its mean and variance:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Galton<span class="sc">$</span>parent<span class="sc">/</span>child)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>parent<span class="sc">/</span>child)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Galton<span class="sc">$</span>parent<span class="sc">/</span>child)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 
 
 </section>
@@ -794,8 +656,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./probdist.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tutorial3.html" class="pagination-link">
+        <span class="nav-page-text">Tutorial 4: Data frames and descriptive statistics</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

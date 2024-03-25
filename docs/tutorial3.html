@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - Tutorial 1: First steps for coding</title>
+<title>Quantifying Life - Tutorial 4: Data frames and descriptive statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./functions.html" rel="next">
-<link href="./counting.html" rel="prev">
+<link href="./probdist.html" rel="next">
+<link href="./descriptive.html" rel="prev">
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -227,7 +227,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"print(\"Hello there!\") ","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-1","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":2,"code":"10^2 \n7^3","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-2","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":3,"code":"pi\nexp(1)\nexp(2)","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-3","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":4,"code":"10000000","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-4","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":5,"code":"0.000006","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-5","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":6,"code":"","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-6","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":7,"code":"","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-7","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":8,"code":"","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-8","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":9,"code":"","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-9","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":10,"code":"","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-10","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":11,"code":"var1 <- 5","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-11","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":12,"code":"print(var1)","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-12","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":13,"code":"var1 <- 5\nvar1 <- 6\nprint(var1)","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-13","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":14,"code":"var1 <- 5\nvar2 <- var1+1\nprint(var2)","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-14","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":15,"code":"var1 <- var1 + 1\nprint(var1)\nvar2 <- var1*var2\nprint(var2)","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-15","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":16,"code":"var1 + 1 <- var1","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-16","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":17,"code":"big <- 100\nsmall <- 2\nprod <- big*small\nprint(prod)\nsmall <- 3\nprint(prod)","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-17","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":18,"code":"prod <- big*small\nprint(prod)","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-18","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":19,"code":"neg -> -10","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-19","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":20,"code":"2pac <- 5\npac <- +3","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-20","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":21,"code":"total <- part1 + part2\npart1 <- 4\npart2 <- 7","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-21","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":22,"code":"age <- 43\nage + 1","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-22","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}},{"id":23,"code":"rad <- 10\narea <- pi r^2 ","options":{"classes":"","message":"true","warning":"true","context":"interactive","out-width":"700px","output":"true","results":"markup","label":"unnamed-chunk-23","fig-width":7,"fig-cap":"","out-height":"","comment":"","autorun":"false","dpi":72,"read-only":"false","fig-height":5}}];
+globalThis.qwebrCellDetails = [{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-1","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"heart_rates <- read.csv(file = \"https://raw.githubusercontent.com/dkon1/quant_life_quarto/master/data/HR_data_combined.csv\", header = TRUE)","id":1},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-2","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"head(heart_rates)","id":2},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-3","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"library(palmerpenguins)\nhead(penguins)","id":3},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-4","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"paste(\"The mean first resting heart rate is: \", mean(heart_rates$Rest1))\npaste(\"The mean bill length is: \", mean(penguins$bill_length_mm))","id":4},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-5","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"options(digits = 5)\ncat(\"The mean first resting heart rate is: \")\nprint(mean(heart_rates$Rest1))","id":5},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-6","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"cat(\"The mean bill length is: \")\nprint(mean(penguins$bill_length_mm, na.rm = TRUE))","id":6},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-7","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"cat(\"The median first exercise heart rate is: \")\nprint(median(heart_rates$Ex1))\ncat(\"The median flipper length is: \")\nprint(median(penguins$flipper_length_mm, na.rm = TRUE))","id":7},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-8","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"cat(\"The variance of the second exercise heart rate is: \")\nprint(var(heart_rates$Ex2))\ncat(\"The variance of bill depth is: \")\nprint(var(penguins$bill_depth_mm, na.rm = TRUE))","id":8},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-9","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"cat(\"The standard deviation of the second exercise heart rate is: \") \nprint(sd(heart_rates$Ex2))\ncat(\"The standard deviation of bill depth is: \")\nprint(sd(penguins$bill_depth_mm, na.rm = TRUE))","id":9},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-10","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"cat(\"The range of the second resting heart rate is: \")\nprint(range(heart_rates$Rest2))\ncat(\"The range of penguin body mass is: \")\nprint(range(penguins$body_mass_g, na.rm = TRUE))","id":10},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-11","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"heart_rates <- read.csv(file = \"HR_data_combine.csv\", header = TRUE)","id":11},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-12","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"mean(Rest1)","id":12},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-13","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"mean(heart_rates)","id":13},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-14","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"mean(Rest2[30])","id":14},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-15","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"ran <- range(penguins$flipper_length_mm)\nprint(range)","id":15},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-16","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"len_over_dep <- penguins$bill_length_mm/bill_depth_mm\nprint(mean(len_over_dep))\nprint(sd(len_over_dep))","id":16},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-17","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"plot(Ex1, Rest1, main = 'Exercise vs resting heart rates', xlab= 'rate (bpm)', ylab= 'rate (bpm)')","id":17},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-18","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"hist(penguins$flipper_length_mm, main = 'Histogram of penguin flipper length', xlab = 'flipper length (mm)')\nhist(penguins$bill_depth_mm, main = 'Histogram of penguin bill depth', xlab = 'flipper depth (mm)')","id":18},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-19","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"boxplot(heart_rates$Rest1, main = \"Resting heart rate 1\", ylab = 'rate (beats per minute)')\nboxplot(heart_rates$Ex1, main = \"Exercise heart rate 1\", ylab = 'rate (beats per minute)')","id":19},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-20","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"boxplot(heart_rates$Rest1, heart_rates$Ex1, main = \"Heart rates comparison\", ylab = 'rate (beats per minute)', names = c('resting', 'exercise'), at = 1:2)","id":20},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-21","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"boxplot(bill_length_mm ~ species, data = penguins, main = \"Bill length for different species\", ylab = 'length (mm)')","id":21},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-22","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"hist(body_mass_g, data = penguins)","id":22},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-23","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"len_over_dep <- penguins$bill_length_mm/bill_depth_mm\nhist(len_over_dep)","id":23},{"options":{"comment":"","message":"true","fig-cap":"","output":"true","fig-height":5,"results":"markup","classes":"","autorun":"false","dpi":72,"label":"unnamed-chunk-24","context":"interactive","out-width":"700px","fig-width":7,"warning":"true","read-only":"false","out-height":""},"code":"boxplot(Year ~ Rest2, data=heart_rates)","id":24}];
 
 </script>
 <script type="module">
@@ -944,9 +944,8 @@ globalThis.qwebrExecuteCode = async function (
 
 </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Quantifying Life - Tutorial 1: First steps for coding">
+<meta name="twitter:title" content="Quantifying Life - Tutorial 4: Data frames and descriptive statistics">
 <meta name="twitter:description" content="In this tutorial you will learn to:">
 <meta name="twitter:card" content="summary">
 </head>
@@ -957,7 +956,7 @@ globalThis.qwebrExecuteCode = async function (
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Tutorial 1: First steps for coding</h1>
+      <h1 class="quarto-secondary-nav-title">Tutorial 4: Data frames and descriptive statistics</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -1010,7 +1009,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link active">Tutorial 1: First steps for coding</a>
+  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">Tutorial 1: First steps for coding</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1030,7 +1029,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">Tutorial 4: Data frames and descriptive statistics</a>
+  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link active">Tutorial 4: Data frames and descriptive statistics</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1118,19 +1117,17 @@ globalThis.qwebrExecuteCode = async function (
    
   <ul>
   <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
-  <li><a href="#r-studio-and-quarto" id="toc-r-studio-and-quarto" class="nav-link" data-scroll-target="#r-studio-and-quarto">R Studio and Quarto</a></li>
-  <li><a href="#arithmetic-in-r" id="toc-arithmetic-in-r" class="nav-link" data-scroll-target="#arithmetic-in-r">Arithmetic in R</a>
+  <li><a href="#working-with-data-frames" id="toc-working-with-data-frames" class="nav-link" data-scroll-target="#working-with-data-frames">Working with data frames</a>
   <ul class="collapse">
-  <li><a href="#scientific-notation" id="toc-scientific-notation" class="nav-link" data-scroll-target="#scientific-notation">Scientific notation</a></li>
+  <li><a href="#loading-data-from-a-file" id="toc-loading-data-from-a-file" class="nav-link" data-scroll-target="#loading-data-from-a-file">loading data from a file</a></li>
+  <li><a href="#loading-data-from-a-package" id="toc-loading-data-from-a-package" class="nav-link" data-scroll-target="#loading-data-from-a-package">loading data from a package</a></li>
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">descriptive statistics</a></li>
   <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong">What can go wrong</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul></li>
-  <li><a href="#assigning-variables" id="toc-assigning-variables" class="nav-link" data-scroll-target="#assigning-variables">Assigning variables</a>
+  <li><a href="#visualizing-data-sets" id="toc-visualizing-data-sets" class="nav-link" data-scroll-target="#visualizing-data-sets">Visualizing data sets</a>
   <ul class="collapse">
-  <li><a href="#variable-names" id="toc-variable-names" class="nav-link" data-scroll-target="#variable-names">Variable names</a></li>
-  <li><a href="#displaying-variable-values" id="toc-displaying-variable-values" class="nav-link" data-scroll-target="#displaying-variable-values">Displaying variable values</a></li>
-  <li><a href="#changing-variable-values" id="toc-changing-variable-values" class="nav-link" data-scroll-target="#changing-variable-values">Changing variable values</a></li>
-  <li><a href="#what-can-go-wrong-1" id="toc-what-can-go-wrong-1" class="nav-link" data-scroll-target="#what-can-go-wrong-1">What can go wrong</a></li>
+  <li><a href="#box-plots" id="toc-box-plots" class="nav-link" data-scroll-target="#box-plots">Box plots</a></li>
   <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">Exercises</a></li>
   </ul></li>
   </ul>
@@ -1315,7 +1312,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Tutorial 1: First steps for coding</h1>
+<h1 class="title d-none d-lg-block">Tutorial 4: Data frames and descriptive statistics</h1>
 </div>
 
 
@@ -1334,70 +1331,104 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 class="anchored" data-anchor-id="learning-goals">Learning goals</h3>
 <p>In this tutorial you will learn to:</p>
 <ul>
-<li><p>Perform arithmetic operations in R</p></li>
-<li><p>Understand numeric errors</p></li>
-<li><p>Choose variable names</p></li>
-<li><p>Assign values to variables</p></li>
-<li><p>Print out variable values</p></li>
+<li>Load data into data frames</li>
+<li>Compute statistics for different variables</li>
+<li>Visualize data sets using histograms</li>
+<li>Visualize data sets using box plots</li>
 </ul>
-<p>A central goal of this book is to help you, the reader, gain experience with computation, which requires learning some programming (a.k.a. “coding”). Programming is a way of interacting with computers through a symbolic language, unlike the graphic user interfaces that we’re all familiar with. Basically, programming allows you to make a computer do exactly what you want it to do.</p>
-<p>There is a vast number of computer languages with distinct functionalities and personalities. Some are made to talk directly to the computer’s “brain” (CPU and memory), e.g.&nbsp;Assembly, while others are better suited for human comprehension, e.g.&nbsp;python or Java. Programming in any language involves two parts: 1) writing a program (code) using the commands and the syntax for the language; 2) running the code by using a compiler or interpreter to translate the commands into machine language and then making the computer execute the actions. If your code has a mistake in it, the compiler or interpreter should catch it, and return an <em>error message</em> to you instead of executing the code. Sometimes, though, the code may pass muster with the interpreter/compiler, but it may still have a mistake (bug). This can be manifested in two different ways: either the code execution does not produce the result that you intended, or it hangs up or crashes the computer (the latter is hard to do with the kind of programming we will be doing). We will discuss errors and how to prevent and catch these bugs as you develop your programming skills.</p>
-<p>In this course, our goal is to compute mathematical models and to analyze data, so we choose a language that is designed specially for these tasks, which is called R. To proceed, you’ll need to download and install R, which is freely available <a href="cran.r-project.org/">here</a>. In addition to downloading the language (which includes the interpreter that allows you to run R code on your computer) you will need to download a graphic interface for writing, editing, and running R code, called R Studio (coders call this an IDE, or an Integrated Developer Environment), which is also free and available <a href="www.rstudio.com/products/rstudio/download/">here</a>.</p>
 </section>
-<section id="r-studio-and-quarto" class="level3">
-<h3 class="anchored" data-anchor-id="r-studio-and-quarto">R Studio and Quarto</h3>
-<p>In this course you will program in the R language, inside the RStudio IDE (integrated developer environment. We will write code inside Quarto documents, which are text files with the extension <code>.qmd</code>. These documents combine chunks of code with formatted text, that can be rendered to create reports in HTML, PDF, or Word format. More details on using Quarto are <a href="https://quarto.org/docs/computations/r.html">here</a>. This whole book is written in Quarto files and then compiled to produce the beautiful (I hope you agree) web book that you are reading.</p>
-<p>If you open an qmd file in R Studio, you will see a <code>Render</code> button on top of the Editor window. Clicking it initiates the processing of the file into an output document (in HTML, PDF, or Word format) that includes the text as well as the output of any embedded R code chunks within the document. You can embed an R <em>code chunk</em> like this:</p>
+<section id="working-with-data-frames" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-data-frames">Working with data frames</h2>
+<p>R is first and foremost a programming language for working with data. To do this, we first need to load the data into the <em>R environment</em> so R can perform actions on it.</p>
+<p>Data comes in many different formats, for example a formatted text file, an Excel spreadsheet, or a database file like SQL. We will stick with simple formatted text files, which consist of lines that have a common format. So each line has a certain number of values (numeric, text, etc.) that are separated by a <em>delimiter</em>, which is a special character that is used only to divide values, for example commas in <code>csv</code> files (comma separated variables) and tabs in <code>tsv</code> files (tab separated variables).</p>
+<section id="loading-data-from-a-file" class="level3">
+<h3 class="anchored" data-anchor-id="loading-data-from-a-file">loading data from a file</h3>
+<p>The first way to load data is to read in a text file that is saved locally on your computer. In the script below, the function <code>read.csv()</code> loads the file called <code>HR_data_combined.csv</code> with the option <code>header = TRUE</code> which lets the function know that the first line of the file contains the names of the variables, while the rest contains the values. The information is assigned to a new object named <code>heart_rates</code>, which is a <strong>data frame</strong>.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>To run the code inside a single R code chunk, click the green arrow in the top right of the chunk. This will produce an output, in this case the text “Hello there!”. Inside the generated output file, for example the web book you may be reading, the output of code chunks is shown below the box with the R code and indicated by two hashtags.</p>
+<div class="newbox">
+<p>A <strong>data frame</strong> is an object in R environment that contains multiple variables with different names. These variables can be accessed by using the name of the data frame, followed by <code>$</code> and then the variable name, e.g.&nbsp;<code>df2$var1</code> refers to variable named <code>var1</code> in data frame <code>df2</code>.</p>
+</div>
+<p>To see the names of the variables and the first few rows of values, you can use the function <code>head()</code>. You see that this data set contains five variables: four heart rate measurements reported by students in BIOS 20151 (in beats per minute) and the year of the course. The values for the variables are arranged in columns, and the first row of the file contains the names of the variables: <code>Rest1</code>, <code>Ex1</code>, <code>Rest2</code>, <code>Ex2</code>, and <code>Year</code>.</p>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>NOTE: The data file has to be saved into the same folder as the .Rmd file for this to work, or else a file path has to be specified to provide the address of the saved file.</p>
 </section>
-<section id="arithmetic-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="arithmetic-in-r">Arithmetic in R</h2>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
+<section id="loading-data-from-a-package" class="level3">
+<h3 class="anchored" data-anchor-id="loading-data-from-a-package">loading data from a package</h3>
+<p>R users create and share convenient collections of code or data called <em>packages</em>. You can also load data from a package, e.g.&nbsp;<code>palmerpenguins</code>, which is a data set of observations on penguins recorded at the Palmer research station (see explanation of the data set here: https://allisonhorst.github.io/palmerpenguins/).</p>
+<p>To install this (or any other) package in R Studio, go to the <code>Packages</code> tab in the lower right window page, click <code>Install</code> and type <code>palmerpenguins</code>. We will use the data set called <code>penguins</code> that contains 8 variables, as you can see below in the output of the <code>head()</code> function:</p>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="descriptive-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="descriptive-statistics">descriptive statistics</h3>
+<p><em>Descriptive statistics</em> are used to summarize a data set, in particular the two key measures are of the <em>center</em> of the values and of the <em>spread</em> of the values. The most common measures of center are the mean and the median, and the important measures of spread are the variance, the standard deviation, and the range of the data set.</p>
+<p>One can calculate basic descriptive statistics as follows, note the use of the function <code>paste()</code> to combine strings of text with numeric values to make the output easier to understand:</p>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>There are two issues with the output of the above code. The first line correctly outputs the mean value, but you can see that it prints a whole lot of digits, making the output unnecessarily messy. There are several ways of rectifying this issue. One of them is to set the number of digits that R outputs on the screen using the function <code>options(digits = 5)</code> to limit the number of digits and then using <code>print()</code> after the <code>cat()</code> function to print the correctly formatted output; the only issue is the pesky [1] that gets added to the output:</p>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>The second and larger issue is that the mean of the bill length returns <code>NA</code>, which means that there are values missing in that data vector (which you could see when we printed out the head of the data). The option <code>na.rm</code> in the function <code>mean()</code> tells it to ignore any missing values:</p>
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Here are examples of median values:</p>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Here are examples of variances:</p>
+<div id="qwebr-insertion-location-8"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Here are examples of standard deviations (square root of variance):</p>
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Here are examples of range (the minimum and maximum values of the data vector):</p>
+<div id="qwebr-insertion-location-10"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="what-can-go-wrong" class="level3">
+<h3 class="anchored" data-anchor-id="what-can-go-wrong">What can go wrong</h3>
+<p>When reading in files, either from your computer hard drive or from a URL, any mistake in the file name or the path (directory) will result in an error that looks like this:</p>
+<div id="qwebr-insertion-location-11"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Another common mistake is using a variable name without the data frame. For example, if you try to refer to the variable <code>Rest1</code> without the data frame, R will not know what to do:</p>
+<div id="qwebr-insertion-location-12"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>A different error is using a data frame as a variable. Since it contains multiple variables, we cannot calculate descriptive statistics on a whole data frame:</p>
+<div id="qwebr-insertion-location-13"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
+<p>The following R commands or scripts contain errors; your job is to fix them so they do what each exercise asks you to do. Try figuring out the errors on your own before clicking on the Hint box to expand it.</p>
+<ol type="1">
+<li>Calculate the mean of the second resting heart rate of the first 30 individuals (in the data frame <code>heart_rates</code> and variable <code>Rest2</code>):</li>
+</ol>
+<div id="qwebr-insertion-location-14"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Computer arithmetic
+Hint
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Numbers are stored on computers using <strong>floating-point arithmetic</strong> which has a limited amount of memory to represent a number. This means that doing calculations in R can produce different types of arithmetic errors, such as <em>overflow</em> (number too large and is considered infinite), <em>underflow</em> (number too small and is considered zero), or <em>relative error</em> (two numbers too close together to distinguish.)</p>
+<p>Need to specify the data frame; use : to create a vector of indices from 1 to 30.</p>
 </div>
 </div>
-<p>Arithmetic operations are necessary for any computation. R uses the expected symbols: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>for addition, subtraction, multiplication, and division. The symbol <code>^</code> is used for raising a number to a power, like this:</p>
-<div id="qwebr-insertion-location-2"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The gray boxes above contain the <em>R code</em> and the <em>output</em> is printed below. Each line starts with <code>[1]</code>, which will be explained in the next section.</p>
-<p>There are some built-in numbers, in particular pi and e. The first is defined by the two letters <code>pi</code>, but e is obtained using the function <code>exp()</code>, which gives the value of e raised to the power of the number in parentheses. For example:</p>
-<div id="qwebr-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="scientific-notation" class="level3">
-<h3 class="anchored" data-anchor-id="scientific-notation">Scientific notation</h3>
-<p>Try typing a large number with all the digits, like 10 million:</p>
-<div id="qwebr-insertion-location-4"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>It gets pretty tedious to type in all the zeros, so if you don’t have as many <em>significant figures</em> as there are digits, the <strong>scientific notation</strong> is very handy. The code chunk above produces the output <code>1e+07</code>, which indicates 1 times 10 to the seventh power.</p>
-<p>For a small number, the power is negative:</p>
-<div id="qwebr-insertion-location-5"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>This produces the output <code>6e-06</code>, or six times ten to the negative sixth power. Please note that this notation does not use the multiplication symbol <code>*</code> or the power symbol <code>^</code>; using them would produce an error.</p>
-</section>
-<section id="what-can-go-wrong" class="level3">
-<h3 class="anchored" data-anchor-id="what-can-go-wrong">What can go wrong</h3>
-<p>Computers were designed to perform calculations and they are really good at it, but even powerful modern machines have limits. Numbers are stored in computer memory and have to be handled by the processor, both finite resources. Essentially, there are numbers too large for a computer to handle, and if you try to use one beyond the limit, you will cause an <em>overflow error</em>. In R, if you try to use a number that is too large, it will be considered infinite and instead of the number you will get the value <code>Inf</code>.</p>
-<p>Surprisingly, a number that is too small will also cause a similar problem, called an <em>underflow error</em>. This is because storing a small number also requires storage space, in part to indicate how many zeros there are after the decimal (or binary) point. In R, if you try to use a number that is too small, it will be considered 0.</p>
-<p>There is another limitation of computer arithmetic, also caused by the finite nature of computation. Numbers in computers are stored using <em>floating-point arithmetic</em>, which represents numbers using a finite number of digits (or binary bits). Thus numbers that are close together will be represented the same, which is particularly problematic for trying to calculate their difference. The largest difference that is not distinguished by computer arithmetic is called the <em>machine epsilon</em> (with a nod to mathematicians), in other words, subtract the numbers 1 and <span class="math inline">\(1+\epsilon\)</span> and find the largest value of <span class="math inline">\(\epsilon\)</span> for which this operation returns 0. Note that this value is very different than the threshold for underflow error, as you will explore in the exercises below.</p>
-</section>
-<section id="exercises" class="level3">
-<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
-<p>The following exercises ask you to perform computational tasks using R. Type your code in the box below and try to do the task on your own before clicking on the Answer or Hint boxes to expand them.</p>
-<ol type="1">
-<li>Calculate the value of pi raised to the 10th power.</li>
+</div>
+<div class="cell">
+
+</div>
+<ol start="2" type="1">
+<li>Calculate the range of penguin flipper lengths, assign it to a variable <code>ran</code> and print the maximum value:</li>
 </ol>
-<div id="qwebr-insertion-location-6"></div>
+<div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -1405,20 +1436,20 @@ Computer arithmetic
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Answer
+Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Around 93648.05</p>
+<p>Use option <code>na.rm=TRUE</code> to get rid of NAs; print the second element of the variable <code>ran</code> to show the minimum.</p>
 </div>
 </div>
 </div>
-<ol start="2" type="1">
-<li>Use the scientific notation to multiply 45 million by pi cubed.</li>
+<ol start="3" type="1">
+<li>Calculate the ratios of all the bill lengths to the bill depth and print the mean and standard deviations of this ratio:</li>
 </ol>
-<div id="qwebr-insertion-location-7"></div>
+<div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -1426,20 +1457,20 @@ Answer
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Answer
+Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Around 1395282451</p>
+<p>Cannot use variable name without the data frame; has to have the format <code>df$Var</code>; in <code>mean()</code> and <code>sd()</code> use option <code>na.rm=TRUE</code> to get rid of NAs</p>
 </div>
 </div>
 </div>
 <ol start="3" type="1">
-<li>In R the function <code>exp(x)</code> is used to raise the number e to the power x. Try putting increasingly larger numbers into the function until R can’t handle it and returns <code>Inf</code> (infinity). Report the power of e at which this happens and the estimate the largest number that R can handle.</li>
+<li>Use <code>plot()</code> to make a scatterplot of the first exercise heart rate as function of the first resting heart rate from the data frame <code>heart_rates</code></li>
 </ol>
-<div id="qwebr-insertion-location-8"></div>
+<div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -1453,15 +1484,49 @@ Hint
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Try increasing the powers by 100, e.g.&nbsp;exp(100), exp(200), etc. Once you see the output <code>Inf</code> (infinity) then go back down to see where it changes</p>
+<p>Need to use the data frame name; switch the order of the variables in <code>plot</code></p>
 </div>
 </div>
 </div>
-<ol start="4" type="1">
-<li>In the same fashion, try increasingly large negative powers of e to find out what happens when you give R a number that is too small for it to handle and it returns 0. Report the power of e at which this happens and the smallest value and estimate the smallest value that R can handle.</li>
-</ol>
-<div id="qwebr-insertion-location-9"></div>
+<div class="cell">
+
+</div>
+</section>
+</section>
+<section id="visualizing-data-sets" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-data-sets">Visualizing data sets</h2>
+<p>A picture is worth a lot of words, and a plot of data offers much more information than the basic descriptive statistics. A <em>histogram</em> offers a convenient visualization of a single variable data set.</p>
+<div class="newbox">
+<p>A <strong>histogram</strong> is a plot of counts or frequencies of different values in a data vector, divided into <em>bins</em>. The x-axis typically shows the values of the variable, and the y-axis shows the counts, or frequencies, of the data in each bin.</p>
+</div>
+<p>R has a histogram function <code>hist()</code>, which does a passable job of representing the distribution of a variable such as flipper length or bill depth. The two histograms below provide visual descriptions of the two data sets:</p>
+<div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<section id="box-plots" class="level3">
+<h3 class="anchored" data-anchor-id="box-plots">Box plots</h3>
+<p>Sometimes a histogram is a bit too involved, especially when one wants a quick visual comparison of two variables. Here are example box plots for the first resting rate and the first exercise heart rate data sets:</p>
+<div id="qwebr-insertion-location-19"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>The boxes in these plots extend from the first quartile to the third quartile, with the line in the middle being the median. Thus the middle half of the data set is contained within the boxes. The “whiskers” extend from the box to another 1.5 times the width of the box (or the min and the max, if they are closer), but this can be changed by setting the <code>range</code> option. Any points outside the whiskers are considered “outliers” and are shown as individual points.</p>
+<p>The <code>boxplot()</code> function, like all others, has many options. They allow us to plot two or more box plots together, using the options <code>at</code> and <code>names</code>, for direct visual comparison of two data sets:</p>
+<div id="qwebr-insertion-location-20"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>If you want to visualize the effect of a categorical variable on the distribution of a numeric variable, you can use the convenient <em>expression</em> notation in the first input of boxplot, as you can see below:</p>
+<div id="qwebr-insertion-location-21"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>The expression <code>bill_length_mm ~ species</code> tells <code>boxplot()</code> to plot the distributions of <code>bill_length_mm</code> as a function of <code>species</code>, whose values are shown on the x-axis. The option <code>data</code> specifies the data frame, so you don’t need to put the data frame with the variables.</p>
+</section>
+<section id="exercises-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercises-1">Exercises</h3>
+<p>The following R commands or scripts contain errors; your job is to fix them so they do what each exercise asks you to do. Try figuring out the errors on your own before clicking on the Hint box to expand it.</p>
+<ol type="1">
+<li>Plot a histogram of body masses of all the penguins in the <code>penguins</code> data frame</li>
+</ol>
+<div id="qwebr-insertion-location-22"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="cell">
+
+</div>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1474,14 +1539,14 @@ Hint
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Try increasing the negative powers by 100, e.g.&nbsp;exp(-100), exp(-200), etc., and once you see the result of 0 then dial back the power to see where it changes</p>
+<p><code>data =</code> option doesn’t work in function <code>hist()</code>, need to use dataframe and variable name, e.g.<code>df$Var</code></p>
 </div>
 </div>
 </div>
-<ol start="5" type="1">
-<li>How close can two numbers be before R thinks they are the same? Subtract 100 and a number increasingly close to it (e.g.&nbsp;100 and 100.0001) until R returns a difference of zero. Report at what value of the actual difference this happens.</li>
+<ol start="2" type="1">
+<li>Calculate the ratio of the penguin bill lengths to the bill depths and plot their histogram</li>
 </ol>
-<div id="qwebr-insertion-location-10"></div>
+<div id="qwebr-insertion-location-23"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -1495,119 +1560,17 @@ Hint
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Use the scientific notation, e.g.&nbsp; <code>100 - (100+1e-5)</code></p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="assigning-variables" class="level2">
-<h2 class="anchored" data-anchor-id="assigning-variables">Assigning variables</h2>
-<section id="variable-names" class="level3">
-<h3 class="anchored" data-anchor-id="variable-names">Variable names</h3>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Variables
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Variables</strong> in programming languages are used to store and access numerical or other information. After <em>assigning</em> it a value for the first time (<em>initializing</em>), a variable name can be used to represent the value we assigned to it. Invoking the name of variable recalls the stored value from computer’s memory.</p>
-</div>
-</div>
-<p>There are a few rules about naming variables: a name cannot be a number or an arithmetic operator like +, in fact it cannot contain symbols for operators or spaces inside the name, or else confusion would reign. Variable names may contain numbers, but not as the first character. When writing code it is good practice to give variables informative names, like <code>height</code> or <code>city_pop</code>.</p>
-<p>The symbol <code>=</code> is used to assign a value to a variable in most programming languages, and can be used in R too. However, it is customary for R to use the symbols <code>&lt;-</code> together to indicate assignment, like this:</p>
-<div id="qwebr-insertion-location-11"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="displaying-variable-values" class="level3">
-<h3 class="anchored" data-anchor-id="displaying-variable-values">Displaying variable values</h3>
-<p>After this command the variable <code>var1</code> has the value 5, which you can see in the upper right frame in R Studio called Environment. In order to display the value of the variable as an output on the screen, use the special command <code>print()</code> (it’s actually a function, as we’ll discuss later).</p>
-<div id="qwebr-insertion-location-12"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>You can see the output under the code box. The <code>print()</code> function always adds <code>[1]</code> at the beginning of the line, which indicates that this is the first value in the variable. In this case, the variable contains only one value, so it does not contain any useful information, but if there are multiple values in the variable (called a vector variable that are discussed in Tutorial 2) and they take up more than one line, the bracketed value at the start of the next line will indicate the ordered number (index) of the first value on that line.</p>
-</section>
-<section id="changing-variable-values" class="level3">
-<h3 class="anchored" data-anchor-id="changing-variable-values">Changing variable values</h3>
-<p>The following two commands show that the value of a variable can be changed after it has been initialized:</p>
-<div id="qwebr-insertion-location-13"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>While seemingly contradictory, the commands are perfectly clear to the computer: first <code>var1</code> is assigned the value 5 and then it is assigned 6. After the second command, the first value is forgotten, so any operations that use the variable <code>var1</code> will be using the value of 6.</p>
-<p>Entire expressions can be placed on the right hand side of an assignment command: they could be arithmetic or logical operations as well as functions, which we will discuss later on. For example, the following commands result in the value 6 being assigned to the variable <code>var2</code>:</p>
-<div id="qwebr-insertion-location-14"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Even more mind-blowing is that the same variable can be used on both sides of an assignment operator! The R interpreter first looks on the right hand side to evaluate the expression and then assigns the result to the variable name on the left hand side. So for instance, the following commands increase the value of <code>var1</code> by 1, and then assign the product of <code>var1</code> and <code>var2</code> to the variable <code>var2</code>:</p>
-<div id="qwebr-insertion-location-15"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="what-can-go-wrong-1" class="level3">
-<h3 class="anchored" data-anchor-id="what-can-go-wrong-1">What can go wrong</h3>
-<p>We have seen examples of how to assign values to variables, so here is an example of how NOT to assign values:</p>
-<div id="qwebr-insertion-location-16"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The assignment operation is not symmetric and the left-hand side of an assignment command should contain only the variable to which you are assigning a value, not an arithmetic expression to be performed.</p>
-<p>Another common mistake is expecting the assignment to connect the variables on the right hand side with the variable in some permanent way. For example, the following script multiplies variables <code>big</code> and <code>small</code> and assigns them to <code>prod</code>, and then changes the value of <code>small</code>, but this does NOT change the value of <code>prod</code>:</p>
-<div id="qwebr-insertion-location-17"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The assignment operation does only one thing: it changes the value of the left-hand-side variable at the time when the R interpreter reads that line. If you want the value of <code>prod</code> to reflect the new value of <code>small</code>, you need to perform the assignment operation again:</p>
-<div id="qwebr-insertion-location-18"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="exercises-1" class="level3">
-<h3 class="anchored" data-anchor-id="exercises-1">Exercises</h3>
-<p>The following R commands or scripts contain errors; your job is to fix them so they do what each exercise asks you to do. Try figuring out the errors on your own before clicking on the Hint box to expand it.</p>
-<ol type="1">
-<li>Assign the value -10 to the variable <code>neg</code></li>
-</ol>
-<div id="qwebr-insertion-location-19"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The arrow should point from the value to the variable being assigned</p>
-</div>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Assign the value 5 to the variable <code>pac</code> and then increase its value by 3</li>
-</ol>
-<div id="qwebr-insertion-location-20"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>2pac was a great artist, not a variable. Use the variable <code>pac</code> on both sides of the <code>&lt;-</code></p>
+<p>Cannot use variable name without the data frame; has to have the format <code>df$Var</code></p>
 </div>
 </div>
 </div>
 <ol start="3" type="1">
-<li>Assign the values 4 and 7 to two variables <code>part1</code> and <code>part2</code>, then add them together and assign the sum to a new variable</li>
+<li>Produce box plots of the second resting heart rates (variable <code>Rest2</code> for different years:</li>
 </ol>
-<div id="qwebr-insertion-location-21"></div>
+<div id="qwebr-insertion-location-24"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1616,51 +1579,9 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Switch around the order of the commands</p>
-</div>
-</div>
-</div>
-<ol start="4" type="1">
-<li>Assign the value 43 to the variable <code>age</code>, then increase it by 1 and assign it to the same variable</li>
-</ol>
-<div id="qwebr-insertion-location-22"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Assign the calculation in the last line to the same variable</p>
-</div>
-</div>
-</div>
-<ol start="5" type="1">
-<li>Assign the value 10 to variable <code>rad</code>, then calculate the area of the circle with that radius using the formula <span class="math inline">\(A = \pi r^2\)</span> and assign it to a new variable</li>
-</ol>
-<div id="qwebr-insertion-location-23"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Need to use the multiplication symbol *; Check that variable names match</p>
+<p>Check the order of variables in the expression: it needs to have the format of <code>Y ~ X</code></p>
 </div>
 </div>
 </div>
@@ -1805,13 +1726,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./counting.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></span>
+      <a href="./descriptive.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./functions.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./probdist.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

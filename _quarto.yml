@@ -21,7 +21,9 @@ book:
     - functions.qmd
     - tutorial2.qmd
     - descriptive.qmd
+    - tutorial3.qmd
     - probdist.qmd
+    - tutorial4.qmd
     - linreg.qmd
     - independence.qmd
     - hypo_test.qmd
