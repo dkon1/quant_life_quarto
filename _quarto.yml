@@ -3,6 +3,8 @@ project:
   output-dir: docs
 filters:
   - webr
+webr:
+  packages: ['palmerpenguins']
 book:
   title: "Quantifying Life"
   author: "Dmitry Kondrashov"
