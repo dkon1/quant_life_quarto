@@ -21,18 +21,17 @@ $$ y = ax + b$$
 
 Let us say you have measured some data for two variables, which we will call, unimaginatively, $x$ and $y$. This data set consists of pairs of numbers: one for $x$, one for $y$, for example, the heart rate and body temperature of a person go together. They cannot be mixed up between different people, as the data will lose all meaning. We can denote this a list of $n$ pairs of numbers: $(x_i, y_i)$ (where $i$ is an integer between 1 and $n$). Since this is a list of pairs of numbers, we can plot them as separate points in the plane using each $x_i$ as the x-coordinate and each $y_i$ as the y-coordinate. This is called a \index{plot!scatter} *scatterplot* of a two-variable data set. For example, two scatterplots of a data set of heart rate and body temperature are shown in figure \ref{fig:HRTemp_scatterplot}. In the first one, the body temperature is on the x-axis, which makes it the \index{variable!explanatory} *explanatory* variable; in the second one, the body temperature is on the y-axis, which makes it the \index{variable!response} *response* variable.
 
-```{webr-r}
-#| label: linreg-Galton
-#| echo: false
+```{r}
+#| label: body-temp
 #| fig-cap: 'Scatterplot of heart rates and body temperatures: a) with heart rate as the explanatory variable; b) with body temperature as the explanatory variable.'
 #| fig-subcap: 
 #|   - "Body temp (response variable) vs heart rate (explanatory variable)" 
 #|   - "Heart rate (response variable) vs body temp (explanatory variable)" 
 #| layout-ncol: 2
 
-data<-read.table('data/HR_temp.txt', header=TRUE)
-plot(data$Temp, data$HR,main='heart rates vs. body temps', cex=1.5, cex.axis=1.5,cex.lab=1.5)
-plot(data$HR, data$Temp,main='body temps vs. heart rates', cex=1.5, cex.axis=1.5,cex.lab=1.5)
+my_data<-read.table("https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt", header=TRUE)
+plot(my_data$Temp, my_data$HR,main='heart rates vs. body temps', cex=1.5, cex.axis=1.5,cex.lab=1.5)
+plot(my_data$HR, my_data$Temp,main='body temps vs. heart rates', cex=1.5, cex.axis=1.5,cex.lab=1.5)
 ```
 
 ## Linear least-squares fitting
@@ -195,7 +194,6 @@ Figure \ref{fig:ch8_penguins} shows scatterplots of the rate of oxygen consumpti
 We now have the tools to compute the parameters of the best-fit line, provided we can calculate the means, variances, and covariance of the two variable data set. Of course, the best way to do all this is to let a computer handle it. The function for calculating linear regression in R is `lm()`, which outputs a bunch of information to a variable called myfit in the script below. The slope, intercept, and other \index{parameter!linear regression}parameters can be printed out using the `summary()` function. In the script below you see a bunch of information, but we are concerned with the ones in the first column correspond to the best fit intercept (-166.2847) and the slope (2.4432). You can check that they correspond to our formulas by computing the covariance, the variances, and the means of the two variables:
 
 ```{webr-r}
-my_data<-read.table('data/HR_temp.txt', header=TRUE)
 myfit <- lm(HR ~Temp, my_data)
 summary(myfit)
 a<-cov(my_data$HR,my_data$Temp)/var(my_data$Temp)
@@ -208,18 +206,12 @@ Here `Temp` and `HR` are the explanatory and response variables, respectively, a
 
 ```{webr-r}
 #| label: linreg-HRTemp
-#| echo: false
-#| fig-cap: 'Linear regression for a data set of heart rates and body temperatures'
-#| fig-subcap: 
-#|   - "Heart rates (response variable) vs temperature (explanatory variable)" 
-#|   - "Residuals of linear regression vs temperature (explanatory variable)" 
-#| layout-ncol: 2
-plot(my_data$Temp, my_data$HR,main=
-'scatterplot and linear regression line',
-cex=1.5, cex.axis=1.5,cex.lab=1.5)
+# plot the data and regression line
+plot(my_data$Temp, my_data$HR,main= 'scatterplot and linear regression line')
 abline(myfit)
+# plot the residuals
 HRresiduals <- resid(myfit)
-plot(data$Temp, HRresiduals,main='residuals plot',cex=1.5, cex.axis=1.5,cex.lab=1.5)
+plot(data$Temp, HRresiduals,main='residuals plot')
 abline(0,0)
 ```
 
@@ -227,9 +219,10 @@ However, what does this mean about the quality of the fit? Just because we found
 
 As mentioned in section \ref{sec:math8}, the other important check is plotting the residuals of the data set, after the linear fit is subtracted. You see the result in figure \ref{fig:linreg_HRTemp}b, showing that the residuals do not have any pronounced pattern. So it is reasonable to conclude that linear regression was a reasonable model to which to fit the data. The low correlation is because data seem to have little to no relationship, not because there is some complicated nonlinear relationship.
 
-Here is an example of a linear regression performed and the line plotted over the basic R plot. Note that lm() uses the following syntax to indicate which variable is which: lm(Y \~ X) (where Y is the response variable and X is the explanatory variable.)
+Here is an example of a linear regression performed and the line plotted over the basic R plot. Note that `lm()` uses the following syntax to indicate which variable is which: lm(Y \~ X) (where Y is the response variable and X is the explanatory variable.)
 
 ```{webr-r}
+data("Galton")
 myfit <- lm(child ~ parent, Galton) 
 summary(myfit)
 print(paste("The best-fit slope is: ", myfit$coefficients[2]))
@@ -259,7 +252,7 @@ It appears that the residuals meet the assumptions of being independent of measu
 
 \label{sec:bio8} The phenomenon called \index{regression to the mean} regression to the mean is initially surprising. Francis Galton first discovered this by comparing the heights of parents and their offspring. Galton took a subset of parents who are taller than average and observed that their children were, on average, shorter than their parents. He also compared the heights of parents who are shorter than average, and found that their children were on average taller than their parents. This suggests the conclusion that in long run everyone will converge closer to the average height - hence "regression to mediocrity", as Galton called it \cite{senn_francis_2011}.
 
-```{webr-r}
+```{r}
 #| label: linreg-Galton
 #| echo: false
 #| fig-cap: "Galton data on heights of parents and of children as scatterplots. The dotted red lines show the identity line y=x and the solid black line is the linear regression."
@@ -268,6 +261,7 @@ It appears that the residuals meet the assumptions of being independent of measu
 #|   - "Parent height (response variable) vs child height (explanatory variable)" 
 #| layout-ncol: 2
 
+library("HistData")
 myfit <- lm(child ~ parent, Galton) 
 plot(Galton$parent, Galton$child, xlab='mid-parent height (inches)', ylab='child height (inches)',cex=1.5, cex.axis=1.5,cex.lab=1.5)
 abline(myfit,lwd=3,lty=1)

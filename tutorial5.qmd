@@ -10,16 +10,16 @@ In this tutorial you will learn to:
 
 ### Best-fit parameters
 
-
 ::: callout-tip
 ## Linear regression
+
 **Linear regression** is a method for finding the best-fit line to a two-variable data set. One of the variables is called the *explanatory* (independent) variable and the other is called the *response* (dependent) variable. The best-fit line is defined as the line whose graph passes the closest to the data points as measured by the *sum of squared differences* between the predicted and observed response variable values.
 :::
 
 Here is an example of a linear regression performed and the line plotted over the scatterplot. The R function for linear regression `lm()` has two required inputs: an *expression* in the form of `Response ~ Explanatory` and the name of the data frame (if the variables are part of one). The script below uses the data set of heart rates from students from the BIOS 20151 classes, generates a plot of the data, calls `lm()` and assigns the output to a variable `fit_heart` and then plots the resulting best-fit line using the function `abline()`:
 
 ```{webr-r}
-heart_rates <- read.csv(file = "https://raw.githubusercontent.com/dkon1/quant_life_quarto/master/data/HR_data_combined.csv")
+heart_rates <- read.csv(file = "https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_data_combined.csv")
 plot(heart_rates$Rest2, heart_rates$Ex2, xlab = 'Resting heart rate (bpm)', ylab = 'Exercise heart rate (bpm)')
 fit_heart <- lm(Ex2 ~ Rest2, data = heart_rates)
 abline(fit_heart)
@@ -57,6 +57,7 @@ As you see, the function `summary()` gives us the key information, including the
 
 ::: callout-tip
 ## Coefficient of determination (R-squared)
+
 The **coefficient of determination** or $R^2$ of a linear regression is a measure of the goodness of fit of the line to the data. Numerically, it represents the fraction of variance of the response variable that is explained by the model.
 :::
 
@@ -112,20 +113,17 @@ plot(pen_fit)
 Use functions `mean()` and `sd()`; specify the dataframe as well as variable, e.g. `df$var`; put these function inside `print()`.
 :::
 
-
 2.  Calculate and print the fraction of variance explained by the linear regression by dividing the variance of the predicted values of the previously calculate linear regression object `pen_fit` (in the variable `fitted.values`) by the variance of the observed values (in the variable `model$XXX` where XXX stands for the name of the response variable).
 
 ```{webr-r}
 
 ```
 
-
 ::: {.callout-caution collapse="true"}
 ## Hint
 
 Calculate the ratio of variances inside the print() function; make sure that all the parentheses are matched correctly
 :::
-
 
 3.  Perform linear regression on the penguin data set with the `bill_depth_mm` as the explanatory variable and `body_mass_g` as the response variable and assign it to variable `fit_pen`. Print out the coefficient of determination of this linear regression.
 
@@ -136,9 +134,8 @@ Calculate the ratio of variances inside the print() function; make sure that all
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-Need to first assing the output of regression, e.g. `fit_pen <- lm( ... )`; follow the example  above of printing out the R-squared.
+Need to first assing the output of regression, e.g. `fit_pen <- lm( ... )`; follow the example above of printing out the R-squared.
 :::
-
 
 4.  Plot the residuals from the linear regression as a function of the independent variable as contained in the `fit_pen` object within the variable `model$XXX` where XXX is the name of the explanatory variable.
 
@@ -151,5 +148,3 @@ Need to first assing the output of regression, e.g. `fit_pen <- lm( ... )`; foll
 
 Follow the example above of plotting residuals using the output of lm, e.g `fit$residuals`
 :::
-
-

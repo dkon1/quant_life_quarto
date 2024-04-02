@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,8 +17,42 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -48,7 +82,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -57,8 +97,10 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
@@ -227,7 +269,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"#|   - \"Body temp (response variable) vs heart rate (explanatory variable)\" \n#|   - \"Heart rate (response variable) vs body temp (explanatory variable)\" \n\ndata<-read.table('data/HR_temp.txt', header=TRUE)\nplot(data$Temp, data$HR,main='heart rates vs. body temps', cex=1.5, cex.axis=1.5,cex.lab=1.5)\nplot(data$HR, data$Temp,main='body temps vs. heart rates', cex=1.5, cex.axis=1.5,cex.lab=1.5)","id":1,"options":{"results":"markup","comment":"","out-width":"700px","fig-width":7,"context":"interactive","classes":"","warning":"true","fig-height":5,"output":"true","label":"linreg-Galton","layout-ncol":"2","read-only":"false","dpi":72,"autorun":"false","echo":"false","fig-cap":"Scatterplot of heart rates and body temperatures: a) with heart rate as the explanatory variable; b) with body temperature as the explanatory variable.","out-height":"","fig-subcap":"","message":"true"}},{"code":"my_data<-read.table('data/HR_temp.txt', header=TRUE)\nmyfit <- lm(HR ~Temp, my_data)\nsummary(myfit)\na<-cov(my_data$HR,my_data$Temp)/var(my_data$Temp)\nprint(a)\nb<-mean(my_data$HR)-a*mean(my_data$Temp)\nprint(b)","id":2,"options":{"read-only":"false","warning":"true","fig-height":5,"output":"true","label":"unnamed-chunk-2","context":"interactive","results":"markup","comment":"","autorun":"false","out-width":"700px","dpi":72,"fig-width":7,"fig-cap":"","out-height":"","message":"true","classes":""}},{"code":"#|   - \"Heart rates (response variable) vs temperature (explanatory variable)\" \n#|   - \"Residuals of linear regression vs temperature (explanatory variable)\" \nplot(my_data$Temp, my_data$HR,main=\n'scatterplot and linear regression line',\ncex=1.5, cex.axis=1.5,cex.lab=1.5)\nabline(myfit)\nHRresiduals <- resid(myfit)\nplot(data$Temp, HRresiduals,main='residuals plot',cex=1.5, cex.axis=1.5,cex.lab=1.5)\nabline(0,0)","id":3,"options":{"results":"markup","comment":"","out-width":"700px","fig-width":7,"context":"interactive","classes":"","warning":"true","fig-height":5,"output":"true","label":"linreg-HRTemp","layout-ncol":"2","read-only":"false","dpi":72,"autorun":"false","echo":"false","fig-cap":"Linear regression for a data set of heart rates and body temperatures","out-height":"","fig-subcap":"","message":"true"}},{"code":"myfit <- lm(child ~ parent, Galton) \nsummary(myfit)\nprint(paste(\"The best-fit slope is: \", myfit$coefficients[2]))\nprint(paste(\"The best-fit intercept is: \", myfit$coefficients[1]))    ","id":4,"options":{"read-only":"false","warning":"true","fig-height":5,"output":"true","label":"unnamed-chunk-4","context":"interactive","results":"markup","comment":"","autorun":"false","out-width":"700px","dpi":72,"fig-width":7,"fig-cap":"","out-height":"","message":"true","classes":""}},{"code":"#Overlay the best-fit line on the base R plot\nplot(Galton$parent, Galton$child, xlab='mid-parent height (inches)', ylab='child height (inches)')\nabline(myfit)","id":5,"options":{"read-only":"false","warning":"true","fig-height":5,"output":"true","label":"unnamed-chunk-5","context":"interactive","results":"markup","comment":"","autorun":"false","out-width":"700px","dpi":72,"fig-width":7,"fig-cap":"","out-height":"","message":"true","classes":""}},{"code":"plot(Galton$parent, myfit$residuals, xlab='mid-parent height (inches)', ylab='residuals (inches)')\nabline(0,0)","id":6,"options":{"read-only":"false","warning":"true","fig-height":5,"output":"true","label":"unnamed-chunk-6","context":"interactive","results":"markup","comment":"","autorun":"false","out-width":"700px","dpi":72,"fig-width":7,"fig-cap":"","out-height":"","message":"true","classes":""}},{"code":"#|   - \"Child height (response variable) vs parent height (explanatory variable)\" \n#|   - \"Parent height (response variable) vs child height (explanatory variable)\" \n\nmyfit <- lm(child ~ parent, Galton) \nplot(Galton$parent, Galton$child, xlab='mid-parent height (inches)', ylab='child height (inches)',cex=1.5, cex.axis=1.5,cex.lab=1.5)\nabline(myfit,lwd=3,lty=1)\nabline(0,1,lwd=3,lty=2,col='red')\nmyfit <- lm(parent ~child, Galton) \nplot(Galton$child, Galton$parent, xlab='child height (inches)', ylab='mid-parent height (inches)',cex=1.5, cex.axis=1.5,cex.lab=1.5)\nabline(myfit,lwd=3)\nabline(0,1,lwd=3,lty=2,col='red')","id":7,"options":{"results":"markup","comment":"","out-width":"700px","fig-width":7,"context":"interactive","classes":"","warning":"true","fig-height":5,"output":"true","label":"linreg-Galton","layout-ncol":"2","read-only":"false","dpi":72,"autorun":"false","echo":"false","fig-cap":"Galton data on heights of parents and of children as scatterplots. The dotted red lines show the identity line y=x and the solid black line is the linear regression.","out-height":"","fig-subcap":"","message":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"myfit <- lm(HR ~Temp, my_data)\nsummary(myfit)\na<-cov(my_data$HR,my_data$Temp)/var(my_data$Temp)\nprint(a)\nb<-mean(my_data$HR)-a*mean(my_data$Temp)\nprint(b)","options":{"output":"true","fig-width":7,"fig-cap":"","autorun":"false","label":"unnamed-chunk-1","warning":"true","out-height":"","comment":"","read-only":"false","results":"markup","classes":"","message":"true","context":"interactive","dpi":72,"fig-height":5,"out-width":"700px"},"id":1},{"code":"# plot the data and regression line\nplot(my_data$Temp, my_data$HR,main= 'scatterplot and linear regression line')\nabline(myfit)\n# plot the residuals\nHRresiduals <- resid(myfit)\nplot(data$Temp, HRresiduals,main='residuals plot')\nabline(0,0)","options":{"output":"true","fig-width":7,"fig-cap":"","autorun":"false","label":"linreg-HRTemp","warning":"true","out-height":"","comment":"","read-only":"false","results":"markup","classes":"","message":"true","context":"interactive","dpi":72,"fig-height":5,"out-width":"700px"},"id":2},{"code":"data(\"Galton\")\nmyfit <- lm(child ~ parent, Galton) \nsummary(myfit)\nprint(paste(\"The best-fit slope is: \", myfit$coefficients[2]))\nprint(paste(\"The best-fit intercept is: \", myfit$coefficients[1]))    ","options":{"output":"true","fig-width":7,"fig-cap":"","autorun":"false","label":"unnamed-chunk-3","warning":"true","out-height":"","comment":"","read-only":"false","results":"markup","classes":"","message":"true","context":"interactive","dpi":72,"fig-height":5,"out-width":"700px"},"id":3},{"code":"#Overlay the best-fit line on the base R plot\nplot(Galton$parent, Galton$child, xlab='mid-parent height (inches)', ylab='child height (inches)')\nabline(myfit)","options":{"output":"true","fig-width":7,"fig-cap":"","autorun":"false","label":"unnamed-chunk-4","warning":"true","out-height":"","comment":"","read-only":"false","results":"markup","classes":"","message":"true","context":"interactive","dpi":72,"fig-height":5,"out-width":"700px"},"id":4},{"code":"plot(Galton$parent, myfit$residuals, xlab='mid-parent height (inches)', ylab='residuals (inches)')\nabline(0,0)","options":{"output":"true","fig-width":7,"fig-cap":"","autorun":"false","label":"unnamed-chunk-5","warning":"true","out-height":"","comment":"","read-only":"false","results":"markup","classes":"","message":"true","context":"interactive","dpi":72,"fig-height":5,"out-width":"700px"},"id":5}];
 
 </script>
 <script type="module">
@@ -944,10 +986,38 @@ globalThis.qwebrExecuteCode = async function (
 
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <meta name="twitter:title" content="Quantifying Life - 5&nbsp; Linear regression">
-<meta name="twitter:description" content="In the last two chapters we learned to use data sets which fall into a few categories. We now turn to data which can be measured as a range of numerical values.">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -955,11 +1025,16 @@ globalThis.qwebrExecuteCode = async function (
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linreg.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -967,174 +1042,200 @@ globalThis.qwebrExecuteCode = async function (
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantifying Life</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
-            <i class="bi bi-bi-file-pdf pe-1"></i>
-          Download PDF
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
-            <i class="bi bi-bi-journal pe-1"></i>
-          Download ePub
-          </a>
-        </li>
-    </ul>
+    <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./counting.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></a>
+  <a href="./counting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">Tutorial 1: First steps for coding</a>
+  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 1: First steps for coding</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
+  <a href="./functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link">Tutorial 2: Vectors and plotting</a>
+  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 2: Vectors and plotting</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
+  <a href="./descriptive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">Tutorial 3: Data frames and descriptive statistics</a>
+  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 3: Data frames and descriptive statistics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 4: Random number generators</a>
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 4: Random number generators</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">Tutorial 5: Linear regression</a>
+  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 5: Linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  <a href="./independence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
+  <a href="./bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sampling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling distribution and estimation</span></a>
+  <a href="./sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling distribution and estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
+  <a href="./markov_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
+  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
+  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
+  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#linear-relationship-between-two-variables" id="toc-linear-relationship-between-two-variables" class="nav-link active" data-scroll-target="#linear-relationship-between-two-variables"><span class="toc-section-number">5.1</span>  Linear relationship between two variables</a></li>
-  <li><a href="#linear-least-squares-fitting" id="toc-linear-least-squares-fitting" class="nav-link" data-scroll-target="#linear-least-squares-fitting"><span class="toc-section-number">5.2</span>  Linear least-squares fitting</a>
+  <li><a href="#linear-relationship-between-two-variables" id="toc-linear-relationship-between-two-variables" class="nav-link active" data-scroll-target="#linear-relationship-between-two-variables"><span class="header-section-number">5.1</span> Linear relationship between two variables</a></li>
+  <li><a href="#linear-least-squares-fitting" id="toc-linear-least-squares-fitting" class="nav-link" data-scroll-target="#linear-least-squares-fitting"><span class="header-section-number">5.2</span> Linear least-squares fitting</a>
   <ul class="collapse">
-  <li><a href="#sum-of-squared-errors" id="toc-sum-of-squared-errors" class="nav-link" data-scroll-target="#sum-of-squared-errors"><span class="toc-section-number">5.2.1</span>  sum of squared errors</a></li>
-  <li><a href="#best-fit-slope-and-intercept" id="toc-best-fit-slope-and-intercept" class="nav-link" data-scroll-target="#best-fit-slope-and-intercept"><span class="toc-section-number">5.2.2</span>  best-fit slope and intercept</a></li>
-  <li><a href="#execises" id="toc-execises" class="nav-link" data-scroll-target="#execises"><span class="toc-section-number">5.2.3</span>  Execises</a></li>
-  <li><a href="#correlation-and-goodness-of-fit" id="toc-correlation-and-goodness-of-fit" class="nav-link" data-scroll-target="#correlation-and-goodness-of-fit"><span class="toc-section-number">5.2.4</span>  correlation and goodness of fit</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">5.2.5</span>  Exercises</a></li>
+  <li><a href="#sum-of-squared-errors" id="toc-sum-of-squared-errors" class="nav-link" data-scroll-target="#sum-of-squared-errors"><span class="header-section-number">5.2.1</span> sum of squared errors</a></li>
+  <li><a href="#best-fit-slope-and-intercept" id="toc-best-fit-slope-and-intercept" class="nav-link" data-scroll-target="#best-fit-slope-and-intercept"><span class="header-section-number">5.2.2</span> best-fit slope and intercept</a></li>
+  <li><a href="#execises" id="toc-execises" class="nav-link" data-scroll-target="#execises"><span class="header-section-number">5.2.3</span> Execises</a></li>
+  <li><a href="#correlation-and-goodness-of-fit" id="toc-correlation-and-goodness-of-fit" class="nav-link" data-scroll-target="#correlation-and-goodness-of-fit"><span class="header-section-number">5.2.4</span> correlation and goodness of fit</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.2.5</span> Exercises</a></li>
   </ul></li>
-  <li><a href="#linear-regression-using-r" id="toc-linear-regression-using-r" class="nav-link" data-scroll-target="#linear-regression-using-r"><span class="toc-section-number">5.3</span>  Linear regression using R</a></li>
-  <li><a href="#regression-to-the-mean" id="toc-regression-to-the-mean" class="nav-link" data-scroll-target="#regression-to-the-mean"><span class="toc-section-number">5.4</span>  Regression to the mean</a>
+  <li><a href="#linear-regression-using-r" id="toc-linear-regression-using-r" class="nav-link" data-scroll-target="#linear-regression-using-r"><span class="header-section-number">5.3</span> Linear regression using R</a></li>
+  <li><a href="#regression-to-the-mean" id="toc-regression-to-the-mean" class="nav-link" data-scroll-target="#regression-to-the-mean"><span class="header-section-number">5.4</span> Regression to the mean</a>
   <ul class="collapse">
-  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="toc-section-number">5.4.1</span>  Discussion questions</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="header-section-number">5.4.1</span> Discussion questions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1318,7 +1419,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></h1>
 </div>
 
 
@@ -1331,7 +1432,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   </div>
   
 
+
 </header>
+
 
 <blockquote class="blockquote">
 <p>The place in which I’ll fit will not exist until I make it.<br>
@@ -1351,8 +1454,34 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Although there is always error in any real data, there may be a relationship between the two variables that is not random: for example, when one goes up, the other one tends to go up as well. These relationships may be complicated, but in this chapter we will focus on the the simplest and most common type of relationship: linear, where a change in one variable is associated with a proportional change in the other, plus an added constant. This is expressed mathematically using the familiar equation for a linear function, with parameters slope (<span class="math inline">\(a\)</span>) and intercept (<span class="math inline">\(b\)</span>):</p>
 <p><span class="math display">\[ y = ax + b\]</span></p>
 <p>Let us say you have measured some data for two variables, which we will call, unimaginatively, <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. This data set consists of pairs of numbers: one for <span class="math inline">\(x\)</span>, one for <span class="math inline">\(y\)</span>, for example, the heart rate and body temperature of a person go together. They cannot be mixed up between different people, as the data will lose all meaning. We can denote this a list of <span class="math inline">\(n\)</span> pairs of numbers: <span class="math inline">\((x_i, y_i)\)</span> (where <span class="math inline">\(i\)</span> is an integer between 1 and <span class="math inline">\(n\)</span>). Since this is a list of pairs of numbers, we can plot them as separate points in the plane using each <span class="math inline">\(x_i\)</span> as the x-coordinate and each <span class="math inline">\(y_i\)</span> as the y-coordinate. This is called a <em>scatterplot</em> of a two-variable data set. For example, two scatterplots of a data set of heart rate and body temperature are shown in figure <span class="math inline">\(\ref{fig:HRTemp_scatterplot}\)</span>. In the first one, the body temperature is on the x-axis, which makes it the <em>explanatory</em> variable; in the second one, the body temperature is on the y-axis, which makes it the <em>response</em> variable.</p>
-<div id="qwebr-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_data<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">"https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt"</span>, <span class="at">header=</span><span class="cn">TRUE</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(my_data<span class="sc">$</span>Temp, my_data<span class="sc">$</span>HR,<span class="at">main=</span><span class="st">'heart rates vs. body temps'</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>,<span class="at">cex.lab=</span><span class="fl">1.5</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(my_data<span class="sc">$</span>HR, my_data<span class="sc">$</span>Temp,<span class="at">main=</span><span class="st">'body temps vs. heart rates'</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>,<span class="at">cex.lab=</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="linreg_files/figure-html/body-temp-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Body temp (response variable) vs heart rate (explanatory variable)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="linreg_files/figure-html/body-temp-2.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Heart rate (response variable) vs body temp (explanatory variable)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p>Scatterplot of heart rates and body temperatures: a) with heart rate as the explanatory variable; b) with body temperature as the explanatory variable.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="linear-least-squares-fitting" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="linear-least-squares-fitting"><span class="header-section-number">5.2</span> Linear least-squares fitting</h2>
@@ -1384,12 +1513,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="best-fit-slope-and-intercept" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="best-fit-slope-and-intercept"><span class="header-section-number">5.2.2</span> best-fit slope and intercept</h3>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Definition
 </div>
 </div>
@@ -1460,12 +1589,12 @@ b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}
 <section id="correlation-and-goodness-of-fit" class="level3" data-number="5.2.4">
 <h3 data-number="5.2.4" class="anchored" data-anchor-id="correlation-and-goodness-of-fit"><span class="header-section-number">5.2.4</span> correlation and goodness of fit</h3>
 <p>The correlation between two random variables is a measure of how much variation in one corresponds to variation in the other. If this sounds very similar to the description of covariance, it’s because they are closely related. Essentially, correlation is a normalized covariance, restricted to lie between -1 and 1. Here is the definition:</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Definition
 </div>
 </div>
@@ -1511,30 +1640,56 @@ a = r \frac{\sigma_Y}{\sigma_X}
 <h2 data-number="5.3" class="anchored" data-anchor-id="linear-regression-using-r"><span class="header-section-number">5.3</span> Linear regression using R</h2>
 <p></p>
 <p>We now have the tools to compute the parameters of the best-fit line, provided we can calculate the means, variances, and covariance of the two variable data set. Of course, the best way to do all this is to let a computer handle it. The function for calculating linear regression in R is <code>lm()</code>, which outputs a bunch of information to a variable called myfit in the script below. The slope, intercept, and other parameters can be printed out using the <code>summary()</code> function. In the script below you see a bunch of information, but we are concerned with the ones in the first column correspond to the best fit intercept (-166.2847) and the slope (2.4432). You can check that they correspond to our formulas by computing the covariance, the variances, and the means of the two variables:</p>
-<div id="qwebr-insertion-location-2"></div>
+<div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Here <code>Temp</code> and <code>HR</code> are the explanatory and response variables, respectively, and <code>my_data</code> is the name of the data frame they are stored in. The best fit parameters are stored in <code>myfit</code>, and the line can be plotted using <code>abline(myfit)</code>. The script below shows how to calculate a linear regression line and then plot it over a scatterplot in R, and the result is shown in figure <span class="math inline">\(\ref{fig:linreg_HRTemp}\)</span>a.</p>
-<div id="qwebr-insertion-location-3"></div>
+<div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>However, what does this mean about the quality of the fit? Just because we found a line to draw through a scatterplot does not mean that this line is meaningful. In fact, looking at the plot, there does not seem to be much of a relationship between the two variables. There are various statistical measures for the significance of linear regression, the most important one relies on the correlation between the two data sets. Look again at the summary statistics for the data set of heart rates and temperatures. There are several different statistics here, and the one that we care about is the <span class="math inline">\(r^2\)</span>, which is reported here as ‘Multiple R-squared’. This number tells us that the linear regression accounts for only about 6% of the total variance of the heart rate. In other words, there is no significant linear relationship in this data set.</p>
 <p>As mentioned in section <span class="math inline">\(\ref{sec:math8}\)</span>, the other important check is plotting the residuals of the data set, after the linear fit is subtracted. You see the result in figure <span class="math inline">\(\ref{fig:linreg_HRTemp}\)</span>b, showing that the residuals do not have any pronounced pattern. So it is reasonable to conclude that linear regression was a reasonable model to which to fit the data. The low correlation is because data seem to have little to no relationship, not because there is some complicated nonlinear relationship.</p>
-<p>Here is an example of a linear regression performed and the line plotted over the basic R plot. Note that lm() uses the following syntax to indicate which variable is which: lm(Y ~ X) (where Y is the response variable and X is the explanatory variable.)</p>
-<div id="qwebr-insertion-location-4"></div>
+<p>Here is an example of a linear regression performed and the line plotted over the basic R plot. Note that <code>lm()</code> uses the following syntax to indicate which variable is which: lm(Y ~ X) (where Y is the response variable and X is the explanatory variable.)</p>
+<div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>The summary outputs a whole bunch of information that is returned by the <code>lm()</code> function, as the object <code>myfit</code>. The most important are the intercept and slope, which may be printed out as shown above, and the R-squared parameter, also called the coefficient of determination. The value of R-squared is not accessible directly in <code>myfit</code>, but it is printed out in the summary (use multiple R-squared for our assignments.)</p>
 <p>The actual best-fit line can be plotted as follows over a scatterplot of the data; notice that abline can take myfit as an input and use the slope and intercept:</p>
-<div id="qwebr-insertion-location-5"></div>
+<div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>After performing linear regression it is essential to check that the residuals obey the assumptions of linear regression. The residuals are the difference between the predicted response variable values and the actual values of the response variable, in this case the child height. The residuals are contained in the object myfit as variable residuals:</p>
-<div id="qwebr-insertion-location-6"></div>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>It appears that the residuals meet the assumptions of being independent of measurement (shapeless scatterplot), are centered at zero, and look roughly normally distributed, although that can be checked more carefully using other tools.</p>
 </section>
 <section id="regression-to-the-mean" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="regression-to-the-mean"><span class="header-section-number">5.4</span> Regression to the mean</h2>
 <p> The phenomenon called regression to the mean is initially surprising. Francis Galton first discovered this by comparing the heights of parents and their offspring. Galton took a subset of parents who are taller than average and observed that their children were, on average, shorter than their parents. He also compared the heights of parents who are shorter than average, and found that their children were on average taller than their parents. This suggests the conclusion that in long run everyone will converge closer to the average height - hence “regression to mediocrity”, as Galton called it .</p>
-<div id="qwebr-insertion-location-7"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div>
+
+</div>
+<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="linreg_files/figure-html/linreg-Galton-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Child height (response variable) vs parent height (explanatory variable)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="linreg_files/figure-html/linreg-Galton-2.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>Parent height (response variable) vs child height (explanatory variable)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p>Galton data on heights of parents and of children as scatterplots. The dotted red lines show the identity line y=x and the solid black line is the linear regression.</p>
+</div>
+</div>
+</div>
 <p>But that is not the case! The parents and children in Galton’s experiment had a very similar mean and standard deviation. This appears to be a paradox, but it is easily explained using linear regression. Consider two identically distributed random variables <span class="math inline">\((X,Y)\)</span> with a positive correlation <span class="math inline">\(r\)</span>. The slope of the linear regression is <span class="math inline">\(m = r \sigma_Y/\sigma_X\)</span> and since <span class="math inline">\(\sigma_Y=\sigma_X\)</span>, the slope is simply <span class="math inline">\(r\)</span>. Select a subset with values of <span class="math inline">\(X\)</span> higher than <span class="math inline">\(\bar X\)</span>, and consider the mean value of <span class="math inline">\(Y\)</span> for that subset. If the slope <span class="math inline">\(m&lt;1\)</span> (the correlation is not perfect), then the mean value of <span class="math inline">\(Y\)</span> for that subset is less than the mean value of <span class="math inline">\(X\)</span>. Similarly, for a subset with values of <span class="math inline">\(X\)</span> lower than <span class="math inline">\(\bar X\)</span>, the mean value of <span class="math inline">\(Y\)</span> for that subset is greater than the mean value of <span class="math inline">\(X\)</span>, again as long as the slope is less than 1.</p>
 <p>Figure <span class="math inline">\(\ref{fig:regression2mean}\)</span> shows Galton’s data set (available in R by installing the package ‘HistData’) along with the linear regression line and the identity like (<span class="math inline">\(y=x\)</span>). If each child had exactly the same height as the parents, the scatterplot would lie on the identity line. Instead, the linear regression lines have slope less than 1 for both the plot with the parental heights as the explanatory variable and for the plot with the variables reversed. The correlation coefficient <span class="math inline">\(r\)</span> does not depend on the order of the variables; so using the equation <span class="math inline">\(\ref{eq:slope_corr}\)</span> we can see the difference in slopes is explained by the two data sets having different standard deviations, and reversing the explanatory and response variables results in reciprocation of the ratio of standard deviations. The children’s heights have a higher standard deviation, which is likely an artifact of the experiment. In the data set the heights of the two parents were averaged to take them both into account, which substantially reduces the spread between male and female heights. To summarize, although the children of taller parents are shorter on average than their parents, and the children of shorter parents are taller than their parents, the overall standard deviation does not decrease from generation to generation.</p>
 <section id="discussion-questions" class="level3" data-number="5.4.1">
@@ -1579,9 +1734,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1617,10 +1786,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1630,8 +1798,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1646,6 +1823,238 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1687,12 +2096,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tutorial4.html" class="pagination-link">
+      <a href="./tutorial4.html" class="pagination-link  aria-label=" tutorial="" 4:="" random="" number="" generators"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tutorial 4: Random number generators</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tutorial5.html" class="pagination-link">
+      <a href="./tutorial5.html" class="pagination-link" aria-label="Tutorial 5: Linear regression">
         <span class="nav-page-text">Tutorial 5: Linear regression</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1810,6 +2219,7 @@ qwebrInstance.then(
   }
 );
 </script>
+
 
 
 

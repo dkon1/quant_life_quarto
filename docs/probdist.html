@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,14 +17,16 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -38,8 +40,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -67,7 +68,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -76,15 +83,45 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <meta name="twitter:title" content="Quantifying Life - 4&nbsp; Random variables and distributions">
-<meta name="twitter:description" content="Mathematical models can be divided into deterministic and stochastic models. Deterministic models assume that the future can be perfectly predicted based on complete information of the past.">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -92,11 +129,16 @@ div.csl-indent {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probdist.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -104,176 +146,202 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantifying Life</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
-            <i class="bi bi-bi-file-pdf pe-1"></i>
-          Download PDF
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
-            <i class="bi bi-bi-journal pe-1"></i>
-          Download ePub
-          </a>
-        </li>
-    </ul>
+    <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./counting.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></a>
+  <a href="./counting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">Tutorial 1: First steps for coding</a>
+  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 1: First steps for coding</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
+  <a href="./functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link">Tutorial 2: Vectors and plotting</a>
+  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 2: Vectors and plotting</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
+  <a href="./descriptive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">Tutorial 3: Data frames and descriptive statistics</a>
+  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 3: Data frames and descriptive statistics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probdist.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 4: Random number generators</a>
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 4: Random number generators</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">Tutorial 5: Linear regression</a>
+  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 5: Linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  <a href="./independence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
+  <a href="./bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sampling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling distribution and estimation</span></a>
+  <a href="./sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling distribution and estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
+  <a href="./markov_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
+  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
+  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
+  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#random-variables-and-distributions" id="toc-random-variables-and-distributions" class="nav-link active" data-scroll-target="#random-variables-and-distributions"><span class="toc-section-number">4.1</span>  Random variables and distributions</a>
+  <li><a href="#random-variables-and-distributions" id="toc-random-variables-and-distributions" class="nav-link active" data-scroll-target="#random-variables-and-distributions"><span class="header-section-number">4.1</span> Random variables and distributions</a>
   <ul class="collapse">
-  <li><a href="#definition-of-probability" id="toc-definition-of-probability" class="nav-link" data-scroll-target="#definition-of-probability"><span class="toc-section-number">4.1.1</span>  definition of probability</a></li>
-  <li><a href="#axioms-of-probability" id="toc-axioms-of-probability" class="nav-link" data-scroll-target="#axioms-of-probability"><span class="toc-section-number">4.1.2</span>  axioms of probability</a></li>
-  <li><a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables"><span class="toc-section-number">4.1.3</span>  random variables</a></li>
-  <li><a href="#expectation-of-random-variables" id="toc-expectation-of-random-variables" class="nav-link" data-scroll-target="#expectation-of-random-variables"><span class="toc-section-number">4.1.4</span>  expectation of random variables</a></li>
-  <li><a href="#variance-of-random-variables" id="toc-variance-of-random-variables" class="nav-link" data-scroll-target="#variance-of-random-variables"><span class="toc-section-number">4.1.5</span>  variance of random variables</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">4.1.6</span>  Exercises</a></li>
+  <li><a href="#definition-of-probability" id="toc-definition-of-probability" class="nav-link" data-scroll-target="#definition-of-probability"><span class="header-section-number">4.1.1</span> definition of probability</a></li>
+  <li><a href="#axioms-of-probability" id="toc-axioms-of-probability" class="nav-link" data-scroll-target="#axioms-of-probability"><span class="header-section-number">4.1.2</span> axioms of probability</a></li>
+  <li><a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables"><span class="header-section-number">4.1.3</span> random variables</a></li>
+  <li><a href="#expectation-of-random-variables" id="toc-expectation-of-random-variables" class="nav-link" data-scroll-target="#expectation-of-random-variables"><span class="header-section-number">4.1.4</span> expectation of random variables</a></li>
+  <li><a href="#variance-of-random-variables" id="toc-variance-of-random-variables" class="nav-link" data-scroll-target="#variance-of-random-variables"><span class="header-section-number">4.1.5</span> variance of random variables</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.1.6</span> Exercises</a></li>
   </ul></li>
-  <li><a href="#examples-of-distributions" id="toc-examples-of-distributions" class="nav-link" data-scroll-target="#examples-of-distributions"><span class="toc-section-number">4.2</span>  Examples of distributions</a>
+  <li><a href="#examples-of-distributions" id="toc-examples-of-distributions" class="nav-link" data-scroll-target="#examples-of-distributions"><span class="header-section-number">4.2</span> Examples of distributions</a>
   <ul class="collapse">
-  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution"><span class="toc-section-number">4.2.1</span>  uniform distribution</a></li>
-  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="toc-section-number">4.2.2</span>  binomial distribution</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="toc-section-number">4.2.3</span>  Exercises</a></li>
-  <li><a href="#testing-for-mutants" id="toc-testing-for-mutants" class="nav-link" data-scroll-target="#testing-for-mutants"><span class="toc-section-number">4.2.4</span>  testing for mutants</a></li>
+  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution"><span class="header-section-number">4.2.1</span> uniform distribution</a></li>
+  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="header-section-number">4.2.2</span> binomial distribution</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">4.2.3</span> Exercises</a></li>
+  <li><a href="#testing-for-mutants" id="toc-testing-for-mutants" class="nav-link" data-scroll-target="#testing-for-mutants"><span class="header-section-number">4.2.4</span> testing for mutants</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -283,7 +351,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></h1>
 </div>
 
 
@@ -296,7 +364,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <blockquote class="blockquote">
 <p>What is there then that can be taken as true? Perhaps only this one thing, that nothing at all is certain. –Rene Descartes</p>
@@ -316,12 +386,12 @@ div.csl-indent {
 <section id="definition-of-probability" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="definition-of-probability"><span class="header-section-number">4.1.1</span> definition of probability</h3>
 <p>In this section we will develop the terminology used in the mathematical study of randomness called probability. This begins with a <em>random experiment</em> which is a very broad term that can describe any natural or theoretical process whose outcome cannot be predicted with certainty. If the outcomes are numeric, they may be <em>discrete</em> (can be counted by integers) or <em>continuous</em> (corresponding to real numbers); they may also be <em>categorical</em>, meaning that they do not have a numeric meaning, like eye color. We will stick to experiments that have discrete outcomes in this chapter, but many important experiments produce continuous outcomes. The first step for studying a random process is to describe all of the outcomes it can produce:</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Definition
 </div>
 </div>
@@ -332,18 +402,18 @@ Definition
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ch4/sample_space.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">An illustration of the sample space of all people with two events: tall people and those who like tea.</figcaption><p></p>
+<figcaption>An illustration of the sample space of all people with two events: tall people and those who like tea.</figcaption>
 </figure>
 </div>
 <p><strong>Example.</strong> You can ask a person two questions: how tall are you (and classify them either as short or tall) and do you like tea (yes or no), and you’ve performed a random experiment. The randomness comes not from the answers (assuming the person doesn’t randomly lie) but from the selection of the respondent. We will discuss randomly selecting a sample from a population in the next chapter. This random experiment has four outcomes: tall person who likes tea, tall person who does not like tea, short person who likes tea, and short person who does not like tea. This sample space and events is illustrated in figure <span class="math inline">\(\ref{fig:ch4_sample_space}\)</span> with a Venn diagram, which uses geometric shapes as representations of events as subsets of the entire sample space. These outcomes can be grouped into events by one of the responses: e.g.&nbsp;tall person (<span class="math inline">\(A\)</span>) or person who doesn’t like tea (<span class="math inline">\(-B\)</span>).</p>
 <p><strong>Example.</strong> A random experiment with two outcomes, called a <em>Bernoulli trial</em> (after the famous Swiss mathematician), can describe a variety of situations: a coin toss (heads or tails), a competition with two outcomes (win or loss), the allele of a gene (normal or mutant). The sample space for a single Bernoulli trial consists of just two outcomes: <span class="math inline">\(\{H,T\}\)</span> (for a coin toss). If the experiment is performed repeatedly, the sample space gets more complicated. For two Bernoulli trials there are four different outcomes <span class="math inline">\(\{HH, HT, TH, TT \}\)</span>. One can define different events for this sample space: the event of getting two heads in two tosses contains one outcome: <span class="math inline">\(\{HH\}\)</span>, the event of getting a single head contains two: <span class="math inline">\(\{TH, HT\}\)</span>.</p>
 <p>In order to to describe the composition of a sample space, we need to define the word <em>probability</em> . While it is familiar to everyone from everyday usage, it is difficult to define without using other similar words, such as likelihood or plausibility, which are also in need of definition. It is accepted that something with a high probability happens often, while something with a low frequency is seldom observed. The other notion is that probability can range between 0 (meaning something that never occurs) and 1 (something that occurs every time). These notions lead to the commonly accepted definition:</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Definition
 </div>
 </div>
@@ -352,12 +422,12 @@ Definition
 </div>
 </div>
 <p>This definition is at the heart of the <em>frequentist</em> view of probability, due to the underlying assumption that the experiment can be repeated as many times as necessary to observe the frequency of outcomes. There is an alternative view that focuses on what is previously known about the experiment (or about systems that produce that kind of experiment) that is called the <em>Bayesian</em> view:</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Definition
 </div>
 </div>
@@ -370,12 +440,12 @@ Definition
 <section id="axioms-of-probability" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="axioms-of-probability"><span class="header-section-number">4.1.2</span> axioms of probability</h3>
 <p>One we have defined the probability of an outcome, one can calculate the probability of a collection of outcomes according to rules that ensure the results are self-consistent. These rules are called the axioms of probability:</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Definition
 </div>
 </div>
@@ -389,39 +459,43 @@ Definition
 </div>
 </div>
 <p>Let us define some notation for sets: <span class="math inline">\(A \cup B\)</span> is called the <em>union</em> of two sets, which contains all outcomes that belong to either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>, this is equivalent to the logical OR operator because it is true if either A or B is true. <span class="math inline">\(A\cap B\)</span> is called the <em>intersection</em> of two sets, which contains all outcomes that are in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, this is is equivalent to the logical AND operator because it is true if both A and B are true. The <span class="math inline">\(\emptyset\)</span> denotes the empty set. Any event <span class="math inline">\(A\)</span> has its <em>complement</em>, denoted <span class="math inline">\(-A\)</span>, which contains all outcomes of <span class="math inline">\(\Omega\)</span> which are not in <span class="math inline">\(A\)</span>.</p>
-<p>Applying them to the sample space and events in <a href="#fig-sets-prob">Figure&nbsp;<span>4.1</span></a>, the union of the two sets <span class="math inline">\(A \cup B\)</span> are all people who are either tall or like tea, the intersection of the two sets <span class="math inline">\(A\cap B\)</span> are all the tall people who like tea, and the intersection of the first set with the complement of the second <span class="math inline">\(A \cup - B\)</span> are all tall people who do not like tea.</p>
+<p>Applying them to the sample space and events in <a href="#fig-sets-prob" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>, the union of the two sets <span class="math inline">\(A \cup B\)</span> are all people who are either tall or like tea, the intersection of the two sets <span class="math inline">\(A\cap B\)</span> are all the tall people who like tea, and the intersection of the first set with the complement of the second <span class="math inline">\(A \cup - B\)</span> are all tall people who do not like tea.</p>
 <div id="fig-sets-prob" class="quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sets-prob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ch4/set_intersection.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Intersection of A and B</figcaption><p></p>
+<figcaption>Intersection of A and B</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ch4/set_union.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Union of A and B</figcaption><p></p>
+<figcaption>Union of A and B</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="ch4/set_subtraction.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Intersection of A with -B</figcaption><p></p>
+<figcaption>Intersection of A with -B</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.1: Illustration of set combinations</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sets-prob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Illustration of set combinations
+</figcaption>
 </figure>
 </div>
-<p>The first two axioms connect easily with our intuition about probability: the first axiom says that the probability of some outcome from the sample space occurring is 1, while the second says that the probability of nothing in the sample space occurring is 0. The intuition behind axiom three is less transparent, but it can be see in a Venn diagram of two subsets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of the larger set <span class="math inline">\(\Omega\)</span>, as in <a href="#fig-sets-prob">Figure&nbsp;<span>4.1</span></a>. Compare the size of the union of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and the sum of the sizes of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> separately, and you will see that the intersection <span class="math inline">\(A\cap B\)</span> occurs in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, but is only counted once in the union. This is why it needs to be subtracted from the sum of <span class="math inline">\(P(A)\)</span> and <span class="math inline">\(P(B)\)</span>.</p>
+<p>The first two axioms connect easily with our intuition about probability: the first axiom says that the probability of some outcome from the sample space occurring is 1, while the second says that the probability of nothing in the sample space occurring is 0. The intuition behind axiom three is less transparent, but it can be see in a Venn diagram of two subsets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of the larger set <span class="math inline">\(\Omega\)</span>, as in <a href="#fig-sets-prob" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>. Compare the size of the union of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and the sum of the sizes of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> separately, and you will see that the intersection <span class="math inline">\(A\cap B\)</span> occurs in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, but is only counted once in the union. This is why it needs to be subtracted from the sum of <span class="math inline">\(P(A)\)</span> and <span class="math inline">\(P(B)\)</span>.</p>
 <p>There are several useful rules that immediately follow from the axioms. First, if two events are mutually exclusive, meaning their intersection is empty (<span class="math inline">\(A\cap B = \emptyset\)</span>), then the probability of either of them happening is the sum of their respective probabilities: <span class="math inline">\(P(A \cup B) = P(A) + P(B)\)</span> (from axiom 3). Further, since an event <span class="math inline">\(A\)</span> and its complement <span class="math inline">\(-A\)</span> are mutually exclusive, their union is the entire sample space <span class="math inline">\(\Omega\)</span>: <span class="math inline">\(P(A) + P(-A) = P(A \cup -A) = P(\Omega) = 1\)</span>, therefore <span class="math inline">\(P(A) = 1-P(-A)\)</span>.</p>
 <p><strong>Example.</strong> Assume one is using a fair coin, so the probability of a single head and a single tail is 1/2. The probability of getting two heads in a row is 1/4, because exactly half of those coins that come up heads once will come up heads again. In fact, the probability of getting any particular sequence of two coin toss results is 1/4. Here are some examples of what we can calculate:</p>
 <ul>
@@ -442,12 +516,12 @@ Definition
 <section id="random-variables" class="level3" data-number="4.1.3">
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="random-variables"><span class="header-section-number">4.1.3</span> random variables</h3>
 <p>The outcomes of experiments may be expressed in numbers or words, but we generally need numbers in order to report and analyze results. One can describe this mathematically as a function (recall its definition from section 2.2) that assigns numbers to random outcomes <span class="citation" data-cites="feller_introduction_nodate">(<a href="references.html#ref-feller_introduction_nodate" role="doc-biblioref">Feller, n.d.</a>)</span>. In practice, a random variable describes the measurement that one makes to describe the outcomes of a random experiment.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Definition
 </div>
 </div>
@@ -458,12 +532,12 @@ Definition
 <p><strong>Example.</strong> Define the random variable to be the number of heads out of two coin tosses. This random variable will return numbers 0, 1, or 2, corresponding to different events. The random variable of the number of mutants out of two people (assuming there are only two outcomes, mutant and normal) has the same set of values. This random variable is a function on the sample space because it returns a unique value for each outcome.</p>
 <p><strong>Example.</strong> <span class="citation" data-cites="denny_chance_2002">(<a href="references.html#ref-denny_chance_2002" role="doc-biblioref">Denny and Gaines 2002</a>)</span> Suppose that our sarcastic fringehead, upon losing a wrestling match, has to search for another home for three hours. Then we can define the random variable of time wasted over two wrestling matches, which can be either 0, 3, or 6 hours, depending on the events defined above. Once again, this is a function because there is an unambiguous number associated with each outcome.</p>
 <p>A random variable has a set of possible values, and each of those values may come up more or less frequently in an random experiment. The frequency of each measurement corresponds to the probability of the outcomes in the sample space that produce that particular value of the random variable. One can describe the behavior of the random variable in terms of the collection of the probabilities of its outcomes.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -480,12 +554,12 @@ Note
 </section>
 <section id="expectation-of-random-variables" class="level3" data-number="4.1.4">
 <h3 data-number="4.1.4" class="anchored" data-anchor-id="expectation-of-random-variables"><span class="header-section-number">4.1.4</span> expectation of random variables</h3>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -514,12 +588,12 @@ Note
 <h3 data-number="4.1.5" class="anchored" data-anchor-id="variance-of-random-variables"><span class="header-section-number">4.1.5</span> variance of random variables</h3>
 <p>Knowledge of the expected value says nothing about how the random variable actually varies: expectation does not distinguish between a random variable which is constant and one which can deviate far from the mean. In order to quantify this variation, one might be tempted to compute the mean differences from the mean value, but it does not work:</p>
 <p><span class="math display">\[ E(X-\mu_X) =  \sum_i (x_i-\mu_x)P(x_i) = \sum_i x_i P(x_i) - \mu_x \sum_i P(x_i) = \mu_x - \mu_x = 0\]</span> The problem is, if we add up all the differences from the mean, the positive ones end up canceling the negative ones and the expected value of those deviations is exactly zero. This is why it makes sense to square the differences and add them up:</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -566,27 +640,39 @@ E(U) = \sum_{i=1}^n  a_i P(a_i) = \frac{1}{n}  \sum_{i=1}^n  a_i
 <p>This can be generalize to a uniform random variable on integers between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> (omitting the algebraic details) so the variance for that uniform random variable is:</p>
 <p><span id="eq-unif-var-gen"><span class="math display">\[ Var(U) = \frac{(b-a+1)^2 - 1}{12} = \frac{(b-a)^2 + 2(b-a)}{12}
 \tag{4.4}\]</span></span></p>
-<div id="fig-unif-dist" class="cell quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-unif-dist-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="probdist_files/figure-html/fig-unif-dist-1.png" class="img-fluid figure-img" data-ref-parent="fig-unif-dist" width="672"></p>
-<p></p><figcaption class="figure-caption">(a) Uniform distribution on integers from 0 to 3</figcaption><p></p>
+<div id="fig-unif-dist" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-unif-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-unif-dist" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-unif-dist-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-unif-dist-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="probdist_files/figure-html/fig-unif-dist-1.png" class="img-fluid figure-img" data-ref-parent="fig-unif-dist" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-unif-dist-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Uniform distribution on integers from 0 to 3
+</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-unif-dist-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="probdist_files/figure-html/fig-unif-dist-2.png" class="img-fluid figure-img" data-ref-parent="fig-unif-dist" width="672"></p>
-<p></p><figcaption class="figure-caption">(b) Uniform distribution on integers from -6 to 3</figcaption><p></p>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-unif-dist" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-unif-dist-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-unif-dist-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="probdist_files/figure-html/fig-unif-dist-2.png" class="img-fluid figure-img" data-ref-parent="fig-unif-dist" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-unif-dist-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Uniform distribution on integers from -6 to 3
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.2: Two uniform random distributions with different ranges.</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unif-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.2: Two uniform random distributions with different ranges.
+</figcaption>
 </figure>
 </div>
 </section>
@@ -595,12 +681,12 @@ E(U) = \sum_{i=1}^n  a_i P(a_i) = \frac{1}{n}  \sum_{i=1}^n  a_i
 <p>We have introduced binary or Bernoulli trials in section <span class="math inline">\(\ref{sec:math4_1}\)</span>. Assume that the two values of the random variable <span class="math inline">\(X\)</span> are 0 and 1, with probability <span class="math inline">\(1-p\)</span> and <span class="math inline">\(p\)</span>, respectively. Then we can calculate the expectation and variance of a single Bernoulli trial:</p>
 <p><span class="math display">\[E(X) = 0 \times (1-p) + 1 \times p = p\]</span> <span class="math display">\[ Var(X) = E(X^2) - E(X)^2 = 0^2 \times (1-p) + 1^2 \times p - p^2= p(1-p)\]</span> The first result is likely intuitive, but the second deserves a comment. Note that depending on the probability of 1, the variance, or the spread in outcomes of a Bernoulli trial is different. The highest variance occurs when <span class="math inline">\(p=1/2\)</span>, or equal probability of 0 or 1, but when <span class="math inline">\(p\)</span> approaches 0 or 1, the variance approaches 0. Thus, as the probability approaches zero or one the random variable approaches a constant (either always 1 or 0); hence, no variance.</p>
 <p>One can extend this scenario and ask what happens in a string of Bernoulli trials, for instance, in a string of 10 coin tosses, or in testing 20 randomly selected people for a mutation. The mathematical problem is to calculate the probability distribution of the number of success out of many trials. This is known as the binomial random variable, which is defined as the sum of <span class="math inline">\(n\)</span> independent, identical Bernoulli random variables.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Definition
 </div>
 </div>
@@ -631,84 +717,120 @@ E(B) = E\left[\sum_{i=1}^n X\right] = \sum_{i=1}^n E(X) = \sum_{i=1}^n p = np
 Var(B) = Var\left[\sum_{i=1}^n X\right]  = \sum_{i=1}^n Var(X) =\sum_{i=1}^n p(1-p) = np(1-p)
 \tag{4.7}\]</span></span></p>
 <p>For any given number of Bernoulli trials, the variance has a quadratic dependence on probability of success <span class="math inline">\(p\)</span>: if <span class="math inline">\(p=1\)</span> or <span class="math inline">\(p=0\)</span>, corresponding to all successes, or all failures, respectively, then the variance is zero, since there is no spread in the outcome. For a fair coin <span class="math inline">\(p=1/2\)</span> the variance is highest. This can be seen in the plots of binomial random variables for <span class="math inline">\(n=2\)</span>, <span class="math inline">\(n=5\)</span>, and <span class="math inline">\(n=50\)</span>, shown in figures below.</p>
-<div id="fig-binom-dist-1" class="cell quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-binom-dist-1-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="probdist_files/figure-html/fig-binom-dist-1-1.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-1" width="672"></p>
-<p></p><figcaption class="figure-caption">(a) Binomial distribution with p=0.2</figcaption><p></p>
+<div id="fig-binom-dist-1" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binom-dist-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-binom-dist-1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-binom-dist-1-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-binom-dist-1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="probdist_files/figure-html/fig-binom-dist-1-1.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-1" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-binom-dist-1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Binomial distribution with p=0.2
+</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-binom-dist-1-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="probdist_files/figure-html/fig-binom-dist-1-2.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-1" width="672"></p>
-<p></p><figcaption class="figure-caption">(b) Binomial distribution with p=0.5</figcaption><p></p>
-</figure>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-binom-dist-1" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-binom-dist-1-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-binom-dist-1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="probdist_files/figure-html/fig-binom-dist-1-2.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-1" width="672">
 </div>
-</div>
-</div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.3: Binomial random distributions with two trials.</figcaption><p></p>
-</figure>
-</div>
-<div id="fig-binom-dist-2" class="cell quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-binom-dist-2-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="probdist_files/figure-html/fig-binom-dist-2-1.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-2" width="672"></p>
-<p></p><figcaption class="figure-caption">(a) Binomial distribution with p=0.2</figcaption><p></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-binom-dist-2-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="probdist_files/figure-html/fig-binom-dist-2-2.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-2" width="672"></p>
-<p></p><figcaption class="figure-caption">(b) Binomial distribution with p=0.5</figcaption><p></p>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-binom-dist-1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Binomial distribution with p=0.5
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.4: Binomial random distributions with five trials.</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binom-dist-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.3: Binomial random distributions with two trials.
+</figcaption>
 </figure>
 </div>
-<div id="fig-binom-dist-3" class="cell quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-binom-dist-3-1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="probdist_files/figure-html/fig-binom-dist-3-1.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-3" width="672"></p>
-<p></p><figcaption class="figure-caption">(a) Binomial distribution with p=0.2</figcaption><p></p>
+<div id="fig-binom-dist-2" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binom-dist-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-binom-dist-2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-binom-dist-2-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-binom-dist-2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="probdist_files/figure-html/fig-binom-dist-2-1.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-2" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-binom-dist-2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Binomial distribution with p=0.2
+</figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
-<div id="fig-binom-dist-3-2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="probdist_files/figure-html/fig-binom-dist-3-2.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-3" width="672"></p>
-<p></p><figcaption class="figure-caption">(b) Binomial distribution with p=0.5</figcaption><p></p>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-binom-dist-2" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-binom-dist-2-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-binom-dist-2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="probdist_files/figure-html/fig-binom-dist-2-2.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-2" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-binom-dist-2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Binomial distribution with p=0.5
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4.5: Binomial random distributions with fifty trials.</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binom-dist-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.4: Binomial random distributions with five trials.
+</figcaption>
+</figure>
+</div>
+<div id="fig-binom-dist-3" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-binom-dist-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-binom-dist-3" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-binom-dist-3-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-binom-dist-3-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="probdist_files/figure-html/fig-binom-dist-3-1.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-3" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-binom-dist-3-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Binomial distribution with p=0.2
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-binom-dist-3" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-binom-dist-3-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-binom-dist-3-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="probdist_files/figure-html/fig-binom-dist-3-2.png" class="img-fluid figure-img" data-ref-parent="fig-binom-dist-3" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-binom-dist-3-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Binomial distribution with p=0.5
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binom-dist-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.5: Binomial random distributions with fifty trials.
+</figcaption>
 </figure>
 </div>
 </section>
 <section id="exercises-1" class="level3" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">4.2.3</span> Exercises</h3>
-<p>Calculate the expected values and variances based on the plotted distributions using the definitions <span class="quarto-unresolved-ref">?def-exp-val</span> and <span class="quarto-unresolved-ref">?def-var-prob</span> and compare your calculations against equations <a href="#eq-unif-exp">Equation&nbsp;<span>4.1</span></a> and <a href="#eq-unif-var">Equation&nbsp;<span>4.3</span></a> (for uniform random variable) and equations <a href="#eq-binom-rv">Equation&nbsp;<span>4.5</span></a> and <a href="#eq-binom-var">Equation&nbsp;<span>4.7</span></a> (for binomial random variable).</p>
+<p>Calculate the expected values and variances based on the plotted distributions using the definitions <span class="quarto-unresolved-ref">?def-exp-val</span> and <span class="quarto-unresolved-ref">?def-var-prob</span> and compare your calculations against equations <a href="#eq-unif-exp" class="quarto-xref">Equation&nbsp;<span>4.1</span></a> and <a href="#eq-unif-var" class="quarto-xref">Equation&nbsp;<span>4.3</span></a> (for uniform random variable) and equations <a href="#eq-binom-rv" class="quarto-xref">Equation&nbsp;<span>4.5</span></a> and <a href="#eq-binom-var" class="quarto-xref">Equation&nbsp;<span>4.7</span></a> (for binomial random variable).</p>
 <ol type="1">
-<li><p>Calculate the mean and the variance for the two uniform distributions plotted in <a href="#fig-unif-dist">Figure&nbsp;<span>4.2</span></a>.</p></li>
-<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-1">Figure&nbsp;<span>4.3</span></a>.</p></li>
-<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-2">Figure&nbsp;<span>4.4</span></a>.</p></li>
-<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-3">Figure&nbsp;<span>4.5</span></a>.</p></li>
+<li><p>Calculate the mean and the variance for the two uniform distributions plotted in <a href="#fig-unif-dist" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>.</p></li>
+<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-1" class="quarto-xref">Figure&nbsp;<span>4.3</span></a>.</p></li>
+<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-2" class="quarto-xref">Figure&nbsp;<span>4.4</span></a>.</p></li>
+<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-3" class="quarto-xref">Figure&nbsp;<span>4.5</span></a>.</p></li>
 </ol>
 </section>
 <section id="testing-for-mutants" class="level3" data-number="4.2.4">
@@ -719,11 +841,11 @@ Var(B) = Var\left[\sum_{i=1}^n X\right]  = \sum_{i=1}^n Var(X) =\sum_{i=1}^n p(1
 <p>One may want to ask a different question: what is the probability that there are at least 3 mutants in the sample of 20 people? To most efficient way to calculate this it is to answer the complementary question first: what is the probability that there are fewer than 3 mutants out of 20 people? This corresponds to three values of the random variable: 0, 1, or 2. We can calculate the total probability by adding up the three separate probabilities, since they represent non-overlapping events (one can’t have 1 and 2 mutants in a sample simultaneously): <span class="math display">\[ P(B &lt; 3; \  p=0.05) = P(B=0) + P(B=1) + P(B=2) = \]</span> <span class="math display">\[ = \binom{20}{2} \times 0.05^2  \times 0.985^{18} +\binom{20}{1} \times 0.05^1  \times 0.985^{19} +\binom{20}{0} \times 0.05^0  \times 0.985^{20} \approx \]</span> <span class="math display">\[ \approx 0.925 \]</span> The answer to the original question is found by taking the complementary probability <span class="math inline">\(1-0.925=0.075\)</span>. Thus the probability of finding at least 3 mutants in a sample of 20 with individual probability 0.0015 is approximately 0.075. The answer is close to the probability of having exactly 3 mutants because the probability of finding more than 3 mutants is very low.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-denny_chance_2002" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-denny_chance_2002" class="csl-entry" role="listitem">
 Denny, Mark, and Steven Gaines. 2002. <em>Chance in <span>Biology</span>: <span>Using</span> <span>Probability</span> to <span>Explore</span> <span>Nature</span></em>. Princeton: Princeton University Press.
 </div>
-<div id="ref-feller_introduction_nodate" class="csl-entry" role="doc-biblioentry">
+<div id="ref-feller_introduction_nodate" class="csl-entry" role="listitem">
 Feller, William. n.d. <em>An <span>Introduction</span> to <span>Probability</span> <span>Theory</span> and <span>Its</span> <span>Applications</span>, <span>Vol</span>. 1, 3rd <span>Edition</span></em>. 3rd edition. New York; London: Wiley.
 </div>
 </div>
@@ -758,9 +880,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -796,10 +932,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -809,8 +944,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -825,6 +969,238 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -866,17 +1242,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tutorial3.html" class="pagination-link">
+      <a href="./tutorial3.html" class="pagination-link  aria-label=" tutorial="" 3:="" data="" frames="" and="" descriptive="" statistics"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tutorial 3: Data frames and descriptive statistics</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tutorial4.html" class="pagination-link">
+      <a href="./tutorial4.html" class="pagination-link" aria-label="Tutorial 4: Random number generators">
         <span class="nav-page-text">Tutorial 4: Random number generators</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
