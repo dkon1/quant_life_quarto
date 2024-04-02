@@ -102,11 +102,6 @@ plot(pen_fit)
 
 ```
 
-```{r ex1-hint}
-# use mean() inside print() 
-# use sd() inside print() 
-```
-
 ::: {.callout-caution collapse="true"}
 ## Hint
 
