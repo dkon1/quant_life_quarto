@@ -269,7 +269,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"myfit <- lm(HR ~Temp, my_data)\nsummary(myfit)\na<-cov(my_data$HR,my_data$Temp)/var(my_data$Temp)\nprint(a)\nb<-mean(my_data$HR)-a*mean(my_data$Temp)\nprint(b)","options":{"output":"true","fig-width":7,"fig-cap":"","autorun":"false","label":"unnamed-chunk-1","warning":"true","out-height":"","comment":"","read-only":"false","results":"markup","classes":"","message":"true","context":"interactive","dpi":72,"fig-height":5,"out-width":"700px"},"id":1},{"code":"# plot the data and regression line\nplot(my_data$Temp, my_data$HR,main= 'scatterplot and linear regression line')\nabline(myfit)\n# plot the residuals\nHRresiduals <- resid(myfit)\nplot(data$Temp, HRresiduals,main='residuals plot')\nabline(0,0)","options":{"output":"true","fig-width":7,"fig-cap":"","autorun":"false","label":"linreg-HRTemp","warning":"true","out-height":"","comment":"","read-only":"false","results":"markup","classes":"","message":"true","context":"interactive","dpi":72,"fig-height":5,"out-width":"700px"},"id":2},{"code":"data(\"Galton\")\nmyfit <- lm(child ~ parent, Galton) \nsummary(myfit)\nprint(paste(\"The best-fit slope is: \", myfit$coefficients[2]))\nprint(paste(\"The best-fit intercept is: \", myfit$coefficients[1]))    ","options":{"output":"true","fig-width":7,"fig-cap":"","autorun":"false","label":"unnamed-chunk-3","warning":"true","out-height":"","comment":"","read-only":"false","results":"markup","classes":"","message":"true","context":"interactive","dpi":72,"fig-height":5,"out-width":"700px"},"id":3},{"code":"#Overlay the best-fit line on the base R plot\nplot(Galton$parent, Galton$child, xlab='mid-parent height (inches)', ylab='child height (inches)')\nabline(myfit)","options":{"output":"true","fig-width":7,"fig-cap":"","autorun":"false","label":"unnamed-chunk-4","warning":"true","out-height":"","comment":"","read-only":"false","results":"markup","classes":"","message":"true","context":"interactive","dpi":72,"fig-height":5,"out-width":"700px"},"id":4},{"code":"plot(Galton$parent, myfit$residuals, xlab='mid-parent height (inches)', ylab='residuals (inches)')\nabline(0,0)","options":{"output":"true","fig-width":7,"fig-cap":"","autorun":"false","label":"unnamed-chunk-5","warning":"true","out-height":"","comment":"","read-only":"false","results":"markup","classes":"","message":"true","context":"interactive","dpi":72,"fig-height":5,"out-width":"700px"},"id":5}];
+globalThis.qwebrCellDetails = [{"options":{"classes":"","fig-cap":"","fig-height":5,"out-height":"","autorun":"false","label":"unnamed-chunk-1","context":"interactive","warning":"true","out-width":"700px","output":"true","dpi":72,"fig-width":7,"comment":"","results":"markup","message":"true","read-only":"false"},"code":"myfit <- lm(HR ~Temp, my_data)\nsummary(myfit)\na<-cov(my_data$HR,my_data$Temp)/var(my_data$Temp)\nprint(a)\nb<-mean(my_data$HR)-a*mean(my_data$Temp)\nprint(b)","id":1},{"options":{"classes":"","fig-cap":"","fig-height":5,"out-height":"","autorun":"false","label":"linreg-HRTemp","context":"interactive","warning":"true","out-width":"700px","output":"true","dpi":72,"fig-width":7,"comment":"","results":"markup","message":"true","read-only":"false"},"code":"# plot the data and regression line\nplot(my_data$Temp, my_data$HR,main= 'scatterplot and linear regression line')\nabline(myfit)\n# plot the residuals\nHRresiduals <- resid(myfit)\nplot(data$Temp, HRresiduals,main='residuals plot')\nabline(0,0)","id":2},{"options":{"classes":"","fig-cap":"","fig-height":5,"out-height":"","autorun":"false","label":"unnamed-chunk-3","context":"interactive","warning":"true","out-width":"700px","output":"true","dpi":72,"fig-width":7,"comment":"","results":"markup","message":"true","read-only":"false"},"code":"data(\"Galton\")\nmyfit <- lm(child ~ parent, Galton) \nsummary(myfit)\nprint(paste(\"The best-fit slope is: \", myfit$coefficients[2]))\nprint(paste(\"The best-fit intercept is: \", myfit$coefficients[1]))    ","id":3},{"options":{"classes":"","fig-cap":"","fig-height":5,"out-height":"","autorun":"false","label":"unnamed-chunk-4","context":"interactive","warning":"true","out-width":"700px","output":"true","dpi":72,"fig-width":7,"comment":"","results":"markup","message":"true","read-only":"false"},"code":"#Overlay the best-fit line on the base R plot\nplot(Galton$parent, Galton$child, xlab='mid-parent height (inches)', ylab='child height (inches)')\nabline(myfit)","id":4},{"options":{"classes":"","fig-cap":"","fig-height":5,"out-height":"","autorun":"false","label":"unnamed-chunk-5","context":"interactive","warning":"true","out-width":"700px","output":"true","dpi":72,"fig-width":7,"comment":"","results":"markup","message":"true","read-only":"false"},"code":"plot(Galton$parent, myfit$residuals, xlab='mid-parent height (inches)', ylab='residuals (inches)')\nabline(0,0)","id":5}];
 
 </script>
 <script type="module">
@@ -1457,30 +1457,40 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_data<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">"https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt"</span>, <span class="at">header=</span><span class="cn">TRUE</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(my_data<span class="sc">$</span>Temp, my_data<span class="sc">$</span>HR,<span class="at">main=</span><span class="st">'heart rates vs. body temps'</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>,<span class="at">cex.lab=</span><span class="fl">1.5</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(my_data<span class="sc">$</span>HR, my_data<span class="sc">$</span>Temp,<span class="at">main=</span><span class="st">'body temps vs. heart rates'</span>, <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">cex.axis=</span><span class="fl">1.5</span>,<span class="at">cex.lab=</span><span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div id="fig-body-temp" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-body-temp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="linreg_files/figure-html/body-temp-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Body temp (response variable) vs heart rate (explanatory variable)</figcaption>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-body-temp" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-body-temp-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-body-temp-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="linreg_files/figure-html/fig-body-temp-1.png" class="img-fluid figure-img" data-ref-parent="fig-body-temp" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-body-temp-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Body temp (response variable) vs heart rate (explanatory variable)
+</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="linreg_files/figure-html/body-temp-2.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Heart rate (response variable) vs body temp (explanatory variable)</figcaption>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-body-temp" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-body-temp-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-body-temp-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="linreg_files/figure-html/fig-body-temp-2.png" class="img-fluid figure-img" data-ref-parent="fig-body-temp" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-body-temp-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Heart rate (response variable) vs body temp (explanatory variable)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p>Scatterplot of heart rates and body temperatures: a) with heart rate as the explanatory variable; b) with body temperature as the explanatory variable.</p>
 </div>
-</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-body-temp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: Scatterplot of heart rates and body temperatures: a) with heart rate as the explanatory variable; b) with body temperature as the explanatory variable.
+</figcaption>
+</figure>
 </div>
 </section>
 <section id="linear-least-squares-fitting" class="level2" data-number="5.2">
@@ -1662,33 +1672,40 @@ a = r \frac{\sigma_Y}{\sigma_X}
 <section id="regression-to-the-mean" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="regression-to-the-mean"><span class="header-section-number">5.4</span> Regression to the mean</h2>
 <p> The phenomenon called regression to the mean is initially surprising. Francis Galton first discovered this by comparing the heights of parents and their offspring. Galton took a subset of parents who are taller than average and observed that their children were, on average, shorter than their parents. He also compared the heights of parents who are shorter than average, and found that their children were on average taller than their parents. This suggests the conclusion that in long run everyone will converge closer to the average height - hence “regression to mediocrity”, as Galton called it .</p>
-<div>
-
-</div>
-<div class="cell quarto-layout-panel" data-layout-ncol="2">
+<div id="fig-linreg-Galton" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-linreg-Galton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="linreg_files/figure-html/linreg-Galton-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Child height (response variable) vs parent height (explanatory variable)</figcaption>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-linreg-Galton" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-linreg-Galton-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-linreg-Galton-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="linreg_files/figure-html/fig-linreg-Galton-1.png" class="img-fluid figure-img" data-ref-parent="fig-linreg-Galton" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-linreg-Galton-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Child height (response variable) vs parent height (explanatory variable)
+</figcaption>
 </figure>
 </div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="linreg_files/figure-html/linreg-Galton-2.png" class="img-fluid figure-img" width="672"></p>
-<figcaption>Parent height (response variable) vs child height (explanatory variable)</figcaption>
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-linreg-Galton" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-linreg-Galton-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-linreg-Galton-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="linreg_files/figure-html/fig-linreg-Galton-2.png" class="img-fluid figure-img" data-ref-parent="fig-linreg-Galton" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-linreg-Galton-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Parent height (response variable) vs child height (explanatory variable)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p>Galton data on heights of parents and of children as scatterplots. The dotted red lines show the identity line y=x and the solid black line is the linear regression.</p>
 </div>
-</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-linreg-Galton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: Galton data on heights of parents and of children as scatterplots. The dotted red lines show the identity line y=x and the solid black line is the linear regression.
+</figcaption>
+</figure>
 </div>
 <p>But that is not the case! The parents and children in Galton’s experiment had a very similar mean and standard deviation. This appears to be a paradox, but it is easily explained using linear regression. Consider two identically distributed random variables <span class="math inline">\((X,Y)\)</span> with a positive correlation <span class="math inline">\(r\)</span>. The slope of the linear regression is <span class="math inline">\(m = r \sigma_Y/\sigma_X\)</span> and since <span class="math inline">\(\sigma_Y=\sigma_X\)</span>, the slope is simply <span class="math inline">\(r\)</span>. Select a subset with values of <span class="math inline">\(X\)</span> higher than <span class="math inline">\(\bar X\)</span>, and consider the mean value of <span class="math inline">\(Y\)</span> for that subset. If the slope <span class="math inline">\(m&lt;1\)</span> (the correlation is not perfect), then the mean value of <span class="math inline">\(Y\)</span> for that subset is less than the mean value of <span class="math inline">\(X\)</span>. Similarly, for a subset with values of <span class="math inline">\(X\)</span> lower than <span class="math inline">\(\bar X\)</span>, the mean value of <span class="math inline">\(Y\)</span> for that subset is greater than the mean value of <span class="math inline">\(X\)</span>, again as long as the slope is less than 1.</p>
 <p>Figure <span class="math inline">\(\ref{fig:regression2mean}\)</span> shows Galton’s data set (available in R by installing the package ‘HistData’) along with the linear regression line and the identity like (<span class="math inline">\(y=x\)</span>). If each child had exactly the same height as the parents, the scatterplot would lie on the identity line. Instead, the linear regression lines have slope less than 1 for both the plot with the parental heights as the explanatory variable and for the plot with the variables reversed. The correlation coefficient <span class="math inline">\(r\)</span> does not depend on the order of the variables; so using the equation <span class="math inline">\(\ref{eq:slope_corr}\)</span> we can see the difference in slopes is explained by the two data sets having different standard deviations, and reversing the explanatory and response variables results in reciprocation of the ratio of standard deviations. The children’s heights have a higher standard deviation, which is likely an artifact of the experiment. In the data set the heights of the two parents were averaged to take them both into account, which substantially reduces the spread between male and female heights. To summarize, although the children of taller parents are shorter on average than their parents, and the children of shorter parents are taller than their parents, the overall standard deviation does not decrease from generation to generation.</p>

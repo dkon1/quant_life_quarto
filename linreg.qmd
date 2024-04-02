@@ -22,7 +22,7 @@ $$ y = ax + b$$
 Let us say you have measured some data for two variables, which we will call, unimaginatively, $x$ and $y$. This data set consists of pairs of numbers: one for $x$, one for $y$, for example, the heart rate and body temperature of a person go together. They cannot be mixed up between different people, as the data will lose all meaning. We can denote this a list of $n$ pairs of numbers: $(x_i, y_i)$ (where $i$ is an integer between 1 and $n$). Since this is a list of pairs of numbers, we can plot them as separate points in the plane using each $x_i$ as the x-coordinate and each $y_i$ as the y-coordinate. This is called a \index{plot!scatter} *scatterplot* of a two-variable data set. For example, two scatterplots of a data set of heart rate and body temperature are shown in figure \ref{fig:HRTemp_scatterplot}. In the first one, the body temperature is on the x-axis, which makes it the \index{variable!explanatory} *explanatory* variable; in the second one, the body temperature is on the y-axis, which makes it the \index{variable!response} *response* variable.
 
 ```{r}
-#| label: body-temp
+#| label: fig-body-temp
 #| fig-cap: 'Scatterplot of heart rates and body temperatures: a) with heart rate as the explanatory variable; b) with body temperature as the explanatory variable.'
 #| fig-subcap: 
 #|   - "Body temp (response variable) vs heart rate (explanatory variable)" 
@@ -253,7 +253,7 @@ It appears that the residuals meet the assumptions of being independent of measu
 \label{sec:bio8} The phenomenon called \index{regression to the mean} regression to the mean is initially surprising. Francis Galton first discovered this by comparing the heights of parents and their offspring. Galton took a subset of parents who are taller than average and observed that their children were, on average, shorter than their parents. He also compared the heights of parents who are shorter than average, and found that their children were on average taller than their parents. This suggests the conclusion that in long run everyone will converge closer to the average height - hence "regression to mediocrity", as Galton called it \cite{senn_francis_2011}.
 
 ```{r}
-#| label: linreg-Galton
+#| label: fig-linreg-Galton
 #| echo: false
 #| fig-cap: "Galton data on heights of parents and of children as scatterplots. The dotted red lines show the identity line y=x and the solid black line is the linear regression."
 #| fig-subcap: 
