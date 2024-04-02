@@ -2,94 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/index.html</loc>
-    <lastmod>2023-03-16T22:05:49.736Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.542Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/counting.html</loc>
-    <lastmod>2024-03-19T18:23:18.672Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.543Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/tutorial1.html</loc>
-    <lastmod>2024-03-26T17:02:03.942Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.544Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/functions.html</loc>
-    <lastmod>2024-03-19T18:23:18.707Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.545Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/tutorial2.html</loc>
-    <lastmod>2024-03-26T17:02:03.942Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.546Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/descriptive.html</loc>
-    <lastmod>2024-03-26T17:02:03.875Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.547Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/tutorial3.html</loc>
-    <lastmod>2024-03-26T17:02:03.942Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.548Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/probdist.html</loc>
-    <lastmod>2024-03-26T17:02:03.941Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.549Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/tutorial4.html</loc>
-    <lastmod>2024-03-26T17:02:03.943Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.550Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/linreg.html</loc>
-    <lastmod>2023-01-03T15:08:04.483Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.551Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dkon1.github.io/quant_life_quarto/tutorial5.html</loc>
+    <lastmod>2024-04-02T03:33:52.552Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/independence.html</loc>
-    <lastmod>2024-01-19T20:37:06.289Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.552Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/hypo_test.html</loc>
-    <lastmod>2023-01-03T15:08:04.483Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.553Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/bayes.html</loc>
-    <lastmod>2023-03-16T21:30:14.379Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.554Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/sampling.html</loc>
-    <lastmod>2023-01-03T15:08:04.486Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.555Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/lindiff.html</loc>
-    <lastmod>2023-04-25T21:11:51.949Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.556Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/graph_odes.html</loc>
-    <lastmod>2024-01-19T20:39:06.215Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.558Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/ode_sols.html</loc>
-    <lastmod>2023-01-03T15:08:04.484Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.559Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/markov_model.html</loc>
-    <lastmod>2023-01-03T15:08:04.484Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.559Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/markov_evol.html</loc>
-    <lastmod>2023-01-03T15:08:04.484Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.560Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/markov_stat.html</loc>
-    <lastmod>2023-01-03T15:08:04.484Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.560Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/markov_eigen.html</loc>
-    <lastmod>2023-03-16T21:38:04.782Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.561Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/references.html</loc>
-    <lastmod>2023-01-03T15:08:04.486Z</lastmod>
+    <lastmod>2024-04-02T03:33:52.562Z</lastmod>
   </url>
   <url>
     <loc>https://dkon1.github.io/quant_life_quarto/Quantifying-Life.pdf</loc>
-    <lastmod>2024-03-26T17:04:33.653Z</lastmod>
+    <lastmod>2024-04-02T03:33:51.870Z</lastmod>
   </url>
 </urlset>

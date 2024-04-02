@@ -20,10 +20,11 @@ Data comes in many different formats, for example a formatted text file, an Exce
 The first way to load data is to read in a text file that is saved locally on your computer. In the script below, the function `read.csv()` loads the file called `HR_data_combined.csv` with the option `header = TRUE` which lets the function know that the first line of the file contains the names of the variables, while the rest contains the values. The information is assigned to a new object named `heart_rates`, which is a **data frame**.
 
 ```{webr-r}
-heart_rates <- read.csv(file = "https://raw.githubusercontent.com/dkon1/quant_life_quarto/master/data/HR_data_combined.csv", header = TRUE)
+heart_rates <- read.csv(file = "https://raw.githubusercontent.com/dkon1/quant_life_quarto/master/data/HR_data_combined.csv")
 ```
 
-::: newbox
+::: callout-tip
+## data frame
 A **data frame** is an object in R environment that contains multiple variables with different names. These variables can be accessed by using the name of the data frame, followed by `$` and then the variable name, e.g. `df2$var1` refers to variable named `var1` in data frame `df2`.
 :::
 
@@ -201,7 +202,8 @@ Need to use the data frame name; switch the order of the variables in `plot`
 
 A picture is worth a lot of words, and a plot of data offers much more information than the basic descriptive statistics. A *histogram* offers a convenient visualization of a single variable data set.
 
-::: newbox
+::: callout-tip
+## histogram
 A **histogram** is a plot of counts or frequencies of different values in a data vector, divided into *bins*. The x-axis typically shows the values of the variable, and the y-axis shows the counts, or frequencies, of the data in each bin.
 :::
 

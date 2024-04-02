@@ -231,8 +231,9 @@ This can be generalize to a uniform random variable on integers between $a$ and 
 $$ Var(U) = \frac{(b-a+1)^2 - 1}{12} = \frac{(b-a)^2 + 2(b-a)}{12}
 $$ {#eq-unif-var-gen}
 
-```{r unif-dist, echo=FALSE}
+```{r unif-dist}
 #| label: fig-unif-dist
+#| echo: false
 #| fig-cap: "Two uniform random distributions with different ranges."
 #| fig-subcap: 
 #|   - "Uniform distribution on integers from 0 to 3" 
