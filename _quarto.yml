@@ -4,7 +4,7 @@ project:
 filters:
   - webr
 webr:
-  packages: ['palmerpenguins']
+  packages: ['palmerpenguins', "HistData"]
 book:
   title: "Quantifying Life"
   author: "Dmitry Kondrashov"
@@ -27,6 +27,7 @@ book:
     - probdist.qmd
     - tutorial4.qmd
     - linreg.qmd
+    - tutorial5.qmd
     - independence.qmd
     - hypo_test.qmd
     - bayes.qmd
