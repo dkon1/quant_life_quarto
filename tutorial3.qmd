@@ -1,0 +1,289 @@
+# Tutorial 3: Data frames and descriptive statistics {.unnumbered}
+
+### Learning goals
+
+In this tutorial you will learn to:
+
+-   Load data into data frames
+-   Compute statistics for different variables
+-   Visualize data sets using histograms
+-   Visualize data sets using box plots
+
+## Working with data frames
+
+R is first and foremost a programming language for working with data. To do this, we first need to load the data into the *R environment* so R can perform actions on it.
+
+Data comes in many different formats, for example a formatted text file, an Excel spreadsheet, or a database file like SQL. We will stick with simple formatted text files, which consist of lines that have a common format. So each line has a certain number of values (numeric, text, etc.) that are separated by a *delimiter*, which is a special character that is used only to divide values, for example commas in `csv` files (comma separated variables) and tabs in `tsv` files (tab separated variables).
+
+### loading data from a file
+
+The first way to load data is to read in a text file that is saved locally on your computer. In the script below, the function `read.csv()` loads the file called `HR_data_combined.csv` with the option `header = TRUE` which lets the function know that the first line of the file contains the names of the variables, while the rest contains the values. The information is assigned to a new object named `heart_rates`, which is a **data frame**.
+
+```{webr-r}
+heart_rates <- read.csv(file = "https://raw.githubusercontent.com/dkon1/quant_life_quarto/master/data/HR_data_combined.csv")
+```
+
+::: callout-tip
+## data frame
+A **data frame** is an object in R environment that contains multiple variables with different names. These variables can be accessed by using the name of the data frame, followed by `$` and then the variable name, e.g. `df2$var1` refers to variable named `var1` in data frame `df2`.
+:::
+
+To see the names of the variables and the first few rows of values, you can use the function `head()`. You see that this data set contains five variables: four heart rate measurements reported by students in BIOS 20151 (in beats per minute) and the year of the course. The values for the variables are arranged in columns, and the first row of the file contains the names of the variables: `Rest1`, `Ex1`, `Rest2`, `Ex2`, and `Year`.
+
+```{webr-r}
+head(heart_rates)
+```
+
+NOTE: The data file has to be saved into the same folder as the .Rmd file for this to work, or else a file path has to be specified to provide the address of the saved file.
+
+### loading data from a package
+
+R users create and share convenient collections of code or data called *packages*. You can also load data from a package, e.g. `palmerpenguins`, which is a data set of observations on penguins recorded at the Palmer research station (see explanation of the data set here: https://allisonhorst.github.io/palmerpenguins/).
+
+To install this (or any other) package in R Studio, go to the `Packages` tab in the lower right window page, click `Install` and type `palmerpenguins`. We will use the data set called `penguins` that contains 8 variables, as you can see below in the output of the `head()` function:
+
+```{webr-r}
+library(palmerpenguins)
+head(penguins)
+```
+
+### descriptive statistics
+
+*Descriptive statistics* are used to summarize a data set, in particular the two key measures are of the *center* of the values and of the *spread* of the values. The most common measures of center are the mean and the median, and the important measures of spread are the variance, the standard deviation, and the range of the data set.
+
+One can calculate basic descriptive statistics as follows, note the use of the function `paste()` to combine strings of text with numeric values to make the output easier to understand:
+
+```{webr-r}
+paste("The mean first resting heart rate is: ", mean(heart_rates$Rest1))
+paste("The mean bill length is: ", mean(penguins$bill_length_mm))
+```
+
+There are two issues with the output of the above code. The first line correctly outputs the mean value, but you can see that it prints a whole lot of digits, making the output unnecessarily messy. There are several ways of rectifying this issue. One of them is to set the number of digits that R outputs on the screen using the function `options(digits = 5)` to limit the number of digits and then using `print()` after the `cat()` function to print the correctly formatted output; the only issue is the pesky \[1\] that gets added to the output:
+
+```{webr-r}
+options(digits = 5)
+cat("The mean first resting heart rate is: ")
+print(mean(heart_rates$Rest1))
+```
+
+The second and larger issue is that the mean of the bill length returns `NA`, which means that there are values missing in that data vector (which you could see when we printed out the head of the data). The option `na.rm` in the function `mean()` tells it to ignore any missing values:
+
+```{webr-r}
+cat("The mean bill length is: ")
+print(mean(penguins$bill_length_mm, na.rm = TRUE))
+```
+
+Here are examples of median values:
+
+```{webr-r}
+cat("The median first exercise heart rate is: ")
+print(median(heart_rates$Ex1))
+cat("The median flipper length is: ")
+print(median(penguins$flipper_length_mm, na.rm = TRUE))
+```
+
+Here are examples of variances:
+
+```{webr-r}
+cat("The variance of the second exercise heart rate is: ")
+print(var(heart_rates$Ex2))
+cat("The variance of bill depth is: ")
+print(var(penguins$bill_depth_mm, na.rm = TRUE))
+```
+
+Here are examples of standard deviations (square root of variance):
+
+```{webr-r}
+cat("The standard deviation of the second exercise heart rate is: ") 
+print(sd(heart_rates$Ex2))
+cat("The standard deviation of bill depth is: ")
+print(sd(penguins$bill_depth_mm, na.rm = TRUE))
+```
+
+Here are examples of range (the minimum and maximum values of the data vector):
+
+```{webr-r}
+cat("The range of the second resting heart rate is: ")
+print(range(heart_rates$Rest2))
+cat("The range of penguin body mass is: ")
+print(range(penguins$body_mass_g, na.rm = TRUE))
+```
+
+### What can go wrong
+
+When reading in files, either from your computer hard drive or from a URL, any mistake in the file name or the path (directory) will result in an error that looks like this:
+
+```{webr-r}
+heart_rates <- read.csv(file = "HR_data_combine.csv", header = TRUE)
+```
+
+Another common mistake is using a variable name without the data frame. For example, if you try to refer to the variable `Rest1` without the data frame, R will not know what to do:
+
+```{webr-r}
+mean(Rest1)
+```
+
+A different error is using a data frame as a variable. Since it contains multiple variables, we cannot calculate descriptive statistics on a whole data frame:
+
+```{webr-r}
+mean(heart_rates)
+```
+
+### Exercises
+
+The following R commands or scripts contain errors; your job is to fix them so they do what each exercise asks you to do. Try figuring out the errors on your own before clicking on the Hint box to expand it.
+
+1.  Calculate the mean of the second resting heart rate of the first 30 individuals (in the data frame `heart_rates` and variable `Rest2`):
+
+```{webr-r}
+mean(Rest2[30])
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Need to specify the data frame; use : to create a vector of indices from 1 to 30.
+:::
+
+```{r ex1_1-hint}
+
+```
+
+
+
+2.  Calculate the range of penguin flipper lengths, assign it to a variable `ran` and print the maximum value:
+
+```{webr-r}
+ran <- range(penguins$flipper_length_mm)
+print(range)
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Use option `na.rm=TRUE` to get rid of NAs; print the second element of the variable `ran` to show the minimum.
+:::
+
+
+3.  Calculate the ratios of all the bill lengths to the bill depth and print the mean and standard deviations of this ratio:
+
+```{webr-r}
+len_over_dep <- penguins$bill_length_mm/bill_depth_mm
+print(mean(len_over_dep))
+print(sd(len_over_dep))
+```
+
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Cannot use variable name without the data frame; has to have the format `df$Var`; in `mean()` and `sd()` use option `na.rm=TRUE` to get rid of NAs
+:::
+
+3.  Use `plot()` to make a scatterplot of the first exercise heart rate as function of the first resting heart rate from the data frame `heart_rates`
+
+```{webr-r}
+plot(Ex1, Rest1, main = 'Exercise vs resting heart rates', xlab= 'rate (bpm)', ylab= 'rate (bpm)')
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Need to use the data frame name; switch the order of the variables in `plot`
+:::
+
+```{r ex1_4-hint}
+
+```
+
+
+
+## Visualizing data sets
+
+A picture is worth a lot of words, and a plot of data offers much more information than the basic descriptive statistics. A *histogram* offers a convenient visualization of a single variable data set.
+
+::: callout-tip
+## histogram
+A **histogram** is a plot of counts or frequencies of different values in a data vector, divided into *bins*. The x-axis typically shows the values of the variable, and the y-axis shows the counts, or frequencies, of the data in each bin.
+:::
+
+R has a histogram function `hist()`, which does a passable job of representing the distribution of a variable such as flipper length or bill depth. The two histograms below provide visual descriptions of the two data sets:
+
+```{webr-r}
+hist(penguins$flipper_length_mm, main = 'Histogram of penguin flipper length', xlab = 'flipper length (mm)')
+hist(penguins$bill_depth_mm, main = 'Histogram of penguin bill depth', xlab = 'flipper depth (mm)')
+```
+
+### Box plots
+
+Sometimes a histogram is a bit too involved, especially when one wants a quick visual comparison of two variables. Here are example box plots for the first resting rate and the first exercise heart rate data sets:
+
+```{webr-r}
+boxplot(heart_rates$Rest1, main = "Resting heart rate 1", ylab = 'rate (beats per minute)')
+boxplot(heart_rates$Ex1, main = "Exercise heart rate 1", ylab = 'rate (beats per minute)')
+```
+
+The boxes in these plots extend from the first quartile to the third quartile, with the line in the middle being the median. Thus the middle half of the data set is contained within the boxes. The "whiskers" extend from the box to another 1.5 times the width of the box (or the min and the max, if they are closer), but this can be changed by setting the `range` option. Any points outside the whiskers are considered "outliers" and are shown as individual points.
+
+The `boxplot()` function, like all others, has many options. They allow us to plot two or more box plots together, using the options `at` and `names`, for direct visual comparison of two data sets:
+
+```{webr-r}
+boxplot(heart_rates$Rest1, heart_rates$Ex1, main = "Heart rates comparison", ylab = 'rate (beats per minute)', names = c('resting', 'exercise'), at = 1:2)
+```
+
+If you want to visualize the effect of a categorical variable on the distribution of a numeric variable, you can use the convenient *expression* notation in the first input of boxplot, as you can see below:
+
+```{webr-r}
+boxplot(bill_length_mm ~ species, data = penguins, main = "Bill length for different species", ylab = 'length (mm)')
+```
+
+The expression `bill_length_mm ~ species` tells `boxplot()` to plot the distributions of `bill_length_mm` as a function of `species`, whose values are shown on the x-axis. The option `data` specifies the data frame, so you don't need to put the data frame with the variables.
+
+### Exercises
+
+The following R commands or scripts contain errors; your job is to fix them so they do what each exercise asks you to do. Try figuring out the errors on your own before clicking on the Hint box to expand it.
+
+1.  Plot a histogram of body masses of all the penguins in the `penguins` data frame
+
+```{webr-r}
+hist(body_mass_g, data = penguins)
+```
+
+```{r ex2_1-hint}
+
+```
+::: {.callout-caution collapse="true"}
+## Hint
+
+`data = ` option doesn't work in function `hist()`, need to use dataframe and variable name, e.g.`df$Var`
+:::
+
+
+2.  Calculate the ratio of the penguin bill lengths to the bill depths and plot their histogram
+
+```{webr-r}
+len_over_dep <- penguins$bill_length_mm/bill_depth_mm
+hist(len_over_dep)
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Cannot use variable name without the data frame; has to have the format `df$Var`
+:::
+
+
+
+
+3.  Produce box plots of the second resting heart rates (variable `Rest2` for different years:
+
+```{webr-r}
+boxplot(Year ~ Rest2, data=heart_rates)
+```
+
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Check the order of variables in the expression: it needs to have the format of `Y ~ X`
+:::

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - 13&nbsp; Graphical analysis of ordinary differential equations</title>
+<title>Quantifying Life - 11&nbsp; Graphical analysis of ordinary differential equations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -17,11 +17,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -111,7 +82,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -120,15 +97,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Quantifying Life - 13&nbsp; Graphical analysis of ordinary differential equations">
-<meta name="twitter:description" content="In the last chapter we considered discrete time models, in which time is counted in integers.">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta name="twitter:title" content="Quantifying Life - 11&nbsp; Graphical analysis of ordinary differential equations">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -136,11 +143,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./graph_odes.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -148,171 +160,212 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantifying Life</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
-            <i class="bi bi-bi-file-pdf pe-1"></i>
-          Download PDF
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
-            <i class="bi bi-bi-journal pe-1"></i>
-          Download ePub
-          </a>
-        </li>
-    </ul>
+    <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./counting.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></a>
+  <a href="./counting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tutorial 1: First steps for coding</span></a>
+  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 1: First steps for coding</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
+  <a href="./functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Tutorial 2: Vectors and plotting</span></a>
+  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 2: Vectors and plotting</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
+  <a href="./descriptive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 3: Data frames and descriptive statistics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 4: Random number generators</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
+  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 5: Linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sampling.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Sampling distribution and estimation</span></a>
+  <a href="./independence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  <a href="./bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  <a href="./sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Sampling distribution and estimation</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
+  <a href="./markov_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#building-differential-equations" id="toc-building-differential-equations" class="nav-link active" data-scroll-target="#building-differential-equations"><span class="toc-section-number">13.1</span>  Building differential equations</a>
+  <li><a href="#building-differential-equations" id="toc-building-differential-equations" class="nav-link active" data-scroll-target="#building-differential-equations"><span class="header-section-number">11.1</span> Building differential equations</a>
   <ul class="collapse">
-  <li><a href="#from-discrete-time-to-continuous" id="toc-from-discrete-time-to-continuous" class="nav-link" data-scroll-target="#from-discrete-time-to-continuous"><span class="toc-section-number">13.1.1</span>  from discrete time to continuous</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">13.1.2</span>  Exercises</a></li>
-  <li><a href="#growth-proportional-to-population-size" id="toc-growth-proportional-to-population-size" class="nav-link" data-scroll-target="#growth-proportional-to-population-size"><span class="toc-section-number">13.1.3</span>  growth proportional to population size</a></li>
-  <li><a href="#chemical-kinetics" id="toc-chemical-kinetics" class="nav-link" data-scroll-target="#chemical-kinetics"><span class="toc-section-number">13.1.4</span>  chemical kinetics</a></li>
-  <li><a href="#building-nonlinear-odes" id="toc-building-nonlinear-odes" class="nav-link" data-scroll-target="#building-nonlinear-odes"><span class="toc-section-number">13.1.5</span>  building nonlinear ODEs</a></li>
+  <li><a href="#from-discrete-time-to-continuous" id="toc-from-discrete-time-to-continuous" class="nav-link" data-scroll-target="#from-discrete-time-to-continuous"><span class="header-section-number">11.1.1</span> from discrete time to continuous</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.1.2</span> Exercises</a></li>
+  <li><a href="#growth-proportional-to-population-size" id="toc-growth-proportional-to-population-size" class="nav-link" data-scroll-target="#growth-proportional-to-population-size"><span class="header-section-number">11.1.3</span> growth proportional to population size</a></li>
+  <li><a href="#chemical-kinetics" id="toc-chemical-kinetics" class="nav-link" data-scroll-target="#chemical-kinetics"><span class="header-section-number">11.1.4</span> chemical kinetics</a></li>
+  <li><a href="#building-nonlinear-odes" id="toc-building-nonlinear-odes" class="nav-link" data-scroll-target="#building-nonlinear-odes"><span class="header-section-number">11.1.5</span> building nonlinear ODEs</a></li>
   </ul></li>
-  <li><a href="#qualitative-analysis-of-odes" id="toc-qualitative-analysis-of-odes" class="nav-link" data-scroll-target="#qualitative-analysis-of-odes"><span class="toc-section-number">13.2</span>  Qualitative analysis of ODEs</a>
+  <li><a href="#qualitative-analysis-of-odes" id="toc-qualitative-analysis-of-odes" class="nav-link" data-scroll-target="#qualitative-analysis-of-odes"><span class="header-section-number">11.2</span> Qualitative analysis of ODEs</a>
   <ul class="collapse">
-  <li><a href="#graphical-analysis-of-the-defining-function" id="toc-graphical-analysis-of-the-defining-function" class="nav-link" data-scroll-target="#graphical-analysis-of-the-defining-function"><span class="toc-section-number">13.2.1</span>  graphical analysis of the defining function</a></li>
-  <li><a href="#fixed-points-and-stability" id="toc-fixed-points-and-stability" class="nav-link" data-scroll-target="#fixed-points-and-stability"><span class="toc-section-number">13.2.2</span>  fixed points and stability</a></li>
-  <li><a href="#outline-of-qualitative-analysis-of-an-ode" id="toc-outline-of-qualitative-analysis-of-an-ode" class="nav-link" data-scroll-target="#outline-of-qualitative-analysis-of-an-ode"><span class="toc-section-number">13.2.3</span>  Outline of qualitative analysis of an ODE</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="toc-section-number">13.2.4</span>  Exercises</a></li>
+  <li><a href="#graphical-analysis-of-the-defining-function" id="toc-graphical-analysis-of-the-defining-function" class="nav-link" data-scroll-target="#graphical-analysis-of-the-defining-function"><span class="header-section-number">11.2.1</span> graphical analysis of the defining function</a></li>
+  <li><a href="#fixed-points-and-stability" id="toc-fixed-points-and-stability" class="nav-link" data-scroll-target="#fixed-points-and-stability"><span class="header-section-number">11.2.2</span> fixed points and stability</a></li>
+  <li><a href="#outline-of-qualitative-analysis-of-an-ode" id="toc-outline-of-qualitative-analysis-of-an-ode" class="nav-link" data-scroll-target="#outline-of-qualitative-analysis-of-an-ode"><span class="header-section-number">11.2.3</span> Outline of qualitative analysis of an ODE</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">11.2.4</span> Exercises</a></li>
   </ul></li>
-  <li><a href="#functions-in-r" id="toc-functions-in-r" class="nav-link" data-scroll-target="#functions-in-r"><span class="toc-section-number">13.3</span>  Functions in R</a>
+  <li><a href="#functions-in-r" id="toc-functions-in-r" class="nav-link" data-scroll-target="#functions-in-r"><span class="header-section-number">11.3</span> Functions in R</a>
   <ul class="collapse">
-  <li><a href="#defining-a-function" id="toc-defining-a-function" class="nav-link" data-scroll-target="#defining-a-function"><span class="toc-section-number">13.3.1</span>  defining a function</a></li>
-  <li><a href="#calling-a-function" id="toc-calling-a-function" class="nav-link" data-scroll-target="#calling-a-function"><span class="toc-section-number">13.3.2</span>  calling a function</a></li>
-  <li><a href="#using-a-function-to-solve-a-difference-equation" id="toc-using-a-function-to-solve-a-difference-equation" class="nav-link" data-scroll-target="#using-a-function-to-solve-a-difference-equation"><span class="toc-section-number">13.3.3</span>  using a function to solve a difference equation</a></li>
-  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2"><span class="toc-section-number">13.3.4</span>  Exercises</a></li>
+  <li><a href="#defining-a-function" id="toc-defining-a-function" class="nav-link" data-scroll-target="#defining-a-function"><span class="header-section-number">11.3.1</span> defining a function</a></li>
+  <li><a href="#calling-a-function" id="toc-calling-a-function" class="nav-link" data-scroll-target="#calling-a-function"><span class="header-section-number">11.3.2</span> calling a function</a></li>
+  <li><a href="#using-a-function-to-solve-a-difference-equation" id="toc-using-a-function-to-solve-a-difference-equation" class="nav-link" data-scroll-target="#using-a-function-to-solve-a-difference-equation"><span class="header-section-number">11.3.3</span> using a function to solve a difference equation</a></li>
+  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2"><span class="header-section-number">11.3.4</span> Exercises</a></li>
   </ul></li>
-  <li><a href="#modeling-the-spread-of-infectious-disease-spread" id="toc-modeling-the-spread-of-infectious-disease-spread" class="nav-link" data-scroll-target="#modeling-the-spread-of-infectious-disease-spread"><span class="toc-section-number">13.4</span>  Modeling the spread of infectious disease spread</a>
+  <li><a href="#modeling-the-spread-of-infectious-disease-spread" id="toc-modeling-the-spread-of-infectious-disease-spread" class="nav-link" data-scroll-target="#modeling-the-spread-of-infectious-disease-spread"><span class="header-section-number">11.4</span> Modeling the spread of infectious disease spread</a>
   <ul class="collapse">
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="toc-section-number">13.4.1</span>  Discussion</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">11.4.1</span> Discussion</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -322,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></h1>
 </div>
 
 
@@ -335,7 +388,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
   
 
+
 </header>
+
 
 <blockquote class="blockquote">
 <p>I find the great thing in this world is not so much where we stand, as in what direction we are moving.<br>
@@ -352,11 +407,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>use graphical techniques to predict the behavior of the solution of a differential equation without solving it</p></li>
 <li><p>understand basic compartment epidemiology models</p></li>
 </ul>
-<section id="building-differential-equations" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="building-differential-equations"><span class="header-section-number">13.1</span> Building differential equations</h2>
+<section id="building-differential-equations" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="building-differential-equations"><span class="header-section-number">11.1</span> Building differential equations</h2>
 <p></p>
-<section id="from-discrete-time-to-continuous" class="level3" data-number="13.1.1">
-<h3 data-number="13.1.1" class="anchored" data-anchor-id="from-discrete-time-to-continuous"><span class="header-section-number">13.1.1</span> from discrete time to continuous</h3>
+<section id="from-discrete-time-to-continuous" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="from-discrete-time-to-continuous"><span class="header-section-number">11.1.1</span> from discrete time to continuous</h3>
 <p>In this chapter we investigate <em>continuous time dynamical systems</em>, for which it does not make sense to break time up into equal intervals. Instead of equations describing the increments in the dependent variable from one time step to the next, we will see equations with the instantaneous rate of the change (derivative) of the variable. Let us see the connection between the discrete and continuous dynamic models by reducing the step size of the bacteria-division population model.</p>
 <p>First, suppose that instead of dividing every hour, the population of bacteria divide every half-hour, but only half of the population does. That half is chosen randomly, so we don’t have to keep track of whether each bacterium divided the last time around or not. Therefore, each half-hour exactly half of the population is added to the current population: <span class="math display">\[ N(t+0.5) = N(t) + 0.5N(t) = 1.5N(t)\]</span> The solution for this model can be figured out from the linear difference equation solution we derived in section <span class="math inline">\(\ref{sec:math14}\)</span> Every half-hour, the population is multiplied by 1.5, so we can write: <span class="math display">\[ N(t) = 1.5^{2t} N(0) = (1.5^2)^t N(0)\]</span> Compare this solution with the one for the every-hour model, <span class="math inline">\(N(t) = 2^t N(0)\)</span> by plugging in a few numbers for <span class="math inline">\(t\)</span>. The half-hour model grows faster, because it has the base of 2.25 instead of 2.</p>
 <p>Now, suppose that the bacteria can divide four times an hour, but only a quarter of the population reproduces at any given time. The model can be written similarly: <span class="math display">\[N(t+0.25) = N(t) + 0.25N(t) = 1.25N(t)\]</span> The solution for this model is once again exponential, with the difference that each half contains 4 division events: <span class="math display">\[N(t) = 1.25^{4t}N(0) = (1.25^4)^t N(0)\]</span> This solution has the exponential base is <span class="math inline">\(1.25^4\)</span>, which is larger than <span class="math inline">\(1.5^2\)</span>. So what happens when we take this further?</p>
@@ -365,8 +420,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The expression on the left is known as Newton’s quotient that you encounter in the definition of a derivative. It measures the rate of change of the population <span class="math inline">\(N\)</span> from some time <span class="math inline">\(t\)</span> to the next time step <span class="math inline">\(t+1/m\)</span>. If <span class="math inline">\(m\)</span> is increased to make the time step smaller, this makes both the numerator and the denominator smaller, and the quotient approaches the <em>instantaneous rate of change</em> of <span class="math inline">\(N(t)\)</span>. So, if bacteria divide at any point in time, with the , the model becomes a differential equation: <span class="math display">\[ \frac{dN}{dt} = N(t)\]</span></p>
 <p>We can do a similar procedure to the formula of the solution of the model. The dependence on <span class="math inline">\(m\)</span> is all on the left-hand side, in the expression <span class="math inline">\((1+1/m)^m\)</span>, which is the base of the exponential function. What happens to this number as <span class="math inline">\(m\)</span> becomes larger? Does it increase without bound? You can investigate this numerically by plugging in progressively larger numbers <span class="math inline">\(m\)</span>, and see that the number approaches a specific value: 2.71828… This is the special constant <span class="math inline">\(e\)</span>, called the base of the natural logarithm. So, if bacteria divide at any point in time, with the <strong>average rate of 1 per hour</strong>, the solution of the model becomes: <span class="math display">\[ N(t) = e^t N(0)\]</span></p>
 </section>
-<section id="exercises" class="level3" data-number="13.1.2">
-<h3 data-number="13.1.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">13.1.2</span> Exercises</h3>
+<section id="exercises" class="level3" data-number="11.1.2">
+<h3 data-number="11.1.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.1.2</span> Exercises</h3>
 <p>Here we will explore the effect of changing the step size on the solution of a discrete time dynamic model. We will use a very simple model of bacterial population growth, in which we assume that bacteria divide once an hour and there are no deaths.</p>
 <ol type="1">
 <li>Calculate the solution for this population, assuming that all bacteria divide exactly once an hour - in other words, a birth rate of one per individual. Starting with one bacterium use a for loop to calculate the solution for 10 hours and print out the last value.</li>
@@ -406,8 +461,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>What behaviors do you see for the solutions with different time steps? What effect does shrinking the time step have on the solution? What do you expect would happen if the time step were a millisecond, or a microsecond?</p>
 </section>
-<section id="growth-proportional-to-population-size" class="level3" data-number="13.1.3">
-<h3 data-number="13.1.3" class="anchored" data-anchor-id="growth-proportional-to-population-size"><span class="header-section-number">13.1.3</span> growth proportional to population size</h3>
+<section id="growth-proportional-to-population-size" class="level3" data-number="11.1.3">
+<h3 data-number="11.1.3" class="anchored" data-anchor-id="growth-proportional-to-population-size"><span class="header-section-number">11.1.3</span> growth proportional to population size</h3>
 <p>We will now build some common differential equations models. First, a simple population growth model with a constant growth rate. Suppose that in a population each individual reproduces with the average reproductive rate <span class="math inline">\(r\)</span>. This is reflected in the following differential equation:</p>
 <p><span class="math display">\[\begin{equation}
 \frac{d x} {dt} = \dot x = r x
@@ -419,8 +474,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \]</span></p>
 <p>This shows that as in the discrete time models, the dimension of the population growth rate <span class="math inline">\(r\)</span> is inverse time, or frequency. The difference with the discrete time population models lies in the time scope of the rate. In the case of the difference equation, <span class="math inline">\(r\)</span> is the rate of change per one time step of the model. In the differential equation, <span class="math inline">\(r\)</span> is the <em>instantaneous rate of population growth</em>. It is less intuitive than the growth rate per single reproductive cycle, just like the slope of a curve is less intuitive than the slope of a line. The population growth happens continuously, so the growth rate of <span class="math inline">\(r\)</span> individuals per year does not mean that if we start with one individual, there will be <span class="math inline">\(r\)</span> after one year. In order to make quantitative predictions, we need to find the solution of the equation, which we will see in the next section.</p>
 </section>
-<section id="chemical-kinetics" class="level3" data-number="13.1.4">
-<h3 data-number="13.1.4" class="anchored" data-anchor-id="chemical-kinetics"><span class="header-section-number">13.1.4</span> chemical kinetics</h3>
+<section id="chemical-kinetics" class="level3" data-number="11.1.4">
+<h3 data-number="11.1.4" class="anchored" data-anchor-id="chemical-kinetics"><span class="header-section-number">11.1.4</span> chemical kinetics</h3>
 <p>Reactions between molecules in cells occur continuously, driven by molecular collisions and physical forces. In order to model this complex behavior, it is generally assumed that reactions occur with a particular speed, known as the <em>kinetic rate constant</em>. As mentioned in chapter 2, a simple reaction of conversion from one type of molecule (<span class="math inline">\(A\)</span>) to another (<span class="math inline">\(B\)</span>) can be written as follows: <span class="math display">\[ A \xrightarrow{k} B \]</span> In this equation the parameter <span class="math inline">\(k\)</span> is the kinetic rate rate constant, describing the speed of conversion of <span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span>, per concentration of <span class="math inline">\(A\)</span>.</p>
 <p>Chemists and biochemists use differential equations to describe the change in molecular concentration during a reaction. These equations are known as the <em>laws of mass action</em>. For the reaction above, the concentration of molecule <span class="math inline">\(A\)</span> decreases continuously proportionally to itself, and the concentration of molecule <span class="math inline">\(B\)</span> increases continuously proportionally to the concentration of <span class="math inline">\(A\)</span>. This is expressed by the following two differential equations:</p>
 <p><span class="math display">\[\begin{eqnarray}
@@ -438,8 +493,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \]</span></p>
 <p>This means that the sum of the concentrations of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is a constant. This is a mathematical expression of the law of conservation in chemistry: molecules can change from one type to another, but they cannot appear or disappear in other ways. In this case, a single molecule of <span class="math inline">\(A\)</span> becomes a single molecule of <span class="math inline">\(B\)</span>, so it follows that the sum of the two has to remain the same. If the reaction were instead two molecules of <span class="math inline">\(A\)</span> converting to a molecule of <span class="math inline">\(B\)</span>, then the conserved quantity is <span class="math inline">\(2A + B\)</span>. The concept of conserved quantity is very useful for the analysis of differential equations. We will see in later chapters how it can help us find solutions, and explain the behavior of complex dynamical systems.</p>
 </section>
-<section id="building-nonlinear-odes" class="level3" data-number="13.1.5">
-<h3 data-number="13.1.5" class="anchored" data-anchor-id="building-nonlinear-odes"><span class="header-section-number">13.1.5</span> building nonlinear ODEs</h3>
+<section id="building-nonlinear-odes" class="level3" data-number="11.1.5">
+<h3 data-number="11.1.5" class="anchored" data-anchor-id="building-nonlinear-odes"><span class="header-section-number">11.1.5</span> building nonlinear ODEs</h3>
 <p></p>
 <p>The simple, linear population growth models we have seen in the last two chapters assume that the per capita birth and death rates are constant, that is, they stay the same regardless of population size. The solutions for these models either grow or decay exponentially, but in reality, populations do not grow without bounds. It is generally true that the larger a population grows, the more scarce the resources, and survival becomes more difficult. For larger populations, this could lead to higher death rates, or lower birth rates, or both.</p>
 <p>How can we incorporate this effect into a quantitative model? We will assume there are separate birth and death rates, and that the birth rate declines as the population grows, while the death rate increases. Suppose there are inherent birth rates <span class="math inline">\(b\)</span> and <span class="math inline">\(d\)</span>, and the overall birth and death rates <span class="math inline">\(B\)</span> and <span class="math inline">\(D\)</span> depend linearly on population size <span class="math inline">\(P\)</span>: <span class="math inline">\(B = b - aP\)</span> and <span class="math inline">\(D = d + cP\)</span>.</p>
@@ -458,12 +513,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It should be apparent that there are two fixed points, at <span class="math inline">\(P=0\)</span> and at <span class="math inline">\(P=K\)</span>. The first one corresponds to a population with no individuals. On the other hand, <span class="math inline">\(K\)</span> signifies the population at which the negative effect of population size balances out the inherent population growth rate, and is called the <em>carrying capacity</em> of a population in its environment . We will analyze the qualitative behavior of the solution, without writing it down, in the next section of this chapter.</p>
 </section>
 </section>
-<section id="qualitative-analysis-of-odes" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="qualitative-analysis-of-odes"><span class="header-section-number">13.2</span> Qualitative analysis of ODEs</h2>
+<section id="qualitative-analysis-of-odes" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="qualitative-analysis-of-odes"><span class="header-section-number">11.2</span> Qualitative analysis of ODEs</h2>
 <p></p>
 <p>In this section we will analyze the behavior of solutions of an autonomous ODE without solving it on paper. Generally, ODE models for realistic biological systems are nonlinear, and most nonlinear differential equations cannot be solved analytically. We can make predictions about the behavior, or <em>dynamics</em> of solutions by considering the properties of the <em>defining function</em>, which is the function on the right-hand-side of a general autonomous ODE: <span class="math display">\[ \frac{dx}{dt} = f(x)\]</span></p>
-<section id="graphical-analysis-of-the-defining-function" class="level3" data-number="13.2.1">
-<h3 data-number="13.2.1" class="anchored" data-anchor-id="graphical-analysis-of-the-defining-function"><span class="header-section-number">13.2.1</span> graphical analysis of the defining function</h3>
+<section id="graphical-analysis-of-the-defining-function" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="graphical-analysis-of-the-defining-function"><span class="header-section-number">11.2.1</span> graphical analysis of the defining function</h3>
 <p>The defining function relates the value of the solution variable <span class="math inline">\(x\)</span> to its rate of change <span class="math inline">\(dx/dt\)</span>. For different values of <span class="math inline">\(x\)</span>, the rate of change of <span class="math inline">\(x(t)\)</span> is different, and it is defined by the function <span class="math inline">\(f(x)\)</span>. There are only three options:</p>
 <ul>
 <li><p>if <span class="math inline">\(f(x) &gt; 0\)</span>, <span class="math inline">\(x(t)\)</span> is increasing at that value of <span class="math inline">\(x\)</span></p></li>
@@ -472,20 +527,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>To determine for which values of <span class="math inline">\(x\)</span> the solution <span class="math inline">\(x(t)\)</span> increases and decreases, it enough to look at the plot of <span class="math inline">\(f(x)\)</span>. On the intervals where the graph of <span class="math inline">\(f(x)\)</span> is above the <span class="math inline">\(x\)</span>-axis <span class="math inline">\(x(t)\)</span> increases, on the intervals where the graph of <span class="math inline">\(f(x)\)</span> is below the <span class="math inline">\(x\)</span>-axis, <span class="math inline">\(x(t)\)</span> decreases. The roots (zeros) of <span class="math inline">\(f(x)\)</span> are special cases, they separate the range of <span class="math inline">\(x\)</span> into the intervals where the solution grows and and where it decreases. This seems exceedingly simple, and it is, but it provides specific information about <span class="math inline">\(x(t)\)</span>, without knowing how to write down its formula.</p>
 <p>For an autonomous ODE with one dependent variable, the direction of the rate of change prescribed by the differential equation can be graphically represented by sketching the <em>flow on the line</em> of the dependent variable. The flow stands for the direction of change at every point, specifically increasing, decreasing, or not changing. The flow is plotted on the horizontal x-axis, so if <span class="math inline">\(x\)</span> is increasing, the flow will be indicated by a rightward arrow, and if it is decreasing, the flow will point to the left. The fixed points separate the regions of increasing (rightward) flow and decreasing (leftward) flow.</p>
-<div class="cell" data-layout-align="center" data-fig.asp="0.75">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="graph_odes_files/figure-html/ch7-flow1-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">a) plot of the defining function of the ODE dx/dt = 4x-100 with direction of flow x(t) indicated with arrows on the x-axis; b) plot of solutions x(t) of the ODE staring with four initial values.</figcaption><p></p>
+<p><img src="graph_odes_files/figure-html/ch7-flow1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>a) plot of the defining function of the ODE dx/dt = 4x-100 with direction of flow x(t) indicated with arrows on the x-axis; b) plot of solutions x(t) of the ODE staring with four initial values.</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="graph_odes_files/figure-html/ch7-flow1-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">a) plot of the defining function of the ODE dx/dt = 4x-100 with direction of flow x(t) indicated with arrows on the x-axis; b) plot of solutions x(t) of the ODE staring with four initial values.</figcaption><p></p>
+<p><img src="graph_odes_files/figure-html/ch7-flow1-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>a) plot of the defining function of the ODE dx/dt = 4x-100 with direction of flow x(t) indicated with arrows on the x-axis; b) plot of solutions x(t) of the ODE staring with four initial values.</figcaption>
 </figure>
 </div>
 </div>
@@ -494,34 +549,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Example.</strong> Now let us analyze a nonlinear ODE, specifically the logistic model with the following parameters: <span class="math display">\[\frac{dP}{dt} =0.3P\left(1-\frac{P}{40}\right)\]</span></p>
 <p>The defining function is a downward-facing parabola with two roots at <span class="math inline">\(P=0\)</span> and <span class="math inline">\(P=40\)</span>, as shown in figure <span class="math inline">\(\ref{fig:ch16_flow_logistic}\)</span>a. Between the two roots, the defining function is positive, which means the derivative <span class="math inline">\(dP/dt\)</span> is positive too, so the solution grows on that interval. For <span class="math inline">\(P&lt;0\)</span> and <span class="math inline">\(P&gt;40\)</span>, the solution decreases. Therefore, we can sketch the graphs of the solution <span class="math inline">\(P(t)\)</span> starting with different initial conditions, as show in figure <span class="math inline">\(\ref{fig:ch16_flow_logistic}\)</span>b.</p>
 <p>To summarize, the defining function of the ODE determines the rate of change of the solution <span class="math inline">\(x(t)\)</span> depending on the value of <span class="math inline">\(x\)</span>. The graphical approach to finding areas of right and left flow is based on graphing the function <span class="math inline">\(f(x)\)</span>, and dividing the x-axis based on the sign of <span class="math inline">\(f(x)\)</span>. In the areas where <span class="math inline">\(f(x) &gt; 0\)</span>, its graph is above the x-axis, and the flow is to the right; conversely, when <span class="math inline">\(f(x) &lt; 0\)</span>, its graph is below the x-axis, and the flow is to the left. The next subsection puts this approach in a more analytic framework.</p>
-<div class="cell" data-layout-align="center" data-fig.asp="0.75">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="graph_odes_files/figure-html/ch7-flow2-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">a) plot of the defining function of the ODE <span class="math inline">\(dP/dt = 0.3P(1-P/40)\)</span> with direction of flow of P(t) indicated with arrows on the P-axis; b) plot of solutions P(t) of the ODE staring with three initial values</figcaption><p></p>
+<p><img src="graph_odes_files/figure-html/ch7-flow2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>a) plot of the defining function of the ODE <span class="math inline">\(dP/dt = 0.3P(1-P/40)\)</span> with direction of flow of P(t) indicated with arrows on the P-axis; b) plot of solutions P(t) of the ODE staring with three initial values</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="graph_odes_files/figure-html/ch7-flow2-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">a) plot of the defining function of the ODE <span class="math inline">\(dP/dt = 0.3P(1-P/40)\)</span> with direction of flow of P(t) indicated with arrows on the P-axis; b) plot of solutions P(t) of the ODE staring with three initial values</figcaption><p></p>
+<p><img src="graph_odes_files/figure-html/ch7-flow2-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>a) plot of the defining function of the ODE <span class="math inline">\(dP/dt = 0.3P(1-P/40)\)</span> with direction of flow of P(t) indicated with arrows on the P-axis; b) plot of solutions P(t) of the ODE staring with three initial values</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="fixed-points-and-stability" class="level3" data-number="13.2.2">
-<h3 data-number="13.2.2" class="anchored" data-anchor-id="fixed-points-and-stability"><span class="header-section-number">13.2.2</span> fixed points and stability</h3>
+<section id="fixed-points-and-stability" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="fixed-points-and-stability"><span class="header-section-number">11.2.2</span> fixed points and stability</h3>
 <p>We have seen that the dynamics of solutions of differential equations depend on the initial value of the dependent variable: for some values the solution increases, for others it decreases, and for intermediate values it remains the same. Those special values separating intervals of increase and decrease are called fixed points (or equilibria), and the first step to understanding the dynamics of an ODE is finding its fixed points. A fixed point is a value of the solution at which the dynamical system stays constant, thus, the derivative of the solution must be zero. Here is the formal definition:</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Definition
 </div>
 </div>
@@ -531,12 +586,12 @@ Definition
 </div>
 <p><strong>Example.</strong> The linear equation <span class="math inline">\(\dot x = rx\)</span> has a single fixed point at <span class="math inline">\(x^* = 0\)</span>. For a more interesting example, consider a logistic equation: <span class="math inline">\(\dot x = x - x^2\)</span>. Its fixed points are the solutions of <span class="math inline">\(x - x^2 = 0\)</span>, therefore there two fixed points: <span class="math inline">\(x^* = 0, 1\)</span>. We know that if the solution has either of the fixed points as the initial condition, it will remain at that value for all time.</p>
 <p>Locating the fixed points is not sufficient to predict the global behavior of the dynamical system, however. What happens to the solution of a dynamical system if the initial condition is very close to an equilibrium, but not precisely at it? Put another way, what happens if the equilibrium is perturbed? The solution may be attracted to the equilibrium value, that is, it approaches it ever-closer, or else it is not. In the first case, this is called a stable equilibrium, because a small perturbation does not dramatically change the long-term behavior of the solution. In the latter case, the equilibrium is called unstable, and the solution perturbed from the equilibrium never returns. These concepts are formalized in the following definition</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Definition
 </div>
 </div>
@@ -557,8 +612,8 @@ Definition
 <p><strong>A word of caution:</strong> The derivative of the defining function <span class="math inline">\(f'(x)\)</span> is not the second derivative of the solution <span class="math inline">\(x(t)\)</span>. This is a common mistake, because the function <span class="math inline">\(f(x)\)</span> is equal to the time derivative of <span class="math inline">\(x(t)\)</span>. However, the derivative <span class="math inline">\(f'(x)\)</span> is not with respect to time, it is with respect to x, the dependent variable. In other words, it reflects the slope of the graph of the defining function <span class="math inline">\(f(x)\)</span>, not the curvature of the graph of the solution <span class="math inline">\(x(t)\)</span>.</p>
 <p>To summarize, here is an outline of the steps for analyzing the behavior of solutions of an autonomous one-variable ODE. These tasks can be accomplished either by plotting the defining function <span class="math inline">\(f(x)\)</span> and finding the fixed points and their stability based on the plot, or by solving for the fixed points on paper, then finding the derivative <span class="math inline">\(f'(x)\)</span> and plugging in the values of the fixed points to determine their stability. Either approach is valid, but the analytic methods are necessary when dealing with models that have unknown parameter values, which makes it impossible to represent the defining function in a plot.</p>
 </section>
-<section id="outline-of-qualitative-analysis-of-an-ode" class="level3" data-number="13.2.3">
-<h3 data-number="13.2.3" class="anchored" data-anchor-id="outline-of-qualitative-analysis-of-an-ode"><span class="header-section-number">13.2.3</span> Outline of qualitative analysis of an ODE</h3>
+<section id="outline-of-qualitative-analysis-of-an-ode" class="level3" data-number="11.2.3">
+<h3 data-number="11.2.3" class="anchored" data-anchor-id="outline-of-qualitative-analysis-of-an-ode"><span class="header-section-number">11.2.3</span> Outline of qualitative analysis of an ODE</h3>
 <ul>
 <li><p>find the fixed points by setting the defining function <span class="math inline">\(f(x)=0\)</span> and solving for values of <span class="math inline">\(x^*\)</span></p></li>
 <li><p>divide the domain of <span class="math inline">\(x\)</span> into intervals separated by fixed points <span class="math inline">\(x^*\)</span></p></li>
@@ -592,27 +647,27 @@ Definition
 <li><p>the solutions <span class="math inline">\(x(t)\)</span> starting at different initial values are shown in figure <span class="math inline">\(\ref{fig:ch16_flow_semi}\)</span>b, and they behave as follows: solutions with initial values below 0 are increasing and asymptotically approaching 0, those with initial values between 0 and 1 are increasing and asymptotically approaching 1, and those with initial values above 1 are decreasing and asymptotically approaching 1.</p></li>
 </ul>
 <p>This example shows how graphical analysis can help when derivative analysis is undetermined. The red arrows on the x-axis of figure <span class="math inline">\(\ref{fig:ch16_flow_semi}\)</span> show the direction of the flow in the three different regions separated by the fixed points. Flow is to the right for <span class="math inline">\(x&lt;1\)</span>, to the left for for <span class="math inline">\(x&gt;1\)</span>; it is clear that the arrows approach the fixed point from both sides, and thus the fixed point is stable, as the negative slope of <span class="math inline">\(f(x)\)</span> at <span class="math inline">\(x=1\)</span> indicates. One the other hand, the fixed point at <span class="math inline">\(x=0\)</span> presents a more complicated situation: the slope of <span class="math inline">\(f(x)\)</span> is zero, and the flow is rightward on both sides of the fixed point. This type of fixed point is sometimes called <em>semi-stable</em>, because it is stable when approached from one side, and unstable when approached from the other.</p>
-<div class="cell" data-layout-align="center" data-fig.asp="0.75">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="graph_odes_files/figure-html/ch7-flow3-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">a) plot of the defining function of the ODE <span class="math inline">\(dx/dt = -x^3 + x^2\)</span> with direction of flow of x(t) indicated with arrows on the x-axis; b) plot of solutions x(t) of the ODE staring with three initial values</figcaption><p></p>
+<p><img src="graph_odes_files/figure-html/ch7-flow3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>a) plot of the defining function of the ODE <span class="math inline">\(dx/dt = -x^3 + x^2\)</span> with direction of flow of x(t) indicated with arrows on the x-axis; b) plot of solutions x(t) of the ODE staring with three initial values</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="graph_odes_files/figure-html/ch7-flow3-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">a) plot of the defining function of the ODE <span class="math inline">\(dx/dt = -x^3 + x^2\)</span> with direction of flow of x(t) indicated with arrows on the x-axis; b) plot of solutions x(t) of the ODE staring with three initial values</figcaption><p></p>
+<p><img src="graph_odes_files/figure-html/ch7-flow3-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>a) plot of the defining function of the ODE <span class="math inline">\(dx/dt = -x^3 + x^2\)</span> with direction of flow of x(t) indicated with arrows on the x-axis; b) plot of solutions x(t) of the ODE staring with three initial values</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="exercises-1" class="level3" data-number="13.2.4">
-<h3 data-number="13.2.4" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">13.2.4</span> Exercises</h3>
+<section id="exercises-1" class="level3" data-number="11.2.4">
+<h3 data-number="11.2.4" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">11.2.4</span> Exercises</h3>
 <p>For the following differential equations: a) plot the defining function over the indicated range (use any computational tools you wish) to determine the intervals on which the dependent variable is increasing and decreasing; b) find the equilibria c) determine the stability of each equilibrium; d) based on your analysis in parts a-c, sketch (by hand) plots of the solutions with the specified initial values.</p>
 <ol type="1">
 <li><p><span class="math display">\[ \frac{dC}{dt} = -0.2C + 60; \; C \in (0,500); \; C(0) = 200; \; C(0) = 400 \]</span></p></li>
@@ -626,8 +681,8 @@ Definition
 </ol>
 </section>
 </section>
-<section id="functions-in-r" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="functions-in-r"><span class="header-section-number">13.3</span> Functions in R</h2>
+<section id="functions-in-r" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="functions-in-r"><span class="header-section-number">11.3</span> Functions in R</h2>
 <p>Like most programming languages, R allows one to define and use structures called functions. Some are already written and loaded into the R distribution, for example, the function <code>mean()</code> we use to compute the mean of a vector variable, while others can be defined by users. Functions are discrete chunks of code that can be <em>called</em> from the outside to perform some task. The function receives inputs from the call and returns the result back. Here is the general structure of a function in R:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>myfunction <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2, ... ){</span>
@@ -637,8 +692,8 @@ Definition
 </div>
 <p>A function is a piece of code that is <strong>defined</strong> separately and can be <strong>called</strong> by other pieces of code. The main purpose is to create a “black box” that does a specific job and can be used repeatedly just by calling the function (invoking its name), rather than copying the code repeatedly.</p>
 <p>A function generally has input variables (although sometimes there are none) and returns an output using the <code>return()</code> statement. It is important to distinguish between the <em>inside</em> of the function - the code between the curly braces in the function definition - and the <em>outside</em>, that is everything else. The inputs are <em>passed</em> to the function in the call (through the parentheses) and then used inside the function to do its business and produce an output, which is then <em>returned</em> back to the place in the code where the function was called.</p>
-<section id="defining-a-function" class="level3" data-number="13.3.1">
-<h3 data-number="13.3.1" class="anchored" data-anchor-id="defining-a-function"><span class="header-section-number">13.3.1</span> defining a function</h3>
+<section id="defining-a-function" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="defining-a-function"><span class="header-section-number">11.3.1</span> defining a function</h3>
 <p>Here is an example of a function definition, with input variables N and r. Between the curly braces is the <em>body of the function</em>, which in this case multiplies the two input variables and then returns them.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>my_funk <span class="ot">&lt;-</span> <span class="cf">function</span>(N,r){ </span>
@@ -648,8 +703,8 @@ Definition
 </div>
 <p>Note that after running the code chunk above, you should see the name <code>my_funk</code> in your environment (under Functions). This means this function is defined in memory and ready to be called.</p>
 </section>
-<section id="calling-a-function" class="level3" data-number="13.3.2">
-<h3 data-number="13.3.2" class="anchored" data-anchor-id="calling-a-function"><span class="header-section-number">13.3.2</span> calling a function</h3>
+<section id="calling-a-function" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="calling-a-function"><span class="header-section-number">11.3.2</span> calling a function</h3>
 <p>After a function is defined, it is ready to be called (executed) by invoking its name and giving the correct number of inputs. Here’s an example of a function call:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">30</span></span>
@@ -661,8 +716,8 @@ Definition
 </div>
 <p>Notice that the variable names in the fuction call do not have to be same as what they are called within the function. IMPORTANT: a function uses the order of variables in the function call, called <em>external variables</em> (<code>y</code>, <code>a</code>) to assign their names within the function, called <em>internal variables</em> (<code>N</code>, <code>r</code>). (There is a way to specify which input belongs to which internal variable, e.g.&nbsp;<code>plot(x=time, y=sol)</code> and in that case the order is not important.)</p>
 </section>
-<section id="using-a-function-to-solve-a-difference-equation" class="level3" data-number="13.3.3">
-<h3 data-number="13.3.3" class="anchored" data-anchor-id="using-a-function-to-solve-a-difference-equation"><span class="header-section-number">13.3.3</span> using a function to solve a difference equation</h3>
+<section id="using-a-function-to-solve-a-difference-equation" class="level3" data-number="11.3.3">
+<h3 data-number="11.3.3" class="anchored" data-anchor-id="using-a-function-to-solve-a-difference-equation"><span class="header-section-number">11.3.3</span> using a function to solve a difference equation</h3>
 <p>We have solved discrete-time dynamic models (difference equations) using for loops. You can use a function to calculate the next value of the solution, by passing the current value and any parameters as inputs to the function, as you can see in the code chunk below:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>numsteps<span class="ot">&lt;-</span><span class="dv">30</span> <span class="co"># set number of steps</span></span>
@@ -675,12 +730,16 @@ Definition
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>numsteps <span class="co"># define time vector</span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(time,sol,<span class="at">t=</span><span class="st">'b'</span>,<span class="at">xlab=</span><span class="st">'time'</span>,<span class="at">ylab=</span><span class="st">'solution'</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="graph_odes_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="graph_odes_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
-<section id="exercises-2" class="level3" data-number="13.3.4">
-<h3 data-number="13.3.4" class="anchored" data-anchor-id="exercises-2"><span class="header-section-number">13.3.4</span> Exercises</h3>
+<section id="exercises-2" class="level3" data-number="11.3.4">
+<h3 data-number="11.3.4" class="anchored" data-anchor-id="exercises-2"><span class="header-section-number">11.3.4</span> Exercises</h3>
 <ol type="1">
 <li>Write a function that takes the input variable and multiplies it by 1.03, like the mathematical function <span class="math inline">\(f(x) = 1.03x\)</span>.</li>
 </ol>
@@ -707,8 +766,8 @@ Definition
 </div>
 </section>
 </section>
-<section id="modeling-the-spread-of-infectious-disease-spread" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="modeling-the-spread-of-infectious-disease-spread"><span class="header-section-number">13.4</span> Modeling the spread of infectious disease spread</h2>
+<section id="modeling-the-spread-of-infectious-disease-spread" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="modeling-the-spread-of-infectious-disease-spread"><span class="header-section-number">11.4</span> Modeling the spread of infectious disease spread</h2>
 <p></p>
 <p>The field of <em>epidemiology</em> studies the distribution of disease and health states in populations. Epidemiologists describe and model these issues with the goal of helping public health workers devise interventions to improve the overall health outcomes on a large scale. One particular topic of interest is the the spread of infectious disease and how best tor respond to it.. Because epidemiology is concerned with large numbers of people, the models used in the field do not address the details of an individual disease history. One approach to modeling this is to put people into categories, such as <em>susceptible</em> (those who can be infected but are not), <em>infectious</em> (those who are infected and can spread the disease), and <em>recovered</em> (those who cannot be infected or spread disease). This type of models is called a <em>compartment model</em> and they are they commonly used to represent infectious disease on a population level both for deterministic models (e.g.&nbsp;ODEs) and stochastic models (e.g.&nbsp;Markov models). Dividing people into categories involves the assumption that everyone in a particular category behaves in the same manner: for instance, all susceptible people are infected with the same rate and all infected people recover with the same rate.</p>
 <p>Let us construct an ODE to describe a two-compartment epidemiology model. There are two dependent variables to be tracked: the number of susceptible (<span class="math inline">\(S\)</span>) and infected (<span class="math inline">\(I\)</span>) individuals in the population. The susceptible individuals can get infected, while the infected ones can recover and become susceptible again. The implicit assumption is that there is no immunity, and recovered individuals can get infected with the same ease as those who were never infected. There are some human diseases for which this is true, for instance the common cold or gonorrhea. Transitions between the different classes of individuals can be summarized by the following scheme: <span class="math display">\[ S + I \xrightarrow{\beta} I \xrightarrow{\gamma} S \]</span> Here <span class="math inline">\(\beta\)</span> is the individual rate of infection, also known as the transmission rate, and <span class="math inline">\(\gamma\)</span> is the individual rate of recovery. There is an important distinction between the processes of infection and recovery: the former requires an infected individual and a susceptible individual, while the latter needs only an infected individual. Therefore, it is reasonable to suppose that the rate of growth of infected individuals is the product of the individual transmission rate <span class="math inline">\(\beta\)</span> and the product of the number of infected and susceptible individuals. The overall rate of recovery is the individual recovery rate <span class="math inline">\(\gamma\)</span> multiplied by the number of the infected. This leads to the following two differential equations: <span class="math display">\[\begin{eqnarray*}
@@ -717,38 +776,38 @@ Definition
 \end{eqnarray*}\]</span> Note that, as in the chemical kinetics models, the two equations add up to zero on the right hand side, leading to the conclusion that <span class="math inline">\(\dot S + \dot I = 0\)</span>. Therefore, the total number of people is a conserved quantity <span class="math inline">\(N\)</span>, which does not change. This makes sense since we did not consider any births or deaths in the ODE model, only transitions between susceptible and infected individuals.</p>
 <p>We can use the conserved quantity <span class="math inline">\(N\)</span> to reduce the two equations to one, by the substitution of <span class="math inline">\(S = N -I\)</span>: <span class="math display">\[  \dot I  =  \beta I (N - I) - \gamma I \]</span> This model may be analyzed using qualitative methods that were developed in this chapter, allowing prediction of the dynamics of the fraction of infected for different transmission and recovery rates. First, let us find the fixed points of the differential equation. Setting the equation to zero, we find: <span class="math display">\[ 0  =  \beta I (N - I) - \gamma I \Rightarrow I^* = 0; \; I^* =  N - \gamma/\beta \]</span> This means that there are two equilibrium levels of infection: either nobody is infected (<span class="math inline">\(I^* = 0\)</span>) or there is some persistent number of infected individuals ($ I^* = N - /$). Notice that the second fixed point is only biologically relevant if $N &gt; /$.</p>
 <p>Use the derivative test to check for stability. First, find the general expression for derivative of the defining function: $f’(I) = -2 I + N - $. \begin{figure}[htbp] % figure placement: here, top, bottom, or page</p>
-<div class="cell" data-layout-align="center" data-fig.asp="0.75">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="graph_odes_files/figure-html/ch7-flow-sis1-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">Graphical analysis of the SIS model with <span class="math inline">\(I\)</span> representing the fraction of infected individuals (N=1) and beta=0.5 and gamma = 0.2; a) plot showing the flow of the solutions on the I-axis, with a stable equilibrium at 0.6 and an unstable equilibrium at 0; b) three solutions of the model starting at three different initial values all converge to the same fraction of infected.</figcaption><p></p>
+<p><img src="graph_odes_files/figure-html/ch7-flow-sis1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>Graphical analysis of the SIS model with <span class="math inline">\(I\)</span> representing the fraction of infected individuals (N=1) and beta=0.5 and gamma = 0.2; a) plot showing the flow of the solutions on the I-axis, with a stable equilibrium at 0.6 and an unstable equilibrium at 0; b) three solutions of the model starting at three different initial values all converge to the same fraction of infected.</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="graph_odes_files/figure-html/ch7-flow-sis1-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">Graphical analysis of the SIS model with <span class="math inline">\(I\)</span> representing the fraction of infected individuals (N=1) and beta=0.5 and gamma = 0.2; a) plot showing the flow of the solutions on the I-axis, with a stable equilibrium at 0.6 and an unstable equilibrium at 0; b) three solutions of the model starting at three different initial values all converge to the same fraction of infected.</figcaption><p></p>
+<p><img src="graph_odes_files/figure-html/ch7-flow-sis1-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>Graphical analysis of the SIS model with <span class="math inline">\(I\)</span> representing the fraction of infected individuals (N=1) and beta=0.5 and gamma = 0.2; a) plot showing the flow of the solutions on the I-axis, with a stable equilibrium at 0.6 and an unstable equilibrium at 0; b) three solutions of the model starting at three different initial values all converge to the same fraction of infected.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center" data-fig.asp="0.75">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="graph_odes_files/figure-html/ch7-flow-sis2-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">Graphical analysis of the SIS model with I representing the fraction of infected individuals (N=1) and beta=0.2 and gamma = 0.3; a) plot showing the flow of the solutions on the I-axis, with a stable equilibrium at 0 and an unstable equilibrium at -0.5; b) three solutions of the model starting at three different initial values all converge to 0 infected.</figcaption><p></p>
+<p><img src="graph_odes_files/figure-html/ch7-flow-sis2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>Graphical analysis of the SIS model with I representing the fraction of infected individuals (N=1) and beta=0.2 and gamma = 0.3; a) plot showing the flow of the solutions on the I-axis, with a stable equilibrium at 0 and an unstable equilibrium at -0.5; b) three solutions of the model starting at three different initial values all converge to 0 infected.</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="graph_odes_files/figure-html/ch7-flow-sis2-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">Graphical analysis of the SIS model with I representing the fraction of infected individuals (N=1) and beta=0.2 and gamma = 0.3; a) plot showing the flow of the solutions on the I-axis, with a stable equilibrium at 0 and an unstable equilibrium at -0.5; b) three solutions of the model starting at three different initial values all converge to 0 infected.</figcaption><p></p>
+<p><img src="graph_odes_files/figure-html/ch7-flow-sis2-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>Graphical analysis of the SIS model with I representing the fraction of infected individuals (N=1) and beta=0.2 and gamma = 0.3; a) plot showing the flow of the solutions on the I-axis, with a stable equilibrium at 0 and an unstable equilibrium at -0.5; b) three solutions of the model starting at three different initial values all converge to 0 infected.</figcaption>
 </figure>
 </div>
 </div>
@@ -759,26 +818,26 @@ Definition
 <p>On the other hand, if <span class="math inline">\(\gamma &gt; \beta N\)</span>, stability analysis predicts that the no-infection equilibrium (<span class="math inline">\(I=0\)</span>) is stable. Figure <span class="math inline">\(\ref{fig:ch16_flow_sis2}\)</span>a shows the plot of the defining function for the parameter values <span class="math inline">\(N=1\)</span>, <span class="math inline">\(\gamma = 0.3\)</span> and <span class="math inline">\(\beta = 0.2\)</span>. The flow on the <span class="math inline">\(I\)</span>-axis is toward the zero equilibrium, therefore it is stable. Note that the second equilibrium at <span class="math inline">\(I^* = N - \gamma/\beta\)</span> is negative, and thus has no biological significance. The solutions, if the initial value is positive, all approach 0, so the infection inevitably dies out.</p>
 <p>Mathematical modeling of epidemiology has been a success story in the last few decades. Public health workers routinely estimate the parameter called the <em>basic reproductive number</em> <span class="math inline">\(R_0\)</span> defined to be the average number of new infections caused by a single infected individual in a susceptible population. This number comes out of our analysis above, where we found <span class="math inline">\(R_0 = N \beta/\gamma\)</span> to determine whether or not an epidemic persisted . This number is critical in more sophisticated models of epidemiology.</p>
 <p>Mathematical models are used to predict the time course of an epidemic, called the <em>epidemic curve</em> and then advise on the public health interventions that can reduce the number of affected individuals. In reality, most epidemic curves have the shape similar to the data from the Ebola virus epidemic in figure <span class="math inline">\(\ref{fig:ch16-ebola}\)</span>. Most such curves show an initial increase in infections, peaking, and the declining to low levels, which is fundamentally different than the solution curves we obtained from the two-compartment model. To describe dynamics of this nature, models with more than two variables are needed, such as classic three-compartment SIR models (susceptible-infected-recovered) models and their modifications . Being able to predict the future of an epidemic based on <span class="math inline">\(R_0\)</span> and other parameters allows public health officials to prepare and deploy interventions (vaccinations, quarantine, etc.) that have the best shot at minimizing the epidemic.</p>
-<div class="cell" data-layout-align="center" data-fig.asp="0.75">
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="graph_odes_files/figure-html/ch7-ebola-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">Number of new cases of ebola virus infections per week in Liberia (left) and Sierra Leone (right), time ranging from March 17, 2014 (week 1) until May 20, 2015 (week 61). Data from http://apps.who.int/gho/data/node.ebola-sitrep.</figcaption><p></p>
+<p><img src="graph_odes_files/figure-html/ch7-ebola-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>Number of new cases of ebola virus infections per week in Liberia (left) and Sierra Leone (right), time ranging from March 17, 2014 (week 1) until May 20, 2015 (week 61). Data from http://apps.who.int/gho/data/node.ebola-sitrep.</figcaption>
 </figure>
 </div>
 </div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="graph_odes_files/figure-html/ch7-ebola-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<p></p><figcaption class="figure-caption">Number of new cases of ebola virus infections per week in Liberia (left) and Sierra Leone (right), time ranging from March 17, 2014 (week 1) until May 20, 2015 (week 61). Data from http://apps.who.int/gho/data/node.ebola-sitrep.</figcaption><p></p>
+<p><img src="graph_odes_files/figure-html/ch7-ebola-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>Number of new cases of ebola virus infections per week in Liberia (left) and Sierra Leone (right), time ranging from March 17, 2014 (week 1) until May 20, 2015 (week 61). Data from http://apps.who.int/gho/data/node.ebola-sitrep.</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="discussion" class="level3" data-number="13.4.1">
-<h3 data-number="13.4.1" class="anchored" data-anchor-id="discussion"><span class="header-section-number">13.4.1</span> Discussion</h3>
+<section id="discussion" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="discussion"><span class="header-section-number">11.4.1</span> Discussion</h3>
 <p>The following questions encourage you to think critically about modeling of infectious diseases.</p>
 <ol type="1">
 <li><p>What effect does changing the infection rate <span class="math inline">\(\beta\)</span> have on the basic reproductive rate? Explain the biological intuition behind this.}</p></li>
@@ -820,9 +879,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -858,10 +931,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -871,8 +943,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -887,6 +968,238 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -928,17 +1241,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lindiff.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span>
+      <a href="./lindiff.html" class="pagination-link  aria-label=" &lt;span="" difference="" equations&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ode_sols.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ode_sols.html" class="pagination-link" aria-label="<span class='chapter-number'>12</span>&nbsp; <span class='chapter-title'>Solutions of ordinary differential equations</span>">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

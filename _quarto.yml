@@ -3,6 +3,8 @@ project:
   output-dir: docs
 filters:
   - webr
+webr:
+  packages: ['palmerpenguins', "HistData"]
 book:
   title: "Quantifying Life"
   author: "Dmitry Kondrashov"
@@ -21,8 +23,11 @@ book:
     - functions.qmd
     - tutorial2.qmd
     - descriptive.qmd
+    - tutorial3.qmd
     - probdist.qmd
+    - tutorial4.qmd
     - linreg.qmd
+    - tutorial5.qmd
     - independence.qmd
     - hypo_test.qmd
     - bayes.qmd
