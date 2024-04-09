@@ -36,10 +36,10 @@ Once the data are organized into a contingency table, we can address the main qu
 
 Let us return to the abstract description of probability introduced in section 8.1. There we used the notion of sample space and its subsets, called events, to describe collections of experimental outcomes. Suppose that you have some information about a random experiment that restricts the possible outcomes to a particular subset (event). In other words, you have ruled out some outcomes, so the only possible outcomes are those in the complementary set. This will affect the probability of other events in the sample space, because your information may have ruled out some of the outcomes in that event as well.
 
-:::{.callout-note}
+::: callout-note
 ## Definition
-For two events $A$ and $B$ in a sample space $\Omega$ with a probability measure $P$, the probability of $A$ given $B$, called the *conditional probability* is defined as:
-$$P(A|B) = \frac{P(A\& B)}{P(B)}$$
+
+For two events $A$ and $B$ in a sample space $\Omega$ with a probability measure $P$, the probability of $A$ given $B$, called the *conditional probability* is defined as: $$P(A|B) = \frac{P(A\& B)}{P(B)}$$
 :::
 
 $A \& B$ represents the intersection of events $A$ and $B$, also known as $A$ and $B$, the event that consists of all outcomes that are in both $A$ and $B$. In words, given the knowledge that an event $B$ occurs, the sample space is restricted to the subset $B$, which is why the denominator in the definition is $P(B)$. The num\`erator is all the outcomes we are interested in, which is $A$, but since we are now restricted to $B$, the numerator consists of all the elements of $A$ which are also in $B$, or $A \& B$. The definition makes sense in two extreme cases: if $A = B$ and if $A$ and $B$ are mutually exclusive:
@@ -83,8 +83,9 @@ In figure \ref{fig:mendel_flowers} there is a table of genotypes from the classi
 
 We first encountered the notion of independence in chapter 3, where two events were said to be independent if they did not affect each other. The mathematical definition uses the language of conditional probability to make this notion precise. It says that $A$ and $B$ are independent if given the knowledge of $A$, the probability of $B$ remains the same, and vice versa.
 
-:::{.callout-note}
+::: callout-note
 ## Definition
+
 Two events $A$ and $B$ are *independent* if $P(A|B) = P(A)$, or equivalently if $P(B|A) = P(B)$.
 :::
 
@@ -122,10 +123,10 @@ The product rule is extremely useful for computing probability distributions of 
 
 The product rule enables us to extend the notion of independence from events to variables. The concepts of independence is the same in both contexts, since the probability of a value $x$ of a random variable $X$ corresponds to the probability of the event that gets mapped to $x$ by the variable. In order to make independence applicable to variables, the condition must hold true for all possible values of both random variables. That way, knowing the value of one variable has no effect on the probability of the other. In order to make it simpler to calculate, we will use the product rule as the equivalent condition for independence:
 
-:::{.callout-note}
+::: callout-note
 ## Definition
-Two random variables $X$ and $Y$ are *independent* if for all possible values of $X$ and $Y$ it is true that
-$$ P(X=a \& Y=b) = P(X=a)P(Y=b)$$
+
+Two random variables $X$ and $Y$ are *independent* if for all possible values of $X$ and $Y$ it is true that $$ P(X=a \& Y=b) = P(X=a)P(Y=b)$$
 :::
 
 This allows us to address the question posed at the beginning of the chapter: how can one determine whether a data set has independent variables? The definition allows us to calculate what we would expect if the variables were independent. Given a data set in the form of a contingency table, such as table \ref{tab:data_table_DS_age}, we can first calculate the probabilities of the two variables separately, and then from that predict the probabilities of the two variables together.

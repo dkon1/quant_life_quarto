@@ -30,6 +30,7 @@ book:
     - tutorial5.qmd
     - independence.qmd
     - hypo_test.qmd
+    - tutorial6.qmd
     - bayes.qmd
     - sampling.qmd
     - lindiff.qmd

@@ -26,20 +26,20 @@ Tests are binary, in that there are only two possible decisions: to reject the h
 
 Hypothesis testing gives us a positive or negative result, but that does not mean that it is correct. Ideally, we want the test to reject a false null hypothesis, and not reject a true null hypothesis. These results are called, respectively, a *true positive* and a *true negative*. We can think of the hypothesis as a variable that can be either true or false, and of the test result as another variable than can be positive or negative. In the language of probability, the correct test results can be defined as follows:
 
-:::{.callout-note}
+::: callout-note
 ## Definition
-For a hypothesis that can be either false (F) or true (T) and a test result that can be either positive (P) or negative (N), the probabilities of a *true positive* and *true negative* are:
-$$ 
+
+For a hypothesis that can be either false (F) or true (T) and a test result that can be either positive (P) or negative (N), the probabilities of a *true positive* and *true negative* are: $$ 
 P(TP) = P(P \& F); \; P(TN) = P(N \& T)
 $$
 :::
 
 However, hypothesis tests are not infallible, and they can make mistakes of two different types. A test that rejects a true null hypothesis makes a *type I error* or a *false positive* error, while a test that fails to reject a false null hypothesis makes a *type II error* or a false negative error. We can again define the probabilities of the two error types as the overlap of the events:
 
-:::{.callout-note}
+::: callout-note
 ## Definition
-For a hypothesis that can be either false (F) or true (T) and a test result that can be either positive (P) or negative (N), the two types of errors are:
-$$ 
+
+For a hypothesis that can be either false (F) or true (T) and a test result that can be either positive (P) or negative (N), the two types of errors are: $$ 
 P(FP) = P(P \& T); \; P(FN) = P(N \& F)
 $$
 :::
@@ -55,25 +55,24 @@ Table summarizing the four possible results of hypothesis testing, depending on 
 
 Now that we have classified the four outcomes of hypothesis testing, we can define the measures of quality of a given hypothesis test. This aims to address a practical concern: how much can you trust a test result? One may answer this question by testing on data where the hypothesis is known to be either true or false. For example, if there is a "gold standard" method for determining the presence or absence of disease, one can use that information to measure the quality of a new test. By performing enough tests, we can measure the frequencies of the four testing outcomes and then measure the following two quality metrics:
 
-:::{.callout-note}
+::: callout-note
 ## Definition
-The *sensitivity* (or power) of a test is the probability of obtaining a positive result, given a false hypothesis.
-$$ Sens = P(P | F) = \frac{P(TP)}{P(TP) + P(FN)} $$
 
-The *specificity* of a test is the probability of obtaining the negative result, given a true hypothesis. 
+The *sensitivity* (or power) of a test is the probability of obtaining a positive result, given a false hypothesis. $$ Sens = P(P | F) = \frac{P(TP)}{P(TP) + P(FN)} $$
+
+The *specificity* of a test is the probability of obtaining the negative result, given a true hypothesis.
 
 $$ Spec = P(N | T) = \frac{P(TN)}{P(TN) + P(FP)} $$
 :::
 
 Note that these are conditional probabilities, premised on knowing whether the hypothesis is actually true. On the other hand, there are two kinds of *error rates*:
 
-:::{.callout-note}
+::: callout-note
 ## Definition
-The *type I error rate* or *false positive rate* is the probability of obtaining the positive result, given a true hypothesis (complementary to specificity):
-$$FPR = \frac{FP}{TN+FP}$$
-   
-The *type II error rate* or *false negative rate* is the probability of obtaining the negative result, given a false hypothesis (complementary to sensitivity). 
-$$FNR = \frac{FN}{TP+FN}$$
+
+The *type I error rate* or *false positive rate* is the probability of obtaining the positive result, given a true hypothesis (complementary to specificity): $$FPR = \frac{FP}{TN+FP}$$
+
+The *type II error rate* or *false negative rate* is the probability of obtaining the negative result, given a false hypothesis (complementary to sensitivity). $$FNR = \frac{FN}{TP+FN}$$
 :::
 
 Notice that knowledge of sensitivity and specificity determine the type I and type II error rates of a test since they are complementary events. Of course, it is desirable for a test to be both very sensitive (reject false null hypotheses, detect disease, convict guilty defendants) and very specific (not reject true null hypotheses, correctly identify healthy patients, acquit innocent defendants), but that is impossible in practice. In fact, making a test highly sensitive (e.g. diagnose every patient with a disease) will make it useless because of it lack of specificity, and vice versa. In statistics, as in life, tradeoffs are required.
@@ -115,8 +114,9 @@ Let us see how this test fares for a larger sample size. Suppose we toss a coin 
 
 This leads us to an important new idea: the probability that a given data set is produced from the model of the null hypothesis is called the *p-value* of a test. In the example of coin tosses we just studied, the p-value was $p=1/2^n$. However, what if the data had 9 heads out of 10 tosses? The p-value then would be the probability of obtaining 9 or 10 heads out of 10. This is because to compute the probability of making a false positive error, we consider all cases that could have produced the result that is as different from expectation, or even further from expectation (in this case, 5 heads out of 10) than the data. \cite{whitlock_analysis_2008}.
 
-:::{.callout-note}
+::: callout-note
 ## Definition
+
 For a data set $D$ and a null hypothesis $H_0$, the *p-value* is defined as the probability of obtaining a result as far from expectation or farther than the data, given the null hypothesis.
 :::
 
@@ -126,11 +126,10 @@ The p-value is the most used, misused, and even abused quantity is statistics, s
 
 Now we are ready to address the question raised in the previous chapter of testing the independence hypothesis based on the table of observations and the calculated table of expected counts. In order to measure the difference between what is expected for a data table with two independent variables and the actual observations, we need to gather these differences into a single number. One can devise several ways of doing this, but the accepted measure is called the chi-squared statistic and it is defined as follows:
 
-:::{.callout-note}
+::: callout-note
 ## Definition
-The chi-squared value for the independence test is calculated on the basis of a two-way table with $m$ rows and $n$ columns as the sum of the differences between the observed counts and the computed expected counts as follows:
-$$\chi^2= \sum_i \frac{(Observed(i)-Expected(i))^2}{Expected(i)}$$
-The number of degrees of freedom of chi-squared is $df = (m-1)(n-1)$.
+
+The chi-squared value for the independence test is calculated on the basis of a two-way table with $m$ rows and $n$ columns as the sum of the differences between the observed counts and the computed expected counts as follows: $$\chi^2= \sum_i \frac{(Observed(i)-Expected(i))^2}{Expected(i)}$$ The number of degrees of freedom of chi-squared is $df = (m-1)(n-1)$.
 :::
 
 This number describes how far away the data is from what is expected for an independent data set. Therefore, the larger the chi squared statistic, the larger the differences between observed and expected frequency, and thus the null hypothesis of independence is less likely. However, simply obtaining the $\chi^2$ is not enough to say whether the two variables are independent. We need to translate the chi-squared value into the language of probability, that is to ask, what is the probability of obtaining a data set with a particular $\chi^2$ value, if those two variables were independent.
@@ -150,31 +149,9 @@ Like all mathematical models, the chi-squared distribution relies on a set of as
 -   expected cell counts cannot be too small
 -   the observations are independent of each other
 
-## Hypothesis testing in R
+## Examples of data tables
 
-\label{sec:comp6}
-
-R has many functions for different tests, including the chi-squared test. To use it, one first has to input a data set in the form of a two-way table, where each row represents the values of one random variable, and each column represents the values of the second random variable. The following script shows how to manually input a 2 by 2 contingency table into a matrix. In the matrix function, `ncol` stands for number of columns, and `nrow` for number of rows. Notice the order in which the numbers are put into the matrix: down the first column, then the second, etc. Type `help(matrix)` for more details. In order to access a specific element of the matrix, just like in vectors, R uses square brackets and two indices, first one for row, and second for column. Below are examples of accessing two elements of the matrix data defined above, and how to reference a particular element of the matrix.
-
-```{r}
-data <- matrix(c(442,514,38,6),ncol=2,nrow=2)
-print(data)
-print(data[1,2])
-print(data[2,1])
-```
-
-Based on a given data set, how likely is the hypothesis that the two random variables are independent? It is hard to do by hand (in the old days, you looked it up in a table of chi-squared values) but R will do it all for us: 1) calculate the expected counts, 2) compute the chi-squared value for the table, and 3) use the number of degrees of freedom and the chi-squared value to calculate the p-value of the independence hypothesis based on it. Use the `chisq.test()` function, and you will see output like this:
-
-```{r}
-test.output <- chisq.test(data)
-print(test.output)
-```
-
-The results are the chi-squared values, the number of degrees of freedom (which depends on the number of rows and columns in the two-way table) and the p-value. The p-value is used to decide whether to reject the hypothesis, because it represents the likelihood of the hypothesis, given the data. In this case, the p-value is pretty small, so it seems relatively safe to reject the hypothesis of independence. To see the results of the hypothesis test, type `print(test.output)` and to access the p-value individually, use `test.output$p.value`.
-
-Finally, we need to specify the significance level $\alpha$ for the hypothesis test. This refers to the probability of rejecting a true null hypothesis, by random chance. For instance, if you reject the hypothesis at $\alpha=0.05$ significance, you're accepting a 5% chance that you falsely rejected a correct hypothesis. Note that it says nothing about failing to reject an incorrect hypothesis (also called the rate of false negatives.)
-
-### example with data
+### trisomy and pregnancy
 
 Let us return to the data presented in section \ref{sec:model6}. We noted that the fraction of women in different age categories carrying fetuses with DS are different, but how certain are we that is not a fluke? To test the hypothesis of independence, we input the data into R and then run the chi-squared test:
 
