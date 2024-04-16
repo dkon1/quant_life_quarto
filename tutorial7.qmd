@@ -79,7 +79,7 @@ print(paste("Number of 7s:", sum(rolls == 7) ))
 print(paste("Number of rolls above 10:", sum(rolls>10) ))  
 ```
 
-### Exercises:
+### Exercises
 
 1.  Call the function `dice` with input argument 6 (as above), using function replicate 100 times, and assign the output to variable `rolls`. Use a logical test to count how many of those 100 dice rolls are "snake eyes" (2) and print out the number.
 
@@ -96,11 +96,7 @@ Assign the value 6 to `n` first; call `replicate()` with 100 as the first input 
 2.  Modify the function `dice` so instead of returning the sum of two dice rolls it returns TRUE if both numbers are the same and FALSE otherwise, and call it `double`.
 
 ```{webr-r}
-double <- function(n){ 
-  d1 <- sample(1:n, 1) # uniform integer between 1 and n
-  d2 <- sample(1:n, 1) # uniform integer between 1 and n
-  return(d1+d2)
-}
+
 ```
 
 
@@ -110,6 +106,10 @@ Copy the definition of function `dice` from above, change its name to `double`, 
 :::
 
 3.  Use `replicate` to call the function `double` you defined above 1000 times, assign it variables `doubles` and print how many doubles it produces.
+
+```{webr-r}
+
+```
 
 ::: {.callout-caution collapse="true"}
 ## Hint
