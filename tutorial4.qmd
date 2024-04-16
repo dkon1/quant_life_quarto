@@ -99,7 +99,6 @@ The following exercises ask you to perform computational tasks using R. Type you
 First line should contain assignment `<-`; second line should have `print(sample_vec)`
 :::
 
-
 2.  Use the `sample()` function to generate a sample of 20 random numbers of out 20 integers (from 1 to 20) with replacement, assign it to variable `sample_vec` and print it out.
 
 ```{webr-r}
@@ -111,7 +110,6 @@ First line should contain assignment `<-`; second line should have `print(sample
 
 Add `replace=TRUE` to the `sample()` function call; second line should have `print(sample_vec)`
 :::
-
 
 3.  Use the `rbinom()` function to generate a sample of 20 random numbers of successes/wins out of 12 trials with probability of success in one trial of 0.4, assign it to variable `binom_vec` and print it out.
 
@@ -125,7 +123,6 @@ Add `replace=TRUE` to the `sample()` function call; second line should have `pri
 Remember the order of inputs into the function `rbinom()`: the number of random values is the number of batches of trials (first input), the number of trials is the size of each batch (second input). The second line should have print(binom_vec).
 :::
 
-
 4.  Use the `rbinom()` function to generate a sample of 12 random numbers of successes/wins out of 20 trials, with probability of success in one trial of 0.4, assign it to variable `binom_vec` and print it out.
 
 ```{webr-r}
@@ -137,4 +134,3 @@ Remember the order of inputs into the function `rbinom()`: the number of random 
 
 Remember the order of inputs into the function `rbinom()`: the number of random values is the number of batches of trials (first input), the number of trials is the size of each batch (second input). The second line should have print(binom_vec).
 :::
-

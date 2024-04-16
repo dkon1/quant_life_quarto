@@ -1,0 +1,173 @@
+---
+title: "Quantifying Life R Tutorial 9"
+output: 
+  learnr::tutorial:
+    css: css/style.css
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(error = TRUE, results = 'hold', fig.width = 5, fig.height = 4)
+```
+
+
+### Objectives:
+* Use functions and the deSolve package to calculate numeric solutions of ODEs
+* Use functions to graph the defining functions of ODEs
+* Pass function names to other functions (optional)
+
+
+## Numeric solution of differential equations 
+
+We will use the package `deSolve` to calculate numeric solutions of ODEs using a function that you define yourself. First, install the package `deSolve` (you can use the Install button in the Packages tab in R Studio) and then load it at the beginning of your R script or Rmd document with the following command:
+
+```{r}
+library(deSolve)
+```
+
+Second, we need to create the R function that defines the derivative in the differential equation, in other words, the function $f(x,t)$ in the generic first-order ODE
+
+$$ \frac{dx}{dt} = f(x,t)$$
+
+This R function must have three inputs: `t`, `x`, `parms`, *in that order*, representing the time variable, the dependent variable `x`, and the vector of parameters `parms`. Let us illustrate this on the linear population  model with birth rate b and death rate d:
+
+$$ \frac{dN}{dt} = bN-dN $$
+
+To solve this ODE with define the function that calculates the function on the right-hand-side (bN-dN). Notice that even though the function does not depend on time, *t still must be the first input argument of the function*:
+
+```{r}
+pop_funk <- function(t,N,parms){
+  b <- parms[1] # assign birth rate
+  d <- parms[2] # assign death rate
+  dNdt <- b*N - d*N # calculate the derivative
+  list(dNdt) # return the derivative
+}
+```
+
+The first two lines extract the two parameters b and d from the vector of parameter values, the next line calculate the value of the derivative, and the last one returns it.
+
+
+Third, we assign the parameter values to the vector, create a time vector on which to solve the ODE, and assign the initial condition(s):
+
+```{r}
+b <- 0.3 # birth rate
+d <- 0.25 # death rate
+parms <- c(b, d) # put parameters into vector
+time <- seq(0, 100, 10) # time vector
+init <- c(N=1000) # initial value of dependent variable N
+```
+
+
+Finally, we are ready to call the function `ode` that will do all the work to solve this ODE using the function `pop_funk`:
+
+```{r}
+output <- as.data.frame(
+  ode(func=pop_funk, y=init, times=time, parms=parms)
+  )
+```
+
+The `output` is a data frame, which means that you can use the `data=` option in `plot` to make your graph of the solution as a function of time:
+
+```{r}
+plot(N ~time, data=output)
+```
+
+This solution, like all numeric solutions of ODEs, is an approximation of the exact (analytic) solution. In this case, we can find (and verify) the exact solution of this model:
+
+$$ N(t) = N(0)e^{(b-d)t}$$
+
+Thus we can plot the analytic solution along with the numeric solution to see how far off they are:
+
+```{r}
+exact <- init*exp((b-d)*time)
+plot(N ~time, data=output)
+lines(time, exact, col = 'red')
+legend("topleft", legend = c('numeric', 'exact'), col = c('black', 'red'), lty=c(0,1), pch = c(1,NA))
+```
+
+You can see that the ODE solver is so clever that the numeric solution appears identical to the exact solution, even though there is always some degree of error in numeric solutions of ODEs.
+
+## Plotting defining functions of ODEs 
+
+Suppose we modify the defining function of the ODE to include a constant term C:
+
+$$ \frac{dN}{dt} = bN-dN + C$$
+
+The R function for the ODE can be defined as follows:
+
+```{r}
+pop_funk2 <- function(t,N,parms){
+  b <- parms[1] # assign birth rate
+  d <- parms[2] # assign death rate
+  C <- parms[3] # assign constant rate
+  dNdt <- b*N - d*N + C # calculate the derivative
+  list(dNdt) # return the derivative
+}
+```
+
+To analyze the ODE graphically, let us create a plot of the defining function $f(N)$ over a range of values of $N$. This requires choosing a range that includes all the zeros of the function $f(N)$, which are the fixed points of the ODE. So if we let $b=0.3$, $d=0.32$, and $C=1$, the function $f(N) = -0.02N+1$ has a zero at 50, so we can assign the range of values of N from 0 to 100 and make a graph of the function over this range:
+
+```{r}
+b <- 0.3 # proportional birth rate
+d <- 0.32 # proportional death rate
+C <- 1 # constant rate
+parms <- c(b,d,C)
+N <- seq(0,100,0.5)
+time <- seq(0,10,0.1)
+dNdt <- pop_funk2(time, N, parms)
+dNdt <- unlist(dNdt)
+plot(N, dNdt, type ='l', lwd =2, 
+     xlab = 'N', ylab = 'dN/dt')
+abline(0,0)
+```
+
+Note that we need to use the function `unlist()` to turn dNdt into a regular vector from a list (the list structure is necessary for it to work with the function `ode`). Also note that we had to define the vector `time` even though it is not used in the calculation because it is an input of the function `pop_funk2`m again because it's required by `ode`. 
+
+The plot of the defining function shows the rate of change of the solution (dN/dt) as a function of N. For population values below the fixed point of 50, solutions grow, while for N>50 solutions decay, both converging to the asymptotic value of 50. This can be shown by plotting several solutions obtained by calling `ode`:
+
+```{r}
+time <- seq(0, 100, 10) # time vector
+init <- c(N=100) # initial value of dependent variable N
+output <- as.data.frame(
+  ode(func=pop_funk2, y=init, times=time, parms=parms)
+  )
+plot(N ~time, data=output, t = 'l', ylim=c(0,100))
+init <- c(N=20) # initial value of dependent variable N
+output <- as.data.frame(
+  ode(func=pop_funk2, y=init, times=time, parms=parms)
+  )
+lines(N ~time, data=output, col = 'red')
+abline(50,0, lty=2)
+legend("bottomright", legend = c('N(0)=100', 'N(0)=20'), col = c('black', 'red'), lty=1, pch = NA)
+```
+
+
+
+## Calling functions using strings (optional)
+
+For the curious, here is a way to specify and call a function based on a given character string. You can see that calling the `new_fun() `is the same as calling the original function `blah()`: 
+
+```{r}
+crap <- function (x) {
+  return (2*x)
+}
+
+crap(4)
+new_fun <- match.fun("crap")
+#new_fun(4)
+```
+
+This is very useful if you want to pass the name of a function as a string (e.g. `blah`)  to another function (e.g. `my_funk`), so then it can be used to call the specified function from within `my_funk`. This allows you to write a general function that can call any number of functions and perform the same calculations with them.
+
+```{r}
+my_funk <-function(fun_name) {
+  new_fun <- match.fun(fun_name)
+  print(new_fun(4))
+}
+my_funk('blah')
+```
+
+

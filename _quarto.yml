@@ -32,7 +32,7 @@ book:
     - hypo_test.qmd
     - tutorial6.qmd
     - bayes.qmd
-    - sampling.qmd
+    - tutorial7.qmd
     - lindiff.qmd
     - graph_odes.qmd
     - ode_sols.qmd

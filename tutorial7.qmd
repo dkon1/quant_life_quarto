@@ -1,0 +1,171 @@
+# Tutorial 7: Functions and sampling from data {.unnumbered}
+
+### Objectives:
+
+-   define functions in R
+-   call functions and assign their output
+-   use replicate to call functions repeatedly
+-   random sampling of observations from data frames
+
+## Functions in R
+
+::: callout-tip
+## Function
+A function is a piece of code that is **defined** separately and can be **called** by other pieces of code. The main purpose is to create a "black box" that does a specific job and can be used repeatedly just by calling the function (invoking its name), rather than copying the code repeatedly.
+:::
+
+A function generally has input variables (although sometimes there are none) and returns an output, either by using the `return()` statement or by using the value on the last line of the body of the function. It is important to distinguish between the *inside* of the function - the code between the curly braces in the function definition - and the *outside*, that is everything else. The inputs are *passed* to the function in the call (through the parentheses) and then used inside the function to do its business and produce an output, which is then *returned* back to the place in the code where the function was called.
+
+### defining a function
+
+Here is an example of a function definition, with input variables N and r. Between the curly braces is the *body of the function*, which in this case multiplies the two input variables and then returns them.
+
+```{webr-r}
+my_funk <- function(N,r){ 
+  ans <- r*N # multiply the numbers
+  return(ans)
+}
+```
+
+Note that after running the code chunk above, you should see the name `my_funk` in your environment (under Functions). This means this function is defined in memory and ready to be called.
+
+### calling a function
+
+After a function is defined, it is ready to be called (executed) by invoking its name and giving the correct number of inputs. Here's an example of a function call:
+
+```{webr-r}
+a <- 30
+y <- 1:10
+print(my_funk(y, a))
+```
+
+Notice that the variable names in the function call do not have to be same as what they are called within the function. IMPORTANT: a function uses the order of variables in the function call, called *external variables* (y, a) to assign their names within the function, called *internal variables* (N, r). (There is a way to specify which input belongs to which internal variable, e.g. `plot(x=time, y=sol)` so if you do this the order is not important.)
+
+### using a function to generate random numbers
+
+Let's do something a bit more interesting than multiplying numbers! Here is a function that generates 2 uniform random numbers between 1 and n (where n is an input) and returns their sum.
+
+```{webr-r}
+dice <- function(n){ 
+  d1 <- sample(1:n, 1) # uniform integer between 1 and n
+  d2 <- sample(1:n, 1) # uniform integer between 1 and n
+  return(d1+d2)
+}
+```
+
+If we call this function with n of 6, this will return a roll of two standard six-sided dice, like this:
+
+```{webr-r}
+n<-6
+roll <- dice(n)
+print(roll)
+```
+
+### using replicate
+
+Sometimes it can be useful to call a function many times, without copying and pasting the call. This can be accomplished very nicely using a "wrapper" function `replicate`. The function has two main inputs: the first is the number of times to repeat the function call, with the function call in the second place. For a example, here is a simulation of one hundred rolls of two dice:
+
+```{webr-r}
+sides <- 6 # sides of the die
+num <- 100 # number of repeats
+rolls <- replicate(num, dice(sides))
+print(rolls)
+```
+
+The result is assigned to a vector array `rolls`, which contains 100 values. Long arrays of results can be difficult to describe by inspection, so one important use of logical tests that were introduced in Tutorial 6 is to count the number of values in an array that satisfy some condition. For example, the code chunks below print out the number of rolls that are equal to 7, and the number of rolls that are greater than 10:
+
+```{webr-r}
+print(paste("Number of 7s:", sum(rolls == 7) ))
+print(paste("Number of rolls above 10:", sum(rolls>10) ))  
+```
+
+### Exercises:
+
+1.  Call the function `dice` with input argument 6 (as above), using function replicate 100 times, and assign the output to variable `rolls`. Use a logical test to count how many of those 100 dice rolls are "snake eyes" (2) and print out the number.
+
+```{webr-r}
+
+```
+
+
+::: {.callout-caution collapse="true"}
+## Hint
+Assign the value 6 to `n` first; call `replicate()` with 100 as the first input and assign the output; use `sum()` and the logical test `== 2` with the output vector
+:::
+
+2.  Modify the function `dice` so instead of returning the sum of two dice rolls it returns TRUE if both numbers are the same and FALSE otherwise, and call it `double`.
+
+```{webr-r}
+double <- function(n){ 
+  d1 <- sample(1:n, 1) # uniform integer between 1 and n
+  d2 <- sample(1:n, 1) # uniform integer between 1 and n
+  return(d1+d2)
+}
+```
+
+
+::: {.callout-caution collapse="true"}
+## Hint
+Copy the definition of function `dice` from above, change its name to `double`, replace the `+` in the `return()` statement with `==`
+:::
+
+3.  Use `replicate` to call the function `double` you defined above 1000 times, assign it variables `doubles` and print how many doubles it produces.
+
+::: {.callout-caution collapse="true"}
+## Hint
+Copy the code from exercise 1 above, change the last line to sum up the result vector.
+:::
+
+## Selecting samples from data frames
+
+### data frames are matrix arrays
+
+Data frames, which were introduced in Tutorial 3, are two-dimensional arrays, which means that they require two indices to specify an entry: one for the row number and one for the column number. For example, the penguins data set from `palmerpenguins` package has 344 rows and 8 columns:
+
+```{webr-r}
+head(penguins)
+print(paste("Number of rows in penguins:", nrow(penguins) ))
+print(paste("Number of columns in penguins:", ncol(penguins) ))  
+```
+
+The columns in data frames represent the variables that were measured, while the rows represent individual observations. A specific column in the penguins data set, e.g. column 3, contains the observations of bill length for every penguin, a specific row, e.g. row 100, contains all the variables (species, island, bill length, etc.) measures for penguin index 100 (unfortunately anonymous). You can use a row index and column index to specify an observation of a specific variable, for example, below is the code to print out the value of the 100th observation of the 3rd variable:
+
+```{webr-r}
+print(paste("The 100th observation of the 3rd variable:", penguins[100,3]))
+```
+
+### selecting some observations
+
+One can choose to select a subset of observations from a data frame by specifying a subset of row indices. This code snippet prints out the values of all the variables for 100th to the 105th penguins; **note that the column index is left blank**:
+
+```{webr-r}
+print(penguins[100:105,])
+```
+
+Indices can also be selected by using a logical test, which is particularly useful for selecting observations that match a particular criterion. For example, we can select all the penguins observed on the island of Biscoe by using the test `penguins$island == 'Biscoe'` in place of the index, as in the following script and calculated the summary of all the variables for this selection:
+
+```{webr-r}
+summary(penguins[penguins$island == 'Biscoe', ])
+```
+
+Note that this code looks pretty clunky, so I highly recommend using the `tidyverse` collection of packages, which offers superior tools for selecting and filtering subsets of data frames.
+
+### random sampling of observations
+
+If you have a large collection of data, sometimes you may want to randomly sample observations from the data frame, for example to assess the robustness of your statistical methods, which is an approach called *bootstrapping*. To do this, you can generate a random sample of integers using the function `sample()`, and then use these numbers as row indices in the data frame:
+
+```{webr-r}
+sam_size <- 100 # number of observations
+row_indices <- sample(nrow(penguins), size = sam_size, replace = FALSE )
+data_sample <- penguins[row_indices, ]
+summary(data_sample)
+```
+
+Notice that we used the option `replace = FALSE` above, to avoid generating a sample with multiple copies of an observation. Sometimes, bootstrap methods are used to generate samples with multiple copies allowed, in which case you set `replace = TRUE` option:
+
+```{webr-r}
+sam_size <- 100 # number of observations
+row_indices <- sample(nrow(penguins), size = sam_size, replace = TRUE)
+data_sample <- penguins[row_indices, ]
+summary(data_sample)
+```

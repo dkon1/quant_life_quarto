@@ -1,0 +1,436 @@
+---
+title: "Quantifying Life R Tutorial 8"
+output: 
+  learnr::tutorial:
+    css: css/style.css
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+gradethis::gradethis_setup()
+knitr::opts_chunk$set(error = TRUE, results = 'hold', fig.width = 5, fig.height = 4)
+library(palmerpenguins)
+pen_fit <- lm(body_mass_g ~ bill_length_mm, penguins)
+```
+
+
+### Objectives
+  * generate random numbers from the continuous uniform distribution
+  * simulate hypothesis testing decisions with different error rates
+  
+## Errors in hypothesis testing
+
+### uniform continuous random numbers
+
+We can generate random numbers from the uniform distribution of real numbers between 0 and 1. This distribution differs from the discrete uniform distribution discussed in chapter 8  because the values of the random variable can be any real number between 0 and 1, so it is a continuous variable. We can do this using the R function `runif()`, which generates a specified number of random numbers from the uniform distribution. For example, one can generate a sample of 1, 5, and 20 random numbers:
+
+```{r}
+sample_vec <- runif(1)
+print(sample_vec)
+```
+
+```{r}
+sample_vec <- runif(5)
+print(sample_vec)
+```
+
+```{r}
+sample_vec <- runif(20)
+print(sample_vec)
+```
+
+
+One can calculate statistics of these samples such as means and see how they differ from the distributional expected value. The following script produces two random samples of size 10 and prints out the means of the samples:
+
+```{r}
+sample_vec <- runif(10)
+mean(sample_vec)
+sample_vec <- runif(10)
+mean(sample_vec)
+```
+
+
+### errors in hypothesis testing
+
+:::: {.newbox}
+There are two separate questions in hypothesis testing:
+
+  1. Is the hypothesis true (no effect) or false (there is an effect)?
+  2. Is the test result positive (effect detected) or negative (no effect detected)?
+
+This means there are four distinct outcomes of a hypothesis test:
+
+
+1. positive test result for a false hypothesis; correctly detected an effect (true positive)
+
+2. negative test result for a true hypothesis; correctly failed to detect an effect (true negative)
+
+3. negative test result for a false hypothesis; incorrectly failed to detect an effect (false negative)
+
+4. positive test result for a true hypothesis; incorrectly detected an effect (false positive)
+::::
+
+
+Consider the scenario where the null hypothesis is that a patient is healthy, and the test is for a disease. First let us generate a vector of the true states for a patient population by generating a vector of random numbers between 0 and 1 `rand_vec` and comparing them all to a probability level `prev` to decide whether each one has the disease and assign the Boolean values to vector `dis_vec`:
+
+```{r}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+print(paste("The number of people with disease:", sum(dis_vec)))
+```
+
+One can also simulate the hypothesis testing decision by generating a vector of random numbers between 0 and 1 and comparing them all to a probability level to decide whether the test made the correct decision or not. Suppose the test makes an error 8% of the time, so we set the error to this value and generate a vector that tells us for each person if the test made an error:
+
+```{r}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+error <-0.08
+error_vec <- rand_vec < error
+print(paste("The number of testing errors:", sum(error_vec)))
+```
+
+Finally, we can combine the two vectors to calculate the number of true positives (individuals who have the disease and who the test correctly identified) by using the logical & operation. Logical and (A&B) returns the value TRUE if both A and B have the value TRUE. In this case, the means the person has the disease (`dis_vec == TRUE`) and the test did not make an error (`error_vec == FALSE`). Here is the calculation:
+
+```{r}
+print(paste("The number of true positives:", sum((error_vec == FALSE)&(dis_vec == TRUE))))
+```
+
+
+
+
+### Exercises:
+
+
+1. Use `runif()` to generate 50 uniform random numbers between 0 and 1 and assign to `rand_vec`. In a separate line use a logical test to print how many of the numbers are less than 0.5.
+
+```{r ex2-1, exercise=TRUE}
+
+```
+
+```{r ex2-1-hint}
+# use runif(50)
+# use sum() inside print()
+```
+
+
+```{r ex2-1-solution}
+rand_vec <- runif(50)
+print(sum(rand_vec < 0.5))
+```
+
+```{r ex2-1-code-check}
+grade_code()
+```
+
+2. Add a line to the provided medical testing simulation script  to calculate and print the number of **false positives** from the vectors `dis_vec` and `error_vec`.
+
+
+```{r ex2-2, exercise=TRUE}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+rand_vec <- runif(n_ppl)
+error <- 0.08
+error_vec <- rand_vec < error
+
+```
+
+```{r ex2-2-hint}
+# false positive means disease is false and error is true
+```
+
+
+```{r ex2-2-solution}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+rand_vec <- runif(n_ppl)
+error <- 0.08
+error_vec <- rand_vec < error
+print(sum(dis_vec == FALSE & error_vec == TRUE))
+```
+
+```{r ex2-2-code-check}
+grade_code()
+```
+
+
+3. Add a line to the provided medical testing simulation script  to calculate and print the number of **true negatives** from the vectors `dis_vec` and `error_vec`.
+
+```{r ex2-3, exercise=TRUE}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+rand_vec <- runif(n_ppl)
+error <- 0.08
+error_vec <- rand_vec < error
+
+```
+
+```{r ex2-3-hint}
+# true negative means disease is false and error is false
+```
+
+
+```{r ex2-3-solution}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+rand_vec <- runif(n_ppl)
+error <- 0.08
+error_vec <- rand_vec < error
+print(sum(dis_vec == FALSE & error_vec == FALSE))
+```
+
+```{r ex2-3-code-check}
+grade_code()
+```
+
+4. Add a line to the provided medical testing simulation script  to calculate and print the number of **false negatives** from the vectors `dis_vec` and `error_vec`.
+
+```{r ex2-4, exercise=TRUE}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+rand_vec <- runif(n_ppl)
+error <- 0.08
+error_vec <- rand_vec < error
+
+```
+
+```{r ex2-4-hint}
+# false negative means disease is false and error is true
+```
+
+
+```{r ex2-4-solution}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+rand_vec <- runif(n_ppl)
+error <- 0.08
+error_vec <- rand_vec < error
+print(sum(dis_vec == FALSE & error_vec == TRUE))
+```
+
+```{r ex2-4-code-check}
+grade_code()
+```
+
+
+## Errors in hypothesis testing
+
+### uniform continuous random numbers
+
+We can generate random numbers from the uniform distribution of real numbers between 0 and 1. This distribution differs from the discrete uniform distribution discussed in chapter 4  because the values of the random variable can be any real number between 0 and 1, so it is a continuous variable. We can do this using the R function `runif()`, which generates a specified number of random numbers from the uniform distribution. For example, one can generate a sample of 1, 5, and 20 random numbers:
+
+```{r}
+sample_vec <- runif(1)
+print(sample_vec)
+```
+
+```{r}
+sample_vec <- runif(5)
+print(sample_vec)
+```
+
+```{r}
+sample_vec <- runif(20)
+print(sample_vec)
+```
+
+
+One can calculate statistics of these samples such as means and see how they differ from the distributional expected value. The following script produces two random samples of size 10 and prints out the means of the samples:
+
+```{r}
+sample_vec <- runif(10)
+mean(sample_vec)
+sample_vec <- runif(10)
+mean(sample_vec)
+```
+
+
+### errors in hypothesis testing
+
+:::: {.newbox}
+There are two separate questions in hypothesis testing:
+
+  1. Is the hypothesis true (no effect) or false (there is an effect)?
+  2. Is the test result positive (effect detected) or negative (no effect detected)?
+
+This means there are four distinct outcomes of a hypothesis test:
+
+
+1. positive test result for a false hypothesis; correctly detected an effect (true positive)
+
+2. negative test result for a true hypothesis; correctly failed to detect an effect (true negative)
+
+3. negative test result for a false hypothesis; incorrectly failed to detect an effect (false negative)
+
+4. positive test result for a true hypothesis; incorrectly detected an effect (false positive)
+::::
+
+
+Consider the scenario where the null hypothesis is that a patient is healthy, and the test is for a disease. First let us generate a vector of the true states for a patient population by generating a vector of random numbers between 0 and 1 `rand_vec` and comparing them all to a probability level `prev` to decide whether each one has the disease and assign the Boolean values to vector `dis_vec`:
+
+```{r}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+print(paste("The number of people with disease:", sum(dis_vec)))
+```
+
+One can also simulate the hypothesis testing decision by generating a vector of random numbers between 0 and 1 and comparing them all to a probability level to decide whether the test made the correct decision or not. Suppose the test makes an error 8% of the time, so we set the error to this value and generate a vector that tells us for each person if the test made an error:
+
+```{r}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+error <-0.08
+error_vec <- rand_vec < error
+print(paste("The number of testing errors:", sum(error_vec)))
+```
+
+Finally, we can combine the two vectors to calculate the number of true positives (individuals who have the disease and who the test correctly identified) by using the logical & operation. Logical and (A&B) returns the value TRUE if both A and B have the value TRUE. In this case, the means the person has the disease (`dis_vec == TRUE`) and the test did not make an error (`error_vec == FALSE`). Here is the calculation:
+
+```{r}
+print(paste("The number of true positives:", sum((error_vec == FALSE)&(dis_vec == TRUE))))
+```
+
+
+
+
+### Exercises:
+
+
+1. Use `runif()` to generate 50 uniform random numbers between 0 and 1 and assign to `rand_vec`. In a separate line use a logical test to print how many of the numbers are less than 0.5.
+
+```{r ex2-1, exercise=TRUE}
+
+```
+
+```{r ex2-1-hint}
+# use runif(50)
+# use sum() inside print()
+```
+
+
+```{r ex2-1-solution}
+rand_vec <- runif(50)
+print(sum(rand_vec < 0.5))
+```
+
+```{r ex2-1-code-check}
+grade_code()
+```
+
+2. Add a line to the provided medical testing simulation script  to calculate and print the number of **false positives** from the vectors `dis_vec` and `error_vec`.
+
+
+```{r ex2-2, exercise=TRUE}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+rand_vec <- runif(n_ppl)
+error <- 0.08
+error_vec <- rand_vec < error
+
+```
+
+```{r ex2-2-hint}
+# false positive means disease is false and error is true
+```
+
+
+```{r ex2-2-solution}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+rand_vec <- runif(n_ppl)
+error <- 0.08
+error_vec <- rand_vec < error
+print(sum((dis_vec == FALSE)&(error_vec == TRUE)))
+```
+
+```{r ex2-2-code-check}
+grade_code()
+```
+
+
+3. Add a line to the provided medical testing simulation script  to calculate and print the number of **true negatives** from the vectors `dis_vec` and `error_vec`.
+
+```{r ex2-3, exercise=TRUE}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+rand_vec <- runif(n_ppl)
+error <- 0.08
+error_vec <- rand_vec < error
+
+```
+
+```{r ex2-3-hint}
+# true negative means disease is false and error is false
+```
+
+
+```{r ex2-3-solution}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+rand_vec <- runif(n_ppl)
+error <- 0.08
+error_vec <- rand_vec < error
+print(sum((dis_vec == FALSE)&(error_vec == FALSE)))
+```
+
+```{r ex2-3-code-check}
+grade_code()
+```
+
+4. Add a line to the provided medical testing simulation script  to calculate and print the number of **false negatives** from the vectors `dis_vec` and `error_vec`.
+
+```{r ex2-4, exercise=TRUE}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+rand_vec <- runif(n_ppl)
+error <- 0.08
+error_vec <- rand_vec < error
+
+```
+
+```{r ex2-4-hint}
+# false negative means disease is false and error is true
+```
+
+
+```{r ex2-4-solution}
+n_ppl <- 100
+rand_vec <- runif(n_ppl)
+prev <- 0.2
+dis_vec <- rand_vec < prev
+rand_vec <- runif(n_ppl)
+error <- 0.08
+error_vec <- rand_vec < error
+print(sum((dis_vec == TRUE)&(error_vec == TRUE)))
+```
+
+```{r ex2-4-code-check}
+grade_code()
+```

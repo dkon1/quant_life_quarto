@@ -2,13 +2,11 @@
 
 ### Objectives
 
-
 -   calculate two-way data tables from data
 -   assign matrix variables
 -   perform the chi-squared test for independence
 -   logical operators and tests in R
 -   calculations using Boolean vectors
-
 
 ## Data tables and the chi-squared test
 
@@ -102,13 +100,11 @@ dis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-prob
 
 ```
 
-
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-Use the example of how to use the function table from the code chunk above; remember to add print() around the table(). 
+Use the example of how to use the function table from the code chunk above; remember to add print() around the table().
 :::
-
 
 2.  In the script below add lines to print out the numbers of people with disease in genotype A sample and in genotype B sample using the matrix `data_mat` and indexing.
 
@@ -127,13 +123,11 @@ data_mat <- matrix(data_vec, nrow=2, ncol=2)
 
 ```
 
-
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-Use the correct row number and column number as indices; remember to add print() around the table(). 
+Use the correct row number and column number as indices; remember to add print() around the table().
 :::
-
 
 3.  The script below runs the `chisq.test()` function, add a line to print out the p-value from the chi-squared test.
 
@@ -154,9 +148,8 @@ chisq_result <- chisq.test(data_mat) # run chi-squared test
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-The p-value is a variable in the chisq_result object, see code above for example. 
+The p-value is a variable in the chisq_result object, see code above for example.
 :::
-
 
 ## Logical values and calculations
 
@@ -246,9 +239,8 @@ print(sum(x>1&x<5))
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-Check the inputs into the function `sample()`; the second line should use the logical test `==` 
+Check the inputs into the function `sample()`; the second line should use the logical test `==`
 :::
-
 
 2.  Generate a sample of 20 values from the binomial distribution with p=0.4 and n=5, assign it to vector `binom_vec` and use `sum()` to calculate how many of them are greater than 1 and print out that number.
 
@@ -259,7 +251,7 @@ Check the inputs into the function `sample()`; the second line should use the lo
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-Check the inputs into the function `rbinom()`; the second line should use the logical test `>` 
+Check the inputs into the function `rbinom()`; the second line should use the logical test `>`
 :::
 
 3.  Generate a sample of 20 values from the binomial distribution with p=0.4 and n=5 and calculate how many of them are BOTH above 1 AND below 4.
@@ -271,6 +263,5 @@ Check the inputs into the function `rbinom()`; the second line should use the lo
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-Check the inputs into the function `rbinom()`; the second line should use the conjunction `&` to combine two logical tests 
+Check the inputs into the function `rbinom()`; the second line should use the conjunction `&` to combine two logical tests
 :::
-

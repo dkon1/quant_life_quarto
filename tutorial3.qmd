@@ -25,6 +25,7 @@ heart_rates <- read.csv(file = "https://raw.githubusercontent.com/dkon1/quant_li
 
 ::: callout-tip
 ## data frame
+
 A **data frame** is an object in R environment that contains multiple variables with different names. These variables can be accessed by using the name of the data frame, followed by `$` and then the variable name, e.g. `df2$var1` refers to variable named `var1` in data frame `df2`.
 :::
 
@@ -149,8 +150,6 @@ Need to specify the data frame; use : to create a vector of indices from 1 to 30
 
 ```
 
-
-
 2.  Calculate the range of penguin flipper lengths, assign it to a variable `ran` and print the maximum value:
 
 ```{webr-r}
@@ -164,7 +163,6 @@ print(range)
 Use option `na.rm=TRUE` to get rid of NAs; print the second element of the variable `ran` to show the minimum.
 :::
 
-
 3.  Calculate the ratios of all the bill lengths to the bill depth and print the mean and standard deviations of this ratio:
 
 ```{webr-r}
@@ -172,7 +170,6 @@ len_over_dep <- penguins$bill_length_mm/bill_depth_mm
 print(mean(len_over_dep))
 print(sd(len_over_dep))
 ```
-
 
 ::: {.callout-caution collapse="true"}
 ## Hint
@@ -196,14 +193,13 @@ Need to use the data frame name; switch the order of the variables in `plot`
 
 ```
 
-
-
 ## Visualizing data sets
 
 A picture is worth a lot of words, and a plot of data offers much more information than the basic descriptive statistics. A *histogram* offers a convenient visualization of a single variable data set.
 
 ::: callout-tip
 ## histogram
+
 A **histogram** is a plot of counts or frequencies of different values in a data vector, divided into *bins*. The x-axis typically shows the values of the variable, and the y-axis shows the counts, or frequencies, of the data in each bin.
 :::
 
@@ -252,12 +248,12 @@ hist(body_mass_g, data = penguins)
 ```{r ex2_1-hint}
 
 ```
+
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-`data = ` option doesn't work in function `hist()`, need to use dataframe and variable name, e.g.`df$Var`
+`data =` option doesn't work in function `hist()`, need to use dataframe and variable name, e.g.`df$Var`
 :::
-
 
 2.  Calculate the ratio of the penguin bill lengths to the bill depths and plot their histogram
 
@@ -272,15 +268,11 @@ hist(len_over_dep)
 Cannot use variable name without the data frame; has to have the format `df$Var`
 :::
 
-
-
-
 3.  Produce box plots of the second resting heart rates (variable `Rest2` for different years:
 
 ```{webr-r}
 boxplot(Year ~ Rest2, data=heart_rates)
 ```
-
 
 ::: {.callout-caution collapse="true"}
 ## Hint
