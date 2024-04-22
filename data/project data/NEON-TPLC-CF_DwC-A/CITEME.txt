@@ -1,0 +1,8 @@
+This data package was downloaded from a NEON Biorepository Data Portal Collection Page, Archived DwC-A package created on 2024-04-04 21:01:30.
+
+Please use the following format to cite this dataset:
+NEON Biorepository Data Portal (2024). . 
+Occurrence dataset https://doi.org/ accessed via the NEON Biorepository Data Portal, https://biorepo.neonscience.org/ on 2024-04-04.
+
+
+For more information on citation formats, please see the following page: https://biorepo.neonscience.org/portal/includes/usagepolicy.php
