@@ -34,6 +34,7 @@ book:
     - bayes.qmd
     - tutorial7.qmd
     - lindiff.qmd
+    - tutorial8.qmd
     - graph_odes.qmd
     - ode_sols.qmd
     - markov_model.qmd

@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./graph_odes.html" rel="next">
+<link href="./tutorial8.html" rel="next">
 <link href="./tutorial7.html" rel="prev">
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -297,6 +297,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 8: For loops and dynamic models</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./graph_odes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span></a>
   </div>
@@ -361,12 +367,6 @@ window.Quarto = {
   <li><a href="#models-with-a-constant-term" id="toc-models-with-a-constant-term" class="nav-link" data-scroll-target="#models-with-a-constant-term"><span class="header-section-number">9.2.2</span> models with a constant term</a></li>
   <li><a href="#population-growth-and-decline" id="toc-population-growth-and-decline" class="nav-link" data-scroll-target="#population-growth-and-decline"><span class="header-section-number">9.2.3</span> population growth and decline</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.2.4</span> Exercises</a></li>
-  </ul></li>
-  <li><a href="#numeric-solutions-in-r" id="toc-numeric-solutions-in-r" class="nav-link" data-scroll-target="#numeric-solutions-in-r"><span class="header-section-number">9.3</span> Numeric solutions in R</a>
-  <ul class="collapse">
-  <li><a href="#for-loops" id="toc-for-loops" class="nav-link" data-scroll-target="#for-loops"><span class="header-section-number">9.3.1</span> for loops</a></li>
-  <li><a href="#using-vectors-with-loops" id="toc-using-vectors-with-loops" class="nav-link" data-scroll-target="#using-vectors-with-loops"><span class="header-section-number">9.3.2</span> using vectors with loops</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">9.3.3</span> Exercises:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -549,144 +549,6 @@ N(t) = c r^t  + \frac{a}{1-r}
 <li><p>Twenty flies fly into a house every day, and half of the flies in the house at beginning of each day find their way out (no births or deaths happen in the house.) If there are 10 files in the house initially, how many will there be in 12 days?</p></li>
 <li><p>Suppose a branch grows at 10 cm a month (year round, assume it’s a climate with no seasonal variations), and that every month a gardener trims 25% of the length of the branch. If initially the branch is 10 cm long, what will be its length in 6 months?</p></li>
 </ol>
-</section>
-</section>
-<section id="numeric-solutions-in-r" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="numeric-solutions-in-r"><span class="header-section-number">9.3</span> Numeric solutions in R</h2>
-<p></p>
-<section id="for-loops" class="level3" data-number="9.3.1">
-<h3 data-number="9.3.1" class="anchored" data-anchor-id="for-loops"><span class="header-section-number">9.3.1</span> for loops</h3>
-<p>Often times one has to write a script to perform the same (or similar) task many times. Like all programming languages, R has commands that call for repetition of the same commands multiple times. These structures are called . In this section you will learn about the <em>for loop</em>, which looks like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    body of the loop</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>For example, the following script will print out “Hello!” ten times like this:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"Hello!"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Hello!"
-[1] "Hello!"
-[1] "Hello!"
-[1] "Hello!"
-[1] "Hello!"
-[1] "Hello!"
-[1] "Hello!"
-[1] "Hello!"
-[1] "Hello!"
-[1] "Hello!"</code></pre>
-</div>
-</div>
-<p>The for loop starts with the keyword <code>for</code>, then has the expression in parentheses (i in 1:10). <code>i</code> is called the <em>loop variable</em>, <code>in</code> is another keyword, and <code>1:10</code> is a <em>loop vector</em>. After the first line there is a curly bracket { and everything that follows until the closing bracket } is the <em>loop body</em>. The loop body is executed as many times as there are elements in the loop vector (in this example, 10 times) and the only thing that changes is the values of the loop variable i, which starts with the first element of the vector (1) and goes until it reaches the last element (10) and then stops:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Iteration number"</span>, i))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Iteration number 1"
-[1] "Iteration number 2"
-[1] "Iteration number 3"
-[1] "Iteration number 4"
-[1] "Iteration number 5"
-[1] "Iteration number 6"
-[1] "Iteration number 7"
-[1] "Iteration number 8"
-[1] "Iteration number 9"
-[1] "Iteration number 10"</code></pre>
-</div>
-</div>
-<p>It can be used to do repetitive calculations, for example, adding up all the integers in an array (of course the built-in function <code>sum()</code> will do it too):</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add up the integers from 1 to 10 and print out the total</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>total<span class="ot">&lt;-</span><span class="dv">0</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  total<span class="ot">&lt;-</span>total<span class="sc">+</span>i</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(total)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 55</code></pre>
-</div>
-</div>
-</section>
-<section id="using-vectors-with-loops" class="level3" data-number="9.3.2">
-<h3 data-number="9.3.2" class="anchored" data-anchor-id="using-vectors-with-loops"><span class="header-section-number">9.3.2</span> using vectors with loops</h3>
-<p>It is especially useful to use loops to assign vector variables one element at a time. The loop variable (e.g.&nbsp;<code>i</code>) is usually used for <em>indexing</em> the vector variable. There are several necessary features of using vectors in for loops, so let us take an example script and break them down in this example of calculating a vector of the sum of integers from 1 up to the current number:</p>
-<ol type="1">
-<li><em>Pre-allocate</em> the vector variable: create a vector of the correct length prior to the loop by filling it with a placeholder value, e.g.&nbsp;0 or NA (not a value).</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>max <span class="ot">&lt;-</span> <span class="dv">10</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>total_vec <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, max<span class="sc">+</span><span class="dv">1</span>) <span class="co"># pre-allocate the vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="2" type="1">
-<li>Only put in the loop what has to be repeated (e.g.&nbsp;don’t put the pre-allocation inside the loop);</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>max) { <span class="co"># iterate for i from 1 to max</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  total_vec[i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> total_vec[i] <span class="sc">+</span> i <span class="co"># assign to the next value of total_vec the sum of i and the current value of total_vec</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="3" type="1">
-<li>Be careful with indexing inside for loops - this means paying careful attention to the lowest and the highest index that you’re using inside the loop. For example, if your loop vector goes from 1 to max (as above), the total number of elements in your vector will be max+1, because we assigned the element with index i+1 in the loop:</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">length</span>(total_vec)) <span class="co"># print the number of elements of total_vec</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 11</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(total_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  0  1  3  6 10 15 21 28 36 45 55</code></pre>
-</div>
-</div>
-<p>Here is an example of a loop calculating the famous Fibonacci sequence, where the next value is defined to be the sum of two previous values in the sequence, and the plotting the resulting sequence, together with an exponential function that approximates it.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>num_steps <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co"># number of steps</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>fib <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>, num_steps <span class="sc">+</span> <span class="dv">2</span>) <span class="co"># pre-allocate vector with correct number of elements with all 1s</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_steps) {</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  fib[i<span class="sc">+</span><span class="dv">2</span>] <span class="ot">&lt;-</span> fib[i<span class="sc">+</span><span class="dv">1</span>] <span class="sc">+</span> fib[i] <span class="co"># add elements i and i+1 and assign it to element i+2</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>(num_steps<span class="sc">+</span><span class="dv">1</span>) <span class="co"># define a "time" vector as the independent variable</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span> (time, fib, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">xlab =</span> <span class="st">'time steps'</span>, <span class="at">ylab =</span> <span class="st">"Fibonacci"</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># an exponential function wiht the Golden ratio base</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>phi <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">+</span><span class="fu">sqrt</span>(<span class="dv">5</span>))<span class="sc">/</span><span class="dv">2</span> <span class="co"># golden ratio</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>sol <span class="ot">&lt;-</span> <span class="fl">0.75</span><span class="sc">*</span>phi<span class="sc">^</span>time <span class="co"># calculate the exponential function vector (no loop required)</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(time, sol, <span class="at">col=</span><span class="st">'red'</span>, <span class="at">lwd =</span> <span class="dv">3</span>) <span class="co"># overlay the exponential function plot</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="co"># legend placement</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>       <span class="fu">c</span>(<span class="st">"Fibonacci"</span>, <span class="st">"exponential"</span>), <span class="co"># vector containing labels for the legend</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="co"># vector containing color codes (1 is black, 2 is red)</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="co"># vector specifying line types (0 is none, 1 is regular line)</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="cn">NA</span>), <span class="co"># vector specifying types of point markers (1 is cicle, NA is none)</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd=</span><span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lindiff_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="exercises-1" class="level3" data-number="9.3.3">
-<h3 data-number="9.3.3" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">9.3.3</span> Exercises:</h3>
-<ol type="1">
-<li><p>Assign the value 5 to a variable and multiply it by 1.03, replacing the old value of the variable. The new value should be 5.15.</p></li>
-<li><p>Write a script to take a number and multiply it by 1.03 one hundred times using a for loop (see section 4.4.2) Starting with the initial value 5, the script should return the value 96.093.</p></li>
-<li><p>Preallocate a vector of values to be all zeros, assign the first element to 5, and then use a for loop to calculate 100 values by multiplying the previous one by 1.03 and assigning them to sequential elements of the vector, then plot that vector. You should see an exponentially growing curve, with the last element (101st) equal to 96.093.</p></li>
-<li><p>Fix the indexing error in the script below for calculating a vector of factorials. Each element of the vector <code>factorial_vec[i]</code> should be equal to <span class="math inline">\(i!= 1*2*3...*i\)</span>, so for example <code>factorial_vec[2]</code> should be 2 and <code>factorial_vec[3]</code> should be 6.</p></li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># multiply integers from 1 to 10 and assign the factorials to the vector </span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>max.num <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>factorial_vec <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span>,max.num)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>max.num) {</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  factorial_vec[i<span class="sc">+</span><span class="dv">1</span>]<span class="ot">&lt;-</span>factorial_vec[i]<span class="sc">*</span>i</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(factorial_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 
 
 </section>
@@ -1087,8 +949,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./graph_odes.html" class="pagination-link" aria-label="<span class='chapter-number'>10</span>&nbsp; <span class='chapter-title'>Graphical analysis of ordinary differential equations</span>">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tutorial8.html" class="pagination-link" aria-label="Tutorial 8: For loops and dynamic models">
+        <span class="nav-page-text">Tutorial 8: For loops and dynamic models</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

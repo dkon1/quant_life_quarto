@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - Tutorial 2: Vectors and plotting</title>
+<title>Quantifying Life - Tutorial 8: For loops and dynamic models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./descriptive.html" rel="next">
-<link href="./functions.html" rel="prev">
+<link href="./graph_odes.html" rel="next">
+<link href="./lindiff.html" rel="prev">
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -235,7 +235,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-1","classes":"","fig-width":7,"results":"markup"},"code":"var1 <- exp(5)\nprint(var1)","id":1},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-2","classes":"","fig-width":7,"results":"markup"},"code":"var2 <- 20\nvar1 <- var2/10\nprint(var1)\nvar2 <- 10\nprint(var1)","id":2},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-3","classes":"","fig-width":7,"results":"markup"},"code":"vec<-c(pi,45,912.8, 0)\nprint(vec)","id":3},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-4","classes":"","fig-width":7,"results":"markup"},"code":"print(vec[1])\nprint(vec[4])","id":4},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-5","classes":"","fig-width":7,"results":"markup"},"code":"vec1<-1:20\nprint(vec1)\nvec2<-0:-20\nprint(vec2)","id":5},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-6","classes":"","fig-width":7,"results":"markup"},"code":"vec1<-seq(20,50,3)\nprint(vec1)\nvec2<-seq(50,20,-3)\nprint(vec2)","id":6},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-7","classes":"","fig-width":7,"results":"markup"},"code":"zeros <- rep(0,10)\nprint(zeros)","id":7},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-8","classes":"","fig-width":7,"results":"markup"},"code":"pies <- rep(pi,7)\nprint(pies)","id":8},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-9","classes":"","fig-width":7,"results":"markup"},"code":"vecs <- rep(vec, 5)\nprint(vecs)","id":9},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-10","classes":"","fig-width":7,"results":"markup"},"code":"vec1 <- 4:10\nprint(vec1)\nprint(vec1[c(5, 2)])","id":10},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-11","classes":"","fig-width":7,"results":"markup"},"code":"vec2 <- -5:10\nprint(vec2)\nprint(vec2[4:7])","id":11},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-12","classes":"","fig-width":7,"results":"markup"},"code":"vec3 <- seq(0,1,0.1)\nprint(vec3)\nprint(vec3[-(1:4)])","id":12},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-13","classes":"","fig-width":7,"results":"markup"},"code":"vec<-c(pi,45,912.8, 0)\nNewVec <- 2*vec\nprint(NewVec)","id":13},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-14","classes":"","fig-width":7,"results":"markup"},"code":"vec1<-0:3\nvec2<-1:4\nprint(vec1)\nprint(vec2)\ntot <- vec1 + vec2\nprint(tot)","id":14},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-15","classes":"","fig-width":7,"results":"markup"},"code":"vec1<-1:3\nvec2<-0:4\nlength(vec1)\nlength(vec2)","id":15},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-16","classes":"","fig-width":7,"results":"markup"},"code":"vec1<-1:2\nvec2<-0:4\nprint(vec1)\nprint(vec2)\ntot <- vec1 + vec2\nprint(tot)","id":16},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-17","classes":"","fig-width":7,"results":"markup"},"code":"nums <- (3,8,16)","id":17},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-18","classes":"","fig-width":7,"results":"markup"},"code":"vals <- 1:10\nprint[vals(3)]","id":18},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-19","classes":"","fig-width":7,"results":"markup"},"code":"all_vals <- 0:20\nprint(all_vals[3,9])","id":19},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-20","classes":"","fig-width":7,"results":"markup"},"code":"vals <- 1:10\nall_vals <- 0:20\nproduct <- vals*all_vals\nprint(product)","id":20},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-21","classes":"","fig-width":7,"results":"markup"},"code":"vals <- 1:10\nall_vals <- 0:20\ntotal <- vals + all_vals\nprint(total)","id":21},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-22","classes":"","fig-width":7,"results":"markup"},"code":"time <- seq(0,10,0.2)\nquad <- (time - 5)^2\nprint(time)\nprint(quad)","id":22},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-23","classes":"","fig-width":7,"results":"markup"},"code":"plot(time, quad, main = 'Quadratic function of time')","id":23},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-24","classes":"","fig-width":7,"results":"markup"},"code":"plot(time,quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","id":24},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-25","classes":"","fig-width":7,"results":"markup"},"code":"cubic <- 0.2*(time-6)^3 + 4\nplot(time,quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)' )\nlines(time, cubic, col = 'red')","id":25},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-26","classes":"","fig-width":7,"results":"markup"},"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')","id":26},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-27","classes":"","fig-width":7,"results":"markup"},"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')\nlegend(\"bottomright\", legend = c('quadratic', 'cubic'), col = c('black', 'red'), lty=1)","id":27},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-28","classes":"","fig-width":7,"results":"markup"},"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')\nlegend(\"bottomright\", legend = c('quadratic', 'cubic'), col = c('black', 'red'), pch = c(1, NA), lty = c(0, 1))","id":28},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-29","classes":"","fig-width":7,"results":"markup"},"code":"curve(x^2,0,3, xlab = 'x', ylab = 'f(x)')\ncurve(5*x,0,3,add=TRUE,col='red')\nlegend(\"topleft\", legend = c('quadratic', 'linear'), col = c('black', 'red'), lty = 1)","id":29},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-30","classes":"","fig-width":7,"results":"markup"},"code":"curve(x^2,0,3, xlab = 'x', ylab = 'f(x)', xlim = c(0,3), ylim = c(0,15))\ncurve(5*x,0,3,add=TRUE,col='red')\nlegend(\"topleft\", legend = c('quadratic', 'linear'), col = c('black', 'red'), lty = 1)","id":30},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-31","classes":"","fig-width":7,"results":"markup"},"code":"plot(quad, time, main = 'NOT a quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","id":31},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-32","classes":"","fig-width":7,"results":"markup"},"code":"time[52] <- 10.2\nplot(time, quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","id":32},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-33","classes":"","fig-width":7,"results":"markup"},"code":"quad <- (time - 5)^2\nplot(time, quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","id":33},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-34","classes":"","fig-width":7,"results":"markup"},"code":"vals <- seq(0,5,0.1)\nnew_vals <- 5 + 8vals","id":34},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-35","classes":"","fig-width":7,"results":"markup"},"code":"range <- seq(0,0.1,100)\nresult <- sqrt(range)","id":35},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-36","classes":"","fig-width":7,"results":"markup"},"code":"range <- seq(0,100,0.1)\nresult <- sqrt(range)\nplot(result, range, type='l')","id":36},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-37","classes":"","fig-width":7,"results":"markup"},"code":"curve((45-x)/(4x+3), 0, 100)","id":37},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-38","classes":"","fig-width":7,"results":"markup"},"code":"lig <- seq(0,10,0.2)\nf <- lig^10/(5000+lig^10)\nplot(lig,f, xlab = 'lig', ylab = 'functions')\ng <- 0.1*lig\nplot(lig,g)\nlegend(\"bottomright\", legend = c('Hill', 'linear'), col = c('black', 'red'), pch = c(1, 2), lty = c(2, 1))","id":38},{"options":{"dpi":72,"context":"interactive","warning":"true","out-width":"700px","autorun":"false","read-only":"false","comment":"","fig-cap":"","message":"true","fig-height":5,"output":"true","out-height":"","label":"unnamed-chunk-39","classes":"","fig-width":7,"results":"markup"},"code":"time<-0:100\na<-1000\nb<-50 \nr<-0.1\nPopulation<-a*exp(r*time)/(b+exp(r*time)) \nplot(time,Population,type='l') \nr<-10 \nlines(time,Population,col=2)","id":39}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-cap":"","label":"unnamed-chunk-1","out-width":"700px","classes":"","message":"true","comment":"","warning":"true","dpi":72,"fig-width":7,"context":"interactive","output":"true","results":"markup","fig-height":5,"out-height":"","autorun":"false","read-only":"false"},"code":"for (i in 1:10) {\n  print(\"Hello!\")\n}"},{"id":2,"options":{"fig-cap":"","label":"unnamed-chunk-2","out-width":"700px","classes":"","message":"true","comment":"","warning":"true","dpi":72,"fig-width":7,"context":"interactive","output":"true","results":"markup","fig-height":5,"out-height":"","autorun":"false","read-only":"false"},"code":"for (i in 1:10) {\n  print(paste(\"Iteration number\", i))\n}"},{"id":3,"options":{"fig-cap":"","label":"unnamed-chunk-3","out-width":"700px","classes":"","message":"true","comment":"","warning":"true","dpi":72,"fig-width":7,"context":"interactive","output":"true","results":"markup","fig-height":5,"out-height":"","autorun":"false","read-only":"false"},"code":"# add up the integers from 1 to 10 and print out the total\ntotal<-0\nfor (i in 1:10) {\n  total<-total+i\n}\nprint(total)"},{"id":4,"options":{"fig-cap":"","label":"unnamed-chunk-4","out-width":"700px","classes":"","message":"true","comment":"","warning":"true","dpi":72,"fig-width":7,"context":"interactive","output":"true","results":"markup","fig-height":5,"out-height":"","autorun":"false","read-only":"false"},"code":"max <- 10 \ntotal_vec <- rep(0, max+1) # pre-allocate the vector"},{"id":5,"options":{"fig-cap":"","label":"unnamed-chunk-5","out-width":"700px","classes":"","message":"true","comment":"","warning":"true","dpi":72,"fig-width":7,"context":"interactive","output":"true","results":"markup","fig-height":5,"out-height":"","autorun":"false","read-only":"false"},"code":"for (i in 1:max) { # iterate for i from 1 to max\n  total_vec[i+1] <- total_vec[i] + i # assign to the next value of total_vec the sum of i and the current value of total_vec\n}"},{"id":6,"options":{"fig-cap":"","label":"unnamed-chunk-6","out-width":"700px","classes":"","message":"true","comment":"","warning":"true","dpi":72,"fig-width":7,"context":"interactive","output":"true","results":"markup","fig-height":5,"out-height":"","autorun":"false","read-only":"false"},"code":"print(length(total_vec)) # print the number of elements of total_vec\nprint(total_vec)"},{"id":7,"options":{"fig-cap":"","label":"unnamed-chunk-7","out-width":"700px","classes":"","message":"true","comment":"","warning":"true","dpi":72,"fig-width":7,"context":"interactive","output":"true","results":"markup","fig-height":5,"out-height":"","autorun":"false","read-only":"false"},"code":"num <- 10\nX <- rep(4, num + 1) # pre-allocate the solution vector with initial value\nfor (i in 1:num) {\n  X[i+1] <- 1.5*X[i] # compute the next value X[i+1] from the current value X[i]\n}\ntime <- 0:num\nplot(time, X)"},{"id":8,"options":{"fig-cap":"","label":"unnamed-chunk-8","out-width":"700px","classes":"","message":"true","comment":"","warning":"true","dpi":72,"fig-width":7,"context":"interactive","output":"true","results":"markup","fig-height":5,"out-height":"","autorun":"false","read-only":"false"},"code":"num_steps <- 20 # number of steps\nfib <- rep(1, num_steps + 2) # pre-allocate vector with correct number of elements with all 1s\nfor (i in 1:num_steps) {\n  fib[i+2] <- fib[i+1] + fib[i] # add elements i and i+1 and assign it to element i+2\n}\ntime <- 0:(num_steps+1) # define a \"time\" vector as the independent variable\nplot (time, fib, lwd = 3, xlab = 'time steps', ylab = \"Fibonacci\")\n# an exponential function wiht the Golden ratio base\nphi <- (1+sqrt(5))/2 # golden ratio\nsol <- 0.75*phi^time # calculate the exponential function vector (no loop required)\nlines(time, sol, col='red', lwd = 3) # overlay the exponential function plot\nlegend(\"topleft\", # legend placement\n       c(\"Fibonacci\", \"exponential\"), # vector containing labels for the legend\n       col=1:2, # vector containing color codes (1 is black, 2 is red)\n       lty=c(0,1), # vector specifying line types (0 is none, 1 is regular line)\n       pch=c(1,NA), # vector specifying types of point markers (1 is cicle, NA is none)\n       lwd=3) "},{"id":9,"options":{"fig-cap":"","label":"unnamed-chunk-9","out-width":"700px","classes":"","message":"true","comment":"","warning":"true","dpi":72,"fig-width":7,"context":"interactive","output":"true","results":"markup","fig-height":5,"out-height":"","autorun":"false","read-only":"false"},"code":"mine <- 5\nmine*1.03"},{"id":10,"options":{"fig-cap":"","label":"unnamed-chunk-10","out-width":"700px","classes":"","message":"true","comment":"","warning":"true","dpi":72,"fig-width":7,"context":"interactive","output":"true","results":"markup","fig-height":5,"out-height":"","autorun":"false","read-only":"false"},"code":"mine <- 5"},{"id":11,"options":{"fig-cap":"","label":"unnamed-chunk-11","out-width":"700px","classes":"","message":"true","comment":"","warning":"true","dpi":72,"fig-width":7,"context":"interactive","output":"true","results":"markup","fig-height":5,"out-height":"","autorun":"false","read-only":"false"},"code":"time <- 0:100\nmine <- rep(0,101)"},{"id":12,"options":{"fig-cap":"","label":"unnamed-chunk-12","out-width":"700px","classes":"","message":"true","comment":"","warning":"true","dpi":72,"fig-width":7,"context":"interactive","output":"true","results":"markup","fig-height":5,"out-height":"","autorun":"false","read-only":"false"},"code":"num <- 10\nfact <- rep(1,num)\nfor (i in 1:num) {\n  fact[i+1]<-fact[i]*i\n}\nprint(fact)"}];
 
 </script>
 <script type="module">
@@ -982,8 +982,7 @@ window.Quarto = {
 };
 </script>
 
-<meta name="twitter:title" content="Quantifying Life - Tutorial 2: Vectors and plotting">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Quantifying Life - Tutorial 8: For loops and dynamic models">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -996,7 +995,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tutorial2.html">Tutorial 2: Vectors and plotting</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tutorial8.html">Tutorial 8: For loops and dynamic models</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -1067,7 +1066,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link active">
+  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tutorial 2: Vectors and plotting</span></a>
   </div>
 </li>
@@ -1145,7 +1144,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">
+  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Tutorial 8: For loops and dynamic models</span></a>
   </div>
 </li>
@@ -1201,23 +1200,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
-  <li><a href="#vector-variables" id="toc-vector-variables" class="nav-link" data-scroll-target="#vector-variables">Vector variables</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives:</a></li>
+  <li><a href="#for-loops-and-vectors" id="toc-for-loops-and-vectors" class="nav-link" data-scroll-target="#for-loops-and-vectors">For loops and vectors</a>
   <ul class="collapse">
-  <li><a href="#assigning-vectors-and-idexing" id="toc-assigning-vectors-and-idexing" class="nav-link" data-scroll-target="#assigning-vectors-and-idexing">Assigning vectors and idexing</a></li>
-  <li><a href="#subsetting-or-slicing-vectors" id="toc-subsetting-or-slicing-vectors" class="nav-link" data-scroll-target="#subsetting-or-slicing-vectors">subsetting or slicing vectors</a></li>
-  <li><a href="#using-vector-variables-for-calculations" id="toc-using-vector-variables-for-calculations" class="nav-link" data-scroll-target="#using-vector-variables-for-calculations">using vector variables for calculations</a></li>
-  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong">What can go wrong</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
-  </ul></li>
-  <li><a href="#calculations-and-plotting-with-vectors" id="toc-calculations-and-plotting-with-vectors" class="nav-link" data-scroll-target="#calculations-and-plotting-with-vectors">Calculations and plotting with vectors</a>
-  <ul class="collapse">
-  <li><a href="#using-plot" id="toc-using-plot" class="nav-link" data-scroll-target="#using-plot">using plot()</a></li>
-  <li><a href="#using-lines-or-points" id="toc-using-lines-or-points" class="nav-link" data-scroll-target="#using-lines-or-points">using lines() or points()</a></li>
-  <li><a href="#adding-a-legend-to-a-plot" id="toc-adding-a-legend-to-a-plot" class="nav-link" data-scroll-target="#adding-a-legend-to-a-plot">adding a legend to a plot</a></li>
-  <li><a href="#using-curve" id="toc-using-curve" class="nav-link" data-scroll-target="#using-curve">using curve()</a></li>
-  <li><a href="#what-can-go-wrong-1" id="toc-what-can-go-wrong-1" class="nav-link" data-scroll-target="#what-can-go-wrong-1">What can go wrong</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">Exercises</a></li>
+  <li><a href="#components-of-for-loops" id="toc-components-of-for-loops" class="nav-link" data-scroll-target="#components-of-for-loops">components of for loops</a></li>
+  <li><a href="#using-vectors-with-loops" id="toc-using-vectors-with-loops" class="nav-link" data-scroll-target="#using-vectors-with-loops">using vectors with loops</a></li>
+  <li><a href="#using-for-loops-for-solving-discrete-time-dynamic-models" id="toc-using-for-loops-for-solving-discrete-time-dynamic-models" class="nav-link" data-scroll-target="#using-for-loops-for-solving-discrete-time-dynamic-models">using for loops for solving discrete-time dynamic models</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1401,7 +1390,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tutorial 2: Vectors and plotting</h1>
+<h1 class="title">Tutorial 8: For loops and dynamic models</h1>
 </div>
 
 
@@ -1418,117 +1407,107 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<section id="learning-goals" class="level3">
-<h3 class="anchored" data-anchor-id="learning-goals">Learning goals</h3>
-<p>In this tutorial you will learn to:</p>
+<section id="objectives" class="level3">
+<h3 class="anchored" data-anchor-id="objectives">Objectives:</h3>
 <ul>
-<li>Assign vector variables</li>
-<li>Perform calculations using vectors</li>
-<li>Use indexing with vectors</li>
-<li>Make plots using vectors</li>
-<li>Plot functions using expressions</li>
-<li>Add axis labels and legends to plots</li>
+<li>Define for loops</li>
+<li>Assign vector elements inside a for loop</li>
+<li>Use for loops for iteratively solving a dynamic model</li>
 </ul>
-<p>Programming means arranging a number of commands in a particular order to perform a task. Typing them one at a time into the command line is inefficient and error-prone. Instead, the commands are written into a file called a program or script (the name depends on the type of language; since R is a scripting language you will be writing scripts), which can be edited, saved, copied, etc. In this course we use Quarto documents with scripts contained within code chunks, but you can keep code in separate R script files that have extension <code>.R</code>. Now that you know how to create a script, <strong>you should never type your R code into the command line</strong>, unless you’re testing a single command to see what it does, or looking up help.</p>
-<p>R comes equipped with many <em>functions</em> that correspond to standard mathematical functions. As we saw in section <span class="math inline">\(\ref{sec:comp1}\)</span>, <code>exp()</code> is the exponential function that returns <span class="math inline">\(e\)</span> raised to the power of the input value. Other common ones are: <code>sqrt()</code> returns the square root of the input value; <code>sin()</code> and <code>cos()</code> return the sine and the cosine of the input value, respectively. Note that all of these function names are followed by parentheses, which is a hallmark of a function (in R as well as in mathematics). This indicates that the input value has to go there, for example <code>exp(5)</code>. To compute the value of <span class="math inline">\(e^5\)</span>, save it into a variable called <code>var1</code> and then print out the value on the screen, you can create the following script:</p>
+</section>
+<section id="for-loops-and-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="for-loops-and-vectors">For loops and vectors</h2>
+<section id="components-of-for-loops" class="level3">
+<h3 class="anchored" data-anchor-id="components-of-for-loops">components of for loops</h3>
+<p>A for loop is a programming structure that repeats some code (called the body) a specified number of time. For example, you can write “Hello!” ten times like this:</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>If you run the above code chunk in R Studio you will see two things happen: a variable named var1 appears in the Environment window (top right) with the value 148.41… and the same value is printed out in the command line window (bottom left).</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-programming principle
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>In procedural programming languages (which includes R) the computer (that is, the compiler or interpreter) evaluates the commands one line at a time, from top to bottom. At each line, it uses variable values that are currently assigned.</p>
-</div>
-</div>
-<p>For example, if one variable (<code>var1</code>) was assigned in terms of another (by dividing <code>var2</code> by 10), and then <code>var2</code> is changed later, this does not change the value of <code>var1</code>. This short script illustrates this:</p>
+<p>The for loop starts with the keyword for, then has the expression in parentheses (i in 1:10). i is called the <em>loop variable</em>, in is another keyword, and 1:10 is a <em>loop vector</em>. After the first line there is a curly bracket { and everything that follows until the closing bracket } is the <em>loop body</em>. The loop body is executed as many times as there are elements in the loop vector (in this example, 10 times) and the only thing that changes is the values of the loop variable i, which starts with the first element of the vector (1) and goes until it reaches the last element (10) and then stops:</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Notice the value of <code>var1</code> doesn’t change, because the R interpreter reads the commands one by one, and does not go back to re-evaluate the assignment for var1 after <code>var2</code> is changed. Learning to think in this methodical, literal manner is crucial for developing programming skills.</p>
-</section>
-<section id="vector-variables" class="level2">
-<h2 class="anchored" data-anchor-id="vector-variables">Vector variables</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Array variables
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A variable that contains multiple numbers (or other values) is called an <strong>array</strong>. One-dimensional arrays called <strong>vectors</strong> have values arranged in an ordered list, and these <strong>elements</strong> can be located by their position in the list, called the <strong>index</strong> of the element.</p>
-</div>
-</div>
-<section id="assigning-vectors-and-idexing" class="level3">
-<h3 class="anchored" data-anchor-id="assigning-vectors-and-idexing">Assigning vectors and idexing</h3>
-<p>There are several ways of creating a vector of numbers in R. The first is to put together several numbers by listing them inside the function <code>c()</code>:</p>
+<p>It can be used to do repetitive calculations, for example, adding up all the integers in an array (of course the built-in function sum() will do it too):</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p><code>vec</code> is now a vector variable that contains four different numbers. Each of those numbers can be accessed individually by referencing its position in the vector, called the <em>index</em>. In the R language the the index for the first number in a vector is 1, the index for the second number is 2, etc. The index is placed in square brackets after the vector name, as follows:</p>
+</section>
+<section id="using-vectors-with-loops" class="level3">
+<h3 class="anchored" data-anchor-id="using-vectors-with-loops">using vectors with loops</h3>
+<p>It is especially useful to use loops to assign vector variables one element at a time. The loop variable (i) is usually used for <em>indexing</em> the vector variable. There are several necessary features of using vectors in for loops, so let us take an example script and break them down in this example of calculating a vector of the sum of integers from 1 up to the current number:</p>
+<ol type="1">
+<li>Pre-allocate the vector variable - i.e.&nbsp;create a vector of the correct length prior to the loop by filling it with a placeholder value, e.g.&nbsp;0 or NA (not a value).</li>
+</ol>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Another way to generate a sequence of numbers in a particular order is to use the colon operator, which produces a vector of integers from the first number to the last, inclusive. Here are two examples:</p>
+<ol start="2" type="1">
+<li>Only put in the loop what has to be repeated (e.g.&nbsp;don’t put the pre-allocation inside the loop);</li>
+</ol>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>If you want to generate a sequence of numbers with a constant difference other than 1, you’re in luck: R provides a function called <code>seq()</code>. It takes three inputs: the starting value, the ending value, and the step (difference between successive elements). For example, to generate a list of numbers starting at 20 up to 50, with a step size of 3, type the first command; to obtain the same sequence in reverse, use the second command:</p>
+<ol start="3" type="1">
+<li>Be careful with indexing inside for loops - this means paying careful attention to the lowest and the highest index that you’re using inside the loop. For example, if your loop vector goes from 1 to max (as above), the total number of elements in your vector will be max+1, because we assigned the element with index i+1 in the loop:</li>
+</ol>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Sometimes you want to create a vector of repeated values. For example, to create a variable with 10 zeros you can use <code>rep()</code> like this:</p>
+</section>
+<section id="using-for-loops-for-solving-discrete-time-dynamic-models" class="level3">
+<h3 class="anchored" data-anchor-id="using-for-loops-for-solving-discrete-time-dynamic-models">using for loops for solving discrete-time dynamic models</h3>
+<p>A first-order discrete time model of a variable <span class="math inline">\(X(t)\)</span> can be defined by an equation where the next value of the variable <span class="math inline">\(X(t+1)\)</span> is computed from the current value <span class="math inline">\(X(t)\)</span>. For example the model</p>
+<p><span class="math display">\[ X(t+1) = 1.5X(t)\]</span></p>
+<p>describes a variable that is multiplied by 1.5 every time step. A for loop can be used to iteratively compute its solution, starting with a given initial value <span class="math inline">\(X(0)\)</span>. The script below starts with the initial value 4, computes the solution for 10 steps and plots it (note that the time vector starts at 0 and goes through 10, while the index of the variable X goes from 1 to 11).</p>
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>You can repeat any value, say create a vector by repeating the number pi:</p>
+<p>In the famous Fibonacci model the next value is defined to be the sum of two previous values in the sequence:</p>
+<p><span class="math display">\[ F(t+2) = F(t+1) + F(t)\]</span> The script below iteratively calculates the solution, starting with initial values of <span class="math inline">\(F(0)= F(1) = 1\)</span> and plots the resulting sequence together with an exponential function that approximates it.</p>
 <div id="qwebr-insertion-location-8"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>You can even repeat another vector, like the vector <code>vec</code> that was assigned above:</p>
-<div id="qwebr-insertion-location-9"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="subsetting-or-slicing-vectors" class="level3">
-<h3 class="anchored" data-anchor-id="subsetting-or-slicing-vectors">subsetting or slicing vectors</h3>
-<p>It is often useful to extract only some of the vector elements, not just one but also not all. This is called <em>subsetting</em> or <em>slicing</em> a vector, and this is especially important when handling and analyzing large data vectors. In our simple (base R) examples, we will stick to using the <code>[]</code> and putting in a <strong>vector of indices</strong> to indicate which elements we want to extract. One can use the <code>c()</code> function:</p>
-<div id="qwebr-insertion-location-10"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>This command extracted the fifth and second element of the vector <code>vec1</code>, in that order. One can also use the colon to extract a range of vector elements, for example the fourth through the seventh element of <code>vec2</code> in order:</p>
-<div id="qwebr-insertion-location-11"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Finally, one can also exclude certain elements of a vector by using negative numbers in indexing. For example, the following script assigns and prints all except for the first 4 elements of vector <code>vec3</code>:</p>
-<div id="qwebr-insertion-location-12"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="using-vector-variables-for-calculations" class="level3">
-<h3 class="anchored" data-anchor-id="using-vector-variables-for-calculations">using vector variables for calculations</h3>
-<p>One of the main advantages of vector variables is that one can perform operations on all of the numbers stored in the vector at once. For instance, to multiply every element of the vector by the same number, it’s enough to do the following:</p>
-<div id="qwebr-insertion-location-13"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>You can also perform calculations with multiple vector variables, but this requires extra care. R can perform any arithmetic operation with two vector variables, for instance adding two vectors results in a vector containing the sum of corresponding elements of the two vectors:</p>
-<div id="qwebr-insertion-location-14"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Here each of the numbers in <code>vec1</code> is added to the number in the same position in <code>vec2</code> and the result is a vector with the same number of elements.</p>
-</section>
-<section id="what-can-go-wrong" class="level3">
-<h3 class="anchored" data-anchor-id="what-can-go-wrong">What can go wrong</h3>
-<p>When performing arithmetic on two vectors, you need to make sure that they have the same number of elements (length). Vector length can be obtained using the function <code>length()</code>. Suppose we assign <code>vec1</code> and <code>vec2</code> to have different lengths:</p>
-<div id="qwebr-insertion-location-15"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>You see that <code>vec1</code> has three elements, while <code>vec2</code> has five, so adding them together element by element is not possible. If you try to operate on (e.g.&nbsp;add) two vectors of different lengths, R will return a warning and the result will not be what you expect:</p>
-<div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="exercises" class="level3">
-<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
-<p>The following R commands or scripts contain errors; your job is to fix them so they do what each exercise asks you to do. Try figuring out the errors on your own before clicking on the Hint box to expand it.</p>
+<h3 class="anchored" data-anchor-id="exercises">Exercises:</h3>
 <ol type="1">
-<li>Assign a vector of three numbers to a variable</li>
+<li>Assign the value 5 to a variable named <code>mine</code>, then multiply it by 1.03, replacing the old value of the variable.</li>
 </ol>
-<div id="qwebr-insertion-location-17"></div>
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>in the last line, use mine on both sides of the assignment</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Write a script to take the variable <code>mine</code> with values 5 and multiply it by 1.03 one hundred times using a for loop. Use <code>print()</code> to show the result.</li>
+</ol>
+<div id="qwebr-insertion-location-10"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>use the for loop structure as defined in the tutorial above place the line of code you wrote in exercise 1 inside the for loop</p>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Use <code>rep()</code> to preallocate a vector of values <code>mine</code> to be 101 zeros, then assign the first element to 5. Use a for loop to calculate 100 new values by multiplying the previous one by 1.03 and assigning them to sequential elements of the vector, then plot that vector as a function of the vector time.</li>
+</ol>
+<div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -1542,14 +1521,14 @@ Hint
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>use the function <code>c()</code></p>
+<p>assign 5 to mine[1] use the for loop structure from exercise 2 use index i to indicated the current element of mine: mine[i]</p>
 </div>
 </div>
 </div>
-<ol start="2" type="1">
-<li>Assign a range of values from 1 to 10 to the vector variable <code>vals</code> and print out the third value in the vector</li>
+<ol start="4" type="1">
+<li>Fix the indexing error in the script below for calculating a vector of factorials <code>fact</code>. Each element of the vector <code>fact[i]</code> should be equal to <span class="math inline">\(i!= 1 \times 2 \times 3 ... \times i\)</span>, so for example <code>fact[2]</code> should be 2 and <code>fact[3]</code> should be 6.</li>
 </ol>
-<div id="qwebr-insertion-location-18"></div>
+<div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -1563,268 +1542,7 @@ Hint
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>print function requires <code>()</code>; indexing vectors requires <code>[ ]</code>.</p>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Assign a range of integers from 0 to 20 to the vector variable <code>all_vals</code> and print out the third and nineteenth values:</li>
-</ol>
-<div id="qwebr-insertion-location-19"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>use the function <code>c()</code> to combine indices 3 and 9.</p>
-</div>
-</div>
-</div>
-<ol start="4" type="1">
-<li>Multiply the vector <code>vals</code> by the first ten elements of vector <code>all_vals</code> and assign the result to variable <code>product</code> and print it out:</li>
-</ol>
-<div id="qwebr-insertion-location-20"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>use <code>:</code> to create a vector of ten indices from 1 to 10 and subset the variable <code>all_vals</code></p>
-</div>
-</div>
-</div>
-<ol start="5" type="1">
-<li>Add the vector <code>vals</code> and the odd-numbered elements (with indices 1,3,..) of the vector <code>all_vals</code> and assign the result to variable <code>total</code> and it print out:</li>
-</ol>
-<div id="qwebr-insertion-location-21"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>use <code>seq()</code> to create a vector of odd numbered indices and subset the variable <code>all_vals</code></p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="calculations-and-plotting-with-vectors" class="level2">
-<h2 class="anchored" data-anchor-id="calculations-and-plotting-with-vectors">Calculations and plotting with vectors</h2>
-<p>The following chunk creates a vector variable <code>time</code>, then calculates a new variable <code>quad</code> using <code>time</code> in a single operation:</p>
-<div id="qwebr-insertion-location-22"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-using vectors to plot
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Certain functions in R create graphical output, for example <code>plot()</code> makes an image with a plot of two vectors. These images can be embedded in a report file (like the HTML file you are viewing) or can be saved to a file and shared separately. Some functions create a new plot (e.g.&nbsp;<code>plot()</code>), while others can add more plots to an existing window (e.g.&nbsp;<code>lines()</code> or <code>points()</code>).</p>
-</div>
-</div>
-<section id="using-plot" class="level3">
-<h3 class="anchored" data-anchor-id="using-plot">using plot()</h3>
-<p>The function <code>plot()</code> takes the two vector variables assigned above and plots <code>time</code> on the x-axis and <code>quad</code> on the y-axis, then adds a title to the plot</p>
-<div id="qwebr-insertion-location-23"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p><code>plot()</code> is a versatile function that has many options. One can change the type of plot to use continuous curves or lines, which is done with <code>type = 'l'</code> (NOTE this is a lower case letter L) and add labels for the axes to replace the generic labels. You can also control line width, color, and many other details by setting other options, for a full description type <code>help(plot)</code> in the console or type <code>plot</code> in the search bar of the <code>Help</code> pane in the bottom right window of RStudio.</p>
-<div id="qwebr-insertion-location-24"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="using-lines-or-points" class="level3">
-<h3 class="anchored" data-anchor-id="using-lines-or-points">using lines() or points()</h3>
-<p>The <code>plot()</code> function creates a new plot window, so if you want to add another plot on top of the first one, you have to use another function. There are two ones available: <code>lines()</code> which produces continuous curves connecting the points, and <code>points()</code> which plots individual symbols at every point.</p>
-<div id="qwebr-insertion-location-25"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The plot has a problem, because it doesn’t show the full extent of the cubic function. This is because <code>plot()</code> automatically sets the limits window based on the variables given to it, and calling <code>lines()</code> does not adjust them. You can adjust them manually by specifying the x and y limits in the <code>plot()</code> function call, like this:</p>
-<div id="qwebr-insertion-location-26"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="adding-a-legend-to-a-plot" class="level3">
-<h3 class="anchored" data-anchor-id="adding-a-legend-to-a-plot">adding a legend to a plot</h3>
-<p>Having multiple graphs on the same plot strongly suggests that we need a legend to help identify the different curves. To create a legend in R we use the <code>legend</code> function that will create a little box to place on the plot and will add a label to identify each curve or symbol used to plot different graphs. For example, this will create a legend for two different colored curves and give the black curve the label <code>quadratic</code> and the red curve the label <code>cubic</code> and place it in the bottom right corner:</p>
-<div id="qwebr-insertion-location-27"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>We may want to plot one graph made up of symbols (e.g.&nbsp;circles) and another one as a curve, and this needs to be reflected in the legend. The option <code>pch=c(1,NA)</code> specifies the first one to be a symbol (circle) and the second one to have no symbol, while the option <code>lty=c(0,1)</code> specifies the first one to not have a line (0) and the second one to be a continuous line (1):</p>
-<div id="qwebr-insertion-location-28"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="using-curve" class="level3">
-<h3 class="anchored" data-anchor-id="using-curve">using curve()</h3>
-<p>There is another function in R for plotting graphs of functions, called <code>curve()</code>. It has three basic inputs: the function expression, the lower limit of the range of x (the independent function), and the upper limit of the range. Here is an example:</p>
-<div id="qwebr-insertion-location-29"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Note that you can use the option <code>add=TRUE</code> to make sure the graph is overlaid on top of the current one.</p>
-<p>Once again, the second graph does not fit into the plot window so the x and y limits can be changed by setting the options <code>xlim</code> and <code>ylim</code> in the first <code>curve()</code> command:</p>
-<div id="qwebr-insertion-location-30"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="what-can-go-wrong-1" class="level3">
-<h3 class="anchored" data-anchor-id="what-can-go-wrong-1">What can go wrong</h3>
-<p>One of the most common issues is switching the order of the two variables in <code>plot()</code> or related graphing functions. Let us switch the variables <code>time</code> and <code>quad</code> and see what happens:</p>
-<div id="qwebr-insertion-location-31"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Another common problem is trying to plot two vectors that have different lengths. This should not be a problem if you calculated the y-variable from the x-variable, like we did above, but what if we add one extra element to <code>time</code>:</p>
-<div id="qwebr-insertion-location-32"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Running the code results in an error you see above. To fix it, you can recalculate <code>quad</code> using the new vector <code>time</code>:</p>
-<div id="qwebr-insertion-location-33"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="exercises-1" class="level3">
-<h3 class="anchored" data-anchor-id="exercises-1">Exercises</h3>
-<p>The following R commands or scripts contain errors; your job is to fix them so they do what each exercise asks you to do. Try figuring out the errors on your own before clicking on the Hint box to expand it.</p>
-<ol type="1">
-<li>Assign an an array of values using <code>seq()</code> to the vector <code>vals</code>. Multiply this vector by 8, add 5 and assign the result to a vector <code>new_vals</code></li>
-</ol>
-<div id="qwebr-insertion-location-34"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>multiplication must be specified by <code>*</code></p>
-</div>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Assign <code>range</code> to be a sequence of values from 0 to 100 with step of 0.1, and calculate the vector variable <code>result</code> as the square root of the vector variable <code>range</code></li>
-</ol>
-<div id="qwebr-insertion-location-35"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>check the order of inputs in function <code>seq()</code></p>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Assign the same two variables and plot <code>result</code> as a function of <code>range</code></li>
-</ol>
-<div id="qwebr-insertion-location-36"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>the independent variable must be the first input and the dependent variable must be the second input of <code>plot()</code></p>
-</div>
-</div>
-</div>
-<ol start="4" type="1">
-<li>Plot the graph of the function <span class="math inline">\(f(x) = (45-x)/(4x+3)\)</span> over the range of 0 to 100 using <code>curve()</code></li>
-</ol>
-<div id="qwebr-insertion-location-37"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>multiplication must be specified by <code>*</code></p>
-</div>
-</div>
-</div>
-<ol start="5" type="1">
-<li>This code assigns the independent variable <code>lig</code> and is supposed to plot the Hill function <span class="math inline">\(f(lig) = lig^{10}/(5000+lig^{10})\)</span> using circles and the linear function <span class="math inline">\(g(lig) = 0.1lig\)</span> using a continuous line on the same plot and create a legend the describes the two plots.</li>
-</ol>
-<div id="qwebr-insertion-location-38"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>the second graph should be made with <code>lines()</code> and color red; in <code>legend</code> change the ‘pch’ and ‘lty’ options.</p>
-</div>
-</div>
-</div>
-<ol start="6" type="1">
-<li>Overlay two different plots of the logistic function with different values of the parameter <span class="math inline">\(r\)</span></li>
-</ol>
-<div id="qwebr-insertion-location-39"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>the vector <code>Population</code> needs to be reassigned using the new value of <code>r</code> before plotting it.</p>
+<p>check what each element is multiplied by</p>
 </div>
 </div>
 </div>
@@ -2223,13 +1941,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./functions.html" class="pagination-link  aria-label=" &lt;span="" and="" their="" graphs&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></span>
+      <a href="./lindiff.html" class="pagination-link  aria-label=" &lt;span="" difference="" equations&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./descriptive.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Describing data sets</span>">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./graph_odes.html" class="pagination-link" aria-label="<span class='chapter-number'>10</span>&nbsp; <span class='chapter-title'>Graphical analysis of ordinary differential equations</span>">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

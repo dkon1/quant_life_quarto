@@ -1,33 +1,18 @@
----
-title: "Quantifying Life R Tutorial 8"
-output: 
-  learnr::tutorial:
-    css: css/style.css
-runtime: shiny_prerendered
----
-
-```{r setup, include=FALSE}
-library(learnr)
-library(gradethis)
-gradethis::gradethis_setup()
-knitr::opts_chunk$set(error = TRUE, results = 'hold', fig.width = 5, fig.height = 4)
-```
-
+# Tutorial 8: For loops and dynamic models {.unnumbered}
 
 ### Objectives:
 
-* Define for loops
-* Assign vector elements inside a for loop
-* Use for loops for iteratively solving a dynamic model
-
-
+-   Define for loops
+-   Assign vector elements inside a for loop
+-   Use for loops for iteratively solving a dynamic model
 
 ## For loops and vectors
 
 ### components of for loops
+
 A for loop is a programming structure that repeats some code (called the body) a specified number of time. For example, you can write "Hello!" ten times like this:
 
-```{r}
+```{webr-r}
 for (i in 1:10) {
   print("Hello!")
 }
@@ -35,15 +20,15 @@ for (i in 1:10) {
 
 The for loop starts with the keyword for, then has the expression in parentheses (i in 1:10). i is called the *loop variable*, in is another keyword, and 1:10 is a *loop vector*. After the first line there is a curly bracket { and everything that follows until the closing bracket } is the *loop body*. The loop body is executed as many times as there are elements in the loop vector (in this example, 10 times) and the only thing that changes is the values of the loop variable i, which starts with the first element of the vector (1) and goes until it reaches the last element (10) and then stops:
 
-```{r}
+```{webr-r}
 for (i in 1:10) {
   print(paste("Iteration number", i))
 }
 ```
 
-
 It can be used to do repetitive calculations, for example, adding up all the integers in an array (of course the built-in function sum() will do it too):
-```{r}
+
+```{webr-r}
 # add up the integers from 1 to 10 and print out the total
 total<-0
 for (i in 1:10) {
@@ -52,34 +37,31 @@ for (i in 1:10) {
 print(total)
 ```
 
-
-
 ### using vectors with loops
 
 It is especially useful to use loops to assign vector variables one element at a time. The loop variable (i) is usually used for *indexing* the vector variable. There are several necessary features of using vectors in for loops, so let us take an example script and break them down in this example of calculating a vector of the sum of integers from 1 up to the current number:
 
-1) Pre-allocate the vector variable - i.e. create a vector of the correct length prior to the loop by filling it with a placeholder value, e.g. 0 or NA (not a value).
-```{r}
+1)  Pre-allocate the vector variable - i.e. create a vector of the correct length prior to the loop by filling it with a placeholder value, e.g. 0 or NA (not a value).
+
+```{webr-r}
 max <- 10 
 total_vec <- rep(0, max+1) # pre-allocate the vector
 ```
 
-2) Only put in the loop what has to be repeated (e.g. don't put the pre-allocation inside the loop);
-```{r}
+2)  Only put in the loop what has to be repeated (e.g. don't put the pre-allocation inside the loop);
+
+```{webr-r}
 for (i in 1:max) { # iterate for i from 1 to max
   total_vec[i+1] <- total_vec[i] + i # assign to the next value of total_vec the sum of i and the current value of total_vec
 }
 ```
 
+3)  Be careful with indexing inside for loops - this means paying careful attention to the lowest and the highest index that you're using inside the loop. For example, if your loop vector goes from 1 to max (as above), the total number of elements in your vector will be max+1, because we assigned the element with index i+1 in the loop:
 
-
-3) Be careful with indexing inside for loops - this means paying careful attention to the lowest and the highest index that you're using inside the loop. For example, if your loop vector goes from 1 to max (as above), the total number of elements in your vector will be max+1, because we assigned the element with index i+1 in the loop:
-
-```{r}
+```{webr-r}
 print(length(total_vec)) # print the number of elements of total_vec
 print(total_vec)
 ```
-
 
 ### using for loops for solving discrete-time dynamic models
 
@@ -89,7 +71,7 @@ $$ X(t+1) = 1.5X(t)$$
 
 describes a variable that is multiplied by 1.5 every time step. A for loop can be used to iteratively compute its solution, starting with a given initial value $X(0)$. The script below starts with the initial value 4, computes the solution for 10 steps and plots it (note that the time vector starts at 0 and goes through 10, while the index of the variable X goes from 1 to 11).
 
-```{r}
+```{webr-r}
 num <- 10
 X <- rep(4, num + 1) # pre-allocate the solution vector with initial value
 for (i in 1:num) {
@@ -99,13 +81,11 @@ time <- 0:num
 plot(time, X)
 ```
 
-
 In the famous Fibonacci model the next value is defined to be the sum of two previous values in the sequence:
 
-$$ F(t+2) = F(t+1) + F(t)$$
-The script below iteratively calculates the solution, starting with initial values of $F(0)= F(1) = 1$ and plots the resulting sequence together with an exponential function that approximates it.
+$$ F(t+2) = F(t+1) + F(t)$$ The script below iteratively calculates the solution, starting with initial values of $F(0)= F(1) = 1$ and plots the resulting sequence together with an exponential function that approximates it.
 
-```{r}
+```{webr-r}
 num_steps <- 20 # number of steps
 fib <- rep(1, num_steps + 2) # pre-allocate vector with correct number of elements with all 1s
 for (i in 1:num_steps) {
@@ -125,92 +105,57 @@ legend("topleft", # legend placement
        lwd=3) 
 ```
 
-
 ### Exercises:
 
-1. Assign the value 5 to a variable named `mine`, then multiply it by 1.03, replacing the old value of the variable. 
+1.  Assign the value 5 to a variable named `mine`, then multiply it by 1.03, replacing the old value of the variable.
 
-
-
-```{r ex1, exercise=TRUE}
+```{webr-r}
 mine <- 5
-mine <- 
+mine*1.03
 ```
 
-```{r ex1-hint}
-# use mine on both sides!
-```
+::: {.callout-caution collapse="true"}
+## Hint
+
+in the last line, use mine on both sides of the assignment
+:::
 
 
-```{r ex1-solution}
-mine <- 5
-mine <- mine*1.03
-```
+2.  Write a script to take the variable `mine` with values 5 and multiply it by 1.03 one hundred times using a for loop. Use `print()` to show the result.
 
-
-```{r ex1-code-check}
-grade_code()
-```
-
-2. Write a script to take the variable `mine` with values 5 and multiply it by 1.03 one hundred times using a for loop. Use `print()` to show the result.
-
-```{r ex2, exercise=TRUE}
+```{webr-r}
 mine <- 5
 ```
 
-```{r ex2-hint}
-# use the for loop structure defined above 
-# place the line of code you wrote in exercise 1 inside the for loop
-```
 
+::: {.callout-caution collapse="true"}
+## Hint
 
-```{r ex2-solution}
-mine <- 5
-for (i in 1:100){
-  mine <- mine*1.03
-}
-print(mine)
-```
+use the for loop structure as defined in the tutorial above 
+place the line of code you wrote in exercise 1 inside the for loop
+:::
 
+3.  Use `rep()` to preallocate a vector of values `mine` to be 101 zeros, then assign the first element to 5. Use a for loop to calculate 100 new values by multiplying the previous one by 1.03 and assigning them to sequential elements of the vector, then plot that vector as a function of the vector time.
 
-```{r ex2-code-check}
-grade_code()
-```
-
-
-3. Use `rep()` to preallocate a vector of values `mine` to be 101 zeros, then assign the first element to 5. Use a for loop to calculate 100 new values by multiplying the previous one by 1.03 and assigning them to sequential elements of the vector, then plot that vector as a function of the vector time.
-
-```{r ex3, exercise=TRUE}
+```{webr-r}
 time <- 0:100
 mine <- rep(0,101)
 
 ```
 
-```{r ex3-hint}
-# assign 5 to mine[1] 
-# use the for loop structure from exercise 2
-# use index i to indicated the current element of mine: mine[i]
-```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+assign 5 to mine[1] 
+use the for loop structure from exercise 2
+use index i to indicated the current element of mine: mine[i]
+:::
 
 
-```{r ex3-solution}
-time <- 0:100
-mine <- rep(0,101)
-mine[1] <- 5
-for (i in 1:100){
-  mine[i+1] <- mine[i]*1.03
-}
-plot(time, mine)
-```
+4.  Fix the indexing error in the script below for calculating a vector of factorials `fact`. Each element of the vector `fact[i]` should be equal to $i!= 1 \times 2 \times 3 ... \times i$, so for example `fact[2]` should be 2 and `fact[3]` should be 6.
 
-
-```{r ex3-code-check}
-grade_code()
-```
-
-4. Fix the indexing error in the script below for calculating a vector of factorials `fact`. Each element of the vector `fact[i]` should be equal to $i!= 1 \times 2 \times 3 ... \times i$, so for example `fact[2]` should be 2 and `fact[3]` should be 6.
-
-```{r ex4, exercise=TRUE}
+```{webr-r}
 num <- 10
 fact <- rep(1,num)
 for (i in 1:num) {
@@ -219,23 +164,9 @@ for (i in 1:num) {
 print(fact)
 ```
 
-```{r ex4-hint}
-# check what each element is multiplied by
-```
+::: {.callout-caution collapse="true"}
+## Hint
 
-
-```{r ex4-solution}
-num <- 10
-fact <- rep(1,num)
-for (i in 1:num) {
-  fact[i+1]<-fact[i]*(i+1)
-}
-print(fact)
-```
-
-
-```{r ex4-code-check}
-grade_code()
-```
-
+check what each element is multiplied by
+:::
 
