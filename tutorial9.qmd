@@ -19,6 +19,7 @@ $$ \frac{dN}{dt} = bN-dN $$
 To solve this ODE with define the function that calculates the function on the right-hand-side (bN-dN). Notice that even though the function does not depend on time, *t still must be the first input argument of the function*:
 
 ```{webr-r}
+library(deSolve)
 pop_funk <- function(t,N,parms){
   b <- parms[1] # assign birth rate
   d <- parms[2] # assign death rate
