@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,16 +17,14 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
-.hanging-indent div.csl-entry {
+.hanging div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -40,7 +38,8 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}</style>
+}
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -68,13 +67,7 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -83,62 +76,28 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-submit-button-title": "Submit"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
 <meta name="twitter:title" content="Quantifying Life - 2&nbsp; Functions and their graphs">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Mathematical models describe how various quantities affect each other. In the last chapter we learned that these descriptions can be written down, often in the form of an equation.">
 <meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating">
 
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./functions.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
       </button>
     </div>
   </nav>
@@ -146,215 +105,192 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantifying Life</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
-              <i class="bi bi-bi-file-pdf pe-1"></i>
-            Download PDF
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
-              <i class="bi bi-bi-journal pe-1"></i>
-            Download ePub
-            </a>
-          </li>
-      </ul>
-    </div>
+    <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
 </div>
     </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
+      <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-        </div>
+      </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./counting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></span></a>
+  <a href="./counting.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorial 1: First steps for coding</span></a>
+  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">Tutorial 1: First steps for coding</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></span></a>
+  <a href="./functions.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorial 2: Vectors and plotting</span></a>
+  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link">Tutorial 2: Vectors and plotting</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descriptive.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></span></a>
+  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorial 3: Data frames and descriptive statistics</span></a>
+  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">Tutorial 3: Data frames and descriptive statistics</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probdist.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></span></a>
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorial 4: Random number generators</span></a>
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 4: Random number generators</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></span></a>
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorial 5: Linear regression</span></a>
+  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">Tutorial 5: Linear regression</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
+  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorial 6: Data tables and Booleans</span></a>
+  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link">Tutorial 6: Data tables and Booleans</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></span></a>
+  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorial 7: Functions and sampling from data</span></a>
+  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">Tutorial 7: Functions and sampling from data</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lindiff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span></a>
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Tutorial 8: For loops and dynamic models</span></a>
+  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">Tutorial 8: For loops and dynamic models</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span></a>
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span></a>
+  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">Tutorial 9: numeric solutions of ODEs</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_model.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></span></a>
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></span></a>
+  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></span></a>
+  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></span></a>
+  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">References</span></a>
+  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-model2" id="toc-sec-model2" class="nav-link active" data-scroll-target="#sec-model2"><span class="header-section-number">2.1</span> Dimensions of quantities</a>
+  <li><a href="#sec-model2" id="toc-sec-model2" class="nav-link active" data-scroll-target="#sec-model2"><span class="toc-section-number">2.1</span>  Dimensions of quantities</a>
   <ul class="collapse">
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.1.1</span> Exercises</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">2.1.1</span>  Exercises</a></li>
   </ul></li>
-  <li><a href="#sec:math2" id="toc-sec:math2" class="nav-link" data-scroll-target="#sec\:math2"><span class="header-section-number">2.2</span> Functions and their graphs</a>
+  <li><a href="#sec:math2" id="toc-sec:math2" class="nav-link" data-scroll-target="#sec\:math2"><span class="toc-section-number">2.2</span>  Functions and their graphs</a>
   <ul class="collapse">
-  <li><a href="#linear-and-exponential-functions" id="toc-linear-and-exponential-functions" class="nav-link" data-scroll-target="#linear-and-exponential-functions"><span class="header-section-number">2.2.1</span> linear and exponential functions</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">2.2.2</span> Exercises</a></li>
-  <li><a href="#rational-and-logistic-functions" id="toc-rational-and-logistic-functions" class="nav-link" data-scroll-target="#rational-and-logistic-functions"><span class="header-section-number">2.2.3</span> rational and logistic functions</a></li>
-  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2"><span class="header-section-number">2.2.4</span> Exercises:</a></li>
+  <li><a href="#linear-and-exponential-functions" id="toc-linear-and-exponential-functions" class="nav-link" data-scroll-target="#linear-and-exponential-functions"><span class="toc-section-number">2.2.1</span>  linear and exponential functions</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="toc-section-number">2.2.2</span>  Exercises</a></li>
+  <li><a href="#rational-and-logistic-functions" id="toc-rational-and-logistic-functions" class="nav-link" data-scroll-target="#rational-and-logistic-functions"><span class="toc-section-number">2.2.3</span>  rational and logistic functions</a></li>
+  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2"><span class="toc-section-number">2.2.4</span>  Exercises:</a></li>
   </ul></li>
-  <li><a href="#rates-of-biochemical-reactions" id="toc-rates-of-biochemical-reactions" class="nav-link" data-scroll-target="#rates-of-biochemical-reactions"><span class="header-section-number">2.3</span> Rates of biochemical reactions</a>
+  <li><a href="#rates-of-biochemical-reactions" id="toc-rates-of-biochemical-reactions" class="nav-link" data-scroll-target="#rates-of-biochemical-reactions"><span class="toc-section-number">2.3</span>  Rates of biochemical reactions</a>
   <ul class="collapse">
-  <li><a href="#constant-zeroth-order-kinetics" id="toc-constant-zeroth-order-kinetics" class="nav-link" data-scroll-target="#constant-zeroth-order-kinetics"><span class="header-section-number">2.3.1</span> Constant (zeroth-order) kinetics</a></li>
-  <li><a href="#first-order-kinetics" id="toc-first-order-kinetics" class="nav-link" data-scroll-target="#first-order-kinetics"><span class="header-section-number">2.3.2</span> First-order kinetics</a></li>
-  <li><a href="#michaelis-menten-model-of-enzyme-kinetics" id="toc-michaelis-menten-model-of-enzyme-kinetics" class="nav-link" data-scroll-target="#michaelis-menten-model-of-enzyme-kinetics"><span class="header-section-number">2.3.3</span> Michaelis-Menten model of enzyme kinetics </a></li>
+  <li><a href="#constant-zeroth-order-kinetics" id="toc-constant-zeroth-order-kinetics" class="nav-link" data-scroll-target="#constant-zeroth-order-kinetics"><span class="toc-section-number">2.3.1</span>  Constant (zeroth-order) kinetics</a></li>
+  <li><a href="#first-order-kinetics" id="toc-first-order-kinetics" class="nav-link" data-scroll-target="#first-order-kinetics"><span class="toc-section-number">2.3.2</span>  First-order kinetics</a></li>
+  <li><a href="#michaelis-menten-model-of-enzyme-kinetics" id="toc-michaelis-menten-model-of-enzyme-kinetics" class="nav-link" data-scroll-target="#michaelis-menten-model-of-enzyme-kinetics"><span class="toc-section-number">2.3.3</span>  Michaelis-Menten model of enzyme kinetics </a></li>
   </ul></li>
   </ul>
 </nav>
@@ -364,7 +300,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></h1>
 </div>
 
 
@@ -377,9 +313,7 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <blockquote class="blockquote">
 <p>Some fathers, if you ask them for the time of day, spit silver dollars.<br>
@@ -422,12 +356,12 @@ V_{tot} = V_sRt
 <section id="sec:math2" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="sec:math2"><span class="header-section-number">2.2</span> Functions and their graphs</h2>
 <p>A relationship between two variables addresses the basic question: when one variable changes, how does this affect the other? An equation, like the examples in the last section, allows one to calculate the value of one variable based on the other variable and parameter values. In this section we seek to describe more broadly how two variables are related by using the mathematical concept of functions.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Definition
 </div>
 </div>
@@ -446,12 +380,12 @@ Definition
 <section id="linear-and-exponential-functions" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="linear-and-exponential-functions"><span class="header-section-number">2.2.1</span> linear and exponential functions</h3>
 <p>The reader is probably familiar with linear and exponential functions from algebra courses. However, they are so commonly used that it is worth going over them to refresh your memory and perhaps to see them from another perspective.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Definition
 </div>
 </div>
@@ -467,12 +401,12 @@ f(x) = ax + b
 \label{eq:linear_funk}
 \end{equation}\]</span>
 <p>The function contains two parameters: the slope <span class="math inline">\(a\)</span> and the y-intercept <span class="math inline">\(b\)</span>. The graph of the linear function is a line (hence the name) and the slope <span class="math inline">\(a\)</span> determines its steepness. A positive slope corresponds to the graph that increases as <span class="math inline">\(x\)</span> increases, and a negative slope corresponds to a declining function. At <span class="math inline">\(x=0\)</span>, the function equals <span class="math inline">\(b\)</span>, and as <span class="math inline">\(x \to \infty\)</span>, the function approaches positive infinity if <span class="math inline">\(a&gt;0\)</span>, and approaches negative infinity if <span class="math inline">\(a&lt;0\)</span>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Definition
 </div>
 </div>
@@ -487,45 +421,33 @@ f(x) = a e^{rx}
 \label{eq:exp_funk}
 \end{equation}\]</span>
 <p>The function contains two parameters: the <span class="math inline">\(r\)</span> and the multiplicative constant <span class="math inline">\(a\)</span>. The graph of the exponential function is a curve which crosses the y-axis at <span class="math inline">\(y=a\)</span> (plug in <span class="math inline">\(x=0\)</span> to see that this is the case). As <span class="math inline">\(x\)</span> increases, the behavior of the graph depends on the sign of the rate constant <span class="math inline">\(r\)</span>. If <span class="math inline">\(r&gt;0\)</span>, the function approaches infinity (positive if <span class="math inline">\(a&gt;0\)</span>, negative if <span class="math inline">\(a&lt;0\)</span>) as <span class="math inline">\(x \to \infty\)</span>. If <span class="math inline">\(r&lt;0\)</span>, the function decays at an ever-decreasing pace and asymptotically approaches zero as <span class="math inline">\(x \to \infty\)</span>. Thus the graph of <span class="math inline">\(f(x)\)</span> is a curve either going to infinity or a curve asymptotically approaching 0, and the steepness of the growth or decay is determined by <span class="math inline">\(r\)</span>.</p>
-<div id="fig-ch2-funk1" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ch2-funk1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ch2-funk1" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-ch2-funk1-1" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-ch2-funk1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="functions_files/figure-html/fig-ch2-funk1-1.png" class="img-fluid figure-img" data-ref-parent="fig-ch2-funk1" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ch2-funk1-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Linear functions
-</figcaption>
+<div id="fig-ch2-funk1" class="cell quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-ch2-funk1-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="functions_files/figure-html/fig-ch2-funk1-1.png" class="img-fluid figure-img" data-ref-parent="fig-ch2-funk1" width="672"></p>
+<p></p><figcaption class="figure-caption">(a) Linear functions</figcaption><p></p>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ch2-funk1" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-ch2-funk1-2" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-ch2-funk1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="functions_files/figure-html/fig-ch2-funk1-2.png" class="img-fluid figure-img" data-ref-parent="fig-ch2-funk1" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ch2-funk1-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Exponential function
-</figcaption>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-ch2-funk1-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="functions_files/figure-html/fig-ch2-funk1-2.png" class="img-fluid figure-img" data-ref-parent="fig-ch2-funk1" width="672"></p>
+<p></p><figcaption class="figure-caption">(b) Exponential function</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ch2-funk1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Can you identify which linear function has the positive slope and which one negative? Which exponential function has a positive rate constant and which one negative?
-</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.1: Can you identify which linear function has the positive slope and which one negative? Which exponential function has a positive rate constant and which one negative?</figcaption><p></p>
 </figure>
 </div>
 </section>
 <section id="exercises-1" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">2.2.2</span> Exercises</h3>
-<p>Answer the questions below, some of which refer to the function graphs in <a href="#fig-ch2-funk1" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
+<p>Answer the questions below, some of which refer to the function graphs in <a href="#fig-ch2-funk1">Figure&nbsp;<span>2.1</span></a>.</p>
 <ol type="1">
 <li><p>Which of the linear graphs in the first figure corresponds to <span class="math inline">\(f(x) = 5x\)</span> and which corresponds to <span class="math inline">\(f(x) = 10-x\)</span>? State which parameter allows you to connect the function with its graph and explain why.</p></li>
 <li><p>Which of the exponential graphs in the second figure corresponds to <span class="math inline">\(f(x) = 0.1e^{0.5x}\)</span> and which corresponds to <span class="math inline">\(f(x) = 12e^{-0.2x}\)</span>? State which parameter allows you to connect the function with its graph and explain why.</p></li>
@@ -553,39 +475,27 @@ f(x) = \frac{a e^{rx} }{b+e^{rx}}
 <p>The numerator and denominator both contain exponential functions with the same power. If <span class="math inline">\(r&gt;0\)</span> when <span class="math inline">\(x \to \infty\)</span>, the denominator approaches <span class="math inline">\(e^{rx}\)</span>, since it becomes much greater than <span class="math inline">\(b\)</span>, and we can calculate: <span class="math display">\[  \lim_{x \to \infty}  =  \frac{a e^{rx} }{e^{rx}} = a; \; \mathrm{if} \; r&gt;0 \]</span></p>
 <p>On the other hand, if <span class="math inline">\(r&lt;0\)</span>, then the numerator approaches zero as <span class="math inline">\(x \to \infty\)</span>, and so does the function <span class="math display">\[  \lim_{x \to \infty}  =  \frac{0}{b} = 0; \; \mathrm{if} \; r&lt;0 \]</span></p>
 <p>Notice that switching the sign of <span class="math inline">\(r\)</span> has the same effect as switching the sign of <span class="math inline">\(x\)</span>, since they are multiplied. Which means that for positive <span class="math inline">\(r\)</span>, if <span class="math inline">\(x\)</span> is extended to negative infinity, the function approaches 0. This is illustrated in the second plot in <span class="quarto-unresolved-ref">?fig-ch2_sigmoidal_plots</span> , which shows two logistic functions increasing from 0 to a positive level, one with <span class="math inline">\(a=20\)</span> (solid line) and the second with <span class="math inline">\(a=10\)</span> (dashed line). The graph of logistic functions has a characteristic <em>sigmoidal</em> (S-shaped) shape, and its steepness is determined by the rate <span class="math inline">\(r\)</span>: if <span class="math inline">\(r\)</span> is small, the curve is soft, if <span class="math inline">\(r\)</span> is large, the graph resembles a step function.</p>
-<div id="fig-ch2-funk2" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ch2-funk2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ch2-funk2" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-ch2-funk2-1" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-ch2-funk2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="functions_files/figure-html/fig-ch2-funk2-1.png" class="img-fluid figure-img" data-ref-parent="fig-ch2-funk2" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ch2-funk2-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Logistic functions
-</figcaption>
+<div id="fig-ch2-funk2" class="cell quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-ch2-funk2-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="functions_files/figure-html/fig-ch2-funk2-1.png" class="img-fluid figure-img" data-ref-parent="fig-ch2-funk2" width="672"></p>
+<p></p><figcaption class="figure-caption">(a) Logistic functions</figcaption><p></p>
 </figure>
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ch2-funk2" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-ch2-funk2-2" class="quarto-figure quarto-figure-center quarto-float anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-ch2-funk2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="functions_files/figure-html/fig-ch2-funk2-2.png" class="img-fluid figure-img" data-ref-parent="fig-ch2-funk2" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ch2-funk2-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Hill function
-</figcaption>
+<div class="cell-output-display quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-ch2-funk2-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="functions_files/figure-html/fig-ch2-funk2-2.png" class="img-fluid figure-img" data-ref-parent="fig-ch2-funk2" width="672"></p>
+<p></p><figcaption class="figure-caption">(b) Hill function</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ch2-funk2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.2: Examples of functions with sigmoidal-shaped graphs
-</figcaption>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2.2: Examples of functions with sigmoidal-shaped graphs</figcaption><p></p>
 </figure>
 </div>
 </section>
@@ -643,11 +553,11 @@ v = \frac{v_{max} A}{K_M+A}
 <p>Here <span class="math inline">\(v\)</span> refers to the rate of the entire catalytic process, that is, the rate of production of <span class="math inline">\(B\)</span>, rather than any intermediate step. Here the reaction rate depends both on the concentration of the substrate <span class="math inline">\(A\)</span> and on the two constants <span class="math inline">\(v_{max}\)</span>, called the maximum reaction rate, and the constant <span class="math inline">\(K_M\)</span>, called the Michaelis constant. They both depend on the rate constants of the reaction, and <span class="math inline">\(v_{max}\)</span> also depends on the concentration of the enzyme. The details of the derivation are beyond us for now, but you will see in the following exercises how this model behaves for different values of <span class="math inline">\(A\)</span>.</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-smith_mathematical_1968" class="csl-entry" role="listitem">
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-smith_mathematical_1968" class="csl-entry" role="doc-biblioentry">
 Smith, J. Maynard. 1968. <em>Mathematical <span>Ideas</span> in <span>Biology</span></em>. London: Cambridge University Press.
 </div>
-<div id="ref-strogatz_nonlinear_2001" class="csl-entry" role="listitem">
+<div id="ref-strogatz_nonlinear_2001" class="csl-entry" role="doc-biblioentry">
 Strogatz, Steven H. 2001. <em>Nonlinear <span>Dynamics</span> <span>And</span> <span>Chaos</span>: <span>With</span> <span>Applications</span> <span>To</span> <span>Physics</span>, <span>Biology</span>, <span>Chemistry</span>, <span>And</span> <span>Engineering</span></em>. 1st ed. Westview Press.
 </div>
 </div>
@@ -682,23 +592,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
   });
   clipboard.on('success', function(e) {
@@ -734,9 +630,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -746,17 +643,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -771,238 +659,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1044,18 +700,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tutorial1.html" class="pagination-link  aria-label=" tutorial="" 1:="" first="" steps="" for="" coding"="">
+      <a href="./tutorial1.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tutorial 1: First steps for coding</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tutorial2.html" class="pagination-link" aria-label="Tutorial 2: Vectors and plotting">
+      <a href="./tutorial2.html" class="pagination-link">
         <span class="nav-page-text">Tutorial 2: Vectors and plotting</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

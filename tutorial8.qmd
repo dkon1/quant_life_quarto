@@ -120,19 +120,16 @@ mine*1.03
 in the last line, use mine on both sides of the assignment
 :::
 
-
 2.  Write a script to take the variable `mine` with values 5 and multiply it by 1.03 one hundred times using a for loop. Use `print()` to show the result.
 
 ```{webr-r}
 mine <- 5
 ```
 
-
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-use the for loop structure as defined in the tutorial above 
-place the line of code you wrote in exercise 1 inside the for loop
+use the for loop structure as defined in the tutorial above place the line of code you wrote in exercise 1 inside the for loop
 :::
 
 3.  Use `rep()` to preallocate a vector of values `mine` to be 101 zeros, then assign the first element to 5. Use a for loop to calculate 100 new values by multiplying the previous one by 1.03 and assigning them to sequential elements of the vector, then plot that vector as a function of the vector time.
@@ -143,15 +140,11 @@ mine <- rep(0,101)
 
 ```
 
-
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-assign 5 to mine[1] 
-use the for loop structure from exercise 2
-use index i to indicated the current element of mine: mine[i]
+assign 5 to mine\[1\] use the for loop structure from exercise 2 use index i to indicated the current element of mine: mine\[i\]
 :::
-
 
 4.  Fix the indexing error in the script below for calculating a vector of factorials `fact`. Each element of the vector `fact[i]` should be equal to $i!= 1 \times 2 \times 3 ... \times i$, so for example `fact[2]` should be 2 and `fact[3]` should be 6.
 
@@ -169,4 +162,3 @@ print(fact)
 
 check what each element is multiplied by
 :::
-

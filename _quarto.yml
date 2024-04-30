@@ -4,7 +4,7 @@ project:
 filters:
   - webr
 webr:
-  packages: ['palmerpenguins', "HistData"]
+  packages: ['palmerpenguins', "HistData", 'deSolve']
 book:
   title: "Quantifying Life"
   author: "Dmitry Kondrashov"
@@ -36,6 +36,7 @@ book:
     - lindiff.qmd
     - tutorial8.qmd
     - graph_odes.qmd
+    - tutorial9.qmd
     - ode_sols.qmd
     - markov_model.qmd
     - markov_evol.qmd
