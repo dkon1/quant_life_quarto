@@ -40,6 +40,7 @@ book:
     - ode_sols.qmd
     - markov_model.qmd
     - markov_evol.qmd
+    - tutorial10.qmd
     - markov_stat.qmd
     - markov_eigen.qmd
     - references.qmd
