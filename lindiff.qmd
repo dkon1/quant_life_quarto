@@ -114,7 +114,7 @@ To solve it, we need to try a different form: specifically, an exponential with 
 
 The parameter $r$ can assume different values, depending on the birth and death rates. If the birth rate is greater than the death rate, $r > 1$, and if it is the other way around, $r < 1$. Note that for a realistic biological population, the death rate is limited by the number of individuals present in the population. The maximum number of individuals at any time is $N(t)+bN(t)$, so this means that $d \leq b +1$. Therefore, for a biological population, $r \geq 0$.
 
-```{r ch14-sol, tidy=TRUE, tidy.opts=list(width.cutoff=50), fig.show='hold', out.width='50%', fig.asp=.7, fig.align='center', fig.cap = 'Plots of solutions of linear difference equations: a) $N(t+1) = 2N(t)$ with different initial values; b) $N(t+1) = 0.5N(t)$ with different initial values'}
+```{r ch14-sol, fig.show='hold', out.width='50%', fig.asp=.7, fig.align='center', fig.cap = 'Plots of solutions of linear difference equations: a) $N(t+1) = 2N(t)$ with different initial values; b) $N(t+1) = 0.5N(t)$ with different initial values'}
 x <- 0:6
 y0 <- 5
 plot(x,y0*2^x,t='b',lwd=3, cex.axis=1.5,cex.lab=1.5, xlab='time', ylab='population')

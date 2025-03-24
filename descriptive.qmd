@@ -159,7 +159,7 @@ Answer the following questions, based on the histograms in figure \ref{fig:ch3_m
 
 6.  State the range of each data set, and estimate the standard deviation of the two variables in the heart rate data set.
 
-```{r fig-ch3-HR, tidy=TRUE, tidy.opts=list(width.cutoff=50), fig.show='hold', out.width='50%', fig.asp=.75, fig.align='center', fig.cap = 'Histograms of heart rates and body temperatures'}
+```{r fig-ch3-HR, fig.show='hold', out.width='50%', fig.asp=.75, fig.align='center', fig.cap = 'Histograms of heart rates and body temperatures'}
 my_data<-read.table('data/HR_temp.txt', header=TRUE)
 hist(my_data$HR,col='gray',main='Heart rate data', xlab='heart rate (bpm)')
 hist(my_data$Temp,col='gray',main='Body temperature data', xlab= 'temperature (F)')

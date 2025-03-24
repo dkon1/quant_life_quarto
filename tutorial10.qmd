@@ -1,4 +1,4 @@
-# Tutorial 9: Functions and sampling from data {.unnumbered}
+# Tutorial 10: Functions and sampling from data {.unnumbered}
 
 ### Objectives:
 

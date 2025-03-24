@@ -87,19 +87,18 @@ What behaviors do you see for the solutions with different time steps? What effe
 
 ### growth proportional to population size
 
-We will now build some common differential equations models. First, a simple population growth model with a constant growth rate. Suppose that in a population each individual reproduces with the average reproductive rate $r$. This is reflected in the following differential equation: 
+We will now build some common differential equations models. First, a simple population growth model with a constant growth rate. Suppose that in a population each individual reproduces with the average reproductive rate $r$. This is reflected in the following differential equation:
 
 \begin{equation}
 \frac{d x} {dt} = \dot x = r x
 \label{eq:linear_ode}
- \end{equation} 
- 
+ \end{equation}
+
 This expression states that the rate of change of $x$, which we take to be population size, is proportional to $x$ with multiplicative constant $r$. We will sometimes use the notation $\dot x$ for the time derivative of $x$ (which was invented by Newton) for aesthetic reasons.
 
-First, we apply \index{dimensional analysis} dimensional analysis to this model. The units of the derivative are population per time, as can be deduced from the Newton's quotient definition. Thus, the units in the equation have the following relationship: 
-$$ 
+First, we apply \index{dimensional analysis} dimensional analysis to this model. The units of the derivative are population per time, as can be deduced from the Newton's quotient definition. Thus, the units in the equation have the following relationship: $$ 
 \frac{[population]}{[time]} = [r] [population] = \frac{1}{[time]}[population] 
-$$ 
+$$
 
 This shows that as in the discrete time models, the dimension of the population growth rate $r$ is inverse time, or frequency. The difference with the discrete time population models lies in the time scope of the rate. In the case of the difference equation, $r$ is the rate of change per one time step of the model. In the differential equation, $r$ is the *instantaneous rate of population growth*. It is less intuitive than the growth rate per single reproductive cycle, just like the slope of a curve is less intuitive than the slope of a line. The population growth happens continuously, so the growth rate of $r$ individuals per year does not mean that if we start with one individual, there will be $r$ after one year. In order to make quantitative predictions, we need to find the solution of the equation, which we will see in the next section.
 
@@ -107,7 +106,7 @@ This shows that as in the discrete time models, the dimension of the population 
 
 Reactions between molecules in cells occur continuously, driven by molecular collisions and physical forces. In order to model this complex behavior, it is generally assumed that reactions occur with a particular speed, known as the \index{kinetics!rate constant} *kinetic rate constant*. As mentioned in chapter 2, a simple reaction of conversion from one type of molecule ($A$) to another ($B$) can be written as follows: $$ A \xrightarrow{k} B $$ In this equation the parameter $k$ is the kinetic rate rate constant, describing the speed of conversion of $A$ into $B$, per concentration of $A$.
 
-Chemists and biochemists use differential equations to describe the change in molecular concentration during a reaction. These equations are known as the \index{kinetics!law of mass action} *laws of mass action*. For the reaction above, the concentration of molecule $A$ decreases continuously proportionally to itself, and the concentration of molecule $B$ increases continuously proportionally to the concentration of $A$. This is expressed by the following two differential equations: 
+Chemists and biochemists use differential equations to describe the change in molecular concentration during a reaction. These equations are known as the \index{kinetics!law of mass action} *laws of mass action*. For the reaction above, the concentration of molecule $A$ decreases continuously proportionally to itself, and the concentration of molecule $B$ increases continuously proportionally to the concentration of $A$. This is expressed by the following two differential equations:
 
 \begin{eqnarray}
 \label{eq:lin_chem_kin}
@@ -115,13 +114,13 @@ Chemists and biochemists use differential equations to describe the change in mo
 \dot B &=& kA
 \end{eqnarray}
 
-Several conclusions are apparent by inspection of the equations. First, the dynamics depend only on the concentration of $A$, so keeping track of the concentration of $B$ is superfluous. The second observation reinforces the first: the sum of the concentrations of $A$ and $B$ is constant. This is mathematically demonstrated by adding the two equations together to obtain the following: 
+Several conclusions are apparent by inspection of the equations. First, the dynamics depend only on the concentration of $A$, so keeping track of the concentration of $B$ is superfluous. The second observation reinforces the first: the sum of the concentrations of $A$ and $B$ is constant. This is mathematically demonstrated by adding the two equations together to obtain the following:
 
 $$ 
 \dot A + \dot B = -kA + kA = 0
-$$ 
+$$
 
-One of the basic properties of the derivative is that the sum of derivatives is the same as the derivative of the sum: 
+One of the basic properties of the derivative is that the sum of derivatives is the same as the derivative of the sum:
 
 $$
 \dot A + \dot B = \frac{d(A+B)}{dt} = 0
@@ -137,7 +136,7 @@ The simple, linear population growth models we have seen in the last two chapter
 
 How can we incorporate this effect into a quantitative model? We will assume there are separate birth and death rates, and that the birth rate declines as the population grows, while the death rate increases. Suppose there are inherent birth rates $b$ and $d$, and the overall birth and death rates $B$ and $D$ depend linearly on population size $P$: $B = b - aP$ and $D = d + cP$.
 
-To model the rate of change of the population, we need to multiply the rates $B$ and $D$ by the population size $P$, since each individual can reproduce or die. Also, since the death rate $D$ decreases the population, we need to put a negative sign on it. The resulting model is: 
+To model the rate of change of the population, we need to multiply the rates $B$ and $D$ by the population size $P$, since each individual can reproduce or die. Also, since the death rate $D$ decreases the population, we need to put a negative sign on it. The resulting model is:
 
 $$ 
 \dot P = BP - DP = [(b-d)-(a+c)P]P 
@@ -147,12 +146,12 @@ The parameters of the model, the constants $a,b,c,d$, have different meanings. P
 
 $$[a]=[c] = \frac{1}{[t][P]}$$
 
-This shows that the constants $a$ and $c$ have to be treated differently than $b$ and $d$. Let us define the inherent growth rate of the population, to be $r_0=b-d$ (if the death rate is greater than the birth rate, the population will inherently decline). Then let us introduce another constant $K$, such that $(a+c)=r_0/K$. It should be clear from the dimensional analysis that $K$ has units of $P$, population size. Now we can write down the logistic equation in the canonical form: 
+This shows that the constants $a$ and $c$ have to be treated differently than $b$ and $d$. Let us define the inherent growth rate of the population, to be $r_0=b-d$ (if the death rate is greater than the birth rate, the population will inherently decline). Then let us introduce another constant $K$, such that $(a+c)=r_0/K$. It should be clear from the dimensional analysis that $K$ has units of $P$, population size. Now we can write down the logistic equation in the canonical form:
 
 \begin{equation}
 \dot P = r\left(1-\frac{P}{K}\right)P
 \label{eq:log_cont_model}
-\end{equation} 
+\end{equation}
 
 This model can be re-written as $\dot P = aP -bP^2$, \index{model!logistic}\index{differential equation!logistic}so it is clear that there is a *linear term* ($aP$) and a *nonlinear term* ($-bP^2$). When $P$ is sufficiently small (and positive) the linear term is greater, and the population grows. When $P$ is large enough, the nonlinear term wins and the population declines. \index{nonlinear!differential equation}
 
@@ -296,22 +295,23 @@ abline(40,0,lty=2,lwd=2)
 
 We have seen that the dynamics of solutions of differential equations depend on the initial value of the dependent variable: for some values the solution increases, for others it decreases, and for intermediate values it remains the same. Those special values separating intervals of increase and decrease are called fixed points (or equilibria), and the first step to understanding the dynamics of an ODE is finding its fixed points. A fixed point is a value of the solution at which the dynamical system stays constant, thus, the derivative of the solution must be zero. Here is the formal definition:
 
-:::{.callout-note}
+::: callout-note
 ## Definition
-For an ordinary differential equation $\dot x = f(x)$, a point $x^*$ which satisfies $f(x^*)=0$ is called a *fixed point* or *equilibrium*, and the solution with the initial condition $x(0)=x^*$ is constant over time $x(t)=x^*$. 
+
+For an ordinary differential equation $\dot x = f(x)$, a point $x^*$ which satisfies $f(x^*)=0$ is called a *fixed point* or *equilibrium*, and the solution with the initial condition $x(0)=x^*$ is constant over time $x(t)=x^*$.
 :::
 
 **Example.** The linear equation $\dot x = rx$ has a single fixed point at $x^* = 0$. For a more interesting example, consider a logistic equation: $\dot x = x - x^2$. Its fixed points are the solutions of $x - x^2 = 0$, therefore there two fixed points: $x^* = 0, 1$. We know that if the solution has either of the fixed points as the initial condition, it will remain at that value for all time.
 
 Locating the fixed points is not sufficient to predict the global behavior of the dynamical system, however. What happens to the solution of a dynamical system if the initial condition is very close to an equilibrium, but not precisely at it? Put another way, what happens if the equilibrium is perturbed? The solution may be attracted to the equilibrium value, that is, it approaches it ever-closer, or else it is not. In the first case, this is called a stable equilibrium, because a small perturbation does not dramatically change the long-term behavior of the solution. In the latter case, the equilibrium is called unstable, and the solution perturbed from the equilibrium never returns. These concepts are formalized in the following definition
 
-:::{.callout-note}
+::: callout-note
 ## Definition
-A fixed point  $x^*$ of an ODE $\dot x = f(x)$ is called a *stable* fixed point (or sink) if for a sufficiently small number $\epsilon$, the solution $x(t)$ with the initial condition $x_0 = x^* + \epsilon$ approaches the fixed point $x^*$ as $t \rightarrow \infty$. If the solution $x(t)$ does not approach $x^*$ for all nonzero $\epsilon$, the fixed point is called an *unstable* fixed point (or source).
+
+A fixed point $x^*$ of an ODE $\dot x = f(x)$ is called a *stable* fixed point (or sink) if for a sufficiently small number $\epsilon$, the solution $x(t)$ with the initial condition $x_0 = x^* + \epsilon$ approaches the fixed point $x^*$ as $t \rightarrow \infty$. If the solution $x(t)$ does not approach $x^*$ for all nonzero $\epsilon$, the fixed point is called an *unstable* fixed point (or source).
 :::
 
-To determine whether a fixed point is stable analytically we use the approach called \index{differential equation!linearization}\index{linearization!differential equation} *linearization*, which involves replacing the function $f(x)$ with a linear approximation. Let us define $\epsilon(t)$ to be the deviation of the solution $x(t)$ from the fixed point $x^*$, so we can write $x(t) = x^* + \epsilon(t)$. Assuming that $\epsilon(t)$ is small, we can write the function $f(x)$ using Taylor's formula: 
-$$ f(x^*+\epsilon(t))= f(x^*)+f'(x^*) \epsilon(t) + ... = f'(x^*) \epsilon(t) + ... $$
+To determine whether a fixed point is stable analytically we use the approach called \index{differential equation!linearization}\index{linearization!differential equation} *linearization*, which involves replacing the function $f(x)$ with a linear approximation. Let us define $\epsilon(t)$ to be the deviation of the solution $x(t)$ from the fixed point $x^*$, so we can write $x(t) = x^* + \epsilon(t)$. Assuming that $\epsilon(t)$ is small, we can write the function $f(x)$ using Taylor's formula: $$ f(x^*+\epsilon(t))= f(x^*)+f'(x^*) \epsilon(t) + ... = f'(x^*) \epsilon(t) + ... $$
 
 The term $f(x^*)$ vanished because it is zero by definition \ref{def:ch16_fixedpt} of a fixed point. The ellipsis indicates all the terms of order $\epsilon(t)^2$ and higher, which are very small if $\epsilon(t)$ is small, and thus can be neglected. Thus, we can write the following approximation to the ODE $\dot x = f(x)$ near a fixed point:
 
@@ -453,7 +453,7 @@ For the following differential equations: a) plot the defining function over the
 
 Like most programming languages, R allows one to define and use structures called \index{function!in R}\index{R programming!function}functions. Some are already written and loaded into the R distribution, for example, the function `mean()` we use to compute the mean of a vector variable, while others can be defined by users. Functions are discrete chunks of code that can be *called* from the outside to perform some task. The function receives inputs from the call and returns the result back. Here is the general structure of a function in R:
 
-```{r, tidy=TRUE, eval = FALSE}
+```{r, eval = FALSE}
 myfunction <- function(arg1, arg2, ... ){
    statements
    return(answer)

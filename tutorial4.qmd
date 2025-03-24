@@ -1,4 +1,4 @@
-# Tutorial 5: Linear regression {.unnumbered}
+# Tutorial 4: Linear regression {.unnumbered}
 
 ### Learning goals
 

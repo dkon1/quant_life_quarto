@@ -290,7 +290,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive","fig-width":7,"classes":"","warning":"true","out-width":"700px","dpi":72,"results":"markup","label":"unnamed-chunk-1","fig-height":5,"autorun":"false","fig-cap":"","read-only":"false","message":"true","comment":"","output":"true","out-height":""},"code":"myfit <- lm(HR ~Temp, my_data)\nsummary(myfit)\na<-cov(my_data$HR,my_data$Temp)/var(my_data$Temp)\nprint(a)\nb<-mean(my_data$HR)-a*mean(my_data$Temp)\nprint(b)"},{"id":2,"options":{"context":"interactive","fig-width":7,"classes":"","warning":"true","out-width":"700px","dpi":72,"results":"markup","label":"linreg-HRTemp","fig-height":5,"autorun":"false","fig-cap":"","read-only":"false","message":"true","comment":"","output":"true","out-height":""},"code":"# plot the data and regression line\nplot(my_data$Temp, my_data$HR,main= 'scatterplot and linear regression line')\nabline(myfit)\n# plot the residuals\nHRresiduals <- resid(myfit)\nplot(data$Temp, HRresiduals,main='residuals plot')\nabline(0,0)"},{"id":3,"options":{"context":"interactive","fig-width":7,"classes":"","warning":"true","out-width":"700px","dpi":72,"results":"markup","label":"unnamed-chunk-3","fig-height":5,"autorun":"false","fig-cap":"","read-only":"false","message":"true","comment":"","output":"true","out-height":""},"code":"data(\"Galton\")\nmyfit <- lm(child ~ parent, Galton) \nsummary(myfit)\nprint(paste(\"The best-fit slope is: \", myfit$coefficients[2]))\nprint(paste(\"The best-fit intercept is: \", myfit$coefficients[1]))    "},{"id":4,"options":{"context":"interactive","fig-width":7,"classes":"","warning":"true","out-width":"700px","dpi":72,"results":"markup","label":"unnamed-chunk-4","fig-height":5,"autorun":"false","fig-cap":"","read-only":"false","message":"true","comment":"","output":"true","out-height":""},"code":"#Overlay the best-fit line on the base R plot\nplot(Galton$parent, Galton$child, xlab='mid-parent height (inches)', ylab='child height (inches)')\nabline(myfit)"},{"id":5,"options":{"context":"interactive","fig-width":7,"classes":"","warning":"true","out-width":"700px","dpi":72,"results":"markup","label":"unnamed-chunk-5","fig-height":5,"autorun":"false","fig-cap":"","read-only":"false","message":"true","comment":"","output":"true","out-height":""},"code":"plot(Galton$parent, myfit$residuals, xlab='mid-parent height (inches)', ylab='residuals (inches)')\nabline(0,0)"}];
+globalThis.qwebrCellDetails = [{"options":{"message":"true","fig-height":5,"label":"unnamed-chunk-1","autorun":"false","classes":"","out-height":"","comment":"","output":"true","dpi":72,"results":"markup","fig-width":7,"context":"interactive","out-width":"700px","read-only":"false","fig-cap":"","warning":"true"},"id":1,"code":"myfit <- lm(HR ~Temp, my_data)\nsummary(myfit)\na<-cov(my_data$HR,my_data$Temp)/var(my_data$Temp)\nprint(a)\nb<-mean(my_data$HR)-a*mean(my_data$Temp)\nprint(b)"},{"options":{"message":"true","fig-height":5,"label":"linreg-HRTemp","autorun":"false","classes":"","out-height":"","comment":"","output":"true","dpi":72,"results":"markup","fig-width":7,"context":"interactive","out-width":"700px","read-only":"false","fig-cap":"","warning":"true"},"id":2,"code":"# plot the data and regression line\nplot(my_data$Temp, my_data$HR,main= 'scatterplot and linear regression line')\nabline(myfit)\n# plot the residuals\nHRresiduals <- resid(myfit)\nplot(data$Temp, HRresiduals,main='residuals plot')\nabline(0,0)"},{"options":{"message":"true","fig-height":5,"label":"unnamed-chunk-3","autorun":"false","classes":"","out-height":"","comment":"","output":"true","dpi":72,"results":"markup","fig-width":7,"context":"interactive","out-width":"700px","read-only":"false","fig-cap":"","warning":"true"},"id":3,"code":"data(\"Galton\")\nmyfit <- lm(child ~ parent, Galton) \nsummary(myfit)\nprint(paste(\"The best-fit slope is: \", myfit$coefficients[2]))\nprint(paste(\"The best-fit intercept is: \", myfit$coefficients[1]))    "},{"options":{"message":"true","fig-height":5,"label":"unnamed-chunk-4","autorun":"false","classes":"","out-height":"","comment":"","output":"true","dpi":72,"results":"markup","fig-width":7,"context":"interactive","out-width":"700px","read-only":"false","fig-cap":"","warning":"true"},"id":4,"code":"#Overlay the best-fit line on the base R plot\nplot(Galton$parent, Galton$child, xlab='mid-parent height (inches)', ylab='child height (inches)')\nabline(myfit)"},{"options":{"message":"true","fig-height":5,"label":"unnamed-chunk-5","autorun":"false","classes":"","out-height":"","comment":"","output":"true","dpi":72,"results":"markup","fig-width":7,"context":"interactive","out-width":"700px","read-only":"false","fig-cap":"","warning":"true"},"id":5,"code":"plot(Galton$parent, myfit$residuals, xlab='mid-parent height (inches)', ylab='residuals (inches)')\nabline(0,0)"}];
 
 </script>
 <script type="module">
@@ -1104,7 +1104,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 5: Linear regression</a>
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 4: Linear regression</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1164,7 +1164,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link">Tutorial 9: Functions and sampling from data</a>
+  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link">Tutorial 10: Functions and sampling from data</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1829,7 +1829,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./tutorial4.html" class="pagination-link">
-        <span class="nav-page-text">Tutorial 5: Linear regression</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Tutorial 4: Linear regression</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

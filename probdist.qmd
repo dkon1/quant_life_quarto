@@ -303,8 +303,9 @@ $$ {#eq-binom-var}
 
 For any given number of Bernoulli trials, the variance has a quadratic dependence on probability of success $p$: if $p=1$ or $p=0$, corresponding to all successes, or all failures, respectively, then the variance is zero, since there is no spread in the outcome. For a fair coin $p=1/2$ the variance is highest. This can be seen in the plots of binomial random variables for $n=2$, $n=5$, and $n=50$, shown in figures below.
 
-```{r bin-dist-1, echo=FALSE}
+```{r}
 #| label: fig-binom-dist-1
+#| echo: false
 #| fig-cap: "Binomial random distributions with two trials."
 #| fig-subcap: 
 #|   - "Binomial distribution with p=0.2" 
@@ -322,8 +323,9 @@ prob.dist <- dbinom(values,n,p)
 barplot(prob.dist,names.arg=values,cex.axis=1.5,cex.lab=1.5,xlab='binomial RV',ylab='probability')
 ```
 
-```{r bin-dist-2, echo=FALSE}
+```{r}
 #| label: fig-binom-dist-2
+#| echo: false
 #| fig-cap: "Binomial random distributions with five trials."
 #| fig-subcap: 
 #|   - "Binomial distribution with p=0.2" 
@@ -341,8 +343,9 @@ prob.dist <- dbinom(values,n,p)
 barplot(prob.dist,names.arg=values,cex.axis=1.5,cex.lab=1.5,xlab='binomial RV',ylab='probability')
 ```
 
-```{r bin-dist-3, echo=FALSE}
+```{r}
 #| label: fig-binom-dist-3
+#| echo: false
 #| fig-cap: "Binomial random distributions with fifty trials."
 #| fig-subcap: 
 #|   - "Binomial distribution with p=0.2" 
