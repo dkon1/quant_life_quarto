@@ -111,8 +111,9 @@ Exponential functions can be written using different symbolic forms, but they al
 ```
 The function contains two parameters: the \index{exponential!rate constant}\emph{rate constant} $r$ and the multiplicative constant $a$. The graph of the exponential function is a curve which crosses the y-axis at $y=a$ (plug in $x=0$ to see that this is the case). As $x$ increases, the behavior of the graph depends on the sign of the rate constant $r$. If $r>0$, the function approaches infinity (positive if $a>0$, negative if $a<0$) as $x \to \infty$. If $r<0$, the function decays at an ever-decreasing pace and asymptotically approaches zero as $x \to \infty$. Thus the graph of $f(x)$ is a curve either going to infinity or a curve asymptotically approaching 0, and the steepness of the growth or decay is determined by $r$.
 
-```{r fig-ch2-funk1, echo=FALSE}
+```{r}
 #| label: fig-ch2-funk1
+#| echo: false
 #| fig-cap: "Can you identify which linear function has the positive slope and which one negative? Which exponential function has a positive rate constant and which one negative?"
 #| fig-subcap: 
 #|   - "Linear functions"
@@ -173,8 +174,9 @@ On the other hand, if $r<0$, then the numerator approaches zero as $x \to \infty
 
 Notice that switching the sign of $r$ has the same effect as switching the sign of $x$, since they are multiplied. Which means that for positive $r$, if $x$ is extended to negative infinity, the function approaches 0. This is illustrated in the second plot in @fig-ch2_sigmoidal_plots , which shows two logistic functions increasing from 0 to a positive level, one with $a=20$ (solid line) and the second with $a=10$ (dashed line). The graph of logistic functions has a characteristic *sigmoidal* (S-shaped) shape, and its steepness is determined by the rate $r$: if $r$ is small, the curve is soft, if $r$ is large, the graph resembles a step function.
 
-```{r fig-ch2-funk2, echo=FALSE}
+```{r}
 #| label: fig-ch2-funk2
+#| echo: false
 #| fig-cap: "Examples of functions with sigmoidal-shaped graphs"
 #| fig-subcap: 
 #|   - "Logistic functions"

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Quantifying Life - 6&nbsp; Solutions of ordinary differential equations</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./tutorial6.html" rel="next">
+<link href="./tutorial5.html" rel="prev">
+<link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Quantifying Life - 6&nbsp; Solutions of ordinary differential equations">
+<meta name="twitter:description" content="In the last chapter we learned about differential equations and how to use graphical analysis to find equilibria and predict the long-term behavior of the solutions.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Quantifying Life</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./counting.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">Tutorial 1: First steps for coding</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link">Tutorial 2: Vectors and plotting</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">Tutorial 3: Data frames and descriptive statistics</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 4: Linear regression</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">Tutorial 5: For loops and dynamic models</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link">Tutorial 6: numeric solutions of ODEs</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">Tutorial 7: plotting defining functions of ODEs</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">Tutorial 8: Random number generators</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">Tutorial 9: Data tables and Booleans</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link">Tutorial 10: Functions and sampling from data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial11.html" class="sidebar-item-text sidebar-link">Tutorial 11: simulations of Markov models</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#solutions-of-ordinary-differential-equations" id="toc-solutions-of-ordinary-differential-equations" class="nav-link active" data-scroll-target="#solutions-of-ordinary-differential-equations"><span class="toc-section-number">6.1</span>  Solutions of ordinary differential equations</a>
+  <ul class="collapse">
+  <li><a href="#separate-and-integrate-method" id="toc-separate-and-integrate-method" class="nav-link" data-scroll-target="#separate-and-integrate-method"><span class="toc-section-number">6.1.1</span>  separate and integrate method</a></li>
+  <li><a href="#behavior-of-solutions-of-linear-odes" id="toc-behavior-of-solutions-of-linear-odes" class="nav-link" data-scroll-target="#behavior-of-solutions-of-linear-odes"><span class="toc-section-number">6.1.2</span>  behavior of solutions of linear ODEs</a></li>
+  <li><a href="#solutions-of-nonhomogeneous-odes" id="toc-solutions-of-nonhomogeneous-odes" class="nav-link" data-scroll-target="#solutions-of-nonhomogeneous-odes"><span class="toc-section-number">6.1.3</span>  solutions of nonhomogeneous ODEs</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">6.1.4</span>  Exercises</a></li>
+  </ul></li>
+  <li><a href="#numeric-solutions-and-the-forward-euler-method" id="toc-numeric-solutions-and-the-forward-euler-method" class="nav-link" data-scroll-target="#numeric-solutions-and-the-forward-euler-method"><span class="toc-section-number">6.2</span>  Numeric solutions and the Forward Euler method</a>
+  <ul class="collapse">
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="toc-section-number">6.2.1</span>  Exercises</a></li>
+  </ul></li>
+  <li><a href="#forward-euler-method-in-r" id="toc-forward-euler-method-in-r" class="nav-link" data-scroll-target="#forward-euler-method-in-r"><span class="toc-section-number">6.3</span>  Forward Euler method in R</a>
+  <ul class="collapse">
+  <li><a href="#implementation" id="toc-implementation" class="nav-link" data-scroll-target="#implementation"><span class="toc-section-number">6.3.1</span>  implementation</a></li>
+  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2"><span class="toc-section-number">6.3.2</span>  Exercises</a></li>
+  <li><a href="#error-analysis" id="toc-error-analysis" class="nav-link" data-scroll-target="#error-analysis"><span class="toc-section-number">6.3.3</span>  error analysis</a></li>
+  <li><a href="#exercises-3" id="toc-exercises-3" class="nav-link" data-scroll-target="#exercises-3"><span class="toc-section-number">6.3.4</span>  Exercises</a></li>
+  </ul></li>
+  <li><a href="#applications-of-linear-ode-models" id="toc-applications-of-linear-ode-models" class="nav-link" data-scroll-target="#applications-of-linear-ode-models"><span class="toc-section-number">6.4</span>  Applications of linear ODE models</a>
+  <ul class="collapse">
+  <li><a href="#model-of-pharmacokinetics" id="toc-model-of-pharmacokinetics" class="nav-link" data-scroll-target="#model-of-pharmacokinetics"><span class="toc-section-number">6.4.1</span>  model of pharmacokinetics</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="toc-section-number">6.4.2</span>  Discussion questions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<blockquote class="blockquote">
+<p>He felt a restless, vague ambition<br>
+A craving for a change of air<br>
+(A most unfortunate condition,<br>
+A cross not many choose to bear.)<br>
+– Alexander Pushkin, <em>Eugene Onegin</em></p>
+</blockquote>
+<p>In the last chapter we learned about differential equations and how to use graphical analysis to find equilibria and predict the long-term behavior of the solutions. In this chapter we will examine two methods for generating the detailed solutions of ODEs: analytic and numeric.</p>
+<p>There are at least two good reasons to use differential equations for many applications. First, they are often more realistic than discrete time models, because some events happen very frequently and non-periodically. The second reason is mathematical: it turns out that dynamical systems with continuous time, described by differential equations, are better behaved than difference equations. This has to do with the essential “jumpiness” of difference equations. Even for simple nonlinear equations, the value of the variable after one time step can be far removed from its last value. This can lead to highly complicated solutions, as we saw in some of the numerical solutions in the last chapter.</p>
+<p>That kind of erratic behavior is impossible in (reasonable) differential equations. Solutions of ODEs are generally smooth and predictable, as long they are defined by continuous defining function, the flow produces smooth solutions. Sometimes, they can be written down exactly, as a mathematical function, called an analytic solution. For most ODEs, particularly nonlinear ones, that is not possible, but then computational methods can be used to produce an approximate numeric solution that can visualize the behavior of the solutions.</p>
+<ul>
+<li><p>find and verify analytic solutions of linear differential equations</p></li>
+<li><p>compute numerical solutions of differential equations using the Forward Euler method</p></li>
+<li><p>explore the relationship between numeric error and step size</p></li>
+</ul>
+<section id="solutions-of-ordinary-differential-equations" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="solutions-of-ordinary-differential-equations"><span class="header-section-number">6.1</span> Solutions of ordinary differential equations</h2>
+<p></p>
+<p>In this section we will investigate how to write down analytic solutions for ordinary differential equations (ODEs). Let us first define the mathematical terms that will be used in this discussion.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An ordinary differential equation is an equation that contains derivatives of the dependent variable (e.g.&nbsp;<span class="math inline">\(x\)</span>) with respect to an independent variable (e.g.&nbsp;<span class="math inline">\(t\)</span>). For example: <span class="math display">\[ \frac{dx^2}{dt^2}+ 0.2 \frac{dx}{dt} - 25 = 0 \]</span></p>
+</div>
+</div>
+<p>For the time being, we will restrict ourselves to ODEs with the highest derivative being of first order, called <em>first-order</em> ODEs. Second-order ODEs are common in models derived from physics, but can actually be converted to first-order ODEs, though it requires an additional dependent variable. Third and higher order ODEs are very uncommon. To be precise:</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <em>first-order</em> ODE is one where the derivative <span class="math inline">\(dx/dt\)</span> is equal to a <em>defining function</em> <span class="math inline">\(f(x,t)\)</span>, like this: <span class="math display">\[\frac{dx} {dt} = \dot x = f(x,t)\]</span></p>
+</div>
+</div>
+<p>The defining function may potentially depend on both the dependent variable <span class="math inline">\(x\)</span> and the independent variable <span class="math inline">\(t\)</span>. If it only depends on <span class="math inline">\(x\)</span>, it is called an <em>autonomous</em> ODE, for example:</p>
+<p><span class="math display">\[ \frac{dx}{dt} = \dot x = rx \]</span> or</p>
+<p><span class="math display">\[\frac{dx}{dt} = \dot x = 5x -4\]</span></p>
+<p>On the other hand, if the defining function depends only on the independent variable <span class="math inline">\(t\)</span>, it may be called a <em>pure-time</em> ODE, for example:</p>
+<p><span class="math display">\[
+\frac{dx}{dt} = \dot x = 5t
+\]</span> or</p>
+<p><span class="math display">\[
+\frac{dx}{dt} = \dot x = 20 - 0.3 \sin(4 \pi t)
+\]</span></p>
+<p>An ODE is if every term involves either the dependent variable <span class="math inline">\(x\)</span> or its derivative. \end{mosdef} For instance, <span class="math inline">\(\dot x = x^2 + \sin(x)\)</span> is homogeneous, while <span class="math inline">\(\dot x = -x + 5t\)</span> is not.</p>
+<p>Most simple biological models that we will encounter in the next two chapters are autonomous, homogeneous ODEs. However, nonhomogeneous equations are important in many applications, and we will encounter them at the end of the present section.</p>
+<section id="separate-and-integrate-method" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="separate-and-integrate-method"><span class="header-section-number">6.1.1</span> separate and integrate method</h3>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <em>analytic (or exact) solution</em> of an ordinary differential equation is a function of the independent variable that satisfies the equation. If no initial value is given, then the <em>general solution</em> function will contain an unknown <em>integration constant</em>. If an initial value is specified, the integration constant can be found to obtain a <em>specific solution</em>.</p>
+</div>
+</div>
+<p>This means that the solution function obeys the relationship between the derivative and the defining function that is specified by the ODE. To verify that a function is a solution of a given ODE, take its derivative and check whether it matches the other side of the equation.</p>
+<p><strong>Example</strong>. The function <span class="math inline">\(x(t) = 3t^2 +C\)</span> is a general solution of the ODE <span class="math inline">\(\dot x = 6t\)</span>, which can be verified by taking the derivative: <span class="math inline">\(\dot x (t) = 6t\)</span>. Since this matches the right-hand side of the ODE, the solution is valid.</p>
+<p><strong>Example</strong>. The function <span class="math inline">\(x(t) = Ce^{5t}\)</span> is a general solution of the ODE <span class="math inline">\(\dot x = 5x\)</span>. This can be verified by the taking the derivative: <span class="math inline">\(\dot x = 5C e^{5t}\)</span> and comparing it with the right-hand side of the ODE: <span class="math inline">\(5x = 5 Ce^{5t}\)</span>. Since the two sides of the equation agree, the solution is valid.</p>
+<p>In contrast with algebraic equations, we cannot simply isolate <span class="math inline">\(x\)</span> on one side of the equal sign and find the solutions as one, or a few numbers. Instead, solving ordinary differential equations is very tricky, and no general strategy for solving an arbitrary ODE exists. Moreover, a solution for an ODE is not guaranteed to exist at all, or not for all values of <span class="math inline">\(t\)</span>. We will discuss some of the difficulties later, but let us start with equations that we can solve.</p>
+<p>The most obvious strategy for solving an ODE is integration. Since a differential equation contains derivatives, integrating it can remove the derivative. In the case of the general first order equation, we can integrate both sides to obtain the following: <span class="math display">\[ \int \frac{dx}{dt} dt = \int f(x,t) dt \Rightarrow x(t) + C = \int f(x,t) dt\]</span> The constant of integration <span class="math inline">\(C\)</span> appears as in the standard antiderivative definition. It can be specified by an initial condition for the solution <span class="math inline">\(x(t)\)</span>. Unless the function <span class="math inline">\(f(x,t)\)</span> depends only on <span class="math inline">\(t\)</span>, it is not possible to evaluate the integral above. Instead, various tricks are used to find the analytic solution. The simplest method of analytic solution of a first-order ODEs, which I call <em>separate-and-integrate</em> consists of the following steps:</p>
+<ol type="1">
+<li>use algebra to place the dependent and independent variables on different sides of the equations, including the differentials (e.g.&nbsp;<span class="math inline">\(dx\)</span> and <span class="math inline">\(dt\)</span>)</li>
+<li>integrate both sides with respect to the different variables, don’t forget the integration constant</li>
+<li>solve for the dependent variable (e.g.&nbsp;<span class="math inline">\(x\)</span>) to find the <em>general solution</em></li>
+<li>plug in <span class="math inline">\(t=0\)</span> and use the initial value <span class="math inline">\(x(0)\)</span> to solve for the integration constant and find the the <em>specific solution</em></li>
+</ol>
+<p><strong>Example.</strong> Consider a very simple differential equation: <span class="math inline">\(\dot x = a\)</span>, where <span class="math inline">\(\dot x\)</span> stands for the time derivative of the dependent variable <span class="math inline">\(x\)</span>, and <span class="math inline">\(a\)</span> is a constant. It can be solved by integration: <span class="math display">\[ \int \frac{dx}{dt} dt  = \int a dt  \Rightarrow x(t) + C = at \]</span></p>
+<p>This solution contains an undetermined integration constant; if an initial condition is specified, we can determine the complete solution. Generally speaking, if the initial condition is <span class="math inline">\(x(0) = x_0\)</span>, we need to solve an algebraic equation to determine <span class="math inline">\(C\)</span>: <span class="math inline">\(x_0 = a*0 - C\)</span>, which results in <span class="math inline">\(C = -x_0\)</span>. The complete solution is then <span class="math inline">\(x(t) = at + x_0\)</span>. To make the example more specific, if <span class="math inline">\(a = 5\)</span> and the initial condition is <span class="math inline">\(x(0) = -3\)</span>, the solution is</p>
+<p><span class="math display">\[x(t) = 5t -3\]</span></p>
+<p><strong>Example.</strong> Let us solve the linear population growth model in equation <span class="math inline">\(\ref{eq:linear_ode}\)</span>: <span class="math inline">\(\dot x = rx\)</span>. The equation can be solved by first dividing both sides by <span class="math inline">\(x\)</span> and then integrating: <span class="math display">\[ \int \frac{1}{x} \frac{d x}{dt}  dt = \int \frac{dx}{x} = \int r dt \Longrightarrow \log |x| = rt + C  \Longrightarrow  x =  e^{rt+C} = Ae^{rt}\]</span></p>
+<p>We used basic algebra to solve for <span class="math inline">\(x\)</span>, exponentiating both sides to get rid of the logarithm on the left side. As a result, the additive constant <span class="math inline">\(C\)</span> gave rise to the multiplicative constant <span class="math inline">\(A=e^C\)</span>. Once again, the solution contains a constant which can be determined by specifying an initial condition <span class="math inline">\(x(0) = x_0\)</span>. In this case, the relationship is quite straightforward: <span class="math inline">\(x(0) = A e^0 = A\)</span>. Thus, the complete solution for equation <span class="math inline">\(\ref{eq:linear_ode}\)</span> is: <span class="math display">\[ x(t) = x_0e^{rt}\]</span></p>
+</section>
+<section id="behavior-of-solutions-of-linear-odes" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="behavior-of-solutions-of-linear-odes"><span class="header-section-number">6.1.2</span> behavior of solutions of linear ODEs</h3>
+<p>As in the case of the discrete-time models, population growth with a constant birth rate has exponential form. Once again, please pause and consider this fact, because the exponential solution of linear equations is one of the most basic and powerful tools in applied mathematics. Immediately, it allows us to classify the behavior of linear ODE into three categories:</p>
+<ul>
+<li><span class="math inline">\(r &gt; 0\)</span>: <span class="math inline">\(x(t)\)</span> grows without bound</li>
+<li><span class="math inline">\(r &lt; 0\)</span>: <span class="math inline">\(x(t)\)</span> decays to 0</li>
+<li><span class="math inline">\(r = 0\)</span>: <span class="math inline">\(x(t)\)</span> remains constant at the initial value</li>
+</ul>
+<p>The rate <span class="math inline">\(r\)</span> being positive reflects the dominance of birth rate over death rate in the population, leading to unlimited population growth. If the death rate is greater, the population will decline and die out. If the two are exactly matched, the population size will remain unchanged.</p>
+<p><strong>Example.</strong> The solution for the biochemical kinetic model in equation <span class="math inline">\(\ref{eq:lin_chem_kin}\)</span> is identical except for the sign: <span class="math inline">\(A(t) = A_0 e^{-kt}\)</span>. When the reaction rate <span class="math inline">\(k\)</span> is positive, as it is in chemistry, the concentration of <span class="math inline">\(A\)</span> decays to 0 over time. This should be obvious from our model, since there is no back reaction, and the only chemical process is conversion of <span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span>. The concentration of <span class="math inline">\(B\)</span> can be found by using the fact that the total concentration of molecules in the model is conserved. Let us call it <span class="math inline">\(C\)</span>. Then <span class="math inline">\(B(t) = C - A(t) = C- A_0e^{-kt}\)</span>. The concentration of <span class="math inline">\(B\)</span> increases to the asymptotic limit of <span class="math inline">\(C\)</span>, meaning that all molecules of <span class="math inline">\(A\)</span> have been converted to <span class="math inline">\(B\)</span>.</p>
+</section>
+<section id="solutions-of-nonhomogeneous-odes" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="solutions-of-nonhomogeneous-odes"><span class="header-section-number">6.1.3</span> solutions of nonhomogeneous ODEs</h3>
+<p>ODEs that contain at least one term without the dependent variable are a bit more complicated. If the defining function is <span class="math inline">\(f(x,t)\)</span> is <em>linear</em> in the dependent variable <span class="math inline">\(x\)</span>, they can be solved on paper using the same separate-and-integrate method, modified slightly to handle the constant term. Here are the steps to solve the generic linear ODE with a constant term <span class="math inline">\(\dot x = ax +b\)</span>:</p>
+<ol type="1">
+<li>separate the dependent and independent variables on different sides of the equations, by dividing both sides by the right hand side <span class="math inline">\(ax+b\)</span>, and multiplying both sides by the differential <span class="math inline">\(dt\)</span></li>
+<li>integrate both sides with respect to the different variables, don’t forget the integration constant!</li>
+<li>solve for the dependent variable (e.g.&nbsp;<span class="math inline">\(x\)</span>)</li>
+<li>plug in <span class="math inline">\(t=0\)</span> and use the initial value <span class="math inline">\(x(0)\)</span> to solve for the integration constant</li>
+</ol>
+<p><strong>Example.</strong> Let us solve the following ODE model using separate and integrate with the given initial value: <span class="math display">\[\frac{dx}{dt} = 4x -100;  \; x(0) = 30\]</span></p>
+<ol type="1">
+<li><p>separate the dependent and independent variables: <span class="math display">\[ \frac{dx}{4x - 100} = dt\]</span></p></li>
+<li><p>integrate both sides: <span class="math display">\[  \int \frac{dx}{4x -100} =  \int dt \Rightarrow \frac{1}{4} \int \frac{du}{u} = \frac{1}{4} \ln | 4x- 100 |  = t + C\]</span> The integration used the substitution of the new variable <span class="math inline">\(u=4x -100\)</span>, with the concurrent substitution of <span class="math inline">\(dx = du/4\)</span>.</p></li>
+<li><p>solve for the dependent variable: <span class="math display">\[  \ln | 4x- 100 |  = 4t + C \Rightarrow 4x-100 = e^{4t} B  \Rightarrow x = 25  + Be^{4t}\]</span> Here the first step was to multiply both sides by 4, and the second to use both sides as the exponents of <span class="math inline">\(e\)</span>, removing the natural log from the left hand side, and finally simple algebra to solve for <span class="math inline">\(x\)</span> as a function of <span class="math inline">\(t\)</span>.</p></li>
+<li><p>solve for the integration constant: <span class="math display">\[ x(0) = 25  + B = 30 \Rightarrow B = 5\]</span> Here the exponential ``disappeared’’ because <span class="math inline">\(e^0=1\)</span>. \end{enumerate} Therefore, the complete solution of the ODE with the given initial value is <span class="math display">\[x(t) =  25  + 5e^{4t}\]</span></p></li>
+</ol>
+<p>At this point, you might have noticed something about solutions of linear ODEs: they always involve an exponential term, with time in the exponent. Knowing this, it is possible to bypass the whole process of separate-and-integrate by using the following short-cut.</p>
+<p><strong>Important fact:</strong> Any linear ODE of the form <span class="math inline">\(\dot x= ax +b\)</span> has an analytic solution of the form: <span class="math display">\[ x(t) = Ce^{at} + D\]</span></p>
+<p>This can be tested by plugging the solution back into the ODE to see if it satisfies the equation. First, take the derivative of the solution to get the left-hand side of the ODE: <span class="math inline">\(\frac{dx}{dt} = Ca e^{at}\)</span>; the plug in <span class="math inline">\(x(t)\)</span> into the right hand side of the ODE: <span class="math inline">\(aCe^{at} + aD +b\)</span>. Setting the two sides equal, we get: <span class="math display">\[Ca e^{at} = aCe^{at} + aD +b\]</span> which is satisfied if <span class="math inline">\(aD + b = 0\)</span>, which means <span class="math inline">\(D= -b/a\)</span>. This is consistent with the example above, the additive constant in the solution was 25, which is <span class="math inline">\(-b/a= -(-100)/4 = 25\)</span>.</p>
+<p>In short, if you want to solve a linear ODE <span class="math inline">\(\dot x= ax +b\)</span> , you can bypass the separate-and-integrate process, because the general solution always has the form: <span class="math display">\[\begin{equation}
+x(t) = Ce^{at} - \frac{b}{a}
+\label{eq:ch15_ode_sol}
+\end{equation}\]</span></p>
+<p>The unknown constant <span class="math inline">\(C\)</span> can be determined from a given initial value. So the upshot is that all linear ODEs have solutions which are exponential in time with exponential constant coming from the slope constant <span class="math inline">\(a\)</span> in the ODE. The dynamics of the solution are determined by the sign of the constant <span class="math inline">\(a\)</span>: if <span class="math inline">\(a&gt;0\)</span>, the solution grows (or declines) without bound; and if <span class="math inline">\(a&lt;0\)</span>, the solution approaches an asymptote at <span class="math inline">\(-b/a\)</span> (from above or below, depending on the initial value). Go back and read section <span class="math inline">\(\ref{sec:math2}\)</span> for a review of exponential functions if this is not clear.</p>
+</section>
+<section id="exercises" class="level3" data-number="6.1.4">
+<h3 data-number="6.1.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.1.4</span> Exercises</h3>
+<p>Solve the following linear ODEs and use the specified initial values to determine the integration constant. Describe how the solution behaves over a long time (e.g.&nbsp;grows without bound, goes to zero, etc.). Plug the solution back into the ODE to check that it satisfies the equation.</p>
+<ol type="1">
+<li><p><span class="math display">\[ \frac{dx}{dt} = 0.1; \; x(0)= 100 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} =  2\sin(4t) -0.4t; \; x(0)= 5 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} = 3x; \; x(0) = 0.4 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} = -5x; \;  x(0) = -300 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} = -0.5x + 100 ; \; x(0) = 20 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} =  1 + x; \; x(0) = 4 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} =  -10 - 0.2x; \; x(0) = 10 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} =  -4 + 0.5x; \; x(0) = 6 \]</span></p></li>
+</ol>
+</section>
+</section>
+<section id="numeric-solutions-and-the-forward-euler-method" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="numeric-solutions-and-the-forward-euler-method"><span class="header-section-number">6.2</span> Numeric solutions and the Forward Euler method</h2>
+<p>Analytic solutions are very useful for a modeler because they allow prediction of the variable of interest at any time in the future. However, for many differential equations they are not easy to find, and for many others they simply cannot be written down in a symbolic form. Instead, one can use a numerical approach, which does not require an exact formula for the solution. The idea is to start at a given initial value (e.g.&nbsp;<span class="math inline">\(x(0)\)</span>) and use the derivative from the ODE (e.g.&nbsp;<span class="math inline">\(dx/dt\)</span>) as the rate of change of the solution (e.g.&nbsp;<span class="math inline">\(x(t)\)</span>) to calculate the change or increment for the solution over a time step. Essentially, this means replacing the continuous change of the derivative with a discrete time step, thus converting the differential equation into a difference equation and then solving it. The solution of the difference equation is not the same as the solution of the ODE, so <em>numeric solutions</em> of ODEs are always approximate. I will use the letter <span class="math inline">\(y(t)\)</span> to denote the numerical solution to distinguish it from the exact solution <span class="math inline">\(x(t)\)</span>. The fundamental difference between them is that <span class="math inline">\(y(t)\)</span> is not a formula that can be evaluated at any point in time, but instead is a sequence of numbers calculated every time step, which hopefully are close to the exact solution <span class="math inline">\(x(t)\)</span>.</p>
+<p>Let us introduce all the players: first, we need to pick the time step <span class="math inline">\(\Delta t\)</span>, which is the length of time between successive values of <span class="math inline">\(y\)</span>. In the difference equation notation one can use <span class="math inline">\(y_i\)</span> to mean <span class="math inline">\(y(i\Delta t)\)</span>, the value of the numerical solution after <span class="math inline">\(i\)</span> time steps. Then we need to calculate the derivative, or the rate of change at a particular point in time. For any first-order ODE of the form <span class="math display">\[ \frac{d x} {dt} = \dot x = f(x,t)\]</span></p>
+<p>the rate of change depends (potentially) on the values of <span class="math inline">\(x\)</span> and <span class="math inline">\(t\)</span>. This rate of change based on the numerical solution after <span class="math inline">\(i\)</span> time steps is <span class="math inline">\(f(y(i\Delta t), i\Delta t) = f(y_i, t_i)\)</span>. Finally, to calculate the change of the dependent variable we need to multiply the rate of change by the time step. This should make sense in a practical context: if you drive for two hours (time step) at 60 miles per hour (rate of change), the total distance (increment) is <span class="math inline">\(2*60=120\)</span> miles. By the same token, we can write down how to calculate the next value of the numerical solution <span class="math inline">\(y_{i+1}\)</span> based on the previous one: <span class="math display">\[\begin{equation}
+y_{i+1} = y_i + \Delta t f(y_i, t_i)
+\label{eq:ch15_FE}
+\end{equation}\]</span></p>
+<p>This method of computing a numerical solution of an ODE is called the <em>Forward Euler method</em>, after the famous mathematician who first came up with it. It is called a forward method because it uses the value of the dependent variable and its derivative at time step <span class="math inline">\(i\)</span> to predict the value at the next time step <span class="math inline">\(i+1\)</span>. The method is iterative, so it needs to be repeated in order to calculate a set of values of the approximate solution <span class="math inline">\(y(t)\)</span>. Here are a couple of simple examples of computing numerical solution using FE:</p>
+<p> Let us numerically solve the ODE <span class="math inline">\(\dot x = -0.1\)</span> using the Forward Euler method. This means the defining function in the formulation of FE above is <span class="math inline">\(f(x,t)=-0.1\)</span>. We can calculate the numeric solution for a couple of steps and compare the values with the exact solution, since we now know that it is <span class="math inline">\(x(t) = x_0 -0.1t\)</span>. Let us pick the time step <span class="math inline">\(\Delta t = 0.2\)</span> and begin with the initial value <span class="math inline">\(x(0)=1\)</span>. Here are the first three steps using the FE method: <span class="math display">\[ y(0.2) = y(0) + \Delta t f(y(0)) = 1 + 0.2*(-0.1) = 0.98\]</span> <span class="math display">\[ y(0.4) = y(0.2) + \Delta t f(y(0.2)) = 0.98+ 0.2*(-0.1) = 0.96\]</span> <span class="math display">\[ y(0.6) = y(0.4) + \Delta t f(y(0.4)) = 0.96+ 0.2*(-0.1) = 0.94\]</span> Since the rate of change in this ODE is constant, the solution declines by the same amount every time step. In this case, the numerical solution is actually exact, and perfectly matches the analytic solution. Table <span class="math inline">\(\ref{tab:ch15_FE}\)</span> (right) shows the numerical solution for 3 time steps along with the exact solution.</p>
+<p> Let us numerically solve the ODE <span class="math inline">\(\dot x = -0.1x\)</span> using the Forward Euler method. This means the defining function in the formulation of FE above is <span class="math inline">\(f(x,t)=-0.1x\)</span>. We can calculate the numeric solution for a couple of steps and compare the values with the exact solution, since we now know that it is <span class="math inline">\(x(t) = x_0 e^{-0.1t}\)</span>. Let us pick the time step <span class="math inline">\(\Delta t = 0.2\)</span> and begin with the initial value <span class="math inline">\(x(0)=100\)</span>. Here are the first three steps using the FE method: <span class="math display">\[ y(0.2) = y(0) + \Delta t f(y(0)) = 100 + 0.2*(-0.1*100) = 98\]</span> <span class="math display">\[ y(0.4) = y(0.2) + \Delta t f(y(0.2)) = 98+ 0.2*(-0.1*98) \]</span> <span class="math display">\[ = 96.04\]</span> <span class="math display">\[ y(0.6) = y(0.4) + \Delta t f(y(0.4)) = 96.04+ 0.2*(-0.1*96.04) \approx  \]</span> <span class="math display">\[ \approx 94.12\]</span> In this case, the derivative is not constant and the numerical solution is not exact, which is demonstrated in table <span class="math inline">\(\ref{tab:ch15_FE}\)</span> (left). The error in the numerical solution grows with time, which may be problematic. We will further investigate how to implement the computation of numerical solutions using R in the next section.</p>
+<table class="table">
+<caption>Numerical solutions of the ODE <span class="math inline">\(\dot x = -0.1\)</span> using Forward Euler <span class="math inline">\(y\)</span> calculated for 3 steps of size <span class="math inline">\(\Delta t = 0.2\)</span> as well as the exact solution <span class="math inline">\(x\)</span>, both rounded to two digits after the decimal, and the error of the numerical solution.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">t</th>
+<th style="text-align: center;">x</th>
+<th style="text-align: center;">y</th>
+<th style="text-align: right;">error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">0.98</td>
+<td style="text-align: center;">0.98</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">0.96</td>
+<td style="text-align: center;">0.96</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.6</td>
+<td style="text-align: center;">0.94</td>
+<td style="text-align: center;">0.94</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<caption>Numerical solution of the ODEs <span class="math inline">\(\dot x = -0.1x\)</span> (right) using Forward Euler <span class="math inline">\(y\)</span> calculated for 3 steps of size <span class="math inline">\(\Delta t = 0.2\)</span> as well as the exact solution <span class="math inline">\(x\)</span>, both rounded to two digits after the decimal, and the error of the numerical solution.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">t</th>
+<th style="text-align: center;">x</th>
+<th style="text-align: center;">y</th>
+<th style="text-align: left;">error</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: center;">100</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">98.02</td>
+<td style="text-align: center;">98</td>
+<td style="text-align: left;">0.02</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">96.08</td>
+<td style="text-align: center;">96.04</td>
+<td style="text-align: left;">0.04</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">0.6</td>
+<td style="text-align: center;">94.18</td>
+<td style="text-align: center;">94.12</td>
+<td style="text-align: left;">0.06</td>
+</tr>
+</tbody>
+</table>
+<p></p>
+<section id="exercises-1" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">6.2.1</span> Exercises</h3>
+<p>Use the Forward Euler method to solve the following differential equations with time step <span class="math inline">\(\Delta t=0.5\)</span> for 2 steps to compute <span class="math inline">\(y(1)\)</span> (the value of the numerical solution at <span class="math inline">\(t=1\)</span>.)</p>
+<ol type="1">
+<li><p><span class="math display">\[ \frac{dx}{dt} = 0.1; \; x(0)= 100 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} =  2\sin(4t) -0.4t; \; x(0)= 5 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} = 3x; \; x(0) = 0.4 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} = -5x; \;  x(0) = -300 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} = -0.5x + 100 ; \; x(0) = 20 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} =  1 + x; \; x(0) = 4 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} =  -10 - 0.2x; \; x(0) = 10 \]</span></p></li>
+<li><p><span class="math display">\[ \frac{dx}{dt} =  -4 + 0.5x; \; x(0) = 6 \]</span></p></li>
+</ol>
+</section>
+</section>
+<section id="forward-euler-method-in-r" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="forward-euler-method-in-r"><span class="header-section-number">6.3</span> Forward Euler method in R</h2>
+<p></p>
+<section id="implementation" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="implementation"><span class="header-section-number">6.3.1</span> implementation</h3>
+<p>In practice, the most common approach to finding solutions for differential equations is using a computer to calculate a numerical solution, for example using the Forward Euler method. This means using a computer program to construct a sequence of values of the dependent variable that approximate the true solution. Below is an outline of the algorithm that can be translated into a programming language, like R, to solve ODEs.</p>
+<ul>
+<li><p>assign the time step <code>dt</code>, length of time <code>Tmax</code>, number of time steps <code>numstep</code></p></li>
+<li><p>pre-allocate the vector of numeric solution values <code>y</code> of length <code>numstep+1</code></p></li>
+<li><p>assign the initial value for the ODE to the first element of the solution</p></li>
+<li><p>assign the vector of time values <code>t</code> from 0 to <code>Tmax</code> of length <code>numstep+1</code></p></li>
+<li><p>for loop starting at 1 to <code>numstep</code></p>
+<ul>
+<li>assign the next solution value to be the current solution value plus the time step multiplied by the defining function at the current solution value</li>
+</ul></li>
+<li><p>plot numeric solution <code>y</code> as a function of time <code>t</code></p></li>
+</ul>
+<p>To implement the algorithm, one need to know the defining function <span class="math inline">\(f(x,t)\)</span>, the initial value, the time step, and the total time. The output is the solution vector <span class="math inline">\(y\)</span>, which contains a sequence of values that approximate the solution of the ODE, along with the vector of time values spaced by the time step. Below is an example implementation of the Forward Euler method for the following linear ODE with initial value 1000:</p>
+<p><span class="math display">\[
+\frac{dx}{dt} =  -0.5 x
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fl">0.01</span> <span class="co"># set time step</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Tmax <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># set length of time</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>numstep <span class="ot">&lt;-</span> Tmax<span class="sc">/</span>dt <span class="co"># assign number of time steps</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">rep</span>(x0, numstep<span class="sc">+</span><span class="dv">1</span>) <span class="co"># initialize solution with y0</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>numstep) { <span class="co"># do the Euler!</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    pop[i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> pop[i]<span class="sc">+</span>dt<span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.5</span><span class="sc">*</span>pop[i])</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,Tmax, dt)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(time, pop, <span class="at">type=</span><span class="st">'l'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-FE-sol" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ode_sols_files/figure-html/fig-FE-sol-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6.1: <strong>?(caption)</strong></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Notice that it is very similar to the script for numerical solution of a difference equation we saw in <span class="math inline">\(\ref{sec:comp14}\)</span> with the major difference being the presence of a time step, whereas in difference equations the time step is always 1. There is one more important point for the implementation: usually one needs to solve the ODE for a particular length of time <span class="math inline">\(T\)</span> with a specified time step <span class="math inline">\(\Delta t\)</span> . This dictates that the required number of iterations be <span class="math inline">\(T/\Delta t\)</span>; in other words, for a given time period the number of time steps is inversely proportional to the time step.</p>
+</section>
+<section id="exercises-2" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="exercises-2"><span class="header-section-number">6.3.2</span> Exercises</h3>
+<p>Consider a slightly different linear ODE:</p>
+<p><span class="math display">\[
+\frac{dx}{dt} =  0.2 x
+\]</span></p>
+<ol type="1">
+<li>Calculate the numeric solution of the ODE for <strong>one time step</strong> using Forward Euler, for time step dt=0.1, starting with initial value x(0) = 5. Answer: 5.1</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Write a script to solve the ODE using the Forward Euler method based on the outline above. Set the time step dt=0.1 and report the solution <strong>after 100 time steps</strong>. Answer: 36.22323</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Change the time step to be dt=0.01 and report the solution <strong>after 1000 time steps</strong>. Answer: 36.87156.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="error-analysis" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="error-analysis"><span class="header-section-number">6.3.3</span> error analysis</h3>
+<p>Numeric solutions of ODE are always approximate, because they use discrete time steps to approximate continuous change (derivatives). Thus numeric solutions always have <em>error</em>, which is the difference between the <em>exact</em> or <em>analytic</em> solution and the numeric solution. If we know the exact solution of an ODE, we can calculate the error using vector subtraction in R. For the same linear ODE we solved above: <span class="math display">\[
+\frac{dx}{dt} =  -0.5 x
+\]</span> The analytic solution is <span class="math inline">\(x(t) = x_0 e^{-0.5t}\)</span>, where <span class="math inline">\(x_0\)</span> is the initial value. Here is an example of computing the numeric solution (as we did above) and then calculating the analytic solution and plotting it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dt <span class="ot">&lt;-</span> <span class="fl">0.5</span> <span class="co"># set time step</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Tmax <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="co"># set length of time</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>numstep <span class="ot">&lt;-</span> Tmax<span class="sc">/</span>dt <span class="co"># assign number of time steps</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">rep</span>(x0, numstep<span class="sc">+</span><span class="dv">1</span>) <span class="co"># initialize solution with y0</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>numstep) { <span class="co"># do the Euler!</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    pop[i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> pop[i]<span class="sc">+</span>dt<span class="sc">*</span>(<span class="sc">-</span><span class="fl">0.5</span><span class="sc">*</span>pop[i])</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,Tmax, dt)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(time, pop, <span class="at">type=</span><span class="st">'l'</span>, <span class="at">main =</span> <span class="st">"Numeric and analytic solutions of an ODE"</span>) <span class="co"># plot the numeric solution</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>exact <span class="ot">&lt;-</span> x0<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span><span class="fl">0.5</span><span class="sc">*</span>time) <span class="co"># calculate the exact solution</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(time, exact, <span class="at">col =</span> <span class="st">'red'</span>) <span class="co"># plot the exact solution</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">'topright'</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">'black'</span>, <span class="st">'red'</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">'numeric'</span>, <span class="st">'analytic'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="ode_sols_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now we can calculate the error of the numeric solution and plot it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>error <span class="ot">&lt;-</span> <span class="fu">abs</span>(exact <span class="sc">-</span> pop)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(time, error, <span class="at">type =</span> <span class="st">'l'</span>, <span class="at">main=</span><span class="st">'Error of the numeric solution'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="ode_sols_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>What is the sources of this error? There are at least two distinct sources of error in numerical solutions: a) and b) . Roundoff error is caused by computers representing real numbers by a finite string of bits on a computer using what is known as a representation. In many programming languages variables storing real numbers can be single or double precision, which typically support 24 and 53 significant binary digits, respectively. Any arithmetic operation involving floating point numbers is only approximate, with an error that depends on the way the numbers are stored in the memory. Truncation error is caused by approximations inherent in numerical algorithms, such as Forward Euler, which represent instantaneous rate of change in an ODE with discrete steps and thus are always a bit off from the true analytic solution.</p>
+<p>In practice, roundoff error is not a big concern in contemporary computation for most modelers. Truncation error, on the other hand, can cause big problems, but luckily it is within your control. One can decrease the error in the case of finite difference methods by choosing smaller time steps, or by choosing an algorithm with a higher <em>order of accuracy</em>, which we’ll leave for a more advanced discussion.</p>
+<p>Returning specifically to the Forward Euler method, it is called a <em>first-order method</em> because the total error of the solution (after some number of time steps) depends linearly on the time step <span class="math inline">\(\Delta t\)</span>. One can show this by using the Taylor expansion of the solution <span class="math inline">\(y(t)\)</span> to derive the forward Euler method, with <span class="math inline">\(\tau(\Delta t)\)</span> representing the truncation error after one time step: <span class="math display">\[y(t+\Delta t) = y(t) +  \Delta t \frac {dy(t) }{dt} + \tau(\Delta t)\]</span> As you might have learned in calculus, the error remaining after the linear term in the Taylor series is proportional to the the square of the small deviation <span class="math inline">\(\Delta t\)</span>. This only describes the error after 1 time step, but since the errors accumulate every time step, the total error after <span class="math inline">\(N\)</span> time steps accumulates <span class="math inline">\(N \tau(\Delta t)\)</span>. As we saw in the implementation above, for a given length of time, <span class="math inline">\(N\)</span> is inversely proportional to <span class="math inline">\(\Delta t\)</span>. Therefore, the total error is proportional to the <span class="math inline">\(\Delta t\)</span> and so FE is a first-order method.</p>
+<p>The exercise above shows that new errors in FE method accumulate in proportion with the time step. The next question is, what happens to these errors over time? Do they grow or dissipate with more iterations? This is known as the stability of a numerical method, and unlike the above question about the order of accuracy, the answer depends on the particular ODE that one needs to solve. Below I show an example of error analysis for a linear ODE:</p>
+<p><strong>Example.</strong> To numerically solve the equation <span class="math inline">\(\dot x = ax\)</span>, we substitute the function <span class="math inline">\(ax\)</span> for the function <span class="math inline">\(f(x,t)\)</span>, and obtain the FE approximation for this particular ODE: <span class="math display">\[y_{i+1} = y_i + \Delta t a y_i = (1+a\Delta t) y_i\]</span> The big question is what happens to the truncation error: does it grow or decay? To investigate this question, let us denote the error at time <span class="math inline">\(t_i\)</span> , that is the difference between the true solution <span class="math inline">\(x(t_i)\)</span> and the approximate solution <span class="math inline">\(y(t_i)\)</span>, by <span class="math inline">\(\epsilon_i\)</span>. It follows that <span class="math inline">\(y_i = x_i + \epsilon_i\)</span>. Then we can wrote the following difference equations involving the error:</p>
+<p><span class="math display">\[y_{i+1} = x_{i+1} + \epsilon_{i+1} = (x_i + \epsilon_i) (1+a\Delta t)  = x_i (1+a\Delta t) + \epsilon_i(1+a\Delta t)\]</span> Let us set aside the terns in the equation that involve <span class="math inline">\(x\)</span> (since it is just the equation for forward Euler). The remaining difference equation for <span class="math inline">\(\epsilon\)</span> describes the change in the error: <span class="math display">\[\epsilon_{i+1} = \epsilon_i(1+a\Delta t) \]</span></p>
+<p>This states that the error in this numerical solution is repeatedly multiplied by the constant <span class="math inline">\((1+a\Delta t)\)</span>. As we saw in section <span class="math inline">\(\ref{sec:math14}\)</span>, this linear difference equation has an exponential solution <span class="math inline">\(\epsilon_n = (1+a\Delta t)^n \epsilon_0\)</span>, which decays to 0 if <span class="math inline">\(|1+a\Delta t| &lt; 1\)</span> or grows without bound if <span class="math inline">\(|1+a\Delta t| &gt; 1\)</span>. The first inequality is called the stability condition for the FE scheme, since it guarantees that the old errors decay over time. Since <span class="math inline">\(\Delta t &gt;0\)</span>, the only way that the left hand side can be less than 1 is if <span class="math inline">\(a&lt;0\)</span>. Therefore, the condition for stability of the FE method for a linear ODE: <span class="math display">\[|1 + a\Delta t| &lt; 1 \Rightarrow \Delta t &lt; -2/a\]</span></p>
+<p>Thus, if <span class="math inline">\(a&gt;0\)</span>, the errors will eventually overwhelm the solution. If <span class="math inline">\(a&lt;0\)</span>, if the time step is small enough (less than <span class="math inline">\(-2/a\)</span>) then FE is stable. Generally speaking, however, Forward Euler is about the worst method to use for practical numerical solutions of ODEs, due to its low accuracy and to its lack of stability under certain conditions.</p>
+</section>
+<section id="exercises-3" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="exercises-3"><span class="header-section-number">6.3.4</span> Exercises</h3>
+<p><span class="math display">\[
+\frac{dx}{dt} =  0.2 x
+\]</span></p>
+<ol type="1">
+<li>Calculate the error of the numeric solution of this ODE after one time step with dt=0.1 and initial value x(0) = 5 by subtracting it from the exact (analytic) solution <span class="math inline">\(x(t) = e^{0.2t}x(0)\)</span>, with the same initial value. Answer: about 0.001.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Compute the error of the two numeric solution over Tmax = 10 by subtracting the numeric solution vector from the analytic solution calculating over the same time vector and report the mean of that error vector. Answers: for dt=0.1 the mean error is 0.722, for dt=0.01 the mean error is 0.0737.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="applications-of-linear-ode-models" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="applications-of-linear-ode-models"><span class="header-section-number">6.4</span> Applications of linear ODE models</h2>
+<p></p>
+<section id="model-of-pharmacokinetics" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="model-of-pharmacokinetics"><span class="header-section-number">6.4.1</span> model of pharmacokinetics</h3>
+<p>Describing and predicting the dynamics of drug concentration in the body is the goal of <em>pharmacokinetics</em>. Any drug that humans take goes through several stages: first it is administered (put into the body), then absorbed, metabolized (transformed), and excreted (removed from the body) . Almost any drug has a dose at which it has a toxic effect, and most can kill a human if the dose is high enough. Drugs which are used for medical purposes have a <em>therapeutic range</em>, which lies between the lowest possible concentration (usually measured in the blood plasma) that achieves the therapeutic effect and the concentration which is toxic. One of the basic questions that medical practitioners need to know is how much and how frequently to administer a drug to maintain drug concentration in the therapeutic range.</p>
+<p>The concentration of a drug is a dynamic variable which depends on the rates of several processes, most directly on the rate of administration and the rate of metabolism. Drugs can be administered through various means (e.g.&nbsp;orally or intravenously) which influences their rate of absorption and thus how the concentration increases. Once in the blood plasma, drugs are metabolized primarily by enzymes in the liver, converting drug molecules into compounds that can be excreted through the kidneys or the large intestine. The process of *metabolism proceeds at a rate that depends on both the concentration of the drug and on the enzyme that catalyzes the reaction. For some drugs the metabolic rate may be constant, or independent of the drug concentration, since the enzymes are already working at full capacity and can’t turn over any more reactions, for example alcohol is metabolized at a constant rate of about 1 drink per hours for most humans. Figure <span class="math inline">\(\ref{fig:ch15_drug_conc}\)</span>a shows the time plots of the blood alcohol concentration for 4 males who ingested different amounts of alcohol, and the curves are essentially linear with the same slope after the peak. For other drugs, if the plasma concentration is low enough, the enzymes are not occupied all the time and increasing the drug concentration leads to an increase in the rate of metabolism. One can see this behavior in the metabolism of the anti-depressant drug bupropion in figure <span class="math inline">\(\ref{fig:ch15_drug_conc}\)</span>b, where the concentration curve shows a faster decay rate for higher concentration of the drug than for lower concentration. In the simplest case, the rate of metabolism is linear, or proportional to the concentration of the drug, with proportionality constant called the first-order metabolic rate.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch15/aa35graf.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Blood alcohol content after ingesting different numbers of drinks, from 4 in the top curve to 1 in the bottom (figure from the National Institute on Alcohol Abuse and Alcoholism in public domain)</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch15/2000px-Bupropion_bioequivalency.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Blood concentration of bupropion for two different drugs in clinical trials (image by CMBJ based on FDA data under CC-BY 3.0 via Wikimedia Commons)</figcaption><p></p>
+</figure>
+</div>
+<p>Let us build an ODE model for a simplified pharmacokinetics situation. Suppose that a drug is administered at a constant rate of <span class="math inline">\(M\)</span> (concentration units per time unit) and that it is metabolized at a rate proportional to its plasma concentration <span class="math inline">\(C\)</span> with metabolic rate constant <span class="math inline">\(k\)</span>. Then the ODE model of the concentration of the drug over time <span class="math inline">\(C(t)\)</span> is: <span class="math display">\[ \frac{dC}{dt} = M - kC\]</span> The two rate constants <span class="math inline">\(M\)</span> and <span class="math inline">\(k\)</span> have different dimensions, which you should be able to determine yourself. The ODE can be solved using the separate-and-integrate method:</p>
+<ol type="1">
+<li>Divide both sides by the right hand side <span class="math inline">\(M-kC\)</span>, and multiply both sides by the differential <span class="math inline">\(dt\)</span> <span class="math display">\[ \frac{dC}{M-kC} = dt\]</span></li>
+<li>integrate both sides with respect to the different variables, don’t forget the integration constant! <span class="math display">\[ \int \frac{dC}{M-kC} = \int dt \Rightarrow\]</span> <span class="math display">\[ -\frac{1}{k} \log |M-kC| = t + A\]</span></li>
+<li>solve for the dependent variable <span class="math inline">\(C(t)\)</span> <span class="math display">\[ \exp(\log |M-kC| ) = -\exp(kt +A) \Rightarrow \]</span> <span class="math display">\[  M - kC = B e^{-kt} \Rightarrow \]</span> <span class="math display">\[ C(t) = \frac{M}{k}- Be^{-kt}\]</span> Notice that I changed the values of integration constants <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> during the derivation, which shouldn’t matter because they have not been determined yet.</li>
+<li>plug in <span class="math inline">\(t=0\)</span> and use the initial value <span class="math inline">\(x(0)\)</span> to solve for the integration constant If we know the initial value <span class="math inline">\(C(0) = C_0\)</span>, then we can plug it in and get the following algebraic expression: <span class="math display">\[ C_0 =  \frac{M}{k} - B \Rightarrow \]</span> <span class="math display">\[ B = C_0 -  \frac{M}{k}\]</span> Then the complete solution is: <span class="math display">\[ C(t) =  \frac{M}{k} - (C_0- \frac{M}{k})e^{-kt}\]</span></li>
+</ol>
+<p>The solution predicts that after a long time the plasma concentration will approach the value <span class="math inline">\(M/k\)</span>, since the exponential term decays to zero. Notice that mathematically this is the same type of solution we obtained in equation <span class="math inline">\(\ref{eq:ch15_ode_sol}\)</span> for a generic linear ODE with a constant term.</p>
+</section>
+<section id="discussion-questions" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="discussion-questions"><span class="header-section-number">6.4.2</span> Discussion questions</h3>
+<p>The following questions encourage you to think critically about the pharmacokinetic model above.</p>
+<ol type="1">
+<li><p>Describe in words the dependence of the long-term plasma concentration of the drug on the }parameters. Does this prediction make intuitive sense?</p></li>
+<li><p>Explain in practical terms the assumption that the administration of the drug results in a constant rate of growth of the concentration. Under what circumstances does this match reality?</p></li>
+<li><p>Explain in practical terms the assumption that the drug metabolism rate is proportional to the plasma concentration. Under what circumstances does this match reality?</p></li>
+<li><p>Discuss how you could modify the ODE model to describe other circumstances, or to add other effects to it.</p></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./tutorial5.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tutorial 5: For loops and dynamic models</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./tutorial6.html" class="pagination-link">
+        <span class="nav-page-text">Tutorial 6: numeric solutions of ODEs</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

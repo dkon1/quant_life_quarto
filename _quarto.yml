@@ -38,7 +38,6 @@ book:
     - tutorial9.qmd
     - hypo_test.qmd
     - tutorial10.qmd
-    - bayes.qmd
     - markov_model.qmd
     - markov_evol.qmd
     - tutorial11.qmd

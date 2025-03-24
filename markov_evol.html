@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.280">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Quantifying Life - 12&nbsp; Probability distributions of Markov chains</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./tutorial11.html" rel="next">
+<link href="./markov_model.html" rel="prev">
+<link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Quantifying Life - 12&nbsp; Probability distributions of Markov chains">
+<meta name="twitter:description" content="In the last chapter we learned to describe randomly changing biological systems using discrete-state Markov models.">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Quantifying Life</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
+    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
+            <i class="bi bi-bi-file-pdf pe-1"></i>
+          Download PDF
+          </a>
+        </li>
+        <li>
+          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
+            <i class="bi bi-bi-journal pe-1"></i>
+          Download ePub
+          </a>
+        </li>
+    </ul>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./counting.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">Tutorial 1: First steps for coding</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link">Tutorial 2: Vectors and plotting</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">Tutorial 3: Data frames and descriptive statistics</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 4: Linear regression</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">Tutorial 5: For loops and dynamic models</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link">Tutorial 6: numeric solutions of ODEs</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">Tutorial 7: plotting defining functions of ODEs</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">Tutorial 8: Random number generators</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">Tutorial 9: Data tables and Booleans</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link">Tutorial 10: Functions and sampling from data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial11.html" class="sidebar-item-text sidebar-link">Tutorial 11: simulations of Markov models</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#probability-distribution-vectors" id="toc-probability-distribution-vectors" class="nav-link active" data-scroll-target="#probability-distribution-vectors"><span class="toc-section-number">12.1</span>  Probability distribution vectors</a>
+  <ul class="collapse">
+  <li><a href="#markov-chains" id="toc-markov-chains" class="nav-link" data-scroll-target="#markov-chains"><span class="toc-section-number">12.1.1</span>  Markov chains</a></li>
+  </ul></li>
+  <li><a href="#matrix-multiplication" id="toc-matrix-multiplication" class="nav-link" data-scroll-target="#matrix-multiplication"><span class="toc-section-number">12.2</span>  matrix multiplication</a>
+  <ul class="collapse">
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">12.2.1</span>  Exercises</a></li>
+  <li><a href="#propagation-of-probability-vectors" id="toc-propagation-of-probability-vectors" class="nav-link" data-scroll-target="#propagation-of-probability-vectors"><span class="toc-section-number">12.2.2</span>  propagation of probability vectors</a></li>
+  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="toc-section-number">12.2.3</span>  Exercises</a></li>
+  </ul></li>
+  <li><a href="#mutations-and-molecular-evolution" id="toc-mutations-and-molecular-evolution" class="nav-link" data-scroll-target="#mutations-and-molecular-evolution"><span class="toc-section-number">12.3</span>  Mutations and molecular evolution</a>
+  <ul class="collapse">
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="toc-section-number">12.3.1</span>  Discussion questions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<blockquote class="blockquote">
+<p>I had the most rare of feelings, the sense that the world, so consistently overwhelming and incomprehensible, in fact had an order, oblique as it may seem, and I a place within it. – Nicole Krauss, <em>Great House</em></p>
+</blockquote>
+<p>In the last chapter we learned to describe randomly changing biological systems using discrete-state Markov models. These models are defined by a list of states and the transition probabilities between the states, which are organized into a transition matrix. The models are fundamentally stochastic and thus unpredictable, but they can be simulated on a computer using random number generators to produce multiple strings of states. From them one can calculate various statistical properties, such as means or variances of random variables that depend on these states. However, performing endless simulations can be computationally expensive. It is much more efficient to predict the probability distribution of the model at any given time without performing random simulations. The mathematical framework of matrices and vectors and algebraic operations on them allow this prediction. Here is what you will learn to do in this chapter:</p>
+<ul>
+<li>write down a probability distribution vector for a Markov model</li>
+<li>given a probability distribution vector at a particular time, calculate the probability distribution one (or a few) time steps into the future</li>
+<li>multiply matrices and vectors</li>
+<li>use R scripts to calculate the probability distribution any number of time steps in the future</li>
+</ul>
+<section id="probability-distribution-vectors" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="probability-distribution-vectors"><span class="header-section-number">12.1</span> Probability distribution vectors</h2>
+<p></p>
+<p>Consider a two-state Markov model }with a given transition matrix and a specified initial state. After one time step, the variable can be in either of two states - this can be simulated in R using a random number generator and a conditional statement. There are only two possible options: either the variable stays in the original state, or transitions from the original state to the other one. For the cell cycle model introduced in the last chapter, with initial state Q, the state space of this experiment contains two state strings: <span class="math inline">\(\{QQ, QR\}\)</span>. After two time steps, there are now four possible paths. For the cell cycle model with initial state <span class="math inline">\(Q\)</span>, the state space is <span class="math inline">\(\{QQQ, QRQ, QRR, QQR\}\)</span>. Based on the calculation of probabilities of a given state that we learned in the last chapter, we can find the probability of each of the paths and then calculate the probability of the cell being in the replicating state after two time steps.</p>
+<p>Let us make the problem a bit more general: take a two-state Markov model with a given transition matrix and a specified initial probability distribution, instead of a single state. In the cell cycle model, let the initial probability of <span class="math inline">\(Q\)</span> be <span class="math inline">\(Q_0\)</span> and the initial probability of <span class="math inline">\(R\)</span> be <span class="math inline">\(R_0\)</span>. Then the event of the cell being in state <span class="math inline">\(Q\)</span> after 1 time step is a combination of two different state strings: <span class="math inline">\(\{QQ, RQ\}\)</span> and the probability of that event is the sum of those two probabilities:</p>
+<p><span class="math display">\[
+P(X(1) = Q)  = p_{QR}R_0 + p_{QQ}Q_0  
+\]</span></p>
+<p>Similarly, the event of the cell being in state <span class="math inline">\(R\)</span> is a sum of the probabilities of the state strings <span class="math inline">\(\{QR, RR\}\)</span>: <span class="math display">\[
+P(X(1) = R) = p_{RQ}Q_0 + p_{RR}R_0
+\]</span></p>
+<p>These calculations are shown in figure <span class="math inline">\(\ref{fig:markov_mult_table}\)</span>, starting with all the probability in state Q at t=0, then calculating the new probability distribution at time t=1, then using the same transition probabilities to calculate the new distribution at t=2.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch11/markov_table.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Transition probabilities used to calculate the evolution of probability in the QR model for two time steps</figcaption><p></p>
+</figure>
+</div>
+<p>The calculations are easy for a couple of time steps, but imagine having to do this for ten time steps, or a hundred - you would need to deal with thousands, or in the second case, about <span class="math inline">\(10^{30}\)</span> different state strings! One may use R to run a simulations for many different state strings and plot their histograms (which we will do in section <span class="math inline">\(\ref{sec:proj12}\)</span> in the next chapter). However, it is far more efficient to compute the probability of a cell being in a particular state at a particular time, that is, its probability distribution vector.</p>
+<section id="markov-chains" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="markov-chains"><span class="header-section-number">12.1.1</span> Markov chains</h3>
+<p>While sometimes simulation of multiple random processes is necessary, it can get expensive. Probability offers us a theoretical way to make predictions for a Markov model, based on the notion of a <em>probability distribution vector</em>. First, let us define a few terms: a <em>Markov chain</em> is the mathematical manifestation of a Markov model. It was dubbed a chain because it consists of a string of linked random variables, the probability of each dependent on the previous one, and generating the next one.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <em>Markov chain</em> is a sequence of random variables <span class="math inline">\(X(t)\)</span>, where <span class="math inline">\(t\)</span> is time, and <span class="math inline">\(X(t)\)</span> can be in one of <span class="math inline">\(n\)</span> states. Each random variable <span class="math inline">\(X(t)\)</span> has an associated probability distribution vector <span class="math inline">\(\vec P(t)\)</span>, in which the <span class="math inline">\(i-th\)</span> element contains the probability of the random variable being in the <span class="math inline">\(i-th\)</span> state, and <span class="math inline">\(\vec P(t)\)</span> depends on <span class="math inline">\(\vec P(t-1)\)</span> according to the Markov property.</p>
+</div>
+</div>
+<p><strong>Example.</strong> The model of ion channels introduced in the last chapter in figure <span class="math inline">\(\ref{fig:ch10_ion_channel}\)</span> has three states: resting, closed, and open. A Markov chain for this model consists of a string of random variables that can take on states <span class="math inline">\(R, C, O\)</span>, which can be indexed by corresponding integers 1, 2, 3. For each time step <span class="math inline">\(t\)</span>, the random variable <span class="math inline">\(X(t)\)</span> has a probability vector with three elements: <span class="math inline">\(\vec P(t) = (P_1(t), P_2(t), P_3(t))\)</span>. Each element represents the probability of the corresponding state at the time, e.g.&nbsp;<span class="math inline">\(P_3(20)\)</span> is the probability of the ion channel being in state 3 (<span class="math inline">\(O\)</span>) at time 20.</p>
+<p>To generate a Markov chain with their associated probability distribution vectors, one needs to know the initial state or distribution. For example, if initially the ion channel model is in state <span class="math inline">\(C\)</span>, the probability of the ion channel being in state <span class="math inline">\(R\)</span> after 2 time step is different than if the initial state were <span class="math inline">\(R\)</span>. Given an initial probability distribution, we will calculate the probability distribution at the next time step, and then recursively generate the entire Markov chain.</p>
+<p>The law of total probability, which we encountered in section <span class="math inline">\(\ref{sec:math7}\)</span>, allows us to calculate the probability distribution of the Markov random variable at any time step, given its probability distribution at the previous time step. Here is the general formula for a Markov model with <span class="math inline">\(N\)</span> states:</p>
+<p><span class="math display">\[
+P(X(t+1) = i) = \sum_{j=1}^N P(X(t+1) = i | X(t) = j )P(X(t) = j) = \sum_{j=1}^N p_{ij}P(X(t) = j)
+\]</span></p>
+<p>Here <span class="math inline">\(P(X(t) = j)\)</span> is the probability of the random variable being in some state <span class="math inline">\(j\)</span> at time <span class="math inline">\(t\)</span>, <span class="math inline">\(p_{ij}\)</span> are the transition probabilities, and the sum adds up all the possible transitions into state <span class="math inline">\(i\)</span>. This equation can be written down for every state <span class="math inline">\(i\)</span> at the next time step <span class="math inline">\(t+1\)</span>, so we have <span class="math inline">\(N\)</span> equations, each one adding up <span class="math inline">\(N\)</span> terms. For a 2 by 2 model, this is not too daunting: <span class="math display">\[
+P(X(t+1) = Q) = p_{QQ}P(X(t) = Q) + p_{QR}P(X(t) = R) \]</span></p>
+<p><span class="math display">\[
+P(X(t+1) = R) = p_{RQ}P(X(t) = Q) + p_{RR}P(X(t) = R)
+\]</span></p>
+<p>This gives us a predictive formula for the probability distribution of a Markov random variable at the next time point, given its current probability distribution. Notice that all four of the transition probabilities are used in the system of equations, and that they are arranged in the same way that I defined them in the transition matrix. This leads to a great simplification using matrices and vectors.</p>
+</section>
+</section>
+<section id="matrix-multiplication" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="matrix-multiplication"><span class="header-section-number">12.2</span> matrix multiplication</h2>
+<p>Now is a good time to properly define what matrices are and how we can operate on them. We have already seen transition matrices, but just to make sure all of the terms are clear:</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <em>matrix</em> <span class="math inline">\(A\)</span> is a rectangular array of <em>elements</em> <span class="math inline">\(A_{ij}\)</span>, in which <span class="math inline">\(i\)</span> denotes the row number (index), counted from top to bottom, and <span class="math inline">\(j\)</span> denotes the column number (index), counted from left to right.</p>
+<p>The dimensions of a matrix are defined by the number of rows and columns, so an n by m matrix contains <span class="math inline">\(n\)</span> rows and <span class="math inline">\(m\)</span> columns.</p>
+</div>
+</div>
+<p>Elements of a matrix are not all created equal, they are divided into two types:</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The elements of a matrix <span class="math inline">\(A\)</span> which have the same row and column index, e.g.&nbsp;<span class="math inline">\(A_{33}\)</span> are called the <em>diagonal elements</em>. Those which do not lie on the diagonal are called the <em>off-diagonal</em> elements.</p>
+</div>
+</div>
+<p>For instance, in the 3 by 3 matrix below, the elements <span class="math inline">\(a, e, i\)</span> are the diagonal elements: <span class="math display">\[
+A = \left(\begin{array}{ccc}a &amp; b &amp; c \\d &amp; e &amp; f \\g &amp; h &amp; i\end{array}\right)
+\]</span></p>
+<p>Matrices can be added together if they have the same dimensions. Then matrix addition is defined simply as adding up corresponding elements, for instance the element in the second row and first column of matrix <span class="math inline">\(A\)</span> is added with the element in the second row and first column of matrix <span class="math inline">\(B\)</span> to give the element in the second row and first column of matrix <span class="math inline">\(C\)</span>. Recall from the previous chapter that rows in matrices are counted from top to bottom, while the columns are counted left to right.</p>
+<p>Matrices can also be multiplied, but this operation is trickier. For mathematical reasons, multiplication of matrices <span class="math inline">\(A \times B\)</span> does not mean multiplying corresponding elements. Instead, the definition seeks to capture the calculation of simultaneous equations, like the one in the previous section. Here is the definition of matrix multiplication, in words and in a formula :</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <em>product of matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></em> is defined to be a matrix <span class="math inline">\(C\)</span>, whose element <span class="math inline">\(c_{ij}\)</span> is the dot product of the i-th row of <span class="math inline">\(A\)</span> and the j-th column of <span class="math inline">\(B\)</span>:</p>
+<p><span class="math display">\[
+c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + ... + a_{iN}b_{Nj} = \sum_{k=1}^q a_{ik} b_{kj}
+\]</span></p>
+</div>
+</div>
+<p>This definition is possible only if the length of the rows of <span class="math inline">\(A\)</span> and the length of columns of <span class="math inline">\(B\)</span> are the same, since we cannot compute the dot product of two vectors of different lengths. Matrix multiplication is defined only if <span class="math inline">\(A\)</span> is <span class="math inline">\(n\)</span> by <span class="math inline">\(q\)</span> and <span class="math inline">\(B\)</span> is <span class="math inline">\(q\)</span> by <span class="math inline">\(m\)</span>, for any integers <span class="math inline">\(n\)</span>, <span class="math inline">\(q\)</span>, and <span class="math inline">\(m\)</span> and the resulting matrix <span class="math inline">\(C\)</span> is a matrix with <span class="math inline">\(n\)</span> rows and <span class="math inline">\(m\)</span> columns, as shown in figure <span class="math inline">\(\ref{fig:ch11_matrix_mult}\)</span>. In other words, <strong>the inner dimensions of matrices must match</strong> in order for matrix multiplication to be possible.</p>
+<p><strong>Example.</strong> Let us multiply two matrices to illustrate how it’s done. Here both matrices are 2 by 2, so their inner dimensions match and the resulting matrix is 2 by 2 as well: <span class="math display">\[
+\left(\begin{array}{cc}1 &amp; 3 \\ 6 &amp; 1\end{array}\right) \times \left(\begin{array}{cc}4 &amp; 1 \\5 &amp; -1 \end{array}\right) = \left(\begin{array}{cc}1 \times 4 + 3 \times 5 &amp; 1 \times 1 +3 \times (-1) \\ 6 \times 4+ 1 \times 5 &amp; 6 \times 1+1 \times (-1) \end{array}\right) = \]</span> <span class="math display">\[= \left(\begin{array}{cc}19 &amp; -2 \\ 29 &amp; 5 \end{array}\right)
+\]</span></p>
+<p>One important consequence of this definition is that matrix multiplication is not commutative. If you switch the order, e.g.&nbsp;<span class="math inline">\(B \times A\)</span>, the resulting multiplication requires dot products of the rows of <span class="math inline">\(B\)</span> by the columns of <span class="math inline">\(A\)</span>, and except in very special circumstances, they are not the same. In fact, unless <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> are the same integer, the product of <span class="math inline">\(B \times A\)</span> may not be defined at all.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch11/matrix_multiplication_tikz.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Illustration of the matrix product <span class="math inline">\(A \times B\)</span> = C. The dot product of the <span class="math inline">\(i\)</span>-th row of matrix <span class="math inline">\(A\)</span> and the <span class="math inline">\(j\)</span>-th column of matrix <span class="math inline">\(B\)</span> produces the element <span class="math inline">\(c_{ij}\)</span> in the <span class="math inline">\(i\)</span>-the row and the <span class="math inline">\(j\)</span>-th column of <span class="math inline">\(C\)</span> (“Matrix multiplication” based on figure by Alain Matthes via (http://texample.net) under CC-BY 2.5)</figcaption><p></p>
+</figure>
+</div>
+<p>We usually think of vectors as an ordered collection of numbers, but they can also be thought of as matrices, albeit very skinny ones. A <em>column vector</em> is a matrix that has only one column, and a <em>row vector</em> is a matrix with only one row. Even if a column vector and a row vector contain the same numbers in the same order, they are different matrices, because they function differently when multiplied. When multiplying an <span class="math inline">\(n\)</span> by <span class="math inline">\(m\)</span> matrix and a vector, one can multiply with the vector on the left, or on the right, depending on the type of vector: if it is a column vector, it must be on the right side of the matrix, while a row vector is multiplied on the left. Since the inner dimensions have to match, an <span class="math inline">\(n\)</span> by <span class="math inline">\(m\)</span> matrix can be multiplied by a <span class="math inline">\(m\)</span> by 1 column vector on the right, or by a 1 by <span class="math inline">\(n\)</span> row vector on the left.</p>
+<p>The rules of matrix multiplication may seem annoyingly baroque, but you will see the payoff in simplification of our Markov calculations.</p>
+<section id="exercises" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.2.1</span> Exercises</h3>
+<p>For the following pairs of matrices determine whether matrix multiplication is valid for <span class="math inline">\(A \times B\)</span> and <span class="math inline">\(B \times A\)</span>, and for the valid cases indicate the dimension of the resulting matrix.</p>
+<ol type="1">
+<li><p><span class="math display">\[
+A =  \left(\begin{array}{c}1 \\ 3 \end{array}\right);  \;  B = \left(\begin{array}{cc}4 &amp; 1 \\5 &amp; 1 \\6 &amp; 1\end{array}\right)
+\]</span></p></li>
+<li><p><span class="math display">\[
+A =   \left(\begin{array}{ccc}1 &amp; -2 &amp; 1 \\-2 &amp; 1 &amp; -2 \\1 &amp; -2 &amp; 1\end{array}\right);  \;  B = \left(\begin{array}{ccc}4 &amp; 5 &amp; 6 \\-6 &amp; -5 &amp; -4\end{array}\right)
+\]</span></p></li>
+<li><p><span class="math display">\[
+A =  \left(\begin{array}{cc}2 &amp; -1 \\-3 &amp; 1\end{array}\right)  ;  \;  B = \left(\begin{array}{cc}-1 &amp; -1 \\-3 &amp; -2\end{array}\right)
+\]</span></p></li>
+<li><p><span class="math display">\[ A =   \left(\begin{array}{ccc}1 &amp; -2 &amp; 1 \\-2 &amp; 1 &amp; -2 \\1 &amp; -2 &amp; 1\end{array}\right)  ;  \;  B =  \left(\begin{array}{cc}-1 &amp; -1 \\-3 &amp; -2\end{array}\right)
+\]</span></p></li>
+<li><p><span class="math display">\[
+A =   \left(\begin{array}{c} 1 \\ 4 \\ -2\end{array}\right) ;  \;  B =  \left(\begin{array}{ccc}-1 &amp; -1 &amp; 10  \\-3 &amp; -2 &amp; 0 \\ 0 &amp; -1 &amp; -7 \end{array}\right)
+\]</span></p></li>
+<li><p><span class="math display">\[
+A =  \left(\begin{array}{ccc} -1 &amp;  2 &amp; -9 \end{array}\right);  \;  B = \left(\begin{array}{cc}-4 &amp; -8 \\5 &amp; 2 \\-6 &amp; 10\end{array}\right)
+\]</span></p></li>
+</ol>
+</section>
+<section id="propagation-of-probability-vectors" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="propagation-of-probability-vectors"><span class="header-section-number">12.2.2</span> propagation of probability vectors</h3>
+<p>To calculate the probability of states in the future, we need to start with an initial probability distribution - let us call it <span class="math inline">\(P(0)\)</span>. To advance it by one time step, multiply it by the transition matrix, and obtain the probability distribution at <span class="math inline">\(P(1)\)</span>. To calculate the probability distribution after two time steps, multiply the distribution vector <span class="math inline">\(P(1)\)</span> by the transition matrix and obtain the vector <span class="math inline">\(P(2)\)</span>.</p>
+<p><strong>Example.</strong> Take the case of the cell cycle model where the cell is initially in the quiescent state, the vector propagation looks as follows: <span class="math display">\[ P(1) = M \times  P(0) = \left(\begin{array}{cc}0.95 &amp; 0.1 \\0.05 &amp; 0.9\end{array}\right)  \left(\begin{array}{c}1  \\ 0\end{array}\right) = \left(\begin{array}{c} 0.95 \\ 0.05\end{array}\right) \]</span> The Markov property allows us to calculate the probability distribution at the next step (<span class="math inline">\(t+1\)</span>) given the distribution at the current step (<span class="math inline">\(t\)</span>). This means to find the distribution of the cell cycle model after two time steps, we multiply the present distribution vector by the matrix <span class="math inline">\(M\)</span>: <span class="math display">\[ P(2) = M   \times  P(1) =  \left(\begin{array}{cc}0.95 &amp; 0.1 \\0.05 &amp; 0.9\end{array}\right)\left(\begin{array}{c} 0.95 \\ 0.05\end{array}\right) = \left(\begin{array}{c} 0.9075 \\ 0.0925\end{array}\right) \]</span></p>
+<p>One can calculate the probability distribution vectors for as many time steps as needed by repeatedly multiplying the current probability distribution vector by the transition matrix. The general formula for the probability distribution of a Markov chain at any time <span class="math inline">\(t\)</span> is: <span class="math display">\[
+P(t) = M \times P(t-1) = M^{t}  \times  P(0)
+\label{eq:Markov_chain}
+\]</span> which may be expressed in terms of repeated matrix multiplications (or matrix <span class="math inline">\(M\)</span> raised to the power <span class="math inline">\(t\)</span>) of the initial distribution vector <span class="math inline">\(P(0)\)</span>. This shows that in order to predict the distribution in the future, we need to know only two things: the initial distribution and the transition matrix of the Markov model.</p>
+</section>
+<section id="exercises-1" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">12.2.3</span> Exercises</h3>
+<p>Use the transition matrices you constructed for these models in the previous chapter to calculate the probability distribution for two time steps into the future.</p>
+<p><img src="ch10/AB_trans_diag.png" class="img-fluid" alt="Model 1"> <img src="ch10/CD_trans_diag.png" class="img-fluid" alt="Model 2"> <img src="ch10/EF_trans_diag.png" class="img-fluid" alt="Model 3"> <img src="ch10/GH_trans_diag.png" class="img-fluid" alt="Model 4"></p>
+<ol type="1">
+<li><p>Use the model in the transition diagram in figure <span class="math inline">\(\ref{fig:ch10_trans_diags}\)</span>a (Model 1). If initially the model is in state A, what is the probability it is in state B after 1 time step? after 2 time steps?</p></li>
+<li><p>Use the model in the transition diagram in figure <span class="math inline">\(\ref{fig:ch10_trans_diags}\)</span>b (Model 2). If initially the model is in state C, what is the probability it is in state D after 1 time step? after 2 time steps?</p></li>
+<li><p>Use the model in the transition diagram in figure <span class="math inline">\(\ref{fig:ch10_trans_diags}\)</span>c (Model 3). If initially the model is in state E, what is the probability it is in state F after 1 time step? after 2 time steps?</p></li>
+<li><p>Use the model in the transition diagram in figure <span class="math inline">\(\ref{fig:ch10_trans_diags}\)</span>d (Model 4). If initially the model is in state H, what is the probability it is in state G after 1 time step? after 2 time steps?</p></li>
+<li><p>An ion channel can be in either open or closed states. If it is open, then it has probability 0.1 of closing in 1 microsecond; if closed, it has probability 0.3 of opening in 1 microsecond. Suppose that initially 50% of ion channels are open and 50% are closed. What fraction is open after 1 microsecond? after 2 microseconds?</p></li>
+<li><p>An individual can be either susceptible or infected, the probability of infection for a susceptible person is 0.05 per day, and the probability an infected person becoming susceptible is 0.12 per day. Suppose that initially the population is 90% susceptible and 10% infected. What fraction is susceptible after 1 day? after 2 days?</p></li>
+<li><p>The genotype of an organism can be either normal (wild type) or mutant. Each generation, a wild type individual has probability 0.03 of having a mutant offspring, and a mutant has probability 0.005 of having a wild type offspring. Suppose that initially 0.9 of the population is wild type and 0.1 is mutant. What fraction of the population is wild type after 1 generation? After 2 generations?</p></li>
+<li><p>The nAChR ion channel can be in one of three states: resting (R), closed with Ach bound (C), and open (O) with transition probabilities (per one microsecond): 0.04 (from R to C), 0.07 (from C to R), 0.12 (from C to O) and 0.02 (from O to C); the other transition probabilities are 0. Suppose that initially 3/4 of ion channels are in R and 1/4 are in C. What fraction of the ion channels is open after 1 microsecond? After 2 microseconds?</p></li>
+<li><p>There are three kinds of vegetation in an ecosystem: grass, shrubs, and trees. Every year, 25% of grassland plots are converted to shrubs, 20% of shrub plots are converted to trees, 8% of trees are converted to shrubs, and 1% of trees are converted to grass; the other transition probabilities are 0. Suppose that initially the ecosystem is evenly split: 1/3 grass, 1/3 shrubs and 1/3 trees. What fraction of ecosystem is covered in shrubs after 1 year? after 2 years?</p></li>
+</ol>
+</section>
+</section>
+<section id="mutations-and-molecular-evolution" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="mutations-and-molecular-evolution"><span class="header-section-number">12.3</span> Mutations and molecular evolution</h2>
+<p>Think of a genetic sequence (either of nucleotides or amino acids) evolving over many generations. Once in a while, a mutation will change one of the letters in the sequence; the most common mutations, as we discussed in chapter 3, are substitutions. Although each position can contain multiple letters (4 for DNA, 20 for amino acids), let us simplify the question as follows: if we know the ancestral sequence, what fraction of the sequence is unchanged after a given number of generations? To answer this question we only need two states to describe each position in the sequence: ancestral (A) and mutant (M). The transition probability from A to M is the substitution mutation rate, which has units of mutations per nucleotide per generation. The transition probability from M to A is the rate of reversion to ancestral state, which is reasonably assumed to be less than the overall mutation rate, since for DNA there are three options for mutation from an ancestral letter, but only one option for reversion (only one ancestral letter). Thus, under the simple assumption that all substitution mutations are equally probable, we can postulate that for a mutation rate <span class="math inline">\(a\)</span>, the reversion rate is <span class="math inline">\(a/3\)</span>.</p>
+<p>Figure <span class="math inline">\(\ref{fig:bio11}\)</span> shows the evolution of probability vectors for this model for two different values of mutation rate <span class="math inline">\(a\)</span>. In both calculations initially 100% of the sequence is made up of ancestral letters, and then some fraction acquires mutations. Not surprisingly, if the mutation rate is greater, mutations are acquired faster and the fraction of ancestral letter declines faster: in the plot on the left (<span class="math inline">\(a=0.0001\)</span>) more than 90% of the sequence is indistinguishable from the ancestor after 1000 generations, and in the plot on the right (<span class="math inline">\(a=0.001\)</span>) less than half remains in the ancestral state after the same time passed. This model is a simplification of the famous Jukes-Cantor model of molecular evolution, which we will investigate in section <span class="math inline">\(\ref{sec:bio13}\)</span>, where we will use it to predict the time of divergence of two sequences from a common ancestor.</p>
+<section id="discussion-questions" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="discussion-questions"><span class="header-section-number">12.3.1</span> Discussion questions</h3>
+<p>These questions refer to the two-state Jukes-Cantor model presented above.</p>
+<div class="cell" data-layout-align="center" data-fig.asp="0.75">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="markov_evol_files/figure-html/bio11-1.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p></p><figcaption class="figure-caption">The fraction of the sequence identical to ancestral after a certain number of generations, for two different mutation rates: a) <span class="math inline">\(a=0.0001\)</span> for 5000 generations and b) <span class="math inline">\(a=0.001\)</span> for 1000 generations.</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="markov_evol_files/figure-html/bio11-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p></p><figcaption class="figure-caption">The fraction of the sequence identical to ancestral after a certain number of generations, for two different mutation rates: a) <span class="math inline">\(a=0.0001\)</span> for 5000 generations and b) <span class="math inline">\(a=0.001\)</span> for 1000 generations.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p>What does the Markov property mean for this model? How realistic do you think it is for real genetic sequences?</p></li>
+<li><p>What does this model assume about the relationship between different positions in the sequence? Is this a realistic assumption?</p></li>
+<li><p>Probability vectors plotted in figure <span class="math inline">\(\ref{fig:bio11}\)</span> are deterministic, that is, they can be predicted exactly from an initial probability vector. Does this mean they predict the exact ancestral fraction for any sequence (which obeys the assumptions of the model)? Explain what property of a sequence can have an effect of how well it will match the prediction</p></li>
+<li><p>What do you expect would happen if the calculation continued for many more generations? In other words, for a DNA sequence which is very far removed from its ancestor, what fraction of letters do you expect will match?</p></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./markov_model.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./tutorial11.html" class="pagination-link">
+        <span class="nav-page-text">Tutorial 11: simulations of Markov models</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
