@@ -47,12 +47,11 @@ The average or \index{mean!data}\index{data!mean} *mean* of a data set is the su
 The *mean* of a data set $X$, also known as the average or the arithmetic mean is usually indicated with a bar over the variable symbol, and defined as the sum of the values divided by the number of values:
 :::
 
-```{=tex}
 \begin{equation}
   \bar X  = \frac{1}{n} \sum_{i=1}^n x_i 
 \label{eq:ch3_mean_def}
 \end{equation}
-```
+
 The mean, unlike the median, is not the middle value of the data set, instead it represents the *center of mass* of the measured values \cite{whitlock_analysis_2008}. Another way of thinking of the mean is as a **weighted sum of the values in the data set**. The weights represent the frequency of occurrence of each numeric value in the data set, which we will further discuss in subsection 3.2.3.
 
 The mean is the most frequently used statistic, but it is not always interpreted correctly. Very commonly the mean is reported as the most representative value of a data set, but that is often misleading. Here are at least two situations in which the mean can be tricky: 1) data sets with a small number of discrete values; 2) data sets with outliers, or isolated numbers very far from the mean.
@@ -95,18 +94,16 @@ There is a problem with the naive approach: if we just add up all the difference
 The *variance* of a data set $X$ with $n$ values is the sum of the squared differences of each value of the variable from the mean, divided by $n-1$:
 :::
 
-```{=tex}
 \begin{equation}
  Var(X) = \frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2
 \end{equation}
-```
+
 The variance is a sum of square differences, so its dimension is the square of the dimensions of the measurements in $X$. In order to obtain a measure of the spread comparable to the values of $X$, we take the square root of variance and call it the \index{data!standard deviation} *standard deviation* of the data set $X$:
 
-```{=tex}
 \begin{equation}
 \sigma(X) = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2}
 \end{equation}
-```
+
 Just as the mean is a weighted average of all of the values in the data set, the variance is a weighted average of all the squared deviations of the data from the mean.
 
 ### Exercises:

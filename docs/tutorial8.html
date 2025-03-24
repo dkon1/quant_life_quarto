@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - Tutorial 4: Random number generators</title>
+<title>Quantifying Life - Tutorial 5: Linear regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -227,7 +227,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"sample(1:20,1)\nsample(1:20,1)","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-1","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":2,"code":"set.seed(101)\nsample(1:20,1)\nset.seed(101)\nsample(1:20,1)","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-2","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":3,"code":"sample_vec <- sample(1:20,10,replace=TRUE)\nprint(sample_vec)","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-3","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":4,"code":"print(table(sample_vec))\nbarplot(table(sample_vec))\nhist(sample_vec,breaks=0:21, col = 'gray')","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-4","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":5,"code":"rbinom(1,size =20,p=0.2)\nrbinom(1,size =20,p=0.6)","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-5","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":6,"code":"rbinom(10,20,0.2)\nrbinom(10,20,0.6)","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-6","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":7,"code":"n <- 20\np <- 0.2\ndbinom(4,n,p)","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-7","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":8,"code":"values.vec <- 0:n\nprob.dist <- dbinom(values.vec,n,p)\nbarplot(prob.dist, names.arg=values.vec, xlab='binomial RV',ylab='probability',\nmain='binom dist with n=20 and p=0.2')\np<-0.6\nprob.dist <- dbinom(values.vec,n,p)\nbarplot(prob.dist, names.arg=values.vec, xlab='binomial RV',ylab='probability',\nmain='binom dist with n=20 and p=0.6')","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-8","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":9,"code":"","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-9","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":10,"code":"","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-10","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":11,"code":"","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-11","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":12,"code":"","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-12","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"output":"true","warning":"true","autorun":"false","message":"true","results":"markup","comment":"","fig-cap":"","classes":"","out-height":"","fig-width":7,"context":"interactive","label":"unnamed-chunk-1","dpi":72,"fig-height":5,"read-only":"false","out-width":"700px"},"code":"heart_rates <- read.csv(file = \"https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_data_combined.csv\")\nplot(heart_rates$Rest2, heart_rates$Ex2, xlab = 'Resting heart rate (bpm)', ylab = 'Exercise heart rate (bpm)')\nfit_heart <- lm(Ex2 ~ Rest2, data = heart_rates)\nabline(fit_heart)"},{"id":2,"options":{"output":"true","warning":"true","autorun":"false","message":"true","results":"markup","comment":"","fig-cap":"","classes":"","out-height":"","fig-width":7,"context":"interactive","label":"unnamed-chunk-2","dpi":72,"fig-height":5,"read-only":"false","out-width":"700px"},"code":"options(digits = 3)\ncat(\"The intercept and slope of the best-fit line are: \")\nprint(fit_heart$coefficients)"},{"id":3,"options":{"output":"true","warning":"true","autorun":"false","message":"true","results":"markup","comment":"","fig-cap":"","classes":"","out-height":"","fig-width":7,"context":"interactive","label":"unnamed-chunk-3","dpi":72,"fig-height":5,"read-only":"false","out-width":"700px"},"code":"\nprint(fit_heart$coefficients[1])\n\nprint(fit_heart$coefficients[2])"},{"id":4,"options":{"output":"true","warning":"true","autorun":"false","message":"true","results":"markup","comment":"","fig-cap":"","classes":"","out-height":"","fig-width":7,"context":"interactive","label":"unnamed-chunk-4","dpi":72,"fig-height":5,"read-only":"false","out-width":"700px"},"code":"library(palmerpenguins)\npen_fit <- lm(body_mass_g ~ bill_length_mm, penguins)\nsummary(pen_fit)"},{"id":5,"options":{"output":"true","warning":"true","autorun":"false","message":"true","results":"markup","comment":"","fig-cap":"","classes":"","out-height":"","fig-width":7,"context":"interactive","label":"unnamed-chunk-5","dpi":72,"fig-height":5,"read-only":"false","out-width":"700px"},"code":"print(summary(pen_fit)$r.squared)"},{"id":6,"options":{"output":"true","warning":"true","autorun":"false","message":"true","results":"markup","comment":"","fig-cap":"","classes":"","out-height":"","fig-width":7,"context":"interactive","label":"unnamed-chunk-6","dpi":72,"fig-height":5,"read-only":"false","out-width":"700px"},"code":"# Overlay the best-fit line on the base R plot\nplot(penguins$bill_length_mm, penguins$body_mass_g, xlab='bill length (mm)', ylab='body mass (g)', main = \"Linear regression on penguin measurements\")\nabline(pen_fit)"},{"id":7,"options":{"output":"true","warning":"true","autorun":"false","message":"true","results":"markup","comment":"","fig-cap":"","classes":"","out-height":"","fig-width":7,"context":"interactive","label":"unnamed-chunk-7","dpi":72,"fig-height":5,"read-only":"false","out-width":"700px"},"code":"plot(pen_fit$model$bill_length_mm, pen_fit$residuals, xlab='bill length (mm)', ylab='residuals (g)')\nabline(0,0)"},{"id":8,"options":{"output":"true","warning":"true","autorun":"false","message":"true","results":"markup","comment":"","fig-cap":"","classes":"","out-height":"","fig-width":7,"context":"interactive","label":"unnamed-chunk-8","dpi":72,"fig-height":5,"read-only":"false","out-width":"700px"},"code":"plot(pen_fit)"},{"id":9,"options":{"output":"true","warning":"true","autorun":"false","message":"true","results":"markup","comment":"","fig-cap":"","classes":"","out-height":"","fig-width":7,"context":"interactive","label":"unnamed-chunk-9","dpi":72,"fig-height":5,"read-only":"false","out-width":"700px"},"code":""},{"id":10,"options":{"output":"true","warning":"true","autorun":"false","message":"true","results":"markup","comment":"","fig-cap":"","classes":"","out-height":"","fig-width":7,"context":"interactive","label":"unnamed-chunk-10","dpi":72,"fig-height":5,"read-only":"false","out-width":"700px"},"code":""},{"id":11,"options":{"output":"true","warning":"true","autorun":"false","message":"true","results":"markup","comment":"","fig-cap":"","classes":"","out-height":"","fig-width":7,"context":"interactive","label":"unnamed-chunk-11","dpi":72,"fig-height":5,"read-only":"false","out-width":"700px"},"code":""},{"id":12,"options":{"output":"true","warning":"true","autorun":"false","message":"true","results":"markup","comment":"","fig-cap":"","classes":"","out-height":"","fig-width":7,"context":"interactive","label":"unnamed-chunk-12","dpi":72,"fig-height":5,"read-only":"false","out-width":"700px"},"code":""}];
 
 </script>
 <script type="module">
@@ -946,7 +946,7 @@ globalThis.qwebrExecuteCode = async function (
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Quantifying Life - Tutorial 4: Random number generators">
+<meta name="twitter:title" content="Quantifying Life - Tutorial 5: Linear regression">
 <meta name="twitter:description" content="In this tutorial you will learn to:">
 <meta name="twitter:card" content="summary">
 </head>
@@ -958,7 +958,7 @@ globalThis.qwebrExecuteCode = async function (
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Tutorial 4: Random number generators</h1>
+      <h1 class="quarto-secondary-nav-title">Tutorial 5: Linear regression</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -1081,7 +1081,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link active">Tutorial 4: Random number generators</a>
+  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link active">Tutorial 5: Linear regression</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1149,12 +1149,10 @@ globalThis.qwebrExecuteCode = async function (
    
   <ul>
   <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
-  <li><a href="#random-number-generators" id="toc-random-number-generators" class="nav-link" data-scroll-target="#random-number-generators">Random number generators</a>
-  <ul class="collapse">
-  <li><a href="#uniform-discrete-random-numbers" id="toc-uniform-discrete-random-numbers" class="nav-link" data-scroll-target="#uniform-discrete-random-numbers">uniform discrete random numbers</a></li>
-  <li><a href="#binomial-random-number-generator" id="toc-binomial-random-number-generator" class="nav-link" data-scroll-target="#binomial-random-number-generator">binomial random number generator</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
-  </ul></li>
+  <li><a href="#best-fit-parameters" id="toc-best-fit-parameters" class="nav-link" data-scroll-target="#best-fit-parameters">Best-fit parameters</a></li>
+  <li><a href="#interpreting-the-output-of-linear-regression" id="toc-interpreting-the-output-of-linear-regression" class="nav-link" data-scroll-target="#interpreting-the-output-of-linear-regression">interpreting the output of linear regression</a></li>
+  <li><a href="#plotting-the-residuals" id="toc-plotting-the-residuals" class="nav-link" data-scroll-target="#plotting-the-residuals">plotting the residuals</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises:</a></li>
   </ul>
 </nav>
     </div>
@@ -1337,7 +1335,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Tutorial 4: Random number generators</h1>
+<h1 class="title d-none d-lg-block">Tutorial 5: Linear regression</h1>
 </div>
 
 
@@ -1356,94 +1354,79 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h3 class="anchored" data-anchor-id="learning-goals">Learning goals</h3>
 <p>In this tutorial you will learn to:</p>
 <ul>
-<li>use uniform random number generator</li>
-<li>use binomial random number generator</li>
-<li>calculate probabilities from binomial distribution</li>
-<li>plot probability distribution functions</li>
+<li>Make scatterplots with linear regression lines</li>
+<li>Interpret the output of linear regression</li>
+<li>Examine the residuals of linear regression</li>
 </ul>
 </section>
-<section id="random-number-generators" class="level2">
-<h2 class="anchored" data-anchor-id="random-number-generators">Random number generators</h2>
-<p>Simulating randomness with a computer is not a simple task. Randomness is contrary to the nature of a computer, which is designed to perform operations exactly. However, there are algorithms that produce a string of numbers that are for all intents and purposes random: there is no obvious connection between one number and the next, and the values don’t form any pattern. Such algorithms are called random number generators, although to be more precise they produce pseudo-random numbers. The reason is that they actually produce a perfectly predictable string of numbers, which eventually repeats itself, but with a humongous period. One can even produce the same random number, or the same string of random numbers, by specifying the seed for the random number generator. This is very useful if one wants to reproduce the results of a code that uses random numbers.</p>
-<section id="uniform-discrete-random-numbers" class="level3">
-<h3 class="anchored" data-anchor-id="uniform-discrete-random-numbers">uniform discrete random numbers</h3>
-<p>Of course, random variable are not all the same - they have different distributions. R has a number of functions for producing random numbers from different distributions. To produce random numbers from a set of values with a uniform probability distribution, use the function <code>sample()</code>. The following command produces a random integer between 1 and 20. Repeating the same command produces a new random number, which (most likely) is not the same as the first. The first input argument (1:20) is the vector of values from which to draw the random number, and the second is the size of the sample.</p>
+<section id="best-fit-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="best-fit-parameters">Best-fit parameters</h3>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Linear regression
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Linear regression</strong> is a method for finding the best-fit line to a two-variable data set. One of the variables is called the <em>explanatory</em> (independent) variable and the other is called the <em>response</em> (dependent) variable. The best-fit line is defined as the line whose graph passes the closest to the data points as measured by the <em>sum of squared differences</em> between the predicted and observed response variable values.</p>
+</div>
+</div>
+<p>Here is an example of a linear regression performed and the line plotted over the scatterplot. The R function for linear regression <code>lm()</code> has two required inputs: an <em>expression</em> in the form of <code>Response ~ Explanatory</code> and the name of the data frame (if the variables are part of one). The script below uses the data set of heart rates from students from the BIOS 20151 classes, generates a plot of the data, calls <code>lm()</code> and assigns the output to a variable <code>fit_heart</code> and then plots the resulting best-fit line using the function <code>abline()</code>:</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>If the random seed is set to some value (e.g.&nbsp;100 below), then the random number generator will produce the same “random” number if this command is repeated:</p>
+<p>The function <code>lm()</code> calculated the slope and intercept of the best-fit line. These values are bundled into the output of the function, which we assigned to <code>fit_heart</code>. This script prints them out:</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>To generate 10 randomly chosen integers between 1 and 20, see the following two commands, which differ in setting the value of the option replace. The first command doesn’t specify the value for replace, and by default it is set to FALSE, so the command draws numbers without replacing them (meaning that all the numbers in the sample are unique). In the second command replace is set to TRUE, so the numbers that were selected can be chosen again. In both cases, repeatedly running the command results in a different set of randomly chosen numbers, which you should investigate by copying the commands into R and running them yourself.</p>
+<p>As you can see, both parameters are part of the vector variable coefficients. If needed, they can be accessed separately by using the indexing notation:</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p><code>table()</code> is a very useful function for tallying how many values of each type are in a vector. It essentially provides a kind of histogram, with each distinct value in the data set a distinct bin, so it may be used together with <code>barplot()</code> to plot a detailed histogram:</p>
+</section>
+<section id="interpreting-the-output-of-linear-regression" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-the-output-of-linear-regression">interpreting the output of linear regression</h3>
+<p>We have seen how to obtain the slope and the intercept, but there’s a lot more in the linear regression output! If you run these scripts in RStudio you will see the object <code>fit_heart</code> in the <code>Environment</code> window (by default, top right). If you double click on it, you’ll see that it’s a <em>list object</em> that contains many variables (like a data frame, except messier because the different variables don’t have the same length). Let us use the data set from the <code>palmerpenguins</code> package that we saw in Tutorial 3 and run linear regression on <code>body_mass_g</code> as a function of <code>bill_lenth_mm</code>:</p>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="binomial-random-number-generator" class="level3">
-<h3 class="anchored" data-anchor-id="binomial-random-number-generator">binomial random number generator</h3>
-<p>If you need to generate random numbers from the binomial distribution, R has you covered. The command is <code>rbinom(s, n, p)</code> and it requires three input values: s is the number of observations (sample size), n is the number of binary trials in one observation, and p is the probability of success in one binary trial. The following two commands generate a single random number, the number of successes out of 20 trials with probability of success 0.2 and 0.6:</p>
+<p>As you see, the function <code>summary()</code> gives us the key information, including the values of the parameters (plus some statistics to indicated the uncertainly around those values) and the <code>R-squared</code>, also known as the <em>coefficient of determination</em>. While the slope and the intercept tell which line provides the best fit, they tell us nothing about how good the fit is.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Coefficient of determination (R-squared)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>coefficient of determination</strong> or <span class="math inline">\(R^2\)</span> of a linear regression is a measure of the goodness of fit of the line to the data. Numerically, it represents the fraction of variance of the response variable that is explained by the model.</p>
+</div>
+</div>
+<p>The value of R-squared is not accessible directly in <code>pen_fit</code>, but it is printed out in the summary under the name of <code>Multiple R-squared</code>, together with <code>Adjusted R-squared</code>, which is a slightly modified version. To print out the coefficient of determination by itself, we have to use <code>summary()</code> with variable name <code>r.squared</code>:</p>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>To generate a sample of ten random numbers, change the first input parameter to 10. As you’d expect, the samples of 10 observations are (most likely) noticeably different: when the probability p is 0.2, the number of successes tend to be less than 6, while for probability 0.6, the numbers are usually greater than 10.</p>
+<p>As above, we can plot the best-fit line over a scatterplot of the data by using <code>abline()</code> with <code>pen_fit</code> as an input:</p>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Notice that the range of possible values of this random variable is between 0 and 20, but unlike the uniform random numbers produced with the <code>sample()</code> function, the probabilities of obtaining different numbers are different and depend on the parameter p.&nbsp;Calculation and plotting of the binomial distribution function can be accomplishes with the command <code>dbinom(x,n,p)</code>, where <span class="math inline">\(x\)</span> is the value of the random variable (between 0 and n), <span class="math inline">\(n\)</span> is the number of trials, and p is the probability of success. For instance, the following script calculate the probability of 4 successes out of 20 trials with probability <span class="math inline">\(p=0.2\)</span>:</p>
+</section>
+<section id="plotting-the-residuals" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-the-residuals">plotting the residuals</h3>
+<p>After performing linear regression it is essential to check that the <em>residuals</em> obey the assumptions of linear regression. The residuals are the difference between the predicted response variable values and the actual values of the response variable, in this case the penguin body mass. The residuals are contained in the object <code>pen_fit</code> as a variable named <code>residuals</code>. Residuals are the leftover errors of the response variable, so one way to visualize them is to plot them against the explanatory variable. The values of the explanatory variables which were used for the linear regression are also stored in the object <code>pen_fit</code> within the variables <code>model</code>, which contains the two variables passed to <code>lm()</code>:</p>
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The script below calculates the probabilities of all of the possible values of the random variable by substituting the vector of these values (e.g.&nbsp;0 to 20) instead of the number 1, generating the probability distribution vector. This vector is plotted vs.&nbsp;the values of the random variable using the <code>barplot()</code> function, producing an aesthetically pleasing plot of the binomial distribution. The script plots two binomial probability distributions, both with <span class="math inline">\(n=20\)</span>, the first with <span class="math inline">\(p=0.2\)</span> and the second with <span class="math inline">\(p=0.6\)</span>. To add values to the x axis one needs the option <code>names.arg</code> assigned the vector of values, the axis labels in <code>barplot</code> use the same options we saw before (<code>xlab</code> and <code>ylab</code>), and the main option produces a title above each plot.</p>
+<p>NOTE: I used the values of bill length from the <code>pen_fit</code> object because several of the values in the original data set had missing values (<code>NA</code>) and were discarded by <code>lm()</code>, so there are no corresponding residuals for those values and the <code>plot()</code> function would have failed if I had used the <code>penguins$bill_length_mm</code> instead as the x-variable.</p>
+<p>By visual inspection it seems that the residuals satisfy the assumptions of being independent of measurement (shapeless scatterplot), are centered at zero, and look roughly normally distributed, although that can be checked more carefully using other tools.</p>
+<p>For an example of these fancy tools, you can use <code>plot()</code> with the output of a linear regression, which will produce several diagnostic plots to make sure the residuals obey the assumptions of normally distributed with equal variance:</p>
 <div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="exercises" class="level3">
-<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
-<p>The following exercises ask you to perform computational tasks using R. Type your code in the box below and try to do the task on your own before clicking on the Answer or Hint boxes to expand them.</p>
+<h3 class="anchored" data-anchor-id="exercises">Exercises:</h3>
 <ol type="1">
-<li>Use the <code>sample()</code> function to generate a sample of 10 random numbers out of 20 integers (from 1 to 20) without replacement, assign it to variable <code>sample_vec</code> and print it out.</li>
+<li>Calculate the mean and standard deviation of the residuals from the previously calculated linear regression output <code>pen_fit</code> and use <code>print()</code> to report them:</li>
 </ol>
 <div id="qwebr-insertion-location-9"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>First line should contain assignment <code>&lt;-</code>; second line should have <code>print(sample_vec)</code></p>
-</div>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Use the <code>sample()</code> function to generate a sample of 20 random numbers of out 20 integers (from 1 to 20) with replacement, assign it to variable <code>sample_vec</code> and print it out.</li>
-</ol>
-<div id="qwebr-insertion-location-10"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Add <code>replace=TRUE</code> to the <code>sample()</code> function call; second line should have <code>print(sample_vec)</code></p>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Use the <code>rbinom()</code> function to generate a sample of 20 random numbers of successes/wins out of 12 trials with probability of success in one trial of 0.4, assign it to variable <code>binom_vec</code> and print it out.</li>
-</ol>
-<div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -1457,14 +1440,14 @@ Hint
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Remember the order of inputs into the function <code>rbinom()</code>: the number of random values is the number of batches of trials (first input), the number of trials is the size of each batch (second input). The second line should have print(binom_vec).</p>
+<p>Use functions <code>mean()</code> and <code>sd()</code>; specify the dataframe as well as variable, e.g.&nbsp;<code>df$var</code>; put these function inside <code>print()</code>.</p>
 </div>
 </div>
 </div>
-<ol start="4" type="1">
-<li>Use the <code>rbinom()</code> function to generate a sample of 12 random numbers of successes/wins out of 20 trials, with probability of success in one trial of 0.4, assign it to variable <code>binom_vec</code> and print it out.</li>
+<ol start="2" type="1">
+<li>Calculate and print the fraction of variance explained by the linear regression by dividing the variance of the predicted values of the previously calculate linear regression object <code>pen_fit</code> (in the variable <code>fitted.values</code>) by the variance of the observed values (in the variable <code>model$XXX</code> where XXX stands for the name of the response variable).</li>
 </ol>
-<div id="qwebr-insertion-location-12"></div>
+<div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -1478,13 +1461,54 @@ Hint
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Remember the order of inputs into the function <code>rbinom()</code>: the number of random values is the number of batches of trials (first input), the number of trials is the size of each batch (second input). The second line should have print(binom_vec).</p>
+<p>Calculate the ratio of variances inside the print() function; make sure that all the parentheses are matched correctly</p>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Perform linear regression on the penguin data set with the <code>bill_depth_mm</code> as the explanatory variable and <code>body_mass_g</code> as the response variable and assign it to variable <code>fit_pen</code>. Print out the coefficient of determination of this linear regression.</li>
+</ol>
+<div id="qwebr-insertion-location-11"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Need to first assing the output of regression, e.g.&nbsp;<code>fit_pen &lt;- lm( ... )</code>; follow the example above of printing out the R-squared.</p>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Plot the residuals from the linear regression as a function of the independent variable as contained in the <code>fit_pen</code> object within the variable <code>model$XXX</code> where XXX is the name of the explanatory variable.</li>
+</ol>
+<div id="qwebr-insertion-location-12"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Follow the example above of plotting residuals using the output of lm, e.g <code>fit$residuals</code></p>
 </div>
 </div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

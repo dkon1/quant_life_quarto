@@ -88,18 +88,16 @@ Intuitively, this means that if two variable tend to deviate in the same directi
 
 It should come as no surprise that the slope of the linear regression depends on the covariance, that is, the degree to which the two variables deviate together from their means. If the covariance is positive, then for larger values of $x$ the corresponding $y$ values tend to be larger, which means the slope of the line is positive. Conversely, if the covariance is negative, so is the slope of the line. And if the two variables are independent, the slope has to be close to zero. The actual formula for the \index{linear regression!slope}\index{slope!linear regression}slope of the linear regression is \cite{whitlock_analysis_2008}:
 
-```{=tex}
 \begin{equation}
 m = \frac{Cov(X,Y)}{Var(X)}
 \end{equation}
-```
+
 I will not provide a proof that this slope generates the minimal sum of squared errors, but that is indeed the case. To find the intercept of the linear regression, we make use of one other property of the best fit line: in order for it to minimize the SSE, it must pass through the point $(\bar X, \bar Y)$. Again, I will not prove this, but note that the point of the two mean values is the central point of the "cloud" of points in the scatterplot, and if the line missed that central point, the deviations will be larger. Assuming that is the case, we have the following equation for the line: $\bar Y = a\bar X + b$, which we can solve for the \index{linear regression!$y$-intercept} \index{y-intercept!linear regression} intercept $b$:
 
-```{=tex}
 \begin{equation}
 b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}
 \end{equation}
-```
+
 ### Execises
 
 | B($m^2/kg$) | H($^\circ C /min)$ |
@@ -148,17 +146,15 @@ If the two variables are identical, $X=Y$, then the covariance becomes its varia
 
 This gives a connection between correlation and slope of linear regression:
 
-```{=tex}
 \begin{equation}
 a = r \frac{\sigma_Y}{\sigma_X}
 \label{eq:slope_corr}
 \end{equation}
-```
+
 Whenever linear regression is reported, one always sees the values of correlation $r$ and squared correlation $r^2$ displayed. The reason for this is that $r^2$ has a very clear meaning of the **the fraction of the variance of the dependent variable** $Y$ explained by the linear regression $Y=aX+b$. Let us unpack what this means.
 
 According to the stated assumptions of linear regression, the response variable $Y$ is assumed to be linear relationship with the explanatory variable $X$, but with independent additive noise (also normally distributed, but it doesn't play a role for this argument). Linear regression captures the linear relationship, and the remaining error (residuals) represent the noise. Thus, each value of $Y$ can be written as $Y = R + \hat Y$ where $R$ is the residual (noise) and the value predicted by the linear regression is $\hat Y =aX+b$. The assumption that $R$ is independent of $Y$ means that $Var(Y) = Var (\hat Y) + Var (R)$ because variance is additive for independent random variables, as we discussed in section \ref{sec:math4}. By the same reasoning $Cov(X,\hat Y + R) = Cov(X,\hat Y) + Cov(X,R)$. These two covariances can be simplified further: $Cov(X,R) = 0$ because $R$ is independent random noise. $X$ and the predicted $\hat Y$ are perfectly correlated, so $Cov(X,\hat Y) = Cov(X,mX+b) = Var(X) = Var(\hat Y)$. This leads to the derivation of the meaning of $r^2$:
 
-```{=tex}
 \begin{equation}
 \begin{aligned}
   r^2 = \frac{Cov(X,Y)^2}{Var(X) Var(Y)} &=   \frac{(Cov(X,\hat Y) + Cov(X,R) )^2}{Var(X) Var(Y)}   = \\
@@ -166,7 +162,7 @@ According to the stated assumptions of linear regression, the response variable 
   \end{aligned}
 \label{eq:ch8_frac_var}
 \end{equation}
-```
+
 One should be cautious when interpreting results of a linear regression. First, just because there is no linear relationship does not mean that there is no other relationship. Figure \ref{fig:ch8_corr_examples} shows some examples of scatterplots and their corresponding correlation coefficients. What it shows is that while a formless blob of a scatterplot will certainly have zero correlation, so will other scatterplots in which there is a definite relationship (e.g. a circle, or a X-shape). The point is that **correlation is always a measure of the linear relationship between variables.**
 
 The second caution is well known, as that is the danger of equating correlation with a causal relationship. There are numerous examples of scientists misinterpreting a coincidental correlation as meaningful, or deeming two variables that have a common source as causing one another. For example, one can look at the increase in automobile ownership in the last century and the concurrent improvement in longevity and conclude that automobiles are good for human health. It is well-documented, however, that a sedentary lifestyle and automobile exhaust do not make a person healthy. Instead, increased prosperity has increased both the purchasing power of individuals and enabled advances in medicine that have increase our lifespans. To summarize, one must be careful when interpreting correlation: a weak one does not mean there is no relationship, and a strong one does not mean that one variable causes the changes in the other.

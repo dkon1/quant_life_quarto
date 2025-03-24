@@ -262,7 +262,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">Tutorial 4: Random number generators</a>
+  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">Tutorial 5: Linear regression</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -409,10 +409,10 @@ Definition
 <p>The <em>mean</em> of a data set <span class="math inline">\(X\)</span>, also known as the average or the arithmetic mean is usually indicated with a bar over the variable symbol, and defined as the sum of the values divided by the number of values:</p>
 </div>
 </div>
-<span class="math display">\[\begin{equation}
+<p><span class="math display">\[\begin{equation}
   \bar X  = \frac{1}{n} \sum_{i=1}^n x_i
 \label{eq:ch3_mean_def}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>The mean, unlike the median, is not the middle value of the data set, instead it represents the <em>center of mass</em> of the measured values . Another way of thinking of the mean is as a <strong>weighted sum of the values in the data set</strong>. The weights represent the frequency of occurrence of each numeric value in the data set, which we will further discuss in subsection 3.2.3.</p>
 <p>The mean is the most frequently used statistic, but it is not always interpreted correctly. Very commonly the mean is reported as the most representative value of a data set, but that is often misleading. Here are at least two situations in which the mean can be tricky: 1) data sets with a small number of discrete values; 2) data sets with outliers, or isolated numbers very far from the mean.</p>
 <p><strong>Examples of misleading means.</strong> Mean quantities for data sets with a few quantities are not the typical value, such as in the number of children born in a year per individual, also known as the birth rate. The birth rate per year in 2013 for both the United States and Russia is 1.3% per person, but you will have to look for a long time to find any individual who gave birth to 1.3% of a child. While this point may be obvious, it is often overlooked when interpreting mean values.</p>
@@ -450,13 +450,13 @@ Definition
 <p>The <em>variance</em> of a data set <span class="math inline">\(X\)</span> with <span class="math inline">\(n\)</span> values is the sum of the squared differences of each value of the variable from the mean, divided by <span class="math inline">\(n-1\)</span>:</p>
 </div>
 </div>
-<span class="math display">\[\begin{equation}
+<p><span class="math display">\[\begin{equation}
 Var(X) = \frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>The variance is a sum of square differences, so its dimension is the square of the dimensions of the measurements in <span class="math inline">\(X\)</span>. In order to obtain a measure of the spread comparable to the values of <span class="math inline">\(X\)</span>, we take the square root of variance and call it the <em>standard deviation</em> of the data set <span class="math inline">\(X\)</span>:</p>
-<span class="math display">\[\begin{equation}
+<p><span class="math display">\[\begin{equation}
 \sigma(X) = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2}
-\end{equation}\]</span>
+\end{equation}\]</span></p>
 <p>Just as the mean is a weighted average of all of the values in the data set, the variance is a weighted average of all the squared deviations of the data from the mean.</p>
 </section>
 <section id="exercises-1" class="level3" data-number="3.2.4">

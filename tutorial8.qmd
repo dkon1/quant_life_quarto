@@ -1,117 +1,102 @@
-# Tutorial 4: Random number generators {.unnumbered}
+# Tutorial 5: Linear regression {.unnumbered}
 
 ### Learning goals
 
 In this tutorial you will learn to:
 
--   use uniform random number generator
--   use binomial random number generator
--   calculate probabilities from binomial distribution
--   plot probability distribution functions
+-   Make scatterplots with linear regression lines
+-   Interpret the output of linear regression
+-   Examine the residuals of linear regression
 
-## Random number generators
+### Best-fit parameters
 
-Simulating randomness with a computer is not a simple task. Randomness is contrary to the nature of a computer, which is designed to perform operations exactly. However, there are algorithms that produce a string of numbers that are for all intents and purposes random: there is no obvious connection between one number and the next, and the values don't form any pattern. Such algorithms are called random number generators, although to be more precise they produce pseudo-random numbers. The reason is that they actually produce a perfectly predictable string of numbers, which eventually repeats itself, but with a humongous period. One can even produce the same random number, or the same string of random numbers, by specifying the seed for the random number generator. This is very useful if one wants to reproduce the results of a code that uses random numbers.
+::: callout-tip
+## Linear regression
 
-### uniform discrete random numbers
-
-Of course, random variable are not all the same - they have different distributions. R has a number of functions for producing random numbers from different distributions. To produce random numbers from a set of values with a uniform probability distribution, use the function `sample()`. The following command produces a random integer between 1 and 20. Repeating the same command produces a new random number, which (most likely) is not the same as the first. The first input argument (1:20) is the vector of values from which to draw the random number, and the second is the size of the sample.
-
-```{webr-r}
-sample(1:20,1)
-sample(1:20,1)
-```
-
-If the random seed is set to some value (e.g. 100 below), then the random number generator will produce the same "random" number if this command is repeated:
-
-```{webr-r}
-set.seed(101)
-sample(1:20,1)
-set.seed(101)
-sample(1:20,1)
-```
-
-To generate 10 randomly chosen integers between 1 and 20, see the following two commands, which differ in setting the value of the option replace. The first command doesn't specify the value for replace, and by default it is set to FALSE, so the command draws numbers without replacing them (meaning that all the numbers in the sample are unique). In the second command replace is set to TRUE, so the numbers that were selected can be chosen again. In both cases, repeatedly running the command results in a different set of randomly chosen numbers, which you should investigate by copying the commands into R and running them yourself.
-
-```{webr-r}
-sample_vec <- sample(1:20,10,replace=TRUE)
-print(sample_vec)
-```
-
-`table()` is a very useful function for tallying how many values of each type are in a vector. It essentially provides a kind of histogram, with each distinct value in the data set a distinct bin, so it may be used together with `barplot()` to plot a detailed histogram:
-
-```{webr-r}
-print(table(sample_vec))
-barplot(table(sample_vec))
-hist(sample_vec,breaks=0:21, col = 'gray')
-```
-
-### binomial random number generator
-
-If you need to generate random numbers from the binomial distribution, R has you covered. The command is `rbinom(s, n, p)` and it requires three input values: s is the number of observations (sample size), n is the number of binary trials in one observation, and p is the probability of success in one binary trial. The following two commands generate a single random number, the number of successes out of 20 trials with probability of success 0.2 and 0.6:
-
-```{webr-r}
-rbinom(1,size =20,p=0.2)
-rbinom(1,size =20,p=0.6)
-```
-
-To generate a sample of ten random numbers, change the first input parameter to 10. As you'd expect, the samples of 10 observations are (most likely) noticeably different: when the probability p is 0.2, the number of successes tend to be less than 6, while for probability 0.6, the numbers are usually greater than 10.
-
-```{webr-r}
-rbinom(10,20,0.2)
-rbinom(10,20,0.6)
-```
-
-Notice that the range of possible values of this random variable is between 0 and 20, but unlike the uniform random numbers produced with the `sample()` function, the probabilities of obtaining different numbers are different and depend on the parameter p. Calculation and plotting of the binomial distribution function can be accomplishes with the command `dbinom(x,n,p)`, where $x$ is the value of the random variable (between 0 and n), $n$ is the number of trials, and p is the probability of success. For instance, the following script calculate the probability of 4 successes out of 20 trials with probability $p=0.2$:
-
-```{webr-r}
-n <- 20
-p <- 0.2
-dbinom(4,n,p)
-```
-
-The script below calculates the probabilities of all of the possible values of the random variable by substituting the vector of these values (e.g. 0 to 20) instead of the number 1, generating the probability distribution vector. This vector is plotted vs. the values of the random variable using the `barplot()` function, producing an aesthetically pleasing plot of the binomial distribution. The script plots two binomial probability distributions, both with $n=20$, the first with $p=0.2$ and the second with $p=0.6$. To add values to the x axis one needs the option `names.arg` assigned the vector of values, the axis labels in `barplot` use the same options we saw before (`xlab` and `ylab`), and the main option produces a title above each plot.
-
-```{webr-r}
-values.vec <- 0:n
-prob.dist <- dbinom(values.vec,n,p)
-barplot(prob.dist, names.arg=values.vec, xlab='binomial RV',ylab='probability',
-main='binom dist with n=20 and p=0.2')
-p<-0.6
-prob.dist <- dbinom(values.vec,n,p)
-barplot(prob.dist, names.arg=values.vec, xlab='binomial RV',ylab='probability',
-main='binom dist with n=20 and p=0.6')
-```
-
-### Exercises
-
-The following exercises ask you to perform computational tasks using R. Type your code in the box below and try to do the task on your own before clicking on the Answer or Hint boxes to expand them.
-
-1.  Use the `sample()` function to generate a sample of 10 random numbers out of 20 integers (from 1 to 20) without replacement, assign it to variable `sample_vec` and print it out.
-
-```{webr-r}
-
-```
-
-::: {.callout-caution collapse="true"}
-## Hint
-
-First line should contain assignment `<-`; second line should have `print(sample_vec)`
+**Linear regression** is a method for finding the best-fit line to a two-variable data set. One of the variables is called the *explanatory* (independent) variable and the other is called the *response* (dependent) variable. The best-fit line is defined as the line whose graph passes the closest to the data points as measured by the *sum of squared differences* between the predicted and observed response variable values.
 :::
 
-2.  Use the `sample()` function to generate a sample of 20 random numbers of out 20 integers (from 1 to 20) with replacement, assign it to variable `sample_vec` and print it out.
+Here is an example of a linear regression performed and the line plotted over the scatterplot. The R function for linear regression `lm()` has two required inputs: an *expression* in the form of `Response ~ Explanatory` and the name of the data frame (if the variables are part of one). The script below uses the data set of heart rates from students from the BIOS 20151 classes, generates a plot of the data, calls `lm()` and assigns the output to a variable `fit_heart` and then plots the resulting best-fit line using the function `abline()`:
+
+```{webr-r}
+heart_rates <- read.csv(file = "https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_data_combined.csv")
+plot(heart_rates$Rest2, heart_rates$Ex2, xlab = 'Resting heart rate (bpm)', ylab = 'Exercise heart rate (bpm)')
+fit_heart <- lm(Ex2 ~ Rest2, data = heart_rates)
+abline(fit_heart)
+```
+
+The function `lm()` calculated the slope and intercept of the best-fit line. These values are bundled into the output of the function, which we assigned to `fit_heart`. This script prints them out:
+
+```{webr-r}
+options(digits = 3)
+cat("The intercept and slope of the best-fit line are: ")
+print(fit_heart$coefficients)
+```
+
+As you can see, both parameters are part of the vector variable coefficients. If needed, they can be accessed separately by using the indexing notation:
 
 ```{webr-r}
 
+print(fit_heart$coefficients[1])
+
+print(fit_heart$coefficients[2])
+
 ```
 
-::: {.callout-caution collapse="true"}
-## Hint
+### interpreting the output of linear regression
 
-Add `replace=TRUE` to the `sample()` function call; second line should have `print(sample_vec)`
+We have seen how to obtain the slope and the intercept, but there's a lot more in the linear regression output! If you run these scripts in RStudio you will see the object `fit_heart` in the `Environment` window (by default, top right). If you double click on it, you'll see that it's a *list object* that contains many variables (like a data frame, except messier because the different variables don't have the same length). Let us use the data set from the `palmerpenguins` package that we saw in Tutorial 3 and run linear regression on `body_mass_g` as a function of `bill_lenth_mm`:
+
+```{webr-r}
+library(palmerpenguins)
+pen_fit <- lm(body_mass_g ~ bill_length_mm, penguins)
+summary(pen_fit)
+```
+
+As you see, the function `summary()` gives us the key information, including the values of the parameters (plus some statistics to indicated the uncertainly around those values) and the `R-squared`, also known as the *coefficient of determination*. While the slope and the intercept tell which line provides the best fit, they tell us nothing about how good the fit is.
+
+::: callout-tip
+## Coefficient of determination (R-squared)
+
+The **coefficient of determination** or $R^2$ of a linear regression is a measure of the goodness of fit of the line to the data. Numerically, it represents the fraction of variance of the response variable that is explained by the model.
 :::
 
-3.  Use the `rbinom()` function to generate a sample of 20 random numbers of successes/wins out of 12 trials with probability of success in one trial of 0.4, assign it to variable `binom_vec` and print it out.
+The value of R-squared is not accessible directly in `pen_fit`, but it is printed out in the summary under the name of `Multiple R-squared`, together with `Adjusted R-squared`, which is a slightly modified version. To print out the coefficient of determination by itself, we have to use `summary()` with variable name `r.squared`:
+
+```{webr-r}
+print(summary(pen_fit)$r.squared)
+```
+
+As above, we can plot the best-fit line over a scatterplot of the data by using `abline()` with `pen_fit` as an input:
+
+```{webr-r}
+# Overlay the best-fit line on the base R plot
+plot(penguins$bill_length_mm, penguins$body_mass_g, xlab='bill length (mm)', ylab='body mass (g)', main = "Linear regression on penguin measurements")
+abline(pen_fit)
+```
+
+### plotting the residuals
+
+After performing linear regression it is essential to check that the *residuals* obey the assumptions of linear regression. The residuals are the difference between the predicted response variable values and the actual values of the response variable, in this case the penguin body mass. The residuals are contained in the object `pen_fit` as a variable named `residuals`. Residuals are the leftover errors of the response variable, so one way to visualize them is to plot them against the explanatory variable. The values of the explanatory variables which were used for the linear regression are also stored in the object `pen_fit` within the variables `model`, which contains the two variables passed to `lm()`:
+
+```{webr-r}
+plot(pen_fit$model$bill_length_mm, pen_fit$residuals, xlab='bill length (mm)', ylab='residuals (g)')
+abline(0,0)
+```
+
+NOTE: I used the values of bill length from the `pen_fit` object because several of the values in the original data set had missing values (`NA`) and were discarded by `lm()`, so there are no corresponding residuals for those values and the `plot()` function would have failed if I had used the `penguins$bill_length_mm` instead as the x-variable.
+
+By visual inspection it seems that the residuals satisfy the assumptions of being independent of measurement (shapeless scatterplot), are centered at zero, and look roughly normally distributed, although that can be checked more carefully using other tools.
+
+For an example of these fancy tools, you can use `plot()` with the output of a linear regression, which will produce several diagnostic plots to make sure the residuals obey the assumptions of normally distributed with equal variance:
+
+```{webr-r}
+plot(pen_fit)
+```
+
+### Exercises:
+
+1.  Calculate the mean and standard deviation of the residuals from the previously calculated linear regression output `pen_fit` and use `print()` to report them:
 
 ```{webr-r}
 
@@ -120,10 +105,10 @@ Add `replace=TRUE` to the `sample()` function call; second line should have `pri
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-Remember the order of inputs into the function `rbinom()`: the number of random values is the number of batches of trials (first input), the number of trials is the size of each batch (second input). The second line should have print(binom_vec).
+Use functions `mean()` and `sd()`; specify the dataframe as well as variable, e.g. `df$var`; put these function inside `print()`.
 :::
 
-4.  Use the `rbinom()` function to generate a sample of 12 random numbers of successes/wins out of 20 trials, with probability of success in one trial of 0.4, assign it to variable `binom_vec` and print it out.
+2.  Calculate and print the fraction of variance explained by the linear regression by dividing the variance of the predicted values of the previously calculate linear regression object `pen_fit` (in the variable `fitted.values`) by the variance of the observed values (in the variable `model$XXX` where XXX stands for the name of the response variable).
 
 ```{webr-r}
 
@@ -132,5 +117,29 @@ Remember the order of inputs into the function `rbinom()`: the number of random 
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-Remember the order of inputs into the function `rbinom()`: the number of random values is the number of batches of trials (first input), the number of trials is the size of each batch (second input). The second line should have print(binom_vec).
+Calculate the ratio of variances inside the print() function; make sure that all the parentheses are matched correctly
+:::
+
+3.  Perform linear regression on the penguin data set with the `bill_depth_mm` as the explanatory variable and `body_mass_g` as the response variable and assign it to variable `fit_pen`. Print out the coefficient of determination of this linear regression.
+
+```{webr-r}
+
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Need to first assing the output of regression, e.g. `fit_pen <- lm( ... )`; follow the example above of printing out the R-squared.
+:::
+
+4.  Plot the residuals from the linear regression as a function of the independent variable as contained in the `fit_pen` object within the variable `model$XXX` where XXX is the name of the explanatory variable.
+
+```{webr-r}
+
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Follow the example above of plotting residuals using the output of lm, e.g `fit$residuals`
 :::
