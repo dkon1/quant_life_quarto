@@ -1,267 +1,71 @@
-# Tutorial 6: Data tables and Booleans {.unnumbered}
+# Tutorial 6: numeric solutions of ODEs {.unnumbered}
 
-### Objectives
+### Objectives:
 
--   calculate two-way data tables from data
--   assign matrix variables
--   perform the chi-squared test for independence
--   logical operators and tests in R
--   calculations using Boolean vectors
+-   Define a function that corresponds to an ODE
+-   Use the `deSolve` package to calculate numeric solutions of ODEs
+-   Use functions to graph the defining functions of ODEs
+-   Pass function names to other functions (optional)
 
-## Data tables and the chi-squared test
+## Numeric solution of differential equations
 
-### matrices and data tables
+We will use the package `deSolve` to calculate numeric solutions of ODEs. First, we need to create the R function that defines the derivative in the differential equation, in other words, the function $f(x,t)$ in the generic first-order ODE
 
-R has many functions for different tests, including the chi-squared test for independence. To use it, one first has to input a data set in the form of a two-way table, where each row represents the values of one random variable, and each column represents the values of the second random variable. The following script shows how to manually input a 2 by 2 contingency table into a matrix. In the matrix function, `ncol` stands for number of columns, and `nrow` for number of rows. Notice the order in which the numbers are put into the matrix: down the first column, then the second, etc. Type `help(matrix)` for more details.
+$$ \frac{dx}{dt} = f(x,t)$$
 
-```{webr-r}
-data_mat <- matrix(c(442,514,38,6),ncol=2,nrow=2)
-print(data_mat)
-```
+This R function must have three inputs: `t`, `x`, `parms`, *in that order*, representing the time variable, the dependent variable `x`, and the vector of parameters `parms`. Let us illustrate this on the linear population model with birth rate b and death rate d:
 
-In order to access a specific element of the matrix, just like in vectors, R uses square brackets and two indices, first one for the row and second for the column. Below are examples of accessing two elements of the matrix data defined above, and how to reference a particular element of the matrix.
+$$ \frac{dN}{dt} = bN-dN $$
+
+To solve this ODE with define the function that calculates the function on the right-hand-side (bN-dN). Notice that even though the function does not depend on time, *t still must be the first input argument of the function*:
 
 ```{webr-r}
-print(data_mat[1,2])
-print(data_mat[2,1])
+library(deSolve)
+pop_funk <- function(t,N,parms){
+  b <- parms[1] # assign birth rate
+  d <- parms[2] # assign death rate
+  dNdt <- b*N - d*N # calculate the derivative
+  list(dNdt) # return the derivative
+}
 ```
 
-You can also access an entire row of a matrix by leaving the column index blank, or the entire column of a matrix by leaving the row index blank:
+The first two lines extract the two parameters b and d from the vector of parameter values, the next line calculate the value of the derivative, and the last one returns it.
+
+Third, we assign the parameter values to the vector, create a time vector on which to solve the ODE, and assign the initial condition(s):
 
 ```{webr-r}
-cat("The second row of the matrix is ")
-print(data_mat[2,])
-cat("The first column of the matrix is ") 
-print(data_mat[,1])
+b <- 0.3 # birth rate
+d <- 0.25 # death rate
+parms <- c(b, d) # put parameters into vector
+time <- seq(0, 100, 10) # time vector
+init <- c(N=1000) # initial value of dependent variable N
 ```
 
-### Chi-squared test
-
-Based on a given data set, how likely is the hypothesis that the two random variables are independent? It is hard to do by hand (in the old days, you looked it up in a table of chi-squared values) but R will do it all for us: 1) calculate the expected counts, 2) compute the chi-squared value for the table, and 3) use the number of degrees of freedom and the chi-squared value to calculate the p-value of the independence hypothesis based on it. Use the `chisq.test()` function, and you will see output like this:
+Finally, we are ready to call the function `ode` that will do all the work to solve this ODE using the function `pop_funk`:
 
 ```{webr-r}
-test_output <- chisq.test(data_mat)
-print(test_output)
+output <- as.data.frame(
+  ode(func=pop_funk, y=init, times=time, parms=parms)
+  )
 ```
 
-The results are the chi-squared values, the number of degrees of freedom (which depends on the number of rows and columns in the two-way table) and the p-value. The p-value is used to decide whether to reject the hypothesis, because it represents the likelihood of the hypothesis, given the data. In this case, the p-value is pretty small, so it seems relatively safe to reject the hypothesis of independence. To see the results of the hypothesis test, type `print(test_output)`, and to access the p-value individually, use `test_output$p.value`.
-
-Finally, we need to specify the significance level alpha for the hypothesis test. This refers to the probability of rejecting a true null hypothesis. For instance, if you reject the hypothesis at $\alpha=0.05$ significance, you are setting a 5% chance of falsely rejecting a correct hypothesis, also called the rate of false positives. Note that it says nothing about failing to reject an incorrect hypothesis, also called the rate of false negatives. See the next section of the tutorial for more explanation of hypothesis testing errors.
-
-### generating a data table
-
-Suppose that you have two groups of people: one with genotype A and the other with genotype B. The question is: does one of the genotypes make a phenotype (e.g. disease) more likely? In other words, are the variables of genotype and phenotype linked?
-
-The script below generates fake data sets of people with genotype A and genotype B by simulating random sampling with a given probability. This is done using the function `sample()` to generate a vector of simulated people, who have the status `N` (normal) or `D` (disease), with specified probabilities:
+The `output` is a data frame, which means that you can use the `data=` option in `plot` to make your graph of the solution as a function of time:
 
 ```{webr-r}
-set.seed(8) # set random seed for reproducibility
-samp_size <- 100 
-dis_states <- c('D', 'N') # disease states 'D' and 'N'
-probA <- 0.1 # probability of disease for genotype A
-probB <- 0.4 # probability of disease for genotype B
-dis_genA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1-probA)) # generate a vector of disease status
-dis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-probB)) # generate a vector of disease status
+plot(N ~time, data=output)
 ```
 
-Are the two genotypes linked to disease? We know the true answer, because we set the probabilities of disease to be different in the two genotypes, but can we tell from the data set? The following script uses `table()` to count the number of people with disease and normal in the vectors `dis_genA` and `dis_genB` to produce a two-way table `data_mat` and runs the chi-squared test for independence, then prints out all the results (stored in object `chisq_result`) and the p-value (in `chisq_result$p.value`)
+This solution, like all numeric solutions of ODEs, is an approximation of the exact (analytic) solution. In this case, we can find (and verify) the exact solution of this model:
+
+$$ N(t) = N(0)e^{(b-d)t}$$
+
+Thus we can plot the analytic solution along with the numeric solution to see how far off they are:
 
 ```{webr-r}
-data_vec <- c(table(dis_genA), table(dis_genB))
-data_mat <- matrix(data_vec, nrow=2, ncol=2)
-print(data_mat)
-chisq_result <- chisq.test(data_mat) # run chi-squared test
-print(chisq_result)
-print(chisq_result$p.value) # output the p-value
+exact <- init*exp((b-d)*time)
+plot(N ~time, data=output)
+lines(time, exact, col = 'red')
+legend("topleft", legend = c('numeric', 'exact'), col = c('black', 'red'), lty=c(0,1), pch = c(1,NA))
 ```
 
-You see that the chi-squared test returns a low p-value, indicating that it is very unlikely that the two random variables (genotype and disease) are independent, based on the data set.
-
-This script plots the frequency of healthy and disease in the two groups so you can visually compare them:
-
-```{webr-r}
-barplot(data_mat, col= c(2,3), main = "Frequency of healthy (green) and disease (red)", names.arg = c("A", "B"), ylab = "frequency")
-```
-
-### Exercises
-
-Based on the code in the chunks above perform the following tasks:
-
-1.  Add a line to the script below that uses the function `table()` to print out the number of people with disease and normal in the genotype B group.
-
-```{webr-r}
-set.seed(5) # set random seed for reproducibility
-samp_size <- 100 
-dis_states <- c('D', 'N') # disease states 'D' and 'N'
-probA <- 0.1 # probability of disease for genotype A
-probB <- 0.4 # probability of disease for genotype B
-dis_genA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1-probA)) # generate a vector of disease status
-dis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-probB)) # generate a vector of disease status
-
-```
-
-::: {.callout-caution collapse="true"}
-## Hint
-
-Use the example of how to use the function table from the code chunk above; remember to add print() around the table().
-:::
-
-2.  In the script below add lines to print out the numbers of people with disease in genotype A sample and in genotype B sample using the matrix `data_mat` and indexing.
-
-```{webr-r}
-set.seed(42) # set random seed for reproducibility
-samp_size <- 100 
-dis_states <- c('D', 'N') # disease states 'D' and 'N'
-probA <- 0.1 # probability of disease for genotype A
-probB <- 0.4 # probability of disease for genotype B
-dis_genA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1-probA)) # generate a vector of disease status
-dis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-probB)) # generate a vector of disease status
-
-data_vec <- c(table(dis_genA), table(dis_genB))
-data_mat <- matrix(data_vec, nrow=2, ncol=2)
-
-
-```
-
-::: {.callout-caution collapse="true"}
-## Hint
-
-Use the correct row number and column number as indices; remember to add print() around the table().
-:::
-
-3.  The script below runs the `chisq.test()` function, add a line to print out the p-value from the chi-squared test.
-
-```{webr-r}
-set.seed(77) # set random seed for reproducibility
-samp_size <- 200 
-dis_states <- c('D', 'N') # disease states 'D' and 'N'
-probA <- 0.1 # probability of disease for genotype A
-probB <- 0.4 # probability of disease for genotype B
-dis_genA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1-probA)) # generate a vector of disease status
-dis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-probB)) # generate a vector of disease status
-data_vec <- c(table(dis_genA), table(dis_genB))
-data_mat <- matrix(data_vec, nrow=2, ncol=2)
-chisq_result <- chisq.test(data_mat) # run chi-squared test
-
-```
-
-::: {.callout-caution collapse="true"}
-## Hint
-
-The p-value is a variable in the chisq_result object, see code above for example.
-:::
-
-## Logical values and calculations
-
-### logical tests
-
-A logical test is an operation that returns either `TRUE` or `FALSE` (called *Boolean* values.) Here are several examples:
-
-```{webr-r}
-x <- 4
-y <- 10
-print(x>y)
-print(y>x)
-print(y==x)
-```
-
-Please note that to ask the question "are x and y equal" the use of double equal signs is required, because a single equal sign means variable assignment.
-
-Logical tests can be applied to entire vectors all at once. For example, let us assign a vector variable x and compare all of its values to 5:
-
-```{webr-r}
-x<-0:10
-print(x>5)
-```
-
-The first six values of x are not greater than 5, while the last five are greater than 5, which is indicated by the Boolean output of the test.
-
-### calculations using Boolean vectors
-
-Boolean values are distinct from other types of values, such as character strings or numbers. However, in R they can be used as numbers for computational purposes, with `FALSE` converting to 0 and `TRUE` converting to 1. This allows for convenient counting of the tests performed on large vectors. For instance, we can use the uniform number generator for integers between 0 and 20, to generate a vector of 10 values, and then ask how many of those values are less than 10 by using `sum()`, which will count the number of TRUE values:
-
-```{webr-r}
-xvals <- sample(1:20,10, replace = TRUE)
-print(xvals < 10)
-print(paste("The number of random numbers below 10 is", sum(xvals < 10)))
-```
-
-### logical operators: AND and OR
-
-One can combine logical values in two common ways: using the AND operator and the OR operator. The AND operator asks whether both statements are true, while the OR operator asks if at least one statement is true. R uses the `&` symbol for AND to determine whether is true that x is greater than 1 AND than y is less than 5:
-
-```{webr-r}
-x<- 10
-y<- 2
-print(x>1&y<5)
-```
-
-If we change the value of y so it is greater than five, than the logical `&` operator will be false:
-
-```{webr-r}
-x<- 10
-y<- 10
-print(x>1&y<5)
-```
-
-The OR operator uses the symbol `|` and in the following example it is true because one of the logical statements is true:
-
-```{webr-r}
-x<- 10
-y<- 10
-print(x>1|y<5)
-```
-
-Only if both statements are false, the logical OR is false:
-
-```{webr-r}
-x<- 0
-y<- 10
-print(x>1|y<5)
-```
-
-Both `&` and `|` can be applied to vectors of Booleans, where they apply their logical operations to each corresponding element. For example, if x is a vector of integers from 0 to 10, one can ask how many of those values are both above 1 and below 5:
-
-```{webr-r}
-x<- 0:10
-print(x>1&x<5)
-print(sum(x>1&x<5))
-```
-
-### Exercises:
-
-1.  Generate a sample of 100 values from the uniform distribution between 1 and 20 with replacement, assign it to vector `sample_vec` and use `sum()` to calculate how many of them are equal to 20 and print out that number.
-
-```{webr-r}
-
-```
-
-::: {.callout-caution collapse="true"}
-## Hint
-
-Check the inputs into the function `sample()`; the second line should use the logical test `==`
-:::
-
-2.  Generate a sample of 20 values from the binomial distribution with p=0.4 and n=5, assign it to vector `binom_vec` and use `sum()` to calculate how many of them are greater than 1 and print out that number.
-
-```{webr-r}
-
-```
-
-::: {.callout-caution collapse="true"}
-## Hint
-
-Check the inputs into the function `rbinom()`; the second line should use the logical test `>`
-:::
-
-3.  Generate a sample of 20 values from the binomial distribution with p=0.4 and n=5 and calculate how many of them are BOTH above 1 AND below 4.
-
-```{webr-r}
-
-```
-
-::: {.callout-caution collapse="true"}
-## Hint
-
-Check the inputs into the function `rbinom()`; the second line should use the conjunction `&` to combine two logical tests
-:::
+You can see that the ODE solver is so clever that the numeric solution appears identical to the exact solution, even though there is always some degree of error in numeric solutions of ODEs.

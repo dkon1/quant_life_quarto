@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - Tutorial 10: simulations of Markov models</title>
+<title>Quantifying Life - Tutorial 9: Functions and sampling from data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./markov_stat.html" rel="next">
-<link href="./markov_evol.html" rel="prev">
+<link href="./bayes.html" rel="next">
+<link href="./hypo_test.html" rel="prev">
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -227,7 +227,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"state <- 1 # set initial state\ntrans1to2 <- 0.6 # transition probability from 1 to 2\ntrans2to1 <- 0.4 # transition probability from 2 to 1\ndecider <- runif(1) # random number between 0 and 1\nif (state==1) {\n    if (decider < trans1to2) { # randomly decide to transition\n        state <- 2\n    } else { # or to stay\n        state <-1\n    }\n} else if (state==2) {\n    if (decider < trans2to1) { # randomly decide to transition\n        state <- 1 \n    } else { # or to stay\n        state <-2\n    }\n} else {\n    print ('Initial state must be either 1 or 2!')\n}\nprint(state)    ","id":1,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-1","fig-height":5}},{"code":"state <- 1 # set initial state\ntrans1to2 <- 0.6 # transition probability from 1 to 2\ntrans2to1 <- 0.4 # transition probability from 2 to 1\ndecider <- runif(1) # random number between 0 and 1\nif (state==1) {\n    if (decider < trans1to2) { # randomly decide to transition\n        state <- 2\n    } else { # or to stay\n        state <-1\n    }\n} else if (state==2) {\n    if (decider < trans2to1) { # randomly decide to transition\n        state <- 1 \n    } else { # or to stay\n        state <-2\n    }\n} else {\n    print ('Initial state must be either 1 or 2!')\n}\nprint(state)","id":2,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-2","fig-height":5}},{"code":"state <- 1 # set initial state\ntrans1to2 <- 0.6 # transition probability from 1 to 2\ntrans2to1 <- 0.4 # transition probability from 2 to 1\ndecider <- runif(1) # random number between 0 and 1\nif (state==1) {\n    if (decider < trans1to2) { # randomly decide to transition\n        state <- 2\n    } else { # or to stay\n        state <-1\n    }\n} else if (state==2) {\n    if (decider < trans2to1) { # randomly decide to transition\n        state <- 1 \n    } else { # or to stay\n        state <-2\n    }\n} else {\n    print ('Initial state must be either 1 or 2!')\n}\nprint(state)","id":3,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-3","fig-height":5}},{"code":"\ntable(state_vec)","id":4,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-4","fig-height":5}},{"code":"A <- matrix (c(3,-5,1,0),nrow=2)\nb <- c(10,-2)\nc <- A%*%b\nprint(c)\nd <- b%*%A\nprint(d)","id":5,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-5","fig-height":5}},{"code":"M <- matrix(c(0.95,0.05,0.1,0.9),nrow=2, ncol=2)\nprint(M)\nprob0<- c(0.5,0.5)\nprob1 <- M%*%prob0\nprint(prob1)","id":6,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-6","fig-height":5}},{"code":"M <- matrix (c(0.95,0.05,0.1,0.9),nrow=2)\nprint(M)\nprob<- c(0.1,0.9)\nnumstep <- 20\nfor (i in 1:numstep) {\n    prob <- M%*%prob\n}\nprint(prob)","id":7,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-7","fig-height":5}},{"code":"M <- matrix (c(0.95,0.05,0.1,0.9),nrow=2)\nprint(M)\nprint(M[2,])\nprint(M[,1])","id":8,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-8","fig-height":5}},{"code":"A <- matrix (c(0,1,-5,10),nrow=2)\nprint(A)","id":9,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-9","fig-height":5}},{"code":"# copy code from above here\nprint(b)","id":10,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-10","fig-height":5}},{"code":"# copy code from above here\nprint(b)","id":11,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-11","fig-height":5}},{"code":"# copy code from above here\nprint(bs)","id":12,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-12","fig-height":5}},{"code":"num <- 100\np<- 0.4\nvec.vals <- rbinom(num, 1, p)\nbarplot(table(vec.vals), ylab = 'Frequencies of states')","id":13,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-13","fig-height":5}},{"code":"cols <- 4\nA <- matrix (c(2,1, 3,3, 2, 4, 3,1),nrow=2, ncol = cols)\nbarplot(A, names.arg=1:cols, xlab = 'columns', ylab = 'row values')","id":14,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-14","fig-height":5}},{"code":"numsteps <- 10 # set the number of steps\nnumstrings <- 5 # set number of strings\nnumstates <- 2 # number of states in the model\n# generate a random state_mat \nstate_mat <- replicate(numsteps+1,sample(1:numstates,numstrings,replace=TRUE))\nprint(state_mat)","id":15,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-15","fig-height":5}},{"code":"# Visualizing frequencies of states at each time \nstate_count <- matrix(0,nrow=numstates,ncol=numsteps+1)\nfor (k in 1:(numsteps+1)) {\n  state_count[,k] <- tabulate(state_mat[,k],nbins=numstates)\n}\nbarplot(state_count,main='frequency of states vs. time',xlab='time', names.arg=0:numsteps, ylab='state counts',col=1:numstates)","id":16,"options":{"results":"markup","message":"true","output":"true","warning":"true","fig-cap":"","dpi":72,"comment":"","out-width":"700px","classes":"","out-height":"","fig-width":7,"autorun":"false","read-only":"false","context":"interactive","label":"unnamed-chunk-16","fig-height":5}}];
+globalThis.qwebrCellDetails = [{"code":"my_funk <- function(N,r){ \n  ans <- r*N # multiply the numbers\n  return(ans)\n}","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-1","out-width":"700px","classes":""},"id":1},{"code":"a <- 30\ny <- 1:10\nprint(my_funk(y, a))","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-2","out-width":"700px","classes":""},"id":2},{"code":"dice <- function(n){ \n  d1 <- sample(1:n, 1) # uniform integer between 1 and n\n  d2 <- sample(1:n, 1) # uniform integer between 1 and n\n  return(d1+d2)\n}","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-3","out-width":"700px","classes":""},"id":3},{"code":"n<-6\nroll <- dice(n)\nprint(roll)","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-4","out-width":"700px","classes":""},"id":4},{"code":"sides <- 6 # sides of the die\nnum <- 100 # number of repeats\nrolls <- replicate(num, dice(sides))\nprint(rolls)","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-5","out-width":"700px","classes":""},"id":5},{"code":"print(paste(\"Number of 7s:\", sum(rolls == 7) ))\nprint(paste(\"Number of rolls above 10:\", sum(rolls>10) ))  ","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-6","out-width":"700px","classes":""},"id":6},{"code":"","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-7","out-width":"700px","classes":""},"id":7},{"code":"","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-8","out-width":"700px","classes":""},"id":8},{"code":"","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-9","out-width":"700px","classes":""},"id":9},{"code":"head(penguins)\nprint(paste(\"Number of rows in penguins:\", nrow(penguins) ))\nprint(paste(\"Number of columns in penguins:\", ncol(penguins) ))  ","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-10","out-width":"700px","classes":""},"id":10},{"code":"print(paste(\"The 100th observation of the 3rd variable:\", penguins[100,3]))","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-11","out-width":"700px","classes":""},"id":11},{"code":"print(penguins[100:105,])","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-12","out-width":"700px","classes":""},"id":12},{"code":"summary(penguins[penguins$island == 'Biscoe', ])","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-13","out-width":"700px","classes":""},"id":13},{"code":"sam_size <- 100 # number of observations\nrow_indices <- sample(nrow(penguins), size = sam_size, replace = FALSE )\ndata_sample <- penguins[row_indices, ]\nsummary(data_sample)","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-14","out-width":"700px","classes":""},"id":14},{"code":"sam_size <- 100 # number of observations\nrow_indices <- sample(nrow(penguins), size = sam_size, replace = TRUE)\ndata_sample <- penguins[row_indices, ]\nsummary(data_sample)","options":{"message":"true","warning":"true","read-only":"false","fig-height":5,"out-height":"","context":"interactive","autorun":"false","comment":"","fig-cap":"","output":"true","fig-width":7,"results":"markup","dpi":72,"label":"unnamed-chunk-15","out-width":"700px","classes":""},"id":15}];
 
 </script>
 <script type="module">
@@ -944,10 +944,9 @@ globalThis.qwebrExecuteCode = async function (
 
 </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Quantifying Life - Tutorial 10: simulations of Markov models">
-<meta name="twitter:description" content="The behavior of a Markov model is random, so the next state cannot be predicted from the current state exactly.">
+<meta name="twitter:title" content="Quantifying Life - Tutorial 9: Functions and sampling from data">
+<meta name="twitter:description" content="A function generally has input variables (although sometimes there are none) and returns an output, either by using the return() statement or by using the value on the last line of the body of the…">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -958,7 +957,7 @@ globalThis.qwebrExecuteCode = async function (
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Tutorial 10: simulations of Markov models</h1>
+      <h1 class="quarto-secondary-nav-title">Tutorial 9: Functions and sampling from data</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -1036,72 +1035,77 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 4: Random number generators</a>
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 5: Linear regression</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">Tutorial 5: Linear regression</a>
+  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">Tutorial 5: For loops and dynamic models</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link">Tutorial 6: numeric solutions of ODEs</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link">Tutorial 6: Data tables and Booleans</a>
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
+  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">Tutorial 7: plotting defining functions of ODEs</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">Tutorial 7: Functions and sampling from data</a>
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">Tutorial 4: Random number generators</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">Tutorial 8: For loops and dynamic models</a>
+  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">Tutorial 9: Data tables and Booleans</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">Tutorial 9: numeric solutions of ODEs</a>
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link active">Tutorial 9: Functions and sampling from data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1116,7 +1120,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link active">Tutorial 10: simulations of Markov models</a>
+  <a href="./tutorial11.html" class="sidebar-item-text sidebar-link">Tutorial 11: simulations of Markov models</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1143,16 +1147,21 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#simulating-markov-transitions" id="toc-simulating-markov-transitions" class="nav-link" data-scroll-target="#simulating-markov-transitions">Simulating Markov transitions</a>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives:</a></li>
+  <li><a href="#functions-in-r" id="toc-functions-in-r" class="nav-link" data-scroll-target="#functions-in-r">Functions in R</a>
   <ul class="collapse">
+  <li><a href="#defining-a-function" id="toc-defining-a-function" class="nav-link" data-scroll-target="#defining-a-function">defining a function</a></li>
+  <li><a href="#calling-a-function" id="toc-calling-a-function" class="nav-link" data-scroll-target="#calling-a-function">calling a function</a></li>
+  <li><a href="#using-a-function-to-generate-random-numbers" id="toc-using-a-function-to-generate-random-numbers" class="nav-link" data-scroll-target="#using-a-function-to-generate-random-numbers">using a function to generate random numbers</a></li>
+  <li><a href="#using-replicate" id="toc-using-replicate" class="nav-link" data-scroll-target="#using-replicate">using replicate</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul></li>
-  <li><a href="#matrix-multiplication" id="toc-matrix-multiplication" class="nav-link" data-scroll-target="#matrix-multiplication">Matrix multiplication</a>
+  <li><a href="#selecting-samples-from-data-frames" id="toc-selecting-samples-from-data-frames" class="nav-link" data-scroll-target="#selecting-samples-from-data-frames">Selecting samples from data frames</a>
   <ul class="collapse">
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">Exercises</a></li>
+  <li><a href="#data-frames-are-matrix-arrays" id="toc-data-frames-are-matrix-arrays" class="nav-link" data-scroll-target="#data-frames-are-matrix-arrays">data frames are matrix arrays</a></li>
+  <li><a href="#selecting-some-observations" id="toc-selecting-some-observations" class="nav-link" data-scroll-target="#selecting-some-observations">selecting some observations</a></li>
+  <li><a href="#random-sampling-of-observations" id="toc-random-sampling-of-observations" class="nav-link" data-scroll-target="#random-sampling-of-observations">random sampling of observations</a></li>
   </ul></li>
-  <li><a href="#barplots-for-histograms-and-arrays" id="toc-barplots-for-histograms-and-arrays" class="nav-link" data-scroll-target="#barplots-for-histograms-and-arrays">Barplots for histograms and arrays</a></li>
   </ul>
 </nav>
     </div>
@@ -1335,7 +1344,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Tutorial 10: simulations of Markov models</h1>
+<h1 class="title d-none d-lg-block">Tutorial 9: Functions and sampling from data</h1>
 </div>
 
 
@@ -1351,102 +1360,161 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 <section id="objectives" class="level3">
-<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<h3 class="anchored" data-anchor-id="objectives">Objectives:</h3>
 <ul>
-<li>use conditional statements</li>
-<li>understand how to use for loops to generate string of Markov states</li>
-<li>perform matrix multiplication</li>
-<li>generate a sequence of vectors by matrix multiplication</li>
-<li>visualize the distribution of an array of states</li>
+<li>define functions in R</li>
+<li>call functions and assign their output</li>
+<li>use replicate to call functions repeatedly</li>
+<li>random sampling of observations from data frames</li>
 </ul>
 </section>
-<section id="simulating-markov-transitions" class="level2">
-<h2 class="anchored" data-anchor-id="simulating-markov-transitions">Simulating Markov transitions</h2>
-<p>The behavior of a Markov model is random, so the next state cannot be predicted from the current state exactly. However, one can use a random number generator to produce a string of states, given its transition probabilities and an initial value. This is called a computer simulation, which does not give exact results but are rather numerical experiments, producing data that are consistent with a given model and its assumptions.</p>
-<p>Below is a code to simulate one time step for a two-state Markov model. It generates a new state according to two transition probabilities, given an initial state. In the code below, the initial state is set to 1 and the transition probabilities are 0.6 and 0.4. The code uses a conditional statement to check what the initial state (in.state) is, and based on this use either transition probability from 1 to 2 (trans1to2) or transition probability from 2 to 1 (trans2to1) with a random number to make a random transition. A second conditional statement is used to assign new.state to a new state if the random number is less than the transition probability, and otherwise to leave new.state the same as in.state. The code also prints an error message if the initial state is neither 1 nor 2; it’s good practice to cover all possibilities, and not to assume that variables are set to the values that you expect. If this code is run multiple times, you will see that the transitions are random: sometimes the model remains in the same state, and other times it jumps to the other.</p>
+<section id="functions-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="functions-in-r">Functions in R</h2>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A function is a piece of code that is <strong>defined</strong> separately and can be <strong>called</strong> by other pieces of code. The main purpose is to create a “black box” that does a specific job and can be used repeatedly just by calling the function (invoking its name), rather than copying the code repeatedly.</p>
+</div>
+</div>
+<p>A function generally has input variables (although sometimes there are none) and returns an output, either by using the <code>return()</code> statement or by using the value on the last line of the body of the function. It is important to distinguish between the <em>inside</em> of the function - the code between the curly braces in the function definition - and the <em>outside</em>, that is everything else. The inputs are <em>passed</em> to the function in the call (through the parentheses) and then used inside the function to do its business and produce an output, which is then <em>returned</em> back to the place in the code where the function was called.</p>
+<section id="defining-a-function" class="level3">
+<h3 class="anchored" data-anchor-id="defining-a-function">defining a function</h3>
+<p>Here is an example of a function definition, with input variables N and r. Between the curly braces is the <em>body of the function</em>, which in this case multiplies the two input variables and then returns them.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="exercises" class="level3">
-<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
-<ol type="1">
-<li>Modify the script below to generate the new state with transition probability 0.2 from state 1 to 2 and transition probability 0.8 from state 2 to 1, and with initial state 2.</li>
-</ol>
+<p>Note that after running the code chunk above, you should see the name <code>my_funk</code> in your environment (under Functions). This means this function is defined in memory and ready to be called.</p>
+</section>
+<section id="calling-a-function" class="level3">
+<h3 class="anchored" data-anchor-id="calling-a-function">calling a function</h3>
+<p>After a function is defined, it is ready to be called (executed) by invoking its name and giving the correct number of inputs. Here’s an example of a function call:</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="2" type="1">
-<li>Modify the script below by placing everything starting with the <code>decider</code> assignment inside a for loop that repeats 20 times.</li>
-</ol>
+<p>Notice that the variable names in the function call do not have to be same as what they are called within the function. IMPORTANT: a function uses the order of variables in the function call, called <em>external variables</em> (y, a) to assign their names within the function, called <em>internal variables</em> (N, r). (There is a way to specify which input belongs to which internal variable, e.g.&nbsp;<code>plot(x=time, y=sol)</code> so if you do this the order is not important.)</p>
+</section>
+<section id="using-a-function-to-generate-random-numbers" class="level3">
+<h3 class="anchored" data-anchor-id="using-a-function-to-generate-random-numbers">using a function to generate random numbers</h3>
+<p>Let’s do something a bit more interesting than multiplying numbers! Here is a function that generates 2 uniform random numbers between 1 and n (where n is an input) and returns their sum.</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="3" type="1">
-<li>The previous script replaced the value of <code>state</code> with a new value every iteration. Copy that script and modify it by pre-allocating a vector of states <code>state_vec</code> prior to the for loop by using the function <code>rep()</code> and the initial value to create a vector of sufficient length (21). Inside the loop, check the current value of <code>state_vec</code> (index i) in the conditional statements, and assign the new value to the next index of <code>state_vec</code>. After the loop is done, use <code>table()</code> as shown below to report how many of the states have values 1 and 2.</li>
-</ol>
+<p>If we call this function with n of 6, this will return a roll of two standard six-sided dice, like this:</p>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-</section>
-<section id="matrix-multiplication" class="level2">
-<h2 class="anchored" data-anchor-id="matrix-multiplication">Matrix multiplication</h2>
-<p>The easiest way to perform the cumbersome calculations for matrix multiplication is to outsource them to a computer. R provides a special operation symbol just for this purpose, which is an asterisk surrounded by percent signs: <code>%*%</code>. To illustrate we will multiply the matrix <code>A</code> and the vector <code>b</code>, shown below:</p>
-<p><span class="math display">\[
-A =  \left(\begin{array}{cc}3&amp; 1 \\ -5 &amp; 0\end{array}\right); \; b = \left(\begin{array}{c} 10 \\ -2 \end{array}\right)
-\]</span> To perform this operation in R, we must first define the matrix and the vector, and then perform multiplication:</p>
+<section id="using-replicate" class="level3">
+<h3 class="anchored" data-anchor-id="using-replicate">using replicate</h3>
+<p>Sometimes it can be useful to call a function many times, without copying and pasting the call. This can be accomplished very nicely using a “wrapper” function <code>replicate</code>. The function has two main inputs: the first is the number of times to repeat the function call, with the function call in the second place. For a example, here is a simulation of one hundred rolls of two dice:</p>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The probability distribution vector for a Markov model advances one time step at a time by multiplication with the transition matrix of the model. For example, let us take the same transition matrix as in section 11.2, and multiply it by the initial vector <code>prob0=(0.5, 0.5)</code> (which means that initially the model is in states 1 and 2 with equal probability 0.5).</p>
+<p>The result is assigned to a vector array <code>rolls</code>, which contains 100 values. Long arrays of results can be difficult to describe by inspection, so one important use of logical tests that were introduced in Tutorial 6 is to count the number of values in an array that satisfy some condition. For example, the code chunks below print out the number of rolls that are equal to 7, and the number of rolls that are greater than 10:</p>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The element M[i,j] (i-th row and j-th column) contains the probability of transition from state number j to state number i. Take care to enter the transition probabilities in the correct order, as the matrix() function by default places the element by column (first fills the first column, then the second) as you can see in the script above. The result shows that after 1 time step, the probability distribution vector changes from (0.5,0.5) to (0.525, 0.475). What about taking many time steps?</p>
-<p>Computers can perform repetitive operations much better than humans, so we will take advantage of their arithmetic proficiency. Since each time step involves multiplication of the current probability vector by the transition matrix, this can be done automatically with a for loop. The only difficulty is that, while the transition matrix remains the same, the probability vector needs to be updated. There are two ways of handing this: 1) replace the old vector with the new, with the disadvantage that the previous vectors all get over-written in memory; 2) save all of the probability vectors in a rectangular matrix, which means we can plot all the probability vectors over time and see their evolution. The following script takes the first approach:</p>
+</section>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
+<ol type="1">
+<li>Call the function <code>dice</code> with input argument 6 (as above), using function replicate 100 times, and assign the output to variable <code>rolls</code>. Use a logical test to count how many of those 100 dice rolls are “snake eyes” (2) and print out the number.</li>
+</ol>
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Very important information: to access only one row of a matrix, use the first (row) index and leave the second index blank; similarly, to access only one column of a matrix, use the second (colum) index and leave the first index blank. For example:</p>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Assign the value 6 to <code>n</code> first; call <code>replicate()</code> with 100 as the first input and assign the output; use <code>sum()</code> and the logical test <code>== 2</code> with the output vector</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Modify the function <code>dice</code> so instead of returning the sum of two dice rolls it returns TRUE if both numbers are the same and FALSE otherwise, and call it <code>double</code>.</li>
+</ol>
 <div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Note the the print function prints both the row and the column as row vectors.</p>
-<section id="exercises-1" class="level3">
-<h3 class="anchored" data-anchor-id="exercises-1">Exercises</h3>
-<ol type="1">
-<li>Find and fix the error in the following matrix assignment for the matrix A:</li>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Copy the definition of function <code>dice</code> from above, change its name to <code>double</code>, replace the <code>+</code> in the <code>return()</code> statement with <code>==</code></p>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Use <code>replicate</code> to call the function <code>double</code> you defined above 1000 times, assign it variables <code>doubles</code> and print how many doubles it produces.</li>
 </ol>
-<p><span class="math display">\[
-A =  \left(\begin{array}{cc}0 &amp; 1 \\ -5 &amp; 10\end{array}\right)
-\]</span></p>
 <div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="2" type="1">
-<li>Copy the correct assignment of matrix <code>A</code> from the exercise above, assign a vector <span class="math inline">\(b=(0,1)\)</span>, multiply <code>A</code> by <code>b</code> and assign the result to the vector <code>b</code>, then print it out.</li>
-</ol>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Copy the code from exercise 1 above, change the last line to sum up the result vector.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="selecting-samples-from-data-frames" class="level2">
+<h2 class="anchored" data-anchor-id="selecting-samples-from-data-frames">Selecting samples from data frames</h2>
+<section id="data-frames-are-matrix-arrays" class="level3">
+<h3 class="anchored" data-anchor-id="data-frames-are-matrix-arrays">data frames are matrix arrays</h3>
+<p>Data frames, which were introduced in Tutorial 3, are two-dimensional arrays, which means that they require two indices to specify an entry: one for the row number and one for the column number. For example, the penguins data set from <code>palmerpenguins</code> package has 344 rows and 8 columns:</p>
 <div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="3" type="1">
-<li>Copy the code from the exercise above and use a for loop to repeat the matrix multiplication 10 times, each time assigning the result to vector <code>b</code>, then print out the resulting vector.</li>
-</ol>
+<p>The columns in data frames represent the variables that were measured, while the rows represent individual observations. A specific column in the penguins data set, e.g.&nbsp;column 3, contains the observations of bill length for every penguin, a specific row, e.g.&nbsp;row 100, contains all the variables (species, island, bill length, etc.) measures for penguin index 100 (unfortunately anonymous). You can use a row index and column index to specify an observation of a specific variable, for example, below is the code to print out the value of the 100th observation of the 3rd variable:</p>
 <div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="4" type="1">
-<li>Copy the code from the exercises and modify it to save of all the vectors that were generated by matrix multiplication, by pre-allocating the matrix <code>bs</code> with two rows and 11 columns with zeros and assign the vector <code>b</code> to the first column. Use the for loop to assign the next column of the matrix <code>bs</code> as the product of the matrix <code>A</code> and the current column of the matrix <code>bs</code>, then print out the whole array <code>bs</code>.</li>
-</ol>
+</section>
+<section id="selecting-some-observations" class="level3">
+<h3 class="anchored" data-anchor-id="selecting-some-observations">selecting some observations</h3>
+<p>One can choose to select a subset of observations from a data frame by specifying a subset of row indices. This code snippet prints out the values of all the variables for 100th to the 105th penguins; <strong>note that the column index is left blank</strong>:</p>
 <div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-</section>
-<section id="barplots-for-histograms-and-arrays" class="level2">
-<h2 class="anchored" data-anchor-id="barplots-for-histograms-and-arrays">Barplots for histograms and arrays</h2>
-<p>Visualizing a large number of values can be done by using the function <code>table()</code> to count the frequencies of different values and then using <code>barplot()</code> to plot those frequencies, resulting in a nice-looking histogram. This script visualizes a vector of length 100 of 0s and 1s, generated by <code>rbinom()</code>:</p>
+<p>Indices can also be selected by using a logical test, which is particularly useful for selecting observations that match a particular criterion. For example, we can select all the penguins observed on the island of Biscoe by using the test <code>penguins$island == 'Biscoe'</code> in place of the index, as in the following script and calculated the summary of all the variables for this selection:</p>
 <div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>A matrix can be visualized using <code>barplot()</code> as well, with each column represented by a bar with colors representing values of the different rows. For example, the 2 by 4 matrix below is visualized like this:</p>
+<p>Note that this code looks pretty clunky, so I highly recommend using the <code>tidyverse</code> collection of packages, which offers superior tools for selecting and filtering subsets of data frames.</p>
+</section>
+<section id="random-sampling-of-observations" class="level3">
+<h3 class="anchored" data-anchor-id="random-sampling-of-observations">random sampling of observations</h3>
+<p>If you have a large collection of data, sometimes you may want to randomly sample observations from the data frame, for example to assess the robustness of your statistical methods, which is an approach called <em>bootstrapping</em>. To do this, you can generate a random sample of integers using the function <code>sample()</code>, and then use these numbers as row indices in the data frame:</p>
 <div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p><code>barplot()</code> can also be used to visualize the frequencies contained in an matrix array of values. Let us generate a matrix containing multiple strings of states, one in each row, with initial states all in column 1, and each successive column containing the states at that time step (this is not how the actual matrix of states is calculated in lab 7, this is just to generate a state matrix for illustration.)</p>
+<p>Notice that we used the option <code>replace = FALSE</code> above, to avoid generating a sample with multiple copies of an observation. Sometimes, bootstrap methods are used to generate samples with multiple copies allowed, in which case you set <code>replace = TRUE</code> option:</p>
 <div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The following script counts the number of each state (1 and 2) in each column, and plots those frequencies as bars. You will use this script to plot the frequencies of your simulations in part 3 of R lab 7.</p>
-<div id="qwebr-insertion-location-16"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1585,13 +1653,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./markov_evol.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></span>
+      <a href="./hypo_test.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./markov_stat.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./bayes.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

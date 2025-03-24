@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - Tutorial 5: Linear regression</title>
+<title>Quantifying Life - Tutorial 5: For loops and dynamic models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./independence.html" rel="next">
-<link href="./linreg.html" rel="prev">
+<link href="./ode_sols.html" rel="next">
+<link href="./lindiff.html" rel="prev">
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -227,7 +227,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"heart_rates <- read.csv(file = \"https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_data_combined.csv\")\nplot(heart_rates$Rest2, heart_rates$Ex2, xlab = 'Resting heart rate (bpm)', ylab = 'Exercise heart rate (bpm)')\nfit_heart <- lm(Ex2 ~ Rest2, data = heart_rates)\nabline(fit_heart)","options":{"autorun":"false","label":"unnamed-chunk-1","output":"true","out-height":"","fig-height":5,"comment":"","message":"true","context":"interactive","warning":"true","out-width":"700px","classes":"","dpi":72,"fig-cap":"","read-only":"false","fig-width":7,"results":"markup"},"id":1},{"code":"options(digits = 3)\ncat(\"The intercept and slope of the best-fit line are: \")\nprint(fit_heart$coefficients)","options":{"autorun":"false","label":"unnamed-chunk-2","output":"true","out-height":"","fig-height":5,"comment":"","message":"true","context":"interactive","warning":"true","out-width":"700px","classes":"","dpi":72,"fig-cap":"","read-only":"false","fig-width":7,"results":"markup"},"id":2},{"code":"\nprint(fit_heart$coefficients[1])\n\nprint(fit_heart$coefficients[2])","options":{"autorun":"false","label":"unnamed-chunk-3","output":"true","out-height":"","fig-height":5,"comment":"","message":"true","context":"interactive","warning":"true","out-width":"700px","classes":"","dpi":72,"fig-cap":"","read-only":"false","fig-width":7,"results":"markup"},"id":3},{"code":"library(palmerpenguins)\npen_fit <- lm(body_mass_g ~ bill_length_mm, penguins)\nsummary(pen_fit)","options":{"autorun":"false","label":"unnamed-chunk-4","output":"true","out-height":"","fig-height":5,"comment":"","message":"true","context":"interactive","warning":"true","out-width":"700px","classes":"","dpi":72,"fig-cap":"","read-only":"false","fig-width":7,"results":"markup"},"id":4},{"code":"print(summary(pen_fit)$r.squared)","options":{"autorun":"false","label":"unnamed-chunk-5","output":"true","out-height":"","fig-height":5,"comment":"","message":"true","context":"interactive","warning":"true","out-width":"700px","classes":"","dpi":72,"fig-cap":"","read-only":"false","fig-width":7,"results":"markup"},"id":5},{"code":"# Overlay the best-fit line on the base R plot\nplot(penguins$bill_length_mm, penguins$body_mass_g, xlab='bill length (mm)', ylab='body mass (g)', main = \"Linear regression on penguin measurements\")\nabline(pen_fit)","options":{"autorun":"false","label":"unnamed-chunk-6","output":"true","out-height":"","fig-height":5,"comment":"","message":"true","context":"interactive","warning":"true","out-width":"700px","classes":"","dpi":72,"fig-cap":"","read-only":"false","fig-width":7,"results":"markup"},"id":6},{"code":"plot(pen_fit$model$bill_length_mm, pen_fit$residuals, xlab='bill length (mm)', ylab='residuals (g)')\nabline(0,0)","options":{"autorun":"false","label":"unnamed-chunk-7","output":"true","out-height":"","fig-height":5,"comment":"","message":"true","context":"interactive","warning":"true","out-width":"700px","classes":"","dpi":72,"fig-cap":"","read-only":"false","fig-width":7,"results":"markup"},"id":7},{"code":"plot(pen_fit)","options":{"autorun":"false","label":"unnamed-chunk-8","output":"true","out-height":"","fig-height":5,"comment":"","message":"true","context":"interactive","warning":"true","out-width":"700px","classes":"","dpi":72,"fig-cap":"","read-only":"false","fig-width":7,"results":"markup"},"id":8},{"code":"","options":{"autorun":"false","label":"unnamed-chunk-9","output":"true","out-height":"","fig-height":5,"comment":"","message":"true","context":"interactive","warning":"true","out-width":"700px","classes":"","dpi":72,"fig-cap":"","read-only":"false","fig-width":7,"results":"markup"},"id":9},{"code":"","options":{"autorun":"false","label":"unnamed-chunk-10","output":"true","out-height":"","fig-height":5,"comment":"","message":"true","context":"interactive","warning":"true","out-width":"700px","classes":"","dpi":72,"fig-cap":"","read-only":"false","fig-width":7,"results":"markup"},"id":10},{"code":"","options":{"autorun":"false","label":"unnamed-chunk-11","output":"true","out-height":"","fig-height":5,"comment":"","message":"true","context":"interactive","warning":"true","out-width":"700px","classes":"","dpi":72,"fig-cap":"","read-only":"false","fig-width":7,"results":"markup"},"id":11},{"code":"","options":{"autorun":"false","label":"unnamed-chunk-12","output":"true","out-height":"","fig-height":5,"comment":"","message":"true","context":"interactive","warning":"true","out-width":"700px","classes":"","dpi":72,"fig-cap":"","read-only":"false","fig-width":7,"results":"markup"},"id":12}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"context":"interactive","autorun":"false","classes":"","output":"true","fig-cap":"","read-only":"false","results":"markup","warning":"true","fig-width":7,"comment":"","dpi":72,"fig-height":5,"message":"true","out-height":"","label":"unnamed-chunk-1","out-width":"700px"},"code":"for (i in 1:10) {\n  print(\"Hello!\")\n}"},{"id":2,"options":{"context":"interactive","autorun":"false","classes":"","output":"true","fig-cap":"","read-only":"false","results":"markup","warning":"true","fig-width":7,"comment":"","dpi":72,"fig-height":5,"message":"true","out-height":"","label":"unnamed-chunk-2","out-width":"700px"},"code":"for (i in 1:10) {\n  print(paste(\"Iteration number\", i))\n}"},{"id":3,"options":{"context":"interactive","autorun":"false","classes":"","output":"true","fig-cap":"","read-only":"false","results":"markup","warning":"true","fig-width":7,"comment":"","dpi":72,"fig-height":5,"message":"true","out-height":"","label":"unnamed-chunk-3","out-width":"700px"},"code":"# add up the integers from 1 to 10 and print out the total\ntotal<-0\nfor (i in 1:10) {\n  total<-total+i\n}\nprint(total)"},{"id":4,"options":{"context":"interactive","autorun":"false","classes":"","output":"true","fig-cap":"","read-only":"false","results":"markup","warning":"true","fig-width":7,"comment":"","dpi":72,"fig-height":5,"message":"true","out-height":"","label":"unnamed-chunk-4","out-width":"700px"},"code":"max <- 10 \ntotal_vec <- rep(0, max+1) # pre-allocate the vector"},{"id":5,"options":{"context":"interactive","autorun":"false","classes":"","output":"true","fig-cap":"","read-only":"false","results":"markup","warning":"true","fig-width":7,"comment":"","dpi":72,"fig-height":5,"message":"true","out-height":"","label":"unnamed-chunk-5","out-width":"700px"},"code":"for (i in 1:max) { # iterate for i from 1 to max\n  total_vec[i+1] <- total_vec[i] + i # assign to the next value of total_vec the sum of i and the current value of total_vec\n}"},{"id":6,"options":{"context":"interactive","autorun":"false","classes":"","output":"true","fig-cap":"","read-only":"false","results":"markup","warning":"true","fig-width":7,"comment":"","dpi":72,"fig-height":5,"message":"true","out-height":"","label":"unnamed-chunk-6","out-width":"700px"},"code":"print(length(total_vec)) # print the number of elements of total_vec\nprint(total_vec)"},{"id":7,"options":{"context":"interactive","autorun":"false","classes":"","output":"true","fig-cap":"","read-only":"false","results":"markup","warning":"true","fig-width":7,"comment":"","dpi":72,"fig-height":5,"message":"true","out-height":"","label":"unnamed-chunk-7","out-width":"700px"},"code":"num <- 10\nX <- rep(4, num + 1) # pre-allocate the solution vector with initial value\nfor (i in 1:num) {\n  X[i+1] <- 1.5*X[i] # compute the next value X[i+1] from the current value X[i]\n}\ntime <- 0:num\nplot(time, X)"},{"id":8,"options":{"context":"interactive","autorun":"false","classes":"","output":"true","fig-cap":"","read-only":"false","results":"markup","warning":"true","fig-width":7,"comment":"","dpi":72,"fig-height":5,"message":"true","out-height":"","label":"unnamed-chunk-8","out-width":"700px"},"code":"num_steps <- 20 # number of steps\nfib <- rep(1, num_steps + 2) # pre-allocate vector with correct number of elements with all 1s\nfor (i in 1:num_steps) {\n  fib[i+2] <- fib[i+1] + fib[i] # add elements i and i+1 and assign it to element i+2\n}\ntime <- 0:(num_steps+1) # define a \"time\" vector as the independent variable\nplot (time, fib, lwd = 3, xlab = 'time steps', ylab = \"Fibonacci\")\n# an exponential function wiht the Golden ratio base\nphi <- (1+sqrt(5))/2 # golden ratio\nsol <- 0.75*phi^time # calculate the exponential function vector (no loop required)\nlines(time, sol, col='red', lwd = 3) # overlay the exponential function plot\nlegend(\"topleft\", # legend placement\n       c(\"Fibonacci\", \"exponential\"), # vector containing labels for the legend\n       col=1:2, # vector containing color codes (1 is black, 2 is red)\n       lty=c(0,1), # vector specifying line types (0 is none, 1 is regular line)\n       pch=c(1,NA), # vector specifying types of point markers (1 is cicle, NA is none)\n       lwd=3) "},{"id":9,"options":{"context":"interactive","autorun":"false","classes":"","output":"true","fig-cap":"","read-only":"false","results":"markup","warning":"true","fig-width":7,"comment":"","dpi":72,"fig-height":5,"message":"true","out-height":"","label":"unnamed-chunk-9","out-width":"700px"},"code":"mine <- 5\nmine*1.03"},{"id":10,"options":{"context":"interactive","autorun":"false","classes":"","output":"true","fig-cap":"","read-only":"false","results":"markup","warning":"true","fig-width":7,"comment":"","dpi":72,"fig-height":5,"message":"true","out-height":"","label":"unnamed-chunk-10","out-width":"700px"},"code":"mine <- 5"},{"id":11,"options":{"context":"interactive","autorun":"false","classes":"","output":"true","fig-cap":"","read-only":"false","results":"markup","warning":"true","fig-width":7,"comment":"","dpi":72,"fig-height":5,"message":"true","out-height":"","label":"unnamed-chunk-11","out-width":"700px"},"code":"time <- 0:100\nmine <- rep(0,101)"},{"id":12,"options":{"context":"interactive","autorun":"false","classes":"","output":"true","fig-cap":"","read-only":"false","results":"markup","warning":"true","fig-width":7,"comment":"","dpi":72,"fig-height":5,"message":"true","out-height":"","label":"unnamed-chunk-12","out-width":"700px"},"code":"num <- 10\nfact <- rep(1,num)\nfor (i in 1:num) {\n  fact[i+1]<-fact[i]*i\n}\nprint(fact)"}];
 
 </script>
 <script type="module">
@@ -946,8 +946,7 @@ globalThis.qwebrExecuteCode = async function (
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Quantifying Life - Tutorial 5: Linear regression">
-<meta name="twitter:description" content="In this tutorial you will learn to:">
+<meta name="twitter:title" content="Quantifying Life - Tutorial 5: For loops and dynamic models">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -958,7 +957,7 @@ globalThis.qwebrExecuteCode = async function (
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Tutorial 5: Linear regression</h1>
+      <h1 class="quarto-secondary-nav-title">Tutorial 5: For loops and dynamic models</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -1036,72 +1035,77 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 4: Random number generators</a>
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 5: Linear regression</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link active">Tutorial 5: Linear regression</a>
+  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link active">Tutorial 5: For loops and dynamic models</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link">Tutorial 6: numeric solutions of ODEs</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link">Tutorial 6: Data tables and Booleans</a>
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
+  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">Tutorial 7: plotting defining functions of ODEs</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">Tutorial 7: Functions and sampling from data</a>
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">Tutorial 4: Random number generators</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">Tutorial 8: For loops and dynamic models</a>
+  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">Tutorial 9: Data tables and Booleans</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">Tutorial 9: numeric solutions of ODEs</a>
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link">Tutorial 9: Functions and sampling from data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1116,7 +1120,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link">Tutorial 10: simulations of Markov models</a>
+  <a href="./tutorial11.html" class="sidebar-item-text sidebar-link">Tutorial 11: simulations of Markov models</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1143,11 +1147,14 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
-  <li><a href="#best-fit-parameters" id="toc-best-fit-parameters" class="nav-link" data-scroll-target="#best-fit-parameters">Best-fit parameters</a></li>
-  <li><a href="#interpreting-the-output-of-linear-regression" id="toc-interpreting-the-output-of-linear-regression" class="nav-link" data-scroll-target="#interpreting-the-output-of-linear-regression">interpreting the output of linear regression</a></li>
-  <li><a href="#plotting-the-residuals" id="toc-plotting-the-residuals" class="nav-link" data-scroll-target="#plotting-the-residuals">plotting the residuals</a></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives:</a></li>
+  <li><a href="#for-loops-and-vectors" id="toc-for-loops-and-vectors" class="nav-link" data-scroll-target="#for-loops-and-vectors">For loops and vectors</a>
+  <ul class="collapse">
+  <li><a href="#components-of-for-loops" id="toc-components-of-for-loops" class="nav-link" data-scroll-target="#components-of-for-loops">components of for loops</a></li>
+  <li><a href="#using-vectors-with-loops" id="toc-using-vectors-with-loops" class="nav-link" data-scroll-target="#using-vectors-with-loops">using vectors with loops</a></li>
+  <li><a href="#using-for-loops-for-solving-discrete-time-dynamic-models" id="toc-using-for-loops-for-solving-discrete-time-dynamic-models" class="nav-link" data-scroll-target="#using-for-loops-for-solving-discrete-time-dynamic-models">using for loops for solving discrete-time dynamic models</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises:</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -1330,7 +1337,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Tutorial 5: Linear regression</h1>
+<h1 class="title d-none d-lg-block">Tutorial 5: For loops and dynamic models</h1>
 </div>
 
 
@@ -1345,83 +1352,107 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 </header>
 
-<section id="learning-goals" class="level3">
-<h3 class="anchored" data-anchor-id="learning-goals">Learning goals</h3>
-<p>In this tutorial you will learn to:</p>
+<section id="objectives" class="level3">
+<h3 class="anchored" data-anchor-id="objectives">Objectives:</h3>
 <ul>
-<li>Make scatterplots with linear regression lines</li>
-<li>Interpret the output of linear regression</li>
-<li>Examine the residuals of linear regression</li>
+<li>Define for loops</li>
+<li>Assign vector elements inside a for loop</li>
+<li>Use for loops for iteratively solving a dynamic model</li>
 </ul>
 </section>
-<section id="best-fit-parameters" class="level3">
-<h3 class="anchored" data-anchor-id="best-fit-parameters">Best-fit parameters</h3>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Linear regression
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Linear regression</strong> is a method for finding the best-fit line to a two-variable data set. One of the variables is called the <em>explanatory</em> (independent) variable and the other is called the <em>response</em> (dependent) variable. The best-fit line is defined as the line whose graph passes the closest to the data points as measured by the <em>sum of squared differences</em> between the predicted and observed response variable values.</p>
-</div>
-</div>
-<p>Here is an example of a linear regression performed and the line plotted over the scatterplot. The R function for linear regression <code>lm()</code> has two required inputs: an <em>expression</em> in the form of <code>Response ~ Explanatory</code> and the name of the data frame (if the variables are part of one). The script below uses the data set of heart rates from students from the BIOS 20151 classes, generates a plot of the data, calls <code>lm()</code> and assigns the output to a variable <code>fit_heart</code> and then plots the resulting best-fit line using the function <code>abline()</code>:</p>
+<section id="for-loops-and-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="for-loops-and-vectors">For loops and vectors</h2>
+<section id="components-of-for-loops" class="level3">
+<h3 class="anchored" data-anchor-id="components-of-for-loops">components of for loops</h3>
+<p>A for loop is a programming structure that repeats some code (called the body) a specified number of time. For example, you can write “Hello!” ten times like this:</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The function <code>lm()</code> calculated the slope and intercept of the best-fit line. These values are bundled into the output of the function, which we assigned to <code>fit_heart</code>. This script prints them out:</p>
+<p>The for loop starts with the keyword for, then has the expression in parentheses (i in 1:10). i is called the <em>loop variable</em>, in is another keyword, and 1:10 is a <em>loop vector</em>. After the first line there is a curly bracket { and everything that follows until the closing bracket } is the <em>loop body</em>. The loop body is executed as many times as there are elements in the loop vector (in this example, 10 times) and the only thing that changes is the values of the loop variable i, which starts with the first element of the vector (1) and goes until it reaches the last element (10) and then stops:</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>As you can see, both parameters are part of the vector variable coefficients. If needed, they can be accessed separately by using the indexing notation:</p>
+<p>It can be used to do repetitive calculations, for example, adding up all the integers in an array (of course the built-in function sum() will do it too):</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="interpreting-the-output-of-linear-regression" class="level3">
-<h3 class="anchored" data-anchor-id="interpreting-the-output-of-linear-regression">interpreting the output of linear regression</h3>
-<p>We have seen how to obtain the slope and the intercept, but there’s a lot more in the linear regression output! If you run these scripts in RStudio you will see the object <code>fit_heart</code> in the <code>Environment</code> window (by default, top right). If you double click on it, you’ll see that it’s a <em>list object</em> that contains many variables (like a data frame, except messier because the different variables don’t have the same length). Let us use the data set from the <code>palmerpenguins</code> package that we saw in Tutorial 3 and run linear regression on <code>body_mass_g</code> as a function of <code>bill_lenth_mm</code>:</p>
+<section id="using-vectors-with-loops" class="level3">
+<h3 class="anchored" data-anchor-id="using-vectors-with-loops">using vectors with loops</h3>
+<p>It is especially useful to use loops to assign vector variables one element at a time. The loop variable (i) is usually used for <em>indexing</em> the vector variable. There are several necessary features of using vectors in for loops, so let us take an example script and break them down in this example of calculating a vector of the sum of integers from 1 up to the current number:</p>
+<ol type="1">
+<li>Pre-allocate the vector variable - i.e.&nbsp;create a vector of the correct length prior to the loop by filling it with a placeholder value, e.g.&nbsp;0 or NA (not a value).</li>
+</ol>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>As you see, the function <code>summary()</code> gives us the key information, including the values of the parameters (plus some statistics to indicated the uncertainly around those values) and the <code>R-squared</code>, also known as the <em>coefficient of determination</em>. While the slope and the intercept tell which line provides the best fit, they tell us nothing about how good the fit is.</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Coefficient of determination (R-squared)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <strong>coefficient of determination</strong> or <span class="math inline">\(R^2\)</span> of a linear regression is a measure of the goodness of fit of the line to the data. Numerically, it represents the fraction of variance of the response variable that is explained by the model.</p>
-</div>
-</div>
-<p>The value of R-squared is not accessible directly in <code>pen_fit</code>, but it is printed out in the summary under the name of <code>Multiple R-squared</code>, together with <code>Adjusted R-squared</code>, which is a slightly modified version. To print out the coefficient of determination by itself, we have to use <code>summary()</code> with variable name <code>r.squared</code>:</p>
+<ol start="2" type="1">
+<li>Only put in the loop what has to be repeated (e.g.&nbsp;don’t put the pre-allocation inside the loop);</li>
+</ol>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>As above, we can plot the best-fit line over a scatterplot of the data by using <code>abline()</code> with <code>pen_fit</code> as an input:</p>
+<ol start="3" type="1">
+<li>Be careful with indexing inside for loops - this means paying careful attention to the lowest and the highest index that you’re using inside the loop. For example, if your loop vector goes from 1 to max (as above), the total number of elements in your vector will be max+1, because we assigned the element with index i+1 in the loop:</li>
+</ol>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="plotting-the-residuals" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-the-residuals">plotting the residuals</h3>
-<p>After performing linear regression it is essential to check that the <em>residuals</em> obey the assumptions of linear regression. The residuals are the difference between the predicted response variable values and the actual values of the response variable, in this case the penguin body mass. The residuals are contained in the object <code>pen_fit</code> as a variable named <code>residuals</code>. Residuals are the leftover errors of the response variable, so one way to visualize them is to plot them against the explanatory variable. The values of the explanatory variables which were used for the linear regression are also stored in the object <code>pen_fit</code> within the variables <code>model</code>, which contains the two variables passed to <code>lm()</code>:</p>
+<section id="using-for-loops-for-solving-discrete-time-dynamic-models" class="level3">
+<h3 class="anchored" data-anchor-id="using-for-loops-for-solving-discrete-time-dynamic-models">using for loops for solving discrete-time dynamic models</h3>
+<p>A first-order discrete time model of a variable <span class="math inline">\(X(t)\)</span> can be defined by an equation where the next value of the variable <span class="math inline">\(X(t+1)\)</span> is computed from the current value <span class="math inline">\(X(t)\)</span>. For example the model</p>
+<p><span class="math display">\[ X(t+1) = 1.5X(t)\]</span></p>
+<p>describes a variable that is multiplied by 1.5 every time step. A for loop can be used to iteratively compute its solution, starting with a given initial value <span class="math inline">\(X(0)\)</span>. The script below starts with the initial value 4, computes the solution for 10 steps and plots it (note that the time vector starts at 0 and goes through 10, while the index of the variable X goes from 1 to 11).</p>
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>NOTE: I used the values of bill length from the <code>pen_fit</code> object because several of the values in the original data set had missing values (<code>NA</code>) and were discarded by <code>lm()</code>, so there are no corresponding residuals for those values and the <code>plot()</code> function would have failed if I had used the <code>penguins$bill_length_mm</code> instead as the x-variable.</p>
-<p>By visual inspection it seems that the residuals satisfy the assumptions of being independent of measurement (shapeless scatterplot), are centered at zero, and look roughly normally distributed, although that can be checked more carefully using other tools.</p>
-<p>For an example of these fancy tools, you can use <code>plot()</code> with the output of a linear regression, which will produce several diagnostic plots to make sure the residuals obey the assumptions of normally distributed with equal variance:</p>
+<p>In the famous Fibonacci model the next value is defined to be the sum of two previous values in the sequence:</p>
+<p><span class="math display">\[ F(t+2) = F(t+1) + F(t)\]</span> The script below iteratively calculates the solution, starting with initial values of <span class="math inline">\(F(0)= F(1) = 1\)</span> and plots the resulting sequence together with an exponential function that approximates it.</p>
 <div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="exercises" class="level3">
 <h3 class="anchored" data-anchor-id="exercises">Exercises:</h3>
 <ol type="1">
-<li>Calculate the mean and standard deviation of the residuals from the previously calculated linear regression output <code>pen_fit</code> and use <code>print()</code> to report them:</li>
+<li>Assign the value 5 to a variable named <code>mine</code>, then multiply it by 1.03, replacing the old value of the variable.</li>
 </ol>
 <div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>in the last line, use mine on both sides of the assignment</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Write a script to take the variable <code>mine</code> with values 5 and multiply it by 1.03 one hundred times using a for loop. Use <code>print()</code> to show the result.</li>
+</ol>
+<div id="qwebr-insertion-location-10"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>use the for loop structure as defined in the tutorial above place the line of code you wrote in exercise 1 inside the for loop</p>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Use <code>rep()</code> to preallocate a vector of values <code>mine</code> to be 101 zeros, then assign the first element to 5. Use a for loop to calculate 100 new values by multiplying the previous one by 1.03 and assigning them to sequential elements of the vector, then plot that vector as a function of the vector time.</li>
+</ol>
+<div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -1435,14 +1466,14 @@ Hint
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Use functions <code>mean()</code> and <code>sd()</code>; specify the dataframe as well as variable, e.g.&nbsp;<code>df$var</code>; put these function inside <code>print()</code>.</p>
+<p>assign 5 to mine[1] use the for loop structure from exercise 2 use index i to indicated the current element of mine: mine[i]</p>
 </div>
 </div>
 </div>
-<ol start="2" type="1">
-<li>Calculate and print the fraction of variance explained by the linear regression by dividing the variance of the predicted values of the previously calculate linear regression object <code>pen_fit</code> (in the variable <code>fitted.values</code>) by the variance of the observed values (in the variable <code>model$XXX</code> where XXX stands for the name of the response variable).</li>
+<ol start="4" type="1">
+<li>Fix the indexing error in the script below for calculating a vector of factorials <code>fact</code>. Each element of the vector <code>fact[i]</code> should be equal to <span class="math inline">\(i!= 1 \times 2 \times 3 ... \times i\)</span>, so for example <code>fact[2]</code> should be 2 and <code>fact[3]</code> should be 6.</li>
 </ol>
-<div id="qwebr-insertion-location-10"></div>
+<div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -1456,54 +1487,13 @@ Hint
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Calculate the ratio of variances inside the print() function; make sure that all the parentheses are matched correctly</p>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Perform linear regression on the penguin data set with the <code>bill_depth_mm</code> as the explanatory variable and <code>body_mass_g</code> as the response variable and assign it to variable <code>fit_pen</code>. Print out the coefficient of determination of this linear regression.</li>
-</ol>
-<div id="qwebr-insertion-location-11"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Need to first assing the output of regression, e.g.&nbsp;<code>fit_pen &lt;- lm( ... )</code>; follow the example above of printing out the R-squared.</p>
-</div>
-</div>
-</div>
-<ol start="4" type="1">
-<li>Plot the residuals from the linear regression as a function of the independent variable as contained in the <code>fit_pen</code> object within the variable <code>model$XXX</code> where XXX is the name of the explanatory variable.</li>
-</ol>
-<div id="qwebr-insertion-location-12"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Follow the example above of plotting residuals using the output of lm, e.g <code>fit$residuals</code></p>
+<p>check what each element is multiplied by</p>
 </div>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1642,13 +1632,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./linreg.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></span>
+      <a href="./lindiff.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./independence.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ode_sols.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

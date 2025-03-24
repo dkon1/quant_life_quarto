@@ -1,164 +1,136 @@
-# Tutorial 8: For loops and dynamic models {.unnumbered}
+# Tutorial 4: Random number generators {.unnumbered}
 
-### Objectives:
+### Learning goals
 
--   Define for loops
--   Assign vector elements inside a for loop
--   Use for loops for iteratively solving a dynamic model
+In this tutorial you will learn to:
 
-## For loops and vectors
+-   use uniform random number generator
+-   use binomial random number generator
+-   calculate probabilities from binomial distribution
+-   plot probability distribution functions
 
-### components of for loops
+## Random number generators
 
-A for loop is a programming structure that repeats some code (called the body) a specified number of time. For example, you can write "Hello!" ten times like this:
+Simulating randomness with a computer is not a simple task. Randomness is contrary to the nature of a computer, which is designed to perform operations exactly. However, there are algorithms that produce a string of numbers that are for all intents and purposes random: there is no obvious connection between one number and the next, and the values don't form any pattern. Such algorithms are called random number generators, although to be more precise they produce pseudo-random numbers. The reason is that they actually produce a perfectly predictable string of numbers, which eventually repeats itself, but with a humongous period. One can even produce the same random number, or the same string of random numbers, by specifying the seed for the random number generator. This is very useful if one wants to reproduce the results of a code that uses random numbers.
+
+### uniform discrete random numbers
+
+Of course, random variable are not all the same - they have different distributions. R has a number of functions for producing random numbers from different distributions. To produce random numbers from a set of values with a uniform probability distribution, use the function `sample()`. The following command produces a random integer between 1 and 20. Repeating the same command produces a new random number, which (most likely) is not the same as the first. The first input argument (1:20) is the vector of values from which to draw the random number, and the second is the size of the sample.
 
 ```{webr-r}
-for (i in 1:10) {
-  print("Hello!")
-}
+sample(1:20,1)
+sample(1:20,1)
 ```
 
-The for loop starts with the keyword for, then has the expression in parentheses (i in 1:10). i is called the *loop variable*, in is another keyword, and 1:10 is a *loop vector*. After the first line there is a curly bracket { and everything that follows until the closing bracket } is the *loop body*. The loop body is executed as many times as there are elements in the loop vector (in this example, 10 times) and the only thing that changes is the values of the loop variable i, which starts with the first element of the vector (1) and goes until it reaches the last element (10) and then stops:
+If the random seed is set to some value (e.g. 100 below), then the random number generator will produce the same "random" number if this command is repeated:
 
 ```{webr-r}
-for (i in 1:10) {
-  print(paste("Iteration number", i))
-}
+set.seed(101)
+sample(1:20,1)
+set.seed(101)
+sample(1:20,1)
 ```
 
-It can be used to do repetitive calculations, for example, adding up all the integers in an array (of course the built-in function sum() will do it too):
+To generate 10 randomly chosen integers between 1 and 20, see the following two commands, which differ in setting the value of the option replace. The first command doesn't specify the value for replace, and by default it is set to FALSE, so the command draws numbers without replacing them (meaning that all the numbers in the sample are unique). In the second command replace is set to TRUE, so the numbers that were selected can be chosen again. In both cases, repeatedly running the command results in a different set of randomly chosen numbers, which you should investigate by copying the commands into R and running them yourself.
 
 ```{webr-r}
-# add up the integers from 1 to 10 and print out the total
-total<-0
-for (i in 1:10) {
-  total<-total+i
-}
-print(total)
+sample_vec <- sample(1:20,10,replace=TRUE)
+print(sample_vec)
 ```
 
-### using vectors with loops
-
-It is especially useful to use loops to assign vector variables one element at a time. The loop variable (i) is usually used for *indexing* the vector variable. There are several necessary features of using vectors in for loops, so let us take an example script and break them down in this example of calculating a vector of the sum of integers from 1 up to the current number:
-
-1)  Pre-allocate the vector variable - i.e. create a vector of the correct length prior to the loop by filling it with a placeholder value, e.g. 0 or NA (not a value).
+`table()` is a very useful function for tallying how many values of each type are in a vector. It essentially provides a kind of histogram, with each distinct value in the data set a distinct bin, so it may be used together with `barplot()` to plot a detailed histogram:
 
 ```{webr-r}
-max <- 10 
-total_vec <- rep(0, max+1) # pre-allocate the vector
+print(table(sample_vec))
+barplot(table(sample_vec))
+hist(sample_vec,breaks=0:21, col = 'gray')
 ```
 
-2)  Only put in the loop what has to be repeated (e.g. don't put the pre-allocation inside the loop);
+### binomial random number generator
+
+If you need to generate random numbers from the binomial distribution, R has you covered. The command is `rbinom(s, n, p)` and it requires three input values: s is the number of observations (sample size), n is the number of binary trials in one observation, and p is the probability of success in one binary trial. The following two commands generate a single random number, the number of successes out of 20 trials with probability of success 0.2 and 0.6:
 
 ```{webr-r}
-for (i in 1:max) { # iterate for i from 1 to max
-  total_vec[i+1] <- total_vec[i] + i # assign to the next value of total_vec the sum of i and the current value of total_vec
-}
+rbinom(1,size =20,p=0.2)
+rbinom(1,size =20,p=0.6)
 ```
 
-3)  Be careful with indexing inside for loops - this means paying careful attention to the lowest and the highest index that you're using inside the loop. For example, if your loop vector goes from 1 to max (as above), the total number of elements in your vector will be max+1, because we assigned the element with index i+1 in the loop:
+To generate a sample of ten random numbers, change the first input parameter to 10. As you'd expect, the samples of 10 observations are (most likely) noticeably different: when the probability p is 0.2, the number of successes tend to be less than 6, while for probability 0.6, the numbers are usually greater than 10.
 
 ```{webr-r}
-print(length(total_vec)) # print the number of elements of total_vec
-print(total_vec)
+rbinom(10,20,0.2)
+rbinom(10,20,0.6)
 ```
 
-### using for loops for solving discrete-time dynamic models
-
-A first-order discrete time model of a variable $X(t)$ can be defined by an equation where the next value of the variable $X(t+1)$ is computed from the current value $X(t)$. For example the model
-
-$$ X(t+1) = 1.5X(t)$$
-
-describes a variable that is multiplied by 1.5 every time step. A for loop can be used to iteratively compute its solution, starting with a given initial value $X(0)$. The script below starts with the initial value 4, computes the solution for 10 steps and plots it (note that the time vector starts at 0 and goes through 10, while the index of the variable X goes from 1 to 11).
+Notice that the range of possible values of this random variable is between 0 and 20, but unlike the uniform random numbers produced with the `sample()` function, the probabilities of obtaining different numbers are different and depend on the parameter p. Calculation and plotting of the binomial distribution function can be accomplishes with the command `dbinom(x,n,p)`, where $x$ is the value of the random variable (between 0 and n), $n$ is the number of trials, and p is the probability of success. For instance, the following script calculate the probability of 4 successes out of 20 trials with probability $p=0.2$:
 
 ```{webr-r}
-num <- 10
-X <- rep(4, num + 1) # pre-allocate the solution vector with initial value
-for (i in 1:num) {
-  X[i+1] <- 1.5*X[i] # compute the next value X[i+1] from the current value X[i]
-}
-time <- 0:num
-plot(time, X)
+n <- 20
+p <- 0.2
+dbinom(4,n,p)
 ```
 
-In the famous Fibonacci model the next value is defined to be the sum of two previous values in the sequence:
-
-$$ F(t+2) = F(t+1) + F(t)$$ The script below iteratively calculates the solution, starting with initial values of $F(0)= F(1) = 1$ and plots the resulting sequence together with an exponential function that approximates it.
+The script below calculates the probabilities of all of the possible values of the random variable by substituting the vector of these values (e.g. 0 to 20) instead of the number 1, generating the probability distribution vector. This vector is plotted vs. the values of the random variable using the `barplot()` function, producing an aesthetically pleasing plot of the binomial distribution. The script plots two binomial probability distributions, both with $n=20$, the first with $p=0.2$ and the second with $p=0.6$. To add values to the x axis one needs the option `names.arg` assigned the vector of values, the axis labels in `barplot` use the same options we saw before (`xlab` and `ylab`), and the main option produces a title above each plot.
 
 ```{webr-r}
-num_steps <- 20 # number of steps
-fib <- rep(1, num_steps + 2) # pre-allocate vector with correct number of elements with all 1s
-for (i in 1:num_steps) {
-  fib[i+2] <- fib[i+1] + fib[i] # add elements i and i+1 and assign it to element i+2
-}
-time <- 0:(num_steps+1) # define a "time" vector as the independent variable
-plot (time, fib, lwd = 3, xlab = 'time steps', ylab = "Fibonacci")
-# an exponential function wiht the Golden ratio base
-phi <- (1+sqrt(5))/2 # golden ratio
-sol <- 0.75*phi^time # calculate the exponential function vector (no loop required)
-lines(time, sol, col='red', lwd = 3) # overlay the exponential function plot
-legend("topleft", # legend placement
-       c("Fibonacci", "exponential"), # vector containing labels for the legend
-       col=1:2, # vector containing color codes (1 is black, 2 is red)
-       lty=c(0,1), # vector specifying line types (0 is none, 1 is regular line)
-       pch=c(1,NA), # vector specifying types of point markers (1 is cicle, NA is none)
-       lwd=3) 
+values.vec <- 0:n
+prob.dist <- dbinom(values.vec,n,p)
+barplot(prob.dist, names.arg=values.vec, xlab='binomial RV',ylab='probability',
+main='binom dist with n=20 and p=0.2')
+p<-0.6
+prob.dist <- dbinom(values.vec,n,p)
+barplot(prob.dist, names.arg=values.vec, xlab='binomial RV',ylab='probability',
+main='binom dist with n=20 and p=0.6')
 ```
 
-### Exercises:
+### Exercises
 
-1.  Assign the value 5 to a variable named `mine`, then multiply it by 1.03, replacing the old value of the variable.
+The following exercises ask you to perform computational tasks using R. Type your code in the box below and try to do the task on your own before clicking on the Answer or Hint boxes to expand them.
+
+1.  Use the `sample()` function to generate a sample of 10 random numbers out of 20 integers (from 1 to 20) without replacement, assign it to variable `sample_vec` and print it out.
 
 ```{webr-r}
-mine <- 5
-mine*1.03
+
 ```
 
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-in the last line, use mine on both sides of the assignment
+First line should contain assignment `<-`; second line should have `print(sample_vec)`
 :::
 
-2.  Write a script to take the variable `mine` with values 5 and multiply it by 1.03 one hundred times using a for loop. Use `print()` to show the result.
+2.  Use the `sample()` function to generate a sample of 20 random numbers of out 20 integers (from 1 to 20) with replacement, assign it to variable `sample_vec` and print it out.
 
 ```{webr-r}
-mine <- 5
+
 ```
 
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-use the for loop structure as defined in the tutorial above place the line of code you wrote in exercise 1 inside the for loop
+Add `replace=TRUE` to the `sample()` function call; second line should have `print(sample_vec)`
 :::
 
-3.  Use `rep()` to preallocate a vector of values `mine` to be 101 zeros, then assign the first element to 5. Use a for loop to calculate 100 new values by multiplying the previous one by 1.03 and assigning them to sequential elements of the vector, then plot that vector as a function of the vector time.
+3.  Use the `rbinom()` function to generate a sample of 20 random numbers of successes/wins out of 12 trials with probability of success in one trial of 0.4, assign it to variable `binom_vec` and print it out.
 
 ```{webr-r}
-time <- 0:100
-mine <- rep(0,101)
 
 ```
 
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-assign 5 to mine\[1\] use the for loop structure from exercise 2 use index i to indicated the current element of mine: mine\[i\]
+Remember the order of inputs into the function `rbinom()`: the number of random values is the number of batches of trials (first input), the number of trials is the size of each batch (second input). The second line should have print(binom_vec).
 :::
 
-4.  Fix the indexing error in the script below for calculating a vector of factorials `fact`. Each element of the vector `fact[i]` should be equal to $i!= 1 \times 2 \times 3 ... \times i$, so for example `fact[2]` should be 2 and `fact[3]` should be 6.
+4.  Use the `rbinom()` function to generate a sample of 12 random numbers of successes/wins out of 20 trials, with probability of success in one trial of 0.4, assign it to variable `binom_vec` and print it out.
 
 ```{webr-r}
-num <- 10
-fact <- rep(1,num)
-for (i in 1:num) {
-  fact[i+1]<-fact[i]*i
-}
-print(fact)
+
 ```
 
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-check what each element is multiplied by
+Remember the order of inputs into the function `rbinom()`: the number of random values is the number of batches of trials (first input), the number of trials is the size of each batch (second input). The second line should have print(binom_vec).
 :::

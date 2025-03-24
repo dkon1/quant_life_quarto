@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - Tutorial 8: For loops and dynamic models</title>
+<title>Quantifying Life - Tutorial 4: Random number generators</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./graph_odes.html" rel="next">
-<link href="./lindiff.html" rel="prev">
+<link href="./independence.html" rel="next">
+<link href="./probdist.html" rel="prev">
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -227,7 +227,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-cap":"","classes":"","fig-height":5,"message":"true","warning":"true","output":"true","autorun":"false","out-height":"","results":"markup","read-only":"false","context":"interactive","out-width":"700px","comment":"","fig-width":7,"label":"unnamed-chunk-1","dpi":72},"id":1,"code":"for (i in 1:10) {\n  print(\"Hello!\")\n}"},{"options":{"fig-cap":"","classes":"","fig-height":5,"message":"true","warning":"true","output":"true","autorun":"false","out-height":"","results":"markup","read-only":"false","context":"interactive","out-width":"700px","comment":"","fig-width":7,"label":"unnamed-chunk-2","dpi":72},"id":2,"code":"for (i in 1:10) {\n  print(paste(\"Iteration number\", i))\n}"},{"options":{"fig-cap":"","classes":"","fig-height":5,"message":"true","warning":"true","output":"true","autorun":"false","out-height":"","results":"markup","read-only":"false","context":"interactive","out-width":"700px","comment":"","fig-width":7,"label":"unnamed-chunk-3","dpi":72},"id":3,"code":"# add up the integers from 1 to 10 and print out the total\ntotal<-0\nfor (i in 1:10) {\n  total<-total+i\n}\nprint(total)"},{"options":{"fig-cap":"","classes":"","fig-height":5,"message":"true","warning":"true","output":"true","autorun":"false","out-height":"","results":"markup","read-only":"false","context":"interactive","out-width":"700px","comment":"","fig-width":7,"label":"unnamed-chunk-4","dpi":72},"id":4,"code":"max <- 10 \ntotal_vec <- rep(0, max+1) # pre-allocate the vector"},{"options":{"fig-cap":"","classes":"","fig-height":5,"message":"true","warning":"true","output":"true","autorun":"false","out-height":"","results":"markup","read-only":"false","context":"interactive","out-width":"700px","comment":"","fig-width":7,"label":"unnamed-chunk-5","dpi":72},"id":5,"code":"for (i in 1:max) { # iterate for i from 1 to max\n  total_vec[i+1] <- total_vec[i] + i # assign to the next value of total_vec the sum of i and the current value of total_vec\n}"},{"options":{"fig-cap":"","classes":"","fig-height":5,"message":"true","warning":"true","output":"true","autorun":"false","out-height":"","results":"markup","read-only":"false","context":"interactive","out-width":"700px","comment":"","fig-width":7,"label":"unnamed-chunk-6","dpi":72},"id":6,"code":"print(length(total_vec)) # print the number of elements of total_vec\nprint(total_vec)"},{"options":{"fig-cap":"","classes":"","fig-height":5,"message":"true","warning":"true","output":"true","autorun":"false","out-height":"","results":"markup","read-only":"false","context":"interactive","out-width":"700px","comment":"","fig-width":7,"label":"unnamed-chunk-7","dpi":72},"id":7,"code":"num <- 10\nX <- rep(4, num + 1) # pre-allocate the solution vector with initial value\nfor (i in 1:num) {\n  X[i+1] <- 1.5*X[i] # compute the next value X[i+1] from the current value X[i]\n}\ntime <- 0:num\nplot(time, X)"},{"options":{"fig-cap":"","classes":"","fig-height":5,"message":"true","warning":"true","output":"true","autorun":"false","out-height":"","results":"markup","read-only":"false","context":"interactive","out-width":"700px","comment":"","fig-width":7,"label":"unnamed-chunk-8","dpi":72},"id":8,"code":"num_steps <- 20 # number of steps\nfib <- rep(1, num_steps + 2) # pre-allocate vector with correct number of elements with all 1s\nfor (i in 1:num_steps) {\n  fib[i+2] <- fib[i+1] + fib[i] # add elements i and i+1 and assign it to element i+2\n}\ntime <- 0:(num_steps+1) # define a \"time\" vector as the independent variable\nplot (time, fib, lwd = 3, xlab = 'time steps', ylab = \"Fibonacci\")\n# an exponential function wiht the Golden ratio base\nphi <- (1+sqrt(5))/2 # golden ratio\nsol <- 0.75*phi^time # calculate the exponential function vector (no loop required)\nlines(time, sol, col='red', lwd = 3) # overlay the exponential function plot\nlegend(\"topleft\", # legend placement\n       c(\"Fibonacci\", \"exponential\"), # vector containing labels for the legend\n       col=1:2, # vector containing color codes (1 is black, 2 is red)\n       lty=c(0,1), # vector specifying line types (0 is none, 1 is regular line)\n       pch=c(1,NA), # vector specifying types of point markers (1 is cicle, NA is none)\n       lwd=3) "},{"options":{"fig-cap":"","classes":"","fig-height":5,"message":"true","warning":"true","output":"true","autorun":"false","out-height":"","results":"markup","read-only":"false","context":"interactive","out-width":"700px","comment":"","fig-width":7,"label":"unnamed-chunk-9","dpi":72},"id":9,"code":"mine <- 5\nmine*1.03"},{"options":{"fig-cap":"","classes":"","fig-height":5,"message":"true","warning":"true","output":"true","autorun":"false","out-height":"","results":"markup","read-only":"false","context":"interactive","out-width":"700px","comment":"","fig-width":7,"label":"unnamed-chunk-10","dpi":72},"id":10,"code":"mine <- 5"},{"options":{"fig-cap":"","classes":"","fig-height":5,"message":"true","warning":"true","output":"true","autorun":"false","out-height":"","results":"markup","read-only":"false","context":"interactive","out-width":"700px","comment":"","fig-width":7,"label":"unnamed-chunk-11","dpi":72},"id":11,"code":"time <- 0:100\nmine <- rep(0,101)"},{"options":{"fig-cap":"","classes":"","fig-height":5,"message":"true","warning":"true","output":"true","autorun":"false","out-height":"","results":"markup","read-only":"false","context":"interactive","out-width":"700px","comment":"","fig-width":7,"label":"unnamed-chunk-12","dpi":72},"id":12,"code":"num <- 10\nfact <- rep(1,num)\nfor (i in 1:num) {\n  fact[i+1]<-fact[i]*i\n}\nprint(fact)"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"sample(1:20,1)\nsample(1:20,1)","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-1","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":2,"code":"set.seed(101)\nsample(1:20,1)\nset.seed(101)\nsample(1:20,1)","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-2","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":3,"code":"sample_vec <- sample(1:20,10,replace=TRUE)\nprint(sample_vec)","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-3","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":4,"code":"print(table(sample_vec))\nbarplot(table(sample_vec))\nhist(sample_vec,breaks=0:21, col = 'gray')","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-4","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":5,"code":"rbinom(1,size =20,p=0.2)\nrbinom(1,size =20,p=0.6)","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-5","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":6,"code":"rbinom(10,20,0.2)\nrbinom(10,20,0.6)","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-6","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":7,"code":"n <- 20\np <- 0.2\ndbinom(4,n,p)","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-7","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":8,"code":"values.vec <- 0:n\nprob.dist <- dbinom(values.vec,n,p)\nbarplot(prob.dist, names.arg=values.vec, xlab='binomial RV',ylab='probability',\nmain='binom dist with n=20 and p=0.2')\np<-0.6\nprob.dist <- dbinom(values.vec,n,p)\nbarplot(prob.dist, names.arg=values.vec, xlab='binomial RV',ylab='probability',\nmain='binom dist with n=20 and p=0.6')","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-8","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":9,"code":"","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-9","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":10,"code":"","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-10","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":11,"code":"","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-11","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}},{"id":12,"code":"","options":{"out-width":"700px","classes":"","read-only":"false","fig-cap":"","autorun":"false","results":"markup","label":"unnamed-chunk-12","message":"true","warning":"true","fig-height":5,"comment":"","fig-width":7,"output":"true","dpi":72,"out-height":"","context":"interactive"}}];
 
 </script>
 <script type="module">
@@ -946,7 +946,8 @@ globalThis.qwebrExecuteCode = async function (
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Quantifying Life - Tutorial 8: For loops and dynamic models">
+<meta name="twitter:title" content="Quantifying Life - Tutorial 4: Random number generators">
+<meta name="twitter:description" content="In this tutorial you will learn to:">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -957,7 +958,7 @@ globalThis.qwebrExecuteCode = async function (
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Tutorial 8: For loops and dynamic models</h1>
+      <h1 class="quarto-secondary-nav-title">Tutorial 4: Random number generators</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -1035,72 +1036,77 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 4: Random number generators</a>
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 5: Linear regression</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">Tutorial 5: Linear regression</a>
+  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">Tutorial 5: For loops and dynamic models</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link">Tutorial 6: numeric solutions of ODEs</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link">Tutorial 6: Data tables and Booleans</a>
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
+  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">Tutorial 7: plotting defining functions of ODEs</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">Tutorial 7: Functions and sampling from data</a>
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link active">Tutorial 4: Random number generators</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link active">Tutorial 8: For loops and dynamic models</a>
+  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">Tutorial 9: Data tables and Booleans</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">Tutorial 9: numeric solutions of ODEs</a>
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link">Tutorial 9: Functions and sampling from data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1115,7 +1121,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link">Tutorial 10: simulations of Markov models</a>
+  <a href="./tutorial11.html" class="sidebar-item-text sidebar-link">Tutorial 11: simulations of Markov models</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1142,13 +1148,12 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives:</a></li>
-  <li><a href="#for-loops-and-vectors" id="toc-for-loops-and-vectors" class="nav-link" data-scroll-target="#for-loops-and-vectors">For loops and vectors</a>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
+  <li><a href="#random-number-generators" id="toc-random-number-generators" class="nav-link" data-scroll-target="#random-number-generators">Random number generators</a>
   <ul class="collapse">
-  <li><a href="#components-of-for-loops" id="toc-components-of-for-loops" class="nav-link" data-scroll-target="#components-of-for-loops">components of for loops</a></li>
-  <li><a href="#using-vectors-with-loops" id="toc-using-vectors-with-loops" class="nav-link" data-scroll-target="#using-vectors-with-loops">using vectors with loops</a></li>
-  <li><a href="#using-for-loops-for-solving-discrete-time-dynamic-models" id="toc-using-for-loops-for-solving-discrete-time-dynamic-models" class="nav-link" data-scroll-target="#using-for-loops-for-solving-discrete-time-dynamic-models">using for loops for solving discrete-time dynamic models</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises:</a></li>
+  <li><a href="#uniform-discrete-random-numbers" id="toc-uniform-discrete-random-numbers" class="nav-link" data-scroll-target="#uniform-discrete-random-numbers">uniform discrete random numbers</a></li>
+  <li><a href="#binomial-random-number-generator" id="toc-binomial-random-number-generator" class="nav-link" data-scroll-target="#binomial-random-number-generator">binomial random number generator</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1332,7 +1337,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Tutorial 8: For loops and dynamic models</h1>
+<h1 class="title d-none d-lg-block">Tutorial 4: Random number generators</h1>
 </div>
 
 
@@ -1347,63 +1352,54 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 </header>
 
-<section id="objectives" class="level3">
-<h3 class="anchored" data-anchor-id="objectives">Objectives:</h3>
+<section id="learning-goals" class="level3">
+<h3 class="anchored" data-anchor-id="learning-goals">Learning goals</h3>
+<p>In this tutorial you will learn to:</p>
 <ul>
-<li>Define for loops</li>
-<li>Assign vector elements inside a for loop</li>
-<li>Use for loops for iteratively solving a dynamic model</li>
+<li>use uniform random number generator</li>
+<li>use binomial random number generator</li>
+<li>calculate probabilities from binomial distribution</li>
+<li>plot probability distribution functions</li>
 </ul>
 </section>
-<section id="for-loops-and-vectors" class="level2">
-<h2 class="anchored" data-anchor-id="for-loops-and-vectors">For loops and vectors</h2>
-<section id="components-of-for-loops" class="level3">
-<h3 class="anchored" data-anchor-id="components-of-for-loops">components of for loops</h3>
-<p>A for loop is a programming structure that repeats some code (called the body) a specified number of time. For example, you can write “Hello!” ten times like this:</p>
+<section id="random-number-generators" class="level2">
+<h2 class="anchored" data-anchor-id="random-number-generators">Random number generators</h2>
+<p>Simulating randomness with a computer is not a simple task. Randomness is contrary to the nature of a computer, which is designed to perform operations exactly. However, there are algorithms that produce a string of numbers that are for all intents and purposes random: there is no obvious connection between one number and the next, and the values don’t form any pattern. Such algorithms are called random number generators, although to be more precise they produce pseudo-random numbers. The reason is that they actually produce a perfectly predictable string of numbers, which eventually repeats itself, but with a humongous period. One can even produce the same random number, or the same string of random numbers, by specifying the seed for the random number generator. This is very useful if one wants to reproduce the results of a code that uses random numbers.</p>
+<section id="uniform-discrete-random-numbers" class="level3">
+<h3 class="anchored" data-anchor-id="uniform-discrete-random-numbers">uniform discrete random numbers</h3>
+<p>Of course, random variable are not all the same - they have different distributions. R has a number of functions for producing random numbers from different distributions. To produce random numbers from a set of values with a uniform probability distribution, use the function <code>sample()</code>. The following command produces a random integer between 1 and 20. Repeating the same command produces a new random number, which (most likely) is not the same as the first. The first input argument (1:20) is the vector of values from which to draw the random number, and the second is the size of the sample.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The for loop starts with the keyword for, then has the expression in parentheses (i in 1:10). i is called the <em>loop variable</em>, in is another keyword, and 1:10 is a <em>loop vector</em>. After the first line there is a curly bracket { and everything that follows until the closing bracket } is the <em>loop body</em>. The loop body is executed as many times as there are elements in the loop vector (in this example, 10 times) and the only thing that changes is the values of the loop variable i, which starts with the first element of the vector (1) and goes until it reaches the last element (10) and then stops:</p>
+<p>If the random seed is set to some value (e.g.&nbsp;100 below), then the random number generator will produce the same “random” number if this command is repeated:</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>It can be used to do repetitive calculations, for example, adding up all the integers in an array (of course the built-in function sum() will do it too):</p>
+<p>To generate 10 randomly chosen integers between 1 and 20, see the following two commands, which differ in setting the value of the option replace. The first command doesn’t specify the value for replace, and by default it is set to FALSE, so the command draws numbers without replacing them (meaning that all the numbers in the sample are unique). In the second command replace is set to TRUE, so the numbers that were selected can be chosen again. In both cases, repeatedly running the command results in a different set of randomly chosen numbers, which you should investigate by copying the commands into R and running them yourself.</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="using-vectors-with-loops" class="level3">
-<h3 class="anchored" data-anchor-id="using-vectors-with-loops">using vectors with loops</h3>
-<p>It is especially useful to use loops to assign vector variables one element at a time. The loop variable (i) is usually used for <em>indexing</em> the vector variable. There are several necessary features of using vectors in for loops, so let us take an example script and break them down in this example of calculating a vector of the sum of integers from 1 up to the current number:</p>
-<ol type="1">
-<li>Pre-allocate the vector variable - i.e.&nbsp;create a vector of the correct length prior to the loop by filling it with a placeholder value, e.g.&nbsp;0 or NA (not a value).</li>
-</ol>
+<p><code>table()</code> is a very useful function for tallying how many values of each type are in a vector. It essentially provides a kind of histogram, with each distinct value in the data set a distinct bin, so it may be used together with <code>barplot()</code> to plot a detailed histogram:</p>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="2" type="1">
-<li>Only put in the loop what has to be repeated (e.g.&nbsp;don’t put the pre-allocation inside the loop);</li>
-</ol>
+</section>
+<section id="binomial-random-number-generator" class="level3">
+<h3 class="anchored" data-anchor-id="binomial-random-number-generator">binomial random number generator</h3>
+<p>If you need to generate random numbers from the binomial distribution, R has you covered. The command is <code>rbinom(s, n, p)</code> and it requires three input values: s is the number of observations (sample size), n is the number of binary trials in one observation, and p is the probability of success in one binary trial. The following two commands generate a single random number, the number of successes out of 20 trials with probability of success 0.2 and 0.6:</p>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<ol start="3" type="1">
-<li>Be careful with indexing inside for loops - this means paying careful attention to the lowest and the highest index that you’re using inside the loop. For example, if your loop vector goes from 1 to max (as above), the total number of elements in your vector will be max+1, because we assigned the element with index i+1 in the loop:</li>
-</ol>
+<p>To generate a sample of ten random numbers, change the first input parameter to 10. As you’d expect, the samples of 10 observations are (most likely) noticeably different: when the probability p is 0.2, the number of successes tend to be less than 6, while for probability 0.6, the numbers are usually greater than 10.</p>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="using-for-loops-for-solving-discrete-time-dynamic-models" class="level3">
-<h3 class="anchored" data-anchor-id="using-for-loops-for-solving-discrete-time-dynamic-models">using for loops for solving discrete-time dynamic models</h3>
-<p>A first-order discrete time model of a variable <span class="math inline">\(X(t)\)</span> can be defined by an equation where the next value of the variable <span class="math inline">\(X(t+1)\)</span> is computed from the current value <span class="math inline">\(X(t)\)</span>. For example the model</p>
-<p><span class="math display">\[ X(t+1) = 1.5X(t)\]</span></p>
-<p>describes a variable that is multiplied by 1.5 every time step. A for loop can be used to iteratively compute its solution, starting with a given initial value <span class="math inline">\(X(0)\)</span>. The script below starts with the initial value 4, computes the solution for 10 steps and plots it (note that the time vector starts at 0 and goes through 10, while the index of the variable X goes from 1 to 11).</p>
+<p>Notice that the range of possible values of this random variable is between 0 and 20, but unlike the uniform random numbers produced with the <code>sample()</code> function, the probabilities of obtaining different numbers are different and depend on the parameter p.&nbsp;Calculation and plotting of the binomial distribution function can be accomplishes with the command <code>dbinom(x,n,p)</code>, where <span class="math inline">\(x\)</span> is the value of the random variable (between 0 and n), <span class="math inline">\(n\)</span> is the number of trials, and p is the probability of success. For instance, the following script calculate the probability of 4 successes out of 20 trials with probability <span class="math inline">\(p=0.2\)</span>:</p>
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>In the famous Fibonacci model the next value is defined to be the sum of two previous values in the sequence:</p>
-<p><span class="math display">\[ F(t+2) = F(t+1) + F(t)\]</span> The script below iteratively calculates the solution, starting with initial values of <span class="math inline">\(F(0)= F(1) = 1\)</span> and plots the resulting sequence together with an exponential function that approximates it.</p>
+<p>The script below calculates the probabilities of all of the possible values of the random variable by substituting the vector of these values (e.g.&nbsp;0 to 20) instead of the number 1, generating the probability distribution vector. This vector is plotted vs.&nbsp;the values of the random variable using the <code>barplot()</code> function, producing an aesthetically pleasing plot of the binomial distribution. The script plots two binomial probability distributions, both with <span class="math inline">\(n=20\)</span>, the first with <span class="math inline">\(p=0.2\)</span> and the second with <span class="math inline">\(p=0.6\)</span>. To add values to the x axis one needs the option <code>names.arg</code> assigned the vector of values, the axis labels in <code>barplot</code> use the same options we saw before (<code>xlab</code> and <code>ylab</code>), and the main option produces a title above each plot.</p>
 <div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="exercises" class="level3">
-<h3 class="anchored" data-anchor-id="exercises">Exercises:</h3>
+<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
+<p>The following exercises ask you to perform computational tasks using R. Type your code in the box below and try to do the task on your own before clicking on the Answer or Hint boxes to expand them.</p>
 <ol type="1">
-<li>Assign the value 5 to a variable named <code>mine</code>, then multiply it by 1.03, replacing the old value of the variable.</li>
+<li>Use the <code>sample()</code> function to generate a sample of 10 random numbers out of 20 integers (from 1 to 20) without replacement, assign it to variable <code>sample_vec</code> and print it out.</li>
 </ol>
 <div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1419,12 +1415,12 @@ Hint
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>in the last line, use mine on both sides of the assignment</p>
+<p>First line should contain assignment <code>&lt;-</code>; second line should have <code>print(sample_vec)</code></p>
 </div>
 </div>
 </div>
 <ol start="2" type="1">
-<li>Write a script to take the variable <code>mine</code> with values 5 and multiply it by 1.03 one hundred times using a for loop. Use <code>print()</code> to show the result.</li>
+<li>Use the <code>sample()</code> function to generate a sample of 20 random numbers of out 20 integers (from 1 to 20) with replacement, assign it to variable <code>sample_vec</code> and print it out.</li>
 </ol>
 <div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1440,12 +1436,12 @@ Hint
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>use the for loop structure as defined in the tutorial above place the line of code you wrote in exercise 1 inside the for loop</p>
+<p>Add <code>replace=TRUE</code> to the <code>sample()</code> function call; second line should have <code>print(sample_vec)</code></p>
 </div>
 </div>
 </div>
 <ol start="3" type="1">
-<li>Use <code>rep()</code> to preallocate a vector of values <code>mine</code> to be 101 zeros, then assign the first element to 5. Use a for loop to calculate 100 new values by multiplying the previous one by 1.03 and assigning them to sequential elements of the vector, then plot that vector as a function of the vector time.</li>
+<li>Use the <code>rbinom()</code> function to generate a sample of 20 random numbers of successes/wins out of 12 trials with probability of success in one trial of 0.4, assign it to variable <code>binom_vec</code> and print it out.</li>
 </ol>
 <div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1461,12 +1457,12 @@ Hint
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>assign 5 to mine[1] use the for loop structure from exercise 2 use index i to indicated the current element of mine: mine[i]</p>
+<p>Remember the order of inputs into the function <code>rbinom()</code>: the number of random values is the number of batches of trials (first input), the number of trials is the size of each batch (second input). The second line should have print(binom_vec).</p>
 </div>
 </div>
 </div>
 <ol start="4" type="1">
-<li>Fix the indexing error in the script below for calculating a vector of factorials <code>fact</code>. Each element of the vector <code>fact[i]</code> should be equal to <span class="math inline">\(i!= 1 \times 2 \times 3 ... \times i\)</span>, so for example <code>fact[2]</code> should be 2 and <code>fact[3]</code> should be 6.</li>
+<li>Use the <code>rbinom()</code> function to generate a sample of 12 random numbers of successes/wins out of 20 trials, with probability of success in one trial of 0.4, assign it to variable <code>binom_vec</code> and print it out.</li>
 </ol>
 <div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1482,7 +1478,7 @@ Hint
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>check what each element is multiplied by</p>
+<p>Remember the order of inputs into the function <code>rbinom()</code>: the number of random values is the number of batches of trials (first input), the number of trials is the size of each batch (second input). The second line should have print(binom_vec).</p>
 </div>
 </div>
 </div>
@@ -1627,13 +1623,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lindiff.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span>
+      <a href="./probdist.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./graph_odes.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./independence.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Independence</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

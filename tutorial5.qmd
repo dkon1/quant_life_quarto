@@ -1,145 +1,164 @@
-# Tutorial 5: Linear regression {.unnumbered}
+# Tutorial 5: For loops and dynamic models {.unnumbered}
 
-### Learning goals
+### Objectives:
 
-In this tutorial you will learn to:
+-   Define for loops
+-   Assign vector elements inside a for loop
+-   Use for loops for iteratively solving a dynamic model
 
--   Make scatterplots with linear regression lines
--   Interpret the output of linear regression
--   Examine the residuals of linear regression
+## For loops and vectors
 
-### Best-fit parameters
+### components of for loops
 
-::: callout-tip
-## Linear regression
-
-**Linear regression** is a method for finding the best-fit line to a two-variable data set. One of the variables is called the *explanatory* (independent) variable and the other is called the *response* (dependent) variable. The best-fit line is defined as the line whose graph passes the closest to the data points as measured by the *sum of squared differences* between the predicted and observed response variable values.
-:::
-
-Here is an example of a linear regression performed and the line plotted over the scatterplot. The R function for linear regression `lm()` has two required inputs: an *expression* in the form of `Response ~ Explanatory` and the name of the data frame (if the variables are part of one). The script below uses the data set of heart rates from students from the BIOS 20151 classes, generates a plot of the data, calls `lm()` and assigns the output to a variable `fit_heart` and then plots the resulting best-fit line using the function `abline()`:
+A for loop is a programming structure that repeats some code (called the body) a specified number of time. For example, you can write "Hello!" ten times like this:
 
 ```{webr-r}
-heart_rates <- read.csv(file = "https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_data_combined.csv")
-plot(heart_rates$Rest2, heart_rates$Ex2, xlab = 'Resting heart rate (bpm)', ylab = 'Exercise heart rate (bpm)')
-fit_heart <- lm(Ex2 ~ Rest2, data = heart_rates)
-abline(fit_heart)
+for (i in 1:10) {
+  print("Hello!")
+}
 ```
 
-The function `lm()` calculated the slope and intercept of the best-fit line. These values are bundled into the output of the function, which we assigned to `fit_heart`. This script prints them out:
+The for loop starts with the keyword for, then has the expression in parentheses (i in 1:10). i is called the *loop variable*, in is another keyword, and 1:10 is a *loop vector*. After the first line there is a curly bracket { and everything that follows until the closing bracket } is the *loop body*. The loop body is executed as many times as there are elements in the loop vector (in this example, 10 times) and the only thing that changes is the values of the loop variable i, which starts with the first element of the vector (1) and goes until it reaches the last element (10) and then stops:
 
 ```{webr-r}
-options(digits = 3)
-cat("The intercept and slope of the best-fit line are: ")
-print(fit_heart$coefficients)
+for (i in 1:10) {
+  print(paste("Iteration number", i))
+}
 ```
 
-As you can see, both parameters are part of the vector variable coefficients. If needed, they can be accessed separately by using the indexing notation:
+It can be used to do repetitive calculations, for example, adding up all the integers in an array (of course the built-in function sum() will do it too):
 
 ```{webr-r}
-
-print(fit_heart$coefficients[1])
-
-print(fit_heart$coefficients[2])
-
+# add up the integers from 1 to 10 and print out the total
+total<-0
+for (i in 1:10) {
+  total<-total+i
+}
+print(total)
 ```
 
-### interpreting the output of linear regression
+### using vectors with loops
 
-We have seen how to obtain the slope and the intercept, but there's a lot more in the linear regression output! If you run these scripts in RStudio you will see the object `fit_heart` in the `Environment` window (by default, top right). If you double click on it, you'll see that it's a *list object* that contains many variables (like a data frame, except messier because the different variables don't have the same length). Let us use the data set from the `palmerpenguins` package that we saw in Tutorial 3 and run linear regression on `body_mass_g` as a function of `bill_lenth_mm`:
+It is especially useful to use loops to assign vector variables one element at a time. The loop variable (i) is usually used for *indexing* the vector variable. There are several necessary features of using vectors in for loops, so let us take an example script and break them down in this example of calculating a vector of the sum of integers from 1 up to the current number:
+
+1)  Pre-allocate the vector variable - i.e. create a vector of the correct length prior to the loop by filling it with a placeholder value, e.g. 0 or NA (not a value).
 
 ```{webr-r}
-library(palmerpenguins)
-pen_fit <- lm(body_mass_g ~ bill_length_mm, penguins)
-summary(pen_fit)
+max <- 10 
+total_vec <- rep(0, max+1) # pre-allocate the vector
 ```
 
-As you see, the function `summary()` gives us the key information, including the values of the parameters (plus some statistics to indicated the uncertainly around those values) and the `R-squared`, also known as the *coefficient of determination*. While the slope and the intercept tell which line provides the best fit, they tell us nothing about how good the fit is.
-
-::: callout-tip
-## Coefficient of determination (R-squared)
-
-The **coefficient of determination** or $R^2$ of a linear regression is a measure of the goodness of fit of the line to the data. Numerically, it represents the fraction of variance of the response variable that is explained by the model.
-:::
-
-The value of R-squared is not accessible directly in `pen_fit`, but it is printed out in the summary under the name of `Multiple R-squared`, together with `Adjusted R-squared`, which is a slightly modified version. To print out the coefficient of determination by itself, we have to use `summary()` with variable name `r.squared`:
+2)  Only put in the loop what has to be repeated (e.g. don't put the pre-allocation inside the loop);
 
 ```{webr-r}
-print(summary(pen_fit)$r.squared)
+for (i in 1:max) { # iterate for i from 1 to max
+  total_vec[i+1] <- total_vec[i] + i # assign to the next value of total_vec the sum of i and the current value of total_vec
+}
 ```
 
-As above, we can plot the best-fit line over a scatterplot of the data by using `abline()` with `pen_fit` as an input:
+3)  Be careful with indexing inside for loops - this means paying careful attention to the lowest and the highest index that you're using inside the loop. For example, if your loop vector goes from 1 to max (as above), the total number of elements in your vector will be max+1, because we assigned the element with index i+1 in the loop:
 
 ```{webr-r}
-# Overlay the best-fit line on the base R plot
-plot(penguins$bill_length_mm, penguins$body_mass_g, xlab='bill length (mm)', ylab='body mass (g)', main = "Linear regression on penguin measurements")
-abline(pen_fit)
+print(length(total_vec)) # print the number of elements of total_vec
+print(total_vec)
 ```
 
-### plotting the residuals
+### using for loops for solving discrete-time dynamic models
 
-After performing linear regression it is essential to check that the *residuals* obey the assumptions of linear regression. The residuals are the difference between the predicted response variable values and the actual values of the response variable, in this case the penguin body mass. The residuals are contained in the object `pen_fit` as a variable named `residuals`. Residuals are the leftover errors of the response variable, so one way to visualize them is to plot them against the explanatory variable. The values of the explanatory variables which were used for the linear regression are also stored in the object `pen_fit` within the variables `model`, which contains the two variables passed to `lm()`:
+A first-order discrete time model of a variable $X(t)$ can be defined by an equation where the next value of the variable $X(t+1)$ is computed from the current value $X(t)$. For example the model
+
+$$ X(t+1) = 1.5X(t)$$
+
+describes a variable that is multiplied by 1.5 every time step. A for loop can be used to iteratively compute its solution, starting with a given initial value $X(0)$. The script below starts with the initial value 4, computes the solution for 10 steps and plots it (note that the time vector starts at 0 and goes through 10, while the index of the variable X goes from 1 to 11).
 
 ```{webr-r}
-plot(pen_fit$model$bill_length_mm, pen_fit$residuals, xlab='bill length (mm)', ylab='residuals (g)')
-abline(0,0)
+num <- 10
+X <- rep(4, num + 1) # pre-allocate the solution vector with initial value
+for (i in 1:num) {
+  X[i+1] <- 1.5*X[i] # compute the next value X[i+1] from the current value X[i]
+}
+time <- 0:num
+plot(time, X)
 ```
 
-NOTE: I used the values of bill length from the `pen_fit` object because several of the values in the original data set had missing values (`NA`) and were discarded by `lm()`, so there are no corresponding residuals for those values and the `plot()` function would have failed if I had used the `penguins$bill_length_mm` instead as the x-variable.
+In the famous Fibonacci model the next value is defined to be the sum of two previous values in the sequence:
 
-By visual inspection it seems that the residuals satisfy the assumptions of being independent of measurement (shapeless scatterplot), are centered at zero, and look roughly normally distributed, although that can be checked more carefully using other tools.
-
-For an example of these fancy tools, you can use `plot()` with the output of a linear regression, which will produce several diagnostic plots to make sure the residuals obey the assumptions of normally distributed with equal variance:
+$$ F(t+2) = F(t+1) + F(t)$$ The script below iteratively calculates the solution, starting with initial values of $F(0)= F(1) = 1$ and plots the resulting sequence together with an exponential function that approximates it.
 
 ```{webr-r}
-plot(pen_fit)
+num_steps <- 20 # number of steps
+fib <- rep(1, num_steps + 2) # pre-allocate vector with correct number of elements with all 1s
+for (i in 1:num_steps) {
+  fib[i+2] <- fib[i+1] + fib[i] # add elements i and i+1 and assign it to element i+2
+}
+time <- 0:(num_steps+1) # define a "time" vector as the independent variable
+plot (time, fib, lwd = 3, xlab = 'time steps', ylab = "Fibonacci")
+# an exponential function wiht the Golden ratio base
+phi <- (1+sqrt(5))/2 # golden ratio
+sol <- 0.75*phi^time # calculate the exponential function vector (no loop required)
+lines(time, sol, col='red', lwd = 3) # overlay the exponential function plot
+legend("topleft", # legend placement
+       c("Fibonacci", "exponential"), # vector containing labels for the legend
+       col=1:2, # vector containing color codes (1 is black, 2 is red)
+       lty=c(0,1), # vector specifying line types (0 is none, 1 is regular line)
+       pch=c(1,NA), # vector specifying types of point markers (1 is cicle, NA is none)
+       lwd=3) 
 ```
 
 ### Exercises:
 
-1.  Calculate the mean and standard deviation of the residuals from the previously calculated linear regression output `pen_fit` and use `print()` to report them:
+1.  Assign the value 5 to a variable named `mine`, then multiply it by 1.03, replacing the old value of the variable.
 
 ```{webr-r}
-
+mine <- 5
+mine*1.03
 ```
 
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-Use functions `mean()` and `sd()`; specify the dataframe as well as variable, e.g. `df$var`; put these function inside `print()`.
+in the last line, use mine on both sides of the assignment
 :::
 
-2.  Calculate and print the fraction of variance explained by the linear regression by dividing the variance of the predicted values of the previously calculate linear regression object `pen_fit` (in the variable `fitted.values`) by the variance of the observed values (in the variable `model$XXX` where XXX stands for the name of the response variable).
+2.  Write a script to take the variable `mine` with values 5 and multiply it by 1.03 one hundred times using a for loop. Use `print()` to show the result.
 
 ```{webr-r}
-
+mine <- 5
 ```
 
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-Calculate the ratio of variances inside the print() function; make sure that all the parentheses are matched correctly
+use the for loop structure as defined in the tutorial above place the line of code you wrote in exercise 1 inside the for loop
 :::
 
-3.  Perform linear regression on the penguin data set with the `bill_depth_mm` as the explanatory variable and `body_mass_g` as the response variable and assign it to variable `fit_pen`. Print out the coefficient of determination of this linear regression.
+3.  Use `rep()` to preallocate a vector of values `mine` to be 101 zeros, then assign the first element to 5. Use a for loop to calculate 100 new values by multiplying the previous one by 1.03 and assigning them to sequential elements of the vector, then plot that vector as a function of the vector time.
 
 ```{webr-r}
+time <- 0:100
+mine <- rep(0,101)
 
 ```
 
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-Need to first assing the output of regression, e.g. `fit_pen <- lm( ... )`; follow the example above of printing out the R-squared.
+assign 5 to mine\[1\] use the for loop structure from exercise 2 use index i to indicated the current element of mine: mine\[i\]
 :::
 
-4.  Plot the residuals from the linear regression as a function of the independent variable as contained in the `fit_pen` object within the variable `model$XXX` where XXX is the name of the explanatory variable.
+4.  Fix the indexing error in the script below for calculating a vector of factorials `fact`. Each element of the vector `fact[i]` should be equal to $i!= 1 \times 2 \times 3 ... \times i$, so for example `fact[2]` should be 2 and `fact[3]` should be 6.
 
 ```{webr-r}
-
+num <- 10
+fact <- rep(1,num)
+for (i in 1:num) {
+  fact[i+1]<-fact[i]*i
+}
+print(fact)
 ```
 
 ::: {.callout-caution collapse="true"}
 ## Hint
 
-Follow the example above of plotting residuals using the output of lm, e.g `fit$residuals`
+check what each element is multiplied by
 :::

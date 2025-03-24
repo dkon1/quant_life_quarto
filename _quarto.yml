@@ -24,23 +24,24 @@ book:
     - tutorial2.qmd
     - descriptive.qmd
     - tutorial3.qmd
-    - probdist.qmd
-    - tutorial4.qmd
     - linreg.qmd
-    - tutorial5.qmd
-    - independence.qmd
-    - hypo_test.qmd
-    - tutorial6.qmd
-    - bayes.qmd
-    - tutorial7.qmd
+    - tutorial4.qmd
     - lindiff.qmd
-    - tutorial8.qmd
-    - graph_odes.qmd
-    - tutorial9.qmd
+    - tutorial5.qmd
     - ode_sols.qmd
+    - tutorial6.qmd
+    - graph_odes.qmd
+    - tutorial7.qmd
+    - probdist.qmd
+    - tutorial8.qmd
+    - independence.qmd
+    - tutorial9.qmd
+    - hypo_test.qmd
+    - tutorial10.qmd
+    - bayes.qmd
     - markov_model.qmd
     - markov_evol.qmd
-    - tutorial10.qmd
+    - tutorial11.qmd
     - markov_stat.qmd
     - markov_eigen.qmd
     - references.qmd

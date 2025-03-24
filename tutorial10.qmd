@@ -1,225 +1,173 @@
-# Tutorial 10: simulations of Markov models {.unnumbered}
+# Tutorial 9: Functions and sampling from data {.unnumbered}
 
-### Objectives
+### Objectives:
 
--   use conditional statements
--   understand how to use for loops to generate string of Markov states
--   perform matrix multiplication
--   generate a sequence of vectors by matrix multiplication
--   visualize the distribution of an array of states
+-   define functions in R
+-   call functions and assign their output
+-   use replicate to call functions repeatedly
+-   random sampling of observations from data frames
 
-## Simulating Markov transitions
+## Functions in R
 
-The behavior of a Markov model is random, so the next state cannot be predicted from the current state exactly. However, one can use a random number generator to produce a string of states, given its transition probabilities and an initial value. This is called a computer simulation, which does not give exact results but are rather numerical experiments, producing data that are consistent with a given model and its assumptions.
+::: callout-tip
+## Function
 
-Below is a code to simulate one time step for a two-state Markov model. It generates a new state according to two transition probabilities, given an initial state. In the code below, the initial state is set to 1 and the transition probabilities are 0.6 and 0.4. The code uses a conditional statement to check what the initial state (in.state) is, and based on this use either transition probability from 1 to 2 (trans1to2) or transition probability from 2 to 1 (trans2to1) with a random number to make a random transition. A second conditional statement is used to assign new.state to a new state if the random number is less than the transition probability, and otherwise to leave new.state the same as in.state. The code also prints an error message if the initial state is neither 1 nor 2; it's good practice to cover all possibilities, and not to assume that variables are set to the values that you expect. If this code is run multiple times, you will see that the transitions are random: sometimes the model remains in the same state, and other times it jumps to the other.
+A function is a piece of code that is **defined** separately and can be **called** by other pieces of code. The main purpose is to create a "black box" that does a specific job and can be used repeatedly just by calling the function (invoking its name), rather than copying the code repeatedly.
+:::
+
+A function generally has input variables (although sometimes there are none) and returns an output, either by using the `return()` statement or by using the value on the last line of the body of the function. It is important to distinguish between the *inside* of the function - the code between the curly braces in the function definition - and the *outside*, that is everything else. The inputs are *passed* to the function in the call (through the parentheses) and then used inside the function to do its business and produce an output, which is then *returned* back to the place in the code where the function was called.
+
+### defining a function
+
+Here is an example of a function definition, with input variables N and r. Between the curly braces is the *body of the function*, which in this case multiplies the two input variables and then returns them.
 
 ```{webr-r}
-state <- 1 # set initial state
-trans1to2 <- 0.6 # transition probability from 1 to 2
-trans2to1 <- 0.4 # transition probability from 2 to 1
-decider <- runif(1) # random number between 0 and 1
-if (state==1) {
-	if (decider < trans1to2) { # randomly decide to transition
-		state <- 2
-	} else { # or to stay
-		state <-1
-	}
-} else if (state==2) {
-	if (decider < trans2to1) { # randomly decide to transition
-		state <- 1 
-	} else { # or to stay
-		state <-2
-	}
-} else {
-	print ('Initial state must be either 1 or 2!')
+my_funk <- function(N,r){ 
+  ans <- r*N # multiply the numbers
+  return(ans)
 }
-print(state)	
+```
+
+Note that after running the code chunk above, you should see the name `my_funk` in your environment (under Functions). This means this function is defined in memory and ready to be called.
+
+### calling a function
+
+After a function is defined, it is ready to be called (executed) by invoking its name and giving the correct number of inputs. Here's an example of a function call:
+
+```{webr-r}
+a <- 30
+y <- 1:10
+print(my_funk(y, a))
+```
+
+Notice that the variable names in the function call do not have to be same as what they are called within the function. IMPORTANT: a function uses the order of variables in the function call, called *external variables* (y, a) to assign their names within the function, called *internal variables* (N, r). (There is a way to specify which input belongs to which internal variable, e.g. `plot(x=time, y=sol)` so if you do this the order is not important.)
+
+### using a function to generate random numbers
+
+Let's do something a bit more interesting than multiplying numbers! Here is a function that generates 2 uniform random numbers between 1 and n (where n is an input) and returns their sum.
+
+```{webr-r}
+dice <- function(n){ 
+  d1 <- sample(1:n, 1) # uniform integer between 1 and n
+  d2 <- sample(1:n, 1) # uniform integer between 1 and n
+  return(d1+d2)
+}
+```
+
+If we call this function with n of 6, this will return a roll of two standard six-sided dice, like this:
+
+```{webr-r}
+n<-6
+roll <- dice(n)
+print(roll)
+```
+
+### using replicate
+
+Sometimes it can be useful to call a function many times, without copying and pasting the call. This can be accomplished very nicely using a "wrapper" function `replicate`. The function has two main inputs: the first is the number of times to repeat the function call, with the function call in the second place. For a example, here is a simulation of one hundred rolls of two dice:
+
+```{webr-r}
+sides <- 6 # sides of the die
+num <- 100 # number of repeats
+rolls <- replicate(num, dice(sides))
+print(rolls)
+```
+
+The result is assigned to a vector array `rolls`, which contains 100 values. Long arrays of results can be difficult to describe by inspection, so one important use of logical tests that were introduced in Tutorial 6 is to count the number of values in an array that satisfy some condition. For example, the code chunks below print out the number of rolls that are equal to 7, and the number of rolls that are greater than 10:
+
+```{webr-r}
+print(paste("Number of 7s:", sum(rolls == 7) ))
+print(paste("Number of rolls above 10:", sum(rolls>10) ))  
 ```
 
 ### Exercises
 
-1.  Modify the script below to generate the new state with transition probability 0.2 from state 1 to 2 and transition probability 0.8 from state 2 to 1, and with initial state 2.
+1.  Call the function `dice` with input argument 6 (as above), using function replicate 100 times, and assign the output to variable `rolls`. Use a logical test to count how many of those 100 dice rolls are "snake eyes" (2) and print out the number.
 
 ```{webr-r}
-state <- 1 # set initial state
-trans1to2 <- 0.6 # transition probability from 1 to 2
-trans2to1 <- 0.4 # transition probability from 2 to 1
-decider <- runif(1) # random number between 0 and 1
-if (state==1) {
-	if (decider < trans1to2) { # randomly decide to transition
-		state <- 2
-	} else { # or to stay
-		state <-1
-	}
-} else if (state==2) {
-	if (decider < trans2to1) { # randomly decide to transition
-		state <- 1 
-	} else { # or to stay
-		state <-2
-	}
-} else {
-	print ('Initial state must be either 1 or 2!')
-}
-print(state)
+
 ```
 
-2.  Modify the script below by placing everything starting with the `decider` assignment inside a for loop that repeats 20 times.
+::: {.callout-caution collapse="true"}
+## Hint
+
+Assign the value 6 to `n` first; call `replicate()` with 100 as the first input and assign the output; use `sum()` and the logical test `== 2` with the output vector
+:::
+
+2.  Modify the function `dice` so instead of returning the sum of two dice rolls it returns TRUE if both numbers are the same and FALSE otherwise, and call it `double`.
 
 ```{webr-r}
-state <- 1 # set initial state
-trans1to2 <- 0.6 # transition probability from 1 to 2
-trans2to1 <- 0.4 # transition probability from 2 to 1
-decider <- runif(1) # random number between 0 and 1
-if (state==1) {
-	if (decider < trans1to2) { # randomly decide to transition
-		state <- 2
-	} else { # or to stay
-		state <-1
-	}
-} else if (state==2) {
-	if (decider < trans2to1) { # randomly decide to transition
-		state <- 1 
-	} else { # or to stay
-		state <-2
-	}
-} else {
-	print ('Initial state must be either 1 or 2!')
-}
-print(state)
+
 ```
 
-3.  The previous script replaced the value of `state` with a new value every iteration. Copy that script and modify it by pre-allocating a vector of states `state_vec` prior to the for loop by using the function `rep()` and the initial value to create a vector of sufficient length (21). Inside the loop, check the current value of `state_vec` (index i) in the conditional statements, and assign the new value to the next index of `state_vec`. After the loop is done, use `table()` as shown below to report how many of the states have values 1 and 2.
+::: {.callout-caution collapse="true"}
+## Hint
+
+Copy the definition of function `dice` from above, change its name to `double`, replace the `+` in the `return()` statement with `==`
+:::
+
+3.  Use `replicate` to call the function `double` you defined above 1000 times, assign it variables `doubles` and print how many doubles it produces.
 
 ```{webr-r}
 
-table(state_vec)
 ```
 
-## Matrix multiplication
+::: {.callout-caution collapse="true"}
+## Hint
 
-The easiest way to perform the cumbersome calculations for matrix multiplication is to outsource them to a computer. R provides a special operation symbol just for this purpose, which is an asterisk surrounded by percent signs: `%*%`. To illustrate we will multiply the matrix `A` and the vector `b`, shown below:
+Copy the code from exercise 1 above, change the last line to sum up the result vector.
+:::
 
-$$ 
-A =  \left(\begin{array}{cc}3& 1 \\ -5 & 0\end{array}\right); \; b = \left(\begin{array}{c} 10 \\ -2 \end{array}\right)
-$$ To perform this operation in R, we must first define the matrix and the vector, and then perform multiplication:
+## Selecting samples from data frames
+
+### data frames are matrix arrays
+
+Data frames, which were introduced in Tutorial 3, are two-dimensional arrays, which means that they require two indices to specify an entry: one for the row number and one for the column number. For example, the penguins data set from `palmerpenguins` package has 344 rows and 8 columns:
 
 ```{webr-r}
-A <- matrix (c(3,-5,1,0),nrow=2)
-b <- c(10,-2)
-c <- A%*%b
-print(c)
-d <- b%*%A
-print(d)
+head(penguins)
+print(paste("Number of rows in penguins:", nrow(penguins) ))
+print(paste("Number of columns in penguins:", ncol(penguins) ))  
 ```
 
-The probability distribution vector for a Markov model advances one time step at a time by multiplication with the transition matrix of the model. For example, let us take the same transition matrix as in section 11.2, and multiply it by the initial vector `prob0=(0.5, 0.5)` (which means that initially the model is in states 1 and 2 with equal probability 0.5).
+The columns in data frames represent the variables that were measured, while the rows represent individual observations. A specific column in the penguins data set, e.g. column 3, contains the observations of bill length for every penguin, a specific row, e.g. row 100, contains all the variables (species, island, bill length, etc.) measures for penguin index 100 (unfortunately anonymous). You can use a row index and column index to specify an observation of a specific variable, for example, below is the code to print out the value of the 100th observation of the 3rd variable:
 
 ```{webr-r}
-M <- matrix(c(0.95,0.05,0.1,0.9),nrow=2, ncol=2)
-print(M)
-prob0<- c(0.5,0.5)
-prob1 <- M%*%prob0
-print(prob1)
+print(paste("The 100th observation of the 3rd variable:", penguins[100,3]))
 ```
 
-The element M\[i,j\] (i-th row and j-th column) contains the probability of transition from state number j to state number i. Take care to enter the transition probabilities in the correct order, as the matrix() function by default places the element by column (first fills the first column, then the second) as you can see in the script above. The result shows that after 1 time step, the probability distribution vector changes from (0.5,0.5) to (0.525, 0.475). What about taking many time steps?
+### selecting some observations
 
-Computers can perform repetitive operations much better than humans, so we will take advantage of their arithmetic proficiency. Since each time step involves multiplication of the current probability vector by the transition matrix, this can be done automatically with a for loop. The only difficulty is that, while the transition matrix remains the same, the probability vector needs to be updated. There are two ways of handing this: 1) replace the old vector with the new, with the disadvantage that the previous vectors all get over-written in memory; 2) save all of the probability vectors in a rectangular matrix, which means we can plot all the probability vectors over time and see their evolution. The following script takes the first approach:
+One can choose to select a subset of observations from a data frame by specifying a subset of row indices. This code snippet prints out the values of all the variables for 100th to the 105th penguins; **note that the column index is left blank**:
 
 ```{webr-r}
-M <- matrix (c(0.95,0.05,0.1,0.9),nrow=2)
-print(M)
-prob<- c(0.1,0.9)
-numstep <- 20
-for (i in 1:numstep) {
-	prob <- M%*%prob
-}
-print(prob)
+print(penguins[100:105,])
 ```
 
-Very important information: to access only one row of a matrix, use the first (row) index and leave the second index blank; similarly, to access only one column of a matrix, use the second (colum) index and leave the first index blank. For example:
+Indices can also be selected by using a logical test, which is particularly useful for selecting observations that match a particular criterion. For example, we can select all the penguins observed on the island of Biscoe by using the test `penguins$island == 'Biscoe'` in place of the index, as in the following script and calculated the summary of all the variables for this selection:
 
 ```{webr-r}
-M <- matrix (c(0.95,0.05,0.1,0.9),nrow=2)
-print(M)
-print(M[2,])
-print(M[,1])
+summary(penguins[penguins$island == 'Biscoe', ])
 ```
 
-Note the the print function prints both the row and the column as row vectors.
+Note that this code looks pretty clunky, so I highly recommend using the `tidyverse` collection of packages, which offers superior tools for selecting and filtering subsets of data frames.
 
-### Exercises
+### random sampling of observations
 
-1.  Find and fix the error in the following matrix assignment for the matrix A:
-
-$$ 
-A =  \left(\begin{array}{cc}0 & 1 \\ -5 & 10\end{array}\right)
-$$
+If you have a large collection of data, sometimes you may want to randomly sample observations from the data frame, for example to assess the robustness of your statistical methods, which is an approach called *bootstrapping*. To do this, you can generate a random sample of integers using the function `sample()`, and then use these numbers as row indices in the data frame:
 
 ```{webr-r}
-A <- matrix (c(0,1,-5,10),nrow=2)
-print(A)
+sam_size <- 100 # number of observations
+row_indices <- sample(nrow(penguins), size = sam_size, replace = FALSE )
+data_sample <- penguins[row_indices, ]
+summary(data_sample)
 ```
 
-2.  Copy the correct assignment of matrix `A` from the exercise above, assign a vector $b=(0,1)$, multiply `A` by `b` and assign the result to the vector `b`, then print it out.
+Notice that we used the option `replace = FALSE` above, to avoid generating a sample with multiple copies of an observation. Sometimes, bootstrap methods are used to generate samples with multiple copies allowed, in which case you set `replace = TRUE` option:
 
 ```{webr-r}
-# copy code from above here
-print(b)
-```
-
-3.  Copy the code from the exercise above and use a for loop to repeat the matrix multiplication 10 times, each time assigning the result to vector `b`, then print out the resulting vector.
-
-```{webr-r}
-# copy code from above here
-print(b)
-```
-
-4.  Copy the code from the exercises and modify it to save of all the vectors that were generated by matrix multiplication, by pre-allocating the matrix `bs` with two rows and 11 columns with zeros and assign the vector `b` to the first column. Use the for loop to assign the next column of the matrix `bs` as the product of the matrix `A` and the current column of the matrix `bs`, then print out the whole array `bs`.
-
-```{webr-r}
-# copy code from above here
-print(bs)
-```
-
-## Barplots for histograms and arrays
-
-Visualizing a large number of values can be done by using the function `table()` to count the frequencies of different values and then using `barplot()` to plot those frequencies, resulting in a nice-looking histogram. This script visualizes a vector of length 100 of 0s and 1s, generated by `rbinom()`:
-
-```{webr-r}
-num <- 100
-p<- 0.4
-vec.vals <- rbinom(num, 1, p)
-barplot(table(vec.vals), ylab = 'Frequencies of states')
-```
-
-A matrix can be visualized using `barplot()` as well, with each column represented by a bar with colors representing values of the different rows. For example, the 2 by 4 matrix below is visualized like this:
-
-```{webr-r}
-cols <- 4
-A <- matrix (c(2,1, 3,3, 2, 4, 3,1),nrow=2, ncol = cols)
-barplot(A, names.arg=1:cols, xlab = 'columns', ylab = 'row values')
-```
-
-`barplot()` can also be used to visualize the frequencies contained in an matrix array of values. Let us generate a matrix containing multiple strings of states, one in each row, with initial states all in column 1, and each successive column containing the states at that time step (this is not how the actual matrix of states is calculated in lab 7, this is just to generate a state matrix for illustration.)
-
-```{webr-r}
-numsteps <- 10 # set the number of steps
-numstrings <- 5 # set number of strings
-numstates <- 2 # number of states in the model
-# generate a random state_mat 
-state_mat <- replicate(numsteps+1,sample(1:numstates,numstrings,replace=TRUE))
-print(state_mat)
-```
-
-The following script counts the number of each state (1 and 2) in each column, and plots those frequencies as bars. You will use this script to plot the frequencies of your simulations in part 3 of R lab 7.
-
-```{webr-r}
-# Visualizing frequencies of states at each time 
-state_count <- matrix(0,nrow=numstates,ncol=numsteps+1)
-for (k in 1:(numsteps+1)) {
-  state_count[,k] <- tabulate(state_mat[,k],nbins=numstates)
-}
-barplot(state_count,main='frequency of states vs. time',xlab='time', names.arg=0:numsteps, ylab='state counts',col=1:numstates)
+sam_size <- 100 # number of observations
+row_indices <- sample(nrow(penguins), size = sam_size, replace = TRUE)
+data_sample <- penguins[row_indices, ]
+summary(data_sample)
 ```

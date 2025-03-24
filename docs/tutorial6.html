@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - Tutorial 6: Data tables and Booleans</title>
+<title>Quantifying Life - Tutorial 6: numeric solutions of ODEs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./bayes.html" rel="next">
-<link href="./hypo_test.html" rel="prev">
+<link href="./graph_odes.html" rel="next">
+<link href="./ode_sols.html" rel="prev">
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -227,7 +227,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"data_mat <- matrix(c(442,514,38,6),ncol=2,nrow=2)\nprint(data_mat)","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-1","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":2,"code":"print(data_mat[1,2])\nprint(data_mat[2,1])","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-2","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":3,"code":"cat(\"The second row of the matrix is \")\nprint(data_mat[2,])\ncat(\"The first column of the matrix is \") \nprint(data_mat[,1])","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-3","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":4,"code":"test_output <- chisq.test(data_mat)\nprint(test_output)","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-4","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":5,"code":"set.seed(8) # set random seed for reproducibility\nsamp_size <- 100 \ndis_states <- c('D', 'N') # disease states 'D' and 'N'\nprobA <- 0.1 # probability of disease for genotype A\nprobB <- 0.4 # probability of disease for genotype B\ndis_genA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1-probA)) # generate a vector of disease status\ndis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-probB)) # generate a vector of disease status","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-5","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":6,"code":"data_vec <- c(table(dis_genA), table(dis_genB))\ndata_mat <- matrix(data_vec, nrow=2, ncol=2)\nprint(data_mat)\nchisq_result <- chisq.test(data_mat) # run chi-squared test\nprint(chisq_result)\nprint(chisq_result$p.value) # output the p-value","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-6","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":7,"code":"barplot(data_mat, col= c(2,3), main = \"Frequency of healthy (green) and disease (red)\", names.arg = c(\"A\", \"B\"), ylab = \"frequency\")","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-7","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":8,"code":"set.seed(5) # set random seed for reproducibility\nsamp_size <- 100 \ndis_states <- c('D', 'N') # disease states 'D' and 'N'\nprobA <- 0.1 # probability of disease for genotype A\nprobB <- 0.4 # probability of disease for genotype B\ndis_genA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1-probA)) # generate a vector of disease status\ndis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-probB)) # generate a vector of disease status","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-8","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":9,"code":"set.seed(42) # set random seed for reproducibility\nsamp_size <- 100 \ndis_states <- c('D', 'N') # disease states 'D' and 'N'\nprobA <- 0.1 # probability of disease for genotype A\nprobB <- 0.4 # probability of disease for genotype B\ndis_genA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1-probA)) # generate a vector of disease status\ndis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-probB)) # generate a vector of disease status\n\ndata_vec <- c(table(dis_genA), table(dis_genB))\ndata_mat <- matrix(data_vec, nrow=2, ncol=2)\n","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-9","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":10,"code":"set.seed(77) # set random seed for reproducibility\nsamp_size <- 200 \ndis_states <- c('D', 'N') # disease states 'D' and 'N'\nprobA <- 0.1 # probability of disease for genotype A\nprobB <- 0.4 # probability of disease for genotype B\ndis_genA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1-probA)) # generate a vector of disease status\ndis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-probB)) # generate a vector of disease status\ndata_vec <- c(table(dis_genA), table(dis_genB))\ndata_mat <- matrix(data_vec, nrow=2, ncol=2)\nchisq_result <- chisq.test(data_mat) # run chi-squared test","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-10","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":11,"code":"x <- 4\ny <- 10\nprint(x>y)\nprint(y>x)\nprint(y==x)","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-11","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":12,"code":"x<-0:10\nprint(x>5)","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-12","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":13,"code":"xvals <- sample(1:20,10, replace = TRUE)\nprint(xvals < 10)\nprint(paste(\"The number of random numbers below 10 is\", sum(xvals < 10)))","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-13","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":14,"code":"x<- 10\ny<- 2\nprint(x>1&y<5)","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-14","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":15,"code":"x<- 10\ny<- 10\nprint(x>1&y<5)","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-15","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":16,"code":"x<- 10\ny<- 10\nprint(x>1|y<5)","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-16","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":17,"code":"x<- 0\ny<- 10\nprint(x>1|y<5)","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-17","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":18,"code":"x<- 0:10\nprint(x>1&x<5)\nprint(sum(x>1&x<5))","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-18","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":19,"code":"","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-19","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":20,"code":"","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-20","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}},{"id":21,"code":"","options":{"out-height":"","warning":"true","context":"interactive","dpi":72,"message":"true","fig-cap":"","results":"markup","label":"unnamed-chunk-21","output":"true","fig-width":7,"autorun":"false","fig-height":5,"classes":"","out-width":"700px","comment":"","read-only":"false"}}];
+globalThis.qwebrCellDetails = [{"code":"library(deSolve)\npop_funk <- function(t,N,parms){\n  b <- parms[1] # assign birth rate\n  d <- parms[2] # assign death rate\n  dNdt <- b*N - d*N # calculate the derivative\n  list(dNdt) # return the derivative\n}","options":{"autorun":"false","context":"interactive","comment":"","out-width":"700px","fig-width":7,"read-only":"false","output":"true","results":"markup","classes":"","out-height":"","warning":"true","label":"unnamed-chunk-1","fig-cap":"","message":"true","dpi":72,"fig-height":5},"id":1},{"code":"b <- 0.3 # birth rate\nd <- 0.25 # death rate\nparms <- c(b, d) # put parameters into vector\ntime <- seq(0, 100, 10) # time vector\ninit <- c(N=1000) # initial value of dependent variable N","options":{"autorun":"false","context":"interactive","comment":"","out-width":"700px","fig-width":7,"read-only":"false","output":"true","results":"markup","classes":"","out-height":"","warning":"true","label":"unnamed-chunk-2","fig-cap":"","message":"true","dpi":72,"fig-height":5},"id":2},{"code":"output <- as.data.frame(\n  ode(func=pop_funk, y=init, times=time, parms=parms)\n  )","options":{"autorun":"false","context":"interactive","comment":"","out-width":"700px","fig-width":7,"read-only":"false","output":"true","results":"markup","classes":"","out-height":"","warning":"true","label":"unnamed-chunk-3","fig-cap":"","message":"true","dpi":72,"fig-height":5},"id":3},{"code":"plot(N ~time, data=output)","options":{"autorun":"false","context":"interactive","comment":"","out-width":"700px","fig-width":7,"read-only":"false","output":"true","results":"markup","classes":"","out-height":"","warning":"true","label":"unnamed-chunk-4","fig-cap":"","message":"true","dpi":72,"fig-height":5},"id":4},{"code":"exact <- init*exp((b-d)*time)\nplot(N ~time, data=output)\nlines(time, exact, col = 'red')\nlegend(\"topleft\", legend = c('numeric', 'exact'), col = c('black', 'red'), lty=c(0,1), pch = c(1,NA))","options":{"autorun":"false","context":"interactive","comment":"","out-width":"700px","fig-width":7,"read-only":"false","output":"true","results":"markup","classes":"","out-height":"","warning":"true","label":"unnamed-chunk-5","fig-cap":"","message":"true","dpi":72,"fig-height":5},"id":5}];
 
 </script>
 <script type="module">
@@ -946,7 +946,8 @@ globalThis.qwebrExecuteCode = async function (
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta name="twitter:title" content="Quantifying Life - Tutorial 6: Data tables and Booleans">
+<meta name="twitter:title" content="Quantifying Life - Tutorial 6: numeric solutions of ODEs">
+<meta name="twitter:description" content="We will use the package deSolve to calculate numeric solutions of ODEs.">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -957,7 +958,7 @@ globalThis.qwebrExecuteCode = async function (
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Tutorial 6: Data tables and Booleans</h1>
+      <h1 class="quarto-secondary-nav-title">Tutorial 6: numeric solutions of ODEs</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -1035,72 +1036,77 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 4: Random number generators</a>
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 5: Linear regression</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">Tutorial 5: Linear regression</a>
+  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">Tutorial 5: For loops and dynamic models</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link active">Tutorial 6: numeric solutions of ODEs</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link active">Tutorial 6: Data tables and Booleans</a>
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
+  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">Tutorial 7: plotting defining functions of ODEs</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">Tutorial 7: Functions and sampling from data</a>
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">Tutorial 4: Random number generators</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">Tutorial 8: For loops and dynamic models</a>
+  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Independence</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">Tutorial 9: Data tables and Booleans</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">Tutorial 9: numeric solutions of ODEs</a>
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link">Tutorial 9: Functions and sampling from data</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bayes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1115,7 +1121,7 @@ globalThis.qwebrExecuteCode = async function (
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link">Tutorial 10: simulations of Markov models</a>
+  <a href="./tutorial11.html" class="sidebar-item-text sidebar-link">Tutorial 11: simulations of Markov models</a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1142,21 +1148,8 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives</a></li>
-  <li><a href="#data-tables-and-the-chi-squared-test" id="toc-data-tables-and-the-chi-squared-test" class="nav-link" data-scroll-target="#data-tables-and-the-chi-squared-test">Data tables and the chi-squared test</a>
-  <ul class="collapse">
-  <li><a href="#matrices-and-data-tables" id="toc-matrices-and-data-tables" class="nav-link" data-scroll-target="#matrices-and-data-tables">matrices and data tables</a></li>
-  <li><a href="#chi-squared-test" id="toc-chi-squared-test" class="nav-link" data-scroll-target="#chi-squared-test">Chi-squared test</a></li>
-  <li><a href="#generating-a-data-table" id="toc-generating-a-data-table" class="nav-link" data-scroll-target="#generating-a-data-table">generating a data table</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
-  </ul></li>
-  <li><a href="#logical-values-and-calculations" id="toc-logical-values-and-calculations" class="nav-link" data-scroll-target="#logical-values-and-calculations">Logical values and calculations</a>
-  <ul class="collapse">
-  <li><a href="#logical-tests" id="toc-logical-tests" class="nav-link" data-scroll-target="#logical-tests">logical tests</a></li>
-  <li><a href="#calculations-using-boolean-vectors" id="toc-calculations-using-boolean-vectors" class="nav-link" data-scroll-target="#calculations-using-boolean-vectors">calculations using Boolean vectors</a></li>
-  <li><a href="#logical-operators-and-and-or" id="toc-logical-operators-and-and-or" class="nav-link" data-scroll-target="#logical-operators-and-and-or">logical operators: AND and OR</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1">Exercises:</a></li>
-  </ul></li>
+  <li><a href="#objectives" id="toc-objectives" class="nav-link active" data-scroll-target="#objectives">Objectives:</a></li>
+  <li><a href="#numeric-solution-of-differential-equations" id="toc-numeric-solution-of-differential-equations" class="nav-link" data-scroll-target="#numeric-solution-of-differential-equations">Numeric solution of differential equations</a></li>
   </ul>
 </nav>
     </div>
@@ -1339,7 +1332,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Tutorial 6: Data tables and Booleans</h1>
+<h1 class="title d-none d-lg-block">Tutorial 6: numeric solutions of ODEs</h1>
 </div>
 
 
@@ -1355,224 +1348,41 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 <section id="objectives" class="level3">
-<h3 class="anchored" data-anchor-id="objectives">Objectives</h3>
+<h3 class="anchored" data-anchor-id="objectives">Objectives:</h3>
 <ul>
-<li>calculate two-way data tables from data</li>
-<li>assign matrix variables</li>
-<li>perform the chi-squared test for independence</li>
-<li>logical operators and tests in R</li>
-<li>calculations using Boolean vectors</li>
+<li>Define a function that corresponds to an ODE</li>
+<li>Use the <code>deSolve</code> package to calculate numeric solutions of ODEs</li>
+<li>Use functions to graph the defining functions of ODEs</li>
+<li>Pass function names to other functions (optional)</li>
 </ul>
 </section>
-<section id="data-tables-and-the-chi-squared-test" class="level2">
-<h2 class="anchored" data-anchor-id="data-tables-and-the-chi-squared-test">Data tables and the chi-squared test</h2>
-<section id="matrices-and-data-tables" class="level3">
-<h3 class="anchored" data-anchor-id="matrices-and-data-tables">matrices and data tables</h3>
-<p>R has many functions for different tests, including the chi-squared test for independence. To use it, one first has to input a data set in the form of a two-way table, where each row represents the values of one random variable, and each column represents the values of the second random variable. The following script shows how to manually input a 2 by 2 contingency table into a matrix. In the matrix function, <code>ncol</code> stands for number of columns, and <code>nrow</code> for number of rows. Notice the order in which the numbers are put into the matrix: down the first column, then the second, etc. Type <code>help(matrix)</code> for more details.</p>
+<section id="numeric-solution-of-differential-equations" class="level2">
+<h2 class="anchored" data-anchor-id="numeric-solution-of-differential-equations">Numeric solution of differential equations</h2>
+<p>We will use the package <code>deSolve</code> to calculate numeric solutions of ODEs. First, we need to create the R function that defines the derivative in the differential equation, in other words, the function <span class="math inline">\(f(x,t)\)</span> in the generic first-order ODE</p>
+<p><span class="math display">\[ \frac{dx}{dt} = f(x,t)\]</span></p>
+<p>This R function must have three inputs: <code>t</code>, <code>x</code>, <code>parms</code>, <em>in that order</em>, representing the time variable, the dependent variable <code>x</code>, and the vector of parameters <code>parms</code>. Let us illustrate this on the linear population model with birth rate b and death rate d:</p>
+<p><span class="math display">\[ \frac{dN}{dt} = bN-dN \]</span></p>
+<p>To solve this ODE with define the function that calculates the function on the right-hand-side (bN-dN). Notice that even though the function does not depend on time, <em>t still must be the first input argument of the function</em>:</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>In order to access a specific element of the matrix, just like in vectors, R uses square brackets and two indices, first one for the row and second for the column. Below are examples of accessing two elements of the matrix data defined above, and how to reference a particular element of the matrix.</p>
+<p>The first two lines extract the two parameters b and d from the vector of parameter values, the next line calculate the value of the derivative, and the last one returns it.</p>
+<p>Third, we assign the parameter values to the vector, create a time vector on which to solve the ODE, and assign the initial condition(s):</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>You can also access an entire row of a matrix by leaving the column index blank, or the entire column of a matrix by leaving the row index blank:</p>
+<p>Finally, we are ready to call the function <code>ode</code> that will do all the work to solve this ODE using the function <code>pop_funk</code>:</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="chi-squared-test" class="level3">
-<h3 class="anchored" data-anchor-id="chi-squared-test">Chi-squared test</h3>
-<p>Based on a given data set, how likely is the hypothesis that the two random variables are independent? It is hard to do by hand (in the old days, you looked it up in a table of chi-squared values) but R will do it all for us: 1) calculate the expected counts, 2) compute the chi-squared value for the table, and 3) use the number of degrees of freedom and the chi-squared value to calculate the p-value of the independence hypothesis based on it. Use the <code>chisq.test()</code> function, and you will see output like this:</p>
+<p>The <code>output</code> is a data frame, which means that you can use the <code>data=</code> option in <code>plot</code> to make your graph of the solution as a function of time:</p>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The results are the chi-squared values, the number of degrees of freedom (which depends on the number of rows and columns in the two-way table) and the p-value. The p-value is used to decide whether to reject the hypothesis, because it represents the likelihood of the hypothesis, given the data. In this case, the p-value is pretty small, so it seems relatively safe to reject the hypothesis of independence. To see the results of the hypothesis test, type <code>print(test_output)</code>, and to access the p-value individually, use <code>test_output$p.value</code>.</p>
-<p>Finally, we need to specify the significance level alpha for the hypothesis test. This refers to the probability of rejecting a true null hypothesis. For instance, if you reject the hypothesis at <span class="math inline">\(\alpha=0.05\)</span> significance, you are setting a 5% chance of falsely rejecting a correct hypothesis, also called the rate of false positives. Note that it says nothing about failing to reject an incorrect hypothesis, also called the rate of false negatives. See the next section of the tutorial for more explanation of hypothesis testing errors.</p>
-</section>
-<section id="generating-a-data-table" class="level3">
-<h3 class="anchored" data-anchor-id="generating-a-data-table">generating a data table</h3>
-<p>Suppose that you have two groups of people: one with genotype A and the other with genotype B. The question is: does one of the genotypes make a phenotype (e.g.&nbsp;disease) more likely? In other words, are the variables of genotype and phenotype linked?</p>
-<p>The script below generates fake data sets of people with genotype A and genotype B by simulating random sampling with a given probability. This is done using the function <code>sample()</code> to generate a vector of simulated people, who have the status <code>N</code> (normal) or <code>D</code> (disease), with specified probabilities:</p>
+<p>This solution, like all numeric solutions of ODEs, is an approximation of the exact (analytic) solution. In this case, we can find (and verify) the exact solution of this model:</p>
+<p><span class="math display">\[ N(t) = N(0)e^{(b-d)t}\]</span></p>
+<p>Thus we can plot the analytic solution along with the numeric solution to see how far off they are:</p>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Are the two genotypes linked to disease? We know the true answer, because we set the probabilities of disease to be different in the two genotypes, but can we tell from the data set? The following script uses <code>table()</code> to count the number of people with disease and normal in the vectors <code>dis_genA</code> and <code>dis_genB</code> to produce a two-way table <code>data_mat</code> and runs the chi-squared test for independence, then prints out all the results (stored in object <code>chisq_result</code>) and the p-value (in <code>chisq_result$p.value</code>)</p>
-<div id="qwebr-insertion-location-6"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>You see that the chi-squared test returns a low p-value, indicating that it is very unlikely that the two random variables (genotype and disease) are independent, based on the data set.</p>
-<p>This script plots the frequency of healthy and disease in the two groups so you can visually compare them:</p>
-<div id="qwebr-insertion-location-7"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="exercises" class="level3">
-<h3 class="anchored" data-anchor-id="exercises">Exercises</h3>
-<p>Based on the code in the chunks above perform the following tasks:</p>
-<ol type="1">
-<li>Add a line to the script below that uses the function <code>table()</code> to print out the number of people with disease and normal in the genotype B group.</li>
-</ol>
-<div id="qwebr-insertion-location-8"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Use the example of how to use the function table from the code chunk above; remember to add print() around the table().</p>
-</div>
-</div>
-</div>
-<ol start="2" type="1">
-<li>In the script below add lines to print out the numbers of people with disease in genotype A sample and in genotype B sample using the matrix <code>data_mat</code> and indexing.</li>
-</ol>
-<div id="qwebr-insertion-location-9"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Use the correct row number and column number as indices; remember to add print() around the table().</p>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>The script below runs the <code>chisq.test()</code> function, add a line to print out the p-value from the chi-squared test.</li>
-</ol>
-<div id="qwebr-insertion-location-10"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The p-value is a variable in the chisq_result object, see code above for example.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="logical-values-and-calculations" class="level2">
-<h2 class="anchored" data-anchor-id="logical-values-and-calculations">Logical values and calculations</h2>
-<section id="logical-tests" class="level3">
-<h3 class="anchored" data-anchor-id="logical-tests">logical tests</h3>
-<p>A logical test is an operation that returns either <code>TRUE</code> or <code>FALSE</code> (called <em>Boolean</em> values.) Here are several examples:</p>
-<div id="qwebr-insertion-location-11"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Please note that to ask the question “are x and y equal” the use of double equal signs is required, because a single equal sign means variable assignment.</p>
-<p>Logical tests can be applied to entire vectors all at once. For example, let us assign a vector variable x and compare all of its values to 5:</p>
-<div id="qwebr-insertion-location-12"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The first six values of x are not greater than 5, while the last five are greater than 5, which is indicated by the Boolean output of the test.</p>
-</section>
-<section id="calculations-using-boolean-vectors" class="level3">
-<h3 class="anchored" data-anchor-id="calculations-using-boolean-vectors">calculations using Boolean vectors</h3>
-<p>Boolean values are distinct from other types of values, such as character strings or numbers. However, in R they can be used as numbers for computational purposes, with <code>FALSE</code> converting to 0 and <code>TRUE</code> converting to 1. This allows for convenient counting of the tests performed on large vectors. For instance, we can use the uniform number generator for integers between 0 and 20, to generate a vector of 10 values, and then ask how many of those values are less than 10 by using <code>sum()</code>, which will count the number of TRUE values:</p>
-<div id="qwebr-insertion-location-13"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="logical-operators-and-and-or" class="level3">
-<h3 class="anchored" data-anchor-id="logical-operators-and-and-or">logical operators: AND and OR</h3>
-<p>One can combine logical values in two common ways: using the AND operator and the OR operator. The AND operator asks whether both statements are true, while the OR operator asks if at least one statement is true. R uses the <code>&amp;</code> symbol for AND to determine whether is true that x is greater than 1 AND than y is less than 5:</p>
-<div id="qwebr-insertion-location-14"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>If we change the value of y so it is greater than five, than the logical <code>&amp;</code> operator will be false:</p>
-<div id="qwebr-insertion-location-15"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The OR operator uses the symbol <code>|</code> and in the following example it is true because one of the logical statements is true:</p>
-<div id="qwebr-insertion-location-16"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Only if both statements are false, the logical OR is false:</p>
-<div id="qwebr-insertion-location-17"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Both <code>&amp;</code> and <code>|</code> can be applied to vectors of Booleans, where they apply their logical operations to each corresponding element. For example, if x is a vector of integers from 0 to 10, one can ask how many of those values are both above 1 and below 5:</p>
-<div id="qwebr-insertion-location-18"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="exercises-1" class="level3">
-<h3 class="anchored" data-anchor-id="exercises-1">Exercises:</h3>
-<ol type="1">
-<li>Generate a sample of 100 values from the uniform distribution between 1 and 20 with replacement, assign it to vector <code>sample_vec</code> and use <code>sum()</code> to calculate how many of them are equal to 20 and print out that number.</li>
-</ol>
-<div id="qwebr-insertion-location-19"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Check the inputs into the function <code>sample()</code>; the second line should use the logical test <code>==</code></p>
-</div>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Generate a sample of 20 values from the binomial distribution with p=0.4 and n=5, assign it to vector <code>binom_vec</code> and use <code>sum()</code> to calculate how many of them are greater than 1 and print out that number.</li>
-</ol>
-<div id="qwebr-insertion-location-20"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Check the inputs into the function <code>rbinom()</code>; the second line should use the logical test <code>&gt;</code></p>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Generate a sample of 20 values from the binomial distribution with p=0.4 and n=5 and calculate how many of them are BOTH above 1 AND below 4.</li>
-</ol>
-<div id="qwebr-insertion-location-21"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Check the inputs into the function <code>rbinom()</code>; the second line should use the conjunction <code>&amp;</code> to combine two logical tests</p>
-</div>
-</div>
-</div>
+<p>You can see that the ODE solver is so clever that the numeric solution appears identical to the exact solution, even though there is always some degree of error in numeric solutions of ODEs.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1711,13 +1521,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./hypo_test.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span>
+      <a href="./ode_sols.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./bayes.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./graph_odes.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
