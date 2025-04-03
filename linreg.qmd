@@ -213,8 +213,7 @@ Here `Temp` and `HR` are the explanatory and response variables, respectively, a
 plot(my_data$Temp, my_data$HR,main= 'scatterplot and linear regression line')
 abline(myfit)
 # plot the residuals
-HRresiduals <- resid(myfit)
-plot(data$Temp, HRresiduals,main='residuals plot')
+plot(myfit$fitted.values, myfit$residuals, main='residuals plot')
 abline(0,0)
 ```
 

@@ -77,10 +77,10 @@ abline(pen_fit)
 
 ### plotting the residuals
 
-After performing linear regression it is essential to check that the *residuals* obey the assumptions of linear regression. The residuals are the difference between the predicted response variable values and the actual values of the response variable, in this case the penguin body mass. The residuals are contained in the object `pen_fit` as a variable named `residuals`. Residuals are the leftover errors of the response variable, so one way to visualize them is to plot them against the explanatory variable. The values of the explanatory variables which were used for the linear regression are also stored in the object `pen_fit` within the variables `model`, which contains the two variables passed to `lm()`:
+After performing linear regression it is essential to check that the *residuals* obey the assumptions of linear regression. The residuals are the difference between the predicted response variable values and the actual values of the response variable, in this case the penguin body mass. The residuals are contained in the object `pen_fit` as a variable named `residuals`. Residuals are the leftover errors of the response variable, so one way to visualize them is to plot them against the explanatory variable. Residuals are usually plotted as a function of the predicted values of the response variable, which are contained in the `pen_fit` object in the variable `fitted.values`:
 
 ```{webr-r}
-plot(pen_fit$model$bill_length_mm, pen_fit$residuals, xlab='bill length (mm)', ylab='residuals (g)')
+plot(pen_fit$fitted.values, pen_fit$residuals, xlab='predicted body mass (g)', ylab='residuals (g)')
 abline(0,0)
 ```
 
