@@ -28,10 +28,17 @@ Let us say you have measured some data for two variables, which we will call, un
 #|   - "Body temp (response variable) vs heart rate (explanatory variable)" 
 #|   - "Heart rate (response variable) vs body temp (explanatory variable)" 
 #| layout-ncol: 2
+#| echo: false
 
 my_data<-read.table("https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt", header=TRUE)
 plot(my_data$Temp, my_data$HR,main='heart rates vs. body temps', cex=1.5, cex.axis=1.5,cex.lab=1.5)
 plot(my_data$HR, my_data$Temp,main='body temps vs. heart rates', cex=1.5, cex.axis=1.5,cex.lab=1.5)
+```
+
+```{webr-r}
+my_data<-read.table("https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt", header=TRUE)
+plot(my_data$Temp, my_data$HR, main='heart rates vs. body temps')
+plot(my_data$HR, my_data$Temp, main='body temps vs. heart rates')
 ```
 
 ## Linear least-squares fitting
@@ -98,7 +105,7 @@ I will not provide a proof that this slope generates the minimal sum of squared 
 b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}
 \end{equation}
 
-### Execises
+### Exercises
 
 | B($m^2/kg$) | H($^\circ C /min)$ |
 |-------------|--------------------|
@@ -134,7 +141,7 @@ The correlation between two random variables is a measure of how much variation 
 ::: callout-note
 ## Definition
 
-The \index{correlation} (linear) correlation of a dataset of pairs of data values (X,Y) is:
+The (linear) *correlation* of a set of two paired variables (X,Y) is:
 :::
 
 $$ r = \frac{Cov(X,Y)}{\sqrt{{Var(X)}{Var(Y)}}} =  \frac{Cov(X,Y)}{\sigma_X \sigma_Y}

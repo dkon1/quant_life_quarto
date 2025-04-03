@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -48,7 +48,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -57,8 +63,10 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/editor/editor.main.css">
@@ -227,7 +235,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"out-width":"700px","label":"unnamed-chunk-1","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"var1 <- exp(5)\nprint(var1)","id":1},{"options":{"out-width":"700px","label":"unnamed-chunk-2","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"var2 <- 20\nvar1 <- var2/10\nprint(var1)\nvar2 <- 10\nprint(var1)","id":2},{"options":{"out-width":"700px","label":"unnamed-chunk-3","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vec<-c(pi,45,912.8, 0)\nprint(vec)","id":3},{"options":{"out-width":"700px","label":"unnamed-chunk-4","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"print(vec[1])\nprint(vec[4])","id":4},{"options":{"out-width":"700px","label":"unnamed-chunk-5","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vec1<-1:20\nprint(vec1)\nvec2<-0:-20\nprint(vec2)","id":5},{"options":{"out-width":"700px","label":"unnamed-chunk-6","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vec1<-seq(20,50,3)\nprint(vec1)\nvec2<-seq(50,20,-3)\nprint(vec2)","id":6},{"options":{"out-width":"700px","label":"unnamed-chunk-7","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"zeros <- rep(0,10)\nprint(zeros)","id":7},{"options":{"out-width":"700px","label":"unnamed-chunk-8","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"pies <- rep(pi,7)\nprint(pies)","id":8},{"options":{"out-width":"700px","label":"unnamed-chunk-9","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vecs <- rep(vec, 5)\nprint(vecs)","id":9},{"options":{"out-width":"700px","label":"unnamed-chunk-10","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vec1 <- 4:10\nprint(vec1)\nprint(vec1[c(5, 2)])","id":10},{"options":{"out-width":"700px","label":"unnamed-chunk-11","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vec2 <- -5:10\nprint(vec2)\nprint(vec2[4:7])","id":11},{"options":{"out-width":"700px","label":"unnamed-chunk-12","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vec3 <- seq(0,1,0.1)\nprint(vec3)\nprint(vec3[-(1:4)])","id":12},{"options":{"out-width":"700px","label":"unnamed-chunk-13","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vec<-c(pi,45,912.8, 0)\nNewVec <- 2*vec\nprint(NewVec)","id":13},{"options":{"out-width":"700px","label":"unnamed-chunk-14","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vec1<-0:3\nvec2<-1:4\nprint(vec1)\nprint(vec2)\ntot <- vec1 + vec2\nprint(tot)","id":14},{"options":{"out-width":"700px","label":"unnamed-chunk-15","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vec1<-1:3\nvec2<-0:4\nlength(vec1)\nlength(vec2)","id":15},{"options":{"out-width":"700px","label":"unnamed-chunk-16","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vec1<-1:2\nvec2<-0:4\nprint(vec1)\nprint(vec2)\ntot <- vec1 + vec2\nprint(tot)","id":16},{"options":{"out-width":"700px","label":"unnamed-chunk-17","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"nums <- (3,8,16)","id":17},{"options":{"out-width":"700px","label":"unnamed-chunk-18","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vals <- 1:10\nprint[vals(3)]","id":18},{"options":{"out-width":"700px","label":"unnamed-chunk-19","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"all_vals <- 0:20\nprint(all_vals[3,9])","id":19},{"options":{"out-width":"700px","label":"unnamed-chunk-20","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vals <- 1:10\nall_vals <- 0:20\nproduct <- vals*all_vals\nprint(product)","id":20},{"options":{"out-width":"700px","label":"unnamed-chunk-21","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vals <- 1:10\nall_vals <- 0:20\ntotal <- vals + all_vals\nprint(total)","id":21},{"options":{"out-width":"700px","label":"unnamed-chunk-22","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"time <- seq(0,10,0.2)\nquad <- (time - 5)^2\nprint(time)\nprint(quad)","id":22},{"options":{"out-width":"700px","label":"unnamed-chunk-23","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"plot(time, quad, main = 'Quadratic function of time')","id":23},{"options":{"out-width":"700px","label":"unnamed-chunk-24","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"plot(time,quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","id":24},{"options":{"out-width":"700px","label":"unnamed-chunk-25","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"cubic <- 0.2*(time-6)^3 + 4\nplot(time,quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)' )\nlines(time, cubic, col = 'red')","id":25},{"options":{"out-width":"700px","label":"unnamed-chunk-26","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')","id":26},{"options":{"out-width":"700px","label":"unnamed-chunk-27","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')\nlegend(\"bottomright\", legend = c('quadratic', 'cubic'), col = c('black', 'red'), lty=1)","id":27},{"options":{"out-width":"700px","label":"unnamed-chunk-28","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')\nlegend(\"bottomright\", legend = c('quadratic', 'cubic'), col = c('black', 'red'), pch = c(1, NA), lty = c(0, 1))","id":28},{"options":{"out-width":"700px","label":"unnamed-chunk-29","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"curve(x^2,0,3, xlab = 'x', ylab = 'f(x)')\ncurve(5*x,0,3,add=TRUE,col='red')\nlegend(\"topleft\", legend = c('quadratic', 'linear'), col = c('black', 'red'), lty = 1)","id":29},{"options":{"out-width":"700px","label":"unnamed-chunk-30","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"curve(x^2,0,3, xlab = 'x', ylab = 'f(x)', xlim = c(0,3), ylim = c(0,15))\ncurve(5*x,0,3,add=TRUE,col='red')\nlegend(\"topleft\", legend = c('quadratic', 'linear'), col = c('black', 'red'), lty = 1)","id":30},{"options":{"out-width":"700px","label":"unnamed-chunk-31","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"plot(quad, time, main = 'NOT a quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","id":31},{"options":{"out-width":"700px","label":"unnamed-chunk-32","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"time[52] <- 10.2\nplot(time, quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","id":32},{"options":{"out-width":"700px","label":"unnamed-chunk-33","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"quad <- (time - 5)^2\nplot(time, quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","id":33},{"options":{"out-width":"700px","label":"unnamed-chunk-34","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"vals <- seq(0,5,0.1)\nnew_vals <- 5 + 8vals","id":34},{"options":{"out-width":"700px","label":"unnamed-chunk-35","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"range <- seq(0,0.1,100)\nresult <- sqrt(range)","id":35},{"options":{"out-width":"700px","label":"unnamed-chunk-36","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"range <- seq(0,100,0.1)\nresult <- sqrt(range)\nplot(result, range, type='l')","id":36},{"options":{"out-width":"700px","label":"unnamed-chunk-37","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"curve((45-x)/(4x+3), 0, 100)","id":37},{"options":{"out-width":"700px","label":"unnamed-chunk-38","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"lig <- seq(0,10,0.2)\nf <- lig^10/(5000+lig^10)\nplot(lig,f, xlab = 'lig', ylab = 'functions')\ng <- 0.1*lig\nplot(lig,g)\nlegend(\"bottomright\", legend = c('Hill', 'linear'), col = c('black', 'red'), pch = c(1, 2), lty = c(2, 1))","id":38},{"options":{"out-width":"700px","label":"unnamed-chunk-39","comment":"","results":"markup","message":"true","context":"interactive","autorun":"false","output":"true","read-only":"false","warning":"true","fig-width":7,"dpi":72,"fig-cap":"","classes":"","fig-height":5,"out-height":""},"code":"time<-0:100\na<-1000\nb<-50 \nr<-0.1\nPopulation<-a*exp(r*time)/(b+exp(r*time)) \nplot(time,Population,type='l') \nr<-10 \nlines(time,Population,col=2)","id":39}];
+globalThis.qwebrCellDetails = [{"code":"var1 <- exp(5)\nprint(var1)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-1","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":1},{"code":"var2 <- 20\nvar1 <- var2/10\nprint(var1)\nvar2 <- 10\nprint(var1)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-2","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":2},{"code":"vec<-c(pi,45,912.8, 0)\nprint(vec)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-3","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":3},{"code":"print(vec[1])\nprint(vec[4])","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-4","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":4},{"code":"vec1<-1:20\nprint(vec1)\nvec2<-0:-20\nprint(vec2)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-5","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":5},{"code":"vec1<-seq(20,50,3)\nprint(vec1)\nvec2<-seq(50,20,-3)\nprint(vec2)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-6","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":6},{"code":"zeros <- rep(0,10)\nprint(zeros)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-7","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":7},{"code":"pies <- rep(pi,7)\nprint(pies)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-8","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":8},{"code":"vecs <- rep(vec, 5)\nprint(vecs)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-9","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":9},{"code":"vec1 <- 4:10\nprint(vec1)\nprint(vec1[c(5, 2)])","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-10","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":10},{"code":"vec2 <- -5:10\nprint(vec2)\nprint(vec2[4:7])","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-11","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":11},{"code":"vec3 <- seq(0,1,0.1)\nprint(vec3)\nprint(vec3[-(1:4)])","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-12","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":12},{"code":"vec<-c(pi,45,912.8, 0)\nNewVec <- 2*vec\nprint(NewVec)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-13","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":13},{"code":"vec1<-0:3\nvec2<-1:4\nprint(vec1)\nprint(vec2)\ntot <- vec1 + vec2\nprint(tot)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-14","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":14},{"code":"vec1<-1:3\nvec2<-0:4\nlength(vec1)\nlength(vec2)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-15","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":15},{"code":"vec1<-1:2\nvec2<-0:4\nprint(vec1)\nprint(vec2)\ntot <- vec1 + vec2\nprint(tot)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-16","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":16},{"code":"nums <- (3,8,16)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-17","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":17},{"code":"vals <- 1:10\nprint[vals(3)]","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-18","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":18},{"code":"all_vals <- 0:20\nprint(all_vals[3,9])","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-19","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":19},{"code":"vals <- 1:10\nall_vals <- 0:20\nproduct <- vals*all_vals\nprint(product)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-20","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":20},{"code":"vals <- 1:10\nall_vals <- 0:20\ntotal <- vals + all_vals\nprint(total)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-21","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":21},{"code":"time <- seq(0,10,0.2)\nquad <- (time - 5)^2\nprint(time)\nprint(quad)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-22","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":22},{"code":"plot(time, quad, main = 'Quadratic function of time')","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-23","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":23},{"code":"plot(time,quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-24","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":24},{"code":"cubic <- 0.2*(time-6)^3 + 4\nplot(time,quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)' )\nlines(time, cubic, col = 'red')","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-25","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":25},{"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-26","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":26},{"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', type = 'l', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')\nlegend(\"bottomright\", legend = c('quadratic', 'cubic'), col = c('black', 'red'), lty=1)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-27","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":27},{"code":"plot(time, quad, main = 'Quadratic and cubic functions of time', xlab='time', ylab = 'y = f(t)', xlim = c(0,10), ylim = c(-25, 25) )\nlines(time, cubic, col = 'red')\nlegend(\"bottomright\", legend = c('quadratic', 'cubic'), col = c('black', 'red'), pch = c(1, NA), lty = c(0, 1))","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-28","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":28},{"code":"curve(x^2,0,3, xlab = 'x', ylab = 'f(x)')\ncurve(5*x,0,3,add=TRUE,col='red')\nlegend(\"topleft\", legend = c('quadratic', 'linear'), col = c('black', 'red'), lty = 1)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-29","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":29},{"code":"curve(x^2,0,3, xlab = 'x', ylab = 'f(x)', xlim = c(0,3), ylim = c(0,15))\ncurve(5*x,0,3,add=TRUE,col='red')\nlegend(\"topleft\", legend = c('quadratic', 'linear'), col = c('black', 'red'), lty = 1)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-30","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":30},{"code":"plot(quad, time, main = 'NOT a quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-31","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":31},{"code":"time[52] <- 10.2\nplot(time, quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-32","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":32},{"code":"quad <- (time - 5)^2\nplot(time, quad, main = 'Quadratic function of time', type = 'l', xlab='time', ylab = 'y = f(t)' )","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-33","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":33},{"code":"vals <- seq(0,5,0.1)\nnew_vals <- 5 + 8vals","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-34","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":34},{"code":"range <- seq(0,0.1,100)\nresult <- sqrt(range)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-35","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":35},{"code":"range <- seq(0,100,0.1)\nresult <- sqrt(range)\nplot(result, range, type='l')","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-36","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":36},{"code":"curve((45-x)/(4x+3), 0, 100)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-37","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":37},{"code":"lig <- seq(0,10,0.2)\nf <- lig^10/(5000+lig^10)\nplot(lig,f, xlab = 'lig', ylab = 'functions')\ng <- 0.1*lig\nplot(lig,g)\nlegend(\"bottomright\", legend = c('Hill', 'linear'), col = c('black', 'red'), pch = c(1, 2), lty = c(2, 1))","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-38","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":38},{"code":"time<-0:100\na<-1000\nb<-50 \nr<-0.1\nPopulation<-a*exp(r*time)/(b+exp(r*time)) \nplot(time,Population,type='l') \nr<-10 \nlines(time,Population,col=2)","options":{"results":"markup","message":"true","warning":"true","out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-39","output":"true","out-height":"","autorun":"false","fig-cap":"","classes":"","dpi":72,"read-only":"false","context":"interactive","fig-width":7},"id":39}];
 
 </script>
 <script type="module">
@@ -944,23 +952,55 @@ globalThis.qwebrExecuteCode = async function (
 
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <meta name="twitter:title" content="Quantifying Life - Tutorial 2: Vectors and plotting">
-<meta name="twitter:description" content="In this tutorial you will learn to:">
+<meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating">
 
-
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">Tutorial 2: Vectors and plotting</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tutorial2.html">Tutorial 2: Vectors and plotting</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -968,175 +1008,205 @@ globalThis.qwebrExecuteCode = async function (
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantifying Life</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
-    <a href="" title="Download" id="sidebar-tool-dropdown-0" class="sidebar-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-download"></i></a>
-    <ul class="dropdown-menu" aria-labelledby="sidebar-tool-dropdown-0">
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
-            <i class="bi bi-bi-file-pdf pe-1"></i>
-          Download PDF
-          </a>
-        </li>
-        <li>
-          <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
-            <i class="bi bi-bi-journal pe-1"></i>
-          Download ePub
-          </a>
-        </li>
-    </ul>
+    <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
 </div>
     </div>
       </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./counting.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></a>
+  <a href="./counting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Arithmetic and variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">Tutorial 1: First steps for coding</a>
+  <a href="./tutorial1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 1: First steps for coding</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./functions.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></a>
+  <a href="./functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link active">Tutorial 2: Vectors and plotting</a>
+  <a href="./tutorial2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Tutorial 2: Vectors and plotting</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./descriptive.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></a>
+  <a href="./descriptive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">Tutorial 3: Data frames and descriptive statistics</a>
+  <a href="./tutorial3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 3: Data frames and descriptive statistics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></a>
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">Tutorial 4: Linear regression</a>
+  <a href="./tutorial4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 4: Linear regression</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lindiff.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear difference equations</span></a>
+  <a href="./lindiff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">Tutorial 5: For loops and dynamic models</a>
+  <a href="./tutorial5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 5: For loops and dynamic models</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></a>
+  <a href="./ode_sols.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link">Tutorial 6: numeric solutions of ODEs</a>
+  <a href="./tutorial6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 6: numeric solutions of ODEs</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></a>
+  <a href="./graph_odes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">Tutorial 7: plotting defining functions of ODEs</a>
+  <a href="./tutorial7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 7: plotting defining functions of ODEs</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./probdist.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a>
+  <a href="./probdist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">Tutorial 8: Random number generators</a>
+  <a href="./tutorial8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 8: Random number generators</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Independence</span></a>
+  <a href="./independence.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">Tutorial 9: Data tables and Booleans</a>
+  <a href="./tutorial9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 9: Data tables and Booleans</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a>
+  <a href="./hypo_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link">Tutorial 10: Functions and sampling from data</a>
+  <a href="./tutorial10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 10: Functions and sampling from data</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_model.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></a>
+  <a href="./markov_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></a>
+  <a href="./markov_evol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Probability distributions of Markov chains</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial11.html" class="sidebar-item-text sidebar-link">Tutorial 11: simulations of Markov models</a>
+  <a href="./tutorial11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial 11: simulations of Markov models</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></a>
+  <a href="./markov_stat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Stationary distributions of Markov chains</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></a>
+  <a href="./markov_eigen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dynamics of Markov models</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -1343,7 +1413,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Tutorial 2: Vectors and plotting</h1>
+<h1 class="title">Tutorial 2: Vectors and plotting</h1>
 </div>
 
 
@@ -1356,7 +1426,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
   </div>
   
 
+
 </header>
+
 
 <section id="learning-goals" class="level3">
 <h3 class="anchored" data-anchor-id="learning-goals">Learning goals</h3>
@@ -1374,12 +1446,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>If you run the above code chunk in R Studio you will see two things happen: a variable named var1 appears in the Environment window (top right) with the value 148.41… and the same value is printed out in the command line window (bottom left).</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 programming principle
 </div>
 </div>
@@ -1394,12 +1466,12 @@ programming principle
 </section>
 <section id="vector-variables" class="level2">
 <h2 class="anchored" data-anchor-id="vector-variables">Vector variables</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Array variables
 </div>
 </div>
@@ -1470,12 +1542,12 @@ Array variables
 </ol>
 <div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1491,12 +1563,12 @@ Hint
 </ol>
 <div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1512,12 +1584,12 @@ Hint
 </ol>
 <div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1533,12 +1605,12 @@ Hint
 </ol>
 <div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1554,12 +1626,12 @@ Hint
 </ol>
 <div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1577,12 +1649,12 @@ Hint
 <p>The following chunk creates a vector variable <code>time</code>, then calculates a new variable <code>quad</code> using <code>time</code> in a single operation:</p>
 <div id="qwebr-insertion-location-22"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 using vectors to plot
 </div>
 </div>
@@ -1647,12 +1719,12 @@ using vectors to plot
 </ol>
 <div id="qwebr-insertion-location-34"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1668,12 +1740,12 @@ Hint
 </ol>
 <div id="qwebr-insertion-location-35"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1689,12 +1761,12 @@ Hint
 </ol>
 <div id="qwebr-insertion-location-36"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1710,12 +1782,12 @@ Hint
 </ol>
 <div id="qwebr-insertion-location-37"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1731,12 +1803,12 @@ Hint
 </ol>
 <div id="qwebr-insertion-location-38"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1752,12 +1824,12 @@ Hint
 </ol>
 <div id="qwebr-insertion-location-39"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
@@ -1801,9 +1873,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1839,10 +1925,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1852,8 +1937,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1868,6 +1962,238 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1909,12 +2235,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./functions.html" class="pagination-link">
+      <a href="./functions.html" class="pagination-link  aria-label=" &lt;span="" and="" their="" graphs&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Functions and their graphs</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./descriptive.html" class="pagination-link">
+      <a href="./descriptive.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Describing data sets</span>">
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2032,6 +2358,7 @@ qwebrInstance.then(
   }
 );
 </script>
+
 
 
 
