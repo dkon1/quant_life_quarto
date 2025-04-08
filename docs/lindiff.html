@@ -379,6 +379,7 @@ window.Quarto = {
   <li><a href="#models-with-a-constant-term" id="toc-models-with-a-constant-term" class="nav-link" data-scroll-target="#models-with-a-constant-term"><span class="header-section-number">5.2.2</span> models with a constant term</a></li>
   <li><a href="#population-growth-and-decline" id="toc-population-growth-and-decline" class="nav-link" data-scroll-target="#population-growth-and-decline"><span class="header-section-number">5.2.3</span> population growth and decline</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.2.4</span> Exercises</a></li>
+  <li><a href="#model-scenarios" id="toc-model-scenarios" class="nav-link" data-scroll-target="#model-scenarios"><span class="header-section-number">5.2.5</span> Model scenarios</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -552,18 +553,28 @@ N(t) = c r^t  + \frac{a}{1-r}
 </section>
 <section id="exercises" class="level3" data-number="5.2.4">
 <h3 data-number="5.2.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.2.4</span> Exercises</h3>
-<p>For the following scenarios for a population: 1) Construct a dynamic model by writing down a difference equation both in the updating function form (<span class="math inline">\(N(t+1) = f(N(t))\)</span>) and the increment form (<span class="math inline">\(N(t+1) - N(t) = g(N(t))\)</span>) and specify the time step; 2) find the solution of the linear difference equation with a generic initial value and check that it satisfies the difference equation by plugging the solution into your equation (in either form); 3) plug in the given initial value and predict the future.</p>
+<p>For the following scenarios for a population:</p>
+<ul>
+<li><p>Build a dynamic model by writing down a difference equation in the updating function form (with the value of the variable at time step <span class="math inline">\(t+1\)</span> on the left hand side and the value of the variable at time step <span class="math inline">\(t\)</span> on the right;</p></li>
+<li><p>find the solution of the linear difference equation with a generic/unknown initial value and verify that it satisfies the difference equation by plugging the solution into your model;</p></li>
+<li><p>use the given initial value to predict the value at a future time step.</p></li>
+</ul>
+</section>
+<section id="model-scenarios" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="model-scenarios"><span class="header-section-number">5.2.5</span> Model scenarios</h3>
 <ol type="1">
-<li><p>Zombies have appeared in Chicago. Every day, each zombie produces 3 new zombies. Suppose that initially there is only one zombie, how many zombies will there be in 7 days?</p></li>
+<li><p>Suppose the number of trees in a planted forest decreases by 50 every year (as they are harvested) and no new trees are planted. If there are 3000 trees initially, how many will be be after 10 years?</p></li>
+<li><p>Zombies have appeared in Chicago. Every day, each zombie produces 3 new zombies and none are killed. If there is one zombie initially, how many zombies will there be in 7 days?</p></li>
 <li><p>Suppose hunters kill 50 deer in a national forest every hunting season, while the deer by themselves have equal birth and death rates. If there are initially 500 deer in the forest, predict how many there will be in 5 years.</p></li>
-<li><p>The number of infected people in a population grows by 8% per day and those who become infected remain infected. If initially there are 8 infected, how many individuals will be infected in 45 days?</p></li>
+<li><p>The concentration of a drug in the bloodstream decreases by 20% every hour. If the initial concentration is 400 (arbitrary units), what is the concentration after 24 hours?</p></li>
+<li><p>The number of infected people in a population grows by 8% per day and those who become infected remain infected. If initially there are 8 infected, how many will be infected in 45 days?</p></li>
 <li><p>Suppose bacteria in a population divide in 2 every hour and 90% of the current population dies after reproduction, not including the new offspring. If the population initially has 10 million bacteria, predict how many there will be in 12 hours.</p></li>
-<li><p>In a rabbit population, each pair produces 1.2 offspring every year (i.e.&nbsp;0.6 per capita) and the adults have a 0.5 annual death rate after reproduction (and assume the whole population is paired up into mating pairs.) If initially there are 100 rabbits, predict how many there will be in 5 years.</p></li>
-<li><p>Consider the same rabbit population, but now a python that lives nearby eats exactly 1 rabbit a month. If initially there are 100 rabbits, how many do you predict will be in 10 years?</p></li>
+<li><p>In a rabbit population, each pair produces 1.2 offspring every year (i.e.&nbsp;0.6 per capita, assuming the whole population is paired up into mating pairs) and the adults have a 0.5 annual death rate after reproduction. If initially there are 100 rabbits, predict how many there will be in 5 years.</p></li>
+<li><p>Consider a rabbit population with the same birth and death rates as in question 7, but now a python that lives nearby eats exactly 1 rabbit <em>per month</em>. If initially there are 100 rabbits, how many do you predict will be in 10 years?</p></li>
 <li><p>10 fish are added to an aquarium every month, while 80% of those present survive every month and there is no reproduction. If initially there are 10 fish in the aquarium, predict how many there will be in 2 years.</p></li>
-<li><p>A gene has length of 10000 nucleotides, some of them are ancestral (A) and others are mutant letters (M). Every generation 3% of the ancestral letters turn mutate and become M and 1% of the mutant letters revert to the ancestral state. Write a discrete time model for the number of the mutant nucleotides M (Hint: <span class="math inline">\(A = 10000 - M\)</span>). If initially there are 0 mutant letters (all 10000 are ancestral), predict how many there will be in 10 generations.</p></li>
+<li><p>A gene has length of 10000 nucleotides, some of them are ancestral (A) and others are mutant letters (M). Every generation 2% of the ancestral letters mutate and become M and 1% of the mutant letters revert to the ancestral state. Write a discrete time model for the number of the mutant nucleotides M (Hint: <span class="math inline">\(A = 10000 - M\)</span>). If initially there are 0 mutant letters (all 10000 are ancestral), predict how many there will be in 10 generations.</p></li>
 <li><p>Twenty flies fly into a house every day, and half of the flies in the house at beginning of each day find their way out (no births or deaths happen in the house.) If there are 10 files in the house initially, how many will there be in 12 days?</p></li>
-<li><p>Suppose a branch grows at 10 cm a month (year round, assume it’s a climate with no seasonal variations), and that every month a gardener trims 25% of the length of the branch. If initially the branch is 10 cm long, what will be its length in 6 months?</p></li>
+<li><p>Suppose that a branch grows at the rate of 10 cm a month (year round, assume no seasonal variations) and every month a gardener trims 25% of the length of the branch. If initially the branch is 10 cm long, what will be its length in 6 months?</p></li>
 </ol>
 
 
