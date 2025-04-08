@@ -150,13 +150,13 @@ As we see, there are only two options for solution of linear difference equation
 
 For the following scenarios for a population:
 
--   Build a dynamic model by writing down a difference equation in the updating function form (with the value of the variable at time step $t+1$ on the left hand side and the value of the variable at time step $t$ on the right;
+-   Build a dynamic model by writing down a difference equation in the updating function form (with the value of the variable at time step $t+1$ on the left hand side and the value of the variable at time step $t$ on the right);
 
 -   find the solution of the linear difference equation with a generic/unknown initial value and verify that it satisfies the difference equation by plugging the solution into your model;
 
 -   use the given initial value to predict the value at a future time step.
 
-### Model scenarios
+#### Model scenarios
 
 1.  Suppose the number of trees in a planted forest decreases by 50 every year (as they are harvested) and no new trees are planted. If there are 3000 trees initially, how many will be be after 10 years?
 
@@ -176,7 +176,7 @@ For the following scenarios for a population:
 
 9.  10 fish are added to an aquarium every month, while 80% of those present survive every month and there is no reproduction. If initially there are 10 fish in the aquarium, predict how many there will be in 2 years.
 
-10. A gene has length of 10000 nucleotides, some of them are ancestral (A) and others are mutant letters (M). Every generation 2% of the ancestral letters mutate and become M and 1% of the mutant letters revert to the ancestral state. Write a discrete time model for the number of the mutant nucleotides M (Hint: $A = 10000 - M$). If initially there are 0 mutant letters (all 10000 are ancestral), predict how many there will be in 10 generations.
+10. A gene has length of 10000 nucleotides, some of them are ancestral (A) and others are mutant letters (M). Every generation 2% of the ancestral letters become mutant and 1% of the mutant letters revert to the ancestral state. Write a discrete time model for the number of the mutant nucleotides M (Hint: $A = 10000 - M$). If initially there are 0 mutant letters (all 10000 are ancestral), predict how many there will be in 10 generations.
 
 11. Twenty flies fly into a house every day, and half of the flies in the house at beginning of each day find their way out (no births or deaths happen in the house.) If there are 10 files in the house initially, how many will there be in 12 days?
 
