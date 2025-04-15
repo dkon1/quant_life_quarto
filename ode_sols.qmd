@@ -6,17 +6,151 @@
 > A cross not many choose to bear.)\
 > -- Alexander Pushkin, *Eugene Onegin*
 
-In the last chapter we learned about differential equations and how to use graphical analysis to find equilibria and predict the long-term behavior of the solutions. In this chapter we will examine two methods for generating the detailed solutions of ODEs: analytic and numeric.
+In the last chapter we considered discrete time models, in which time is counted in integers. This worked well to describe processes that happen in periodic cycles, like cell division or heart pumping. Many biological systems do not work this way. Change can happen continuously, that is, at any moment in time. For instance, the concentration of a biological molecule in the cell changes gradually, as does the voltage across the cell membrane in a neuron.
 
 There are at least two good reasons to use differential equations for many applications. First, they are often more realistic than discrete time models, because some events happen very frequently and non-periodically. The second reason is mathematical: it turns out that dynamical systems with continuous time, described by differential equations, are better behaved than difference equations. This has to do with the essential "jumpiness" of difference equations. Even for simple nonlinear equations, the value of the variable after one time step can be far removed from its last value. This can lead to highly complicated solutions, as we saw in some of the numerical solutions in the last chapter.
 
 That kind of erratic behavior is impossible in (reasonable) differential equations. Solutions of ODEs are generally smooth and predictable, as long they are defined by continuous defining function, the flow produces smooth solutions. Sometimes, they can be written down exactly, as a mathematical function, called an analytic solution. For most ODEs, particularly nonlinear ones, that is not possible, but then computational methods can be used to produce an approximate numeric solution that can visualize the behavior of the solutions.
 
+-   build differential equations based on stated assumptions
+
 -   find and verify analytic solutions of linear differential equations
 
--   compute numerical solutions of differential equations using the Forward Euler method
+-   understand the concepts of numeric solutions of differential equations
 
--   explore the relationship between numeric error and step size
+## Building differential equations
+
+\label{sec:model15}
+
+### from discrete time to continuous
+
+In this chapter we investigate \index{model!continuous time} *continuous time dynamical systems*, for which it does not make sense to break time up into equal intervals. Instead of equations describing the increments in the dependent variable from one time step to the next, we will see equations with the instantaneous rate of the change (derivative) of the variable. Let us see the connection between the discrete and continuous dynamic models by reducing the step size of the bacteria-division population model.
+
+First, suppose that instead of dividing every hour, \index{population!bacteria}\index{bacteria!division}the population of bacteria divide every half-hour, but only half of the population does. That half is chosen randomly, so we don't have to keep track of whether each bacterium divided the last time around or not. Therefore, each half-hour exactly half of the population is added to the current population: $$ N(t+0.5) = N(t) + 0.5N(t) = 1.5N(t)$$ The solution for this model can be figured out from the linear difference equation solution we derived in section \ref{sec:math14} Every half-hour, the population is multiplied by 1.5, so we can write: $$ N(t) = 1.5^{2t} N(0) = (1.5^2)^t N(0)$$ Compare this solution with the one for the every-hour model, $N(t) = 2^t N(0)$ by plugging in a few numbers for $t$. The half-hour model grows faster, because it has the base of 2.25 instead of 2.
+
+Now, suppose that the bacteria can divide four times an hour, but only a quarter of the population reproduces at any given time. The model can be written similarly: $$N(t+0.25) = N(t) + 0.25N(t) = 1.25N(t)$$ The solution for this model is once again exponential, with the difference that each half contains 4 division events: $$N(t) = 1.25^{4t}N(0) = (1.25^4)^t N(0)$$ This solution has the exponential base is $1.25^4$, which is larger than $1.5^2$. So what happens when we take this further?
+
+Suppose the bacteria divide $m$ times an hour, with time step $1/m$. Then extending our models above, we can write down the model and the solution: $$ N(t + 1/m) = N(t) + 1/m N(t) = (1+1/m) N(t) $$ $$ N(t) = (1+1/m)^{mt} N(0) = [(1+1/m)^m]^t N(0)$$
+
+Now we can do what mathematicians enjoy the most: take things to the limit. What if $m$ were 100? A million? A gazillion? Let us re-write the model equation: $$ N(t+1/m) - N(t) = 1/m N(t) \Rightarrow \frac{N(t+1/m) - N(t) }{1/m} = N(t)$$
+
+The expression on the left is known as Newton's quotient that you encounter in the definition of a derivative. It measures the rate of change of the population $N$ from some time $t$ to the next time step $t+1/m$. If $m$ is increased to make the time step smaller, this makes both the numerator and the denominator smaller, and the quotient approaches the *instantaneous rate of change* of $N(t)$. So, if bacteria divide at any point in time, with the \textbf{average rate of 1 per hour}, the model becomes a differential equation: $$ \frac{dN}{dt} = N(t)$$
+
+We can do a similar procedure to the formula of the solution of the model. The dependence on $m$ is all on the left-hand side, in the expression $(1+1/m)^m$, which is the base of the exponential function. What happens to this number as $m$ becomes larger? Does it increase without bound? You can investigate this numerically by plugging in progressively larger numbers $m$, and see that the number approaches a specific value: 2.71828... This is the special constant $e$, called the base of the natural logarithm. So, if bacteria divide at any point in time, with the **average rate of 1 per hour**, the solution of the model becomes: $$ N(t) = e^t N(0)$$
+
+### Exercises (optional)
+
+Here we will explore the effect of changing the step size on the solution of a discrete time dynamic model. We will use a very simple model of bacterial population growth, in which we assume that bacteria divide once an hour and there are no deaths.
+
+1.  Calculate the solution for this population, assuming that all bacteria divide exactly once an hour - in other words, a birth rate of one per individual. Starting with one bacterium use a for loop to calculate the solution for 10 hours and print out the last value.
+
+```{r}
+# YOUR CODE HERE
+```
+
+2.  Suppose that these bacteria can divide twice an hour, but only half of the population divides each time - in other words, a per capita birth rate of 0.5 per half an hour. Change your model so it calculates a solution vector with the time step of 30 minutes over 10 hours, print out the number of bacteria after 10 hours and compare it with the previous value.
+
+```{r}
+# YOUR CODE HERE
+```
+
+3.  Suppose that these bacteria divide every 15 minutes, but only one quarter of the population divides each time - in other words, a per capita birth rate of 0.25 per quarter hour. Change your model so it calculates a solution vector with the time step of 15 minutes over 10 hours, print out the number of bacteria after 10 hours and compare it with the previous value.
+
+```{r}
+# YOUR CODE HERE
+```
+
+4.  Suppose that these bacteria divide every 1 minute, but only 1/60 of the population divides each time - in other words, a per capita birth rate of 1/60 per minute. Change your model so it calculates a solution vector with the time step of 1 minute over 10 hours, print out the number of bacteria after 10 hours and compare it with the previous value.
+
+```{r}
+# YOUR CODE HERE
+```
+
+5.  Suppose that these bacteria divide every second, but only 1/3600 of the population divides each time - in other words, a per capita birth rate of 1/3600 per second. Change your model so it calculates a solution vector with the time step of 1 second over 10 hours, print out the number of bacteria after 10 hours and compare it with the previous value.
+
+```{r}
+# YOUR CODE HERE
+```
+
+6.  Produce a plot of the five solutions of bacterial population dividing with different time steps. Take the five code chunks from above, and copy them all into the chunk below. For each calculation add a time vector that corresponds to each time step (e.g. one for every hour for the first one, one for every second for the last one) and make a plot of each of the solutions as function of time on the same plot - use plot() for the first one and lines() for all the rest, with different colors and add a legend indicating different time steps.
+
+```{r}
+# YOUR CODE HERE
+```
+
+What behaviors do you see for the solutions with different time steps? What effect does shrinking the time step have on the solution? What do you expect would happen if the time step were a millisecond, or a microsecond?
+
+### growth proportional to population size
+
+We will now build some common differential equations models. First, a simple population growth model with a constant growth rate. Suppose that in a population each individual reproduces with the average reproductive rate $r$. This is reflected in the following differential equation:
+
+\begin{equation}
+\frac{d x} {dt} = \dot x = r x
+\label{eq:linear_ode}
+ \end{equation}
+
+This expression states that the rate of change of $x$, which we take to be population size, is proportional to $x$ with multiplicative constant $r$. We will sometimes use the notation $\dot x$ for the time derivative of $x$ (which was invented by Newton) for aesthetic reasons.
+
+First, we apply \index{dimensional analysis} dimensional analysis to this model. The units of the derivative are population per time, as can be deduced from the Newton's quotient definition. Thus, the units in the equation have the following relationship: $$ 
+\frac{[population]}{[time]} = [r] [population] = \frac{1}{[time]}[population] 
+$$
+
+This shows that as in the discrete time models, the dimension of the population growth rate $r$ is inverse time, or frequency. The difference with the discrete time population models lies in the time scope of the rate. In the case of the difference equation, $r$ is the rate of change per one time step of the model. In the differential equation, $r$ is the *instantaneous rate of population growth*. It is less intuitive than the growth rate per single reproductive cycle, just like the slope of a curve is less intuitive than the slope of a line. The population growth happens continuously, so the growth rate of $r$ individuals per year does not mean that if we start with one individual, there will be $r$ after one year. In order to make quantitative predictions, we need to find the solution of the equation, which we will see in the next section.
+
+### chemical kinetics
+
+Reactions between molecules in cells occur continuously, driven by molecular collisions and physical forces. In order to model this complex behavior, it is generally assumed that reactions occur with a particular speed, known as the \index{kinetics!rate constant} *kinetic rate constant*. As mentioned in chapter 2, a simple reaction of conversion from one type of molecule ($A$) to another ($B$) can be written as follows: $$ A \xrightarrow{k} B $$ In this equation the parameter $k$ is the kinetic rate rate constant, describing the speed of conversion of $A$ into $B$, per concentration of $A$.
+
+Chemists and biochemists use differential equations to describe the change in molecular concentration during a reaction. These equations are known as the \index{kinetics!law of mass action} *laws of mass action*. For the reaction above, the concentration of molecule $A$ decreases continuously proportionally to itself, and the concentration of molecule $B$ increases continuously proportionally to the concentration of $A$. This is expressed by the following two differential equations:
+
+\begin{eqnarray}
+\label{eq:lin_chem_kin}
+\dot A &=& - k A \\
+\dot B &=& kA
+\end{eqnarray}
+
+Several conclusions are apparent by inspection of the equations. First, the dynamics depend only on the concentration of $A$, so keeping track of the concentration of $B$ is superfluous. The second observation reinforces the first: the sum of the concentrations of $A$ and $B$ is constant. This is mathematically demonstrated by adding the two equations together to obtain the following:
+
+$$ 
+\dot A + \dot B = -kA + kA = 0
+$$
+
+One of the basic properties of the derivative is that the sum of derivatives is the same as the derivative of the sum:
+
+$$
+\dot A + \dot B = \frac{d(A+B)}{dt} = 0
+$$
+
+This means that the sum of the concentrations of $A$ and $B$ is a constant. This is a mathematical expression of the law of conservation in chemistry: molecules can change from one type to another, but they cannot appear or disappear in other ways. In this case, a single molecule of $A$ becomes a single molecule of $B$, so it follows that the sum of the two has to remain the same. If the reaction were instead two molecules of $A$ converting to a molecule of $B$, then the conserved quantity is $2A + B$. The concept of conserved quantity is very useful for the analysis of differential equations. We will see in later chapters how it can help us find solutions, and explain the behavior of complex dynamical systems.
+
+### building nonlinear ODEs
+
+\label{sec:model16}
+
+The simple, linear population growth models we have seen in the last two chapters assume that the per capita birth and death rates are constant, that is, they stay the same regardless of population size. The solutions for these models either grow or decay exponentially, but in reality, populations do not grow without bounds. It is generally true that the larger a population grows, the more scarce the resources, and survival becomes more difficult. For larger populations, this could lead to higher death rates, or lower birth rates, or both.
+
+How can we incorporate this effect into a quantitative model? We will assume there are separate birth and death rates, and that the birth rate declines as the population grows, while the death rate increases. Suppose there are inherent birth rates $b$ and $d$, and the overall birth and death rates $B$ and $D$ depend linearly on population size $P$: $B = b - aP$ and $D = d + cP$.
+
+To model the rate of change of the population, we need to multiply the rates $B$ and $D$ by the population size $P$, since each individual can reproduce or die. Also, since the death rate $D$ decreases the population, we need to put a negative sign on it. The resulting model is:
+
+$$ 
+\dot P = BP - DP = [(b-d)-(a+c)P]P 
+$$
+
+The parameters of the model, the constants $a,b,c,d$, have different meanings. Performing \index{dimensional analysis} dimensional analysis, we find that $b$ and $d$ have the dimensions of $1/[t]$, the same as the rate $r$ in the exponential growth model. However, the dimensions of $a$ (and $c$) must obey the relation: $[P]/[t] = [a][P]^2$, and thus,
+
+$$[a]=[c] = \frac{1}{[t][P]}$$
+
+This shows that the constants $a$ and $c$ have to be treated differently than $b$ and $d$. Let us define the inherent growth rate of the population, to be $r_0=b-d$ (if the death rate is greater than the birth rate, the population will inherently decline). Then let us introduce another constant $K$, such that $(a+c)=r_0/K$. It should be clear from the dimensional analysis that $K$ has units of $P$, population size. Now we can write down the logistic equation in the canonical form:
+
+\begin{equation}
+\dot P = r\left(1-\frac{P}{K}\right)P
+\label{eq:log_cont_model}
+\end{equation}
+
+This model can be re-written as $\dot P = aP -bP^2$, \index{model!logistic}\index{differential equation!logistic}so it is clear that there is a *linear term* ($aP$) and a *nonlinear term* ($-bP^2$). When $P$ is sufficiently small (and positive) the linear term is greater, and the population grows. When $P$ is large enough, the nonlinear term wins and the population declines. \index{nonlinear!differential equation}
+
+It should be apparent that there are two fixed points, at $P=0$ and at $P=K$. The first one corresponds to a population with no individuals. On the other hand, $K$ signifies the population at which the negative effect of population size balances out the inherent population growth rate, and is called the \index{population!carrying capacity} *carrying capacity* of a population in its environment \cite{otto_biologists_2007}. We will analyze the qualitative behavior of the solution, without writing it down, in the next section of this chapter.
 
 ## Solutions of ordinary differential equations
 
@@ -24,18 +158,18 @@ That kind of erratic behavior is impossible in (reasonable) differential equatio
 
 In this section we will investigate how to write down analytic solutions for ordinary differential equations (ODEs). Let us first define the mathematical terms that will be used in this discussion.
 
-:::{.callout-note}
+::: callout-note
 ## Definition
-An ordinary differential equation is an equation that contains derivatives of the \index{variable!dependent} dependent variable (e.g. $x$) with respect to an independent variable (e.g. $t$). For example:
-  $$ \frac{dx^2}{dt^2}+ 0.2 \frac{dx}{dt} - 25 = 0 $$
+
+An ordinary differential equation is an equation that contains derivatives of the \index{variable!dependent} dependent variable (e.g. $x$) with respect to an independent variable (e.g. $t$). For example: $$ \frac{dx^2}{dt^2}+ 0.2 \frac{dx}{dt} - 25 = 0 $$
 :::
 
 For the time being, we will restrict ourselves to ODEs with the highest derivative being of first order, called *first-order* ODEs. Second-order ODEs are common in models derived from physics, but can actually be converted to first-order ODEs, though it requires an additional dependent variable. Third and higher order ODEs are very uncommon. To be precise:
 
-:::{.callout-note}
+::: callout-note
 ## Definition
-A *first-order* ODE is one where the derivative $dx/dt$ is  equal to a *defining function* $f(x,t)$, like this: 
-$$\frac{dx} {dt} = \dot x = f(x,t)$$
+
+A *first-order* ODE is one where the derivative $dx/dt$ is equal to a *defining function* $f(x,t)$, like this: $$\frac{dx} {dt} = \dot x = f(x,t)$$
 :::
 
 The defining function may potentially depend on both the dependent variable $x$ and the \index{variable!independent} independent variable $t$. If it only depends on $x$, it is called an *autonomous* ODE, for example:
@@ -58,11 +192,12 @@ An ODE is \index{differential equation!homogeneous}\emph{homogeneous} if every t
 
 Most simple biological models that we will encounter in the next two chapters are autonomous, homogeneous ODEs. However, nonhomogeneous equations are important in many applications, and we will encounter them at the end of the present section.
 
-### separate and integrate method
+### separate and integrate method (optional)
 
-:::{.callout-note}
+::: callout-note
 ## Definition
-The *analytic (or exact) solution* of an ordinary differential equation is a function of the independent variable that satisfies the equation. If no initial value is given, then the *general solution* function will contain an unknown *integration constant*. If an initial value is specified, the integration constant can be found to obtain a *specific solution*. 
+
+The *analytic (or exact) solution* of an ordinary differential equation is a function of the independent variable that satisfies the equation. If no initial value is given, then the *general solution* function will contain an unknown *integration constant*. If an initial value is specified, the integration constant can be found to obtain a *specific solution*.
 :::
 
 This means that the solution function obeys the relationship between the derivative and the defining function that is specified by the ODE. To verify that a function is a solution of a given ODE, take its derivative and check whether it matches the other side of the equation.
@@ -119,18 +254,20 @@ ODEs that contain at least one term without the dependent variable are a bit mor
 
 3.  solve for the dependent variable: $$  \ln | 4x- 100 |  = 4t + C \Rightarrow 4x-100 = e^{4t} B  \Rightarrow x = 25  + Be^{4t}$$ Here the first step was to multiply both sides by 4, and the second to use both sides as the exponents of $e$, removing the natural log from the left hand side, and finally simple algebra to solve for $x$ as a function of $t$.
 
-4.  solve for the integration constant: $$ x(0) = 25  + B = 30 \Rightarrow B = 5$$ Here the exponential \`\`disappeared'' because $e^0=1$. \\end{enumerate} Therefore, the complete solution of the ODE with the given initial value is $$x(t) =  25  + 5e^{4t}$$
+4.  solve for the integration constant: $$ x(0) = 25  + B = 30 \Rightarrow B = 5$$ Here the exponential "disappeared" because $e^0=1$.
 
-At this point, you might have noticed something about solutions of linear ODEs: they always involve an exponential term, with time in the exponent. Knowing this, it is possible to bypass the whole process of separate-and-integrate by using the following short-cut.
+Therefore, the complete solution of the ODE with the given initial value is $$x(t) =  25  + 5e^{4t}$$
 
-**Important fact:** Any linear ODE of the form $\dot x= ax +b$ has an analytic solution of the form: $$ x(t) = Ce^{at} + D$$
+At this point, you might have noticed something about solutions of linear ODEs $dx/dt = ax+b$: they always involve an exponential term, with time in the exponent. This can be verified by plugging the solution of the form $x(t) = Ce^{at} + D$ into the ODE to see if it satisfies the equation. First, take the derivative of the solution to get the left-hand side of the ODE: $\frac{dx}{dt} = Ca e^{at}$; the plug in \$x(t) = \$ into the right hand side of the ODE: $aCe^{at} + aD +b$. Setting the two sides equal, we get: $Ca e^{at} = aCe^{at} + aD +b$, which is satisfied if $aD + b = 0$, which means $D= -b/a$. This is consistent with the example above, the additive constant in the solution was 25, which is $-b/a= -(-100)/4 = 25$.
 
-This can be tested by plugging the solution back into the ODE to see if it satisfies the equation. First, take the derivative of the solution to get the left-hand side of the ODE: $\frac{dx}{dt} = Ca e^{at}$; the plug in $x(t)$ into the right hand side of the ODE: $aCe^{at} + aD +b$. Setting the two sides equal, we get: $$Ca e^{at} = aCe^{at} + aD +b$$ which is satisfied if $aD + b = 0$, which means $D= -b/a$. This is consistent with the example above, the additive constant in the solution was 25, which is $-b/a= -(-100)/4 = 25$.
+::: callout-tip
+## Important fact
 
-In short, if you want to solve a linear ODE $\dot x= ax +b$ , you can bypass the separate-and-integrate process, because the general solution always has the form: \begin{equation}
+Any linear ODE of the form: $$ \frac {dx}{dt} = ax +b
+$$ has an analytic solution of the form: $$
 x(t) = Ce^{at} - \frac{b}{a}
-\label{eq:ch15_ode_sol}
-\end{equation}
+$$
+:::
 
 The unknown constant $C$ can be determined from a given initial value. So the upshot is that all linear ODEs have solutions which are exponential in time with exponential constant coming from the slope constant $a$ in the ODE. The dynamics of the solution are determined by the sign of the constant $a$: if $a>0$, the solution grows (or declines) without bound; and if $a<0$, the solution approaches an asymptote at $-b/a$ (from above or below, depending on the initial value). Go back and read section \ref{sec:math2} for a review of exponential functions if this is not clear.
 
@@ -154,7 +291,37 @@ Solve the following linear ODEs and use the specified initial values to determin
 
 8.  $$ \frac{dx}{dt} =  -4 + 0.5x; \; x(0) = 6 $$
 
-## Numeric solutions and the Forward Euler method
+For the following ODE models, verify whether a particular function is a solution:
+
+1.  For the ODE model of concentration $C(t)$:
+
+    $$
+    \frac{dC}{dt} = -rC + A
+    $$
+
+    Check whether the function $C(t) = (-r)^t + B$ satisfies the ODE, and if yes, how the parameter B is determined by model parameters r and A.
+
+2.  For the ODE model of membrane potential $V(t)$ with:
+
+    $$
+    \frac{dV}{dt} = -a(V-V_1) - b(V-V_2)
+    $$
+
+    Check whether the function $V(t) = Ce^{-(a+b)t} + D$ satisfies the ODE, and if yes, how the parameters C and D are determines by model parameters a, b, $V_1$ and $V_2$.
+
+3.  For the logistic ODE:
+
+    $$
+    \frac{dP}{dt} = r(1-P/K)P
+    $$ Check whether the function $P(t) = A/(1+Be^{-rt})$ is a solution of the logistic ODE and relate the parameters A and B in the function to the parameters $r$ and $K$ in the ODE.
+
+4.  For the logistic ODE with harvesting:
+
+    $$
+    \frac{dP}{dt} = r(1-P/K)P - \mu
+    $$ Check whether the function $P(t) = A/(1+Be^{-rt}) - \mu t$ is a solution of the logistic ODE and relate the parameters A and B in the function to the parameters $r$ and $K$ in the ODE.
+
+## Numeric solutions and the Forward Euler method (optional)
 
 Analytic solutions are very useful for a modeler because they allow prediction of the variable of interest at any time in the future. However, for many differential equations they are not easy to find, and for many others they simply cannot be written down in a symbolic form. Instead, one can use a numerical approach, which does not require an exact formula for the solution. The idea is to start at a given initial value (e.g. $x(0)$) and use the derivative from the ODE (e.g. $dx/dt$) as the rate of change of the solution (e.g. $x(t)$) to calculate the change or increment for the solution over a time step. Essentially, this means replacing the continuous change of the derivative with a discrete time step, thus converting the differential equation into a difference equation and then solving it. The solution of the difference equation is not the same as the solution of the ODE, so \index{differential equation!numerical solution} *numeric solutions* of ODEs are always approximate. I will use the letter $y(t)$ to denote the numerical solution to distinguish it from the exact solution $x(t)$. The fundamental difference between them is that $y(t)$ is not a formula that can be evaluated at any point in time, but instead is a sequence of numbers calculated every time step, which hopefully are close to the exact solution $x(t)$.
 
@@ -211,7 +378,7 @@ Use the Forward Euler method to solve the following differential equations with 
 
 8.  $$ \frac{dx}{dt} =  -4 + 0.5x; \; x(0) = 6 $$
 
-## Forward Euler method in R
+## Forward Euler method in R (optional)
 
 \label{sec:comp16}
 

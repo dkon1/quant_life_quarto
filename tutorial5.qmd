@@ -4,7 +4,7 @@
 
 -   Define for loops
 -   Assign vector elements inside a for loop
--   Use for loops for iteratively solving a dynamic model
+-   Use for loops for solving a dynamic model
 
 ## For loops and vectors
 

@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -365,31 +331,16 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#building-differential-equations" id="toc-building-differential-equations" class="nav-link active" data-scroll-target="#building-differential-equations"><span class="header-section-number">7.1</span> Building differential equations</a>
+  <li><a href="#qualitative-analysis-of-odes" id="toc-qualitative-analysis-of-odes" class="nav-link active" data-scroll-target="#qualitative-analysis-of-odes"><span class="header-section-number">7.1</span> Qualitative analysis of ODEs</a>
   <ul class="collapse">
-  <li><a href="#from-discrete-time-to-continuous" id="toc-from-discrete-time-to-continuous" class="nav-link" data-scroll-target="#from-discrete-time-to-continuous"><span class="header-section-number">7.1.1</span> from discrete time to continuous</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.1.2</span> Exercises</a></li>
-  <li><a href="#growth-proportional-to-population-size" id="toc-growth-proportional-to-population-size" class="nav-link" data-scroll-target="#growth-proportional-to-population-size"><span class="header-section-number">7.1.3</span> growth proportional to population size</a></li>
-  <li><a href="#chemical-kinetics" id="toc-chemical-kinetics" class="nav-link" data-scroll-target="#chemical-kinetics"><span class="header-section-number">7.1.4</span> chemical kinetics</a></li>
-  <li><a href="#building-nonlinear-odes" id="toc-building-nonlinear-odes" class="nav-link" data-scroll-target="#building-nonlinear-odes"><span class="header-section-number">7.1.5</span> building nonlinear ODEs</a></li>
+  <li><a href="#graphical-analysis-of-the-defining-function" id="toc-graphical-analysis-of-the-defining-function" class="nav-link" data-scroll-target="#graphical-analysis-of-the-defining-function"><span class="header-section-number">7.1.1</span> graphical analysis of the defining function</a></li>
+  <li><a href="#fixed-points-and-stability" id="toc-fixed-points-and-stability" class="nav-link" data-scroll-target="#fixed-points-and-stability"><span class="header-section-number">7.1.2</span> fixed points and stability</a></li>
+  <li><a href="#outline-of-qualitative-analysis-of-an-ode" id="toc-outline-of-qualitative-analysis-of-an-ode" class="nav-link" data-scroll-target="#outline-of-qualitative-analysis-of-an-ode"><span class="header-section-number">7.1.3</span> Outline of qualitative analysis of an ODE</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.1.4</span> Exercises</a></li>
   </ul></li>
-  <li><a href="#qualitative-analysis-of-odes" id="toc-qualitative-analysis-of-odes" class="nav-link" data-scroll-target="#qualitative-analysis-of-odes"><span class="header-section-number">7.2</span> Qualitative analysis of ODEs</a>
+  <li><a href="#modeling-the-spread-of-infectious-disease-spread" id="toc-modeling-the-spread-of-infectious-disease-spread" class="nav-link" data-scroll-target="#modeling-the-spread-of-infectious-disease-spread"><span class="header-section-number">7.2</span> Modeling the spread of infectious disease spread</a>
   <ul class="collapse">
-  <li><a href="#graphical-analysis-of-the-defining-function" id="toc-graphical-analysis-of-the-defining-function" class="nav-link" data-scroll-target="#graphical-analysis-of-the-defining-function"><span class="header-section-number">7.2.1</span> graphical analysis of the defining function</a></li>
-  <li><a href="#fixed-points-and-stability" id="toc-fixed-points-and-stability" class="nav-link" data-scroll-target="#fixed-points-and-stability"><span class="header-section-number">7.2.2</span> fixed points and stability</a></li>
-  <li><a href="#outline-of-qualitative-analysis-of-an-ode" id="toc-outline-of-qualitative-analysis-of-an-ode" class="nav-link" data-scroll-target="#outline-of-qualitative-analysis-of-an-ode"><span class="header-section-number">7.2.3</span> Outline of qualitative analysis of an ODE</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">7.2.4</span> Exercises</a></li>
-  </ul></li>
-  <li><a href="#functions-in-r" id="toc-functions-in-r" class="nav-link" data-scroll-target="#functions-in-r"><span class="header-section-number">7.3</span> Functions in R</a>
-  <ul class="collapse">
-  <li><a href="#defining-a-function" id="toc-defining-a-function" class="nav-link" data-scroll-target="#defining-a-function"><span class="header-section-number">7.3.1</span> defining a function</a></li>
-  <li><a href="#calling-a-function" id="toc-calling-a-function" class="nav-link" data-scroll-target="#calling-a-function"><span class="header-section-number">7.3.2</span> calling a function</a></li>
-  <li><a href="#using-a-function-to-solve-a-difference-equation" id="toc-using-a-function-to-solve-a-difference-equation" class="nav-link" data-scroll-target="#using-a-function-to-solve-a-difference-equation"><span class="header-section-number">7.3.3</span> using a function to solve a difference equation</a></li>
-  <li><a href="#exercises-2" id="toc-exercises-2" class="nav-link" data-scroll-target="#exercises-2"><span class="header-section-number">7.3.4</span> Exercises</a></li>
-  </ul></li>
-  <li><a href="#modeling-the-spread-of-infectious-disease-spread" id="toc-modeling-the-spread-of-infectious-disease-spread" class="nav-link" data-scroll-target="#modeling-the-spread-of-infectious-disease-spread"><span class="header-section-number">7.4</span> Modeling the spread of infectious disease spread</a>
-  <ul class="collapse">
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">7.4.1</span> Discussion</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">7.2.1</span> Discussion</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -424,125 +375,18 @@ window.Quarto = {
 <p>The models for continuously changing variables require their own set of mathematical tools. Instead of difference equations, we are going to see our first differential equations, which use derivatives to describe how a variable changes with time. There is a tremendous amount of knowledge accumulated by mathematicians, physicists and engineers for analyzing and solving differential equations. There are many classes of differential equations for which it is possible to find analytic solutions, often in the form of so-called special functions. Differential equations courses for physicists and engineers are typically focused on learning about the variety of existing tools for solving a few types of differential equations. For the purposes of biological modeling, knowing how to solve a limited number of differential equations is of limited usefulness. We will instead focus on learning how to analyze the behavior of differential equations in general, without having to solve them on paper.</p>
 <p>In this chapter you will learn to do the following:</p>
 <ul>
-<li><p>build differential equations based on stated assumptions</p></li>
 <li><p>find equilibrium values of an ODE</p></li>
 <li><p>analyze the stability of equilibria based on the graph of the defining function</p></li>
 <li><p>write down stability conditions analytically</p></li>
 <li><p>use graphical techniques to predict the behavior of the solution of a differential equation without solving it</p></li>
 <li><p>understand basic compartment epidemiology models</p></li>
 </ul>
-<section id="building-differential-equations" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="building-differential-equations"><span class="header-section-number">7.1</span> Building differential equations</h2>
-<p></p>
-<section id="from-discrete-time-to-continuous" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="from-discrete-time-to-continuous"><span class="header-section-number">7.1.1</span> from discrete time to continuous</h3>
-<p>In this chapter we investigate <em>continuous time dynamical systems</em>, for which it does not make sense to break time up into equal intervals. Instead of equations describing the increments in the dependent variable from one time step to the next, we will see equations with the instantaneous rate of the change (derivative) of the variable. Let us see the connection between the discrete and continuous dynamic models by reducing the step size of the bacteria-division population model.</p>
-<p>First, suppose that instead of dividing every hour, the population of bacteria divide every half-hour, but only half of the population does. That half is chosen randomly, so we don’t have to keep track of whether each bacterium divided the last time around or not. Therefore, each half-hour exactly half of the population is added to the current population: <span class="math display">\[ N(t+0.5) = N(t) + 0.5N(t) = 1.5N(t)\]</span> The solution for this model can be figured out from the linear difference equation solution we derived in section <span class="math inline">\(\ref{sec:math14}\)</span> Every half-hour, the population is multiplied by 1.5, so we can write: <span class="math display">\[ N(t) = 1.5^{2t} N(0) = (1.5^2)^t N(0)\]</span> Compare this solution with the one for the every-hour model, <span class="math inline">\(N(t) = 2^t N(0)\)</span> by plugging in a few numbers for <span class="math inline">\(t\)</span>. The half-hour model grows faster, because it has the base of 2.25 instead of 2.</p>
-<p>Now, suppose that the bacteria can divide four times an hour, but only a quarter of the population reproduces at any given time. The model can be written similarly: <span class="math display">\[N(t+0.25) = N(t) + 0.25N(t) = 1.25N(t)\]</span> The solution for this model is once again exponential, with the difference that each half contains 4 division events: <span class="math display">\[N(t) = 1.25^{4t}N(0) = (1.25^4)^t N(0)\]</span> This solution has the exponential base is <span class="math inline">\(1.25^4\)</span>, which is larger than <span class="math inline">\(1.5^2\)</span>. So what happens when we take this further?</p>
-<p>Suppose the bacteria divide <span class="math inline">\(m\)</span> times an hour, with time step <span class="math inline">\(1/m\)</span>. Then extending our models above, we can write down the model and the solution: <span class="math display">\[ N(t + 1/m) = N(t) + 1/m N(t) = (1+1/m) N(t) \]</span> <span class="math display">\[ N(t) = (1+1/m)^{mt} N(0) = [(1+1/m)^m]^t N(0)\]</span></p>
-<p>Now we can do what mathematicians enjoy the most: take things to the limit. What if <span class="math inline">\(m\)</span> were 100? A million? A gazillion? Let us re-write the model equation: <span class="math display">\[ N(t+1/m) - N(t) = 1/m N(t) \Rightarrow \frac{N(t+1/m) - N(t) }{1/m} = N(t)\]</span></p>
-<p>The expression on the left is known as Newton’s quotient that you encounter in the definition of a derivative. It measures the rate of change of the population <span class="math inline">\(N\)</span> from some time <span class="math inline">\(t\)</span> to the next time step <span class="math inline">\(t+1/m\)</span>. If <span class="math inline">\(m\)</span> is increased to make the time step smaller, this makes both the numerator and the denominator smaller, and the quotient approaches the <em>instantaneous rate of change</em> of <span class="math inline">\(N(t)\)</span>. So, if bacteria divide at any point in time, with the , the model becomes a differential equation: <span class="math display">\[ \frac{dN}{dt} = N(t)\]</span></p>
-<p>We can do a similar procedure to the formula of the solution of the model. The dependence on <span class="math inline">\(m\)</span> is all on the left-hand side, in the expression <span class="math inline">\((1+1/m)^m\)</span>, which is the base of the exponential function. What happens to this number as <span class="math inline">\(m\)</span> becomes larger? Does it increase without bound? You can investigate this numerically by plugging in progressively larger numbers <span class="math inline">\(m\)</span>, and see that the number approaches a specific value: 2.71828… This is the special constant <span class="math inline">\(e\)</span>, called the base of the natural logarithm. So, if bacteria divide at any point in time, with the <strong>average rate of 1 per hour</strong>, the solution of the model becomes: <span class="math display">\[ N(t) = e^t N(0)\]</span></p>
-</section>
-<section id="exercises" class="level3" data-number="7.1.2">
-<h3 data-number="7.1.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.1.2</span> Exercises</h3>
-<p>Here we will explore the effect of changing the step size on the solution of a discrete time dynamic model. We will use a very simple model of bacterial population growth, in which we assume that bacteria divide once an hour and there are no deaths.</p>
-<ol type="1">
-<li>Calculate the solution for this population, assuming that all bacteria divide exactly once an hour - in other words, a birth rate of one per individual. Starting with one bacterium use a for loop to calculate the solution for 10 hours and print out the last value.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="2" type="1">
-<li>Suppose that these bacteria can divide twice an hour, but only half of the population divides each time - in other words, a per capita birth rate of 0.5 per half an hour. Change your model so it calculates a solution vector with the time step of 30 minutes over 10 hours, print out the number of bacteria after 10 hours and compare it with the previous value.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="3" type="1">
-<li>Suppose that these bacteria divide every 15 minutes, but only one quarter of the population divides each time - in other words, a per capita birth rate of 0.25 per quarter hour. Change your model so it calculates a solution vector with the time step of 15 minutes over 10 hours, print out the number of bacteria after 10 hours and compare it with the previous value.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="4" type="1">
-<li>Suppose that these bacteria divide every 1 minute, but only 1/60 of the population divides each time - in other words, a per capita birth rate of 1/60 per minute. Change your model so it calculates a solution vector with the time step of 1 minute over 10 hours, print out the number of bacteria after 10 hours and compare it with the previous value.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="5" type="1">
-<li>Suppose that these bacteria divide every second, but only 1/3600 of the population divides each time - in other words, a per capita birth rate of 1/3600 per second. Change your model so it calculates a solution vector with the time step of 1 second over 10 hours, print out the number of bacteria after 10 hours and compare it with the previous value.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="6" type="1">
-<li>Produce a plot of the five solutions of bacterial population dividing with different time steps. Take the five code chunks from above, and copy them all into the chunk below. For each calculation add a time vector that corresponds to each time step (e.g.&nbsp;one for every hour for the first one, one for every second for the last one) and make a plot of each of the solutions as function of time on the same plot - use plot() for the first one and lines() for all the rest, with different colors and add a legend indicating different time steps.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>What behaviors do you see for the solutions with different time steps? What effect does shrinking the time step have on the solution? What do you expect would happen if the time step were a millisecond, or a microsecond?</p>
-</section>
-<section id="growth-proportional-to-population-size" class="level3" data-number="7.1.3">
-<h3 data-number="7.1.3" class="anchored" data-anchor-id="growth-proportional-to-population-size"><span class="header-section-number">7.1.3</span> growth proportional to population size</h3>
-<p>We will now build some common differential equations models. First, a simple population growth model with a constant growth rate. Suppose that in a population each individual reproduces with the average reproductive rate <span class="math inline">\(r\)</span>. This is reflected in the following differential equation:</p>
-<p><span class="math display">\[\begin{equation}
-\frac{d x} {dt} = \dot x = r x
-\label{eq:linear_ode}
-\end{equation}\]</span></p>
-<p>This expression states that the rate of change of <span class="math inline">\(x\)</span>, which we take to be population size, is proportional to <span class="math inline">\(x\)</span> with multiplicative constant <span class="math inline">\(r\)</span>. We will sometimes use the notation <span class="math inline">\(\dot x\)</span> for the time derivative of <span class="math inline">\(x\)</span> (which was invented by Newton) for aesthetic reasons.</p>
-<p>First, we apply dimensional analysis to this model. The units of the derivative are population per time, as can be deduced from the Newton’s quotient definition. Thus, the units in the equation have the following relationship: <span class="math display">\[
-\frac{[population]}{[time]} = [r] [population] = \frac{1}{[time]}[population]
-\]</span></p>
-<p>This shows that as in the discrete time models, the dimension of the population growth rate <span class="math inline">\(r\)</span> is inverse time, or frequency. The difference with the discrete time population models lies in the time scope of the rate. In the case of the difference equation, <span class="math inline">\(r\)</span> is the rate of change per one time step of the model. In the differential equation, <span class="math inline">\(r\)</span> is the <em>instantaneous rate of population growth</em>. It is less intuitive than the growth rate per single reproductive cycle, just like the slope of a curve is less intuitive than the slope of a line. The population growth happens continuously, so the growth rate of <span class="math inline">\(r\)</span> individuals per year does not mean that if we start with one individual, there will be <span class="math inline">\(r\)</span> after one year. In order to make quantitative predictions, we need to find the solution of the equation, which we will see in the next section.</p>
-</section>
-<section id="chemical-kinetics" class="level3" data-number="7.1.4">
-<h3 data-number="7.1.4" class="anchored" data-anchor-id="chemical-kinetics"><span class="header-section-number">7.1.4</span> chemical kinetics</h3>
-<p>Reactions between molecules in cells occur continuously, driven by molecular collisions and physical forces. In order to model this complex behavior, it is generally assumed that reactions occur with a particular speed, known as the <em>kinetic rate constant</em>. As mentioned in chapter 2, a simple reaction of conversion from one type of molecule (<span class="math inline">\(A\)</span>) to another (<span class="math inline">\(B\)</span>) can be written as follows: <span class="math display">\[ A \xrightarrow{k} B \]</span> In this equation the parameter <span class="math inline">\(k\)</span> is the kinetic rate rate constant, describing the speed of conversion of <span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span>, per concentration of <span class="math inline">\(A\)</span>.</p>
-<p>Chemists and biochemists use differential equations to describe the change in molecular concentration during a reaction. These equations are known as the <em>laws of mass action</em>. For the reaction above, the concentration of molecule <span class="math inline">\(A\)</span> decreases continuously proportionally to itself, and the concentration of molecule <span class="math inline">\(B\)</span> increases continuously proportionally to the concentration of <span class="math inline">\(A\)</span>. This is expressed by the following two differential equations:</p>
-<p><span class="math display">\[\begin{eqnarray}
-\label{eq:lin_chem_kin}
-\dot A &amp;=&amp; - k A \\
-\dot B &amp;=&amp; kA
-\end{eqnarray}\]</span></p>
-<p>Several conclusions are apparent by inspection of the equations. First, the dynamics depend only on the concentration of <span class="math inline">\(A\)</span>, so keeping track of the concentration of <span class="math inline">\(B\)</span> is superfluous. The second observation reinforces the first: the sum of the concentrations of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is constant. This is mathematically demonstrated by adding the two equations together to obtain the following:</p>
-<p><span class="math display">\[
-\dot A + \dot B = -kA + kA = 0
-\]</span></p>
-<p>One of the basic properties of the derivative is that the sum of derivatives is the same as the derivative of the sum:</p>
-<p><span class="math display">\[
-\dot A + \dot B = \frac{d(A+B)}{dt} = 0
-\]</span></p>
-<p>This means that the sum of the concentrations of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is a constant. This is a mathematical expression of the law of conservation in chemistry: molecules can change from one type to another, but they cannot appear or disappear in other ways. In this case, a single molecule of <span class="math inline">\(A\)</span> becomes a single molecule of <span class="math inline">\(B\)</span>, so it follows that the sum of the two has to remain the same. If the reaction were instead two molecules of <span class="math inline">\(A\)</span> converting to a molecule of <span class="math inline">\(B\)</span>, then the conserved quantity is <span class="math inline">\(2A + B\)</span>. The concept of conserved quantity is very useful for the analysis of differential equations. We will see in later chapters how it can help us find solutions, and explain the behavior of complex dynamical systems.</p>
-</section>
-<section id="building-nonlinear-odes" class="level3" data-number="7.1.5">
-<h3 data-number="7.1.5" class="anchored" data-anchor-id="building-nonlinear-odes"><span class="header-section-number">7.1.5</span> building nonlinear ODEs</h3>
-<p></p>
-<p>The simple, linear population growth models we have seen in the last two chapters assume that the per capita birth and death rates are constant, that is, they stay the same regardless of population size. The solutions for these models either grow or decay exponentially, but in reality, populations do not grow without bounds. It is generally true that the larger a population grows, the more scarce the resources, and survival becomes more difficult. For larger populations, this could lead to higher death rates, or lower birth rates, or both.</p>
-<p>How can we incorporate this effect into a quantitative model? We will assume there are separate birth and death rates, and that the birth rate declines as the population grows, while the death rate increases. Suppose there are inherent birth rates <span class="math inline">\(b\)</span> and <span class="math inline">\(d\)</span>, and the overall birth and death rates <span class="math inline">\(B\)</span> and <span class="math inline">\(D\)</span> depend linearly on population size <span class="math inline">\(P\)</span>: <span class="math inline">\(B = b - aP\)</span> and <span class="math inline">\(D = d + cP\)</span>.</p>
-<p>To model the rate of change of the population, we need to multiply the rates <span class="math inline">\(B\)</span> and <span class="math inline">\(D\)</span> by the population size <span class="math inline">\(P\)</span>, since each individual can reproduce or die. Also, since the death rate <span class="math inline">\(D\)</span> decreases the population, we need to put a negative sign on it. The resulting model is:</p>
-<p><span class="math display">\[
-\dot P = BP - DP = [(b-d)-(a+c)P]P
-\]</span></p>
-<p>The parameters of the model, the constants <span class="math inline">\(a,b,c,d\)</span>, have different meanings. Performing dimensional analysis, we find that <span class="math inline">\(b\)</span> and <span class="math inline">\(d\)</span> have the dimensions of <span class="math inline">\(1/[t]\)</span>, the same as the rate <span class="math inline">\(r\)</span> in the exponential growth model. However, the dimensions of <span class="math inline">\(a\)</span> (and <span class="math inline">\(c\)</span>) must obey the relation: <span class="math inline">\([P]/[t] = [a][P]^2\)</span>, and thus,</p>
-<p><span class="math display">\[[a]=[c] = \frac{1}{[t][P]}\]</span></p>
-<p>This shows that the constants <span class="math inline">\(a\)</span> and <span class="math inline">\(c\)</span> have to be treated differently than <span class="math inline">\(b\)</span> and <span class="math inline">\(d\)</span>. Let us define the inherent growth rate of the population, to be <span class="math inline">\(r_0=b-d\)</span> (if the death rate is greater than the birth rate, the population will inherently decline). Then let us introduce another constant <span class="math inline">\(K\)</span>, such that <span class="math inline">\((a+c)=r_0/K\)</span>. It should be clear from the dimensional analysis that <span class="math inline">\(K\)</span> has units of <span class="math inline">\(P\)</span>, population size. Now we can write down the logistic equation in the canonical form:</p>
-<p><span class="math display">\[\begin{equation}
-\dot P = r\left(1-\frac{P}{K}\right)P
-\label{eq:log_cont_model}
-\end{equation}\]</span></p>
-<p>This model can be re-written as <span class="math inline">\(\dot P = aP -bP^2\)</span>, so it is clear that there is a <em>linear term</em> (<span class="math inline">\(aP\)</span>) and a <em>nonlinear term</em> (<span class="math inline">\(-bP^2\)</span>). When <span class="math inline">\(P\)</span> is sufficiently small (and positive) the linear term is greater, and the population grows. When <span class="math inline">\(P\)</span> is large enough, the nonlinear term wins and the population declines. </p>
-<p>It should be apparent that there are two fixed points, at <span class="math inline">\(P=0\)</span> and at <span class="math inline">\(P=K\)</span>. The first one corresponds to a population with no individuals. On the other hand, <span class="math inline">\(K\)</span> signifies the population at which the negative effect of population size balances out the inherent population growth rate, and is called the <em>carrying capacity</em> of a population in its environment . We will analyze the qualitative behavior of the solution, without writing it down, in the next section of this chapter.</p>
-</section>
-</section>
-<section id="qualitative-analysis-of-odes" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="qualitative-analysis-of-odes"><span class="header-section-number">7.2</span> Qualitative analysis of ODEs</h2>
+<section id="qualitative-analysis-of-odes" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="qualitative-analysis-of-odes"><span class="header-section-number">7.1</span> Qualitative analysis of ODEs</h2>
 <p></p>
 <p>In this section we will analyze the behavior of solutions of an autonomous ODE without solving it on paper. Generally, ODE models for realistic biological systems are nonlinear, and most nonlinear differential equations cannot be solved analytically. We can make predictions about the behavior, or <em>dynamics</em> of solutions by considering the properties of the <em>defining function</em>, which is the function on the right-hand-side of a general autonomous ODE: <span class="math display">\[ \frac{dx}{dt} = f(x)\]</span></p>
-<section id="graphical-analysis-of-the-defining-function" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="graphical-analysis-of-the-defining-function"><span class="header-section-number">7.2.1</span> graphical analysis of the defining function</h3>
+<section id="graphical-analysis-of-the-defining-function" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="graphical-analysis-of-the-defining-function"><span class="header-section-number">7.1.1</span> graphical analysis of the defining function</h3>
 <p>The defining function relates the value of the solution variable <span class="math inline">\(x\)</span> to its rate of change <span class="math inline">\(dx/dt\)</span>. For different values of <span class="math inline">\(x\)</span>, the rate of change of <span class="math inline">\(x(t)\)</span> is different, and it is defined by the function <span class="math inline">\(f(x)\)</span>. There are only three options:</p>
 <ul>
 <li><p>if <span class="math inline">\(f(x) &gt; 0\)</span>, <span class="math inline">\(x(t)\)</span> is increasing at that value of <span class="math inline">\(x\)</span></p></li>
@@ -592,8 +436,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="fixed-points-and-stability" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="fixed-points-and-stability"><span class="header-section-number">7.2.2</span> fixed points and stability</h3>
+<section id="fixed-points-and-stability" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="fixed-points-and-stability"><span class="header-section-number">7.1.2</span> fixed points and stability</h3>
 <p>We have seen that the dynamics of solutions of differential equations depend on the initial value of the dependent variable: for some values the solution increases, for others it decreases, and for intermediate values it remains the same. Those special values separating intervals of increase and decrease are called fixed points (or equilibria), and the first step to understanding the dynamics of an ODE is finding its fixed points. A fixed point is a value of the solution at which the dynamical system stays constant, thus, the derivative of the solution must be zero. Here is the formal definition:</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -636,8 +480,8 @@ Definition
 <p><strong>A word of caution:</strong> The derivative of the defining function <span class="math inline">\(f'(x)\)</span> is not the second derivative of the solution <span class="math inline">\(x(t)\)</span>. This is a common mistake, because the function <span class="math inline">\(f(x)\)</span> is equal to the time derivative of <span class="math inline">\(x(t)\)</span>. However, the derivative <span class="math inline">\(f'(x)\)</span> is not with respect to time, it is with respect to x, the dependent variable. In other words, it reflects the slope of the graph of the defining function <span class="math inline">\(f(x)\)</span>, not the curvature of the graph of the solution <span class="math inline">\(x(t)\)</span>.</p>
 <p>To summarize, here is an outline of the steps for analyzing the behavior of solutions of an autonomous one-variable ODE. These tasks can be accomplished either by plotting the defining function <span class="math inline">\(f(x)\)</span> and finding the fixed points and their stability based on the plot, or by solving for the fixed points on paper, then finding the derivative <span class="math inline">\(f'(x)\)</span> and plugging in the values of the fixed points to determine their stability. Either approach is valid, but the analytic methods are necessary when dealing with models that have unknown parameter values, which makes it impossible to represent the defining function in a plot.</p>
 </section>
-<section id="outline-of-qualitative-analysis-of-an-ode" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="outline-of-qualitative-analysis-of-an-ode"><span class="header-section-number">7.2.3</span> Outline of qualitative analysis of an ODE</h3>
+<section id="outline-of-qualitative-analysis-of-an-ode" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="outline-of-qualitative-analysis-of-an-ode"><span class="header-section-number">7.1.3</span> Outline of qualitative analysis of an ODE</h3>
 <ul>
 <li><p>find the fixed points by setting the defining function <span class="math inline">\(f(x)=0\)</span> and solving for values of <span class="math inline">\(x^*\)</span></p></li>
 <li><p>divide the domain of <span class="math inline">\(x\)</span> into intervals separated by fixed points <span class="math inline">\(x^*\)</span></p></li>
@@ -690,8 +534,8 @@ Definition
 </div>
 </div>
 </section>
-<section id="exercises-1" class="level3" data-number="7.2.4">
-<h3 data-number="7.2.4" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">7.2.4</span> Exercises</h3>
+<section id="exercises" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.1.4</span> Exercises</h3>
 <p>For the following differential equations: a) plot the defining function over the indicated range (use any computational tools you wish) to determine the intervals on which the dependent variable is increasing and decreasing; b) find the equilibria c) determine the stability of each equilibrium; d) based on your analysis in parts a-c, sketch (by hand) plots of the solutions with the specified initial values.</p>
 <ol type="1">
 <li><p><span class="math display">\[ \frac{dC}{dt} = -0.2C + 60; \; C \in (0,500); \; C(0) = 200; \; C(0) = 400 \]</span></p></li>
@@ -701,97 +545,11 @@ Definition
 <li><p><span class="math display">\[  \frac{dR}{dt} = \frac{R}{1+R}-0.1R; \; R \in (-0.1, 10); \; R(0) = 20; \; R(0) = 0 \]</span></p></li>
 <li><p><span class="math display">\[  \frac{dP}{dt} =  0.02P(P-100)(1200-P) \; P \in (-0.1, 1200); \; P(0) = 20; \; P(0) = 1000 \]</span></p></li>
 <li><p><span class="math display">\[  \frac{dY}{dt} =  0.01Y(Y-100)(Y-200) \; Y \in (-0.1, 300); \; Y(0) = 20; \; Y(0) = 250 \]</span></p></li>
-<li><p>(harder) The logistic function was defined in chapter 2, equation 2.4. Verify that the logistic function with independent variable <span class="math inline">\(t\)</span> solves the logistic ODE in equation <span class="math inline">\(\ref{eq:log_cont_model}\)</span> and relate the parameters in the function to the parameters <span class="math inline">\(r\)</span> and <span class="math inline">\(K\)</span> in the ODE.</p></li>
 </ol>
 </section>
 </section>
-<section id="functions-in-r" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="functions-in-r"><span class="header-section-number">7.3</span> Functions in R</h2>
-<p>Like most programming languages, R allows one to define and use structures called functions. Some are already written and loaded into the R distribution, for example, the function <code>mean()</code> we use to compute the mean of a vector variable, while others can be defined by users. Functions are discrete chunks of code that can be <em>called</em> from the outside to perform some task. The function receives inputs from the call and returns the result back. Here is the general structure of a function in R:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>myfunction <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2, ... ){</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>   statements</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">return</span>(answer)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>A function is a piece of code that is <strong>defined</strong> separately and can be <strong>called</strong> by other pieces of code. The main purpose is to create a “black box” that does a specific job and can be used repeatedly just by calling the function (invoking its name), rather than copying the code repeatedly.</p>
-<p>A function generally has input variables (although sometimes there are none) and returns an output using the <code>return()</code> statement. It is important to distinguish between the <em>inside</em> of the function - the code between the curly braces in the function definition - and the <em>outside</em>, that is everything else. The inputs are <em>passed</em> to the function in the call (through the parentheses) and then used inside the function to do its business and produce an output, which is then <em>returned</em> back to the place in the code where the function was called.</p>
-<section id="defining-a-function" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="defining-a-function"><span class="header-section-number">7.3.1</span> defining a function</h3>
-<p>Here is an example of a function definition, with input variables N and r. Between the curly braces is the <em>body of the function</em>, which in this case multiplies the two input variables and then returns them.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>my_funk <span class="ot">&lt;-</span> <span class="cf">function</span>(N,r){ </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  ans <span class="ot">&lt;-</span> r<span class="sc">*</span>N <span class="co"># updating function f(N)</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(ans)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Note that after running the code chunk above, you should see the name <code>my_funk</code> in your environment (under Functions). This means this function is defined in memory and ready to be called.</p>
-</section>
-<section id="calling-a-function" class="level3" data-number="7.3.2">
-<h3 data-number="7.3.2" class="anchored" data-anchor-id="calling-a-function"><span class="header-section-number">7.3.2</span> calling a function</h3>
-<p>After a function is defined, it is ready to be called (executed) by invoking its name and giving the correct number of inputs. Here’s an example of a function call:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">my_funk</span>(y, a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  30  60  90 120 150 180 210 240 270 300</code></pre>
-</div>
-</div>
-<p>Notice that the variable names in the fuction call do not have to be same as what they are called within the function. IMPORTANT: a function uses the order of variables in the function call, called <em>external variables</em> (<code>y</code>, <code>a</code>) to assign their names within the function, called <em>internal variables</em> (<code>N</code>, <code>r</code>). (There is a way to specify which input belongs to which internal variable, e.g.&nbsp;<code>plot(x=time, y=sol)</code> and in that case the order is not important.)</p>
-</section>
-<section id="using-a-function-to-solve-a-difference-equation" class="level3" data-number="7.3.3">
-<h3 data-number="7.3.3" class="anchored" data-anchor-id="using-a-function-to-solve-a-difference-equation"><span class="header-section-number">7.3.3</span> using a function to solve a difference equation</h3>
-<p>We have solved discrete-time dynamic models (difference equations) using for loops. You can use a function to calculate the next value of the solution, by passing the current value and any parameters as inputs to the function, as you can see in the code chunk below:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>numsteps<span class="ot">&lt;-</span><span class="dv">30</span> <span class="co"># set number of steps</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sol <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>,numsteps<span class="sc">+</span><span class="dv">1</span>) <span class="co"># pre-allocate sol1</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sol[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># set initial value</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>r <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># define the multiplicative constant</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>numsteps) { <span class="co"># repeat for numsteps</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  sol[i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">my_funk</span>(sol[i], r) <span class="co"># calculate the next value</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>numsteps <span class="co"># define time vector</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(time,sol,<span class="at">t=</span><span class="st">'b'</span>,<span class="at">xlab=</span><span class="st">'time'</span>,<span class="at">ylab=</span><span class="st">'solution'</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="graph_odes_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="exercises-2" class="level3" data-number="7.3.4">
-<h3 data-number="7.3.4" class="anchored" data-anchor-id="exercises-2"><span class="header-section-number">7.3.4</span> Exercises</h3>
-<ol type="1">
-<li>Write a function that takes the input variable and multiplies it by 1.03, like the mathematical function <span class="math inline">\(f(x) = 1.03x\)</span>.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="2" type="1">
-<li>Use the function to take a variable and multiply it by 1.03, replacing the old value of the variable. If the initial value is 5, the new value should be 5.15.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="3" type="1">
-<li>Write a script to take a variable and multiply it by 1.03 one hundred times, replacing the old value of the variable <strong>using a for loop and the function you created</strong>. Starting with the initial value is 5, the script should return the value 96.093.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="4" type="1">
-<li>Modify the script above to save all the intermediate values into a vector, and plot a graph of this vector vs.&nbsp;the iteration step (from 1 to 101). Hint: this is exactly like the example code above.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="modeling-the-spread-of-infectious-disease-spread" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="modeling-the-spread-of-infectious-disease-spread"><span class="header-section-number">7.4</span> Modeling the spread of infectious disease spread</h2>
+<section id="modeling-the-spread-of-infectious-disease-spread" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="modeling-the-spread-of-infectious-disease-spread"><span class="header-section-number">7.2</span> Modeling the spread of infectious disease spread</h2>
 <p></p>
 <p>The field of <em>epidemiology</em> studies the distribution of disease and health states in populations. Epidemiologists describe and model these issues with the goal of helping public health workers devise interventions to improve the overall health outcomes on a large scale. One particular topic of interest is the the spread of infectious disease and how best tor respond to it.. Because epidemiology is concerned with large numbers of people, the models used in the field do not address the details of an individual disease history. One approach to modeling this is to put people into categories, such as <em>susceptible</em> (those who can be infected but are not), <em>infectious</em> (those who are infected and can spread the disease), and <em>recovered</em> (those who cannot be infected or spread disease). This type of models is called a <em>compartment model</em> and they are they commonly used to represent infectious disease on a population level both for deterministic models (e.g.&nbsp;ODEs) and stochastic models (e.g.&nbsp;Markov models). Dividing people into categories involves the assumption that everyone in a particular category behaves in the same manner: for instance, all susceptible people are infected with the same rate and all infected people recover with the same rate.</p>
 <p>Let us construct an ODE to describe a two-compartment epidemiology model. There are two dependent variables to be tracked: the number of susceptible (<span class="math inline">\(S\)</span>) and infected (<span class="math inline">\(I\)</span>) individuals in the population. The susceptible individuals can get infected, while the infected ones can recover and become susceptible again. The implicit assumption is that there is no immunity, and recovered individuals can get infected with the same ease as those who were never infected. There are some human diseases for which this is true, for instance the common cold or gonorrhea. Transitions between the different classes of individuals can be summarized by the following scheme: <span class="math display">\[ S + I \xrightarrow{\beta} I \xrightarrow{\gamma} S \]</span> Here <span class="math inline">\(\beta\)</span> is the individual rate of infection, also known as the transmission rate, and <span class="math inline">\(\gamma\)</span> is the individual rate of recovery. There is an important distinction between the processes of infection and recovery: the former requires an infected individual and a susceptible individual, while the latter needs only an infected individual. Therefore, it is reasonable to suppose that the rate of growth of infected individuals is the product of the individual transmission rate <span class="math inline">\(\beta\)</span> and the product of the number of infected and susceptible individuals. The overall rate of recovery is the individual recovery rate <span class="math inline">\(\gamma\)</span> multiplied by the number of the infected. This leads to the following two differential equations: <span class="math display">\[\begin{eqnarray*}
@@ -860,8 +618,8 @@ Definition
 </div>
 </div>
 </div>
-<section id="discussion" class="level3" data-number="7.4.1">
-<h3 data-number="7.4.1" class="anchored" data-anchor-id="discussion"><span class="header-section-number">7.4.1</span> Discussion</h3>
+<section id="discussion" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="discussion"><span class="header-section-number">7.2.1</span> Discussion</h3>
 <p>The following questions encourage you to think critically about modeling of infectious diseases.</p>
 <ol type="1">
 <li><p>What effect does changing the infection rate <span class="math inline">\(\beta\)</span> have on the basic reproductive rate? Explain the biological intuition behind this.}</p></li>
