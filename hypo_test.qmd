@@ -29,7 +29,8 @@ Hypothesis testing gives us a positive or negative result, but that does not mea
 ::: callout-note
 ## Definition
 
-For a hypothesis that can be either false (F) or true (T) and a test result that can be either positive (P) or negative (N), the probabilities of a *true positive* and *true negative* are: $$ 
+For a hypothesis that can be either false (F) or true (T) and a test result that can be either positive (P) or negative (N), the probabilities of a *true positive* and *true negative* are: 
+$$ 
 P(TP) = P(P \& F); \; P(TN) = P(N \& T)
 $$
 :::
@@ -174,6 +175,7 @@ The data in the summary of judge Scheindlin's decision is as follows: between 20
 Below I present data in the form of counts for only the calendar year 2011 \cite{_nypds_????}, in the form of a contingency table with two variables: race/ethnicity and being stopped by police without a warrant. I have used the census population of New York (http://factfinder2.census.gov) and its breakdown by race (white only, black only, Hispanic, other). The data are presented in table \ref{tab:stop_frisk_race}, and then are input in R and run through a chi-squared independence test.
 
 ```{r}
+#| echo: false
 data_mat <- matrix(c(61805, 2665172, 350743, 1527029, 223740, 
 2119718, 49436, 1201578),ncol=4,nrow=2)
 rownames(data_mat) <- c('stopped', 'not stopped')
@@ -184,3 +186,65 @@ print(test.output)
 ```
 
 The results confirm what comparing the percentages suggested: the race of a person in NYC is not independent of whether or not they get stopped and frisked, with only a tiny probability that this disparity could have happened by chance. However, this is only the beginning of the analysis that experts performed for the court trial. Drawing conclusions about motives from the data is tricky, since two variables may be related without a causal connection. Defenders of the practice have argued that the racial disparities reflect differences in criminal activity. The data, however, show that only 6% of the stops result in arrests, and 6% more in court summons, so the vast majority of those stopped and frisked were not engaged in criminal activity.
+
+## Analysis of variance
+
+ANOVA is a method for testing the hypothesis that there is no difference in means of subsets of measurements grouped by factors. Essentially, this is a generalization of linear regression to **categorical** explanatory variables instead of **numeric** variables, and it is based on very similar assumptions.
+
+ANOVA perform at its best when we have a particular experimental design: a) we divide the population into groups of equal size (**balanced design**); b) we assign "treatments" to the subjects at random (**randomized design**); in case of multiple treatment combinations, we perform an experiment for each combination (**factorial design**); in most cases, we have a "null" treatment (e.g., placebo).
+
+We speak of **one-way ANOVA** when there is a single axis of variation to our treatment (e.g., no intervention, option A, option B), **two-way ANOVA** when we apply two treatments for each group (e.g., no treatment, Ab, AB, aB), and so forth. Extensions include ANCOVA (ANalysis of COVAriance) and MANOVA (Multivariate ANalysis Of VAriance).
+
+### ANOVA assumptions
+
+ANOVA tests whether samples are taken from distributions with the same mean:
+
+-   Null hypothesis: the means of the different groups are the same.
+-   Alternative hypothesis: **At least one sample mean** is not equal to the others.
+
+Let $Y$ indicate the response variable, and study the simplest case of one-way ANOVA. We have divided the samples in $k$ classes of size $J_1, \ldots, J_k$ such that $n=\sum_i J_i$. We write an equation for $Y_{ij}$ (the $j$th observation in group $i$):
+
+$$
+Y_{ij} = \mu + \alpha_i + \epsilon_{ij}
+$$
+
+where $\mu$ is the **overall mean**; $\mu + \alpha_i$ is the mean of group $i$---we can always choose the parameters such that $\sum_i \alpha_i = 0$; and, finally, $\epsilon_{ij}$ are the deviations from the group mean, also called the residuals or noise. Practically, we are testing whether at least one of the $\alpha_i \neq 0$.
+
+We are making the same assumptions as for linear regression:
+
+-   The observations are obtained independently (and randomly) from the population defined by the factor levels (groups)
+-   The measurements for each factor level $i$ are independent
+-   The residuals $\epsilon_{ij}$ are normally distributed for each factor level $i$
+-   These normal distributions have the same variance
+
+### Peforming one-way ANOVA
+
+Just as with the chi-squared test, the basic idea of ANOVA is to compute a *test statistic* for a given data set, based as assuming that the null hypothesis is true, and then produce a p-value from the appropriate theoretical distribution. The computational details of ANOVA are a bit complicated, so I will give an outline of the main ideas.
+
+Consider the question of whether the mean weight of a penguin in the Palmer penguins data set is independent of species. This can visualized as a boxplot:
+
+```{r}
+#| echo: false
+library(palmerpenguins)
+data(penguins)
+boxplot(body_mass_g ~ species, data = penguins, ylab = 'body mass (g)', main = "Penguin mass for different species")
+```
+
+Each species has a different mean mass, but the question is, are they *significantly* different from each other? Statistically, if we collected different samples of penguins, are these differences likely to persist?
+
+ANOVA answers this question by comparing the differences between the means against the noise within the species. Essentially, if the means differ by more than what is the spread of the measurement within the groups, it is likely that they are significant.
+
+We define two types of variance present in the data (of course, variance is at the heart of it): the variance of residuals within groups VR (the sum of squares of residuals divided by an appropriate normalization factor), and the variance of the means of the groups VM (the sum of squares differences of each mean from the global mean divided by the appropriate normalization factor).
+
+If the null hypothesis were true, then we would expect the variance within groups VR and the variance of the means VE to be equal. This leads us to the ANOVA test statistic:
+
+::: callout-note
+## Definition
+
+The F-statistic is calculate as a ratio of the variance of the means of the groups of a data set (VM) and the variance of the errors (residuals) within the groups (VE):
+$$ 
+F = \frac{VM}{VE}
+$$
+:::
+
+If the null hypothesis is true, this number is distributed according to the F-distribution; in other words, if we repeatedly sample from a population with equal means in each group, the F statistic would follow that distribution. This distribution (which I won't write down, but can be computed in R) allows us to calculate the p-value for any data set. A value of F greater than 1 means that the means have more variance than the residuals, and the p-value allows us to decide when that crosses a specific significance threshold.

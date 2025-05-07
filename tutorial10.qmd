@@ -118,7 +118,25 @@ Copy the definition of function `dice` from above, change its name to `double`, 
 Copy the code from exercise 1 above, change the last line to sum up the result vector.
 :::
 
-## Selecting samples from data frames
+## Example of ANOVA
+
+Analysis of Variance (ANOVA), desribed in Chpater 10, allows us to test for a relationship between a *numeric* response variable and a *categorical* explanatory variable. In other words, is the mean value of a numeric variable depend on the category of another variable? For example, does the body mass of a penguin in the Palmer Penguins data set depend on the species? The code below produces a boxplot that summarizes the distribution of body masses for different species:
+
+```{webr-r}
+data(penguins)
+boxplot(body_mass_g ~ species, data = penguins, ylab = 'body mass (g)', main = "Penguin mass for different species")
+```
+
+The mass for Gentoo species appears to be larger than for the other two, but how sure are we that it's not a fluke, that is, if we sample again that the difference will still be there? This is what we quantify with the ANOVA hypothesis test, which is performed using the function `aov`; notice that the syntax for the test is that same as for function `lm` for linear regression:
+
+```{webr-r}
+aov_out <- aov(body_mass_g ~ species, data = penguins)
+summary(aov_out)
+```
+
+The output contains several pieces of information, including the mean square difference between species (what I call VM in section 10.4) and the mean square residuals. The ratio between the two is the value of F, which here is around 344. R provides the p-value for this value from the F-distribution, which is incredibly small (less than machine precision). Thus, we can reject the null hypothesis of no effect and say that the mass of the penguins really does depend on species.
+
+## Selecting samples from data frames (optional)
 
 ### data frames are matrix arrays
 

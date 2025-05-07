@@ -379,6 +379,11 @@ window.Quarto = {
   <li><a href="#trisomy-and-pregnancy" id="toc-trisomy-and-pregnancy" class="nav-link" data-scroll-target="#trisomy-and-pregnancy"><span class="header-section-number">10.3.1</span> trisomy and pregnancy</a></li>
   <li><a href="#stop-and-frisk-and-race" id="toc-stop-and-frisk-and-race" class="nav-link" data-scroll-target="#stop-and-frisk-and-race"><span class="header-section-number">10.3.2</span> stop-and-frisk and race</a></li>
   </ul></li>
+  <li><a href="#analysis-of-variance" id="toc-analysis-of-variance" class="nav-link" data-scroll-target="#analysis-of-variance"><span class="header-section-number">10.4</span> Analysis of variance</a>
+  <ul class="collapse">
+  <li><a href="#anova-assumptions" id="toc-anova-assumptions" class="nav-link" data-scroll-target="#anova-assumptions"><span class="header-section-number">10.4.1</span> ANOVA assumptions</a></li>
+  <li><a href="#peforming-one-way-anova" id="toc-peforming-one-way-anova" class="nav-link" data-scroll-target="#peforming-one-way-anova"><span class="header-section-number">10.4.2</span> Peforming one-way ANOVA</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -635,18 +640,11 @@ X-squared = 122.86, df = 1, p-value &lt; 2.2e-16</code></pre>
 <p>The data in the summary of judge Scheindlin’s decision is as follows: between 2004 to 2012, out of 4.4 million stops, 52% of the people stopped were black, 31% of the people stopped were Hispanic, and 10% of the people were white. The population of New York according to the 2010 census is approximately 23% black, 29% Hispanic, and 33% white. You may notice that the fractions are suggestive of a higher probability of stops of African-Americans, and lower probability of stops of white individuals, but we cannot use fractions to perform a chi-squared test, because actual counts are necessary to quantify the uncertainty in the testing.</p>
 <p>Below I present data in the form of counts for only the calendar year 2011 , in the form of a contingency table with two variables: race/ethnicity and being stopped by police without a warrant. I have used the census population of New York (http://factfinder2.census.gov) and its breakdown by race (white only, black only, Hispanic, other). The data are presented in table <span class="math inline">\(\ref{tab:stop_frisk_race}\)</span>, and then are input in R and run through a chi-squared independence test.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">61805</span>, <span class="dv">2665172</span>, <span class="dv">350743</span>, <span class="dv">1527029</span>, <span class="dv">223740</span>, </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2119718</span>, <span class="dv">49436</span>, <span class="dv">1201578</span>),<span class="at">ncol=</span><span class="dv">4</span>,<span class="at">nrow=</span><span class="dv">2</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(data_mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'stopped'</span>, <span class="st">'not stopped'</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(data_mat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'White'</span>,<span class="st">'Black'</span>, <span class="st">'Hispanic'</span>, <span class="st">'Other'</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data_mat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              White   Black Hispanic   Other
 stopped       61805  350743   223740   49436
 not stopped 2665172 1527029  2119718 1201578</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>test.output <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(data_mat)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test.output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's Chi-squared test
@@ -656,6 +654,66 @@ X-squared = 429039, df = 3, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p>The results confirm what comparing the percentages suggested: the race of a person in NYC is not independent of whether or not they get stopped and frisked, with only a tiny probability that this disparity could have happened by chance. However, this is only the beginning of the analysis that experts performed for the court trial. Drawing conclusions about motives from the data is tricky, since two variables may be related without a causal connection. Defenders of the practice have argued that the racial disparities reflect differences in criminal activity. The data, however, show that only 6% of the stops result in arrests, and 6% more in court summons, so the vast majority of those stopped and frisked were not engaged in criminal activity.</p>
+</section>
+</section>
+<section id="analysis-of-variance" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="analysis-of-variance"><span class="header-section-number">10.4</span> Analysis of variance</h2>
+<p>ANOVA is a method for testing the hypothesis that there is no difference in means of subsets of measurements grouped by factors. Essentially, this is a generalization of linear regression to <strong>categorical</strong> explanatory variables instead of <strong>numeric</strong> variables, and it is based on very similar assumptions.</p>
+<p>ANOVA perform at its best when we have a particular experimental design: a) we divide the population into groups of equal size (<strong>balanced design</strong>); b) we assign “treatments” to the subjects at random (<strong>randomized design</strong>); in case of multiple treatment combinations, we perform an experiment for each combination (<strong>factorial design</strong>); in most cases, we have a “null” treatment (e.g., placebo).</p>
+<p>We speak of <strong>one-way ANOVA</strong> when there is a single axis of variation to our treatment (e.g., no intervention, option A, option B), <strong>two-way ANOVA</strong> when we apply two treatments for each group (e.g., no treatment, Ab, AB, aB), and so forth. Extensions include ANCOVA (ANalysis of COVAriance) and MANOVA (Multivariate ANalysis Of VAriance).</p>
+<section id="anova-assumptions" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="anova-assumptions"><span class="header-section-number">10.4.1</span> ANOVA assumptions</h3>
+<p>ANOVA tests whether samples are taken from distributions with the same mean:</p>
+<ul>
+<li>Null hypothesis: the means of the different groups are the same.</li>
+<li>Alternative hypothesis: <strong>At least one sample mean</strong> is not equal to the others.</li>
+</ul>
+<p>Let <span class="math inline">\(Y\)</span> indicate the response variable, and study the simplest case of one-way ANOVA. We have divided the samples in <span class="math inline">\(k\)</span> classes of size <span class="math inline">\(J_1, \ldots, J_k\)</span> such that <span class="math inline">\(n=\sum_i J_i\)</span>. We write an equation for <span class="math inline">\(Y_{ij}\)</span> (the <span class="math inline">\(j\)</span>th observation in group <span class="math inline">\(i\)</span>):</p>
+<p><span class="math display">\[
+Y_{ij} = \mu + \alpha_i + \epsilon_{ij}
+\]</span></p>
+<p>where <span class="math inline">\(\mu\)</span> is the <strong>overall mean</strong>; <span class="math inline">\(\mu + \alpha_i\)</span> is the mean of group <span class="math inline">\(i\)</span>—we can always choose the parameters such that <span class="math inline">\(\sum_i \alpha_i = 0\)</span>; and, finally, <span class="math inline">\(\epsilon_{ij}\)</span> are the deviations from the group mean, also called the residuals or noise. Practically, we are testing whether at least one of the <span class="math inline">\(\alpha_i \neq 0\)</span>.</p>
+<p>We are making the same assumptions as for linear regression:</p>
+<ul>
+<li>The observations are obtained independently (and randomly) from the population defined by the factor levels (groups)</li>
+<li>The measurements for each factor level <span class="math inline">\(i\)</span> are independent</li>
+<li>The residuals <span class="math inline">\(\epsilon_{ij}\)</span> are normally distributed for each factor level <span class="math inline">\(i\)</span></li>
+<li>These normal distributions have the same variance</li>
+</ul>
+</section>
+<section id="peforming-one-way-anova" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="peforming-one-way-anova"><span class="header-section-number">10.4.2</span> Peforming one-way ANOVA</h3>
+<p>Just as with the chi-squared test, the basic idea of ANOVA is to compute a <em>test statistic</em> for a given data set, based as assuming that the null hypothesis is true, and then produce a p-value from the appropriate theoretical distribution. The computational details of ANOVA are a bit complicated, so I will give an outline of the main ideas.</p>
+<p>Consider the question of whether the mean weight of a penguin in the Palmer penguins data set is independent of species. This can visualized as a boxplot:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="hypo_test_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Each species has a different mean mass, but the question is, are they <em>significantly</em> different from each other? Statistically, if we collected different samples of penguins, are these differences likely to persist?</p>
+<p>ANOVA answers this question by comparing the differences between the means against the noise within the species. Essentially, if the means differ by more than what is the spread of the measurement within the groups, it is likely that they are significant.</p>
+<p>We define two types of variance present in the data (of course, variance is at the heart of it): the variance of residuals within groups VR (the sum of squares of residuals divided by an appropriate normalization factor), and the variance of the means of the groups VM (the sum of squares differences of each mean from the global mean divided by the appropriate normalization factor).</p>
+<p>If the null hypothesis were true, then we would expect the variance within groups VR and the variance of the means VE to be equal. This leads us to the ANOVA test statistic:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The F-statistic is calculate as a ratio of the variance of the means of the groups of a data set (VM) and the variance of the errors (residuals) within the groups (VE): <span class="math display">\[
+F = \frac{VM}{VE}
+\]</span></p>
+</div>
+</div>
+<p>If the null hypothesis is true, this number is distributed according to the F-distribution; in other words, if we repeatedly sample from a population with equal means in each group, the F statistic would follow that distribution. This distribution (which I won’t write down, but can be computed in R) allows us to calculate the p-value for any data set. A value of F greater than 1 means that the means have more variance than the residuals, and the p-value allows us to decide when that crosses a specific significance threshold.</p>
 
 
 </section>
