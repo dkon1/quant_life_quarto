@@ -668,11 +668,11 @@ X-squared = 429039, df = 3, p-value &lt; 2.2e-16</code></pre>
 <li>Null hypothesis: the means of the different groups are the same.</li>
 <li>Alternative hypothesis: <strong>At least one sample mean</strong> is not equal to the others.</li>
 </ul>
-<p>Let <span class="math inline">\(Y\)</span> indicate the response variable, and study the simplest case of one-way ANOVA. We have divided the samples in <span class="math inline">\(k\)</span> classes of size <span class="math inline">\(J_1, \ldots, J_k\)</span> such that <span class="math inline">\(n=\sum_i J_i\)</span>. We write an equation for <span class="math inline">\(Y_{ij}\)</span> (the <span class="math inline">\(j\)</span>th observation in group <span class="math inline">\(i\)</span>):</p>
+<p>Let <span class="math inline">\(Y\)</span> indicate the response variable, and study the simplest case of one-way ANOVA. We have divided the samples in <span class="math inline">\(k\)</span> categories. Let us write an equation for each observation <span class="math inline">\(Y_{ij}\)</span> (the <span class="math inline">\(j\)</span>th observation in group <span class="math inline">\(i\)</span>):</p>
 <p><span class="math display">\[
-Y_{ij} = \mu + \alpha_i + \epsilon_{ij}
+Y_{ij} = \mu_i + \epsilon_{ij}
 \]</span></p>
-<p>where <span class="math inline">\(\mu\)</span> is the <strong>overall mean</strong>; <span class="math inline">\(\mu + \alpha_i\)</span> is the mean of group <span class="math inline">\(i\)</span>—we can always choose the parameters such that <span class="math inline">\(\sum_i \alpha_i = 0\)</span>; and, finally, <span class="math inline">\(\epsilon_{ij}\)</span> are the deviations from the group mean, also called the residuals or noise. Practically, we are testing whether at least one of the <span class="math inline">\(\alpha_i \neq 0\)</span>.</p>
+<p>where <span class="math inline">\(\mu_i\)</span> is the mean of category <span class="math inline">\(i\)</span> and <span class="math inline">\(\epsilon_{ij}\)</span> are the deviations of each observation from the category mean, also called the residuals or noise.</p>
 <p>We are making the same assumptions as for linear regression:</p>
 <ul>
 <li>The observations are obtained independently (and randomly) from the population defined by the factor levels (groups)</li>
@@ -683,7 +683,7 @@ Y_{ij} = \mu + \alpha_i + \epsilon_{ij}
 </section>
 <section id="peforming-one-way-anova" class="level3" data-number="10.4.2">
 <h3 data-number="10.4.2" class="anchored" data-anchor-id="peforming-one-way-anova"><span class="header-section-number">10.4.2</span> Peforming one-way ANOVA</h3>
-<p>Just as with the chi-squared test, the basic idea of ANOVA is to compute a <em>test statistic</em> for a given data set, based as assuming that the null hypothesis is true, and then produce a p-value from the appropriate theoretical distribution. The computational details of ANOVA are a bit complicated, so I will give an outline of the main ideas.</p>
+<p>Just as with the chi-squared test, the basic idea of ANOVA is to compute a <em>test statistic</em> for a given data set, assuming that the null hypothesis is true, and then produce a p-value from the appropriate theoretical distribution. The computational details of ANOVA are a bit complicated, so I will give an outline of the main ideas.</p>
 <p>Consider the question of whether the mean weight of a penguin in the Palmer penguins data set is independent of species. This can visualized as a boxplot:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -695,9 +695,9 @@ Y_{ij} = \mu + \alpha_i + \epsilon_{ij}
 </div>
 </div>
 <p>Each species has a different mean mass, but the question is, are they <em>significantly</em> different from each other? Statistically, if we collected different samples of penguins, are these differences likely to persist?</p>
-<p>ANOVA answers this question by comparing the differences between the means against the noise within the species. Essentially, if the means differ by more than what is the spread of the measurement within the groups, it is likely that they are significant.</p>
-<p>We define two types of variance present in the data (of course, variance is at the heart of it): the variance of residuals within groups VR (the sum of squares of residuals divided by an appropriate normalization factor), and the variance of the means of the groups VM (the sum of squares differences of each mean from the global mean divided by the appropriate normalization factor).</p>
-<p>If the null hypothesis were true, then we would expect the variance within groups VR and the variance of the means VE to be equal. This leads us to the ANOVA test statistic:</p>
+<p>ANOVA answers this question by comparing the differences between the means against the noise within each category. Essentially, if the means differ by more than the spread within the categories, it is likely that they are significant.</p>
+<p>We define two types of variance present in the data (of course, variance is at the heart of it): the variance of residuals within categories VR (the sum of squares of residuals divided by an appropriate normalization factor), and the variance of the means of the groups VM (the sum of squares differences of each mean from the global mean divided by the appropriate normalization factor).</p>
+<p>If the null hypothesis were true, then we would expect the variance within groups VR and the variance of the means VR to be equal. This leads us to the ANOVA test statistic:</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -708,12 +708,12 @@ Definition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The F-statistic is calculate as a ratio of the variance of the means of the groups of a data set (VM) and the variance of the errors (residuals) within the groups (VE): <span class="math display">\[
-F = \frac{VM}{VE}
+<p>The F-statistic is calculate as a ratio of the variance of the means <span class="math inline">\(\mu_i\)</span> of the categories (VM) and the variance of the errors (residuals) <span class="math inline">\(\epsilon_{ij}\)</span> within the categories (VR): <span class="math display">\[
+F = \frac{VM}{VR}
 \]</span></p>
 </div>
 </div>
-<p>If the null hypothesis is true, this number is distributed according to the F-distribution; in other words, if we repeatedly sample from a population with equal means in each group, the F statistic would follow that distribution. This distribution (which I won’t write down, but can be computed in R) allows us to calculate the p-value for any data set. A value of F greater than 1 means that the means have more variance than the residuals, and the p-value allows us to decide when that crosses a specific significance threshold.</p>
+<p>If the null hypothesis is true, this number is distributed according to the F-distribution; in other words, if we repeatedly sample from a population with equal means in each category, the F statistic would follow that distribution. This distribution (which I won’t write down, but can be computed in R) allows us to calculate the p-value for any data set. A value of F greater than 1 means that the means have more variance than the residuals, and the p-value allows us to decide when that crosses a specific significance threshold.</p>
 
 
 </section>

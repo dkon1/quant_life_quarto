@@ -202,13 +202,13 @@ ANOVA tests whether samples are taken from distributions with the same mean:
 -   Null hypothesis: the means of the different groups are the same.
 -   Alternative hypothesis: **At least one sample mean** is not equal to the others.
 
-Let $Y$ indicate the response variable, and study the simplest case of one-way ANOVA. We have divided the samples in $k$ classes of size $J_1, \ldots, J_k$ such that $n=\sum_i J_i$. We write an equation for $Y_{ij}$ (the $j$th observation in group $i$):
+Let $Y$ indicate the response variable, and study the simplest case of one-way ANOVA. We have divided the samples in $k$ categories. Let us write an equation for each observation $Y_{ij}$ (the $j$th observation in group $i$):
 
 $$
-Y_{ij} = \mu + \alpha_i + \epsilon_{ij}
+Y_{ij} = \mu_i + \epsilon_{ij}
 $$
 
-where $\mu$ is the **overall mean**; $\mu + \alpha_i$ is the mean of group $i$---we can always choose the parameters such that $\sum_i \alpha_i = 0$; and, finally, $\epsilon_{ij}$ are the deviations from the group mean, also called the residuals or noise. Practically, we are testing whether at least one of the $\alpha_i \neq 0$.
+where $\mu_i$ is the mean of category $i$ and $\epsilon_{ij}$ are the deviations of each observation from the category mean, also called the residuals or noise. 
 
 We are making the same assumptions as for linear regression:
 
@@ -219,7 +219,7 @@ We are making the same assumptions as for linear regression:
 
 ### Peforming one-way ANOVA
 
-Just as with the chi-squared test, the basic idea of ANOVA is to compute a *test statistic* for a given data set, based as assuming that the null hypothesis is true, and then produce a p-value from the appropriate theoretical distribution. The computational details of ANOVA are a bit complicated, so I will give an outline of the main ideas.
+Just as with the chi-squared test, the basic idea of ANOVA is to compute a *test statistic* for a given data set, assuming that the null hypothesis is true, and then produce a p-value from the appropriate theoretical distribution. The computational details of ANOVA are a bit complicated, so I will give an outline of the main ideas.
 
 Consider the question of whether the mean weight of a penguin in the Palmer penguins data set is independent of species. This can visualized as a boxplot:
 
@@ -232,19 +232,19 @@ boxplot(body_mass_g ~ species, data = penguins, ylab = 'body mass (g)', main = "
 
 Each species has a different mean mass, but the question is, are they *significantly* different from each other? Statistically, if we collected different samples of penguins, are these differences likely to persist?
 
-ANOVA answers this question by comparing the differences between the means against the noise within the species. Essentially, if the means differ by more than what is the spread of the measurement within the groups, it is likely that they are significant.
+ANOVA answers this question by comparing the differences between the means against the noise within each category. Essentially, if the means differ by more than the spread within the categories, it is likely that they are significant.
 
-We define two types of variance present in the data (of course, variance is at the heart of it): the variance of residuals within groups VR (the sum of squares of residuals divided by an appropriate normalization factor), and the variance of the means of the groups VM (the sum of squares differences of each mean from the global mean divided by the appropriate normalization factor).
+We define two types of variance present in the data (of course, variance is at the heart of it): the variance of residuals within categories VR (the sum of squares of residuals divided by an appropriate normalization factor), and the variance of the means of the groups VM (the sum of squares differences of each mean from the global mean divided by the appropriate normalization factor).
 
-If the null hypothesis were true, then we would expect the variance within groups VR and the variance of the means VE to be equal. This leads us to the ANOVA test statistic:
+If the null hypothesis were true, then we would expect the variance within groups VR and the variance of the means VR to be equal. This leads us to the ANOVA test statistic:
 
 ::: callout-note
 ## Definition
 
-The F-statistic is calculate as a ratio of the variance of the means of the groups of a data set (VM) and the variance of the errors (residuals) within the groups (VE):
+The F-statistic is calculate as a ratio of the variance of the means $\mu_i$ of the categories (VM) and the variance of the errors (residuals) $\epsilon_{ij}$ within the categories (VR):
 $$ 
-F = \frac{VM}{VE}
+F = \frac{VM}{VR}
 $$
 :::
 
-If the null hypothesis is true, this number is distributed according to the F-distribution; in other words, if we repeatedly sample from a population with equal means in each group, the F statistic would follow that distribution. This distribution (which I won't write down, but can be computed in R) allows us to calculate the p-value for any data set. A value of F greater than 1 means that the means have more variance than the residuals, and the p-value allows us to decide when that crosses a specific significance threshold.
+If the null hypothesis is true, this number is distributed according to the F-distribution; in other words, if we repeatedly sample from a population with equal means in each category, the F statistic would follow that distribution. This distribution (which I won't write down, but can be computed in R) allows us to calculate the p-value for any data set. A value of F greater than 1 means that the means have more variance than the residuals, and the p-value allows us to decide when that crosses a specific significance threshold.
