@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - Tutorial 3: Data frames and descriptive statistics</title>
+<title>Tutorial 3: Data frames and descriptive statistics – Quantifying Life</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -38,10 +38,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5513c72f5848dcee1ece5b6fa2d1c49f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -235,7 +235,11 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
+<<<<<<< Updated upstream
 globalThis.qwebrCellDetails = [{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-1","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"heart_rates <- read.csv(file = \"https://raw.githubusercontent.com/dkon1/quant_life_quarto/master/data/HR_data_combined.csv\")","id":1},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-2","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"head(heart_rates)","id":2},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-3","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"library(palmerpenguins)\nhead(penguins)","id":3},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-4","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"paste(\"The mean first resting heart rate is: \", mean(heart_rates$Rest1))\npaste(\"The mean bill length is: \", mean(penguins$bill_length_mm))","id":4},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-5","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"options(digits = 5)\ncat(\"The mean first resting heart rate is: \")\nprint(mean(heart_rates$Rest1))","id":5},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-6","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"cat(\"The mean bill length is: \")\nprint(mean(penguins$bill_length_mm, na.rm = TRUE))","id":6},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-7","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"cat(\"The median first exercise heart rate is: \")\nprint(median(heart_rates$Ex1))\ncat(\"The median flipper length is: \")\nprint(median(penguins$flipper_length_mm, na.rm = TRUE))","id":7},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-8","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"cat(\"The variance of the second exercise heart rate is: \")\nprint(var(heart_rates$Ex2))\ncat(\"The variance of bill depth is: \")\nprint(var(penguins$bill_depth_mm, na.rm = TRUE))","id":8},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-9","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"cat(\"The standard deviation of the second exercise heart rate is: \") \nprint(sd(heart_rates$Ex2))\ncat(\"The standard deviation of bill depth is: \")\nprint(sd(penguins$bill_depth_mm, na.rm = TRUE))","id":9},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-10","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"cat(\"The range of the second resting heart rate is: \")\nprint(range(heart_rates$Rest2))\ncat(\"The range of penguin body mass is: \")\nprint(range(penguins$body_mass_g, na.rm = TRUE))","id":10},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-11","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"heart_rates <- read.csv(file = \"HR_data_combine.csv\", header = TRUE)","id":11},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-12","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"mean(Rest1)","id":12},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-13","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"mean(heart_rates)","id":13},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-14","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"mean(Rest2[30])","id":14},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-15","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"ran <- range(penguins$flipper_length_mm)\nprint(range)","id":15},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-16","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"len_over_dep <- penguins$bill_length_mm/bill_depth_mm\nprint(mean(len_over_dep))\nprint(sd(len_over_dep))","id":16},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-17","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"plot(Ex1, Rest1, main = 'Exercise vs resting heart rates', xlab= 'rate (bpm)', ylab= 'rate (bpm)')","id":17},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-18","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"hist(penguins$flipper_length_mm, main = 'Histogram of penguin flipper length', xlab = 'flipper length (mm)')\nhist(penguins$bill_depth_mm, main = 'Histogram of penguin bill depth', xlab = 'flipper depth (mm)')","id":18},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-19","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"boxplot(heart_rates$Rest1, main = \"Resting heart rate 1\", ylab = 'rate (beats per minute)')\nboxplot(heart_rates$Ex1, main = \"Exercise heart rate 1\", ylab = 'rate (beats per minute)')","id":19},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-20","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"boxplot(heart_rates$Rest1, heart_rates$Ex1, main = \"Heart rates comparison\", ylab = 'rate (beats per minute)', names = c('resting', 'exercise'), at = 1:2)","id":20},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-21","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"boxplot(bill_length_mm ~ species, data = penguins, main = \"Bill length for different species\", ylab = 'length (mm)')","id":21},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-22","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"hist(body_mass_g, data = penguins)","id":22},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-23","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"len_over_dep <- penguins$bill_length_mm/bill_depth_mm\nhist(len_over_dep)","id":23},{"options":{"warning":"true","fig-cap":"","output":"true","dpi":72,"out-width":"700px","fig-height":5,"comment":"","label":"unnamed-chunk-24","context":"interactive","read-only":"false","autorun":"false","fig-width":7,"message":"true","out-height":"","results":"markup","classes":""},"code":"boxplot(Year ~ Rest2, data=heart_rates)","id":24}];
+=======
+globalThis.qwebrCellDetails = [{"code":"heart_rates <- read.csv(file = \"https://raw.githubusercontent.com/dkon1/quant_life_quarto/master/data/HR_data_combined.csv\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"head(heart_rates)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(palmerpenguins)\nhead(penguins)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"paste(\"The mean first resting heart rate is: \", mean(heart_rates$Rest1))\npaste(\"The mean bill length is: \", mean(penguins$bill_length_mm))","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"options(digits = 5)\ncat(\"The mean first resting heart rate is: \")\nprint(mean(heart_rates$Rest1))","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"cat(\"The mean bill length is: \")\nprint(mean(penguins$bill_length_mm, na.rm = TRUE))","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"cat(\"The median first exercise heart rate is: \")\nprint(median(heart_rates$Ex1))\ncat(\"The median flipper length is: \")\nprint(median(penguins$flipper_length_mm, na.rm = TRUE))","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"cat(\"The variance of the second exercise heart rate is: \")\nprint(var(heart_rates$Ex2))\ncat(\"The variance of bill depth is: \")\nprint(var(penguins$bill_depth_mm, na.rm = TRUE))","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"cat(\"The standard deviation of the second exercise heart rate is: \") \nprint(sd(heart_rates$Ex2))\ncat(\"The standard deviation of bill depth is: \")\nprint(sd(penguins$bill_depth_mm, na.rm = TRUE))","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"cat(\"The range of the second resting heart rate is: \")\nprint(range(heart_rates$Rest2))\ncat(\"The range of penguin body mass is: \")\nprint(range(penguins$body_mass_g, na.rm = TRUE))","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"heart_rates <- read.csv(file = \"HR_data_combine.csv\", header = TRUE)","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"mean(Rest1)","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"mean(heart_rates)","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"mean(Rest2[30])","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ran <- range(penguins$flipper_length_mm)\nprint(range)","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"len_over_dep <- penguins$bill_length_mm/bill_depth_mm\nprint(mean(len_over_dep))\nprint(sd(len_over_dep))","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"plot(Ex1, Rest1, main = 'Exercise vs resting heart rates', xlab= 'rate (bpm)', ylab= 'rate (bpm)')","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"hist(penguins$flipper_length_mm, main = 'Histogram of penguin flipper length', xlab = 'flipper length (mm)')\nhist(penguins$bill_depth_mm, main = 'Histogram of penguin bill depth', xlab = 'flipper depth (mm)')","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"boxplot(heart_rates$Rest1, main = \"Resting heart rate 1\", ylab = 'rate (beats per minute)')\nboxplot(heart_rates$Ex1, main = \"Exercise heart rate 1\", ylab = 'rate (beats per minute)')","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"boxplot(heart_rates$Rest1, heart_rates$Ex1, main = \"Heart rates comparison\", ylab = 'rate (beats per minute)', names = c('resting', 'exercise'), at = 1:2)","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"boxplot(bill_length_mm ~ species, data = penguins, main = \"Bill length for different species\", ylab = 'length (mm)')","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"hist(body_mass_g, data = penguins)","id":22,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-22","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"len_over_dep <- penguins$bill_length_mm/bill_depth_mm\nhist(len_over_dep)","id":23,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-23","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"boxplot(Year ~ Rest2, data=heart_rates)","id":24,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-24","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+>>>>>>> Stashed changes
 
 </script>
 <script type="module">
@@ -953,7 +957,7 @@ globalThis.qwebrExecuteCode = async function (
 </script>
 
 
-<meta name="twitter:title" content="Quantifying Life - Tutorial 3: Data frames and descriptive statistics">
+<meta name="twitter:title" content="Tutorial 3: Data frames and descriptive statistics – Quantifying Life">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -964,13 +968,13 @@ globalThis.qwebrExecuteCode = async function (
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tutorial3.html">Tutorial 3: Data frames and descriptive statistics</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -986,17 +990,17 @@ globalThis.qwebrExecuteCode = async function (
         <div class="sidebar-tools-main">
     <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
-              <i class="bi bi-bi-file-pdf pe-1"></i>
+              <i class="bi bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
-              <i class="bi bi-bi-journal pe-1"></i>
+              <i class="bi bi-journal pe-1"></i>
             Download ePub
             </a>
           </li>
@@ -1707,18 +1711,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1750,7 +1743,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/dkon1\.github\.io\/quant_life_quarto");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1785,7 +1816,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1833,7 +1868,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -2061,12 +2095,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./descriptive.html" class="pagination-link  aria-label=" &lt;span="" data="" sets&lt;="" span&gt;"="">
+      <a href="./descriptive.html" class="pagination-link" aria-label="Describing data sets">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Describing data sets</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./linreg.html" class="pagination-link" aria-label="<span class='chapter-number'>4</span>&nbsp; <span class='chapter-title'>Linear regression</span>">
+      <a href="./linreg.html" class="pagination-link" aria-label="Linear regression">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

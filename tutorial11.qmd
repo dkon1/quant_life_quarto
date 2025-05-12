@@ -12,81 +12,74 @@
 
 The behavior of a Markov model is random, so the next state cannot be predicted from the current state exactly. However, one can use a random number generator to produce a string of states, given its transition probabilities and an initial value. This is called a computer simulation, which does not give exact results but are rather numerical experiments, producing data that are consistent with a given model and its assumptions.
 
-Below is a code to simulate one time step for a two-state Markov model. It generates a new state according to two transition probabilities, given an initial state. In the code below, the initial state is set to 1 and the transition probabilities are 0.6 and 0.4. The code uses a conditional statement to check what the initial state (in.state) is, and based on this use either transition probability from 1 to 2 (trans1to2) or transition probability from 2 to 1 (trans2to1) with a random number to make a random transition. A second conditional statement is used to assign new.state to a new state if the random number is less than the transition probability, and otherwise to leave new.state the same as in.state. The code also prints an error message if the initial state is neither 1 nor 2; it's good practice to cover all possibilities, and not to assume that variables are set to the values that you expect. If this code is run multiple times, you will see that the transitions are random: sometimes the model remains in the same state, and other times it jumps to the other.
+To simulate one time step for a two-state Markov model, we need to use a conditional statement (if or else) to determine the current state of the variable. The following script illustrates this decision:
 
 ```{webr-r}
 state <- 1 # set initial state
-trans1to2 <- 0.6 # transition probability from 1 to 2
-trans2to1 <- 0.4 # transition probability from 2 to 1
-decider <- runif(1) # random number between 0 and 1
-if (state==1) {
-	if (decider < trans1to2) { # randomly decide to transition
-		state <- 2
-	} else { # or to stay
-		state <-1
-	}
-} else if (state==2) {
-	if (decider < trans2to1) { # randomly decide to transition
-		state <- 1 
-	} else { # or to stay
-		state <-2
-	}
+if (state == 0) {
+  print("State 0")
+} else if (state == 1) {
+  print("State 1")
 } else {
-	print ('Initial state must be either 1 or 2!')
+  print ("State not 0 or 1")  
 }
-print(state)	
+```
+
+In Markov models, the probabilities of the next state depend on the current state. For example, if the transition probability from 0 to 1 is 0.5, and the transition probability from 1 to 0 is 0.2, that means to simulate the next state, we need to use different probability distributions: (0.5, 0.5) for state 0, and (0.2, 0.8) for state 1. This simulation can be done using the function `sample()` with the option `prob` to specify the probability distribution on the states of the model. Here is an example of using `sample` to randomly choose one value out of the vector 0:1 with probabilities 0.9 and 0.1.
+
+```{webr-r}
+new_value <- sample(0:1, 1, prob = c(0.9, 0.1))
+print(new_value)
+```
+
+The code below implements this simulation, using probability variables P0to1 (for transition from 0 to 1), and P1to0 (for transition from 1 to 0). Then, if the current state is 0, P(0) is 1-P0to1, and P(1) is P0to1; and if the current state 1, P(0) is P1to0 and P(1) is 1-P1to0. If you run the code multiple times you will see that the transitions are random: sometimes the model remains in the same state, and other times it jumps to the other.
+
+```{webr-r}
+state <- 1 # set initial state
+P0to1 <- 0.5 # transition probability from 0 to 1
+P1to0 <- 0.2 # transition probability from 1 to 0
+if (state==0) {
+  new_state <- sample(0:1, 1, prob = c(1-P0to1, P0to1))
+} else if (state==1) {
+  new_state <- sample(0:1, 1, prob = c(P1to0, 1-P1to0))
+} else {
+	print ('Initial state must be either 0 or 1!')
+}
+print(new_state)	
 ```
 
 ### Exercises
 
-1.  Modify the script below to generate the new state with transition probability 0.2 from state 1 to 2 and transition probability 0.8 from state 2 to 1, and with initial state 2.
+1.  Modify the script below to generate the new state with transition probability 0.2 from state 0 to 1 and transition probability 0.8 from state 2 to 1, and with initial state 2.
 
 ```{webr-r}
 state <- 1 # set initial state
-trans1to2 <- 0.6 # transition probability from 1 to 2
-trans2to1 <- 0.4 # transition probability from 2 to 1
-decider <- runif(1) # random number between 0 and 1
-if (state==1) {
-	if (decider < trans1to2) { # randomly decide to transition
-		state <- 2
-	} else { # or to stay
-		state <-1
-	}
-} else if (state==2) {
-	if (decider < trans2to1) { # randomly decide to transition
-		state <- 1 
-	} else { # or to stay
-		state <-2
-	}
+P0to1 <- 0.6 # transition probability from 0 to 1
+P1to0 <- 0.4 # transition probability from 1 to 0
+if (state==0) {
+  new_state <- sample(0:1, 1, prob = c(1-P0to1, P0to1))
+} else if (state==1) {
+  new_state <- sample(0:1, 1, prob = c(P1to0, 1-P1to0))
 } else {
-	print ('Initial state must be either 1 or 2!')
+	print ('Initial state must be either 0 or 1!')
 }
-print(state)
+print(new_state)
 ```
 
-2.  Modify the script below by placing everything starting with the `decider` assignment inside a for loop that repeats 20 times.
+2.  Modify the script below by placing everything starting with the if statement inside a for loop that repeats 20 times.
 
 ```{webr-r}
 state <- 1 # set initial state
-trans1to2 <- 0.6 # transition probability from 1 to 2
-trans2to1 <- 0.4 # transition probability from 2 to 1
-decider <- runif(1) # random number between 0 and 1
-if (state==1) {
-	if (decider < trans1to2) { # randomly decide to transition
-		state <- 2
-	} else { # or to stay
-		state <-1
-	}
-} else if (state==2) {
-	if (decider < trans2to1) { # randomly decide to transition
-		state <- 1 
-	} else { # or to stay
-		state <-2
-	}
+P0to1 <- 0.6 # transition probability from 0 to 1
+P1to0 <- 0.4 # transition probability from 1 to 0
+if (state==0) {
+  new_state <- sample(0:1, 1, prob = c(1-P0to1, P0to1))
+} else if (state==1) {
+  new_state <- sample(0:1, 1, prob = c(P1to0, 1-P1to0))
 } else {
-	print ('Initial state must be either 1 or 2!')
+	print ('Initial state must be either 0 or 1!')
 }
-print(state)
+print(new_state)
 ```
 
 3.  The previous script replaced the value of `state` with a new value every iteration. Copy that script and modify it by pre-allocating a vector of states `state_vec` prior to the for loop by using the function `rep()` and the initial value to create a vector of sufficient length (21). Inside the loop, check the current value of `state_vec` (index i) in the conditional statements, and assign the new value to the next index of `state_vec`. After the loop is done, use `table()` as shown below to report how many of the states have values 1 and 2.
@@ -102,7 +95,9 @@ The easiest way to perform the cumbersome calculations for matrix multiplication
 
 $$ 
 A =  \left(\begin{array}{cc}3& 1 \\ -5 & 0\end{array}\right); \; b = \left(\begin{array}{c} 10 \\ -2 \end{array}\right)
-$$ To perform this operation in R, we must first define the matrix and the vector, and then perform multiplication:
+$$
+
+To perform this operation in R, we must first define the matrix and the vector, and then perform multiplication:
 
 ```{webr-r}
 A <- matrix (c(3,-5,1,0),nrow=2)
@@ -113,10 +108,14 @@ d <- b%*%A
 print(d)
 ```
 
-The probability distribution vector for a Markov model advances one time step at a time by multiplication with the transition matrix of the model. For example, let us take the same transition matrix as in section 11.2, and multiply it by the initial vector `prob0=(0.5, 0.5)` (which means that initially the model is in states 1 and 2 with equal probability 0.5).
+The probability distribution vector for a Markov model advances one time step at a time by multiplication with the transition matrix of the model. For example, let us take the QR cell state model from section 12.2 and assign the transition probability from Q to R (PQtoR) to be 0.05 and the probability from R to Q (PRtoQ) to be 0.1. The script below assigns the transition matrix and multiplies it by the initial vector `prob0=(0.5, 0.5)` (which means that initially the model is in states 1 and 2 with equal probability 0.5).
 
 ```{webr-r}
-M <- matrix(c(0.95,0.05,0.1,0.9),nrow=2, ncol=2)
+PQtoR <- 0.05
+PRtoQ <- 0.1
+M <- matrix(c(1-PQtoR, PQtoR,
+              PRtoQ,1 - PRtoQ),
+            nrow=2, ncol=2)
 print(M)
 prob0<- c(0.5,0.5)
 prob1 <- M%*%prob0
@@ -128,8 +127,11 @@ The element M\[i,j\] (i-th row and j-th column) contains the probability of tran
 Computers can perform repetitive operations much better than humans, so we will take advantage of their arithmetic proficiency. Since each time step involves multiplication of the current probability vector by the transition matrix, this can be done automatically with a for loop. The only difficulty is that, while the transition matrix remains the same, the probability vector needs to be updated. There are two ways of handing this: 1) replace the old vector with the new, with the disadvantage that the previous vectors all get over-written in memory; 2) save all of the probability vectors in a rectangular matrix, which means we can plot all the probability vectors over time and see their evolution. The following script takes the first approach:
 
 ```{webr-r}
-M <- matrix (c(0.95,0.05,0.1,0.9),nrow=2)
-print(M)
+PQtoR <- 0.05
+PRtoQ <- 0.1
+M <- matrix(c(1-PQtoR, PQtoR,
+              PRtoQ,1 - PRtoQ),
+            nrow=2, ncol=2)
 prob<- c(0.1,0.9)
 numstep <- 20
 for (i in 1:numstep) {
@@ -141,7 +143,11 @@ print(prob)
 Very important information: to access only one row of a matrix, use the first (row) index and leave the second index blank; similarly, to access only one column of a matrix, use the second (colum) index and leave the first index blank. For example:
 
 ```{webr-r}
-M <- matrix (c(0.95,0.05,0.1,0.9),nrow=2)
+PQtoR <- 0.05
+PRtoQ <- 0.1
+M <- matrix(c(1-PQtoR, PQtoR,
+              PRtoQ,1 - PRtoQ),
+            nrow=2, ncol=2)
 print(M)
 print(M[2,])
 print(M[,1])
@@ -202,24 +208,4 @@ A <- matrix (c(2,1, 3,3, 2, 4, 3,1),nrow=2, ncol = cols)
 barplot(A, names.arg=1:cols, xlab = 'columns', ylab = 'row values')
 ```
 
-`barplot()` can also be used to visualize the frequencies contained in an matrix array of values. Let us generate a matrix containing multiple strings of states, one in each row, with initial states all in column 1, and each successive column containing the states at that time step (this is not how the actual matrix of states is calculated in lab 7, this is just to generate a state matrix for illustration.)
-
-```{webr-r}
-numsteps <- 10 # set the number of steps
-numstrings <- 5 # set number of strings
-numstates <- 2 # number of states in the model
-# generate a random state_mat 
-state_mat <- replicate(numsteps+1,sample(1:numstates,numstrings,replace=TRUE))
-print(state_mat)
-```
-
-The following script counts the number of each state (1 and 2) in each column, and plots those frequencies as bars. You will use this script to plot the frequencies of your simulations in part 3 of R lab 7.
-
-```{webr-r}
-# Visualizing frequencies of states at each time 
-state_count <- matrix(0,nrow=numstates,ncol=numsteps+1)
-for (k in 1:(numsteps+1)) {
-  state_count[,k] <- tabulate(state_mat[,k],nbins=numstates)
-}
-barplot(state_count,main='frequency of states vs. time',xlab='time', names.arg=0:numsteps, ylab='state counts',col=1:numstates)
-```
+If you generate a matrix of probability distribution vectors for a Markov model, you can use `barplot()` to make a plot of the distributions over time (as shown in Chapter 13).

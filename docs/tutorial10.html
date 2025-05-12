@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantifying Life - Tutorial 10: Functions and sampling from data</title>
+<title>Tutorial 10: Functions and sampling from data – Quantifying Life</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -38,10 +38,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5513c72f5848dcee1ece5b6fa2d1c49f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -235,7 +235,11 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
+<<<<<<< Updated upstream
 globalThis.qwebrCellDetails = [{"code":"my_funk <- function(N,r){ \n  ans <- r*N # multiply the numbers\n  return(ans)\n}","id":1,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-1","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"a <- 30\ny <- 1:10\nprint(my_funk(y, a))","id":2,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-2","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"dice <- function(n){ \n  d1 <- sample(1:n, 1) # uniform integer between 1 and n\n  d2 <- sample(1:n, 1) # uniform integer between 1 and n\n  return(d1+d2)\n}","id":3,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-3","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"n<-6\nroll <- dice(n)\nprint(roll)","id":4,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-4","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"sides <- 6 # sides of the die\nnum <- 100 # number of repeats\nrolls <- replicate(num, dice(sides))\nprint(rolls)","id":5,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-5","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"print(paste(\"Number of 7s:\", sum(rolls == 7) ))\nprint(paste(\"Number of rolls above 10:\", sum(rolls>10) ))  ","id":6,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-6","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"","id":7,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-7","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"","id":8,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-8","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"","id":9,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-9","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"data(penguins)\nboxplot(body_mass_g ~ species, data = penguins, ylab = 'body mass (g)', main = \"Penguin mass for different species\")","id":10,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-10","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"aov_out <- aov(body_mass_g ~ species, data = penguins)\nsummary(aov_out)","id":11,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-11","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"head(penguins)\nprint(paste(\"Number of rows in penguins:\", nrow(penguins) ))\nprint(paste(\"Number of columns in penguins:\", ncol(penguins) ))  ","id":12,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-12","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"print(paste(\"The 100th observation of the 3rd variable:\", penguins[100,3]))","id":13,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-13","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"print(penguins[100:105,])","id":14,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-14","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"summary(penguins[penguins$island == 'Biscoe', ])","id":15,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-15","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"sam_size <- 100 # number of observations\nrow_indices <- sample(nrow(penguins), size = sam_size, replace = FALSE )\ndata_sample <- penguins[row_indices, ]\nsummary(data_sample)","id":16,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-16","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}},{"code":"sam_size <- 100 # number of observations\nrow_indices <- sample(nrow(penguins), size = sam_size, replace = TRUE)\ndata_sample <- penguins[row_indices, ]\nsummary(data_sample)","id":17,"options":{"fig-cap":"","out-width":"700px","out-height":"","classes":"","autorun":"false","warning":"true","fig-width":7,"message":"true","label":"unnamed-chunk-17","context":"interactive","results":"markup","output":"true","fig-height":5,"read-only":"false","dpi":72,"comment":""}}];
+=======
+globalThis.qwebrCellDetails = [{"code":"my_funk <- function(N,r){ \n  ans <- r*N # multiply the numbers\n  return(ans)\n}","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"a <- 30\ny <- 1:10\nprint(my_funk(y, a))","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dice <- function(n){ \n  d1 <- sample(1:n, 1) # uniform integer between 1 and n\n  d2 <- sample(1:n, 1) # uniform integer between 1 and n\n  return(d1+d2)\n}","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n<-6\nroll <- dice(n)\nprint(roll)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sides <- 6 # sides of the die\nnum <- 100 # number of repeats\nrolls <- replicate(num, dice(sides))\nprint(rolls)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"print(paste(\"Number of 7s:\", sum(rolls == 7) ))\nprint(paste(\"Number of rolls above 10:\", sum(rolls>10) ))  ","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"head(penguins)\nprint(paste(\"Number of rows in penguins:\", nrow(penguins) ))\nprint(paste(\"Number of columns in penguins:\", ncol(penguins) ))  ","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"print(paste(\"The 100th observation of the 3rd variable:\", penguins[100,3]))","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"print(penguins[100:105,])","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"summary(penguins[penguins$island == 'Biscoe', ])","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sam_size <- 100 # number of observations\nrow_indices <- sample(nrow(penguins), size = sam_size, replace = FALSE )\ndata_sample <- penguins[row_indices, ]\nsummary(data_sample)","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sam_size <- 100 # number of observations\nrow_indices <- sample(nrow(penguins), size = sam_size, replace = TRUE)\ndata_sample <- penguins[row_indices, ]\nsummary(data_sample)","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+>>>>>>> Stashed changes
 
 </script>
 <script type="module">
@@ -953,7 +957,7 @@ globalThis.qwebrExecuteCode = async function (
 </script>
 
 
-<meta name="twitter:title" content="Quantifying Life - Tutorial 10: Functions and sampling from data">
+<meta name="twitter:title" content="Tutorial 10: Functions and sampling from data – Quantifying Life">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -964,13 +968,13 @@ globalThis.qwebrExecuteCode = async function (
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tutorial10.html">Tutorial 10: Functions and sampling from data</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -986,17 +990,17 @@ globalThis.qwebrExecuteCode = async function (
         <div class="sidebar-tools-main">
     <a href="https://github.com/dkon1/quant_life_quarto" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.pdf">
-              <i class="bi bi-bi-file-pdf pe-1"></i>
+              <i class="bi bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="./Quantifying-Life.epub">
-              <i class="bi bi-bi-journal pe-1"></i>
+              <i class="bi bi-journal pe-1"></i>
             Download ePub
             </a>
           </li>
@@ -1603,18 +1607,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1646,7 +1639,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/dkon1\.github\.io\/quant_life_quarto");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1681,7 +1712,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1729,7 +1764,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1957,12 +1991,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./hypo_test.html" class="pagination-link  aria-label=" &lt;span="" testing&lt;="" span&gt;"="">
+      <a href="./hypo_test.html" class="pagination-link" aria-label="Hypothesis testing">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./markov_model.html" class="pagination-link" aria-label="<span class='chapter-number'>11</span>&nbsp; <span class='chapter-title'>Markov models with discrete states</span>">
+      <a href="./markov_model.html" class="pagination-link" aria-label="Markov models with discrete states">
         <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Markov models with discrete states</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

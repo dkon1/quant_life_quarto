@@ -1,0 +1,25 @@
+---
+title: "Markov extra tutorial"
+---
+
+`barplot()` can also be used to visualize the frequencies contained in an matrix array of values. Let us generate a matrix containing multiple strings of states, one in each row, with initial states all in column 1, and each successive column containing the states at that time step (this is not how the actual matrix of states is calculated in lab 7, this is just to generate a state matrix for illustration.)
+
+```{webr-r}
+numsteps <- 10 # set the number of steps
+numstrings <- 5 # set number of strings
+numstates <- 2 # number of states in the model
+# generate a random state_mat 
+state_mat <- replicate(numsteps+1,sample(1:numstates,numstrings,replace=TRUE))
+print(state_mat)
+```
+
+The following script counts the number of each state (1 and 2) in each column, and plots those frequencies as bars. You will use this script to plot the frequencies of your simulations in part 3 of R lab 7.
+
+```{webr-r}
+# Visualizing frequencies of states at each time 
+state_count <- matrix(0,nrow=numstates,ncol=numsteps+1)
+for (k in 1:(numsteps+1)) {
+  state_count[,k] <- tabulate(state_mat[,k],nbins=numstates)
+}
+barplot(state_count,main='frequency of states vs. time',xlab='time', names.arg=0:numsteps, ylab='state counts',col=1:numstates)
+```
