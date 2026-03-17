@@ -4,7 +4,7 @@ project:
 filters:
   - webr
 webr:
-  packages: ['palmerpenguins', "HistData", 'deSolve']
+  packages: ['palmerpenguins', 'HistData', 'deSolve']
 book:
   title: "Quantifying Life"
   author: "Dmitry Kondrashov"
@@ -18,31 +18,28 @@ book:
   page-navigation: true
   chapters:
     - index.qmd
-    - counting.qmd
-    - tutorial1.qmd
-    - functions.qmd
-    - tutorial2.qmd
-    - descriptive.qmd
-    - tutorial3.qmd
-    - linreg.qmd
-    - tutorial4.qmd
-    - lindiff.qmd
-    - tutorial5.qmd
-    - ode_sols.qmd
-    - tutorial6.qmd
-    - graph_odes.qmd
-    - tutorial7.qmd
-    - probdist.qmd
-    - tutorial8.qmd
-    - independence.qmd
-    - tutorial9.qmd
-    - hypo_test.qmd
-    - tutorial10.qmd
-    - markov_model.qmd
-    - markov_evol.qmd
-    - tutorial11.qmd
-    - markov_stat.qmd
-    - markov_eigen.qmd
+    - counting.qmd # week 1 preliminaries
+    - tutorial1_variables.qmd # coding preliminaries
+    - descriptive.qmd # week 1 main point
+    - tutorial2_data.qmd # data frames, descriptive stats, and visualization
+    - functions.qmd # week 2 functions with basics of linear least squares
+    - tutorial3_vectors.qmd # vectors, plotting, function over scatterplot
+    - linreg.qmd # week 3, linear regression and residuals, regression to the mean, etc.
+    - tutorial4_linreg.qmd # regression concepts and residuals
+    # - regression_caution.qmd
+    #- tutorial5_regcaution.qmd
+    - probdist.qmd  # week 4, probability theory, conditional probability and independence
+    - independence.qmd # fold into previous chapter
+    - tutorial5_randgen.qmd # random number generators, logical tests, conditional probability calculations
+    - hypo_test.qmd # week 5: hypothesis testing for independence and errors
+    - tutorial6_tables.qmd # bar plots, data tables, chi-squared test and p-values
+    - bayes.qmd # week 6: Baysian priors and posteriors
+    - tutorial7_functions.qmd # functions
+    - lindiff.qmd # week 7: linear difference equations, solutions, and long-term dynamics
+    - tutorial8_forloops.qmd # for loops
+    - ode_sols.qmd # week 8: ODEs, solutions and graphical analysis
+    - tutorial9_odesols.qmd # ode solutions, plotting defining functions
+    - graph_odes.qmd # week 9: dependence of stability on parameters
     - references.qmd
 
 bibliography: ql_bibliography.bib
