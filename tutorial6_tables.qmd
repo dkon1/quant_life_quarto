@@ -1,0 +1,169 @@
+# Tutorial 6: Data tables and tests {.unnumbered}
+
+### Objectives
+
+-   calculate two-way data tables from data
+-   assign matrix variables
+-   perform the chi-squared test for independence
+-   perform the ANOVA test for equal means (optional)
+
+## Data tables and the chi-squared test
+
+### matrices and data tables
+
+R has many functions for different tests, including the chi-squared test for independence. To use it, one first has to input a data set in the form of a two-way table, where each row represents the values of one random variable, and each column represents the values of the second random variable. The following script shows how to manually input a 2 by 2 contingency table into a matrix. In the matrix function, `ncol` stands for number of columns, and `nrow` for number of rows. Notice the order in which the numbers are put into the matrix: down the first column, then the second, etc. Type `help(matrix)` for more details.
+
+```{webr-r}
+data_mat <- matrix(c(442,514,38,6),ncol=2,nrow=2)
+print(data_mat)
+```
+
+In order to access a specific element of the matrix, just like in vectors, R uses square brackets and two indices, first one for the row and second for the column. Below are examples of accessing two elements of the matrix data defined above, and how to reference a particular element of the matrix.
+
+```{webr-r}
+print(data_mat[1,2])
+print(data_mat[2,1])
+```
+
+You can also access an entire row of a matrix by leaving the column index blank, or the entire column of a matrix by leaving the row index blank:
+
+```{webr-r}
+cat("The second row of the matrix is ")
+print(data_mat[2,])
+cat("The first column of the matrix is ") 
+print(data_mat[,1])
+```
+
+### Chi-squared test
+
+Based on a given data set, how likely is the hypothesis that the two random variables are independent? It is hard to do by hand (in the old days, you looked it up in a table of chi-squared values) but R will do it all for us: 1) calculate the expected counts, 2) compute the chi-squared value for the table, and 3) use the number of degrees of freedom and the chi-squared value to calculate the p-value of the independence hypothesis based on it. Use the `chisq.test()` function, and you will see output like this:
+
+```{webr-r}
+test_output <- chisq.test(data_mat)
+print(test_output)
+```
+
+The results are the chi-squared values, the number of degrees of freedom (which depends on the number of rows and columns in the two-way table) and the p-value. The p-value is used to decide whether to reject the hypothesis, because it represents the likelihood of the hypothesis, given the data. In this case, the p-value is pretty small, so it seems relatively safe to reject the hypothesis of independence. To see the results of the hypothesis test, type `print(test_output)`, and to access the p-value individually, use `test_output$p.value`.
+
+Finally, we need to specify the significance level alpha for the hypothesis test. This refers to the probability of rejecting a true null hypothesis. For instance, if you reject the hypothesis at $\alpha=0.05$ significance, you are setting a 5% chance of falsely rejecting a correct hypothesis, also called the rate of false positives. Note that it says nothing about failing to reject an incorrect hypothesis, also called the rate of false negatives. See the next section of the tutorial for more explanation of hypothesis testing errors.
+
+### generating a data table
+
+Suppose that you have two groups of people: one with genotype A and the other with genotype B. The question is: does one of the genotypes make a phenotype (e.g. disease) more likely? In other words, are the variables of genotype and phenotype linked?
+
+The script below generates fake data sets of people with genotype A and genotype B by simulating random sampling with a given probability. This is done using the function `sample()` to generate a vector of simulated people, who have the status `N` (normal) or `D` (disease), with specified probabilities:
+
+```{webr-r}
+set.seed(8) # set random seed for reproducibility
+samp_size <- 100 
+dis_states <- c('D', 'N') # disease states 'D' and 'N'
+probA <- 0.1 # probability of disease for genotype A
+probB <- 0.4 # probability of disease for genotype B
+dis_genA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1-probA)) # generate a vector of disease status
+dis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-probB)) # generate a vector of disease status
+```
+
+Are the two genotypes linked to disease? We know the true answer, because we set the probabilities of disease to be different in the two genotypes, but can we tell from the data set? The following script uses `table()` to count the number of people with disease and normal in the vectors `dis_genA` and `dis_genB` to produce a two-way table `data_mat` and runs the chi-squared test for independence, then prints out all the results (stored in object `chisq_result`) and the p-value (in `chisq_result$p.value`)
+
+```{webr-r}
+data_vec <- c(table(dis_genA), table(dis_genB))
+data_mat <- matrix(data_vec, nrow=2, ncol=2)
+print(data_mat)
+chisq_result <- chisq.test(data_mat) # run chi-squared test
+print(chisq_result)
+print(chisq_result$p.value) # output the p-value
+```
+
+You see that the chi-squared test returns a low p-value, indicating that it is very unlikely that the two random variables (genotype and disease) are independent, based on the data set.
+
+This script plots the frequency of healthy and disease in the two groups so you can visually compare them:
+
+```{webr-r}
+barplot(data_mat, col= c(2,3), main = "Frequency of healthy (green) and disease (red)", names.arg = c("A", "B"), ylab = "frequency")
+```
+
+### Exercises
+
+Based on the code in the chunks above perform the following tasks:
+
+1.  Add a line to the script below that uses the function `table()` to print out the number of people with disease and normal in the genotype B group.
+
+```{webr-r}
+set.seed(5) # set random seed for reproducibility
+samp_size <- 100 
+dis_states <- c('D', 'N') # disease states 'D' and 'N'
+probA <- 0.1 # probability of disease for genotype A
+probB <- 0.4 # probability of disease for genotype B
+dis_genA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1-probA)) # generate a vector of disease status
+dis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-probB)) # generate a vector of disease status
+
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Use the example of how to use the function table from the code chunk above; remember to add print() around the table().
+:::
+
+2.  In the script below add lines to print out the numbers of people with disease in genotype A sample and in genotype B sample using the matrix `data_mat` and indexing.
+
+```{webr-r}
+set.seed(42) # set random seed for reproducibility
+samp_size <- 100 
+dis_states <- c('D', 'N') # disease states 'D' and 'N'
+probA <- 0.1 # probability of disease for genotype A
+probB <- 0.4 # probability of disease for genotype B
+dis_genA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1-probA)) # generate a vector of disease status
+dis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-probB)) # generate a vector of disease status
+
+data_vec <- c(table(dis_genA), table(dis_genB))
+data_mat <- matrix(data_vec, nrow=2, ncol=2)
+
+
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Use the correct row number and column number as indices; remember to add print() around the table().
+:::
+
+3.  The script below runs the `chisq.test()` function, add a line to print out the p-value from the chi-squared test.
+
+```{webr-r}
+set.seed(77) # set random seed for reproducibility
+samp_size <- 200 
+dis_states <- c('D', 'N') # disease states 'D' and 'N'
+probA <- 0.1 # probability of disease for genotype A
+probB <- 0.4 # probability of disease for genotype B
+dis_genA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1-probA)) # generate a vector of disease status
+dis_genB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1-probB)) # generate a vector of disease status
+data_vec <- c(table(dis_genA), table(dis_genB))
+data_mat <- matrix(data_vec, nrow=2, ncol=2)
+chisq_result <- chisq.test(data_mat) # run chi-squared test
+
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+The p-value is a variable in the chisq_result object, see code above for example.
+:::
+
+## Example of ANOVA (optional)
+
+Analysis of Variance (ANOVA), desribed in Chpater 10, allows us to test for a relationship between a *numeric* response variable and a *categorical* explanatory variable. In other words, does the mean value of a numeric variable depend on the category of another variable? For example, does the body mass of a penguin in the Palmer Penguins data set depend on the species? The code below produces a boxplot that summarizes the distribution of body masses for different species:
+
+```{webr-r}
+data(penguins)
+boxplot(body_mass_g ~ species, data = penguins, ylab = 'body mass (g)', main = "Penguin mass for different species")
+```
+
+The mass for Gentoo species appears to be larger than for the other two, but how sure are we that it's not a fluke, that is, if we sample again that the difference will still be there? This is what we quantify with the ANOVA hypothesis test, which is performed using the function `aov`; notice that the syntax for the test is that same as for function `lm` for linear regression:
+
+```{webr-r}
+aov_out <- aov(body_mass_g ~ species, data = penguins)
+summary(aov_out)
+```
+
+The output contains several pieces of information, including the mean square difference between species (what I call VM in section 10.4) and the mean square residuals (VR). The ratio between the two is the value of F, which here is around 344. R provides the p-value for this value from the F-distribution, which is incredibly small (less than machine precision). Thus, we can reject the null hypothesis of no effect and say that the mass of the penguins really does depend on species.

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Linear regression – Quantifying Life</title>
+<title>Tutorial 4: Linear regression – Quantifying Life</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./tutorial4_linreg.html" rel="next">
-<link href="./tutorial3_vectors.html" rel="prev">
+<link href="./probdist.html" rel="next">
+<link href="./linreg.html" rel="prev">
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -237,7 +237,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"my_data<-read.table(\"https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt\", header=TRUE)\nplot(my_data$Temp, my_data$HR, main='heart rates vs. body temps')\nplot(my_data$HR, my_data$Temp, main='body temps vs. heart rates')","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"myfit <- lm(HR ~Temp, my_data)\nsummary(myfit)\na<-cov(my_data$HR,my_data$Temp)/var(my_data$Temp)\nprint(a)\nb<-mean(my_data$HR)-a*mean(my_data$Temp)\nprint(b)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# plot the data and regression line\nplot(my_data$Temp, my_data$HR,main= 'scatterplot and linear regression line')\nabline(myfit)\n# plot the residuals\nplot(myfit$fitted.values, myfit$residuals, main='residuals plot')\nabline(0,0)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"linreg-HRTemp","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"data(\"Galton\")\nmyfit <- lm(child ~ parent, Galton) \nsummary(myfit)\nprint(paste(\"The best-fit slope is: \", myfit$coefficients[2]))\nprint(paste(\"The best-fit intercept is: \", myfit$coefficients[1]))    ","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"#Overlay the best-fit line on the base R plot\nplot(Galton$parent, Galton$child, xlab='mid-parent height (inches)', ylab='child height (inches)')\nabline(myfit)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"plot(Galton$parent, myfit$residuals, xlab='mid-parent height (inches)', ylab='residuals (inches)')\nabline(0,0)","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"heart_rates <- read.csv(file = \"https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_data_combined.csv\")\nplot(heart_rates$Rest2, heart_rates$Ex2, xlab = 'Resting heart rate (bpm)', ylab = 'Exercise heart rate (bpm)')\nfit_heart <- lm(Ex2 ~ Rest2, data = heart_rates)\nabline(fit_heart)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"options(digits = 3)\ncat(\"The intercept and slope of the best-fit line are: \")\nprint(fit_heart$coefficients)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"\nprint(fit_heart$coefficients[1])\n\nprint(fit_heart$coefficients[2])","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(palmerpenguins)\npen_fit <- lm(body_mass_g ~ bill_length_mm, penguins)\nsummary(pen_fit)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"print(summary(pen_fit)$r.squared)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Overlay the best-fit line on the base R plot\nplot(penguins$bill_length_mm, penguins$body_mass_g, xlab='bill length (mm)', ylab='body mass (g)', main = \"Linear regression on penguin measurements\")\nabline(pen_fit)","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"plot(pen_fit$fitted.values, pen_fit$residuals, xlab='predicted body mass (g)', ylab='residuals (g)')\nabline(0,0)","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"plot(pen_fit)","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -984,12 +984,9 @@ window.Quarto = {
 };
 </script>
 
-<meta name="twitter:title" content="4&nbsp; Linear regression – Quantifying Life">
+<meta name="twitter:title" content="Tutorial 4: Linear regression – Quantifying Life">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://dkon1.github.io/quant_life_quarto/linreg_files/figure-html/fig-body-temp-1.png">
-<meta name="twitter:image-height" content="960">
-<meta name="twitter:image-width" content="1344">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -1001,7 +998,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./linreg.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tutorial4_linreg.html">Tutorial 4: Linear regression</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -1092,13 +1089,13 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./linreg.html" class="sidebar-item-text sidebar-link active">
+  <a href="./linreg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tutorial4_linreg.html" class="sidebar-item-text sidebar-link">
+  <a href="./tutorial4_linreg.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Tutorial 4: Linear regression</span></a>
   </div>
 </li>
@@ -1190,20 +1187,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#linear-relationship-between-two-variables" id="toc-linear-relationship-between-two-variables" class="nav-link active" data-scroll-target="#linear-relationship-between-two-variables"><span class="header-section-number">4.1</span> Linear relationship between two variables</a></li>
-  <li><a href="#linear-least-squares-fitting" id="toc-linear-least-squares-fitting" class="nav-link" data-scroll-target="#linear-least-squares-fitting"><span class="header-section-number">4.2</span> Linear least-squares fitting</a>
-  <ul class="collapse">
-  <li><a href="#sum-of-squared-errors" id="toc-sum-of-squared-errors" class="nav-link" data-scroll-target="#sum-of-squared-errors"><span class="header-section-number">4.2.1</span> sum of squared errors</a></li>
-  <li><a href="#best-fit-slope-and-intercept" id="toc-best-fit-slope-and-intercept" class="nav-link" data-scroll-target="#best-fit-slope-and-intercept"><span class="header-section-number">4.2.2</span> best-fit slope and intercept</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.2.3</span> Exercises</a></li>
-  <li><a href="#correlation-and-goodness-of-fit" id="toc-correlation-and-goodness-of-fit" class="nav-link" data-scroll-target="#correlation-and-goodness-of-fit"><span class="header-section-number">4.2.4</span> correlation and goodness of fit</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">4.2.5</span> Exercises</a></li>
-  </ul></li>
-  <li><a href="#linear-regression-using-r" id="toc-linear-regression-using-r" class="nav-link" data-scroll-target="#linear-regression-using-r"><span class="header-section-number">4.3</span> Linear regression using R</a></li>
-  <li><a href="#regression-to-the-mean" id="toc-regression-to-the-mean" class="nav-link" data-scroll-target="#regression-to-the-mean"><span class="header-section-number">4.4</span> Regression to the mean</a>
-  <ul class="collapse">
-  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="header-section-number">4.4.1</span> Discussion questions</a></li>
-  </ul></li>
+  <li><a href="#learning-goals" id="toc-learning-goals" class="nav-link active" data-scroll-target="#learning-goals">Learning goals</a></li>
+  <li><a href="#best-fit-parameters" id="toc-best-fit-parameters" class="nav-link" data-scroll-target="#best-fit-parameters">Best-fit parameters</a></li>
+  <li><a href="#interpreting-the-output-of-linear-regression" id="toc-interpreting-the-output-of-linear-regression" class="nav-link" data-scroll-target="#interpreting-the-output-of-linear-regression">interpreting the output of linear regression</a></li>
+  <li><a href="#plotting-the-residuals" id="toc-plotting-the-residuals" class="nav-link" data-scroll-target="#plotting-the-residuals">plotting the residuals</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises:</a></li>
   </ul>
 </nav>
     </div>
@@ -1386,7 +1374,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></h1>
+<h1 class="title">Tutorial 4: Linear regression</h1>
 </div>
 
 
@@ -1403,290 +1391,165 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<blockquote class="blockquote">
-<p>The place in which I’ll fit will not exist until I make it.<br>
-–James Baldwin</p>
-</blockquote>
-<p>In the last two chapters we learned to use data sets which fall into a few categories. We now turn to data which can be measured as a range of numerical values. We can ask a similar question of numerical data that we asked of categorical: how can we tell whether two variables are related? And if they are, what kind of relationship is it? This takes us into the realm of <em>data fitting</em>, raising two related questions: what is the best mathematical relationship to describe a data set? and what is the quality of the fit? You will learn to do the following in this chapter:</p>
+<section id="learning-goals" class="level3">
+<h3 class="anchored" data-anchor-id="learning-goals">Learning goals</h3>
+<p>In this tutorial you will learn to:</p>
 <ul>
-<li>define the quality of the fit between a line and a two-variable data set</li>
-<li>calculate the parameters for the best-fit line based on statistics of the data set</li>
-<li>use R to calculate and plot best-fit line for a data set</li>
-<li>understand the meaning of correlation and covariance</li>
-<li>understand the phenomenon of regression to the mean</li>
+<li>Make scatterplots with linear regression lines</li>
+<li>Interpret the output of linear regression</li>
+<li>Examine the residuals of linear regression</li>
 </ul>
-<section id="linear-relationship-between-two-variables" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="linear-relationship-between-two-variables"><span class="header-section-number">4.1</span> Linear relationship between two variables</h2>
-<p></p>
-<p>Although there is always error in any real data, there may be a relationship between the two variables that is not random: for example, when one goes up, the other one tends to go up as well. These relationships may be complicated, but in this chapter we will focus on the the simplest and most common type of relationship: linear, where a change in one variable is associated with a proportional change in the other, plus an added constant. This is expressed mathematically using the familiar equation for a linear function, with parameters slope (<span class="math inline">\(a\)</span>) and intercept (<span class="math inline">\(b\)</span>):</p>
-<p><span class="math display">\[ y = ax + b\]</span></p>
-<p>Let us say you have measured some data for two variables, which we will call, unimaginatively, <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. This data set consists of pairs of numbers: one for <span class="math inline">\(x\)</span>, one for <span class="math inline">\(y\)</span>, for example, the heart rate and body temperature of a person go together. They cannot be mixed up between different people, as the data will lose all meaning. We can denote this a list of <span class="math inline">\(n\)</span> pairs of numbers: <span class="math inline">\((x_i, y_i)\)</span> (where <span class="math inline">\(i\)</span> is an integer between 1 and <span class="math inline">\(n\)</span>). Since this is a list of pairs of numbers, we can plot them as separate points in the plane using each <span class="math inline">\(x_i\)</span> as the x-coordinate and each <span class="math inline">\(y_i\)</span> as the y-coordinate. This is called a <em>scatterplot</em> of a two-variable data set. For example, two scatterplots of a data set of heart rate and body temperature are shown in figure <span class="math inline">\(\ref{fig:HRTemp_scatterplot}\)</span>. In the first one, the body temperature is on the x-axis, which makes it the <em>explanatory</em> variable; in the second one, the body temperature is on the y-axis, which makes it the <em>response</em> variable.</p>
-<div id="fig-body-temp" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-body-temp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-body-temp" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-body-temp-1" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-body-temp-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="linreg_files/figure-html/fig-body-temp-1.png" class="img-fluid figure-img" data-ref-parent="fig-body-temp" width="672">
+</section>
+<section id="best-fit-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="best-fit-parameters">Best-fit parameters</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-body-temp-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Body temp (response variable) vs heart rate (explanatory variable)
-</figcaption>
-</figure>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Linear regression
 </div>
 </div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-body-temp" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-body-temp-2" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-body-temp-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="linreg_files/figure-html/fig-body-temp-2.png" class="img-fluid figure-img" data-ref-parent="fig-body-temp" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-body-temp-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Heart rate (response variable) vs body temp (explanatory variable)
-</figcaption>
-</figure>
+<div class="callout-body-container callout-body">
+<p><strong>Linear regression</strong> is a method for finding the best-fit line to a two-variable data set. One of the variables is called the <em>explanatory</em> (independent) variable and the other is called the <em>response</em> (dependent) variable. The best-fit line is defined as the line whose graph passes the closest to the data points as measured by the <em>sum of squared differences</em> between the predicted and observed response variable values.</p>
 </div>
 </div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-body-temp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.1: Scatterplot of heart rates and body temperatures: a) with heart rate as the explanatory variable; b) with body temperature as the explanatory variable.
-</figcaption>
-</figure>
-</div>
+<p>Here is an example of a linear regression performed and the line plotted over the scatterplot. The R function for linear regression <code>lm()</code> has two required inputs: an <em>expression</em> in the form of <code>Response ~ Explanatory</code> and the name of the data frame (if the variables are part of one). The script below uses the data set of heart rates from students from the BIOS 20151 classes, generates a plot of the data, calls <code>lm()</code> and assigns the output to a variable <code>fit_heart</code> and then plots the resulting best-fit line using the function <code>abline()</code>:</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="linear-least-squares-fitting" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="linear-least-squares-fitting"><span class="header-section-number">4.2</span> Linear least-squares fitting</h2>
-<p></p>
-<section id="sum-of-squared-errors" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="sum-of-squared-errors"><span class="header-section-number">4.2.1</span> sum of squared errors</h3>
-<p>It is easy to find the best-fit line for a data set with only two points: its slope and intercept can be found by solving the two simultaneous linear equations, e.g.&nbsp;if the data set consists of <span class="math inline">\((3,2.3), (6, 1.7)\)</span>, then finding the best fit values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> means solving the following two equations: <span class="math display">\[\begin{eqnarray*}
-3a + b &amp;=&amp;  2.3 \\
-6a + b &amp;=&amp; 1.7
-\end{eqnarray*}\]</span> These equations have a unique solution for each unknown: <span class="math inline">\(a=-0.2\)</span> and <span class="math inline">\(b=2.9\)</span> (you can solve it using basic algebra).</p>
-<p>However, a data set with two points is very small and cannot serve as a reasonable guide for finding a relationship between two variables. Let us add one more data point, to increase our sample size to three: <span class="math inline">\((3,2.3), (6, 1.7), (9, 1.3)\)</span>. How do you find the best fit slope and intercept? take two points and find a line, that is the slope and the intercept, that passes through the two. It should be clear why this is a bad idea: we are arbitrarily ignoring some of the data, while perfectly fitting two points. So how do we use all the data? Let us write down the equations that a line with slope <span class="math inline">\(a\)</span> and intercept <span class="math inline">\(b\)</span> have to satisfy in order to fit our data points: <span class="math display">\[\begin{eqnarray}
-3a + b &amp;=&amp;  2.3 \\
-6a + b &amp;=&amp; 1.7 \\
-9a + b &amp;=&amp; 1.3
-\end{eqnarray}\]</span></p>
-<p>This system has no exact solution, since there are three equations and only two unknowns. We need to find <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> such that they are a <em>best fit</em> to the data, not the perfect solution. To do that, we need to define what we mean by the <em>goodness of fit</em>.</p>
-<p>One simple way to asses how close the fit is to the data is to subtract the predicted values of <span class="math inline">\(y\)</span> from the data, as follows: <span class="math inline">\(e_i = y_i - (ax_i + b)\)</span>. The values <span class="math inline">\(e_i\)</span> are called the <em>errors</em> or <em>residuals</em> of the linear fit. If the values predicted by the linear model (<span class="math inline">\(ax_i+b\)</span>) are close to the actual data <span class="math inline">\(y_i\)</span>, then the error will be small. However, if we add it all up, the errors with opposite signs will cancel each other, giving the impression of a good fit simply if the deviations are symmetric.</p>
-<p>A more reasonable approach is to take absolute values of the deviations before adding them up. This is called the total deviation, for <span class="math inline">\(n\)</span> data points with a line fit: <span class="math display">\[ TD = \sum_{i=1}^n |  y_i - a x_i - b | \]</span></p>
-<p>Mathematically, a better measure of total error is a sum of squared errors, which also has the advantage of adding up non-negative values, but is known as a better measure of the distance between the fit and the data (think of Euclidean distance, which is also a sum of squares) :</p>
-<p><span class="math display">\[ SSE = \sum_{i=1}^n ( y_i -  a x_i - b )^2 \]</span></p>
-<p>Thus we have formulated the goal of fitting the best line to a two-variable data set, also known as linear regression: <strong>find the values of slope and intercept that result in the lowest possible sum of squared errors</strong>. There is a mathematical recipe which produces these values, which will be described in the next section. Any model begins with assumptions and in order for linear regression to be a faithful representation of a data set, the following must be true:</p>
-<ul>
-<li><p>the variables have a linear relationship</p></li>
-<li><p>all of the measurements are independent of each other</p></li>
-<li><p>there is no noise in the measurements of the explanatory variable</p></li>
-<li><p>the noise in the measurements of the response variable is normally distributed with mean 0 and identical standard deviation</p></li>
-</ul>
-<p>The reasons why these assumptions are necessary for linear regression to work are beyond the scope of the text, and they are elucidated very well in the book <em>Numerical Recipes</em> . However, it is important to be aware of them because if they are violated, the resulting linear fit may be meaningless. It’s fairly clear that if the first assumption is violated, you are trying to impose a linear relationship on something that is actually curvy. The second assumption of independence is very important and often overlooked. The mathematical reasons for it have to do with properly measuring the goodness of fit, but intuitively it is because measurements that are linked can introduce a new relationship that has to do with the measurements, rather than the relationship between the variables. Violation of this assumption can seriously damage the reliability of the linear regression. The third assumption is often ignored, since usually the explanatory variable is also measured and thus has some noise. The reason for it is that the measure of goodness of fit is based only on the response variable, and there is no consideration of the noise in the explanatory variable. However, a reasonable amount of noise in the explanatory variable is not catastrophic for linear regression. Finally, the last assumption is due to the statistics of maximum-likelihood estimation of the slope and intercept, but again some deviation from perfect normality (bell-shaped distribution) of the noise, or slightly different variation in the noise is to be expected.</p>
-</section>
-<section id="best-fit-slope-and-intercept" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="best-fit-slope-and-intercept"><span class="header-section-number">4.2.2</span> best-fit slope and intercept</h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The covariance of a data set of pairs of values <span class="math inline">\((X,Y)\)</span> is the sum of the products of the corresponding deviations from their respective means:</p>
-</div>
-</div>
-<p><span class="math display">\[ Cov(X,Y) = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar X) (y_i - \bar Y)
-\]</span></p>
-<p>Intuitively, this means that if two variable tend to deviate in the same direction from their respective means, they have a positive covariance, and if they tend to deviate in opposite directions from their means, they have a negative covariance. In the intermediate case, if sometimes they deviate together and other times they deviate in opposition, the covariance is small or zero. For instance, the covariance between two independent random variables is zero, as we saw in section <span class="math inline">\(\ref{sec:math4_2}\)</span>.</p>
-<p>It should come as no surprise that the slope of the linear regression depends on the covariance, that is, the degree to which the two variables deviate together from their means. If the covariance is positive, then for larger values of <span class="math inline">\(x\)</span> the corresponding <span class="math inline">\(y\)</span> values tend to be larger, which means the slope of the line is positive. Conversely, if the covariance is negative, so is the slope of the line. And if the two variables are independent, the slope has to be close to zero. The actual formula for the slope of the linear regression is :</p>
-<p><span class="math display">\[\begin{equation}
-m = \frac{Cov(X,Y)}{Var(X)}
-\end{equation}\]</span></p>
-<p>I will not provide a proof that this slope generates the minimal sum of squared errors, but that is indeed the case. To find the intercept of the linear regression, we make use of one other property of the best fit line: in order for it to minimize the SSE, it must pass through the point <span class="math inline">\((\bar X, \bar Y)\)</span>. Again, I will not prove this, but note that the point of the two mean values is the central point of the “cloud” of points in the scatterplot, and if the line missed that central point, the deviations will be larger. Assuming that is the case, we have the following equation for the line: <span class="math inline">\(\bar Y = a\bar X + b\)</span>, which we can solve for the intercept <span class="math inline">\(b\)</span>:</p>
-<p><span class="math display">\[\begin{equation}
-b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}
-\end{equation}\]</span></p>
-</section>
-<section id="exercises" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.2.3</span> Exercises</h3>
-<table class="caption-top table">
-<caption>Body leanness (B) and heat loss rate (H) in boys; partial data set from </caption>
-<thead>
-<tr class="header">
-<th>B(<span class="math inline">\(m^2/kg\)</span>)</th>
-<th>H(<span class="math inline">\(^\circ C /min)\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>7.0</td>
-<td>0.103</td>
-</tr>
-<tr class="even">
-<td>5.0</td>
-<td>0.091</td>
-</tr>
-<tr class="odd">
-<td>3.6</td>
-<td>0.014</td>
-</tr>
-<tr class="even">
-<td>3.3</td>
-<td>0.024</td>
-</tr>
-<tr class="odd">
-<td>2.4</td>
-<td>0.031</td>
-</tr>
-<tr class="even">
-<td>2.1</td>
-<td>0.006</td>
-</tr>
-</tbody>
-</table>
-<p></p>
-<p>Use the data set in table <span class="math inline">\(\ref{tab:ch8_bh}\)</span> to answer the following questions:</p>
-<ol type="1">
-<li><p>Compute the means and standard deviations of each variable.</p></li>
-<li><p>Compute the covariance between the two variables.</p></li>
-<li><p>Calculate the slope and intercept of the linear regression for the data with <span class="math inline">\(B\)</span> as the explanatory variable.</p></li>
-<li><p>Make a scatterplot of the data set with <span class="math inline">\(B\)</span> as the explanatory variable and sketch the linear regression line with the parameters you computed.</p></li>
-<li><p>Calculate the slope and intercept of the linear regression the data with <span class="math inline">\(H\)</span> as the explanatory variable.</p></li>
-<li><p>Make a scatterplot of the data set, with <span class="math inline">\(H\)</span> as the explanatory variable and sketch the linear regression line with the parameters you computed.</p></li>
-</ol>
-</section>
-<section id="correlation-and-goodness-of-fit" class="level3" data-number="4.2.4">
-<h3 data-number="4.2.4" class="anchored" data-anchor-id="correlation-and-goodness-of-fit"><span class="header-section-number">4.2.4</span> correlation and goodness of fit</h3>
-<p>The correlation between two random variables is a measure of how much variation in one corresponds to variation in the other. If this sounds very similar to the description of covariance, it’s because they are closely related. Essentially, correlation is a normalized covariance, restricted to lie between -1 and 1. Here is the definition:</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The (linear) <em>correlation</em> of a set of two paired variables (X,Y) is:</p>
-</div>
-</div>
-<p><span class="math display">\[ r = \frac{Cov(X,Y)}{\sqrt{{Var(X)}{Var(Y)}}} =  \frac{Cov(X,Y)}{\sigma_X \sigma_Y}
-\]</span></p>
-<p>If the two variables are identical, <span class="math inline">\(X=Y\)</span>, then the covariance becomes its variance <span class="math inline">\(Cov(X,Y) = Var(X)\)</span> and the denominator also becomes the variance, and the correlation is 1. This is also true if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are scalar multiples of each other, as you can see by plugging in <span class="math inline">\(X= cY\)</span> into the covariance formula. The opposite case if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are diametrically opposite, <span class="math inline">\(X = -cY\)</span>, which has the correlation coefficient of -1. All other cases fall in the middle, neither perfect correlation nor perfect anti-correlation. The special case if the two variables are independent, and thus their covariance is zero, has the correlation coefficient of 0.</p>
-<p><img src="ch8/Correlation_examples.png" class="img-fluid" alt="Correlation coefficient does not tell the whole story when it comes to describing the relationship between two variables. “Correlation examples2” by Imagecreator, updated by DenisBoigelot, in public domain via Wikimedia Commons."> </p>
-<p>This gives a connection between correlation and slope of linear regression:</p>
-<p><span class="math display">\[\begin{equation}
-a = r \frac{\sigma_Y}{\sigma_X}
-\label{eq:slope_corr}
-\end{equation}\]</span></p>
-<p>Whenever linear regression is reported, one always sees the values of correlation <span class="math inline">\(r\)</span> and squared correlation <span class="math inline">\(r^2\)</span> displayed. The reason for this is that <span class="math inline">\(r^2\)</span> has a very clear meaning of the <strong>the fraction of the variance of the dependent variable</strong> <span class="math inline">\(Y\)</span> explained by the linear regression <span class="math inline">\(Y=aX+b\)</span>. Let us unpack what this means.</p>
-<p>According to the stated assumptions of linear regression, the response variable <span class="math inline">\(Y\)</span> is assumed to be linear relationship with the explanatory variable <span class="math inline">\(X\)</span>, but with independent additive noise (also normally distributed, but it doesn’t play a role for this argument). Linear regression captures the linear relationship, and the remaining error (residuals) represent the noise. Thus, each value of <span class="math inline">\(Y\)</span> can be written as <span class="math inline">\(Y = R + \hat Y\)</span> where <span class="math inline">\(R\)</span> is the residual (noise) and the value predicted by the linear regression is <span class="math inline">\(\hat Y =aX+b\)</span>. The assumption that <span class="math inline">\(R\)</span> is independent of <span class="math inline">\(Y\)</span> means that <span class="math inline">\(Var(Y) = Var (\hat Y) + Var (R)\)</span> because variance is additive for independent random variables, as we discussed in section <span class="math inline">\(\ref{sec:math4}\)</span>. By the same reasoning <span class="math inline">\(Cov(X,\hat Y + R) = Cov(X,\hat Y) + Cov(X,R)\)</span>. These two covariances can be simplified further: <span class="math inline">\(Cov(X,R) = 0\)</span> because <span class="math inline">\(R\)</span> is independent random noise. <span class="math inline">\(X\)</span> and the predicted <span class="math inline">\(\hat Y\)</span> are perfectly correlated, so <span class="math inline">\(Cov(X,\hat Y) = Cov(X,mX+b) = Var(X) = Var(\hat Y)\)</span>. This leads to the derivation of the meaning of <span class="math inline">\(r^2\)</span>:</p>
-<p><span class="math display">\[\begin{equation}
-\begin{aligned}
-  r^2 = \frac{Cov(X,Y)^2}{Var(X) Var(Y)} &amp;=   \frac{(Cov(X,\hat Y) + Cov(X,R) )^2}{Var(X) Var(Y)}   = \\
-  =\frac{Var(X)Var(\hat Y)}{Var(X) Var(Y)} &amp;=  \frac{Var(\hat Y)}{Var(Y)}
-  \end{aligned}
-\label{eq:ch8_frac_var}
-\end{equation}\]</span></p>
-<p>One should be cautious when interpreting results of a linear regression. First, just because there is no linear relationship does not mean that there is no other relationship. Figure <span class="math inline">\(\ref{fig:ch8_corr_examples}\)</span> shows some examples of scatterplots and their corresponding correlation coefficients. What it shows is that while a formless blob of a scatterplot will certainly have zero correlation, so will other scatterplots in which there is a definite relationship (e.g.&nbsp;a circle, or a X-shape). The point is that <strong>correlation is always a measure of the linear relationship between variables.</strong></p>
-<p>The second caution is well known, as that is the danger of equating correlation with a causal relationship. There are numerous examples of scientists misinterpreting a coincidental correlation as meaningful, or deeming two variables that have a common source as causing one another. For example, one can look at the increase in automobile ownership in the last century and the concurrent improvement in longevity and conclude that automobiles are good for human health. It is well-documented, however, that a sedentary lifestyle and automobile exhaust do not make a person healthy. Instead, increased prosperity has increased both the purchasing power of individuals and enabled advances in medicine that have increase our lifespans. To summarize, one must be careful when interpreting correlation: a weak one does not mean there is no relationship, and a strong one does not mean that one variable causes the changes in the other.</p>
-<p>There is another important measure of the quality of linear regression: the residual plot. The residuals are the differences between the predicted values of the response variable and the actual value from the data. As stated above, linear regression assumes that there is a linear relationship between the two variables, plus some uncorrelated noise added to the values of the response variable. If that were true, then the plot of the residuals would look like a vaguely spherical blob, with a mean value of 0 and no discernible trend (e.g.&nbsp;no increase of residual for larger <span class="math inline">\(x\)</span> values). Visually assessing residual plots is an essential check on whether linear regression is a reasonable fit to the data in addition to the <span class="math inline">\(r^2\)</span> value.</p>
-</section>
-<section id="exercises-1" class="level3" data-number="4.2.5">
-<h3 data-number="4.2.5" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">4.2.5</span> Exercises</h3>
-<p>Figure <span class="math inline">\(\ref{fig:ch8_penguins}\)</span> shows scatterplots of the rate of oxygen consumption (VO) and heart rate (HR) measured in two macaroni penguins running on a treadmill (really). The authors performed linear regression on the data and found the following parameters: <span class="math inline">\(VO =0.23HR - 11.62\)</span> (penguin A) and <span class="math inline">\(VO =0.25HR - 20.93\)</span> (penguin B). The datasets have the standard deviations: <span class="math inline">\(\sigma_{VO} = 6.77\)</span> and <span class="math inline">\(\sigma_{HR} = 28.8\)</span> (penguin A) and <span class="math inline">\(\sigma_{VO} = 8.49\)</span> and <span class="math inline">\(\sigma_{HR} = 30.6\)</span> (penguin B).</p>
-<p><img src="ch8/penguin_HR.png" class="img-fluid" alt="Mass-specific rate of oxygen consumption (VO) as a function of heart rate (HR) in two macaroni penguins, (A) a breeding female of mass 3.14 kg and a moulting female of mass 3.99 kg; figure from under CC-BY."> </p>
-<ol type="1">
-<li><p>Find the dimensions and units of the slope and the intercept of the linear regression for this data (the units of HR and VO are on the plot).</p></li>
-<li><p>Data set B has a larger slope than data set A. Does this mean the correlation is higher in data set B than in A? Explain.</p></li>
-<li><p>Calculate the correlation coefficients for the linear regressions of the two penguins; explain how much variance is explained in each case.</p></li>
-<li><p>Re-calculate the slopes of the two linear regressions if the explanatory and response variables were reversed. Does changing the order of variable affect the correlation?</p></li>
-</ol>
-</section>
-</section>
-<section id="linear-regression-using-r" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="linear-regression-using-r"><span class="header-section-number">4.3</span> Linear regression using R</h2>
-<p></p>
-<p>We now have the tools to compute the parameters of the best-fit line, provided we can calculate the means, variances, and covariance of the two variable data set. Of course, the best way to do all this is to let a computer handle it. The function for calculating linear regression in R is <code>lm()</code>, which outputs a bunch of information to a variable called myfit in the script below. The slope, intercept, and other parameters can be printed out using the <code>summary()</code> function. In the script below you see a bunch of information, but we are concerned with the ones in the first column correspond to the best fit intercept (-166.2847) and the slope (2.4432). You can check that they correspond to our formulas by computing the covariance, the variances, and the means of the two variables:</p>
+<p>The function <code>lm()</code> calculated the slope and intercept of the best-fit line. These values are bundled into the output of the function, which we assigned to <code>fit_heart</code>. This script prints them out:</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Here <code>Temp</code> and <code>HR</code> are the explanatory and response variables, respectively, and <code>my_data</code> is the name of the data frame they are stored in. The best fit parameters are stored in <code>myfit</code>, and the line can be plotted using <code>abline(myfit)</code>. The script below shows how to calculate a linear regression line and then plot it over a scatterplot in R, and the result is shown in figure <span class="math inline">\(\ref{fig:linreg_HRTemp}\)</span>a.</p>
+<p>As you can see, both parameters are part of the vector variable coefficients. If needed, they can be accessed separately by using the indexing notation:</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>However, what does this mean about the quality of the fit? Just because we found a line to draw through a scatterplot does not mean that this line is meaningful. In fact, looking at the plot, there does not seem to be much of a relationship between the two variables. There are various statistical measures for the significance of linear regression, the most important one relies on the correlation between the two data sets. Look again at the summary statistics for the data set of heart rates and temperatures. There are several different statistics here, and the one that we care about is the <span class="math inline">\(r^2\)</span>, which is reported here as ‘Multiple R-squared’. This number tells us that the linear regression accounts for only about 6% of the total variance of the heart rate. In other words, there is no significant linear relationship in this data set.</p>
-<p>As mentioned in section <span class="math inline">\(\ref{sec:math8}\)</span>, the other important check is plotting the residuals of the data set, after the linear fit is subtracted. You see the result in figure <span class="math inline">\(\ref{fig:linreg_HRTemp}\)</span>b, showing that the residuals do not have any pronounced pattern. So it is reasonable to conclude that linear regression was a reasonable model to which to fit the data. The low correlation is because data seem to have little to no relationship, not because there is some complicated nonlinear relationship.</p>
-<p>Here is an example of a linear regression performed and the line plotted over the basic R plot. Note that <code>lm()</code> uses the following syntax to indicate which variable is which: lm(Y ~ X) (where Y is the response variable and X is the explanatory variable.)</p>
+</section>
+<section id="interpreting-the-output-of-linear-regression" class="level3">
+<h3 class="anchored" data-anchor-id="interpreting-the-output-of-linear-regression">interpreting the output of linear regression</h3>
+<p>We have seen how to obtain the slope and the intercept, but there’s a lot more in the linear regression output! If you run these scripts in RStudio you will see the object <code>fit_heart</code> in the <code>Environment</code> window (by default, top right). If you double click on it, you’ll see that it’s a <em>list object</em> that contains many variables (like a data frame, except messier because the different variables don’t have the same length). Let us use the data set from the <code>palmerpenguins</code> package that we saw in Tutorial 3 and run linear regression on <code>body_mass_g</code> as a function of <code>bill_lenth_mm</code>:</p>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The summary outputs a whole bunch of information that is returned by the <code>lm()</code> function, as the object <code>myfit</code>. The most important are the intercept and slope, which may be printed out as shown above, and the R-squared parameter, also called the coefficient of determination. The value of R-squared is not accessible directly in <code>myfit</code>, but it is printed out in the summary (use multiple R-squared for our assignments.)</p>
-<p>The actual best-fit line can be plotted as follows over a scatterplot of the data; notice that abline can take myfit as an input and use the slope and intercept:</p>
+<p>As you see, the function <code>summary()</code> gives us the key information, including the values of the parameters (plus some statistics to indicated the uncertainly around those values) and the <code>R-squared</code>, also known as the <em>coefficient of determination</em>. While the slope and the intercept tell which line provides the best fit, they tell us nothing about how good the fit is.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Coefficient of determination (R-squared)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>coefficient of determination</strong> or <span class="math inline">\(R^2\)</span> of a linear regression is a measure of the goodness of fit of the line to the data. Numerically, it represents the fraction of variance of the response variable that is explained by the model.</p>
+</div>
+</div>
+<p>The value of R-squared is not accessible directly in <code>pen_fit</code>, but it is printed out in the summary under the name of <code>Multiple R-squared</code>, together with <code>Adjusted R-squared</code>, which is a slightly modified version. To print out the coefficient of determination by itself, we have to use <code>summary()</code> with variable name <code>r.squared</code>:</p>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>After performing linear regression it is essential to check that the residuals obey the assumptions of linear regression. The residuals are the difference between the predicted response variable values and the actual values of the response variable, in this case the child height. The residuals are contained in the object myfit as variable residuals:</p>
+<p>As above, we can plot the best-fit line over a scatterplot of the data by using <code>abline()</code> with <code>pen_fit</code> as an input:</p>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>It appears that the residuals meet the assumptions of being independent of measurement (shapeless scatterplot), are centered at zero, and look roughly normally distributed, although that can be checked more carefully using other tools.</p>
 </section>
-<section id="regression-to-the-mean" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="regression-to-the-mean"><span class="header-section-number">4.4</span> Regression to the mean</h2>
-<p> The phenomenon called regression to the mean is initially surprising. Francis Galton first discovered this by comparing the heights of parents and their offspring. Galton took a subset of parents who are taller than average and observed that their children were, on average, shorter than their parents. He also compared the heights of parents who are shorter than average, and found that their children were on average taller than their parents. This suggests the conclusion that in long run everyone will converge closer to the average height - hence “regression to mediocrity”, as Galton called it .</p>
-<div id="fig-linreg-Galton" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-linreg-Galton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="quarto-layout-row">
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-linreg-Galton" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-linreg-Galton-1" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-linreg-Galton-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="linreg_files/figure-html/fig-linreg-Galton-1.png" class="img-fluid figure-img" data-ref-parent="fig-linreg-Galton" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-linreg-Galton-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(a) Child height (response variable) vs parent height (explanatory variable)
-</figcaption>
-</figure>
-</div>
-</div>
-<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-linreg-Galton" style="flex-basis: 50.0%;justify-content: flex-start;">
-<div id="fig-linreg-Galton-2" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-subfloat-fig figure">
-<div aria-describedby="fig-linreg-Galton-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="linreg_files/figure-html/fig-linreg-Galton-2.png" class="img-fluid figure-img" data-ref-parent="fig-linreg-Galton" width="672">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-linreg-Galton-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-(b) Parent height (response variable) vs child height (explanatory variable)
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-linreg-Galton-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4.2: Galton data on heights of parents and of children as scatterplots. The dotted red lines show the identity line y=x and the solid black line is the linear regression.
-</figcaption>
-</figure>
-</div>
-<p>But that is not the case! The parents and children in Galton’s experiment had a very similar mean and standard deviation. This appears to be a paradox, but it is easily explained using linear regression. Consider two identically distributed random variables <span class="math inline">\((X,Y)\)</span> with a positive correlation <span class="math inline">\(r\)</span>. The slope of the linear regression is <span class="math inline">\(m = r \sigma_Y/\sigma_X\)</span> and since <span class="math inline">\(\sigma_Y=\sigma_X\)</span>, the slope is simply <span class="math inline">\(r\)</span>. Select a subset with values of <span class="math inline">\(X\)</span> higher than <span class="math inline">\(\bar X\)</span>, and consider the mean value of <span class="math inline">\(Y\)</span> for that subset. If the slope <span class="math inline">\(m&lt;1\)</span> (the correlation is not perfect), then the mean value of <span class="math inline">\(Y\)</span> for that subset is less than the mean value of <span class="math inline">\(X\)</span>. Similarly, for a subset with values of <span class="math inline">\(X\)</span> lower than <span class="math inline">\(\bar X\)</span>, the mean value of <span class="math inline">\(Y\)</span> for that subset is greater than the mean value of <span class="math inline">\(X\)</span>, again as long as the slope is less than 1.</p>
-<p>Figure <span class="math inline">\(\ref{fig:regression2mean}\)</span> shows Galton’s data set (available in R by installing the package ‘HistData’) along with the linear regression line and the identity like (<span class="math inline">\(y=x\)</span>). If each child had exactly the same height as the parents, the scatterplot would lie on the identity line. Instead, the linear regression lines have slope less than 1 for both the plot with the parental heights as the explanatory variable and for the plot with the variables reversed. The correlation coefficient <span class="math inline">\(r\)</span> does not depend on the order of the variables; so using the equation <span class="math inline">\(\ref{eq:slope_corr}\)</span> we can see the difference in slopes is explained by the two data sets having different standard deviations, and reversing the explanatory and response variables results in reciprocation of the ratio of standard deviations. The children’s heights have a higher standard deviation, which is likely an artifact of the experiment. In the data set the heights of the two parents were averaged to take them both into account, which substantially reduces the spread between male and female heights. To summarize, although the children of taller parents are shorter on average than their parents, and the children of shorter parents are taller than their parents, the overall standard deviation does not decrease from generation to generation.</p>
-<section id="discussion-questions" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="discussion-questions"><span class="header-section-number">4.4.1</span> Discussion questions</h3>
-<p>Please read the paper on measuring the rate of de novo mutations in humans and its relationship to paternal age .</p>
+<section id="plotting-the-residuals" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-the-residuals">plotting the residuals</h3>
+<p>After performing linear regression it is essential to check that the <em>residuals</em> obey the assumptions of linear regression. The residuals are the difference between the predicted response variable values and the actual values of the response variable, in this case the penguin body mass. The residuals are contained in the object <code>pen_fit</code> as a variable named <code>residuals</code>. Residuals are the leftover errors of the response variable, so one way to visualize them is to plot them against the explanatory variable. Residuals are usually plotted as a function of the predicted values of the response variable, which are contained in the <code>pen_fit</code> object in the variable <code>fitted.values</code>:</p>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>NOTE: I used the values of bill length from the <code>pen_fit</code> object because several of the values in the original data set had missing values (<code>NA</code>) and were discarded by <code>lm()</code>, so there are no corresponding residuals for those values and the <code>plot()</code> function would have failed if I had used the <code>penguins$bill_length_mm</code> instead as the x-variable.</p>
+<p>By visual inspection it seems that the residuals satisfy the assumptions of being independent of measurement (shapeless scatterplot), are centered at zero, and look roughly normally distributed, although that can be checked more carefully using other tools.</p>
+<p>For an example of these fancy tools, you can use <code>plot()</code> with the output of a linear regression, which will produce several diagnostic plots to make sure the residuals obey the assumptions of normally distributed with equal variance:</p>
+<div id="qwebr-insertion-location-8"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">Exercises:</h3>
 <ol type="1">
-<li><p>What types of mutations were observed in the data set? What were the most and the least common?</p></li>
-<li><p>The paper shows that both maternal and paternal age are positively correlated with offspring inheriting new mutations. What biological mechanism explains why paternal age is the dominant factor? What could explain the substantial correlation with maternal age?</p></li>
-<li><p>Is linear regression the best representation of the relationship between paternal age and number of mutations? What other model did the authors use to fit the data, and how did it perform?</p></li>
-<li><p>What do you make of the historical data of paternal ages the authors present at the end of the paper? Can you postulate a testable hypothesis based on this observation?</p></li>
+<li>Calculate the mean and standard deviation of the residuals from the previously calculated linear regression output <code>pen_fit</code> and use <code>print()</code> to report them:</li>
 </ol>
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Use functions <code>mean()</code> and <code>sd()</code>; specify the dataframe as well as variable, e.g.&nbsp;<code>df$var</code>; put these function inside <code>print()</code>.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Calculate and print the fraction of variance explained by the linear regression by dividing the variance of the predicted values of the previously calculate linear regression object <code>pen_fit</code> (in the variable <code>fitted.values</code>) by the variance of the observed values (in the variable <code>model$XXX</code> where XXX stands for the name of the response variable).</li>
+</ol>
+<div id="qwebr-insertion-location-10"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Calculate the ratio of variances inside the print() function; make sure that all the parentheses are matched correctly</p>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Perform linear regression on the penguin data set with the <code>bill_depth_mm</code> as the explanatory variable and <code>body_mass_g</code> as the response variable and assign it to variable <code>fit_pen</code>. Print out the coefficient of determination of this linear regression.</li>
+</ol>
+<div id="qwebr-insertion-location-11"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Need to first assing the output of regression, e.g.&nbsp;<code>fit_pen &lt;- lm( ... )</code>; follow the example above of printing out the R-squared.</p>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>Plot the residuals from the linear regression as a function of the independent variable as contained in the <code>fit_pen</code> object within the variable <code>model$XXX</code> where XXX is the name of the explanatory variable.</li>
+</ol>
+<div id="qwebr-insertion-location-12"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Follow the example above of plotting residuals using the output of lm, e.g <code>fit$residuals</code></p>
+</div>
+</div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -2092,13 +1955,13 @@ Figure&nbsp;4.2: Galton data on heights of parents and of children as scatterplo
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./tutorial3_vectors.html" class="pagination-link" aria-label="Tutorial 3: Vectors and plotting">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tutorial 3: Vectors and plotting</span>
+      <a href="./linreg.html" class="pagination-link" aria-label="Linear regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Linear regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./tutorial4_linreg.html" class="pagination-link" aria-label="Tutorial 4: Linear regression">
-        <span class="nav-page-text">Tutorial 4: Linear regression</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./probdist.html" class="pagination-link" aria-label="Random variables and distributions">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

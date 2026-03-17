@@ -1,0 +1,253 @@
+# Tutorial 5: Random number generators and Booleans {.unnumbered}
+
+### Learning goals
+
+In this tutorial you will learn to:
+
+-   use uniform random number generator
+-   use binomial random number generator
+-   calculate probabilities from binomial distribution
+-   plot probability distribution functions
+-   use logical operators and tests in R
+-   calculate using Boolean vectors
+
+## Random number generators
+
+Simulating randomness with a computer is not a simple task. Randomness is contrary to the nature of a computer, which is designed to perform operations exactly. However, there are algorithms that produce a string of numbers that are for all intents and purposes random: there is no obvious connection between one number and the next, and the values don't form any pattern. Such algorithms are called random number generators, although to be more precise they produce pseudo-random numbers. The reason is that they actually produce a perfectly predictable string of numbers, which eventually repeats itself, but with a humongous period. One can even produce the same random number, or the same string of random numbers, by specifying the seed for the random number generator. This is very useful if one wants to reproduce the results of a code that uses random numbers.
+
+### uniform discrete random numbers
+
+Of course, random variable are not all the same - they have different distributions. R has a number of functions for producing random numbers from different distributions. To produce random numbers from a set of values with a uniform probability distribution, use the function `sample()`. The following command produces a random integer between 1 and 20. Repeating the same command produces a new random number, which (most likely) is not the same as the first. The first input argument (1:20) is the vector of values from which to draw the random number, and the second is the size of the sample.
+
+```{webr-r}
+sample(1:20,1)
+sample(1:20,1)
+```
+
+If the random seed is set to some value (e.g. 100 below), then the random number generator will produce the same "random" number if this command is repeated:
+
+```{webr-r}
+set.seed(101)
+sample(1:20,1)
+set.seed(101)
+sample(1:20,1)
+```
+
+To generate 10 randomly chosen integers between 1 and 20, see the following two commands, which differ in setting the value of the option replace. The first command doesn't specify the value for replace, and by default it is set to FALSE, so the command draws numbers without replacing them (meaning that all the numbers in the sample are unique). In the second command replace is set to TRUE, so the numbers that were selected can be chosen again. In both cases, repeatedly running the command results in a different set of randomly chosen numbers, which you should investigate by copying the commands into R and running them yourself.
+
+```{webr-r}
+sample_vec <- sample(1:20,10,replace=TRUE)
+print(sample_vec)
+```
+
+`table()` is a very useful function for tallying how many values of each type are in a vector. It essentially provides a kind of histogram, with each distinct value in the data set a distinct bin, so it may be used together with `barplot()` to plot a detailed histogram:
+
+```{webr-r}
+print(table(sample_vec))
+barplot(table(sample_vec))
+hist(sample_vec,breaks=0:21, col = 'gray')
+```
+
+### binomial random number generator
+
+If you need to generate random numbers from the binomial distribution, R has you covered. The command is `rbinom(s, n, p)` and it requires three input values: s is the number of observations (sample size), n is the number of binary trials in one observation, and p is the probability of success in one binary trial. The following two commands generate a single random number, the number of successes out of 20 trials with probability of success 0.2 and 0.6:
+
+```{webr-r}
+rbinom(1,size =20,p=0.2)
+rbinom(1,size =20,p=0.6)
+```
+
+To generate a sample of ten random numbers, change the first input parameter to 10. As you'd expect, the samples of 10 observations are (most likely) noticeably different: when the probability p is 0.2, the number of successes tend to be less than 6, while for probability 0.6, the numbers are usually greater than 10.
+
+```{webr-r}
+rbinom(10,20,0.2)
+rbinom(10,20,0.6)
+```
+
+Notice that the range of possible values of this random variable is between 0 and 20, but unlike the uniform random numbers produced with the `sample()` function, the probabilities of obtaining different numbers are different and depend on the parameter p. Calculation and plotting of the binomial distribution function can be accomplishes with the command `dbinom(x,n,p)`, where $x$ is the value of the random variable (between 0 and n), $n$ is the number of trials, and p is the probability of success. For instance, the following script calculate the probability of 4 successes out of 20 trials with probability $p=0.2$:
+
+```{webr-r}
+n <- 20
+p <- 0.2
+dbinom(4,n,p)
+```
+
+The script below calculates the probabilities of all of the possible values of the random variable by substituting the vector of these values (e.g. 0 to 20) instead of the number 1, generating the probability distribution vector. This vector is plotted vs. the values of the random variable using the `barplot()` function, producing an aesthetically pleasing plot of the binomial distribution. The script plots two binomial probability distributions, both with $n=20$, the first with $p=0.2$ and the second with $p=0.6$. To add values to the x axis one needs the option `names.arg` assigned the vector of values, the axis labels in `barplot` use the same options we saw before (`xlab` and `ylab`), and the main option produces a title above each plot.
+
+```{webr-r}
+values.vec <- 0:n
+prob.dist <- dbinom(values.vec,n,p)
+barplot(prob.dist, names.arg=values.vec, xlab='binomial RV',ylab='probability',
+main='binom dist with n=20 and p=0.2')
+p<-0.6
+prob.dist <- dbinom(values.vec,n,p)
+barplot(prob.dist, names.arg=values.vec, xlab='binomial RV',ylab='probability',
+main='binom dist with n=20 and p=0.6')
+```
+
+### Exercises
+
+The following exercises ask you to perform computational tasks using R. Type your code in the box below and try to do the task on your own before clicking on the Answer or Hint boxes to expand them.
+
+1.  Use the `sample()` function to generate a sample of 10 random numbers out of 20 integers (from 1 to 20) without replacement, assign it to variable `sample_vec` and print it out.
+
+```{webr-r}
+
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+First line should contain assignment `<-`; second line should have `print(sample_vec)`
+:::
+
+2.  Use the `sample()` function to generate a sample of 20 random numbers of out 20 integers (from 1 to 20) with replacement, assign it to variable `sample_vec` and print it out.
+
+```{webr-r}
+
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Add `replace=TRUE` to the `sample()` function call; second line should have `print(sample_vec)`
+:::
+
+3.  Use the `rbinom()` function to generate a sample of 20 random numbers of successes/wins out of 12 trials with probability of success in one trial of 0.4, assign it to variable `binom_vec` and print it out.
+
+```{webr-r}
+
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Remember the order of inputs into the function `rbinom()`: the number of random values is the number of batches of trials (first input), the number of trials is the size of each batch (second input). The second line should have print(binom_vec).
+:::
+
+4.  Use the `rbinom()` function to generate a sample of 12 random numbers of successes/wins out of 20 trials, with probability of success in one trial of 0.4, assign it to variable `binom_vec` and print it out.
+
+```{webr-r}
+
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Remember the order of inputs into the function `rbinom()`: the number of random values is the number of batches of trials (first input), the number of trials is the size of each batch (second input). The second line should have print(binom_vec).
+:::
+
+## Logical values and calculations
+
+### logical tests
+
+A logical test is an operation that returns either `TRUE` or `FALSE` (called *Boolean* values.) Here are several examples:
+
+```{webr-r}
+x <- 4
+y <- 10
+print(x>y)
+print(y>x)
+print(y==x)
+```
+
+Please note that to ask the question "are x and y equal" the use of double equal signs is required, because a single equal sign means variable assignment.
+
+Logical tests can be applied to entire vectors all at once. For example, let us assign a vector variable x and compare all of its values to 5:
+
+```{webr-r}
+x<-0:10
+print(x>5)
+```
+
+The first six values of x are not greater than 5, while the last five are greater than 5, which is indicated by the Boolean output of the test.
+
+### calculations using Boolean vectors
+
+Boolean values are distinct from other types of values, such as character strings or numbers. However, in R they can be used as numbers for computational purposes, with `FALSE` converting to 0 and `TRUE` converting to 1. This allows for convenient counting of the tests performed on large vectors. For instance, we can use the uniform number generator for integers between 0 and 20, to generate a vector of 10 values, and then ask how many of those values are less than 10 by using `sum()`, which will count the number of TRUE values:
+
+```{webr-r}
+xvals <- sample(1:20,10, replace = TRUE)
+print(xvals < 10)
+print(paste("The number of random numbers below 10 is", sum(xvals < 10)))
+```
+
+### logical operators: AND and OR
+
+One can combine logical values in two common ways: using the AND operator and the OR operator. The AND operator asks whether both statements are true, while the OR operator asks if at least one statement is true. R uses the `&` symbol for AND to determine whether is true that x is greater than 1 AND than y is less than 5:
+
+```{webr-r}
+x<- 10
+y<- 2
+print(x>1&y<5)
+```
+
+If we change the value of y so it is greater than five, than the logical `&` operator will be false:
+
+```{webr-r}
+x<- 10
+y<- 10
+print(x>1&y<5)
+```
+
+The OR operator uses the symbol `|` and in the following example it is true because one of the logical statements is true:
+
+```{webr-r}
+x<- 10
+y<- 10
+print(x>1|y<5)
+```
+
+Only if both statements are false, the logical OR is false:
+
+```{webr-r}
+x<- 0
+y<- 10
+print(x>1|y<5)
+```
+
+Both `&` and `|` can be applied to vectors of Booleans, where they apply their logical operations to each corresponding element. For example, if x is a vector of integers from 0 to 10, one can ask how many of those values are both above 1 and below 5:
+
+```{webr-r}
+x<- 0:10
+print(x>1&x<5)
+print(sum(x>1&x<5))
+```
+
+### Exercises:
+
+1.  Generate a sample of 100 values from the uniform distribution between 1 and 20 with replacement, assign it to vector `sample_vec` and use `sum()` to calculate how many of them are equal to 20 and print out that number.
+
+```{webr-r}
+
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Check the inputs into the function `sample()`; the second line should use the logical test `==`
+:::
+
+2.  Generate a sample of 20 values from the binomial distribution with p=0.4 and n=5, assign it to vector `binom_vec` and use `sum()` to calculate how many of them are greater than 1 and print out that number.
+
+```{webr-r}
+
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Check the inputs into the function `rbinom()`; the second line should use the logical test `>`
+:::
+
+3.  Generate a sample of 20 values from the binomial distribution with p=0.4 and n=5 and calculate how many of them are BOTH above 1 AND below 4.
+
+```{webr-r}
+
+```
+
+::: {.callout-caution collapse="true"}
+## Hint
+
+Check the inputs into the function `rbinom()`; the second line should use the conjunction `&` to combine two logical tests
+:::
