@@ -20,42 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -393,14 +378,18 @@ window.Quarto = {
 <h2 data-number="2.1" class="anchored" data-anchor-id="mutations-and-their-rates"><span class="header-section-number">2.1</span> Mutations and their rates</h2>
 <p></p>
 <p>All Earth-based lifeforms receive an inheritance from their parent(s): a string of deoxyribonucleic acids ( <em>DNA</em>) called the genetic sequence, or <em>genome</em> of an individual. The information to produce all the necessary components to build and run the organism is encoded in the sequence of the four different <em>nucleotides</em>: adenine, thymine, guanine, and cytosine (abbreviated as A, T, G, C). Different parts of the genome play different roles; some discrete chunks called <em>genes</em> contain the instructions to build <em>proteins</em>, the workhorses of biology. To make a protein from a gene, the information is transcribed from DNA into messenger ribonucleic acid ( <em>mRNA</em>), which is then translated into a string of <em>amino acids</em> which constitute the protein. The genetic code determines the translation, using three nucleic acids in DNA and RNA to represent a single amino acid in a protein. Thus, a sequence of DNA results in a specific sequence of amino acids, which determine the structure and function of the protein.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="ch3/Point_mutations-en.png" class="img-fluid figure-img"></p>
-<figcaption>Different types of substitution point mutations are distinguished by their effects on the gene products; image by Jonsta247 in public domain via Wikimedia Commons.</figcaption>
+<div id="fig-ch3-mutation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ch3-mutation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="ch3/Point_mutations-en.png" class="img-fluid figure-img" style="width:5in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ch3-mutation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Different types of substitution point mutations are distinguished by their effects on the gene products; image by Jonsta247 in public domain via Wikimedia Commons.
+</figcaption>
 </figure>
 </div>
-<p>The above processes involve copying and transferring information. As we know from experience, copying information inevitably means introducing errors. This is particularly important when passing information from parent to offspring, because then an entire organism has to develop and live based on a faulty blueprint. Changes introduced in the genome of an organism are called <em>mutations</em>, and they can be caused either by errors in copying DNA when making a new cell (replication) or through damage to DNA through physical means (e.g.&nbsp;ionizing radiation) or chemical mechanisms (e.g.&nbsp;exogenous molecules that react with DNA). The simplest mutation involve a single nucleotide and are called <em>point mutations</em>. A nucleotide may be deleted, an extra nucleotide inserted, or a new one substituted instead: the three different types of substitution mutations are shown in figure <span class="math inline">\(\ref{fig:ch3_mutation}\)</span>. Large-scale mutations may involve whole chunks of the genome that are cut out and pasted in a different location, or copied and inserted in another position, but they are typically much more rare than point mutations.</p>
-<p>Mutations can have different effects on the mutant organism, although acquisition of super-powers has not been observed. Usually, point mutations have either little observable effect or a negative effect on the health of the mutant. A classic example is <em>sickle-cell disease</em>, in which the molecules of the protein hemoglobin, responsible for carrying oxygen in the blood from the lungs to the tissues, tends to stick together and clump, resulting in sickle-shaped red blood cells. The disease is caused by a single substitution mutation in the gene that codes for one of the two components of hemoglobin, called <span class="math inline">\(\beta\)</span>-globin. The substitution of a single nucleotide in the DNA sequence changes one amino acid in the protein from glutamate to valine, which causes the proteins to aggregate. This <em>missense</em>}* mutation (see figure <span class="math inline">\(\ref{fig:ch3_mutation}\)</span>) is carried by a fraction of the human population, and those who inherit the allele <em>allele</em> from both parents develop the painful and sometimes deadly disease. Such mutations that are present in some but not all of a population are called <em>polymorphisms</em>, to distinguish them from mutations that occurred in evolutionary lineages and differentiate species from each other.</p>
+<p>The above processes involve copying and transferring information. As we know from experience, copying information inevitably means introducing errors. This is particularly important when passing information from parent to offspring, because then an entire organism has to develop and live based on a faulty blueprint. Changes introduced in the genome of an organism are called <em>mutations</em>, and they can be caused either by errors in copying DNA when making a new cell (replication) or through damage to DNA through physical means (e.g.&nbsp;ionizing radiation) or chemical mechanisms (e.g.&nbsp;exogenous molecules that react with DNA). The simplest mutation involve a single nucleotide and are called <em>point mutations</em>. A nucleotide may be deleted, an extra nucleotide inserted, or a new one substituted instead: the three different types of substitution mutations are shown in <a href="#fig-ch3-mutation" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>. Large-scale mutations may involve whole chunks of the genome that are cut out and pasted in a different location, or copied and inserted in another position, but they are typically much more rare than point mutations.</p>
+<p>Mutations can have different effects on the mutant organism, although acquisition of super-powers has not been observed. Usually, point mutations have either little observable effect or a negative effect on the health of the mutant. A classic example is <em>sickle-cell disease</em>, in which the molecules of the protein hemoglobin, responsible for carrying oxygen in the blood from the lungs to the tissues, tends to stick together and clump, resulting in sickle-shaped red blood cells. The disease is caused by a single substitution mutation in the gene that codes for one of the two components of hemoglobin, called <span class="math inline">\(\beta\)</span>-globin. The substitution of a single nucleotide in the DNA sequence changes one amino acid in the protein from glutamate to valine, which causes the proteins to aggregate. This <em>missense</em> mutation (see <a href="#fig-ch3-mutation" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>) is carried by a fraction of the human population, and those who inherit the allele <em>allele</em> from both parents develop the painful and sometimes deadly disease. Such mutations that are present in some but not all of a population are called <em>polymorphisms</em>, to distinguish them from mutations that occurred in evolutionary lineages and differentiate species from each other.</p>
 <p>One of the central questions of evolutionary biology is how frequently do mutations occur? Since mutations are generally undesirable, most living things have developed ways to minimize the frequency of errors in copying DNA, and to repair DNA damage. But although mutations are rare, they occur spontaneously in all organisms because molecular processes such as copying a DNA molecule are subject to random noise arising from thermal motion. So mutations are fundamentally a random process and we need to use <em>descriptive statistics</em> to analyze data with inherent randomness.</p>
 </section>
 <section id="describing-data-sets" class="level2" data-number="2.2">
@@ -410,26 +399,14 @@ window.Quarto = {
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="central-value-of-a-data-set"><span class="header-section-number">2.2.1</span> central value of a data set</h3>
 <p>A data set is a collection of measurements. These measurements can come from many kinds of sources, and can represent all sorts of quantities. One big distinction is between numerical and categorical data sets. <em>Numerical</em> data sets contain numbers, either integers or real numbers. Some examples: number of individuals in a population, length, blood pressure, concentration. <em>Categorical</em> data sets may contain numbers, symbols, or words, limited to a discrete, usually small, number of values. The word categorical is used because this kind of data corresponds to categories or states of the subject of the experiment. Some examples: genomic classification of an individual on the basis of one locus (e.g.&nbsp;wild type or mutant), the state of an ion channel (open or closed), the stage of a cell in the cell cycle.</p>
 <p>A data set contains more than one measurement, the number of them is called the size of the data set and is usually denoted by the letter <span class="math inline">\(n\)</span>. To describe a data set numerically, one can use numbers called <em>statistics</em> (not to be confused with the branch of science of the same name). The most common statistics aim to describe the central value of the data set to represent a typical measurement. If you order all of the measurements from highest to lowest and then take the the middle value, you have found the <em>median</em> (if there is an even number of values, take the average between the middle two). Precisely half of the data values are less than the median and the other half are greater, so it represents the true “middle” value of the measurement. Note that the median can be calculated either for numerical or categorical data, as long as the categories can be ordered in some fashion.</p>
-<p>The value that occurs most frequently in the data set is called its . For some data sets, particularly those which are symmetric, the mode coincides with the mean (see next paragraph) and the median, but for many others it is distinct. The mode is the most visual of the three statistics, as it can be picked out from the histogram plot of a data set (which is described in subsection 3.2.3) as the value corresponding to the maximum frequency. The mode can also be used for both categorical and numerical data.</p>
+<p>The value that occurs most frequently in the data set is called its <em>mode</em>. For some data sets, particularly those which are symmetric, the mode coincides with the mean (see next paragraph) and the median, but for many others it is distinct. The mode is the most visual of the three statistics, as it can be picked out from the histogram plot of a data set (which is described in subsection 3.2.3) as the value corresponding to the maximum frequency. The mode can also be used for both categorical and numerical data.</p>
 <p>The average or <em>mean</em> of a data set is the sum of all the values divided by the number of values. It is also called the <em>expected value</em> (particularly in the context of probability, which we will discuss later) because it allows to simply predict the sum of a large number of measurements with a given mean, by multiplying the mean by the number. The mean can be calculated only for a numerical data set, since we cannot add non-numerical values.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <em>mean</em> of a data set <span class="math inline">\(X\)</span>, also known as the average or the arithmetic mean is usually indicated with a bar over the variable symbol, and defined as the sum of the values divided by the number of values:</p>
-</div>
-</div>
-<p><span class="math display">\[\begin{equation}
+<div id="def-sample-mean" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2.1</strong></span> The <em>mean</em> of a data set <span class="math inline">\(X\)</span>, also known as the average or the arithmetic mean is usually indicated with a bar over the variable symbol, and defined as the sum of the values divided by the number of values: <span class="math display">\[
   \bar X  = \frac{1}{n} \sum_{i=1}^n x_i
-\label{eq:ch3_mean_def}
-\end{equation}\]</span></p>
-<p>The mean, unlike the median, is not the middle value of the data set, instead it represents the <em>center of mass</em> of the measured values . Another way of thinking of the mean is as a <strong>weighted sum of the values in the data set</strong>. The weights represent the frequency of occurrence of each numeric value in the data set, which we will further discuss in subsection 3.2.3.</p>
+\]</span> </p>
+</div>
+<p>The mean, unlike the median, is not the middle value of the data set, instead it represents the <em>center of mass</em> of the measured values <span class="citation" data-cites="whitlock_analysis_2008">Whitlock and Schluter (<a href="references.html#ref-whitlock_analysis_2008" role="doc-biblioref">2008</a>)</span>. Another way of thinking of the mean is as a <strong>weighted sum of the values in the data set</strong>. The weights represent the frequency of occurrence of each numeric value in the data set, which we will further discuss in subsection 3.2.3.</p>
 <p>The mean is the most frequently used statistic, but it is not always interpreted correctly. Very commonly the mean is reported as the most representative value of a data set, but that is often misleading. Here are at least two situations in which the mean can be tricky: 1) data sets with a small number of discrete values; 2) data sets with outliers, or isolated numbers very far from the mean.</p>
 <p><strong>Examples of misleading means.</strong> Mean quantities for data sets with a few quantities are not the typical value, such as in the number of children born in a year per individual, also known as the birth rate. The birth rate per year in 2013 for both the United States and Russia is 1.3% per person, but you will have to look for a long time to find any individual who gave birth to 1.3% of a child. While this point may be obvious, it is often overlooked when interpreting mean values.</p>
 <p>Outliers are another source of trouble for means. For example, a single individual (let’s call him or her B.G.) with a wealth of $50 billion moves into a town of 1000 households with average wealth of $100,000. Although none of the original residents’ assets have changed, the mean wealth of the town improves dramatically, as you can calculate in one of the exercises at the end of the chapter. One can site the improved per capita (per individual) in the town as evidence of economic growth, but that is obviously misleading. In cases with such dramatic outliers, the median is more informative as representation of a typical value of the data set.</p>
@@ -445,7 +422,7 @@ window.Quarto = {
 <li><p>Data set of ages of fathers at birth for five individuals: {22, 23, 25, 36, 40}.</p></li>
 <li><p>Data set of the number of new mutations found on maternal chromosomes for five individuals: {9, 10, 11, 26, 15}.</p></li>
 <li><p>Data set of the number of new mutations found on paternal chromosomes for five individuals: {39, 43, 51, 53, 91}.</p></li>
-<li><p>Consider the hypothetical town with 1000 households with mean and median wealth of $100,000 and one person with assets for $50 billion. Calculate the mean value of the combined data set, and compare it to the new median value.</p></li>
+<li><p>Consider the hypothetical town with 1000 households with mean and median wealth of $100,000 and one person with assets for $100 billion. Calculate the mean value of the combined data set, and compare it to the new median value.</p></li>
 <li><p>Suppose you’d like to add a new observation to a data set; e.g.&nbsp;the 6-th largest metropolitan area (Philadelphia) to the tuberculosis incidence data set, which is 3.0. Calculate the mean of the 6-values data set, without using the 5 values in the original data set, but only using the mean of the 5-value data set and the new value. Generalize this to calculating the sample mean for any <span class="math inline">\(n\)</span>-value data set, given the mean of the <span class="math inline">\(n-1\)</span> values, plus one new value.</p></li>
 </ol>
 </section>
@@ -453,22 +430,11 @@ window.Quarto = {
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="spread-of-a-data-set"><span class="header-section-number">2.2.3</span> spread of a data set</h3>
 <p>The center of a data set is obviously important, but so is the spread around the center. Sometimes the spread is caused by noise or error, for example in a data set of repeated measurements of the same variable under the same conditions. Other times the variance is due to real changes in the system, or due to inherent randomness of the system, and the size of the spread, as well as the shape of the histogram are important for understanding the mechanism. The simplest way to describe the spread of a numerical data set is to look at the difference between the maximum and minimum values, called the <em>range</em>. However, it is obviously influenced by outliers, since the extreme values are used. To describe the typical spread, we need to use all the values in the data set, and see how far each one is from the center, measured by the mean.</p>
 <p>There is a problem with the naive approach: if we just add up all the differences of data values from the mean, the positives will cancel the negatives, and we’ll get an artificially low spread. One way to correct this is to take the absolute value of the differences before adding them up. However, for somewhat deep mathematical reasons, the standard measure of spread uses not absolute values, but squares of the differences, and then divides that sum not by the number of data points <span class="math inline">\(n\)</span> but by <span class="math inline">\(n-1\)</span>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <em>variance</em> of a data set <span class="math inline">\(X\)</span> with <span class="math inline">\(n\)</span> values is the sum of the squared differences of each value of the variable from the mean, divided by <span class="math inline">\(n-1\)</span>:</p>
-</div>
-</div>
-<p><span class="math display">\[\begin{equation}
+<div id="def-sample-variance" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2.2</strong></span> The <em>variance</em> of a data set <span class="math inline">\(X\)</span> with <span class="math inline">\(n\)</span> values is the sum of the squared differences of each value of the variable from the mean, divided by <span class="math inline">\(n-1\)</span>: <span class="math display">\[
 Var(X) = \frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2
-\end{equation}\]</span></p>
+\]</span></p>
+</div>
 <p>The variance is a sum of square differences, so its dimension is the square of the dimensions of the measurements in <span class="math inline">\(X\)</span>. In order to obtain a measure of the spread comparable to the values of <span class="math inline">\(X\)</span>, we take the square root of variance and call it the <em>standard deviation</em> of the data set <span class="math inline">\(X\)</span>:</p>
 <p><span class="math display">\[\begin{equation}
 \sigma(X) = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2}
@@ -494,26 +460,26 @@ Var(X) = \frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2
 <h3 data-number="2.2.5" class="anchored" data-anchor-id="describing-data-sets-in-graphs"><span class="header-section-number">2.2.5</span> describing data sets in graphs</h3>
 <p>Data sets can be presented visually to indicate the frequency of different values. This can be done in a number of ways, depending on the kind of data set. For a data set with only a few values, e.g.&nbsp;a categorical data set, a good way to represent it is with a pie chart. Each category is represented by a slice of the pie with the area of the same share of the pie as the fraction of the data set in the category. There is some evidence, however, that pie charts can be misleading to the eye, so R does not recommend using them.</p>
 <p>For a numerical data set it is useful to plot the frequencies of a range of values, which is called a <em>histogram</em>. Its independent axis has the values of the data variable, and the dependent axis has the frequency of those values. If the data set consists of real numbers that range across an interval, that interval is divided into subintervals (usually of equal size), called bins, and the number of measurements in each bin is indicated on the y-axis. In order to be visually informative, there should be a reasonable number (usually no more than a few dozen, although it varies) of bins. The most frequent measurements are represented as the highest bars or points on the histogram. Histograms can denote either the counts of measurements in each bin, or to show the fraction of the total number of measurements in each bin. The only difference between those two kinds of histogram is the scale of the y-axis, and, confusingly, both can be called frequencies.</p>
-<div class="cell" data-layout-align="center">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-ch3-bacillus" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-ch3-bacillus" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-ch3-bacillus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="descriptive_files/figure-html/fig-ch3-bacillus-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+<img src="descriptive_files/figure-html/fig-ch3-bacillus-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ch3-bacillus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.1: Length of bacteria Bacillus subtilis measured under the microscope as discrete values with step of 0.5; data from citep{watkins-intro-stats}
+Figure&nbsp;2.2: Length of bacteria Bacillus subtilis measured under the microscope as discrete values with step of 0.5; data from <span class="citation" data-cites="watkins-intro-stats">(<a href="references.html#ref-watkins-intro-stats" role="doc-biblioref"><strong>watkins-intro-stats?</strong></a>)</span>
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>A histogram of the measured lengths of the bacterium <em>Bacillus subtilis</em> is shown in figure <span class="math inline">\(\ref{fig:ch3_bacillus}\)</span>. The data set was measured in increments in half a micron, with numbers varying between 1.5 and 4.5 microns. The histogram shows that the most common measurement (the mode) is 2 <span class="math inline">\(\mu m\)</span>. Adding up all of the frequencies in the histogram tells us that there are approximately 200 total values in the data set. This allows us to find the median value by counting the frequencies of the first few bins until we get to 100 (the median point), which resides in the bin for 2.5 <span class="math inline">\(\mu m\)</span>. It is a little bit more difficult to estimate the mean, but it should be clear that the center of mass of the histogram is also near 2.5 (it is actually 2.49). Finally, the hardest task is estimating the spread of the data set, such as the the standard deviation, based on the histogram. The range of the data set is <span class="math inline">\(4.5-1.5 = 3\)</span>, so we know for sure that it is less than 1.5. The histogram shows that the deviations from the mean value of 2.5 range from 2 (rarely) to 0.5 (most prevalent). This should give you an idea that the weighted average of the deviations is less than 1. Indeed, the correct standard deviation is about 0.67.</p>
-<p>There are different ways of plotting data sets that have more than one variable. For instance, a data set measured over time is called a time series. If the values are plotted with the corresponding times on the x-axis, then it is called a <em>time plot</em>. This is useful to show the changes of the values of your variable over time. If the data set doesn’t undergo any significant changes over time, it makes more sense to represent it as a pie chart or histogram. More generally, one may plot two variables measured together on a single plot, which is called a <em>scatterplot</em>. We will explore such plots and the relationships between two measured variables in chapter 4.</p>
+<p>A histogram of the measured lengths of the bacterium <em>Bacillus subtilis</em> is shown in <a href="#fig-ch3-bacillus" class="quarto-xref">Figure&nbsp;<span>2.2</span></a>. The data set was measured in increments in half a micron, with numbers varying between 1.5 and 4.5 microns. The histogram shows that the most common measurement (the mode) is 2 <span class="math inline">\(\mu m\)</span>. Adding up all of the frequencies in the histogram tells us that there are approximately 200 total values in the data set. This allows us to find the median value by counting the frequencies of the first few bins until we get to 100 (the median point), which resides in the bin for 2.5 <span class="math inline">\(\mu m\)</span>. It is a little bit more difficult to estimate the mean, but it should be clear that the center of mass of the histogram is also near 2.5 (it is actually 2.49). Finally, the hardest task is estimating the spread of the data set, such as the the standard deviation, based on the histogram. The range of the data set is <span class="math inline">\(4.5-1.5 = 3\)</span>, so we know for sure that it is less than 1.5. The histogram shows that the deviations from the mean value of 2.5 range from 2 (rarely) to 0.5 (most prevalent). This should give you an idea that the weighted average of the deviations is less than 1. Indeed, the correct standard deviation is about 0.67.</p>
+<p>There are different ways of plotting data sets that have more than one variable. For instance, a data set measured over time is called a time series. If the values are plotted with the corresponding times on the x-axis, then it is called a <em>time plot</em>. This is useful to show the changes of the values of your variable over time. If the data set doesn’t undergo any significant changes over time, it makes more sense to represent it as a pie chart or histogram. More generally, one may plot two variables measured together on a single plot, which is called a <em>scatter plot</em>. We will explore such plots and the relationships between two measured variables in chapter 4.</p>
 </section>
 <section id="exercises-2" class="level3" data-number="2.2.6">
 <h3 data-number="2.2.6" class="anchored" data-anchor-id="exercises-2"><span class="header-section-number">2.2.6</span> Exercises</h3>
-<p>Answer the following questions, based on the histograms in figure <span class="math inline">\(\ref{fig:ch3_mut}\)</span> (mutation data) and in figure <span class="math inline">\(\ref{fig:ch3_HR}\)</span> (heart rate data).</p>
+<p>Answer the following questions, based on the histograms in <a href="#fig-ch2-HR" class="quarto-xref">Figure&nbsp;<span>2.3</span></a> (mutation data) and in <a href="#fig-ch2-mut" class="quarto-xref">Figure&nbsp;<span>2.4</span></a> (heart rate data).</p>
 <ol type="1">
 <li><p>How many people in the mutation data have fathers either younger than 20 or older than 40? How many have more than 80 new mutations? </p></li>
 <li><p>Estimate the median and mean of the two variables in the mutation data set.</p></li>
@@ -522,63 +488,83 @@ Figure&nbsp;2.1: Length of bacteria Bacillus subtilis measured under the microsc
 <li><p>Estimate the median and mean of the two variables in the heart rate data set.</p></li>
 <li><p>State the range of each data set, and estimate the standard deviation of the two variables in the heart rate data set.</p></li>
 </ol>
-<div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_data<span class="ot">&lt;-</span><span class="fu">read.table</span>(<span class="st">'data/HR_temp.txt'</span>, <span class="at">header=</span><span class="cn">TRUE</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(my_data<span class="sc">$</span>HR,<span class="at">col=</span><span class="st">'gray'</span>,<span class="at">main=</span><span class="st">'Heart rate data'</span>, <span class="at">xlab=</span><span class="st">'heart rate (bpm)'</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(my_data<span class="sc">$</span>Temp,<span class="at">col=</span><span class="st">'gray'</span>,<span class="at">main=</span><span class="st">'Body temperature data'</span>, <span class="at">xlab=</span> <span class="st">'temperature (F)'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div id="fig-ch3-HR-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<div id="fig-ch2-HR" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ch3-HR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="descriptive_files/figure-html/fig-ch3-HR-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+<div aria-describedby="fig-ch2-HR-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ch2-HR" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ch2-HR-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ch2-HR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="descriptive_files/figure-html/fig-ch2-HR-1.png" class="img-fluid figure-img" data-ref-parent="fig-ch2-HR" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ch3-HR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.2: Histograms of heart rates and body temperatures
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ch2-HR-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Heart rates
 </figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display">
-<div id="fig-ch3-HR-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ch3-HR-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="descriptive_files/figure-html/fig-ch3-HR-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ch2-HR" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ch2-HR-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ch2-HR-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="descriptive_files/figure-html/fig-ch2-HR-2.png" class="img-fluid figure-img" data-ref-parent="fig-ch2-HR" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ch3-HR-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.3: Histograms of heart rates and body temperatures
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ch2-HR-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Body temperatures
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div id="fig-ch3-mut-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ch3-mut-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="descriptive_files/figure-html/fig-ch3-mut-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ch3-mut-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.4: Histograms of paternal ages and the number of new mutations from 73 families; data from citep{kong_rate_2012}
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ch2-HR-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.3: Histograms of different numeric variables
+</figcaption>
+</figure>
+</div>
+<div id="fig-ch2-mut" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ch2-mut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ch2-mut" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ch2-mut-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ch2-mut-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="descriptive_files/figure-html/fig-ch2-mut-1.png" class="img-fluid figure-img" data-ref-parent="fig-ch2-mut" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ch2-mut-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Paternal ages
 </figcaption>
 </figure>
 </div>
 </div>
-<div class="cell-output-display">
-<div id="fig-ch3-mut-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-ch3-mut-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="descriptive_files/figure-html/fig-ch3-mut-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+<div class="cell-output-display quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-ch2-mut" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-ch2-mut-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-ch2-mut-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="descriptive_files/figure-html/fig-ch2-mut-2.png" class="img-fluid figure-img" data-ref-parent="fig-ch2-mut" width="672">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ch3-mut-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.5: Histograms of paternal ages and the number of new mutations from 73 families; data from citep{kong_rate_2012}
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-ch2-mut-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) New mutations
 </figcaption>
 </figure>
 </div>
 </div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ch2-mut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.4: Histograms of different numeric variables
+</figcaption>
+</figure>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-whitlock_analysis_2008" class="csl-entry" role="listitem">
+Whitlock, Michael C., and Dolph Schluter. 2008. <em>The <span>Analysis</span> of <span>Biological</span> <span>Data</span></em>. First Edition, 1st Edition edition. Greenwood Village, Colo: Roberts; Company Publishers.
+</div>
+</div>
 </section>
 </section>
 

@@ -47,7 +47,7 @@ For each biological model below determine the dimensions of the parameters, base
 
 6.  Michaelis-Menten model of enzyme kinetics, $v$ is reaction rate (1/time) and $S$ is substrate concentration: $$ v(S) = \frac{v_{max} S}{K_m + S}$$
 
-7.  Logistic model of population growth, $P$ is population size and time $t$: $$ P(t) = \frac{A e^{kt}}{1 + B(e^{kt} -1)} $$
+7.  Logistic model of population growth, $P$ is population size and time $t$: $$ P(t) = \frac{A}{1 + Be^{-rt}} $$
 
 ## Functions and their graphs {#sec:math2}
 
@@ -73,9 +73,7 @@ Below you will find examples of fundamental functions used in biological models 
 
 The reader is probably familiar with linear and exponential functions from algebra courses. However, they are so commonly used that it is worth going over them to refresh your memory and perhaps to see them from another perspective.
 
-::: callout-note
-## Definition
-
+::: {#def-lin-funk}
 A *linear function* $f(x)$ is one for which the difference in two function values is the same for a specific difference in the independent variable.
 :::
 
@@ -85,17 +83,13 @@ $$ f(x_1 + \Delta x) - f(x_1) = f(x_2 + \Delta x) - f(x_2) $$
 
 The general form of the linear function is written as follows:
 
-```{=tex}
-\begin{equation}
+$$
 f(x) = ax + b
-\label{eq:linear_funk}
-\end{equation}
-```
+$$ {#eq-lin-funk}
+
 The function contains two parameters: the \index{slope!linear function}\index{linear!slope} slope $a$ and the \index{y-intercept!linear function} y-intercept $b$. The graph of the linear function is a line (hence the name) and the slope $a$ determines its steepness. A positive slope corresponds to the graph that increases as $x$ increases, and a negative slope corresponds to a declining function. At $x=0$, the function equals $b$, and as $x \to \infty$, the function approaches positive infinity if $a>0$, and approaches negative infinity if $a<0$.
 
-::: callout-note
-## Definition
-
+::: {#def-exp-funk}
 An *exponential function* $f(x)$ is one for which the ratio of two function values is the same for a specific difference in the independent variable.
 :::
 
@@ -103,13 +97,11 @@ Mathematically speaking, this can be written as follows for any two values of th
 
 Exponential functions can be written using different symbolic forms, but they all have a constant base with the variable $x$ in the exponent. I prefer to use the constant $e$ (base of the natural logarithm) as the base of all the exponential functions, for reasons that will become apparent in chapter 15. This does not restrict the range of possible functions, because any exponential function can be expressed using base $e$, using a transformation: $a^x = e^{x \ln(a)}$. So let us agree to write exponential functions in the following form:
 
-```{=tex}
-\begin{equation}
+$$
  f(x) = a e^{rx}
-\label{eq:exp_funk}
-\end{equation}
-```
-The function contains two parameters: the \index{exponential!rate constant}\emph{rate constant} $r$ and the multiplicative constant $a$. The graph of the exponential function is a curve which crosses the y-axis at $y=a$ (plug in $x=0$ to see that this is the case). As $x$ increases, the behavior of the graph depends on the sign of the rate constant $r$. If $r>0$, the function approaches infinity (positive if $a>0$, negative if $a<0$) as $x \to \infty$. If $r<0$, the function decays at an ever-decreasing pace and asymptotically approaches zero as $x \to \infty$. Thus the graph of $f(x)$ is a curve either going to infinity or a curve asymptotically approaching 0, and the steepness of the growth or decay is determined by $r$.
+$$ {#eq-exp-funk}
+
+The function contains two parameters: the \index{exponential!rate constant} *rate constant* $r$ and the multiplicative constant $a$. The graph of the exponential function is a curve which crosses the y-axis at $y=a$ (plug in $x=0$ to see that this is the case). As $x$ increases, the behavior of the graph depends on the sign of the rate constant $r$. If $r>0$, the function approaches infinity (positive if $a>0$, negative if $a<0$) as $x \to \infty$. If $r<0$, the function decays at an ever-decreasing pace and asymptotically approaches zero as $x \to \infty$. Thus the graph of $f(x)$ is a curve either going to infinity or a curve asymptotically approaching 0, and the steepness of the growth or decay is determined by $r$.
 
 ```{r}
 #| label: fig-ch2-funk1
@@ -138,9 +130,9 @@ Answer the questions below, some of which refer to the function graphs in @fig-c
 
 2.  Which of the exponential graphs in the second figure corresponds to $f(x) = 0.1e^{0.5x}$ and which corresponds to $f(x) = 12e^{-0.2x}$? State which parameter allows you to connect the function with its graph and explain why.
 
-3.  Demonstrate algebraically that a linear function of the form given in equation \ref{eq:linear_funk} satisfies the property of linear functions from definition \ref {def:ch2_linfunk}.
+3.  Demonstrate algebraically that a linear function of the form given in equation @eq-lin-funk satisfies the property of linear functions from @def-lin-funk.
 
-4.  Demonstrate algebraically that an exponential function of the form given in equation \ref{eq:exp_funk} satisfies the property of exponential functions from definition \ref {def:ch2_expfunk}.
+4.  Demonstrate algebraically that an exponential function of the form given in equation @eq-exp-funk satisfies the property of exponential functions from definition @def-exp-funk.
 
 5.  Modify the exponential function by adding a constant term to it $f(x) = a e^{rx} + b$. What is is the value of this function at $x=0$?
 
@@ -148,49 +140,120 @@ Answer the questions below, some of which refer to the function graphs in @fig-c
 
 7.  How does the function $f(x) = a e^{rx} + b$ behave as $x \to \infty$ if $r<0$?
 
-### rational and logistic functions
+### rational and Hill functions
 
-Let us now turn to more complex functions, made up of simpler components that we understand. Consider a ratio of two polynomials, called a \index{function!rational} rational function. The general form of such functions can be written down as follows, where ellipsis stands for terms with powers lower than $n$ or $m$: \begin{equation}
+Let us now turn to more complex functions, made up of simpler components that we understand. Consider a ratio of two polynomials, called a \index{function!rational} rational function. The general form of such functions can be written down as follows, where ellipsis stands for terms with powers lower than $n$ or $m$:
+
+$$
  f(x) = \frac{a_0 + ... + a_n x^n}{b_0 + ... + b_m x^m}
 \label{eq:rational_funk}
-\end{equation} The two polynomials may have different degrees (highest power of the terms, $n$ and $m$), but they are usually the same in most biological examples. The reason is that if the numerator and the denominator are "unbalanced", one will inevitably overpower the other for large values of $x$, which would lead to the function either increasing without bound to infinity (if $n>m$) or decaying to zero (if $m>n$). There's nothing wrong with that, mathematically, but rational functions are most frequently used to model quantities that approach a nonzero asymptote for large values of the independent variable.
+$$
 
-For this reason, let us assume $m=n$ and consider what happens as $x \to \infty$. All terms other than the highest-order terms become very small in comparison to $x^n$ (this is something you can demonstrate to yourself using R), and thus both the numerator and the denominator approach the terms with power $n$. This can be written using the mathematical limit notation $\lim_{x \to \infty}$ which describes the value that a function approaches when the independent variable increases without bound: $$  \lim_{x \to \infty} \frac{a_0 + ... + a_n x^n}{b_0 + ... + b_n x^n} = \frac{ a_n x^n}{ b_n x^n}  =  \frac{ a_n}{ b_n}  $$ Therefore, the function approaches the value of $a_n /b_n$ as $x$ grows.
+The two polynomials may have different degrees (highest power of the terms, $n$ and $m$), but they are usually the same in most biological examples. The reason is that if the numerator and the denominator are "unbalanced", one will inevitably overpower the other for large values of $x$, which would lead to the function either increasing without bound to infinity (if $n>m$) or decaying to zero (if $m>n$). There's nothing wrong with that, mathematically, but rational functions are most frequently used to model quantities that approach a nonzero asymptote for large values of the independent variable.
+
+For this reason, let us assume $m=n$ and consider what happens as $x \to \infty$. All terms other than the highest-order terms become very small in comparison to $x^n$ (this is something you can demonstrate to yourself using R), and thus both the numerator and the denominator approach the terms with power $n$. This can be written using the mathematical limit notation $\lim_{x \to \infty}$ which describes the value that a function approaches when the independent variable increases without bound: $$  
+\lim_{x \to \infty} \frac{a_0 + ... + a_n x^n}{b_0 + ... + b_n x^n} = \frac{ a_n x^n}{ b_n x^n}  =  \frac{ a_n}{ b_n} 
+$$ Therefore, the function approaches the value of $a_n /b_n$ as $x$ grows.
 
 Similarly, let us consider what happens when $x=0$. Plugging this into the function results in all of the terms vanishing except for the constant terms, so $$ f(0) =  \frac{ a_0}{ b_0} $$ Between 0 and infinity, the function either increases or decreases monotonically, depending on which value ($a_n /b_n$ or $a_0/b_0$) is greater. Two examples of plots of rational functions are shown in figure @fig-ch2_sigmoidal_plots, which shows graphs increasing from 0 to 1. Depending on the degree of the polynomials in a rational function, it may increase more gradually (solid line) or more step-like (dashed line).
 
-\textbf{Example.} The following model, called the Hill equation \index{Hill equation}\index{model!Hill}, describes the fraction of receptor molecules which are bound to a ligand, which is a chemical term for a free molecule that binds to another, typically larger, receptor molecule. $\theta$ is the fraction of receptors bound to a ligand, $L$ denotes the ligand concentration, $K_d$ is the dissociation constant, and $n$ called the binding cooperativity \index{binding cooperativity} or Hill coefficient: $$ \theta = \frac{L^n}{ L^n +K_d}$$
+**Example.** The following model, called the Hill equation \index{Hill equation}\index{model!Hill}, describes the fraction of receptor molecules which are bound to a ligand, which is a chemical term for a free molecule that binds to another, typically larger, receptor molecule. $\theta$ is the fraction of receptors bound to a ligand, $L$ denotes the ligand concentration, $K_d$ is the dissociation constant, and $n$ called the binding cooperativity \index{binding cooperativity} or Hill coefficient: $$ \theta(L) = \frac{L^n}{ L^n +K_d}$$
 
-The Hill equation is a rational function, and \ref{fig:ch2_sigmoidal_plots} shows plots of the graphs of two such function in the right panel. This model is further explored in exercise 2.2.10.
-
-**Example.** A common model of population over time is the \index{function!logistic} logistic function. There are variations on how it is written down, but here is one general form: \begin{equation}
- f(x) = \frac{a e^{rx} }{b+e^{rx}}
-\label{eq:logistic_funk} 
-\end{equation}
-
-The numerator and denominator both contain exponential functions with the same power. If $r>0$ when $x \to \infty$, the denominator approaches $e^{rx}$, since it becomes much greater than $b$, and we can calculate: $$  \lim_{x \to \infty}  =  \frac{a e^{rx} }{e^{rx}} = a; \; \mathrm{if} \; r>0 $$
-
-On the other hand, if $r<0$, then the numerator approaches zero as $x \to \infty$, and so does the function $$  \lim_{x \to \infty}  =  \frac{0}{b} = 0; \; \mathrm{if} \; r<0 $$
-
-Notice that switching the sign of $r$ has the same effect as switching the sign of $x$, since they are multiplied. Which means that for positive $r$, if $x$ is extended to negative infinity, the function approaches 0. This is illustrated in the second plot in @fig-ch2_sigmoidal_plots , which shows two logistic functions increasing from 0 to a positive level, one with $a=20$ (solid line) and the second with $a=10$ (dashed line). The graph of logistic functions has a characteristic *sigmoidal* (S-shaped) shape, and its steepness is determined by the rate $r$: if $r$ is small, the curve is soft, if $r$ is large, the graph resembles a step function.
+The Hill equation is a rational function, and @fig-ch3-funk2 shows plots of the graphs of two such functions, and illustrated the effect of two of the parameters on the graphs. This model is further explored in exercise 2.2.10.
 
 ```{r}
-#| label: fig-ch2-funk2
+#| label: fig-ch3-funk2
 #| echo: false
-#| fig-cap: "Examples of functions with sigmoidal-shaped graphs"
+#| fig-cap: "Graphs of Hill functions $f(x) = x^n/(x^n +K)$"
 #| fig-subcap: 
-#|   - "Logistic functions"
-#|   - "Hill function"
+#|   - "Effect of parameter n, with K = 20"
+#|   - "Effect of parameter K, with n = 4"
 #| layout-ncol: 2
 
-curve(20*exp(0.5*x)/(1+exp(0.5*x)),-10,10,lwd=3,xlab='x', ylab='f(x)',cex.axis=1.5,cex.lab=1.5)
-curve(10*exp(1.5*x)/(1+exp(1.5*x)),lwd=3,lty=2,add=TRUE)
-leg.txt <- c("A=20, B=1, r=0.5", "A=10, B=1, r=1.5")
-legend("topleft", leg.txt, cex=1.5)
-curve(x^2/(2+x^2),0,10,lwd=3,xlab='x', ylab='f(x)',cex.axis=1.5,cex.lab=1.5)
-curve(x^4/(10+x^4),lwd=3,lty=2,add=TRUE)
-leg.txt <- c("n=2, A=2","n=4, A=10")
-legend("bottomright", leg.txt, cex=1.5)
+n <- 4
+K <- 20
+leg.txt <- paste("n=",n)
+curve(x^n/(K+x^n),0,20,lwd=3,xlab='x', ylab='f(x)',cex.axis=1.5,cex.lab=1.5)
+n <- 3
+leg.txt <- c(leg.txt, paste("n=", n))
+curve(x^n/(K+x^n),0,20,lwd=3,lty=2,add=TRUE)
+n <- 2
+leg.txt <- c(leg.txt, paste("n=", n))
+curve(x^n/(K+x^n),0,20,lwd=3,lty=3,add=TRUE)
+legend("bottomright", leg.txt, cex=1.5, lty=1:3)
+
+
+n<-4
+K<-20
+leg.txt <- paste("K=", K)
+curve(x^n/(K+x^n),0,10,lwd=3,xlab='x', ylab='f(x)',cex.axis=1.5,cex.lab=1.5)
+K<-10
+leg.txt <- c(leg.txt, paste("K=", K))
+curve(x^n/(K+x^n),0,10,lwd=3,lty=2,add=TRUE)
+K<-5
+leg.txt <- c(leg.txt, paste("K=", K))
+curve(x^n/(K+x^n),0,10,lwd=3,lty=3,add=TRUE)
+
+legend("bottomright", leg.txt, cex=1.5, lty=1:3)
+```
+
+### Logistic function
+
+A common model of population over time is the \index{function!logistic} logistic function. There are variations on how it is written down, but here is one general form:
+
+$$
+f(x) = \frac{A}{1+Be^{-rx}}
+\label{eq:logistic_funk} 
+$$
+
+The numerator and denominator both contain exponential functions with the same power. If $r>0$ when $x \to \infty$, the denominator approaches 1, since the exponential term decays to zero, and thus \$l: $$  
+\lim_{x \to \infty} \frac{A}{1+Be^{-rx}} = A; \; \mathrm{if} \; r>0 
+$$
+
+On the other hand, if $r<0$, the exponential term in the denominator grows to infinity and the ratio approaches zero: $$  \lim_{x \to \infty} \frac{A}{1+Be^{-rx}} =  0; \; \mathrm{if} \; r<0 $$
+
+Notice that switching the sign of $r$ has the same effect as switching the sign of $x$, since they are multiplied in the exponential term. Which means that for positive $r$, if $x$ is extended to negative infinity, the function approaches 0. This is illustrated in @fig-ch3-funk3, which shows the effect of change the constant $A$ and the rate constant $r$ on the plot of the logistic functions. The graph of logistic functions has a characteristic *sigmoidal* (S-shaped) shape, and its steepness is determined by the rate $r$: if $r$ is small, the curve is soft, if $r$ is large, the graph resembles a step function.
+
+```{r}
+#| label: fig-ch3-funk3
+#| echo: false
+#| fig-cap: "Graphs of logistic functions $f(x) = A/(1+Be^{-rx}$)"
+#| fig-subcap: 
+#|   - "Effect of parameter A, with B=10 and r=0.2"
+#|   - "Effect of rate constant r, with A=100 and B=10"
+#| layout-ncol: 2
+
+A <- 100
+B <- 10
+r <- 0.2
+leg.txt <- paste("A=",A)
+curve(A/(1+exp(-r*x)),-60,60,lwd=3,xlab='x', ylab='f(x)',cex.axis=1.5,cex.lab=1.5)
+
+A <- 80
+leg.txt <- c(leg.txt, paste("A=", A))
+curve(A/(1+exp(-r*x)),-60,60,lwd=3,lty=2,add=TRUE)
+
+A <- 50
+leg.txt <- c(leg.txt, paste("A=", A))
+curve(A/(1+exp(-r*x)),-60,60,lwd=3,lty=3,add=TRUE)
+legend("topleft", leg.txt, cex=1.5, lty=1:3)
+
+
+A <- 100
+B <- 10
+r <- 0.1
+leg.txt <- paste("r=", r)
+curve(A/(1+exp(-r*x)),-60,60,lwd=3,xlab='x', ylab='f(x)',cex.axis=1.5,cex.lab=1.5)
+
+r <- 0.2
+leg.txt <- c(leg.txt, paste("r=", r))
+curve(A/(1+exp(-r*x)),-60,60,lwd=3,lty=2,add=TRUE)
+
+r <- 1
+leg.txt <- c(leg.txt, paste("r=", r))
+curve(A/(1+exp(-r*x)),-60,60,lwd=3,lty=3,add=TRUE)
+
+legend("bottomright", leg.txt, cex=1.5, lty=1:3)
 ```
 
 ### Exercises:
@@ -210,8 +273,6 @@ For each biological model below answer the following questions in terms of the p
 6.  Michaelis-Menten model \index{model!Michaelis-Menten} of enzyme kinetics, $v$ is reaction rate (1/time) and $S$ is substrate concentration: $$ v(S) = \frac{v_{max} S}{K_m + S}$$
 
 7.  Logistic model \index{logistic model}of population growth, $P$ is population size and time $t$: $$ P(t) = \frac{A e^{kt}}{1 + B(e^{kt} -1)} $$
-
-
 
 ## Rates of biochemical reactions
 
