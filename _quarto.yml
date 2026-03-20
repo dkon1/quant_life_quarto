@@ -27,7 +27,6 @@ book:
     - linreg.qmd # week 3, linear regression and residuals, regression to the mean, etc.
     - tutorial4_linreg.qmd # regression concepts and residuals
     - probdist.qmd  # week 4, probability theory, conditional probability and independence
-    - independence.qmd # fold into previous chapter
     - tutorial5_randgen.qmd # random number generators, logical tests, conditional probability calculations
     - hypo_test.qmd # week 5: hypothesis testing for independence and errors
     - tutorial6_tables.qmd # bar plots, data tables, chi-squared test and p-values

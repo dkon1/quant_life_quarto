@@ -17,7 +17,9 @@ In the last two chapters we learned to use data sets which fall into a few categ
 
 Although there is always error in any real data, there may be a relationship between the two variables that is not random: for example, when one goes up, the other one tends to go up as well. These relationships may be complicated, but in this chapter we will focus on the the simplest and most common type of relationship: linear, where a change in one variable is associated with a proportional change in the other, plus an added constant. This is expressed mathematically using the familiar equation for a linear function, with parameters slope ($a$) and intercept ($b$):
 
-$$ y = ax + b$$
+$$ 
+y = ax + b
+$$
 
 Let us say you have measured some data for two variables, which we will call, unimaginatively, $x$ and $y$. This data set consists of pairs of numbers: one for $x$, one for $y$, for example, the heart rate and body temperature of a person go together. They cannot be mixed up between different people, as the data will lose all meaning. We can denote this a list of $n$ pairs of numbers: $(x_i, y_i)$ (where $i$ is an integer between 1 and $n$). Since this is a list of pairs of numbers, we can plot them as separate points in the plane using each $x_i$ as the x-coordinate and each $y_i$ as the y-coordinate. This is called a \index{plot!scatter} *scatterplot* of a two-variable data set. For example, two scatterplots of a data set of heart rate and body temperature are shown in @fig-body-temp. In the first one, the body temperature is on the x-axis, which makes it the \index{variable!explanatory} *explanatory* variable; in the second one, the body temperature is on the y-axis, which makes it the \index{variable!response} *response* variable.
 
@@ -50,7 +52,7 @@ plot(my_data$HR, my_data$Temp, main='body temps vs. heart rates')
 It is easy to find the best-fit line for a data set with only two points: its slope and intercept can be found by solving the two simultaneous linear equations, e.g. if the data set consists of $(3,2.3), (6, 1.7)$, then finding the best fit values of $a$ and $b$ means solving the following two equations:
 
 \begin{eqnarray*}
-3a + b &=&  2.3 \\
+3a + b &=& 2.3 \\
 6a + b &=& 1.7
 \end{eqnarray*}
 
@@ -68,11 +70,15 @@ This system has no exact solution, since there are three equations and only two 
 
 One simple way to asses how close the fit is to the data is to subtract the predicted values of $y$ from the data, as follows: $e_i = y_i - (ax_i + b)$. The values $e_i$ are called the *errors* or \index{linear regression!residual} *residuals* of the linear fit. If the values predicted by the linear model ($ax_i+b$) are close to the actual data $y_i$, then the error will be small. However, if we add it all up, the errors with opposite signs will cancel each other, giving the impression of a good fit simply if the deviations are symmetric.
 
-A more reasonable approach is to take absolute values of the deviations before adding them up. This is called the total deviation, for $n$ data points with a line fit: $$ TD = \sum_{i=1}^n |  y_i - a x_i - b | $$
+A more reasonable approach is to take absolute values of the deviations before adding them up. This is called the total deviation, for $n$ data points with a line fit: 
+
+$$ 
+TD = \sum_{i=1}^n |  y_i - a x_i - b | 
+$$
 
 Mathematically, a better measure of total error is a sum of squared errors, which also has the advantage of adding up non-negative values, but is known as a better measure of the distance between the fit and the data (think of Euclidean distance, which is also a sum of squares) \index{fitting!least squares}:
 
-$$ SSE = \sum_{i=1}^n ( y_i -  a x_i - b )^2 $$
+$$ SSE = \sum_{i=1}^n (y_i -  a x_i - b)^2 $$
 
 Thus we have formulated the goal of fitting the best line to a two-variable data set, also known as linear regression: **find the values of slope and intercept that result in the lowest possible sum of squared errors**. There is a mathematical recipe which produces these values, which will be described in the next section. Any model begins with \index{linear regression!assumptions} assumptions and in order for linear regression to be a faithful representation of a data set, the following must be true:
 
@@ -84,11 +90,11 @@ Thus we have formulated the goal of fitting the best line to a two-variable data
 
 -   the noise in the measurements of the response variable is normally distributed with mean 0 and identical standard deviation
 
-The reasons why these assumptions are necessary for linear regression to work are beyond the scope of the text, and they are elucidated very well in the book *Numerical Recipes* @press_numerical_2007. However, it is important to be aware of them because if they are violated, the resulting linear fit may be meaningless. It's fairly clear that if the first assumption is violated, you are trying to impose a linear relationship on something that is actually curvy. The second assumption of independence is very important and often overlooked. The mathematical reasons for it have to do with properly measuring the goodness of fit, but intuitively it is because measurements that are linked can introduce a new relationship that has to do with the measurements, rather than the relationship between the variables. Violation of this assumption can seriously damage the reliability of the linear regression. The third assumption is often ignored, since usually the explanatory variable is also measured and thus has some noise. The reason for it is that the measure of goodness of fit is based only on the response variable, and there is no consideration of the noise in the explanatory variable. However, a reasonable amount of noise in the explanatory variable is not catastrophic for linear regression. Finally, the last assumption is due to the statistics of maximum-likelihood estimation of the slope and intercept, but again some deviation from perfect normality (bell-shaped distribution) of the noise, or slightly different variation in the noise is to be expected.
+The reasons why these assumptions are necessary for linear regression to work are beyond the scope of the text, and they are elucidated very well in the book *Numerical Recipes* [@press_numerical_2007]. However, it is important to be aware of them because if they are violated, the resulting linear fit may be meaningless. It's fairly clear that if the first assumption is violated, you are trying to impose a linear relationship on something that is actually curvy. The second assumption of independence is very important and often overlooked. The mathematical reasons for it have to do with properly measuring the goodness of fit, but intuitively it is because measurements that are linked can introduce a new relationship that has to do with the measurements, rather than the relationship between the variables. Violation of this assumption can seriously damage the reliability of the linear regression. The third assumption is often ignored, since usually the explanatory variable is also measured and thus has some noise. The reason for it is that the measure of goodness of fit is based only on the response variable, and there is no consideration of the noise in the explanatory variable. However, a reasonable amount of noise in the explanatory variable is not catastrophic for linear regression. Finally, the last assumption is due to the statistics of maximum-likelihood estimation of the slope and intercept, but again some deviation from perfect normality (bell-shaped distribution) of the noise, or slightly different variation in the noise is to be expected.
 
 ### best-fit slope and intercept
 
-::: {def-covariance}
+::: {#def-sample-cov}
 The \index{covariance} *covariance* of a data set of pairs of values $(X,Y)$ is the sum of the products of the corresponding deviations from their respective means:
 $$ 
 Cov(X,Y) = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar X) (y_i - \bar Y) 
@@ -98,10 +104,10 @@ $$
 
 Intuitively, this means that if two variable tend to deviate in the same direction from their respective means, they have a positive covariance, and if they tend to deviate in opposite directions from their means, they have a negative covariance. In the intermediate case, if sometimes they deviate together and other times they deviate in opposition, the covariance is small or zero. For instance, the covariance between two independent random variables is zero.
 
-It should come as no surprise that the slope of the linear regression depends on the covariance, that is, the degree to which the two variables deviate together from their means. If the covariance is positive, then for larger values of $x$ the corresponding $y$ values tend to be larger, which means the slope of the line is positive. Conversely, if the covariance is negative, so is the slope of the line. And if the two variables are independent, the slope has to be close to zero. The actual formula for the \index{linear regression!slope}\index{slope!linear regression}slope of the linear regression is @whitlock_analysis_2008:
+It should come as no surprise that the slope of the linear regression depends on the covariance, that is, the degree to which the two variables deviate together from their means. If the covariance is positive, then for larger values of $x$ the corresponding $y$ values tend to be larger, which means the slope of the line is positive. Conversely, if the covariance is negative, so is the slope of the line. And if the two variables are independent, the slope has to be close to zero. The actual formula for the \index{linear regression!slope}\index{slope!linear regression}slope of the linear regression is [@whitlock_analysis_2008]:
 
 $$
-m = \frac{Cov(X,Y)}{Var(X)}
+a = \frac{Cov(X,Y)}{Var(X)}
 $$
 
 I will not provide a proof that this slope generates the minimal sum of squared errors, but that is indeed the case. To find the intercept of the linear regression, we make use of one other property of the best fit line: in order for it to minimize the SSE, it must pass through the point $(\bar X, \bar Y)$. Again, I will not prove this, but note that the point of the two mean values is the central point of the "cloud" of points in the scatterplot, and if the line missed that central point, the deviations will be larger. Assuming that is the case, we have the following equation for the line: $\bar Y = a\bar X + b$, which we can solve for the \index{linear regression!$y$-intercept} \index{y-intercept!linear regression} intercept $b$:
@@ -110,7 +116,7 @@ I will not provide a proof that this slope generates the minimal sum of squared 
 b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}
 \end{equation}
 
-### Exercises
+#### exercises
 
 | B($m^2/kg$) | H($^\circ C /min)$ |
 |-------------|--------------------|
@@ -121,8 +127,7 @@ b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}
 | 2.4         | 0.031              |
 | 2.1         | 0.006              |
 
-: Body leanness (B) and heat loss rate (H) in boys; partial data set from @sloan_cooling_1973
-{#tab-ch4-bh}
+: Body leanness (B) and heat loss rate (H) in boys; partial data set from @sloan_cooling_1973 {#tab-ch4-bh}
 
 Use the data set in @tab-ch4-bh to answer the following questions:
 
@@ -142,16 +147,17 @@ Use the data set in @tab-ch4-bh to answer the following questions:
 
 The correlation between two random variables is a measure of how much variation in one corresponds to variation in the other. If this sounds very similar to the description of covariance, it's because they are closely related. Essentially, correlation is a normalized covariance, restricted to lie between -1 and 1. Here is the definition:
 
-::: callout-note {#def-corr}
+::: {#def-corr}
 The (linear) *correlation* of a set of two paired variables (X,Y) is:
-$$ r = \frac{Cov(X,Y)}{\sqrt{{Var(X)}{Var(Y)}}} =  \frac{Cov(X,Y)}{\sigma_X \sigma_Y}
+
+$$
+r = \frac{Cov(X,Y)}{\sqrt{{Var(X)}{Var(Y)}}} =  \frac{Cov(X,Y)}{\sigma_X \sigma_Y}
 $$
 :::
 
+If the two variables are identical, $X=Y$, then the covariance becomes its variance $Cov(X,X) = Var(X)$ and the denominator also becomes the variance, and the correlation is 1. This is also true if $X$ and $Y$ are scalar multiples of each other, as you can see by plugging in $X= cY$ into the covariance formula. On the other extreme, if $X$ and $Y$ are negative multiples of each other, $X = -cY$, the pair is called *anti-correlated* and has the correlation coefficient of -1. All other cases fall in the middle, neither perfect correlation nor perfect anti-correlation. The special case if the two variables are *independent* (which we will properly define in the next chapter) their covariance is zero and the correlation coefficient is also zero.
 
-If the two variables are identical, $X=Y$, then the covariance becomes its variance $Cov(X,Y) = Var(X)$ and the denominator also becomes the variance, and the correlation is 1. This is also true if $X$ and $Y$ are scalar multiples of each other, as you can see by plugging in $X= cY$ into the covariance formula. The opposite case if $X$ and $Y$ are diametrically opposite, $X = -cY$, which has the correlation coefficient of -1. All other cases fall in the middle, neither perfect correlation nor perfect anti-correlation. The special case if the two variables are independent, and thus their covariance is zero, has the correlation coefficient of 0.
-
-![Correlation coefficient does not tell the whole story when it comes to describing the relationship between two variables. "Correlation examples2" by Imagecreator, updated by DenisBoigelot, in public domain via Wikimedia Commons.](ch8/Correlation_examples.png) {#fig-corr-examples}
+![Correlation coefficient does not tell the whole story when it comes to describing the relationship between two variables. "Correlation examples2" by Imagecreator, updated by DenisBoigelot, in public domain via Wikimedia Commons.](ch8/Correlation_examples.png){#fig-corr-examples}
 
 This gives a connection between correlation and slope of linear regression:
 
@@ -161,26 +167,26 @@ $$ {#eq-slope-corr}
 
 Whenever linear regression is reported, one always sees the values of correlation $r$ and squared correlation $r^2$ displayed. The reason for this is that $r^2$ has a very clear meaning of the **the fraction of the variance of the dependent variable** $Y$ explained by the linear regression $Y=aX+b$. Let us unpack what this means.
 
-According to the stated assumptions of linear regression, the response variable $Y$ is assumed to be linear relationship with the explanatory variable $X$, but with independent additive noise (also normally distributed, but it doesn't play a role for this argument). Linear regression captures the linear relationship, and the remaining error (residuals) represent the noise. Thus, each value of $Y$ can be written as $Y = R + \hat Y$ where $R$ is the residual (noise) and the value predicted by the linear regression is $\hat Y =aX+b$. The assumption that $R$ is independent of $Y$ means that $Var(Y) = Var (\hat Y) + Var (R)$ because variance is additive for independent random variables, as we discussed in section \ref{sec:math4}. By the same reasoning $Cov(X,\hat Y + R) = Cov(X,\hat Y) + Cov(X,R)$. These two covariances can be simplified further: $Cov(X,R) = 0$ because $R$ is independent random noise. $X$ and the predicted $\hat Y$ are perfectly correlated, so $Cov(X,\hat Y) = Cov(X,mX+b) = Var(X) = Var(\hat Y)$. This leads to the derivation of the meaning of $r^2$:
+According to the stated assumptions of linear regression, the response variable $Y$ is assumed to be linear relationship with the explanatory variable $X$, but with independent additive noise (also normally distributed, but it doesn't play a role for this argument). Linear regression captures the linear relationship, and the remaining error (residuals) represent the noise. Thus, each value of $Y$ can be written as $Y = R + \hat Y$ where $R$ is the residual (noise) and the value predicted by the linear regression is $\hat Y =aX+b$. The assumption that $R$ is independent of $Y$ means that $Var(Y) = Var (\hat Y) + Var (R)$ because variance is additive for independent random variables, as we will discuss in detail in chapter 5. By the same reasoning $Cov(X,\hat Y + R) = Cov(X,\hat Y) + Cov(X,R)$. These two covariances can be simplified further: $Cov(X,R) = 0$ because $R$ is independent random noise. $X$ and the predicted $\hat Y$ are perfectly correlated, so $Cov(X,\hat Y) = Cov(X,mX+b) = Var(X) = Var(\hat Y)$. This leads to the derivation of the meaning of $r^2$:
 
 $$
 \begin{aligned}
   r^2 = \frac{Cov(X,Y)^2}{Var(X) Var(Y)} &=   \frac{(Cov(X,\hat Y) + Cov(X,R) )^2}{Var(X) Var(Y)}   = \\
   =\frac{Var(X)Var(\hat Y)}{Var(X) Var(Y)} &=  \frac{Var(\hat Y)}{Var(Y)}
-  \end{aligned}
+\end{aligned}
 $$ {#eq-frac-var}
 
-One should be cautious when interpreting results of a linear regression. First, just because there is no linear relationship does not mean that there is no other relationship. @fig-corr_examples shows some examples of scatter plots and their corresponding correlation coefficients. What it shows is that while a formless blob of a scatter plot will certainly have zero correlation, so will other scatter plots in which there is a definite relationship (e.g. a circle, or a X-shape). The point is that **correlation is always a measure of the linear relationship between variables.**
+One should be cautious when interpreting results of a linear regression. First, just because there is no linear relationship does not mean that there is no other relationship. @fig-corr-examples shows some examples of scatter plots and their corresponding correlation coefficients. What it shows is that while a formless blob of a scatter plot will certainly have zero correlation, so will other scatter plots in which there is a definite relationship (e.g. a circle, or a X-shape). The point is that **correlation is always a measure of the linear relationship between variables.**
 
 The second caution is well known, as that is the danger of equating correlation with a causal relationship. There are numerous examples of scientists misinterpreting a coincidental correlation as meaningful, or deeming two variables that have a common source as causing one another. For example, one can look at the increase in automobile ownership in the last century and the concurrent improvement in longevity and conclude that automobiles are good for human health. It is well-documented, however, that a sedentary lifestyle and automobile exhaust do not make a person healthy. Instead, increased prosperity has increased both the purchasing power of individuals and enabled advances in medicine that have increase our lifespans. To summarize, one must be careful when interpreting correlation: a weak one does not mean there is no relationship, and a strong one does not mean that one variable causes the changes in the other.
 
 There is another important measure of the quality of linear regression: the \index{plot!residual}\index{linear regression!residual} residual plot. The residuals are the differences between the predicted values of the response variable and the actual value from the data. As stated above, linear regression assumes that there is a linear relationship between the two variables, plus some uncorrelated noise added to the values of the response variable. If that were true, then the plot of the residuals would look like a vaguely spherical blob, with a mean value of 0 and no discernible trend (e.g. no increase of residual for larger $x$ values). Visually assessing residual plots is an essential check on whether linear regression is a reasonable fit to the data in addition to the $r^2$ value.
 
-### Exercises
+#### exercises
 
 @fig-penguins-hr shows scatterplots of the rate of oxygen consumption (VO) and heart rate (HR) measured in two macaroni penguins running on a treadmill (really). The authors performed linear regression on the data and found the following parameters: $VO =0.23HR - 11.62$ (penguin A) and $VO =0.25HR - 20.93$ (penguin B). The datasets have the standard deviations: $\sigma_{VO} = 6.77$ and $\sigma_{HR} = 28.8$ (penguin A) and $\sigma_{VO} = 8.49$ and $\sigma_{HR} = 30.6$ (penguin B).
 
-![Mass-specific rate of oxygen consumption (VO) as a function of heart rate (HR) in two macaroni penguins, (A) a breeding female of mass 3.14 kg and a moulting female of mass 3.99 kg; figure from under CC-BY.](ch8/penguin_HR.png) {#fig-penguins-hr}
+![Mass-specific rate of oxygen consumption (VO) as a function of heart rate (HR) in two macaroni penguins, (A) a breeding female of mass 3.14 kg and a moulting female of mass 3.99 kg; figure from under CC-BY.](ch8/penguin_HR.png){#fig-penguins-hr}
 
 1.  Find the dimensions and units of the slope and the intercept of the linear regression for this data (the units of HR and VO are on the plot).
 
@@ -197,7 +203,7 @@ There is another important measure of the quality of linear regression: the \ind
 We now have the tools to compute the parameters of the best-fit line, provided we can calculate the means, variances, and covariance of the two variable data set. Of course, the best way to do all this is to let a computer handle it. The function for calculating linear regression in R is `lm()`, which outputs a bunch of information to a variable called myfit in the script below. The slope, intercept, and other \index{parameter!linear regression}parameters can be printed out using the `summary()` function. In the script below you see a bunch of information, but we are concerned with the ones in the first column correspond to the best fit intercept (-166.2847) and the slope (2.4432). You can check that they correspond to our formulas by computing the covariance, the variances, and the means of the two variables:
 
 ```{r}
-myfit <- lm(HR ~Temp, my_data)
+myfit <- lm(HR ~ Temp, my_data)
 summary(myfit)
 a<-cov(my_data$HR,my_data$Temp)/var(my_data$Temp)
 print(a)
@@ -209,11 +215,17 @@ Here `Temp` and `HR` are the explanatory and response variables, respectively, a
 
 ```{r}
 #| label: fig-linreg-HRTemp
+#| echo: false
+#| fig-cap: "Linear regression between heart rates and body temp"
+#| fig-subcap: 
+#|   - "Scatter plot and linear regression line" 
+#|   - "Plot of residuals vs. predicted values" 
+#| layout-ncol: 2
 # plot the data and regression line
-plot(my_data$Temp, my_data$HR,main= 'scatterplot and linear regression line')
+plot(my_data$Temp, my_data$HR, xlab = "body temperature (deg F)" , ylab = "heart rates (bpm)", main= 'scatterplot and linear regression line')
 abline(myfit)
 # plot the residuals
-plot(myfit$fitted.values, myfit$residuals, main='residuals plot')
+plot(myfit$fitted.values, myfit$residuals, xlab = "predicted temp (deg F)" , ylab = "residuals (deg F)", main='residuals plot')
 abline(0,0)
 ```
 

@@ -32,7 +32,7 @@ print("Hello there!")
 
 To run the code inside a single R code chunk, click the green arrow on top of the chunk. This will produce an output, in this case the text "Hello there!". Inside the generated output file, for example the web book you may be reading, the output of code chunks is shown below the box with the R code.
 
-## Arithmetic in R
+## Arithmetic in R {#sec-tut1-arithmetic}
 
 ::: callout-note
 ### Computer arithmetic

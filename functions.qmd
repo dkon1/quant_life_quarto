@@ -17,7 +17,7 @@ What distinguishes a mathematical model from a mathematical equation is that the
 
 In addition to units, each variable and parameter has a meaning, which is called the \index{dimension} *dimension* of the quantity. For example, any measurement of length or distance has the same dimension, although the units may vary. The value of a quantity depends on the units of measurement, but its essential dimensionality does not. One can convert a measurement in meters to that in light-years or cubits, but one cannot convert a measurement in number of sheep to seconds - that conversion has no meaning.
 
-Thus leads us to the fundamental rule of mathematical modeling: **terms that are added or subtracted must have the same dimension**. This gives mathematical modelers a useful tool called \index{dimensional analysis} *dimensional analysis*, which involves replacing the quantities in an equation with their dimensions. This serves as a check that all dimensions match, as well as allowing to deduce the dimensions of any parameters for which the dimension was not specified. @smith_mathematical_1968
+Thus leads us to the fundamental rule of mathematical modeling: **terms that are added or subtracted must have the same dimension**. This gives mathematical modelers a useful tool called \index{dimensional analysis} *dimensional analysis*, which involves replacing the quantities in an equation with their dimensions. This serves as a check that all dimensions match, as well as allowing to deduce the dimensions of any parameters for which the dimension was not specified [@smith_mathematical_1968].
 
 **Example.** As we saw in chapter 1, the relationship between the amount blood pumped by a heart in a certain amount of time is expressed in the following equation, where $V_{tot}$ and $V_s$ are the total volume and stroke volume, respectively, $R$ is the heart rate, and $t$ is the time: $$
 V_{tot} = V_sRt
@@ -27,11 +27,11 @@ $$length^3 = length^3/ beat \times R \times time$$
 
 Solving this equation for R, we find that it must have the dimensions of $[R] = beats/time$. It can be measured in beats per minute (typical for heart rate), or beats per second, beats per hour, etc. but the *dimensionality* of the quantity cannot be changed without making the model meaningless.
 
-There are also \index{dimensionless quantity} *dimensionless* quantities, or pure numbers, which are not tied to a physical meaning at all. Fundamental mathematical constants, like $\pi$ or $e$, are classic examples, as are some important quantities in physics, like the Reynolds number in fluid mechanics. @strogatz_nonlinear_2001 Quantities with a dimension can be made dimensionless by dividing them by another quantity with the same dimension and "canceling" the dimensions. For instance, we can express the height of a person as a fraction of the mean height of the population; then the height of a tall person will become a number greater than 1, and the height of a short one will become less than 1. This new dimensionless height does not have units of length - they have been divided out by the mean height. This is known as \index{rescaling} *rescaling* the quantity, by dividing it by a preferred scale. There is a fundamental difference between rescaling and changing the units of a quantity: when changing the units, e.g. from inches to centimeters, the dimension remains the same, but if one divides the quantity by a scale, it loses its dimension.
+There are also \index{dimensionless quantity} *dimensionless* quantities, or pure numbers, which are not tied to a physical meaning at all. Fundamental mathematical constants, like $\pi$ or $e$, are classic examples, as are some important quantities in physics, like the Reynolds number in fluid mechanics [@strogatz_nonlinear_2001]. Quantities with a dimension can be made dimensionless by dividing them by another quantity with the same dimension and "canceling" the dimensions. For instance, we can express the height of a person as a fraction of the mean height of the population; then the height of a tall person will become a number greater than 1, and the height of a short one will become less than 1. This new dimensionless height does not have units of length - they have been divided out by the mean height. This is known as \index{rescaling} *rescaling* the quantity, by dividing it by a preferred scale. There is a fundamental difference between rescaling and changing the units of a quantity: when changing the units, e.g. from inches to centimeters, the dimension remains the same, but if one divides the quantity by a scale, it loses its dimension.
 
 **Example.** The model for a population of bacteria that doubles every hour is described by the equation, where $P_0$ is initial number of bacteria and $P$ is the population after $t$ hours: $$ P = P_0 2^t $$ Let us define the quantity $R=P/P_0$, so we can say that population increased by a factor of $R$ after $t$ hours. This ratio is a dimensionless quantity because $P$ and $P_0$ have the same dimension of bacterial population, which cancel out. The equation for $R$ can be written as follows: $$ R= 2^t $$ According to dimensional analysis, both sides of the equation have to be dimensionless, so $t$ must also be a dimensionless variable. This is surprising, because $t$ indicates the number of hours the bacterial colony has been growing. This reveals the subtle fact that $t$ is a rescaled variable obtained by dividing the elapsed time by the length of the reproductive cycle. Because of the assumption that the bacteria divide exactly once an hour, $t$ counts the number of hours, but if they divided once a day, $t$ would denote the number of days. So $t$ doesn't have units or dimensions, but instead denotes the dimensionless number of cell divisions.
 
-### Exercises
+#### exercises
 
 For each biological model below determine the dimensions of the parameters, based on the given dimensions of the variables.
 
@@ -53,9 +53,7 @@ For each biological model below determine the dimensions of the parameters, base
 
 A relationship between two variables addresses the basic question: when one variable changes, how does this affect the other? An equation, like the examples in the last section, allows one to calculate the value of one variable based on the other variable and parameter values. In this section we seek to describe more broadly how two variables are related by using the mathematical concept of functions.
 
-::: callout-note
-## Definition
-
+::: {#def-function}
 A function is a mathematical rule which has an input and an output. A function returns a well-defined output for every input, that is, for a given input value the function returns a unique output value.
 :::
 
@@ -122,7 +120,7 @@ curve(12*exp(-0.2*x),lwd=3,lty=2,add=TRUE)
 #legend("topleft", leg.txt,cex=1.5)
 ```
 
-### Exercises
+#### exercises
 
 Answer the questions below, some of which refer to the function graphs in @fig-ch2-funk1.
 
@@ -155,9 +153,11 @@ For this reason, let us assume $m=n$ and consider what happens as $x \to \infty$
 \lim_{x \to \infty} \frac{a_0 + ... + a_n x^n}{b_0 + ... + b_n x^n} = \frac{ a_n x^n}{ b_n x^n}  =  \frac{ a_n}{ b_n} 
 $$ Therefore, the function approaches the value of $a_n /b_n$ as $x$ grows.
 
-Similarly, let us consider what happens when $x=0$. Plugging this into the function results in all of the terms vanishing except for the constant terms, so $$ f(0) =  \frac{ a_0}{ b_0} $$ Between 0 and infinity, the function either increases or decreases monotonically, depending on which value ($a_n /b_n$ or $a_0/b_0$) is greater. Two examples of plots of rational functions are shown in figure @fig-ch2_sigmoidal_plots, which shows graphs increasing from 0 to 1. Depending on the degree of the polynomials in a rational function, it may increase more gradually (solid line) or more step-like (dashed line).
+Similarly, let us consider what happens when $x=0$. Plugging this into the function results in all of the terms vanishing except for the constant terms, so $$ f(0) =  \frac{ a_0}{ b_0} $$ Between 0 and infinity, the function either increases or decreases monotonically, depending on which value ($a_n /b_n$ or $a_0/b_0$) is greater. 
 
-**Example.** The following model, called the Hill equation \index{Hill equation}\index{model!Hill}, describes the fraction of receptor molecules which are bound to a ligand, which is a chemical term for a free molecule that binds to another, typically larger, receptor molecule. $\theta$ is the fraction of receptors bound to a ligand, $L$ denotes the ligand concentration, $K_d$ is the dissociation constant, and $n$ called the binding cooperativity \index{binding cooperativity} or Hill coefficient: $$ \theta(L) = \frac{L^n}{ L^n +K_d}$$
+**Example.** The following model, called the Hill equation \index{Hill equation}\index{model!Hill}, describes the fraction of receptor molecules which are bound to a ligand, which is a chemical term for a free molecule that binds to another, typically larger, receptor molecule. $\theta$ is the fraction of receptors bound to a ligand, $L$ denotes the ligand concentration, $K_d$ is the dissociation constant, and $n$ called the binding cooperativity \index{binding cooperativity} or Hill coefficient: 
+
+$$ \theta(L) = \frac{L^n}{ L^n +K_d}$$
 
 The Hill equation is a rational function, and @fig-ch3-funk2 shows plots of the graphs of two such functions, and illustrated the effect of two of the parameters on the graphs. This model is further explored in exercise 2.2.10.
 
@@ -206,11 +206,17 @@ f(x) = \frac{A}{1+Be^{-rx}}
 \label{eq:logistic_funk} 
 $$
 
-The numerator and denominator both contain exponential functions with the same power. If $r>0$ when $x \to \infty$, the denominator approaches 1, since the exponential term decays to zero, and thus \$l: $$  
+The numerator and denominator both contain exponential functions with the same power. If $r>0$ when $x \to \infty$, the denominator approaches 1, since the exponential term decays to zero, and thus: 
+
+$$  
 \lim_{x \to \infty} \frac{A}{1+Be^{-rx}} = A; \; \mathrm{if} \; r>0 
 $$
 
-On the other hand, if $r<0$, the exponential term in the denominator grows to infinity and the ratio approaches zero: $$  \lim_{x \to \infty} \frac{A}{1+Be^{-rx}} =  0; \; \mathrm{if} \; r<0 $$
+On the other hand, if $r<0$, the exponential term in the denominator grows to infinity and the ratio approaches zero: 
+
+$$  
+\lim_{x \to \infty} \frac{A}{1+Be^{-rx}} =  0; \; \mathrm{if} \; r<0 
+$$
 
 Notice that switching the sign of $r$ has the same effect as switching the sign of $x$, since they are multiplied in the exponential term. Which means that for positive $r$, if $x$ is extended to negative infinity, the function approaches 0. This is illustrated in @fig-ch3-funk3, which shows the effect of change the constant $A$ and the rate constant $r$ on the plot of the logistic functions. The graph of logistic functions has a characteristic *sigmoidal* (S-shaped) shape, and its steepness is determined by the rate $r$: if $r$ is small, the curve is soft, if $r$ is large, the graph resembles a step function.
 
@@ -256,7 +262,7 @@ curve(A/(1+exp(-r*x)),-60,60,lwd=3,lty=3,add=TRUE)
 legend("bottomright", leg.txt, cex=1.5, lty=1:3)
 ```
 
-### Exercises:
+#### exercises:
 
 For each biological model below answer the following questions in terms of the parameters in the models, assuming all are nonnegative real numbers. 1) what is the value of the function when the independent variable is 0? 2) what value does the function approach when the independent variable goes to infinity? 3) verbally describe the behavior of the functions between 0 and infinity (e.g., function increases, decreases).
 

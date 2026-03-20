@@ -1102,13 +1102,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./probdist.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability and independence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1120,7 +1114,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hypo_test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Categorical variables and hypothesis testing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1132,7 +1126,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bayes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1144,7 +1138,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lindiff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1156,7 +1150,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ode_sols.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1168,7 +1162,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./graph_odes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -1416,7 +1410,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li>Add axis labels and legends to plots</li>
 </ul>
 <p>Programming means arranging a number of commands in a particular order to perform a task. Typing them one at a time into the command line is inefficient and error-prone. Instead, the commands are written into a file called a program or script (the name depends on the type of language; since R is a scripting language you will be writing scripts), which can be edited, saved, copied, etc. In this course we use Quarto documents with scripts contained within code chunks, but you can keep code in separate R script files that have extension <code>.R</code>. Now that you know how to create a script, <strong>you should never type your R code into the command line</strong>, unless you’re testing a single command to see what it does, or looking up help.</p>
-<p>R comes equipped with many <em>functions</em> that correspond to standard mathematical functions. As we saw in section <span class="math inline">\(\ref{sec:comp1}\)</span>, <code>exp()</code> is the exponential function that returns <span class="math inline">\(e\)</span> raised to the power of the input value. Other common ones are: <code>sqrt()</code> returns the square root of the input value; <code>sin()</code> and <code>cos()</code> return the sine and the cosine of the input value, respectively. Note that all of these function names are followed by parentheses, which is a hallmark of a function (in R as well as in mathematics). This indicates that the input value has to go there, for example <code>exp(5)</code>. To compute the value of <span class="math inline">\(e^5\)</span>, save it into a variable called <code>var1</code> and then print out the value on the screen, you can create the following script:</p>
+<p>R comes equipped with many <em>functions</em> that correspond to standard mathematical functions. As we saw in <a href="tutorial1_variables.html#sec-tut1-arithmetic" class="quarto-xref"><span>Arithmetic in R</span></a>, <code>exp()</code> is the exponential function that returns <span class="math inline">\(e\)</span> raised to the power of the input value. Other common ones are: <code>sqrt()</code> returns the square root of the input value; <code>sin()</code> and <code>cos()</code> return the sine and the cosine of the input value, respectively. Note that all of these function names are followed by parentheses, which is a hallmark of a function (in R as well as in mathematics). This indicates that the input value has to go there, for example <code>exp(5)</code>. To compute the value of <span class="math inline">\(e^5\)</span>, save it into a variable called <code>var1</code> and then print out the value on the screen, you can create the following script:</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>If you run the above code chunk in R Studio you will see two things happen: a variable named var1 appears in the Environment window (top right) with the value 148.41… and the same value is printed out in the command line window (bottom left).</p>

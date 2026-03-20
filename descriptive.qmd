@@ -27,9 +27,7 @@ Mutations can have different effects on the mutant organism, although acquisitio
 
 One of the central questions of evolutionary biology is how frequently do mutations occur? Since mutations are generally undesirable, most living things have developed ways to minimize the frequency of errors in copying DNA, and to repair DNA damage. But although mutations are rare, they occur spontaneously in all organisms because molecular processes such as copying a DNA molecule are subject to random noise arising from thermal motion. So mutations are fundamentally a random process and we need to use \index{statistics!descriptive} *descriptive statistics* to analyze data with inherent randomness.
 
-## Describing data sets
-
-\label{sec:math3}
+## Describing data sets {#sec-descr-stats}
 
 ### central value of a data set
 
@@ -48,7 +46,7 @@ $$
 $$ \label{eq:ch3_mean_def}
 :::
 
-The mean, unlike the median, is not the middle value of the data set, instead it represents the *center of mass* of the measured values @whitlock_analysis_2008. Another way of thinking of the mean is as a **weighted sum of the values in the data set**. The weights represent the frequency of occurrence of each numeric value in the data set, which we will further discuss in subsection 3.2.3.
+The mean, unlike the median, is not the middle value of the data set, instead it represents the *center of mass* of the measured values [@whitlock_analysis_2008]. Another way of thinking of the mean is as a **weighted sum of the values in the data set**. The weights represent the frequency of occurrence of each numeric value in the data set, which we will further discuss in subsection 3.2.3.
 
 The mean is the most frequently used statistic, but it is not always interpreted correctly. Very commonly the mean is reported as the most representative value of a data set, but that is often misleading. Here are at least two situations in which the mean can be tricky: 1) data sets with a small number of discrete values; 2) data sets with outliers, or isolated numbers very far from the mean.
 
@@ -56,7 +54,7 @@ The mean is the most frequently used statistic, but it is not always interpreted
 
 Outliers are another source of trouble for means. For example, a single individual (let's call him or her B.G.) with a wealth of $50 billion moves into a town of 1000 households with average wealth of $100,000. Although none of the original residents' assets have changed, the mean wealth of the town improves dramatically, as you can calculate in one of the exercises at the end of the chapter. One can site the improved per capita (per individual) in the town as evidence of economic growth, but that is obviously misleading. In cases with such dramatic outliers, the median is more informative as representation of a typical value of the data set.
 
-### Exercises
+#### exercises
 
 For the (small) data sets given below, calculate the mean and the median (by hand or using a calculator) and compare the two measures of the center.
 
@@ -99,7 +97,7 @@ The variance is a sum of square differences, so its dimension is the square of t
 
 Just as the mean is a weighted average of all of the values in the data set, the variance is a weighted average of all the squared deviations of the data from the mean.
 
-### Exercises:
+#### exercises:
 
 For the (small) data sets below, calculate the range, variance, and standard deviation (by hand or using a calculator). Compare the range and the standard deviation for each case: which one is larger? by how much?
 
@@ -140,7 +138,7 @@ A histogram of the measured lengths of the bacterium *Bacillus subtilis* is show
 
 There are different ways of plotting data sets that have more than one variable. For instance, a data set measured over time is called a time series. If the values are plotted with the corresponding times on the x-axis, then it is called a \index{plot!time} *time plot*. This is useful to show the changes of the values of your variable over time. If the data set doesn't undergo any significant changes over time, it makes more sense to represent it as a pie chart or histogram. More generally, one may plot two variables measured together on a single plot, which is called a \index{plot!scatter} *scatter plot*. We will explore such plots and the relationships between two measured variables in chapter 4.
 
-### Exercises
+#### exercises
 
 Answer the following questions, based on the histograms in @fig-ch2-HR (mutation data) and in @fig-ch2-mut (heart rate data).
 

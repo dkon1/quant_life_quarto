@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Random variables and distributions – Quantifying Life</title>
+<title>5&nbsp; Probability and independence – Quantifying Life</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -50,7 +50,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./independence.html" rel="next">
+<link href="./tutorial5_randgen.html" rel="next">
 <link href="./tutorial4_linreg.html" rel="prev">
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -122,7 +122,7 @@ window.Quarto = {
 };
 </script>
 
-<meta name="twitter:title" content="5&nbsp; Random variables and distributions – Quantifying Life">
+<meta name="twitter:title" content="5&nbsp; Probability and independence – Quantifying Life">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://dkon1.github.io/quant_life_quarto/ch4/sample_space.png">
 <meta name="twitter:image-height" content="1904">
@@ -139,7 +139,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probdist.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./probdist.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability and independence</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -243,13 +243,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./probdist.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./independence.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability and independence</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -261,7 +255,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./hypo_test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Categorical variables and hypothesis testing</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -273,7 +267,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./bayes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Prior knowledge and Bayesian thinking</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -285,7 +279,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lindiff.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Linear difference equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -297,7 +291,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ode_sols.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Solutions of ordinary differential equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -309,7 +303,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./graph_odes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Graphical analysis of ordinary differential equations</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -328,21 +322,26 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#random-variables-and-distributions" id="toc-random-variables-and-distributions" class="nav-link active" data-scroll-target="#random-variables-and-distributions"><span class="header-section-number">5.1</span> Random variables and distributions</a>
+  <li><a href="#sec-basic-prob" id="toc-sec-basic-prob" class="nav-link active" data-scroll-target="#sec-basic-prob"><span class="header-section-number">5.1</span> Probability and sample spaces</a>
   <ul class="collapse">
   <li><a href="#definition-of-probability" id="toc-definition-of-probability" class="nav-link" data-scroll-target="#definition-of-probability"><span class="header-section-number">5.1.1</span> definition of probability</a></li>
   <li><a href="#axioms-of-probability" id="toc-axioms-of-probability" class="nav-link" data-scroll-target="#axioms-of-probability"><span class="header-section-number">5.1.2</span> axioms of probability</a></li>
-  <li><a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables"><span class="header-section-number">5.1.3</span> random variables</a></li>
-  <li><a href="#expectation-of-random-variables" id="toc-expectation-of-random-variables" class="nav-link" data-scroll-target="#expectation-of-random-variables"><span class="header-section-number">5.1.4</span> expectation of random variables</a></li>
-  <li><a href="#variance-of-random-variables" id="toc-variance-of-random-variables" class="nav-link" data-scroll-target="#variance-of-random-variables"><span class="header-section-number">5.1.5</span> variance of random variables</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.1.6</span> Exercises</a></li>
   </ul></li>
-  <li><a href="#examples-of-distributions" id="toc-examples-of-distributions" class="nav-link" data-scroll-target="#examples-of-distributions"><span class="header-section-number">5.2</span> Examples of distributions</a>
+  <li><a href="#conditional-probability-and-indepdence" id="toc-conditional-probability-and-indepdence" class="nav-link" data-scroll-target="#conditional-probability-and-indepdence"><span class="header-section-number">5.2</span> Conditional probability and indepdence</a>
   <ul class="collapse">
-  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution"><span class="header-section-number">5.2.1</span> uniform distribution</a></li>
-  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="header-section-number">5.2.2</span> binomial distribution</a></li>
-  <li><a href="#exercises-1" id="toc-exercises-1" class="nav-link" data-scroll-target="#exercises-1"><span class="header-section-number">5.2.3</span> Exercises</a></li>
-  <li><a href="#testing-for-mutants" id="toc-testing-for-mutants" class="nav-link" data-scroll-target="#testing-for-mutants"><span class="header-section-number">5.2.4</span> testing for mutants</a></li>
+  <li><a href="#independence-of-events" id="toc-independence-of-events" class="nav-link" data-scroll-target="#independence-of-events"><span class="header-section-number">5.2.1</span> independence of events</a></li>
+  <li><a href="#product-rule" id="toc-product-rule" class="nav-link" data-scroll-target="#product-rule"><span class="header-section-number">5.2.2</span> product rule</a></li>
+  </ul></li>
+  <li><a href="#random-variables-and-distributions" id="toc-random-variables-and-distributions" class="nav-link" data-scroll-target="#random-variables-and-distributions"><span class="header-section-number">5.3</span> Random Variables and Distributions</a>
+  <ul class="collapse">
+  <li><a href="#expectation-of-random-variables" id="toc-expectation-of-random-variables" class="nav-link" data-scroll-target="#expectation-of-random-variables"><span class="header-section-number">5.3.1</span> expectation of random variables</a></li>
+  <li><a href="#variance-of-random-variables" id="toc-variance-of-random-variables" class="nav-link" data-scroll-target="#variance-of-random-variables"><span class="header-section-number">5.3.2</span> variance of random variables</a></li>
+  </ul></li>
+  <li><a href="#sec-probdist-examples" id="toc-sec-probdist-examples" class="nav-link" data-scroll-target="#sec-probdist-examples"><span class="header-section-number">5.4</span> Examples of probability distributions</a>
+  <ul class="collapse">
+  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution"><span class="header-section-number">5.4.1</span> uniform distribution</a></li>
+  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="header-section-number">5.4.2</span> binomial distribution</a></li>
+  <li><a href="#testing-for-mutants" id="toc-testing-for-mutants" class="nav-link" data-scroll-target="#testing-for-mutants"><span class="header-section-number">5.4.3</span> testing for mutants</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -352,7 +351,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Random variables and distributions</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability and independence</span></h1>
 </div>
 
 
@@ -377,90 +376,54 @@ window.Quarto = {
 <ul>
 <li><p>define probability in terms of outcomes and events</p></li>
 <li><p>know what is a random variable and its distribution</p></li>
+<li><p>understand the notion of conditional probability</p></li>
+<li><p>define of independence for events</p></li>
 <li><p>compute means and variances of distributions</p></li>
 <li><p>use the binomial distribution to model strings of binary trials</p></li>
-<li><p>generate random numbers in R</p></li>
 </ul>
-<section id="random-variables-and-distributions" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="random-variables-and-distributions"><span class="header-section-number">5.1</span> Random variables and distributions</h2>
-<p></p>
+<section id="sec-basic-prob" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-basic-prob"><span class="header-section-number">5.1</span> Probability and sample spaces</h2>
 <section id="definition-of-probability" class="level3" data-number="5.1.1">
 <h3 data-number="5.1.1" class="anchored" data-anchor-id="definition-of-probability"><span class="header-section-number">5.1.1</span> definition of probability</h3>
 <p>In this section we will develop the terminology used in the mathematical study of randomness called probability. This begins with a <em>random experiment</em> which is a very broad term that can describe any natural or theoretical process whose outcome cannot be predicted with certainty. If the outcomes are numeric, they may be <em>discrete</em> (can be counted by integers) or <em>continuous</em> (corresponding to real numbers); they may also be <em>categorical</em>, meaning that they do not have a numeric meaning, like eye color. We will stick to experiments that have discrete outcomes in this chapter, but many important experiments produce continuous outcomes. The first step for studying a random process is to describe all of the outcomes it can produce:</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="def-sample-space" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.1</strong></span> The collection of all possible outcomes of an experiment is called its <em>sample space</em> <span class="math inline">\(\Omega\)</span>. An <em>event</em> is a subset of the sample space, which means an event may contain one or more experimental outcomes.</p>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
+<div id="fig-sample-space" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sample-space-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="ch4/sample_space.png" class="img-fluid figure-img">
 </div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The collection of all possible outcomes of an experiment is called its <em>sample space</em> <span class="math inline">\(\Omega\)</span>. An <em>event</em> is a subset of the sample space, which means an event may contain one or more experimental outcomes.</p>
-</div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="ch4/sample_space.png" class="img-fluid figure-img"></p>
-<figcaption>An illustration of the sample space of all people with two events: tall people and those who like tea.</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sample-space-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: An illustration of the sample space of all people with two events: tall people and those who like tea.
+</figcaption>
 </figure>
 </div>
-<p><strong>Example.</strong> You can ask a person two questions: how tall are you (and classify them either as short or tall) and do you like tea (yes or no), and you’ve performed a random experiment. The randomness comes not from the answers (assuming the person doesn’t randomly lie) but from the selection of the respondent. We will discuss randomly selecting a sample from a population in the next chapter. This random experiment has four outcomes: tall person who likes tea, tall person who does not like tea, short person who likes tea, and short person who does not like tea. This sample space and events is illustrated in figure <span class="math inline">\(\ref{fig:ch4_sample_space}\)</span> with a Venn diagram, which uses geometric shapes as representations of events as subsets of the entire sample space. These outcomes can be grouped into events by one of the responses: e.g.&nbsp;tall person (<span class="math inline">\(A\)</span>) or person who doesn’t like tea (<span class="math inline">\(-B\)</span>).</p>
+<p><strong>Example.</strong> You can ask a person two questions: how tall are you (and classify them either as short or tall) and do you like tea (yes or no), and you’ve performed a random experiment. The randomness comes not from the answers (assuming the person doesn’t randomly lie) but from the selection of the respondent. We will discuss randomly selecting a sample from a population in the next chapter. This random experiment has four outcomes: tall person who likes tea, tall person who does not like tea, short person who likes tea, and short person who does not like tea. This sample space and events is illustrated in <a href="#fig-sample-space" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> with a Venn diagram, which uses geometric shapes as representations of events as subsets of the entire sample space. These outcomes can be grouped into events by one of the responses: e.g.&nbsp;tall person (<span class="math inline">\(A\)</span>) or person who doesn’t like tea (<span class="math inline">\(-B\)</span>).</p>
 <p><strong>Example.</strong> A random experiment with two outcomes, called a <em>Bernoulli trial</em> (after the famous Swiss mathematician), can describe a variety of situations: a coin toss (heads or tails), a competition with two outcomes (win or loss), the allele of a gene (normal or mutant). The sample space for a single Bernoulli trial consists of just two outcomes: <span class="math inline">\(\{H,T\}\)</span> (for a coin toss). If the experiment is performed repeatedly, the sample space gets more complicated. For two Bernoulli trials there are four different outcomes <span class="math inline">\(\{HH, HT, TH, TT \}\)</span>. One can define different events for this sample space: the event of getting two heads in two tosses contains one outcome: <span class="math inline">\(\{HH\}\)</span>, the event of getting a single head contains two: <span class="math inline">\(\{TH, HT\}\)</span>.</p>
-<p>In order to to describe the composition of a sample space, we need to define the word <em>probability</em> . While it is familiar to everyone from everyday usage, it is difficult to define without using other similar words, such as likelihood or plausibility, which are also in need of definition. It is accepted that something with a high probability happens often, while something with a low frequency is seldom observed. The other notion is that probability can range between 0 (meaning something that never occurs) and 1 (something that occurs every time). These notions lead to the commonly accepted definition:</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <em>probability</em> of an outcome or event in the sample space of a random experiment is the fraction of experiments with this outcome out of many repeated experiments.</p>
-</div>
+<p>In order to to describe the composition of a sample space, we need to define the word <em>probability</em> <span class="citation" data-cites="feller_introduction_nodate">(<a href="references.html#ref-feller_introduction_nodate" role="doc-biblioref">Feller, n.d.</a>)</span>. While it is familiar to everyone from everyday usage, it is difficult to define without using other similar words, such as likelihood or plausibility, which are also in need of definition. It is accepted that something with a high probability happens often, while something with a low frequency is seldom observed. The other notion is that probability can range between 0 (meaning something that never occurs) and 1 (something that occurs every time). These notions lead to the commonly accepted definition:</p>
+<div id="def-prob-freq" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.2</strong></span> The <em>probability</em> of an outcome or event in the sample space of a random experiment is the fraction of experiments with this outcome out of many repeated experiments.</p>
 </div>
 <p>This definition is at the heart of the <em>frequentist</em> view of probability, due to the underlying assumption that the experiment can be repeated as many times as necessary to observe the frequency of outcomes. There is an alternative view that focuses on what is previously known about the experiment (or about systems that produce that kind of experiment) that is called the <em>Bayesian</em> view:</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="def-prob-bayes" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.3</strong></span> The <em>probability</em> of an outcome or event in the sample space of a random experiment is the degree of <em>certainty</em> or <em>belief</em> that this outcome will occur based on prior experience.</p>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <em>probability</em> of an outcome or event in the sample space of a random experiment is the degree of <em>certainty</em> or <em>belief</em> that this outcome will occur based on prior experience.</p>
-</div>
-</div>
-<p>We will investigate the Bayesian approach in chapter 12. Most of traditional probability and classical statistics is based on the frequentist view, as it grew out of attempts to understand games of chance, like cards and dice, which can be easily repeated, or simple experiments like those in agriculture, where many plots can be planted and observed. These easily repeatable simple experiments can be described with mathematical distributions that we will describe in this chapter. However, many contemporary research problems are not so easily repeated, and often require a Bayesian approach that does not yield to neat mathematical description and can be addressed using computation.</p>
+<p>We will examine the Bayesian approach in <span class="citation" data-cites="chapter-bayes">(<a href="references.html#ref-chapter-bayes" role="doc-biblioref"><strong>chapter-bayes?</strong></a>)</span>. Most of traditional probability and classical statistics is based on the frequentist view, as it grew out of attempts to understand games of chance, like cards and dice, which can be easily repeated, or simple experiments like those in agriculture, where many plots can be planted and observed. These easily repeatable simple experiments can be described with mathematical distributions that we will describe in this chapter. However, many contemporary research problems are not so easily repeated, and often require a Bayesian approach that does not yield to neat mathematical description and which instead requires a lot of computation.</p>
 </section>
 <section id="axioms-of-probability" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="axioms-of-probability"><span class="header-section-number">5.1.2</span> axioms of probability</h3>
 <p>One we have defined the probability of an outcome, one can calculate the probability of a collection of outcomes according to rules that ensure the results are self-consistent. These rules are called the axioms of probability:</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The probability <span class="math inline">\(P(A)\)</span> of an event <span class="math inline">\(A\)</span> in a sample space <span class="math inline">\(\Omega\)</span> is a number between 0 and 1, which obeys the following rules, called the <em>axioms of probability</em>:</p>
+<div id="def-prob-axioms" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.4</strong></span> The probability <span class="math inline">\(P(A)\)</span> of an event <span class="math inline">\(A\)</span> in a sample space <span class="math inline">\(\Omega\)</span> is a number between 0 and 1, which obeys the following rules, called the <em>axioms of probability</em>:</p>
 <ul>
 <li><span class="math inline">\(P(\Omega) = 1\)</span></li>
 <li><span class="math inline">\(P(\emptyset) = 0\)</span></li>
-<li><span class="math inline">\(P(A \cup B) = P(A) + P(B) - P(A \cap B)\)</span></li>
+<li><span class="math inline">\(P(A \lor  B) = P(A) + P(B) - P(A \land B)\)</span></li>
 </ul>
 </div>
-</div>
-<p>Let us define some notation for sets: <span class="math inline">\(A \cup B\)</span> is called the <em>union</em> of two sets, which contains all outcomes that belong to either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>, this is equivalent to the logical OR operator because it is true if either A or B is true. <span class="math inline">\(A\cap B\)</span> is called the <em>intersection</em> of two sets, which contains all outcomes that are in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, this is is equivalent to the logical AND operator because it is true if both A and B are true. The <span class="math inline">\(\emptyset\)</span> denotes the empty set. Any event <span class="math inline">\(A\)</span> has its <em>complement</em>, denoted <span class="math inline">\(-A\)</span>, which contains all outcomes of <span class="math inline">\(\Omega\)</span> which are not in <span class="math inline">\(A\)</span>.</p>
-<p>Applying them to the sample space and events in <a href="#fig-sets-prob" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>, the union of the two sets <span class="math inline">\(A \cup B\)</span> are all people who are either tall or like tea, the intersection of the two sets <span class="math inline">\(A\cap B\)</span> are all the tall people who like tea, and the intersection of the first set with the complement of the second <span class="math inline">\(A \cup - B\)</span> are all tall people who do not like tea.</p>
+<p>Let us define some notation for sets: <span class="math inline">\(A \lor B\)</span> is called the <em>union</em> of two sets, which contains all outcomes that belong to either <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span>, this is equivalent to the logical OR operator because it is true if either A or B is true. <span class="math inline">\(A \land B\)</span> is called the <em>intersection</em> of two sets, which contains all outcomes that are in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, this is is equivalent to the logical AND operator because it is true if both A and B are true. The <span class="math inline">\(\emptyset\)</span> denotes the empty set. Any event <span class="math inline">\(A\)</span> has its <em>complement</em>, denoted <span class="math inline">\(-A\)</span>, which contains all outcomes of <span class="math inline">\(\Omega\)</span> which are not in <span class="math inline">\(A\)</span>.</p>
+<p>Applying them to the sample space and events in <a href="#fig-sets-prob" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>, the union of the two sets <span class="math inline">\(A \lor B\)</span> are all people who are either tall or like tea, the intersection of the two sets <span class="math inline">\(A \land B\)</span> are all the tall people who like tea, and the intersection of the first set with the complement of the second <span class="math inline">\(A \land - B\)</span> are all tall people who do not like tea.</p>
 <div id="fig-sets-prob" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-sets-prob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -492,12 +455,12 @@ window.Quarto = {
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sets-prob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.1: Illustration of set combinations
+Figure&nbsp;5.2: Illustration of set combinations
 </figcaption>
 </figure>
 </div>
-<p>The first two axioms connect easily with our intuition about probability: the first axiom says that the probability of some outcome from the sample space occurring is 1, while the second says that the probability of nothing in the sample space occurring is 0. The intuition behind axiom three is less transparent, but it can be see in a Venn diagram of two subsets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of the larger set <span class="math inline">\(\Omega\)</span>, as in <a href="#fig-sets-prob" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>. Compare the size of the union of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and the sum of the sizes of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> separately, and you will see that the intersection <span class="math inline">\(A\cap B\)</span> occurs in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, but is only counted once in the union. This is why it needs to be subtracted from the sum of <span class="math inline">\(P(A)\)</span> and <span class="math inline">\(P(B)\)</span>.</p>
-<p>There are several useful rules that immediately follow from the axioms. First, if two events are mutually exclusive, meaning their intersection is empty (<span class="math inline">\(A\cap B = \emptyset\)</span>), then the probability of either of them happening is the sum of their respective probabilities: <span class="math inline">\(P(A \cup B) = P(A) + P(B)\)</span> (from axiom 3). Further, since an event <span class="math inline">\(A\)</span> and its complement <span class="math inline">\(-A\)</span> are mutually exclusive, their union is the entire sample space <span class="math inline">\(\Omega\)</span>: <span class="math inline">\(P(A) + P(-A) = P(A \cup -A) = P(\Omega) = 1\)</span>, therefore <span class="math inline">\(P(A) = 1-P(-A)\)</span>.</p>
+<p>The first two axioms connect easily with our intuition about probability: the first axiom says that the probability of some outcome from the sample space occurring is 1, while the second says that the probability of nothing in the sample space occurring is 0. The intuition behind axiom three is less transparent, but it can be see in a Venn diagram of two subsets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of the larger set <span class="math inline">\(\Omega\)</span>, as in <a href="#fig-sets-prob" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>. Compare the size of the union of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and the sum of the sizes of sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> separately, and you will see that the intersection <span class="math inline">\(A \land B\)</span> occurs in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, but is only counted once in the union. This is why it needs to be subtracted from the sum of <span class="math inline">\(P(A)\)</span> and <span class="math inline">\(P(B)\)</span>.</p>
+<p>There are several useful rules that immediately follow from the axioms. First, if two events are mutually exclusive, meaning their intersection is empty (<span class="math inline">\(A \land B = \emptyset\)</span>), then the probability of either of them happening is the sum of their respective probabilities: <span class="math inline">\(P(A \lor B) = P(A) + P(B)\)</span> (from axiom 3). Further, since an event <span class="math inline">\(A\)</span> and its complement <span class="math inline">\(-A\)</span> are mutually exclusive, their union is the entire sample space <span class="math inline">\(\Omega\)</span>: <span class="math inline">\(P(A) + P(-A) = P(A \lor -A) = P(\Omega) = 1\)</span>, therefore <span class="math inline">\(P(A) = 1-P(-A)\)</span>.</p>
 <p><strong>Example.</strong> Assume one is using a fair coin, so the probability of a single head and a single tail is 1/2. The probability of getting two heads in a row is 1/4, because exactly half of those coins that come up heads once will come up heads again. In fact, the probability of getting any particular sequence of two coin toss results is 1/4. Here are some examples of what we can calculate:</p>
 <ul>
 <li>the probability of getting one head of out of two tosses is <span class="math inline">\(1-1/4-1/4=1/2\)</span> (by the complement rule).</li>
@@ -514,37 +477,113 @@ Figure&nbsp;5.1: Illustration of set combinations
 </ul>
 <p><strong>Example</strong> <span class="citation" data-cites="denny_chance_2002">(<a href="references.html#ref-denny_chance_2002" role="doc-biblioref">Denny and Gaines 2002</a>)</span> Sarcastic fringeheads are tropical ocean fish that engage in aggressive mouth-wrestling matches for their rocky residences. Let us treat each match as a stochastic experiment with two outcomes: win or loss. Then the sample space is equivalent to our coin-tossing experiment, e.g.&nbsp;for two matches the sample space is <span class="math inline">\(\{ WW, WL, LW, LL \}\)</span>. However, the probability distribution may different, for example if a particular fringehead wins 3/4 of its matches, then the probability distribution would be: <span class="math inline">\(P(\{ WW \}) = 9/16\)</span>, <span class="math inline">\(P(\{ LW \}) = P(\{WL\}) = 3/16\)</span>, and <span class="math inline">\(P(\{LL\}) = 1/16\)</span>. Thus, the same sample space may have different probability distributions defined on it.</p>
 </section>
-<section id="random-variables" class="level3" data-number="5.1.3">
-<h3 data-number="5.1.3" class="anchored" data-anchor-id="random-variables"><span class="header-section-number">5.1.3</span> random variables</h3>
-<p>The outcomes of experiments may be expressed in numbers or words, but we generally need numbers in order to report and analyze results. One can describe this mathematically as a function (recall its definition from section 2.2) that assigns numbers to random outcomes <span class="citation" data-cites="feller_introduction_nodate">(<a href="references.html#ref-feller_introduction_nodate" role="doc-biblioref">Feller, n.d.</a>)</span>. In practice, a random variable describes the measurement that one makes to describe the outcomes of a random experiment.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+</section>
+<section id="conditional-probability-and-indepdence" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="conditional-probability-and-indepdence"><span class="header-section-number">5.2</span> Conditional probability and indepdence</h2>
+<p>Let us return to the abstract description of probability introduced in section 8.1. There we used the notion of sample space and its subsets, called events, to describe collections of experimental outcomes. Suppose that you have some information about a random experiment that restricts the possible outcomes to a particular subset (event). In other words, you have ruled out some outcomes, so the only possible outcomes are those in the complementary set. This will affect the probability of other events in the sample space, because your information may have ruled out some of the outcomes in that event as well.</p>
+<div id="def-cond-prob" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.5</strong></span> For two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> in a sample space <span class="math inline">\(\Omega\)</span> with a probability measure <span class="math inline">\(P\)</span>, the probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span>, called the <em>conditional probability</em> is defined as: <span class="math display">\[P(A|B) = \frac{P(A \land B)}{P(B)}\]</span></p>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
+<p><span class="math inline">\(A \land B\)</span> represents the intersection of events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, also known as <span class="math inline">\(A\)</span> AND <span class="math inline">\(B\)</span>, the event that consists of all outcomes that are in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. In words, given the knowledge that an event <span class="math inline">\(B\)</span> occurs, the sample space is restricted to the subset <span class="math inline">\(B\)</span>, which is why the denominator in the definition is <span class="math inline">\(P(B)\)</span>. The numerator is all the outcomes we are interested in, which is <span class="math inline">\(A\)</span>, but since we are now restricted to <span class="math inline">\(B\)</span>, the numerator consists of all the elements of <span class="math inline">\(A\)</span> which are also in <span class="math inline">\(B\)</span>, or <span class="math inline">\(A \land B\)</span>. The definition makes sense in two extreme cases: if <span class="math inline">\(A = B\)</span> and if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive:</p>
+<ul>
+<li><span class="math inline">\(P(B | B) = P(B \land B) /P(B) = P(B)/P(B) = 1\)</span> (probability of <span class="math inline">\(B\)</span> given <span class="math inline">\(B\)</span> is 1)</li>
+<li>if <span class="math inline">\(P(A \land B) =0\)</span>, then <span class="math inline">\(P(A|B) = 0/P(B) = 0\)</span> (if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive, then probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is 0)</li>
+</ul>
+<div id="fig-cond-prob" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cond-prob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="ch6/cond_prob_tikz.png" class="img-fluid figure-img">
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cond-prob-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: A Venn diagram of the sample space of all people with two events: tall people (<span class="math inline">\(A\)</span>) and those who like tea (<span class="math inline">\(B\)</span>) with probabilities of <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> and their intersection indicated.
+</figcaption>
+</figure>
 </div>
-<div class="callout-body-container callout-body">
-<p>A <em>random variable</em> is a number or category associated to each outcome in a sample space <span class="math inline">\(\Omega\)</span>. This association has to follow the rules of a function as defined in chapter 2.</p>
+<p>There are some common misunderstandings about conditional probability, which are usually the result of discrepancies between everyday word usage and precise mathematical terminology. First, the probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is not the same as probability of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. These concepts seem interchangeable because the statement “what are the odds of finding a tall person who likes tea?” is hard to distinguish from ‘’what are the odds that a person who is tall likes tea?’’ The difference in these concepts can be illustrated using a Venn diagram, shown in figure <span class="math inline">\(\ref{fig:ch6_cond_prob}\)</span>. Based on the probabilities indicated there, the probability of randomly selecting a person who is both tall and likes tea is <span class="math inline">\(P(A \land B) = 0.1\)</span>, while the probability that a tea drinker is tall is <span class="math inline">\(P(A | B) = 0.1/0.3 = 1/3\)</span>, which are different values.</p>
+<p>A similar misconception is to be cavalier about the order of conditionality. In general, <span class="math inline">\(P(A | B) \neq P(B |A)\)</span>, except in special cases. Going back to the illustration in figure <span class="math inline">\(\ref{fig:ch6_cond_prob}\)</span>, the probability that a tea drinker is tall <span class="math inline">\(P(A | B) = 1/3\)</span> is the different than the probability that a tall person is a tea drinker <span class="math inline">\(P(B|A) = 0.1/0.5 = 0.2\)</span>. <strong>One must take care when interpreting written statements to carefully distinguish what is known a priori and what remains under investigation. In the statement <span class="math inline">\(P(A | B)\)</span>, <span class="math inline">\(B\)</span> represents what is known, and <span class="math inline">\(A\)</span> represents what is still to be investigated.</strong></p>
+<div id="fig-mendel-flowers" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mendel-flowers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="ch6/mendel_flowers.png" class="img-fluid figure-img">
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mendel-flowers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: Punnet square of a cross of two heterozygous pea plants showing the possible genotypes and phenotypes of offspring (figure by Madprime in public domain via Wikimedia Commons.)
+</figcaption>
+</figure>
+</div>
+<section id="exercises" class="level4" data-number="5.2.0.1">
+<h4 data-number="5.2.0.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.2.0.1</span> exercises</h4>
+<p>In <a href="#fig-mendel-flowers" class="quarto-xref">Figure&nbsp;<span>5.4</span></a> there is a table of genotypes from the classic Mendelian experiment with genetics and color of pea flowers. The parents are both heterozygous, meaning each has a copy of the dominant (purple) allele B and the recessive (white) allele b. The possible genotypes of offspring are shown inside the square, and all four outcomes have equal probabilities. Based on this information, answer the following questions.</p>
+<ol type="1">
+<li><p>What is the probability of an offspring having purple flowers? white flowers?</p></li>
+<li><p>What is the probability of an offspring having genotype <span class="math inline">\(BB\)</span>? genotype <span class="math inline">\(Bb\)</span>? genotype <span class="math inline">\(bb\)</span>?</p></li>
+<li><p>What is the probability of an offspring having genotype <span class="math inline">\(BB\)</span>, given that its flowers are purple?</p></li>
+<li><p>What is the probability of an offspring having genotype <span class="math inline">\(Bb\)</span>, given that its flowers are purple?</p></li>
+<li><p>What is the probability of an offspring having genotype <span class="math inline">\(BB\)</span>, given that its flowers are white?</p></li>
+<li><p>What is the probability of an offspring having genotype <span class="math inline">\(Bb\)</span>, given that its flowers are white?}</p></li>
+<li><p>What is the probability of an offspring having purple flowers, given that its genotype is <span class="math inline">\(BB\)</span>?</p></li>
+</ol>
+</section>
+<section id="independence-of-events" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="independence-of-events"><span class="header-section-number">5.2.1</span> independence of events</h3>
+<p>We first encountered the notion of independence in chapter 3, where two events were said to be independent if they did not affect each other. The mathematical definition uses the language of conditional probability to make this notion precise. It says that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if given the knowledge of <span class="math inline">\(A\)</span>, the probability of <span class="math inline">\(B\)</span> remains the same, and vice versa.</p>
+<div id="def-independence" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.6</strong></span> Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <em>independent</em> if <span class="math inline">\(P(A|B) = P(A)\)</span>, or equivalently if <span class="math inline">\(P(B|A) = P(B)\)</span>.</p>
+</div>
+<p>Independence is not a straightforward concept. It may be confused with mutual exclusivity, as one might surmise that if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> have no overlap, then they are independent. That however, is false by definition, since <span class="math inline">\(P(A|B)\)</span> is 0 for two mutually exclusive events. The confusion stems from thinking that if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are non-overlapping, then they do not influence each other. But the notion of influence in this definition is about information; so of course if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive, the knowledge that one of them occurs has an influence of the probability of the other one occurring.</p>
+<p>A useful way to think about independence is in terms of fractions of outcomes. The probability of <span class="math inline">\(A\)</span> is the fraction of outcomes out of the entire sample space which is in <span class="math inline">\(A\)</span>, while the probability of <span class="math inline">\(A\)</span> given <span class="math inline">\(B\)</span> is the fraction of outcomes in <span class="math inline">\(B\)</span> which are also in <span class="math inline">\(A\)</span>. The definition of independence equates the two fractions, therefore, if <span class="math inline">\(A\)</span> occupies 1/2 of sample space, in order for <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> to be independent, events in <span class="math inline">\(A\)</span> must constitute 1/2 of the event <span class="math inline">\(B\)</span>. In the illustration in <a href="#fig-cond-prob" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>, the fraction of tall people is 0.5 of the sample space, but the fraction of tea-drinkers who are tall is <span class="math inline">\(0.1/0.3=1/3\)</span>. Since the two fractions are different, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch6/indep_ex1.png" class="img-fluid figure-img"></p>
+<figcaption>Example of two events inside a sample space that are mutually exclusive</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch6/indep_ex2.png" class="img-fluid figure-img"></p>
+<figcaption>Example of two events inside a sample space that are partially overlapping</figcaption>
+</figure>
+</div>
+<div id="fig-indep-sets" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-indep-sets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="ch6/indep_ex3.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-indep-sets-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: Illustration of two events inside a sample space where one is entirely contained in the other
+</figcaption>
+</figure>
+</div>
+<section id="exercises-1" class="level4" data-number="5.2.1.1">
+<h4 data-number="5.2.1.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">5.2.1.1</span> exercises</h4>
+<p>Consider three examples of events and their intersections in <a href="#fig-indep-sets" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>.</p>
+<ol type="1">
+<li><p>Based on the two non-overlapping (mutually exclusive) events, calculate the conditional probability <span class="math inline">\(P(A|B)\)</span> and compare it with <span class="math inline">\(P(A)\)</span>. Are <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent?</p></li>
+<li><p>Based on the two partially overlapping events, calculate the conditional probability <span class="math inline">\(P(A|B)\)</span> and compare it with <span class="math inline">\(P(A)\)</span>. Are <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent?</p></li>
+<li><p>Based on the two completely overlapping events, calculate the conditional probability <span class="math inline">\(P(A|B)\)</span> and compare it with <span class="math inline">\(P(A)\)</span>. Are <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent?</p></li>
+</ol>
+</section>
+</section>
+<section id="product-rule" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="product-rule"><span class="header-section-number">5.2.2</span> product rule</h3>
+<p>The definition of independence is abstract, but it has a direct consequence of great computational value. From the definition of conditional probability, <span class="math inline">\(P(A|B) = P(A \land B)/P(B)\)</span>, and if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent then <span class="math inline">\(P(A|B)\)</span> can be replaced with <span class="math inline">\(P(A)\)</span>, leading to the expression <span class="math inline">\(P(A) = P(A \land B)/P(B)\)</span>. Multiplying both sides by <span class="math inline">\(P(B\)</span>) gives us the formula called the <em>product rule</em>, which states that for two independent events the probability of both of them occuring is the product of their separate probabilities:</p>
+<p><span class="math display">\[
+P(A \land B) = P(B)P(A)
+\]</span></p>
+<p>The product rule is extremely useful for computing probability distributions of complicated random variables. Recall that the binomial distribution, which we saw in section <span class="math inline">\(\ref{sec:math4_2}\)</span> is based on a string of <span class="math inline">\(n\)</span> Bernoulli trials which are independent of each other, which allows the calculation of the probability of a string of successes and failures, or heads/tails, etc. In practice, independence between processes is rarely true in the idealized mathematical sense. However, computing the probability of two random variables without independence is extremely difficult, so it is useful to make the independence assumption and then test it against the data. If it stands up, you have a good predictive model, and if it does not, you have learned that two processes are somehow linked, which is very useful.</p>
+</section>
+</section>
+<section id="random-variables-and-distributions" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="random-variables-and-distributions"><span class="header-section-number">5.3</span> Random Variables and Distributions</h2>
+<p>The outcomes of experiments may be expressed in numbers or words, but we generally need numbers in order to report and analyze results. One can describe this mathematically as a function (as defined in <a href="functions.html#def-function" class="quarto-xref">Definition&nbsp;<span>3.1</span></a>) that assigns numbers to random outcomes <span class="citation" data-cites="feller_introduction_nodate">(<a href="references.html#ref-feller_introduction_nodate" role="doc-biblioref">Feller, n.d.</a>)</span>. In practice, a random variable describes the measurement that one makes to describe the outcomes of a random experiment.</p>
+<div id="def-rv" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.7</strong></span> A <em>random variable</em> is a number or category associated to each outcome in a sample space <span class="math inline">\(\Omega\)</span>. This association has to follow the rules of a function as defined in chapter 2.</p>
 </div>
 <p><strong>Example.</strong> Define the random variable to be the number of heads out of two coin tosses. This random variable will return numbers 0, 1, or 2, corresponding to different events. The random variable of the number of mutants out of two people (assuming there are only two outcomes, mutant and normal) has the same set of values. This random variable is a function on the sample space because it returns a unique value for each outcome.</p>
 <p><strong>Example.</strong> <span class="citation" data-cites="denny_chance_2002">(<a href="references.html#ref-denny_chance_2002" role="doc-biblioref">Denny and Gaines 2002</a>)</span> Suppose that our sarcastic fringehead, upon losing a wrestling match, has to search for another home for three hours. Then we can define the random variable of time wasted over two wrestling matches, which can be either 0, 3, or 6 hours, depending on the events defined above. Once again, this is a function because there is an unambiguous number associated with each outcome.</p>
 <p>A random variable has a set of possible values, and each of those values may come up more or less frequently in an random experiment. The frequency of each measurement corresponds to the probability of the outcomes in the sample space that produce that particular value of the random variable. One can describe the behavior of the random variable in terms of the collection of the probabilities of its outcomes.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The probability of a random variable <span class="math inline">\(X\)</span> taking some value <span class="math inline">\(a\)</span>, written as <span class="math inline">\(P(X=a)\)</span>, but usually simplified to <span class="math inline">\(P(a)\)</span> is the probability of the event corresponding to the value <span class="math inline">\(a\)</span> of the random variable. This function <span class="math inline">\(P(a)\)</span> is called the <em>probability distribution</em> of the random variable <span class="math inline">\(X\)</span>.</p>
-</div>
+<div id="def-prob-dist" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.8</strong></span> The probability of a random variable <span class="math inline">\(X\)</span> taking some value <span class="math inline">\(a\)</span>, written as <span class="math inline">\(P(X=a)\)</span>, but usually simplified to <span class="math inline">\(P(a)\)</span> is the probability of the event corresponding to the value <span class="math inline">\(a\)</span> of the random variable. This function <span class="math inline">\(P(a)\)</span> is called the <em>probability distribution</em> of the random variable <span class="math inline">\(X\)</span>.</p>
 </div>
 <p>One important property of probability distribution functions for a discrete random variable is that all of its values have to add up to 1:</p>
 <p><span class="math display">\[\sum_{i=1}^N P(a_i) =1\]</span></p>
@@ -552,66 +591,65 @@ Note
 <p><strong>Example.</strong> Assuming that each coin toss has probability 1/2 of resulting in heads, the probability distribution function for the number of heads out of two coin tosses is <span class="math inline">\(P(0) = 1/4; \; P(1) = 1/2; \; P(2) = 1/4\)</span> (as we computed in the example in the previous section). Note that the probabilities add up to 1, as they should.</p>
 <p><strong>Example.</strong> For the random variable of the number of mutants out of two people, for mutation prevalence of 0.2, the probability distribution function is <span class="math inline">\(P(0) = 0.64; \; P(1) = 0.32; \; P(2) = 0.04\)</span> (as we computed in the example in the previous section). Note that the probabilities add up to 1, as they should.</p>
 <p><strong>Example.</strong> For the time wasted by a fringehead, the distribution is <span class="math inline">\(P(0)= 9/16; \; P(3) = 3/16; \; P(6) = 1/16\)</span>. Note that other values of the random variable have probability 0, because they correspond to the empty set in sample space.</p>
-</section>
-<section id="expectation-of-random-variables" class="level3" data-number="5.1.4">
-<h3 data-number="5.1.4" class="anchored" data-anchor-id="expectation-of-random-variables"><span class="header-section-number">5.1.4</span> expectation of random variables</h3>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="expectation-of-random-variables" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="expectation-of-random-variables"><span class="header-section-number">5.3.1</span> expectation of random variables</h3>
+<div id="def-exp-val" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.9</strong></span> The <em>expected value</em> (or mean) of a discrete random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(P(X)\)</span> is defined as: <span class="math display">\[ E(X) = \mu_X = \sum_{i=1}^N  a_i P(a_i)\]</span></p>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <em>expected value</em> (or mean) of a discrete random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(P(X)\)</span> is defined as: <span class="math display">\[ E(X) = \mu_X = \sum_{i=1}^N  a_i P(a_i)\]</span></p>
-</div>
-</div>
-<p>This sum is over all values <span class="math inline">\(\{a_i\}\)</span> that the random variable <span class="math inline">\(X\)</span> can take, multiplied by the probability of the random variable taking that value (meaning the probability of the event in sample space that corresponds to that value). This corresponds to the definition of the mean of a data set given in section <span class="math inline">\(\ref{sec:math3}\)</span>, if you consider <span class="math inline">\(P(a_i)\)</span> to be the number of times <span class="math inline">\(a_i\)</span> occurs divided by the number of total measurements <span class="math inline">\(N\)</span>. As in the case of the histogram and the distribution function, the mean of a sample for a large sample size <span class="math inline">\(N\)</span> approaches the mean of the random variable, which we will discuss in more detail in the next chapter. Sometimes we will use the more concise <span class="math inline">\(\mu_X = E(X)\)</span> to represent the mean (expected) value. Here are some mathematical properties of the expectation:</p>
+<p>This sum is over all values <span class="math inline">\(\{a_i\}\)</span> that the random variable <span class="math inline">\(X\)</span> can take, multiplied by the probability of the random variable taking that value (meaning the probability of the event in sample space that corresponds to that value). This corresponds to the definition of the mean of a data set given in <a href="descriptive.html#sec-descr-stats" class="quarto-xref"><span>Section 2.2</span></a>, if you consider <span class="math inline">\(P(a_i)\)</span> to be the number of times <span class="math inline">\(a_i\)</span> occurs divided by the number of total measurements <span class="math inline">\(N\)</span>. As in the case of the histogram and the distribution function, the mean of a sample for a large sample size <span class="math inline">\(N\)</span> approaches the mean of the random variable, which we will discuss in more detail in the next chapter. Sometimes we will use the more concise <span class="math inline">\(\mu_X = E(X)\)</span> to represent the mean (expected) value. Here are some mathematical properties of the expectation:</p>
 <ul>
-<li>Expectation of a random variable which is always constant (<span class="math inline">\(c\)</span>) is equal to <span class="math inline">\(c\)</span>, since the probability of <span class="math inline">\(c\)</span> is 1: <span class="math inline">\(E(c) = cP(c) = c\)</span></li>
-<li>Expectation of a constant multiple of a random variable is:</li>
+<li><p>Expectation of a random variable which is constant (<span class="math inline">\(c\)</span>) is equal to <span class="math inline">\(c\)</span>, since the probability of <span class="math inline">\(c\)</span> is 1: <span class="math inline">\(E(c) = cP(c) = c\)</span></p></li>
+<li><p>Expectation of a constant multiple of a random variable is: <span class="math display">\[E(cX) = \sum_i c x_iP(x_i) = c \sum_i x_iP(x_i) = c \mu_X\]</span></p></li>
+<li><p>Expectation of a sum of two random variables is the sum of their expectations.</p></li>
 </ul>
-<p><span class="math display">\[E(cX) = \sum_i c x_iP(x_i) = c \sum_i x_iP(x_i) = c \mu_X\]</span></p>
-<ul>
-<li>Expectation of a sum of two random variables is the sum of their expectations. This is a more complicated argument, so let us break it down. First, all possible values of the random variable <span class="math inline">\(X+Y\)</span> come from going through the possible values of <span class="math inline">\(X\)</span> (<span class="math inline">\(a_i\)</span>) and <span class="math inline">\(Y\)</span> (<span class="math inline">\(b_i\)</span>), and each combination of values has its own probability (called the joint probability distribution) <span class="math inline">\(P(a_i, b_j)\)</span>:</li>
-</ul>
-<p><span class="math display">\[E(X+Y) = \sum_i \sum_j (a_i+b_j) P(a_i, b_j)\]</span> We can split the sum into two terms by the distributive property of multiplication and then take out the values <span class="math inline">\(a_i\)</span> and <span class="math inline">\(b_j\)</span> out of the sum that they do not depend on:</p>
-<p><span class="math display">\[E(X+Y) = \sum_i \sum_j a_i P(a_i, b_j) + \sum_i \sum_j b_j P(a_i, b_j)=\]</span> <span class="math display">\[=\sum_i a_i  \sum_j  P(a_i, b_j) +  \sum_j b_j \sum_i P(a_i, b_j) \]</span> The joint distributions added up over all values of one variable, become single-variable distributions, so this leaves us with two sums which are the two separate expected values:</p>
-<p><span class="math display">\[E(X+Y) =  \sum_i a_i P(a_i) +  \sum_j b_j P(b_j) = E(X) + E(Y) \]</span></p>
+<p>This is a more complicated argument, so let us break it down. First, all possible values of the random variable <span class="math inline">\(X+Y\)</span> come from going through the possible values of <span class="math inline">\(X\)</span> (<span class="math inline">\(a_i\)</span>) and <span class="math inline">\(Y\)</span> (<span class="math inline">\(b_i\)</span>), and each combination of values has its own probability (called the joint probability distribution) <span class="math inline">\(P(a_i, b_j)\)</span>:</p>
+<p><span class="math display">\[E(X+Y) = \sum_i \sum_j (a_i+b_j) P(a_i, b_j)\]</span></p>
+<p>We can split the sum into two terms by the distributive property of multiplication and then take out the values <span class="math inline">\(a_i\)</span> and <span class="math inline">\(b_j\)</span> out of the sum that they do not depend on:</p>
+<p><span class="math display">\[E(X+Y) = \sum_i \sum_j a_i P(a_i, b_j) + \sum_i \sum_j b_j P(a_i, b_j)=\]</span></p>
+<p><span class="math display">\[
+=\sum_i a_i  \sum_j  P(a_i, b_j) +  \sum_j b_j \sum_i P(a_i, b_j)
+\]</span> The joint distributions added up over all values of one variable, become single-variable distributions <span class="math inline">\(P_X(a)\)</span> and <span class="math inline">\(P_Y(b)\)</span>, so this leaves us with two sums which are the two separate expected values:</p>
+<p><span class="math display">\[E(X+Y) =  \sum_i a_i P_X(a_i) +  \sum_j b_j P_Y(b_j) = E(X) + E(Y) \]</span></p>
 <p><strong>Example.</strong> The expected value of the number of heads out of two coin tosses can be calculated using the probability distribution function we found above: <span class="math display">\[ E(X) = 0\times P(0) + 1 \times P(1) + 2 \times P(2) = 0+1/2+2 \times 1/4 = 1\]</span> The expected number of heads out of 2 is 1, if each head comes up with probability 1/2, which I think you will find intuitive.</p>
-<p><strong>Example.</strong> The expected value of the number of mutants out of two people can be calculated using the probability distribution function we found above: <span class="math display">\[ E(X) = 0 \times P(0) + 1 \times P(1) + 2 \times P(2) = 0+1 \times 0.32+2 \times 0.04 = 0.4\]</span> The expected number of mutants in a sample of two people is 0.4, which may seem a bit strange. Recall that mean or expected values do not have to coincide with values that are possible, as we discussed in section <span class="math inline">\(\ref{sec:math3}\)</span>, but are instead a weighted average of values, according to their frequencies or probabilities.</p>
+<p><strong>Example.</strong> The expected value of the number of mutants out of two people can be calculated using the probability distribution function we found above: <span class="math display">\[ E(X) = 0 \times P(0) + 1 \times P(1) + 2 \times P(2) = 0+1 \times 0.32+2 \times 0.04 = 0.4\]</span> The expected number of mutants in a sample of two people is 0.4, which may seem a bit strange. Recall that mean or expected values do not have to coincide with values that are possible, as we discussed in <a href="descriptive.html#sec-descr-stats" class="quarto-xref"><span>Section 2.2</span></a>, but are instead a weighted average of values, according to their frequencies or probabilities.</p>
 <p><strong>Example.</strong> Find the expected value of the number of wins out of two matches for a fringehead which has the probability of winning of 3/4.</p>
 <p><span class="math display">\[E(X) = 0 \times 1/16 + 1 \times 6/16 + 2 \times 9/16 = 24/16 = 3/2\]</span></p>
 </section>
-<section id="variance-of-random-variables" class="level3" data-number="5.1.5">
-<h3 data-number="5.1.5" class="anchored" data-anchor-id="variance-of-random-variables"><span class="header-section-number">5.1.5</span> variance of random variables</h3>
+<section id="variance-of-random-variables" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="variance-of-random-variables"><span class="header-section-number">5.3.2</span> variance of random variables</h3>
 <p>Knowledge of the expected value says nothing about how the random variable actually varies: expectation does not distinguish between a random variable which is constant and one which can deviate far from the mean. In order to quantify this variation, one might be tempted to compute the mean differences from the mean value, but it does not work:</p>
-<p><span class="math display">\[ E(X-\mu_X) =  \sum_i (x_i-\mu_x)P(x_i) = \sum_i x_i P(x_i) - \mu_x \sum_i P(x_i) = \mu_x - \mu_x = 0\]</span> The problem is, if we add up all the differences from the mean, the positive ones end up canceling the negative ones and the expected value of those deviations is exactly zero. This is why it makes sense to square the differences and add them up:</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p><span class="math display">\[
+E(X-\mu_X) =  \sum_i (x_i-\mu_x)P(x_i) = \sum_i x_i P(x_i) - \mu_x \sum_i P(x_i) = \mu_x - \mu_x = 0
+\]</span> The problem is, if we add up all the differences from the mean, the positive ones end up canceling the negative ones and the expected value of those deviations is exactly zero. This is why it makes sense to square the differences and add them up:</p>
+<div id="def-var-prob" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.10</strong></span> The <em>variance</em> of a discrete random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(P(x)\)</span> is <span class="math display">\[ Var(X) = E((X-\mu_X)^2) = \sum_{i=1}^N (x_i-\mu_x)^2P(x_i)\]</span></p>
 </div>
-<div class="callout-title-container flex-fill">
-Note
+<p>One useful property of the variance is: <span class="math display">\[ Var(X) = \sum_i (x_i^2 - 2x_i\mu_x + \mu_x^2)P(x_i) =\]</span></p>
+<p><span class="math display">\[= \sum_i x_i^2 P(x_i) - 2\mu_x\sum_i x_i P(x_i) + \mu_x^2 \sum_i P(x_i) = E(X^2) - E(X)^2 \]</span></p>
+<p>So variance can be calculated as the difference between the expectation of the variable squared and the squared expectation. Note that the variance is given in units of the variable squared, so in order to measure the spread of the variable in the same units, we take the square root of the variance and call it the <em>standard deviation</em>: <span class="math display">\[\sigma_x = \sqrt{Var(X)}\]</span></p>
+<p>While the expectation of a sum of random variables is the sum of their expectations, for any random variables, the same is not true for the variance. However, there is a special condition under which this is true. First, let us write the variance of a sum of two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with respective probability distribution functions <span class="math inline">\(P_X(a)\)</span> and <span class="math inline">\(P_Y(b)\)</span>:</p>
+<p><span class="math display">\[
+Var(X+Y) = E \left[ (X+Y)-(\mu_X+\mu_Y) \right]^2 =
+\]</span></p>
+<p><span class="math display">\[= E[ (X-\mu_X)^2 +(Y-\mu_Y)^2 - 2(X-\mu_X)(Y-\mu_Y)] = \]</span></p>
+<p><span class="math display">\[
+=E (X-\mu_X)^2 +  E(Y-\mu_Y)^2   -2 E[(X-\mu_X)(Y-\mu_Y)] =
+\]</span></p>
+<p><span class="math display">\[ = Var(X) + Var(Y)  -2 E[(X-\mu_X)(Y-\mu_Y)] \]</span></p>
+<p>The last term in that expression should look familiar, as it is equivalent to the definition of covariance for a sample of two numeric variables we saw in the previous chapter <a href="linreg.html#def-sample-cov" class="quarto-xref">Definition&nbsp;<span>4.1</span></a>. We can now define the theoretical covariance for two random variables:</p>
+<div id="def-cov-prob" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.11</strong></span> The <em>covariance</em> of a pair of discrete random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with the joint probability distribution <span class="math inline">\(P(x,y)\)</span> is: <span class="math display">\[ Cov(X,Y) = E((X-\mu_X)(Y-\mu_Y)) = \sum_i \sum_j (x_i-\mu_x)(y_j-\mu_y)P(x_i,y_j)\]</span> where the double sum is added up over all possible pairs of values of the random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>: <span class="math inline">\((x_i, y_j)\)</span>.</p>
 </div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The <em>variance</em> of a discrete random variable <span class="math inline">\(X\)</span> with probability distribution <span class="math inline">\(P(x)\)</span> is <span class="math display">\[ Var(X) = E((X-\mu_X)^2) = \sum_{i=1}^N (x_i-\mu_x)^2P(x_i)\]</span></p>
-</div>
-</div>
-<p>One useful property of the variance is: <span class="math display">\[ Var(X) = \sum_i (x_i^2 - 2x_i\mu_x + \mu_x^2)P(x_i) =\]</span> <span class="math display">\[= \sum_i x_i^2 P(x_i) - 2\mu_x\sum_i x_i P(x_i) + \mu_x^2 \sum_i P(x_i) = E(X^2) - E(X)^2 \]</span> So variance can be calculated as the difference between the expectation of the variable squared and the squared expectation. Note that the variance is given in units of the variable squared, so in order to measure the spread of the variable in the same units, we take the square root of the variance and call it the <em>standard deviation</em>: <span class="math display">\[\sigma_x = \sqrt{Var(X)}\]</span> While the expectation of a sum of random variables is the sum of their expectations, for any random variables, the same is not true for the variance. However, there is a special condition under which this is true. First, let us write the variance of a sum of two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>:</p>
-<p><span class="math display">\[Var(X+Y) = E \left[ (X+Y)-(\mu_X+\mu_Y) \right]^2 =\]</span></p>
-<p><span class="math display">\[ = E[ (X-\mu_X)^2 +(Y-\mu_Y)^2 - 2(X-\mu_X)(Y-\mu_Y)] = \]</span> <span class="math display">\[=E (X-\mu_X)^2 +  E(Y-\mu_Y)^2   -2 E[(X-\mu_X)(Y-\mu_Y)] = \]</span></p>
-<p><span class="math display">\[ = Var(X) + Var(Y)  -2 E[(X-\mu_X)(Y-\mu_Y)] \]</span>The last term is a special number called the <em>covariance</em> of the two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, which we will see in the chapter on linear regression. So for any two random variables that have zero covariance, their variance is additive!</p>
-<p><strong>Example.</strong> The variance of the number of heads out of two coin tosses can be calculated using its probability distribution function and the expected value (1) from above: <span class="math display">\[ Var(X) = (0-1)^2 \times P(0) + (1-1)^2 \times P(1) + (2-1)^2 \times P(2) = 1/4+0+1/4 = 1/2\]</span> Since the variance is 1/2, the standard deviation, or the expected distance from the mean value is <span class="math inline">\(\sigma= \sqrt{1/2}\)</span>.</p>
-<p><strong>Example.</strong> The variance of the number of mutants out of two people can be calculated using its probability distribution function and the expected value (0.4) from above: <span class="math display">\[ E(X) = (0-0.4)^2 \times P(0) + (1-0.4)^2 \times P(1) + (2-0.4)^2 \times P(2) =\]</span> <span class="math display">\[ = 0.4^2 \times 0.64+0.6^2 \times 0.32+1.6^2 \times 0.04 = 0.32\]</span> Since the variance is 0.32, the standard deviation, or the expected distance from the mean value is <span class="math inline">\(\sigma= \sqrt{0.32}\)</span>.</p>
-<p><strong>Example.</strong> We have computed the expected value for the number of wins in two fringehead fights, so now let us find the variance and standard deviation. We already know the possible values of <span class="math inline">\(X\)</span>, and the associated probabilities, so we calculate: <span class="math display">\[ E(X^2) = 0^2 \times 1/16 + 1^2 \times 6/16 + 2^2 \times 9/16 = 42/16\]</span> Then the variance is: <span class="math display">\[ Var(X) = E(X^2)  - E(X)^2 = 42/12 - 9/4 = (42-27)/16 = 15/16\]</span> and the standard deviation is <span class="math inline">\(\sigma = \sqrt{15}/4\)</span> or just under 1.</p>
-</section>
-<section id="exercises" class="level3" data-number="5.1.6">
-<h3 data-number="5.1.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.1.6</span> Exercises</h3>
+<p>Thus, <strong>if two random variables have zero covariance, their variance is additive <span class="math inline">\(Var(X+Y)=Var(X)+Var(Y)\)</span></strong>. This was a fact that we used in deriving <a href="linreg.html#eq-frac-var" class="quarto-xref">Equation&nbsp;<span>4.2</span></a> in the previous chapter, that the total variance of the data is the variance of the predicted values plus the variance of the residuals.</p>
+<p><strong>Example.</strong> The variance of the number of heads out of two coin tosses can be calculated using its probability distribution function and the expected value (1) from above: <span class="math display">\[
+Var(X) = (0-1)^2 \times P(0) + (1-1)^2 \times P(1) + (2-1)^2 \times P(2) = 1/4+0+1/4 = 1/2
+\]</span></p>
+<p>Since the variance is 1/2, the standard deviation, or the expected distance from the mean value is <span class="math inline">\(\sigma= \sqrt{1/2}\)</span>.</p>
+<p><strong>Example.</strong> The variance of the number of mutants out of two people can be calculated using its probability distribution function and the expected value (0.4) from above:</p>
+<p><span class="math display">\[ E(X) = (0-0.4)^2 \times P(0) + (1-0.4)^2 \times P(1) + (2-0.4)^2 \times P(2) =\]</span> <span class="math display">\[ = 0.4^2 \times 0.64+0.6^2 \times 0.32+1.6^2 \times 0.04 = 0.32\]</span> Since the variance is 0.32, the standard deviation, or the expected distance from the mean value is <span class="math inline">\(\sigma= \sqrt{0.32}\)</span>.</p>
+<p><strong>Example.</strong> We have computed the expected value for the number of wins in two fringehead fights, so now let us find the variance and standard deviation. We already know the possible values of <span class="math inline">\(X\)</span>, and the associated probabilities, so we calculate: <span class="math display">\[ E(X^2) = 0^2 \times 1/16 + 1^2 \times 6/16 + 2^2 \times 9/16 = 42/16\]</span> Then the variance is: <span class="math display">\[ Var(X) = E(X^2)  - E(X)^2 = 42/12 - 9/4 = (42-27)/16 = 15/16\]</span> a nd the standard deviation is <span class="math inline">\(\sigma = \sqrt{15}/4\)</span> or just under 1.</p>
+<section id="exercises-2" class="level5" data-number="5.3.2.0.1">
+<h5 data-number="5.3.2.0.1" class="anchored" data-anchor-id="exercises-2"><span class="header-section-number">5.3.2.0.1</span> exercises</h5>
 <p>Calculate the expected values and variances of the following probability distributions, where the possible values of the random variable are in curly brackets, and the probability of each value is indicated as <span class="math inline">\(P(x)\)</span>.</p>
 <ol type="1">
 <li><p><span class="math inline">\(X=\{0, 1\}\)</span> and <span class="math inline">\(P(0) = 0.1, P(1) = 0.9\)</span>.</p></li>
@@ -622,24 +660,28 @@ Note
 </ol>
 </section>
 </section>
-<section id="examples-of-distributions" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="examples-of-distributions"><span class="header-section-number">5.2</span> Examples of distributions</h2>
-<p></p>
-<section id="uniform-distribution" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="uniform-distribution"><span class="header-section-number">5.2.1</span> uniform distribution</h3>
+</section>
+<section id="sec-probdist-examples" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="sec-probdist-examples"><span class="header-section-number">5.4</span> Examples of probability distributions</h2>
+<section id="uniform-distribution" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="uniform-distribution"><span class="header-section-number">5.4.1</span> uniform distribution</h3>
 <p>Perhaps the simplest random variable (besides a constant, which is not really random) is the <em>uniform random variable</em>, for which every outcome has equal probability. The distribution of a fair coin is uniform with two values, <span class="math inline">\(H\)</span> or <span class="math inline">\(T\)</span>, or 0 and 1, each with probability 1/2. More generally, a discrete uniform random variable has <span class="math inline">\(N\)</span> outcomes and each one has probability <span class="math inline">\(1/N\)</span>. This is what people often mean when they use the word random - an experiment where each outcome is equally likely.</p>
-<p>We can calculate the expectation and variance of a uniform random variable <span class="math inline">\(U\)</span>:</p>
-<p><span class="math display">\[
+<p>We can calculate the expectation and variance of a uniform random variable <span class="math inline">\(U\)</span>: <span class="math display">\[
 E(U) = \sum_{i=1}^n  a_i P(a_i) = \frac{1}{n}  \sum_{i=1}^n  a_i
 \]</span> So the expected value is the mean of all the values of the uniform random variable.</p>
 <p><strong>Example.</strong> In the special case of the uniform distribution of <span class="math inline">\(n+1\)</span> integers between 0 and <span class="math inline">\(n\)</span> (<span class="math inline">\(a_i = i\)</span>, for <span class="math inline">\(i=0,..., n\)</span>), each value has probability <span class="math inline">\(P = 1/(n+1)\)</span>. The expected value is the average of the maximum and minimum values (using the fact that <span class="math inline">\(\sum_{i=0}^n i = n(n+1)/2\)</span>): <span id="eq-unif-exp"><span class="math display">\[ E(U) = \frac{n(n+1)}{2(n+1)} = \frac{n}{2}  \tag{5.1}\]</span></span></p>
 <p>Generalizing, for a random variable on integers between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, the expectation is <span id="eq-unif-exp-gen"><span class="math display">\[ E(U) = \frac{a+b}{2} \tag{5.2}\]</span></span></p>
 <p>We can also write down the expression for the variance of the discrete uniform distribution as follows:</p>
-<p><span class="math display">\[ Var(U) = E(U^2) - E(U)^2 =  \frac{1}{n} \sum_{i=1}^n  a_i^2  -  \frac{1}{n^2} \left(\sum_{i=1}^n  a_i \right)^2\]</span> <strong>Example.</strong> In the special case of the uniform distribution of <span class="math inline">\(n+1\)</span> integers between 0 and <span class="math inline">\(n\)</span> (<span class="math inline">\(a_i = i\)</span>, for <span class="math inline">\(i=0,..., n\)</span>), each value has probability <span class="math inline">\(P = 1/(n+1)\)</span>. The variance can be calculated using the formula for the sum of squares: <span class="math inline">\(\sum_{i=0}^n i^2 =n(n+1)(2n+1)/6\)</span>.</p>
-<p><span id="eq-unif-var"><span class="math display">\[ Var(U) = \frac{(n+1)(2n+1)n}{6(n+1)} - \frac{n^2}{4} =   \frac{2n^2+n}{6} - \frac{n^2}{4} = \frac{n(n+2)}{12}
+<p><span class="math display">\[
+Var(U) = E(U^2) - E(U)^2 =  \frac{1}{n} \sum_{i=1}^n  a_i^2  -  \frac{1}{n^2} \left(\sum_{i=1}^n  a_i \right)^2
+\]</span></p>
+<p><strong>Example.</strong> In the special case of the uniform distribution of <span class="math inline">\(n+1\)</span> integers between 0 and <span class="math inline">\(n\)</span> (<span class="math inline">\(a_i = i\)</span>, for <span class="math inline">\(i=0,..., n\)</span>), each value has probability <span class="math inline">\(P = 1/(n+1)\)</span>. The variance can be calculated using the formula for the sum of squares: <span class="math inline">\(\sum_{i=0}^n i^2 =n(n+1)(2n+1)/6\)</span>.</p>
+<p><span id="eq-unif-var"><span class="math display">\[
+Var(U) = \frac{(n+1)(2n+1)n}{6(n+1)} - \frac{n^2}{4} =   \frac{2n^2+n}{6} - \frac{n^2}{4} = \frac{n(n+2)}{12}
 \tag{5.3}\]</span></span></p>
 <p>This can be generalize to a uniform random variable on integers between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> (omitting the algebraic details) so the variance for that uniform random variable is:</p>
-<p><span id="eq-unif-var-gen"><span class="math display">\[ Var(U) = \frac{(b-a+1)^2 - 1}{12} = \frac{(b-a)^2 + 2(b-a)}{12}
+<p><span id="eq-unif-var-gen"><span class="math display">\[
+Var(U) = \frac{(b-a+1)^2 - 1}{12} = \frac{(b-a)^2 + 2(b-a)}{12}
 \tag{5.4}\]</span></span></p>
 <div id="fig-unif-dist" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
@@ -672,35 +714,29 @@ E(U) = \sum_{i=1}^n  a_i P(a_i) = \frac{1}{n}  \sum_{i=1}^n  a_i
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unif-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.2: Two uniform random distributions with different ranges.
+Figure&nbsp;5.6: Two uniform random distributions with different ranges.
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="binomial-distribution" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="binomial-distribution"><span class="header-section-number">5.2.2</span> binomial distribution</h3>
-<p>We have introduced binary or Bernoulli trials in section <span class="math inline">\(\ref{sec:math4_1}\)</span>. Assume that the two values of the random variable <span class="math inline">\(X\)</span> are 0 and 1, with probability <span class="math inline">\(1-p\)</span> and <span class="math inline">\(p\)</span>, respectively. Then we can calculate the expectation and variance of a single Bernoulli trial:</p>
-<p><span class="math display">\[E(X) = 0 \times (1-p) + 1 \times p = p\]</span> <span class="math display">\[ Var(X) = E(X^2) - E(X)^2 = 0^2 \times (1-p) + 1^2 \times p - p^2= p(1-p)\]</span> The first result is likely intuitive, but the second deserves a comment. Note that depending on the probability of 1, the variance, or the spread in outcomes of a Bernoulli trial is different. The highest variance occurs when <span class="math inline">\(p=1/2\)</span>, or equal probability of 0 or 1, but when <span class="math inline">\(p\)</span> approaches 0 or 1, the variance approaches 0. Thus, as the probability approaches zero or one the random variable approaches a constant (either always 1 or 0); hence, no variance.</p>
+<section id="binomial-distribution" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="binomial-distribution"><span class="header-section-number">5.4.2</span> binomial distribution</h3>
+<p>We have introduced binary or Bernoulli trials in <a href="#sec-basic-prob" class="quarto-xref"><span>Section 5.1</span></a>. Assume that the two values of the random variable <span class="math inline">\(X\)</span> are 0 and 1, with probability <span class="math inline">\(1-p\)</span> and <span class="math inline">\(p\)</span>, respectively. Then we can calculate the expectation and variance of a single Bernoulli trial:</p>
+<p><span class="math display">\[E(X) = 0 \times (1-p) + 1 \times p = p \]</span></p>
+<p><span class="math display">\[ Var(X) = E(X^2) - E(X)^2 = 0^2 \times (1-p) + 1^2 \times p - p^2= p(1-p)\]</span></p>
+<p>The first result is likely intuitive, but the second deserves a comment. Note that depending on the probability of 1, the variance, or the spread in outcomes of a Bernoulli trial is different. The highest variance occurs when <span class="math inline">\(p=1/2\)</span>, or equal probability of 0 or 1, but when <span class="math inline">\(p\)</span> approaches 0 or 1, the variance approaches 0. Thus, as the probability approaches zero or one the random variable approaches a constant (either always 1 or 0); hence, no variance.</p>
 <p>One can extend this scenario and ask what happens in a string of Bernoulli trials, for instance, in a string of 10 coin tosses, or in testing 20 randomly selected people for a mutation. The mathematical problem is to calculate the probability distribution of the number of success out of many trials. This is known as the binomial random variable, which is defined as the sum of <span class="math inline">\(n\)</span> independent, identical Bernoulli random variables.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div id="def-binomial-rv" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5.12</strong></span> Given <span class="math inline">\(n\)</span> independent Bernoulli trials <span class="math inline">\(X\)</span> with the same probability of success <span class="math inline">\(p\)</span>, the <em>binomial random variable</em> is defined as: <span class="math display">\[B = \sum_{i=1}^n X_i\]</span> where <span class="math inline">\(X_i\)</span> is the random variable from the i-th Bernoulli trial, which takes values of 1 and 0.</p>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Given <span class="math inline">\(n\)</span> independent Bernoulli trials <span class="math inline">\(X\)</span> with the same probability of success <span class="math inline">\(p\)</span>, the <em>binomial random variable</em> is defined as: <span class="math display">\[B = \sum_{i=1}^n X_i\]</span> where <span class="math inline">\(X_i\)</span> is the random variable from the i-th Bernoulli trial, which takes values of 1 and 0.</p>
-</div>
-</div>
-<p>In this definition I use the term independence without defining it properly, which will be done in chapter 6. Intuitively, independence between two Bernoulli trials (e.g.&nbsp;coin tosses) means that the outcome of one trial does not change the probability of the outcomes of any other trials. This amounts to the assumption that the probability of an outcome followed by another one is the product of the separate probabilities of the two outcomes. For example, if the two outcomes are wins and losses, then <span class="math inline">\(P(\{WL\}) = P(W)P(L)\)</span>. This will be used below in the calculation of the variance of the binomial random variable.</p>
-<p>To find the probability distribution of the binomial random variable, we need to define the event of <span class="math inline">\(k\)</span> wins out of <span class="math inline">\(n\)</span> trials. Consider the case of 4 trials. It is easy to find the event of 4 wins, as it is comprised only of the outcome <span class="math inline">\(\{WWWW\}\)</span>. Then, <span class="math inline">\(P(4) = p^4\)</span>, based on the independence assumption. The event of winning 3 times consists of four strings: <span class="math inline">\(\{LWWW, WLWW, WWLW, WWWL\}\)</span> so the probability of obtaining 3 wins is the sum of the four probabilities, each equal to $ p^3(1-p)$ from the independence assumption above, so <span class="math inline">\(P(3) = 4p^3(1-p)\)</span>. The event of winning 2 times is even more cumbersome, and consists of six strings: <span class="math inline">\(\{ LLWW, WLLW, WWLL, WLWL, LWLW, LWWL\}\)</span>, so <span class="math inline">\(P(2) = 6p^2(1-p)^2\)</span> by the same reasoning.</p>
+<p>Intuitively, independence between two Bernoulli trials (e.g.&nbsp;coin tosses) means that the outcome of one trial does not change the probability of the outcomes of any other trials. This amounts to the assumption that the probability of an outcome followed by another one is the product of the separate probabilities of the two outcomes. For example, if the two outcomes are wins and losses, then <span class="math inline">\(P(\{WL\}) = P(W)P(L)\)</span>. This will be used below in the calculation of the variance of the binomial random variable.</p>
+<p>To find the probability distribution of the binomial random variable, we need to define the event of <span class="math inline">\(k\)</span> wins out of <span class="math inline">\(n\)</span> trials. Consider the case of 4 trials. It is easy to find the event of 4 wins, as it is comprised only of the outcome <span class="math inline">\(\{WWWW\}\)</span>. Then, <span class="math inline">\(P(4) = p^4\)</span>, based on the independence assumption. The event of winning 3 times consists of four strings: <span class="math inline">\(\{LWWW, WLWW, WWLW, WWWL\}\)</span> so the probability of obtaining 3 wins is the sum of the four probabilities, each equal to <span class="math inline">\(p\^3(1-p)\)</span> from the independence assumption above, so <span class="math inline">\(P(3) = 4p^3(1-p)\)</span>. The event of winning 2 times is even more cumbersome, and consists of six strings: <span class="math inline">\(\{ LLWW, WLLW, WWLL, WLWL, LWLW, LWWL\}\)</span>, so <span class="math inline">\(P(2) = 6p^2(1-p)^2\)</span> by the same reasoning.</p>
 <p>Now imagine doing this to calculate 50 wins out of 100 trials. The counting gets ugly very fast. We need a general formula to help us count the number of ways of winning <span class="math inline">\(k\)</span> times out of <span class="math inline">\(n\)</span> trials. We denote this number <span class="math inline">\(\binom{n}{k}\)</span>, also known as “<span class="math inline">\(n\)</span> choose <span class="math inline">\(k\)</span>” because it corresponds to the number of ways of choosing <span class="math inline">\(k\)</span> distinct objects out of <span class="math inline">\(n\)</span> without regard to order. The connection is as follows: let us label each trial from 1 to <span class="math inline">\(n\)</span>. Then to construct a string with <span class="math inline">\(k\)</span> wins, we need to specify which trials resulted in a win (the rest are of course losses). It does not matter in which order those wins are selected - it still results in the same string. Therefore the number of different strings of <span class="math inline">\(n\)</span> binary trials with <span class="math inline">\(k\)</span> successes is the same as the number of ways of selecting <span class="math inline">\(k\)</span> different objects out of <span class="math inline">\(n\)</span> different ones.</p>
 <p>The number itself can be derived as follows: there are <span class="math inline">\(n\)</span> possibilities for choosing the number of the first win, then <span class="math inline">\(n-1\)</span> possibilities for choosing the number of the second win, etc, and finally when choosing the <span class="math inline">\(k\)</span>-th win there are <span class="math inline">\(n-k+1\)</span> possibilities (note that <span class="math inline">\(k \leq n\)</span>, and if <span class="math inline">\(n=k\)</span> there is only one option left for the last choice.) Thus, the total number of such selections is: <span class="math inline">\(n(n-1)...(n-k+1) = n!/(n-k)!\)</span></p>
 <p>But note that we overcounted, because we considered different strings of wins depending on the order in which a win was selected, even if the resulting strings are the same (example: <span class="math inline">\(n=4\)</span> and <span class="math inline">\(k=4\)</span> gives us <span class="math inline">\(4!\)</span> although there is only one string of 4 wins out of 4). In order to correct for the overcounting, we need to divide by the total number of ways of selecting the same string of <span class="math inline">\(k\)</span> wins out of <span class="math inline">\(n\)</span>. This is number of ways of rearranging <span class="math inline">\(k\)</span> wins, or <span class="math inline">\(k!\)</span> Thus, the number we seek is:</p>
-<p><span class="math display">\[\binom{n}{k} = \frac{n!}{k! (n-k)!}\]</span></p>
+<p><span class="math display">\[
+\binom{n}{k} = \frac{n!}{k! (n-k)!}
+\]</span></p>
 <p>We can now calculate the general probability of winning <span class="math inline">\(k\)</span> times out of <span class="math inline">\(n\)</span> trials. First, each string of <span class="math inline">\(k\)</span> wins and <span class="math inline">\(n-k\)</span> losses has the probability <span class="math inline">\(p^k (1-p)^{n-k}\)</span>. Since we now know that the number of such strings is <span class="math inline">\(C^n_k\)</span>, the probability is:</p>
 <p><span id="eq-binom-rv"><span class="math display">\[
 P(\mathrm{k \; wins \; in \; n \; trials}) =  P(B=k)= \binom{n}{k}  p^k (1-p)^{n-k}
@@ -709,10 +745,15 @@ P(\mathrm{k \; wins \; in \; n \; trials}) =  P(B=k)= \binom{n}{k}  p^k (1-p)^{n
 <p>The binomial random variable has much simpler formulas for the mean and the variance. First, we know that the mean of a sum of random variables is the sum of the means and the binomial random variable is a sum of <span class="math inline">\(n\)</span> Bernoulli random variables <span class="math inline">\(X\)</span>. Let us say <span class="math inline">\(X\)</span> takes only the values of 0 and 1 with probabilities <span class="math inline">\(1-p\)</span> and <span class="math inline">\(p\)</span>, so we can use the additive property of expected value to calculate <span class="math inline">\(E(B)\)</span>:</p>
 <p><span id="eq-binom-exp"><span class="math display">\[
 E(B) = E\left[\sum_{i=1}^n X\right] = \sum_{i=1}^n E(X) = \sum_{i=1}^n p = np
-\tag{5.6}\]</span></span> This means that the expected number of heads/successes is the product of the probability of 1 head/success and the number of trials, e.g.&nbsp;if the probability of success is 0.3, then the expected number of successes out of 100 is 30.</p>
+\tag{5.6}\]</span></span></p>
+<p>This means that the expected number of heads/successes is the product of the probability of 1 head/success and the number of trials, e.g.&nbsp;if the probability of success is 0.3, then the expected number of successes out of 100 is 30.</p>
 <p>Now let us calculate the variance, for which in general the same additive property is not true. But remember that in the section on variance above we showed that the variance of a sum of two random variables is the sum of their two separate variances as long as their covariance is zero. It turns out that for random variables that satisfy the product rule <span class="math inline">\(P(x, y) = P(x)P(y)\)</span> their covariance is 0:</p>
-<p><span class="math display">\[E((X-\mu_X)(Y-\mu_Y))  =  \sum_i \sum_j (x_i-\mu_X) (y_j-\mu_Y) P(x_i, y_j) =  \]</span> <span class="math display">\[ = \sum_i(x_i-\mu_X)P(x_i) \sum_j (y_j-\mu_Y) P(y_j) \]</span> We saw in section on variance above that the expected value of deviations from the mean is zero, which gives us:</p>
-<p><span class="math display">\[E((X-\mu_X)(Y-\mu_Y))  = E(X-\mu_X)E(Y-\mu_Y) = 0\]</span></p>
+<p><span class="math display">\[
+E((X-\mu_X)(Y-\mu_Y))  =  \sum_i \sum_j (x_i-\mu_X) (y_j-\mu_Y) P(x_i, y_j) =  \]</span> <span class="math display">\[ = \sum_i(x_i-\mu_X)P(x_i) \sum_j (y_j-\mu_Y) P(y_j)
+\]</span> We saw in section on variance above that the expected value of deviations from the mean is zero, which gives us:</p>
+<p><span class="math display">\[
+E((X-\mu_X)(Y-\mu_Y))  = E(X-\mu_X)E(Y-\mu_Y) = 0
+\]</span></p>
 <p>The demonstrates that for independent variables the variance of their sum is the sum of the variances and we can use this to compute the variance of the binomial random variable:</p>
 <p><span id="eq-binom-var"><span class="math display">\[
 Var(B) = Var\left[\sum_{i=1}^n X\right]  = \sum_{i=1}^n Var(X) =\sum_{i=1}^n p(1-p) = np(1-p)
@@ -749,7 +790,7 @@ Var(B) = Var\left[\sum_{i=1}^n X\right]  = \sum_{i=1}^n Var(X) =\sum_{i=1}^n p(1
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binom-dist-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.3: Binomial random distributions with two trials.
+Figure&nbsp;5.7: Binomial random distributions with two trials.
 </figcaption>
 </figure>
 </div>
@@ -784,7 +825,7 @@ Figure&nbsp;5.3: Binomial random distributions with two trials.
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binom-dist-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.4: Binomial random distributions with five trials.
+Figure&nbsp;5.8: Binomial random distributions with five trials.
 </figcaption>
 </figure>
 </div>
@@ -819,27 +860,31 @@ Figure&nbsp;5.4: Binomial random distributions with five trials.
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-binom-dist-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5.5: Binomial random distributions with fifty trials.
+Figure&nbsp;5.9: Binomial random distributions with fifty trials.
 </figcaption>
 </figure>
 </div>
-</section>
-<section id="exercises-1" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">5.2.3</span> Exercises</h3>
-<p>Calculate the expected values and variances based on the plotted distributions using the definitions <span class="quarto-unresolved-ref">?def-exp-val</span> and <span class="quarto-unresolved-ref">?def-var-prob</span> and compare your calculations against equations <a href="#eq-unif-exp" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> and <a href="#eq-unif-var" class="quarto-xref">Equation&nbsp;<span>5.3</span></a> (for uniform random variable) and equations <a href="#eq-binom-rv" class="quarto-xref">Equation&nbsp;<span>5.5</span></a> and <a href="#eq-binom-var" class="quarto-xref">Equation&nbsp;<span>5.7</span></a> (for binomial random variable).</p>
+<section id="exercises-3" class="level4" data-number="5.4.2.1">
+<h4 data-number="5.4.2.1" class="anchored" data-anchor-id="exercises-3"><span class="header-section-number">5.4.2.1</span> exercises</h4>
+<p>Calculate the expected values and variances based on the plotted distributions using the definitions <a href="#def-exp-val" class="quarto-xref">Definition&nbsp;<span>5.9</span></a> and <a href="#def-var-prob" class="quarto-xref">Definition&nbsp;<span>5.10</span></a> and compare your calculations against equations <a href="#eq-unif-exp" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> and <a href="#eq-unif-var" class="quarto-xref">Equation&nbsp;<span>5.3</span></a> (for uniform random variable) and equations <a href="#eq-binom-rv" class="quarto-xref">Equation&nbsp;<span>5.5</span></a> and <a href="#eq-binom-var" class="quarto-xref">Equation&nbsp;<span>5.7</span></a> (for binomial random variable).</p>
 <ol type="1">
-<li><p>Calculate the mean and the variance for the two uniform distributions plotted in <a href="#fig-unif-dist" class="quarto-xref">Figure&nbsp;<span>5.2</span></a>.</p></li>
-<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-1" class="quarto-xref">Figure&nbsp;<span>5.3</span></a>.</p></li>
-<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-2" class="quarto-xref">Figure&nbsp;<span>5.4</span></a>.</p></li>
-<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-3" class="quarto-xref">Figure&nbsp;<span>5.5</span></a>.</p></li>
+<li><p>Calculate the mean and the variance for the two uniform distributions plotted in <a href="#fig-unif-dist" class="quarto-xref">Figure&nbsp;<span>5.6</span></a>.</p></li>
+<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-1" class="quarto-xref">Figure&nbsp;<span>5.7</span></a>.</p></li>
+<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-2" class="quarto-xref">Figure&nbsp;<span>5.8</span></a>.</p></li>
+<li><p>Calculate the mean and the variance for the two binomial distributions plotted in <a href="#fig-binom-dist-3" class="quarto-xref">Figure&nbsp;<span>5.9</span></a>.</p></li>
 </ol>
 </section>
-<section id="testing-for-mutants" class="level3" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="testing-for-mutants"><span class="header-section-number">5.2.4</span> testing for mutants</h3>
+</section>
+<section id="testing-for-mutants" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="testing-for-mutants"><span class="header-section-number">5.4.3</span> testing for mutants</h3>
 <p>Suppose that you’re screening people for a particular genetic abnormality. It is known from prior experience that about 5% of this population carry this mutation. You run your tests on a group of 20 people, and the results indicate that 3 of them are carriers. Clearly, this is higher than you expected - 3/20 is 15%, or 3 times higher than the estimate. One of your colleagues exclaims, What are the odds of this?</p>
 <p>To answer this question, one must start by stating your assumptions. First, the people tested must be chosen from the same population, so we can assume a priori each had probability 5% of being a carrier. Second, the people must be selected without bias, that is, selection of one must be unlinked or independent of others. As a counter-example, if your selection included an entire biological family, that would be a biased selection - it may be that the whole family has the mutation, or maybe they don’t, but either way probability is no longer determined on a person-by-person basis. If these assumptions are made, then one can calculate the probability of making a selection of 20 people that includes 3 carriers of the mutation, using the binomial distribution.</p>
-<p>The formula for the binomial distribution in equation <span class="math inline">\(\ref{eq:ch4_binom_dist}\)</span> provides the answer for any given number of mutants. For example, the probability of 3 people out of 20 being carriers for the mutation is: <span class="math display">\[P(\mathrm{3 \ out \ of  \ 20}; \ p=0.05) = \binom{20}{3} \times 0.05^3  \times 0.985^{17} =  \]</span> <span class="math display">\[ = 1140 \times 0.05^3 \times 0.985^{17} \approx 0.0596\]</span></p>
-<p>One may want to ask a different question: what is the probability that there are at least 3 mutants in the sample of 20 people? To most efficient way to calculate this it is to answer the complementary question first: what is the probability that there are fewer than 3 mutants out of 20 people? This corresponds to three values of the random variable: 0, 1, or 2. We can calculate the total probability by adding up the three separate probabilities, since they represent non-overlapping events (one can’t have 1 and 2 mutants in a sample simultaneously): <span class="math display">\[ P(B &lt; 3; \  p=0.05) = P(B=0) + P(B=1) + P(B=2) = \]</span> <span class="math display">\[ = \binom{20}{2} \times 0.05^2  \times 0.985^{18} +\binom{20}{1} \times 0.05^1  \times 0.985^{19} +\binom{20}{0} \times 0.05^0  \times 0.985^{20} \approx \]</span> <span class="math display">\[ \approx 0.925 \]</span> The answer to the original question is found by taking the complementary probability <span class="math inline">\(1-0.925=0.075\)</span>. Thus the probability of finding at least 3 mutants in a sample of 20 with individual probability 0.0015 is approximately 0.075. The answer is close to the probability of having exactly 3 mutants because the probability of finding more than 3 mutants is very low.</p>
+<p>The formula for the binomial distribution in <a href="#eq-binom-rv" class="quarto-xref">Equation&nbsp;<span>5.5</span></a> provides the answer for any given number of mutants. For example, the probability of 3 people out of 20 being carriers for the mutation is: <span class="math display">\[P(\mathrm{3 \ out \ of  \ 20}; \ p=0.05) = \binom{20}{3} \times 0.05^3  \times 0.985^{17} = \]</span> <span class="math display">\[
+= 1140 \times 0.05^3 \times 0.985^{17} \approx 0.0596
+\]</span></p>
+<p>One may want to ask a different question: what is the probability that there are at least 3 mutants in the sample of 20 people? To most efficient way to calculate this it is to answer the complementary question first: what is the probability that there are fewer than 3 mutants out of 20 people? This corresponds to three values of the random variable: 0, 1, or 2. We can calculate the total probability by adding up the three separate probabilities, since they represent non-overlapping events (one can’t have 1 and 2 mutants in a sample simultaneously):</p>
+<p><span class="math display">\[ P(B &lt; 3; \  p=0.05) = P(B=0) + P(B=1) + P(B=2) = \]</span> <span class="math display">\[ = \binom{20}{2} \times 0.05^2  \times 0.985^{18} +\binom{20}{1} \times 0.05^1  \times 0.985^{19} +\binom{20}{0} \times 0.05^0  \times 0.985^{20} \approx \]</span> <span class="math display">\[ \approx 0.925 \]</span></p>
+<p>The answer to the original question is found by taking the complementary probability <span class="math inline">\(1-0.925=0.075\)</span>. Thus the probability of finding at least 3 mutants in a sample of 20 with individual probability 0.0015 is approximately 0.075. The answer is close to the probability of having exactly 3 mutants because the probability of finding more than 3 mutants is very low.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -1261,8 +1306,8 @@ Feller, William. n.d. <em>An <span>Introduction</span> to <span>Probability</spa
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./independence.html" class="pagination-link" aria-label="Independence">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Independence</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./tutorial5_randgen.html" class="pagination-link" aria-label="Tutorial 5: Random number generators and Booleans">
+        <span class="nav-page-text">Tutorial 5: Random number generators and Booleans</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
