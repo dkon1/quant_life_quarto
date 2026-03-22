@@ -127,7 +127,7 @@ b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}
 | 2.4         | 0.031              |
 | 2.1         | 0.006              |
 
-: Body leanness (B) and heat loss rate (H) in boys; partial data set from @sloan_cooling_1973 {#tab-ch4-bh}
+: Body leanness (B) and heat loss rate (H) in boys; partial data set from [@sloan_cooling_1973] {#tab-ch4-bh}
 
 Use the data set in @tab-ch4-bh to answer the following questions:
 

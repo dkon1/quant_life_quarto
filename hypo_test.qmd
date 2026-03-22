@@ -215,7 +215,7 @@ $$
 
 If the null hypothesis is true, this number is distributed according to the F-distribution; in other words, if we repeatedly sample from a population with equal means in each category, the F statistic would follow that distribution. This distribution (which I won't write down, but can be computed in R) allows us to calculate the p-value for any data set. A value of F greater than 1 means that the means have more variance than the residuals, and the p-value allows us to decide when that crosses a specific significance threshold.
 
-## Hypothesis testing and errors
+## Hypothesis testing and errors {#sec-hyp-test-errors}
 
 ### positives and negatives
 

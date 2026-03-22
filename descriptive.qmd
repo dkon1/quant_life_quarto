@@ -115,7 +115,7 @@ For the (small) data sets below, calculate the range, variance, and standard dev
 
 7.  Data set of the number of new mutations found on paternal chromosomes for five individuals: {39, 43, 51, 53, 91}.
 
-8.  Consider the hypothetical town with 1000 households with mean and median wealth of \$100,000 and one person with assets for \$50 billion. Calculate the mean value of the combined data set, and compare it to the new median value.
+8.  Consider the hypothetical town with 1000 households with mean and median wealth of $100,000 and one person with assets for $50 billion. Calculate the mean value of the combined data set, and compare it to the new median value.
 
 9.  (harder) Suppose that a data set has a fixed range (e.g. all values have to lie between 0 and 1). What is the greatest possible standard deviation for any data set within the range? Hint: think about how to place the points as far from the mean as possible. How do the data sets above relate to your prediction?}
 
@@ -126,7 +126,7 @@ Data sets can be presented visually to indicate the frequency of different value
 For a numerical data set it is useful to plot the frequencies of a range of values, which is called a \index{histogram!definition} *histogram*. Its independent axis has the values of the data variable, and the dependent axis has the frequency of those values. If the data set consists of real numbers that range across an interval, that interval is divided into subintervals (usually of equal size), called bins, and the number of measurements in each bin is indicated on the y-axis. In order to be visually informative, there should be a reasonable number (usually no more than a few dozen, although it varies) of bins. The most frequent measurements are represented as the highest bars or points on the histogram. Histograms can denote either the counts of measurements in each bin, or to show the fraction of the total number of measurements in each bin. The only difference between those two kinds of histogram is the scale of the y-axis, and, confusingly, both can be called frequencies.
 
 ```{r}
-#| fig-cap: "Length of bacteria Bacillus subtilis measured under the microscope as discrete values with step of 0.5; data from @watkins-intro-stats"
+#| fig-cap: "Length of bacteria *Bacillus subtilis* measured under the microscope as discrete values with step of 0.5; data from J. Watkins"
 #| label: fig-ch3-bacillus
 #| echo: false
 #| output: true

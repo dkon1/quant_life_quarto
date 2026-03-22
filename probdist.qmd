@@ -35,7 +35,7 @@ The collection of all possible outcomes of an experiment is called its *sample s
 
 **Example.** A random experiment with two outcomes, called a *Bernoulli trial* (after the famous Swiss mathematician), can describe a variety of situations: a coin toss (heads or tails), a competition with two outcomes (win or loss), the allele of a gene (normal or mutant). The sample space for a single Bernoulli trial consists of just two outcomes: $\{H,T\}$ (for a coin toss). If the experiment is performed repeatedly, the sample space gets more complicated. For two Bernoulli trials there are four different outcomes $\{HH, HT, TH, TT \}$. One can define different events for this sample space: the event of getting two heads in two tosses contains one outcome: $\{HH\}$, the event of getting a single head contains two: $\{TH, HT\}$.
 
-In order to to describe the composition of a sample space, we need to define the word *probability* [@feller_introduction_nodate]. While it is familiar to everyone from everyday usage, it is difficult to define without using other similar words, such as likelihood or plausibility, which are also in need of definition. It is accepted that something with a high probability happens often, while something with a low frequency is seldom observed. The other notion is that probability can range between 0 (meaning something that never occurs) and 1 (something that occurs every time). These notions lead to the commonly accepted definition:
+In order to to describe the composition of a sample space, we need to define the word *probability* [@feller_introduction_1968]. While it is familiar to everyone from everyday usage, it is difficult to define without using other similar words, such as likelihood or plausibility, which are also in need of definition. It is accepted that something with a high probability happens often, while something with a low frequency is seldom observed. The other notion is that probability can range between 0 (meaning something that never occurs) and 1 (something that occurs every time). These notions lead to the commonly accepted definition:
 
 ::: {#def-prob-freq}
 The *probability* of an outcome or event in the sample space of a random experiment is the fraction of experiments with this outcome out of many repeated experiments.
@@ -95,7 +95,7 @@ There are several useful rules that immediately follow from the axioms. First, i
 
 **Example** [@denny_chance_2002] Sarcastic fringeheads are tropical ocean fish that engage in aggressive mouth-wrestling matches for their rocky residences. Let us treat each match as a stochastic experiment with two outcomes: win or loss. Then the sample space is equivalent to our coin-tossing experiment, e.g. for two matches the sample space is $\{ WW, WL, LW, LL \}$. However, the probability distribution may different, for example if a particular fringehead wins 3/4 of its matches, then the probability distribution would be: $P(\{ WW \}) = 9/16$, $P(\{ LW \}) = P(\{WL\}) = 3/16$, and $P(\{LL\}) = 1/16$. Thus, the same sample space may have different probability distributions defined on it.
 
-## Conditional probability and indepdence
+## Conditional probability and independence {#sec-cond-prob}
 
 Let us return to the abstract description of probability introduced in section 8.1. There we used the notion of sample space and its subsets, called events, to describe collections of experimental outcomes. Suppose that you have some information about a random experiment that restricts the possible outcomes to a particular subset (event). In other words, you have ruled out some outcomes, so the only possible outcomes are those in the complementary set. This will affect the probability of other events in the sample space, because your information may have ruled out some of the outcomes in that event as well.
 
@@ -108,11 +108,11 @@ $A \land B$ represents the intersection of events $A$ and $B$, also known as $A$
 -   $P(B | B) = P(B \land B) /P(B) = P(B)/P(B) = 1$ (probability of $B$ given $B$ is 1)
 -   if $P(A \land B) =0$, then $P(A|B) = 0/P(B) = 0$ (if $A$ and $B$ are mutually exclusive, then probability of $A$ given $B$ is 0)
 
-![A Venn diagram of the sample space of all people with two events: tall people ($A$) and those who like tea ($B$) with probabilities of $A$, $B$ and their intersection indicated.](ch6/cond_prob_tikz.png){#fig-cond-prob}
+![A Venn diagram of the sample space of all people with two events: tall people ($A$) and those who like tea ($B$) with probabilities of $A$, $B$ and their intersection indicated.](ch6/cond_prob_tikz.png){#fig-cond-prob-tea}
 
-There are some common misunderstandings about conditional probability, which are usually the result of discrepancies between everyday word usage and precise mathematical terminology. First, the probability of $A$ given $B$ is not the same as probability of $A$ and $B$. These concepts seem interchangeable because the statement "what are the odds of finding a tall person who likes tea?" is hard to distinguish from ''what are the odds that a person who is tall likes tea?'' The difference in these concepts can be illustrated using a Venn diagram, shown in figure \ref{fig:ch6_cond_prob}. Based on the probabilities indicated there, the probability of randomly selecting a person who is both tall and likes tea is $P(A \land B) = 0.1$, while the probability that a tea drinker is tall is $P(A | B) = 0.1/0.3 = 1/3$, which are different values.
+There are some common misunderstandings about conditional probability, which are usually the result of discrepancies between everyday word usage and precise mathematical terminology. First, the probability of $A$ given $B$ is not the same as probability of $A$ and $B$. These concepts seem interchangeable because the statement "what are the odds of finding a tall person who likes tea?" is hard to distinguish from "what are the odds that a person who is tall likes tea?" The difference in these concepts can be illustrated using a Venn diagram, shown in @fig-cond-prob-tea. Based on the probabilities indicated there, the probability of randomly selecting a person who is both tall and likes tea is $P(A \land B) = 0.1$, while the probability that a tea drinker is tall is $P(A | B) = 0.1/0.3 = 1/3$, which are different values.
 
-A similar misconception is to be cavalier about the order of conditionality. In general, $P(A | B) \neq P(B |A)$, except in special cases. Going back to the illustration in figure \ref{fig:ch6_cond_prob}, the probability that a tea drinker is tall $P(A | B) = 1/3$ is the different than the probability that a tall person is a tea drinker $P(B|A) = 0.1/0.5 = 0.2$. **One must take care when interpreting written statements to carefully distinguish what is known a priori and what remains under investigation. In the statement $P(A | B)$, $B$ represents what is known, and $A$ represents what is still to be investigated.**
+A similar misconception is to be cavalier about the order of conditionality. In general, $P(A | B) \neq P(B |A)$, except in special cases. Going back to the illustration in @fig-cond-prob-tea, the probability that a tea drinker is tall $P(A | B) = 1/3$ is the different than the probability that a tall person is a tea drinker $P(B|A) = 0.1/0.5 = 0.2$. **One must take care when interpreting written statements to carefully distinguish what is known a priori and what remains under investigation. In the statement $P(A | B)$, $B$ represents what is known, and $A$ represents what is still to be investigated.**
 
 
 ![Punnet square of a cross of two heterozygous pea plants showing the possible genotypes and phenotypes of offspring (figure by Madprime in public domain via Wikimedia Commons.)](ch6/mendel_flowers.png){#fig-mendel-flowers}
@@ -145,17 +145,23 @@ Two events $A$ and $B$ are *independent* if $P(A|B) = P(A)$, or equivalently if 
 
 Independence is not a straightforward concept. It may be confused with mutual exclusivity, as one might surmise that if $A$ and $B$ have no overlap, then they are independent. That however, is false by definition, since $P(A|B)$ is 0 for two mutually exclusive events. The confusion stems from thinking that if $A$ and $B$ are non-overlapping, then they do not influence each other. But the notion of influence in this definition is about information; so of course if $A$ and $B$ are mutually exclusive, the knowledge that one of them occurs has an influence of the probability of the other one occurring.
 
-A useful way to think about independence is in terms of fractions of outcomes. The probability of $A$ is the fraction of outcomes out of the entire sample space which is in $A$, while the probability of $A$ given $B$ is the fraction of outcomes in $B$ which are also in $A$. The definition of independence equates the two fractions, therefore, if $A$ occupies 1/2 of sample space, in order for $A$ and $B$ to be independent, events in $A$ must constitute 1/2 of the event $B$. In the illustration in @fig-cond-prob, the fraction of tall people is 0.5 of the sample space, but the fraction of tea-drinkers who are tall is $0.1/0.3=1/3$. Since the two fractions are different, $A$ and $B$ are not independent.
+A useful way to think about independence is in terms of fractions of outcomes. The probability of $A$ is the fraction of outcomes out of the entire sample space which is in $A$, while the probability of $A$ given $B$ is the fraction of outcomes in $B$ which are also in $A$. The definition of independence equates the two fractions, therefore, if $A$ occupies 1/2 of sample space, in order for $A$ and $B$ to be independent, events in $A$ must constitute 1/2 of the event $B$. In the illustration in @fig-cond-prob-tea, the fraction of tall people is 0.5 of the sample space, but the fraction of tea-drinkers who are tall is $0.1/0.3=1/3$. Since the two fractions are different, $A$ and $B$ are not independent.
 
-![Example of two events inside a sample space that are mutually exclusive](ch6/indep_ex1.png)
+::: {#fig-set-examples layout-ncol="3"}
 
-![Example of two events inside a sample space that are partially overlapping](ch6/indep_ex2.png)
+![Mutually exclusive](ch6/indep_ex1.png)
 
-![Illustration of two events inside a sample space where one is entirely contained in the other](ch6/indep_ex3.png){#fig-indep-sets}
+![Partially overlapping](ch6/indep_ex2.png)
+
+![One contains the other](ch6/indep_ex3.png)
+
+Examples of different configurations of events (liking tea and being tall) inside a sample space.
+
+::: 
 
 #### exercises
 
-Consider three examples of events and their intersections in @fig-indep-sets.
+Consider three examples of events and their intersections in @fig-set-examples.
 
 1.  Based on the two non-overlapping (mutually exclusive) events, calculate the conditional probability $P(A|B)$ and compare it with $P(A)$. Are $A$ and $B$ independent?
 
@@ -173,9 +179,9 @@ $$
 
 The product rule is extremely useful for computing probability distributions of complicated random variables. Recall that the binomial distribution, which we saw in section \ref{sec:math4_2} is based on a string of $n$ Bernoulli trials which are independent of each other, which allows the calculation of the probability of a string of successes and failures, or heads/tails, etc. In practice, independence between processes is rarely true in the idealized mathematical sense. However, computing the probability of two random variables without independence is extremely difficult, so it is useful to make the independence assumption and then test it against the data. If it stands up, you have a good predictive model, and if it does not, you have learned that two processes are somehow linked, which is very useful.
 
-## Random Variables and Distributions
+## Random variables and distributions
 
-The outcomes of experiments may be expressed in numbers or words, but we generally need numbers in order to report and analyze results. One can describe this mathematically as a function (as defined in @def-function) that assigns numbers to random outcomes [@feller_introduction_nodate]. In practice, a random variable describes the measurement that one makes to describe the outcomes of a random experiment.
+The outcomes of experiments may be expressed in numbers or words, but we generally need numbers in order to report and analyze results. One can describe this mathematically as a function (as defined in @def-function) that assigns numbers to random outcomes [@feller_introduction_1968]. In practice, a random variable describes the measurement that one makes to describe the outcomes of a random experiment.
 
 ::: {#def-rv}
 A *random variable* is a number or category associated to each outcome in a sample space $\Omega$. This association has to follow the rules of a function as defined in chapter 2.
@@ -393,7 +399,7 @@ Given $n$ independent Bernoulli trials $X$ with the same probability of success 
 Intuitively, independence between two Bernoulli trials (e.g. coin tosses) means that the outcome of one trial does not change the probability of the outcomes of any other trials. This amounts to the assumption that the probability of an outcome followed by another one is the product of the separate probabilities of the two outcomes. For example, if the two outcomes are wins and losses, then $P(\{WL\}) = P(W)P(L)$. This will be used below in the calculation of the variance of the binomial random variable.
 
 
-To find the probability distribution of the binomial random variable, we need to define the event of $k$ wins out of $n$ trials. Consider the case of 4 trials. It is easy to find the event of 4 wins, as it is comprised only of the outcome $\{WWWW\}$. Then, $P(4) = p^4$, based on the independence assumption. The event of winning 3 times consists of four strings: $\{LWWW, WLWW, WWLW, WWWL\}$ so the probability of obtaining 3 wins is the sum of the four probabilities, each equal to $p\^3(1-p)$ from the independence assumption above, so $P(3) = 4p^3(1-p)$. The event of winning 2 times is even more cumbersome, and consists of six strings: $\{ LLWW, WLLW, WWLL, WLWL, LWLW, LWWL\}$, so $P(2) = 6p^2(1-p)^2$ by the same reasoning.
+To find the probability distribution of the binomial random variable, we need to define the event of $k$ wins out of $n$ trials. Consider the case of 4 trials. It is easy to find the event of 4 wins, as it is comprised only of the outcome $\{WWWW\}$. Then, $P(4) = p^4$, based on the independence assumption. The event of winning 3 times consists of four strings: $\{LWWW, WLWW, WWLW, WWWL\}$ so the probability of obtaining 3 wins is the sum of the four probabilities, each equal to $p^3(1-p)$ from the independence assumption above, so $P(3) = 4p^3(1-p)$. The event of winning 2 times is even more cumbersome, and consists of six strings: $\{ LLWW, WLLW, WWLL, WLWL, LWLW, LWWL\}$, so $P(2) = 6p^2(1-p)^2$ by the same reasoning.
 
 Now imagine doing this to calculate 50 wins out of 100 trials. The counting gets ugly very fast. We need a general formula to help us count the number of ways of winning $k$ times out of $n$ trials. We denote this number $\binom{n}{k}$, also known as "$n$ choose $k$" because it corresponds to the number of ways of choosing $k$ distinct objects out of $n$ without regard to order. The connection is as follows: let us label each trial from 1 to $n$. Then to construct a string with $k$ wins, we need to specify which trials resulted in a win (the rest are of course losses). It does not matter in which order those wins are selected - it still results in the same string. Therefore the number of different strings of $n$ binary trials with $k$ successes is the same as the number of ways of selecting $k$ different objects out of $n$ different ones.
 

@@ -44,6 +44,9 @@ bibliography: ql_bibliography.bib
 format:
   html:
     theme: materia
+    citations-hover: false
+    footnotes-hover: false
+    crossrefs-hover: false
   pdf:
     documentclass: scrreprt
 
