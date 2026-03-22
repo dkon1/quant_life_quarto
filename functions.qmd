@@ -1,4 +1,4 @@
-# Functions and their graphs
+# Functions and their graphs {#sec-functions}
 
 > Some fathers, if you ask them for the time of day, spit silver dollars.\
 > --Donald Barthelme, *The Dead Father*

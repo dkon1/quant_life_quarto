@@ -1,4 +1,4 @@
-# Prior knowledge and Bayesian thinking {#chapter-bayes}
+# Prior knowledge and Bayesian thinking {#sec-bayes}
 
 > Man can believe the impossible, but man can never believe the improbable.\
 > -- Oscar Wilde, *The Decay of Lying*

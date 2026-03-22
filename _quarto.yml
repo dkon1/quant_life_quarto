@@ -3,6 +3,8 @@ project:
   output-dir: docs
 filters:
   - webr
+execute:
+  warning: false
 webr:
   packages: ['palmerpenguins', 'HistData', 'deSolve']
 book:
@@ -43,12 +45,12 @@ bibliography: ql_bibliography.bib
 
 format:
   html:
-    theme: materia
+    theme: zephyr
     citations-hover: false
     footnotes-hover: false
     crossrefs-hover: false
   pdf:
-    documentclass: scrreprt
+    documentclass: scrreport
 
 editor: visual
 
