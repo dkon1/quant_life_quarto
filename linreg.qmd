@@ -11,66 +11,36 @@ In the last two chapters we learned to use data sets which fall into a few categ
 -   understand the meaning of correlation and covariance
 -   understand the phenomenon of regression to the mean
 
-## Linear relationship between two variables
-
-\label{sec:model8}
-
-Although there is always error in any real data, there may be a relationship between the two variables that is not random: for example, when one goes up, the other one tends to go up as well. These relationships may be complicated, but in this chapter we will focus on the the simplest and most common type of relationship: linear, where a change in one variable is associated with a proportional change in the other, plus an added constant. This is expressed mathematically using the familiar equation for a linear function, with parameters slope ($a$) and intercept ($b$):
-
-$$ 
-y = ax + b
-$$
-
-Let us say you have measured some data for two variables, which we will call, unimaginatively, $x$ and $y$. This data set consists of pairs of numbers: one for $x$, one for $y$, for example, the heart rate and body temperature of a person go together. They cannot be mixed up between different people, as the data will lose all meaning. We can denote this a list of $n$ pairs of numbers: $(x_i, y_i)$ (where $i$ is an integer between 1 and $n$). Since this is a list of pairs of numbers, we can plot them as separate points in the plane using each $x_i$ as the x-coordinate and each $y_i$ as the y-coordinate. This is called a \index{plot!scatter} *scatterplot* of a two-variable data set. For example, two scatterplots of a data set of heart rate and body temperature are shown in @fig-body-temp. In the first one, the body temperature is on the x-axis, which makes it the \index{variable!explanatory} *explanatory* variable; in the second one, the body temperature is on the y-axis, which makes it the \index{variable!response} *response* variable.
-
-```{r}
-#| label: fig-body-temp
-#| fig-cap: 'Scatterplot of heart rates and body temperatures: a) with heart rate as the explanatory variable; b) with body temperature as the explanatory variable.'
-#| fig-subcap: 
-#|   - "Body temp (response variable) vs heart rate (explanatory variable)" 
-#|   - "Heart rate (response variable) vs body temp (explanatory variable)" 
-#| layout-ncol: 2
-#| echo: false
-
-my_data<-read.table("https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt", header=TRUE)
-plot(my_data$Temp, my_data$HR,main='heart rates vs. body temps', cex=1.5, cex.axis=1.5,cex.lab=1.5)
-plot(my_data$HR, my_data$Temp,main='body temps vs. heart rates', cex=1.5, cex.axis=1.5,cex.lab=1.5)
-```
-
-```{webr-r}
-my_data<-read.table("https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt", header=TRUE)
-plot(my_data$Temp, my_data$HR, main='heart rates vs. body temps')
-plot(my_data$HR, my_data$Temp, main='body temps vs. heart rates')
-```
-
-## Linear least-squares fitting
-
-\label{sec:math8}
+## Linear least-squares fitting {#lin-least-sq}
 
 ### sum of squared errors
 
 It is easy to find the best-fit line for a data set with only two points: its slope and intercept can be found by solving the two simultaneous linear equations, e.g. if the data set consists of $(3,2.3), (6, 1.7)$, then finding the best fit values of $a$ and $b$ means solving the following two equations:
 
-\begin{eqnarray*}
+$$
+\begin{aligned}
 3a + b &=& 2.3 \\
 6a + b &=& 1.7
-\end{eqnarray*}
+\end{aligned}
+$$
 
 These equations have a unique solution for each unknown: $a=-0.2$ and $b=2.9$ (you can solve it using basic algebra).
 
 However, a data set with two points is very small and cannot serve as a reasonable guide for finding a relationship between two variables. Let us add one more data point, to increase our sample size to three: $(3,2.3), (6, 1.7), (9, 1.3)$. How do you find the best fit slope and intercept? **Bad idea:** take two points and find a line, that is the slope and the intercept, that passes through the two. It should be clear why this is a bad idea: we are arbitrarily ignoring some of the data, while perfectly fitting two points. So how do we use all the data? Let us write down the equations that a line with slope $a$ and intercept $b$ have to satisfy in order to fit our data points:
 
-\begin{eqnarray}
+$$
+\begin{aligned}
 3a + b &=&  2.3 \\
 6a + b &=& 1.7 \\
 9a + b &=& 1.3
-\end{eqnarray}
+\end{aligned}
+$$
 
 This system has no exact solution, since there are three equations and only two unknowns. We need to find $a$ and $b$ such that they are a *best fit* to the data, not the perfect solution. To do that, we need to define what we mean by the \index{fitting!goodness} *goodness of fit*.
 
 One simple way to asses how close the fit is to the data is to subtract the predicted values of $y$ from the data, as follows: $e_i = y_i - (ax_i + b)$. The values $e_i$ are called the *errors* or \index{linear regression!residual} *residuals* of the linear fit. If the values predicted by the linear model ($ax_i+b$) are close to the actual data $y_i$, then the error will be small. However, if we add it all up, the errors with opposite signs will cancel each other, giving the impression of a good fit simply if the deviations are symmetric.
 
-A more reasonable approach is to take absolute values of the deviations before adding them up. This is called the total deviation, for $n$ data points with a line fit: 
+A more reasonable approach is to take absolute values of the deviations before adding them up. This is called the total deviation, for $n$ data points with a line fit:
 
 $$ 
 TD = \sum_{i=1}^n |  y_i - a x_i - b | 
@@ -95,12 +65,10 @@ The reasons why these assumptions are necessary for linear regression to work ar
 ### best-fit slope and intercept
 
 ::: {#def-sample-cov}
-The \index{covariance} *covariance* of a data set of pairs of values $(X,Y)$ is the sum of the products of the corresponding deviations from their respective means:
-$$ 
+The \index{covariance} *covariance* of a data set of pairs of values $(X,Y)$ is the sum of the products of the corresponding deviations from their respective means: $$ 
 Cov(X,Y) = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar X) (y_i - \bar Y) 
 $$
 :::
-
 
 Intuitively, this means that if two variable tend to deviate in the same direction from their respective means, they have a positive covariance, and if they tend to deviate in opposite directions from their means, they have a negative covariance. In the intermediate case, if sometimes they deviate together and other times they deviate in opposition, the covariance is small or zero. For instance, the covariance between two independent random variables is zero.
 
@@ -110,11 +78,11 @@ $$
 a = \frac{Cov(X,Y)}{Var(X)}
 $$
 
-I will not provide a proof that this slope generates the minimal sum of squared errors, but that is indeed the case. To find the intercept of the linear regression, we make use of one other property of the best fit line: in order for it to minimize the SSE, it must pass through the point $(\bar X, \bar Y)$. Again, I will not prove this, but note that the point of the two mean values is the central point of the "cloud" of points in the scatterplot, and if the line missed that central point, the deviations will be larger. Assuming that is the case, we have the following equation for the line: $\bar Y = a\bar X + b$, which we can solve for the \index{linear regression!$y$-intercept} \index{y-intercept!linear regression} intercept $b$:
+I will not provide a proof that this slope generates the minimal sum of squared errors, but that is indeed the case. To find the intercept of the linear regression, we make use of one other property of the best fit line: in order for it to minimize the SSE, it must pass through the point $(\bar X, \bar Y)$. Again, I will not prove this, but note that the point of the two mean values is the central point of the "cloud" of points in the scatter plot, and if the line missed that central point, the deviations will be larger. Assuming that is the case, we have the following equation for the line: $\bar Y = a\bar X + b$, which we can solve for the \index{linear regression!$y$-intercept} \index{y-intercept!linear regression} intercept $b$:
 
-\begin{equation}
+$$
 b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}
-\end{equation}
+$$
 
 #### exercises
 
@@ -137,11 +105,11 @@ Use the data set in @tab-ch4-bh to answer the following questions:
 
 3.  Calculate the slope and intercept of the linear regression for the data with $B$ as the explanatory variable.
 
-4.  Make a scatterplot of the data set with $B$ as the explanatory variable and sketch the linear regression line with the parameters you computed.
+4.  Make a scatter plot of the data set with $B$ as the explanatory variable and sketch the linear regression line with the parameters you computed.
 
 5.  Calculate the slope and intercept of the linear regression the data with $H$ as the explanatory variable.
 
-6.  Make a scatterplot of the data set, with $H$ as the explanatory variable and sketch the linear regression line with the parameters you computed.
+6.  Make a scatter plot of the data set, with $H$ as the explanatory variable and sketch the linear regression line with the parameters you computed.
 
 ### correlation and goodness of fit
 
@@ -184,7 +152,7 @@ There is another important measure of the quality of linear regression: the \ind
 
 #### exercises
 
-@fig-penguins-hr shows scatterplots of the rate of oxygen consumption (VO) and heart rate (HR) measured in two macaroni penguins running on a treadmill (really). The authors performed linear regression on the data and found the following parameters: $VO =0.23HR - 11.62$ (penguin A) and $VO =0.25HR - 20.93$ (penguin B). The datasets have the standard deviations: $\sigma_{VO} = 6.77$ and $\sigma_{HR} = 28.8$ (penguin A) and $\sigma_{VO} = 8.49$ and $\sigma_{HR} = 30.6$ (penguin B).
+@fig-penguins-hr shows scatter plots of the rate of oxygen consumption (VO) and heart rate (HR) measured in two macaroni penguins running on a treadmill (really). The authors performed linear regression on the data and found the following parameters: $VO =0.23HR - 11.62$ (penguin A) and $VO =0.25HR - 20.93$ (penguin B). The datasets have the standard deviations: $\sigma_{VO} = 6.77$ and $\sigma_{HR} = 28.8$ (penguin A) and $\sigma_{VO} = 8.49$ and $\sigma_{HR} = 30.6$ (penguin B).
 
 ![Mass-specific rate of oxygen consumption (VO) as a function of heart rate (HR) in two macaroni penguins, (A) a breeding female of mass 3.14 kg and a moulting female of mass 3.99 kg; figure from under CC-BY.](ch8/penguin_HR.png){#fig-penguins-hr}
 
@@ -196,13 +164,12 @@ There is another important measure of the quality of linear regression: the \ind
 
 4.  Re-calculate the slopes of the two linear regressions if the explanatory and response variables were reversed. Does changing the order of variable affect the correlation?
 
-## Linear regression using R
-
-\label{sec:comp6}
+## Linear regression using R 
 
 We now have the tools to compute the parameters of the best-fit line, provided we can calculate the means, variances, and covariance of the two variable data set. Of course, the best way to do all this is to let a computer handle it. The function for calculating linear regression in R is `lm()`, which outputs a bunch of information to a variable called myfit in the script below. The slope, intercept, and other \index{parameter!linear regression}parameters can be printed out using the `summary()` function. In the script below you see a bunch of information, but we are concerned with the ones in the first column correspond to the best fit intercept (-166.2847) and the slope (2.4432). You can check that they correspond to our formulas by computing the covariance, the variances, and the means of the two variables:
 
 ```{r}
+my_data<-read.table("https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt", header=TRUE)
 myfit <- lm(HR ~ Temp, my_data)
 summary(myfit)
 a<-cov(my_data$HR,my_data$Temp)/var(my_data$Temp)
@@ -211,7 +178,7 @@ b<-mean(my_data$HR)-a*mean(my_data$Temp)
 print(b)
 ```
 
-Here `Temp` and `HR` are the explanatory and response variables, respectively, and `my_data` is the name of the data frame they are stored in. The best fit parameters are stored in `myfit`, and the line can be plotted using `abline(myfit)`. The script below shows how to calculate a linear regression line and then plot it over a scatterplot in R, and the result is shown in figure \ref{fig:linreg_HRTemp}a.
+Here `Temp` and `HR` are the explanatory and response variables, respectively, and `my_data` is the name of the data frame they are stored in. The best fit parameters are stored in `myfit`, and the line can be plotted using `abline(myfit)`. The script below shows how to calculate a linear regression line and then plot it over a scatter plot in R, and the result is shown in figure \ref{fig:linreg_HRTemp}a.
 
 ```{r}
 #| label: fig-linreg-HRTemp
@@ -222,14 +189,14 @@ Here `Temp` and `HR` are the explanatory and response variables, respectively, a
 #|   - "Plot of residuals vs. predicted values" 
 #| layout-ncol: 2
 # plot the data and regression line
-plot(my_data$Temp, my_data$HR, xlab = "body temperature (deg F)" , ylab = "heart rates (bpm)", main= 'scatterplot and linear regression line')
+plot(my_data$Temp, my_data$HR, xlab = "body temperature (deg F)" , ylab = "heart rates (bpm)", main= 'scatter plot and linear regression line')
 abline(myfit)
 # plot the residuals
 plot(myfit$fitted.values, myfit$residuals, xlab = "predicted temp (deg F)" , ylab = "residuals (deg F)", main='residuals plot')
 abline(0,0)
 ```
 
-However, what does this mean about the quality of the fit? Just because we found a line to draw through a scatterplot does not mean that this line is meaningful. In fact, looking at the plot, there does not seem to be much of a relationship between the two variables. There are various statistical measures for the significance of linear regression, the most important one relies on the correlation between the two data sets. Look again at the summary statistics for the data set of heart rates and temperatures. There are several different statistics here, and the one that we care about is the $r^2$, which is reported here as 'Multiple R-squared'. This number tells us that the linear regression accounts for only about 6% of the total variance of the heart rate. In other words, there is no significant linear relationship in this data set.
+However, what does this mean about the quality of the fit? Just because we found a line to draw through a scatter plot does not mean that this line is meaningful. In fact, looking at the plot, there does not seem to be much of a relationship between the two variables. There are various statistical measures for the significance of linear regression, the most important one relies on the correlation between the two data sets. Look again at the summary statistics for the data set of heart rates and temperatures. There are several different statistics here, and the one that we care about is the $r^2$, which is reported here as 'Multiple R-squared'. This number tells us that the linear regression accounts for only about 6% of the total variance of the heart rate. In other words, there is no significant linear relationship in this data set.
 
 As mentioned in section \ref{sec:math8}, the other important check is plotting the residuals of the data set, after the linear fit is subtracted. You see the result in @fig-linreg-HRTemp panel b, showing that the residuals do not have any pronounced pattern. So it is reasonable to conclude that linear regression was a reasonable model to which to fit the data. The low correlation is because data seem to have little to no relationship, not because there is some complicated nonlinear relationship.
 
@@ -245,7 +212,7 @@ print(paste("The best-fit intercept is: ", myfit$coefficients[1]))
 
 The summary outputs a whole bunch of information that is returned by the `lm()` function, as the object `myfit`. The most important are the intercept and slope, which may be printed out as shown above, and the R-squared parameter, also called the coefficient of determination. The value of R-squared is not accessible directly in `myfit`, but it is printed out in the summary (use multiple R-squared for our assignments.)
 
-The actual best-fit line can be plotted as follows over a scatterplot of the data; notice that abline can take myfit as an input and use the slope and intercept:
+The actual best-fit line can be plotted as follows over a scatter plot of the data; notice that abline can take myfit as an input and use the slope and intercept:
 
 ```{webr-r}
 #Overlay the best-fit line on the base R plot
@@ -260,7 +227,7 @@ plot(Galton$parent, myfit$residuals, xlab='mid-parent height (inches)', ylab='re
 abline(0,0)
 ```
 
-It appears that the residuals meet the assumptions of being independent of measurement (shapeless scatterplot), are centered at zero, and look roughly normally distributed, although that can be checked more carefully using other tools.
+It appears that the residuals meet the assumptions of being independent of measurement (shapeless scatter plot), are centered at zero, and look roughly normally distributed, although that can be checked more carefully using other tools.
 
 ## Regression to the mean
 
@@ -269,7 +236,7 @@ It appears that the residuals meet the assumptions of being independent of measu
 ```{r}
 #| label: fig-linreg-Galton
 #| echo: false
-#| fig-cap: "Galton data on heights of parents and of children as scatterplots. The dotted red lines show the identity line y=x and the solid black line is the linear regression."
+#| fig-cap: "Galton data on heights of parents and of children as scatter plots. The dotted red lines show the identity line y=x and the solid black line is the linear regression."
 #| fig-subcap: 
 #|   - "Child height (response variable) vs parent height (explanatory variable)" 
 #|   - "Parent height (response variable) vs child height (explanatory variable)" 
@@ -288,7 +255,7 @@ abline(0,1,lwd=3,lty=2,col='red')
 
 But that is not the case! The parents and children in Galton's experiment had a very similar mean and standard deviation. This appears to be a paradox, but it is easily explained using linear regression. Consider two identically distributed random variables $(X,Y)$ with a positive correlation $r$. The slope of the linear regression is $m = r \sigma_Y/\sigma_X$ and since $\sigma_Y=\sigma_X$, the slope is simply $r$. Select a subset with values of $X$ higher than $\bar X$, and consider the mean value of $Y$ for that subset. If the slope $m<1$ (the correlation is not perfect), then the mean value of $Y$ for that subset is less than the mean value of $X$. Similarly, for a subset with values of $X$ lower than $\bar X$, the mean value of $Y$ for that subset is greater than the mean value of $X$, again as long as the slope is less than 1.
 
-Figure \ref{fig:regression2mean} shows Galton's data set (available in R by installing the package 'HistData') along with the linear regression line and the identity like ($y=x$). If each child had exactly the same height as the parents, the scatterplot would lie on the identity line. Instead, the linear regression lines have slope less than 1 for both the plot with the parental heights as the explanatory variable and for the plot with the variables reversed. The correlation coefficient $r$ does not depend on the order of the variables; so using the equation \ref{eq:slope_corr} we can see the difference in slopes is explained by the two data sets having different standard deviations, and reversing the explanatory and response variables results in reciprocation of the ratio of standard deviations. The children's heights have a higher standard deviation, which is likely an artifact of the experiment. In the data set the heights of the two parents were averaged to take them both into account, which substantially reduces the spread between male and female heights. To summarize, although the children of taller parents are shorter on average than their parents, and the children of shorter parents are taller than their parents, the overall standard deviation does not decrease from generation to generation.
+Figure \ref{fig:regression2mean} shows Galton's data set (available in R by installing the package 'HistData') along with the linear regression line and the identity like ($y=x$). If each child had exactly the same height as the parents, the scatter plot would lie on the identity line. Instead, the linear regression lines have slope less than 1 for both the plot with the parental heights as the explanatory variable and for the plot with the variables reversed. The correlation coefficient $r$ does not depend on the order of the variables; so using the equation \ref{eq:slope_corr} we can see the difference in slopes is explained by the two data sets having different standard deviations, and reversing the explanatory and response variables results in reciprocation of the ratio of standard deviations. The children's heights have a higher standard deviation, which is likely an artifact of the experiment. In the data set the heights of the two parents were averaged to take them both into account, which substantially reduces the spread between male and female heights. To summarize, although the children of taller parents are shorter on average than their parents, and the children of shorter parents are taller than their parents, the overall standard deviation does not decrease from generation to generation.
 
 ### Discussion questions
 

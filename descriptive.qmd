@@ -5,21 +5,19 @@
 
 Science begins with experimental measurements, which are then verified by reproducing the results. But no experimental result is perfectly reproducible because all are subject to random noise, whether it is caused by unpredictable processes or is due to measurement error. Describing collections of numbers with noise is the first step to understanding the biological systems that are being measured. In this chapter you will learn to do the following:
 
--   calculate means and medians of a data set
+-   calculate the means and medians of a data set
 
 -   calculate variances and standard deviations
 
--   produce histograms and interpret them
+-   produce histograms and box plots and interpret them
 
--   use R to plot and analyze data sets
+-   connect descriptive stats of data with plots
 
-## Mutations and their rates
-
-\label{sec:bio3}
+## Mutations and their rates {#sec-mutations}
 
 All Earth-based lifeforms receive an inheritance from their parent(s): a string of deoxyribonucleic acids (\index{DNA} *DNA*) called the genetic sequence, or \index{genome} *genome* of an individual. The information to produce all the necessary components to build and run the organism is encoded in the sequence of the four different \index{nucleotides} *nucleotides*: adenine, thymine, guanine, and cytosine (abbreviated as A, T, G, C). Different parts of the genome play different roles; some discrete chunks called *genes* contain the instructions to build \index{proteins} *proteins*, the workhorses of biology. To make a protein from a gene, the information is transcribed from DNA into messenger ribonucleic acid (*mRNA*), which is then translated into a string of \index{amino acids} *amino acids* which constitute the protein. The genetic code determines the translation, using three nucleic acids in DNA and RNA to represent a single amino acid in a protein. Thus, a sequence of DNA results in a specific sequence of amino acids, which determine the structure and function of the protein.
 
-![Different types of substitution \index{mutation!substitution} point mutations are distinguished by their effects on the gene products; image by Jonsta247 in public domain via Wikimedia Commons.](ch3/Point_mutations-en.png){width=5in #fig-ch3-mutation}
+![Different types of substitution \index{mutation!substitution} point mutations are distinguished by their effects on the gene products; image by Jonsta247 in public domain via Wikimedia Commons.](ch3/Point_mutations-en.png){#fig-ch3-mutation width="5in"}
 
 The above processes involve copying and transferring information. As we know from experience, copying information inevitably means introducing errors. This is particularly important when passing information from parent to offspring, because then an entire organism has to develop and live based on a faulty blueprint. Changes introduced in the genome of an organism are called \index{mutation!definition} *mutations*, and they can be caused either by errors in copying DNA when making a new cell (replication) or through damage to DNA through physical means (e.g. ionizing radiation) or chemical mechanisms (e.g. exogenous molecules that react with DNA). The simplest mutation involve a single nucleotide and are called \index{mutation!point} *point mutations*. A nucleotide may be deleted, an extra nucleotide inserted, or a new one substituted instead: the three different types of substitution mutations are shown in @fig-ch3-mutation. Large-scale mutations may involve whole chunks of the genome that are cut out and pasted in a different location, or copied and inserted in another position, but they are typically much more rare than point mutations.
 
@@ -40,10 +38,9 @@ The value that occurs most frequently in the data set is called its \index{mode}
 The average or \index{mean!data}\index{data!mean} *mean* of a data set is the sum of all the values divided by the number of values. It is also called the *expected value* (particularly in the context of probability, which we will discuss later) because it allows to simply predict the sum of a large number of measurements with a given mean, by multiplying the mean by the number. The mean can be calculated only for a numerical data set, since we cannot add non-numerical values.
 
 ::: {#def-sample-mean}
-The *mean* of a data set $X$, also known as the average or the arithmetic mean is usually indicated with a bar over the variable symbol, and defined as the sum of the values divided by the number of values:
-$$
+The *mean* of a data set $X$, also known as the average or the arithmetic mean is usually indicated with a bar over the variable symbol, and defined as the sum of the values divided by the number of values: $$
   \bar X  = \frac{1}{n} \sum_{i=1}^n x_i 
-$$ \label{eq:ch3_mean_def}
+$$
 :::
 
 The mean, unlike the median, is not the middle value of the data set, instead it represents the *center of mass* of the measured values [@whitlock_analysis_2008]. Another way of thinking of the mean is as a **weighted sum of the values in the data set**. The weights represent the frequency of occurrence of each numeric value in the data set, which we will further discuss in subsection 3.2.3.
@@ -52,7 +49,7 @@ The mean is the most frequently used statistic, but it is not always interpreted
 
 **Examples of misleading means.** Mean quantities for data sets with a few quantities are not the typical value, such as in the number of children born in a year per individual, also known as the birth rate. The birth rate per year in 2013 for both the United States and Russia is 1.3% per person, but you will have to look for a long time to find any individual who gave birth to 1.3% of a child. While this point may be obvious, it is often overlooked when interpreting mean values.
 
-Outliers are another source of trouble for means. For example, a single individual (let's call him or her B.G.) with a wealth of $50 billion moves into a town of 1000 households with average wealth of $100,000. Although none of the original residents' assets have changed, the mean wealth of the town improves dramatically, as you can calculate in one of the exercises at the end of the chapter. One can site the improved per capita (per individual) in the town as evidence of economic growth, but that is obviously misleading. In cases with such dramatic outliers, the median is more informative as representation of a typical value of the data set.
+*Outliers* are another source of trouble for means. For example, a single individual (let's call him or her B.G.) with a wealth of \$50 billion moves into a town of 1000 households with average wealth of \$100,000. Although none of the original residents' assets have changed, the mean wealth of the town improves dramatically, as you can calculate in one of the exercises at the end of the chapter. One can site the improved per capita (per individual) in the town as evidence of economic growth, but that is obviously misleading. In cases with such dramatic outliers, the median is more informative as representation of a typical value of the data set.
 
 #### exercises
 
@@ -72,7 +69,7 @@ For the (small) data sets given below, calculate the mean and the median (by han
 
 7.  Data set of the number of new mutations found on paternal chromosomes for five individuals: {39, 43, 51, 53, 91}.
 
-8.  Consider the hypothetical town with 1000 households with mean and median wealth of $100,000 and one person with assets for $100 billion. Calculate the mean value of the combined data set, and compare it to the new median value.
+8.  Consider the hypothetical town with 1000 households with mean and median wealth of \$100,000 and one person with assets for \$100 billion. Calculate the mean value of the combined data set, and compare it to the new median value.
 
 9.  Suppose you'd like to add a new observation to a data set; e.g. the 6-th largest metropolitan area (Philadelphia) to the tuberculosis incidence data set, which is 3.0. Calculate the mean of the 6-values data set, without using the 5 values in the original data set, but only using the mean of the 5-value data set and the new value. Generalize this to calculating the sample mean for any $n$-value data set, given the mean of the $n-1$ values, plus one new value.
 
@@ -82,18 +79,17 @@ The center of a data set is obviously important, but so is the spread around the
 
 There is a problem with the naive approach: if we just add up all the differences of data values from the mean, the positives will cancel the negatives, and we'll get an artificially low spread. One way to correct this is to take the absolute value of the differences before adding them up. However, for somewhat deep mathematical reasons, the standard measure of spread uses not absolute values, but squares of the differences, and then divides that sum not by the number of data points $n$ but by $n-1$.
 
-:::{#def-sample-variance}
-The *variance* of a data set $X$ with $n$ values is the sum of the squared differences of each value of the variable from the mean, divided by $n-1$:
-$$
+::: {#def-sample-variance}
+The *variance* of a data set $X$ with $n$ values is the sum of the squared differences of each value of the variable from the mean, divided by $n-1$: $$
  Var(X) = \frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2
 $$
 :::
 
 The variance is a sum of square differences, so its dimension is the square of the dimensions of the measurements in $X$. In order to obtain a measure of the spread comparable to the values of $X$, we take the square root of variance and call it the \index{data!standard deviation} *standard deviation* of the data set $X$:
 
-\begin{equation}
+$$
 \sigma(X) = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2}
-\end{equation}
+$$ {#eq-std}
 
 Just as the mean is a weighted average of all of the values in the data set, the variance is a weighted average of all the squared deviations of the data from the mean.
 
@@ -115,7 +111,7 @@ For the (small) data sets below, calculate the range, variance, and standard dev
 
 7.  Data set of the number of new mutations found on paternal chromosomes for five individuals: {39, 43, 51, 53, 91}.
 
-8.  Consider the hypothetical town with 1000 households with mean and median wealth of $100,000 and one person with assets for $50 billion. Calculate the mean value of the combined data set, and compare it to the new median value.
+8.  Consider the hypothetical town with 1000 households with mean and median wealth of \$100,000 and one person with assets for \$50 billion. Calculate the mean value of the combined data set, and compare it to the new median value.
 
 9.  (harder) Suppose that a data set has a fixed range (e.g. all values have to lie between 0 and 1). What is the greatest possible standard deviation for any data set within the range? Hint: think about how to place the points as far from the mean as possible. How do the data sets above relate to your prediction?}
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,7 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-dda8909163e0b4f3670ba323ebd66e56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -322,7 +322,7 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#mutations-and-their-rates" id="toc-mutations-and-their-rates" class="nav-link active" data-scroll-target="#mutations-and-their-rates"><span class="header-section-number">2.1</span> Mutations and their rates</a></li>
+  <li><a href="#sec-mutations" id="toc-sec-mutations" class="nav-link active" data-scroll-target="#sec-mutations"><span class="header-section-number">2.1</span> Mutations and their rates</a></li>
   <li><a href="#sec-descr-stats" id="toc-sec-descr-stats" class="nav-link" data-scroll-target="#sec-descr-stats"><span class="header-section-number">2.2</span> Describing data sets</a>
   <ul class="collapse">
   <li><a href="#central-value-of-a-data-set" id="toc-central-value-of-a-data-set" class="nav-link" data-scroll-target="#central-value-of-a-data-set"><span class="header-section-number">2.2.1</span> central value of a data set</a></li>
@@ -360,14 +360,13 @@ window.Quarto = {
 </blockquote>
 <p>Science begins with experimental measurements, which are then verified by reproducing the results. But no experimental result is perfectly reproducible because all are subject to random noise, whether it is caused by unpredictable processes or is due to measurement error. Describing collections of numbers with noise is the first step to understanding the biological systems that are being measured. In this chapter you will learn to do the following:</p>
 <ul>
-<li><p>calculate means and medians of a data set</p></li>
+<li><p>calculate the means and medians of a data set</p></li>
 <li><p>calculate variances and standard deviations</p></li>
-<li><p>produce histograms and interpret them</p></li>
-<li><p>use R to plot and analyze data sets</p></li>
+<li><p>produce histograms and box plots and interpret them</p></li>
+<li><p>connect descriptive stats of data with plots</p></li>
 </ul>
-<section id="mutations-and-their-rates" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="mutations-and-their-rates"><span class="header-section-number">2.1</span> Mutations and their rates</h2>
-<p></p>
+<section id="sec-mutations" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-mutations"><span class="header-section-number">2.1</span> Mutations and their rates</h2>
 <p>All Earth-based lifeforms receive an inheritance from their parent(s): a string of deoxyribonucleic acids ( <em>DNA</em>) called the genetic sequence, or <em>genome</em> of an individual. The information to produce all the necessary components to build and run the organism is encoded in the sequence of the four different <em>nucleotides</em>: adenine, thymine, guanine, and cytosine (abbreviated as A, T, G, C). Different parts of the genome play different roles; some discrete chunks called <em>genes</em> contain the instructions to build <em>proteins</em>, the workhorses of biology. To make a protein from a gene, the information is transcribed from DNA into messenger ribonucleic acid (<em>mRNA</em>), which is then translated into a string of <em>amino acids</em> which constitute the protein. The genetic code determines the translation, using three nucleic acids in DNA and RNA to represent a single amino acid in a protein. Thus, a sequence of DNA results in a specific sequence of amino acids, which determine the structure and function of the protein.</p>
 <div id="fig-ch3-mutation" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -394,12 +393,12 @@ Figure&nbsp;2.1: Different types of substitution point mutations are distinguish
 <div id="def-sample-mean" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 2.1</strong></span> The <em>mean</em> of a data set <span class="math inline">\(X\)</span>, also known as the average or the arithmetic mean is usually indicated with a bar over the variable symbol, and defined as the sum of the values divided by the number of values: <span class="math display">\[
   \bar X  = \frac{1}{n} \sum_{i=1}^n x_i
-\]</span> </p>
+\]</span></p>
 </div>
 <p>The mean, unlike the median, is not the middle value of the data set, instead it represents the <em>center of mass</em> of the measured values <span class="citation" data-cites="whitlock_analysis_2008">(<a href="references.html#ref-whitlock_analysis_2008" role="doc-biblioref">Whitlock and Schluter 2008</a>)</span>. Another way of thinking of the mean is as a <strong>weighted sum of the values in the data set</strong>. The weights represent the frequency of occurrence of each numeric value in the data set, which we will further discuss in subsection 3.2.3.</p>
 <p>The mean is the most frequently used statistic, but it is not always interpreted correctly. Very commonly the mean is reported as the most representative value of a data set, but that is often misleading. Here are at least two situations in which the mean can be tricky: 1) data sets with a small number of discrete values; 2) data sets with outliers, or isolated numbers very far from the mean.</p>
 <p><strong>Examples of misleading means.</strong> Mean quantities for data sets with a few quantities are not the typical value, such as in the number of children born in a year per individual, also known as the birth rate. The birth rate per year in 2013 for both the United States and Russia is 1.3% per person, but you will have to look for a long time to find any individual who gave birth to 1.3% of a child. While this point may be obvious, it is often overlooked when interpreting mean values.</p>
-<p>Outliers are another source of trouble for means. For example, a single individual (let’s call him or her B.G.) with a wealth of $50 billion moves into a town of 1000 households with average wealth of $100,000. Although none of the original residents’ assets have changed, the mean wealth of the town improves dramatically, as you can calculate in one of the exercises at the end of the chapter. One can site the improved per capita (per individual) in the town as evidence of economic growth, but that is obviously misleading. In cases with such dramatic outliers, the median is more informative as representation of a typical value of the data set.</p>
+<p><em>Outliers</em> are another source of trouble for means. For example, a single individual (let’s call him or her B.G.) with a wealth of $50 billion moves into a town of 1000 households with average wealth of $100,000. Although none of the original residents’ assets have changed, the mean wealth of the town improves dramatically, as you can calculate in one of the exercises at the end of the chapter. One can site the improved per capita (per individual) in the town as evidence of economic growth, but that is obviously misleading. In cases with such dramatic outliers, the median is more informative as representation of a typical value of the data set.</p>
 <section id="exercises" class="level4" data-number="2.2.1.1">
 <h4 data-number="2.2.1.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.2.1.1</span> exercises</h4>
 <p>For the (small) data sets given below, calculate the mean and the median (by hand or using a calculator) and compare the two measures of the center.</p>
@@ -426,9 +425,9 @@ Var(X) = \frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2
 \]</span></p>
 </div>
 <p>The variance is a sum of square differences, so its dimension is the square of the dimensions of the measurements in <span class="math inline">\(X\)</span>. In order to obtain a measure of the spread comparable to the values of <span class="math inline">\(X\)</span>, we take the square root of variance and call it the <em>standard deviation</em> of the data set <span class="math inline">\(X\)</span>:</p>
-<p><span class="math display">\[\begin{equation}
+<p><span id="eq-std"><span class="math display">\[
 \sigma(X) = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2}
-\end{equation}\]</span></p>
+\tag{2.1}\]</span></span></p>
 <p>Just as the mean is a weighted average of all of the values in the data set, the variance is a weighted average of all the squared deviations of the data from the mean.</p>
 <section id="exercises-1" class="level4" data-number="2.2.2.1">
 <h4 data-number="2.2.2.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">2.2.2.1</span> exercises:</h4>

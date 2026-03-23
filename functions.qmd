@@ -5,53 +5,14 @@
 
 Mathematical models describe how various quantities affect each other. In the last chapter we learned that these descriptions can be written down, often in the form of an equation. For instance, we can describe the total volume of blood pumped over a period of time as the product of stroke volume, the heart rate and the number of minutes, which can be written as an equation. The different quantities have their own meaning and roles, depending on what they stand for. To better describe how these quantities are related we use the deep idea of mathematical functions. In this chapter you will learn to do the following:
 
--   use dimensional analysis to deduce the meaning of quantities in a model
 -   understand the concept of function, dependent and independent variables
 -   recognize basic functional forms and the shape of their graphs
--   use R to plot functions
--   understand basic models of reaction rates
-
-## Dimensions of quantities {#sec-model2}
-
-What distinguishes a mathematical model from a mathematical equation is that the quantities involved have a real-world meaning. Each quantity represents a measurement, and associated with each one are the \index{units} *units* of measurement. The number 173 is not enough to describe the height of a person - you are left to wonder 173 what? meters, centimeters, nanometers, light-years? Obviously, only centimeters make sense as a unit of measurement for human height; but if we were measuring the distance between two animals in a habitat, meters would be a reasonable unit, and it were the distance between molecules in a cell, we would use nanometers. Thus, any quantity in a mathematical model must have associated units, and any graphs of these quantities must be labeled accordingly.
-
-In addition to units, each variable and parameter has a meaning, which is called the \index{dimension} *dimension* of the quantity. For example, any measurement of length or distance has the same dimension, although the units may vary. The value of a quantity depends on the units of measurement, but its essential dimensionality does not. One can convert a measurement in meters to that in light-years or cubits, but one cannot convert a measurement in number of sheep to seconds - that conversion has no meaning.
-
-Thus leads us to the fundamental rule of mathematical modeling: **terms that are added or subtracted must have the same dimension**. This gives mathematical modelers a useful tool called \index{dimensional analysis} *dimensional analysis*, which involves replacing the quantities in an equation with their dimensions. This serves as a check that all dimensions match, as well as allowing to deduce the dimensions of any parameters for which the dimension was not specified [@smith_mathematical_1968].
-
-**Example.** As we saw in chapter 1, the relationship between the amount blood pumped by a heart in a certain amount of time is expressed in the following equation, where $V_{tot}$ and $V_s$ are the total volume and stroke volume, respectively, $R$ is the heart rate, and $t$ is the time: $$
-V_{tot} = V_sRt
-$$ The dimension of a quantity $X$ is denoted by $[X]$; for example, if $t$ has the dimension of time, we write $[t] = time$. The dimension of volume is $[V_{tot}] = length^3$, the dimension of stroke volume is $[V_s] = volume/beat$ and the dimension of time $t$ is time, so we can re-write the equation above in dimensional form:
-
-$$length^3 = length^3/ beat \times R \times time$$
-
-Solving this equation for R, we find that it must have the dimensions of $[R] = beats/time$. It can be measured in beats per minute (typical for heart rate), or beats per second, beats per hour, etc. but the *dimensionality* of the quantity cannot be changed without making the model meaningless.
-
-There are also \index{dimensionless quantity} *dimensionless* quantities, or pure numbers, which are not tied to a physical meaning at all. Fundamental mathematical constants, like $\pi$ or $e$, are classic examples, as are some important quantities in physics, like the Reynolds number in fluid mechanics [@strogatz_nonlinear_2001]. Quantities with a dimension can be made dimensionless by dividing them by another quantity with the same dimension and "canceling" the dimensions. For instance, we can express the height of a person as a fraction of the mean height of the population; then the height of a tall person will become a number greater than 1, and the height of a short one will become less than 1. This new dimensionless height does not have units of length - they have been divided out by the mean height. This is known as \index{rescaling} *rescaling* the quantity, by dividing it by a preferred scale. There is a fundamental difference between rescaling and changing the units of a quantity: when changing the units, e.g. from inches to centimeters, the dimension remains the same, but if one divides the quantity by a scale, it loses its dimension.
-
-**Example.** The model for a population of bacteria that doubles every hour is described by the equation, where $P_0$ is initial number of bacteria and $P$ is the population after $t$ hours: $$ P = P_0 2^t $$ Let us define the quantity $R=P/P_0$, so we can say that population increased by a factor of $R$ after $t$ hours. This ratio is a dimensionless quantity because $P$ and $P_0$ have the same dimension of bacterial population, which cancel out. The equation for $R$ can be written as follows: $$ R= 2^t $$ According to dimensional analysis, both sides of the equation have to be dimensionless, so $t$ must also be a dimensionless variable. This is surprising, because $t$ indicates the number of hours the bacterial colony has been growing. This reveals the subtle fact that $t$ is a rescaled variable obtained by dividing the elapsed time by the length of the reproductive cycle. Because of the assumption that the bacteria divide exactly once an hour, $t$ counts the number of hours, but if they divided once a day, $t$ would denote the number of days. So $t$ doesn't have units or dimensions, but instead denotes the dimensionless number of cell divisions.
-
-#### exercises
-
-For each biological model below determine the dimensions of the parameters, based on the given dimensions of the variables.
-
-1.  Model of number of mutations $M$ as a function of time $t$: $$ M(t) = M_0 + \mu t$$
-
-2.  Model of molecular concentration $C$ as a function of time $t$: $$ C(t) = C_0 e^{-kt} $$
-
-3.  Model of tree height $H$ (length) as a function of age $a$ (time): $$ H(a) = \frac{b a}{c + a}$$
-
-4.  Model of cooperative binding of ligands, with fraction of bound receptors $\theta$ as a function of ligand concentration $L$: $$ \theta (L) = \frac{L^n}{L^n + K_d}$$
-
-5.  Model of concentration of a gene product $G$ (concentration) as a function of time $t$: $$ G(t) = G_m (1 - e^{-\alpha t})$$
-
-6.  Michaelis-Menten model of enzyme kinetics, $v$ is reaction rate (1/time) and $S$ is substrate concentration: $$ v(S) = \frac{v_{max} S}{K_m + S}$$
-
-7.  Logistic model of population growth, $P$ is population size and time $t$: $$ P(t) = \frac{A}{1 + Be^{-rt}} $$
+-   predict the effect of parameter changes on graph of a function
+-   compare the graph of a function with a scatter plot from a data set
 
 ## Functions and their graphs {#sec:math2}
 
-A relationship between two variables addresses the basic question: when one variable changes, how does this affect the other? An equation, like the examples in the last section, allows one to calculate the value of one variable based on the other variable and parameter values. In this section we seek to describe more broadly how two variables are related by using the mathematical concept of functions.
+A relationship between two variables addresses the basic question: when one variable changes, how does this affect the other? An equation, like the examples in @sec-dim-anal, allows one to calculate the value of one variable based on the other variable and parameter values. In this section we seek to describe more broadly how two variables are related by using the mathematical concept of functions.
 
 ::: {#def-function}
 A function is a mathematical rule which has an input and an output. A function returns a well-defined output for every input, that is, for a given input value the function returns a unique output value.
@@ -153,9 +114,9 @@ For this reason, let us assume $m=n$ and consider what happens as $x \to \infty$
 \lim_{x \to \infty} \frac{a_0 + ... + a_n x^n}{b_0 + ... + b_n x^n} = \frac{ a_n x^n}{ b_n x^n}  =  \frac{ a_n}{ b_n} 
 $$ Therefore, the function approaches the value of $a_n /b_n$ as $x$ grows.
 
-Similarly, let us consider what happens when $x=0$. Plugging this into the function results in all of the terms vanishing except for the constant terms, so $$ f(0) =  \frac{ a_0}{ b_0} $$ Between 0 and infinity, the function either increases or decreases monotonically, depending on which value ($a_n /b_n$ or $a_0/b_0$) is greater. 
+Similarly, let us consider what happens when $x=0$. Plugging this into the function results in all of the terms vanishing except for the constant terms, so $$ f(0) =  \frac{ a_0}{ b_0} $$ Between 0 and infinity, the function either increases or decreases monotonically, depending on which value ($a_n /b_n$ or $a_0/b_0$) is greater.
 
-**Example.** The following model, called the Hill equation \index{Hill equation}\index{model!Hill}, describes the fraction of receptor molecules which are bound to a ligand, which is a chemical term for a free molecule that binds to another, typically larger, receptor molecule. $\theta$ is the fraction of receptors bound to a ligand, $L$ denotes the ligand concentration, $K_d$ is the dissociation constant, and $n$ called the binding cooperativity \index{binding cooperativity} or Hill coefficient: 
+**Example.** The following model, called the Hill equation \index{Hill equation}\index{model!Hill}, describes the fraction of receptor molecules which are bound to a ligand, which is a chemical term for a free molecule that binds to another, typically larger, receptor molecule. $\theta$ is the fraction of receptors bound to a ligand, $L$ denotes the ligand concentration, $K_d$ is the dissociation constant, and $n$ called the binding cooperativity \index{binding cooperativity} or Hill coefficient:
 
 $$ \theta(L) = \frac{L^n}{ L^n +K_d}$$
 
@@ -203,16 +164,15 @@ A common model of population over time is the \index{function!logistic} logistic
 
 $$
 f(x) = \frac{A}{1+Be^{-rx}}
-\label{eq:logistic_funk} 
-$$
+$${#eq-logistic-func}
 
-The numerator and denominator both contain exponential functions with the same power. If $r>0$ when $x \to \infty$, the denominator approaches 1, since the exponential term decays to zero, and thus: 
+The numerator and denominator both contain exponential functions with the same power. If $r>0$ when $x \to \infty$, the denominator approaches 1, since the exponential term decays to zero, and thus:
 
 $$  
 \lim_{x \to \infty} \frac{A}{1+Be^{-rx}} = A; \; \mathrm{if} \; r>0 
 $$
 
-On the other hand, if $r<0$, the exponential term in the denominator grows to infinity and the ratio approaches zero: 
+On the other hand, if $r<0$, the exponential term in the denominator grows to infinity and the ratio approaches zero:
 
 $$  
 \lim_{x \to \infty} \frac{A}{1+Be^{-rx}} =  0; \; \mathrm{if} \; r<0 
@@ -262,27 +222,7 @@ curve(A/(1+exp(-r*x)),-60,60,lwd=3,lty=3,add=TRUE)
 legend("bottomright", leg.txt, cex=1.5, lty=1:3)
 ```
 
-#### exercises:
-
-For each biological model below answer the following questions in terms of the parameters in the models, assuming all are nonnegative real numbers. 1) what is the value of the function when the independent variable is 0? 2) what value does the function approach when the independent variable goes to infinity? 3) verbally describe the behavior of the functions between 0 and infinity (e.g., function increases, decreases).
-
-1.  Model of number of mutations $M$ as a function of time $t$: $$ M(t) = M_0 + \mu t$$
-
-2.  Model of molecular concentration $C$ as a function of time $t$: $$ C(t) = C_0 e^{-kt} $$
-
-3.  Model of cooperative binding of ligands\index{model!binding cooperativity}, with fraction of bound receptors $\theta$ as a function of ligand concentration $L$: $$ \theta = \frac{L^n}{L^n + K_d}$$
-
-4.  Model of tree height $H$ (length) as a function of age $a$ (time): $$ H(a) = \frac{b a }{c + a}$$
-
-5.  Model of concentration of a gene product $G$ (concentration) as a function of time $t$: $$ G(t) = G_m (1 - e^{-\alpha t})$$
-
-6.  Michaelis-Menten model \index{model!Michaelis-Menten} of enzyme kinetics, $v$ is reaction rate (1/time) and $S$ is substrate concentration: $$ v(S) = \frac{v_{max} S}{K_m + S}$$
-
-7.  Logistic model \index{logistic model}of population growth, $P$ is population size and time $t$: $$ P(t) = \frac{A e^{kt}}{1 + B(e^{kt} -1)} $$
-
-## Rates of biochemical reactions
-
-\label{sec:bio2}
+### Rates of biochemical reactions
 
 Living things are dynamic, they change with time, and much of mathematical modeling in biology is interested in describing these changes. Some quantities change fast and others slowly, and every dynamic quantity has a rate of change, or *rate* for short. Usually, the quantity that we want to track over time is the variable, and in order to describe how it changes we introduce a rate parameter. If we are describing changes over time, all rate parameters have dimensions with time in the denominator. As a simple example, the velocity of a physical object describes the change in distance over time, so its dimension is $[v] = length/time$.
 
@@ -298,38 +238,89 @@ $$
 
 But how fast does the reaction take place? To write down a mathematical model, we need to define the quantities involved. First, we have the concentration of the molecule $A$, with dimensions of concentration. Second, we have the rate of reaction, let us call it $v$, which has dimension of concentration per time (just like velocity is length per time). How are the two quantities related?
 
-### Constant (zeroth-order) kinetics
-
-\index{kinetics!zeroth-order} In some circumstances, the reaction rate $v$ does not depend on the concentration of the reactant molecule $A$. In that case, the relationship between the \index{kinetics!rate constant} *rate constant* $k$ and the actual rate $v$ is:
+**Example: constant (zeroth-order) kinetics** \index{kinetics!zeroth-order} In some circumstances, the reaction rate $v$ does not depend on the concentration of the reactant molecule $A$. In that case, the relationship between the \index{kinetics!rate constant} *rate constant* $k$ and the actual rate $v$ is:
 
 $$
 v = k
-$$
+$$ {#eq-zero-kinetics}
 
 Dimensional analysis insists that the dimension of $k$ must be the dimension of $v$, or concentration/time. This is known as constant, or zero-order kinetics, and it is observed at concentrations of $A$ when the reaction is at its maximum velocity: for example, ethanol metabolism by ethanol dehydrogenase in human liver cannot proceed any faster than about 1 drink per hour.
 
-### First-order kinetics
-
-\index{kinetics!first-order}. In other conditions, it is easy to imagine that increasing the concentration of the reactant $A$ will speed up the rate of the reaction. A simple relationship of this type is linear:
+**Example: first-order kinetics.** \index{kinetics!first-order}. In other conditions, it is easy to imagine that increasing the concentration of the reactant $A$ will speed up the rate of the reaction. A simple relationship of this type is linear:
 
 $$
 v = kA
-$$ \label{eq:kinetics_1st_order}
+$$ {#eq-first-kinetics}
 
 In this case, the dimension of the rate constant $k$ is 1/time. This is called first-order kinetics, and it usually describes reactions when the concentration of $A$ is small, and there are plenty of free enzymes to catalyze more reactions.
 
-### Michaelis-Menten model of enzyme kinetics \index{kinetics!Michaelis-Menten}
-
-However, if the concentration of the substrate molecule $A$ is neither small nor large, we need to consider a more sophisticated model. An enzyme is a protein which catalyzes a biochemical reaction, and it works in two steps: first it binds the substrate, at which point it can still dissociate and float away, and then it actually catalyzes the reaction, which is usually practically irreversible (at least by this enzyme) and releases the product. The enzyme itself is not affected or spent, so it is free to catalyze more reactions. Let denote the substrate (reactant) molecule by $A$, the product molecule by $B$, the enzyme by $E$, and the complex of substrate and enzyme $AE$. The classic chemical scheme that describes these reactions is this:
+**Example: Michaelis-Menten model of enzyme kinetics**. However, if the concentration of the substrate molecule $A$ is neither small nor large, we need to consider a more sophisticated model. An enzyme is a protein which catalyzes a biochemical reaction, and it works in two steps: first it binds the substrate, at which point it can still dissociate and float away, and then it actually catalyzes the reaction, which is usually practically irreversible (at least by this enzyme) and releases the product. The enzyme itself is not affected or spent, so it is free to catalyze more reactions. Let denote the substrate (reactant) molecule by $A$, the product molecule by $B$, the enzyme by $E$, and the complex of substrate and enzyme $AE$. The classic chemical scheme that describes these reactions is this:
 
 $$
 A + E \underset{k_{-1}}{\overset{k_1}{\rightleftharpoons}} AE  \xrightarrow{k_2} E + B
-$$
+$$ 
 
 You could write three different kinetic equations for the three different arrows in that scheme. Michaelis and Menten used the simplifying assumptions that the binding and dissociation happens much faster than the catalytic reaction, and based on this they were able to write down an approximate, but extremely useful Michaelis-Menten model of an enzymatic reaction:
 
 $$
 v = \frac{v_{max} A}{K_M+A}
-$$ {#eq-MM_kinetics}
+$$ {#eq-michaelis-kinetics}
 
 Here $v$ refers to the rate of the entire catalytic process, that is, the rate of production of $B$, rather than any intermediate step. Here the reaction rate depends both on the concentration of the substrate $A$ and on the two constants $v_{max}$, called the maximum reaction rate, and the constant $K_M$, called the Michaelis constant. They both depend on the rate constants of the reaction, and $v_{max}$ also depends on the concentration of the enzyme. The details of the derivation are beyond us for now, but you will see in the following exercises how this model behaves for different values of $A$.
+
+#### exercises:
+
+For each biological model below answer the following questions in terms of the parameters in the models, assuming all are nonnegative real numbers. 1) what is the value of the function when the independent variable is 0? 2) what value does the function approach when the independent variable goes to infinity? 3) verbally describe the behavior of the functions between 0 and infinity (e.g., function increases, decreases).
+
+1.  Model of number of mutations $M$ as a function of time $t$: 
+$$ M(t) = M_0 + \mu t$$
+
+2.  Model of molecular concentration $C$ as a function of time $t$: 
+$$ C(t) = C_0 e^{-kt} $$
+
+3.  Model of cooperative binding of ligands\index{model!binding cooperativity}, with fraction of bound receptors $\theta$ as a function of ligand concentration $L$: 
+$$ \theta = \frac{L^n}{L^n + K_d}$$
+
+4.  Model of tree height $H$ (length) as a function of age $a$ (time): 
+$$ H(a) = \frac{b a }{c + a}$$
+
+5.  Model of concentration of a gene product $G$ (concentration) as a function of time $t$: 
+$$ G(t) = G_m (1 - e^{-\alpha t})$$
+
+6.  Michaelis-Menten model \index{model!Michaelis-Menten} of enzyme kinetics, $v$ is reaction rate (1/time) and $S$ is substrate concentration: 
+$$ v(S) = \frac{v_{max} S}{K_m + S}$$
+
+7.  Logistic model \index{logistic model}of population growth, $P$ is population size and time $t$: 
+$$ P(t) = \frac{A e^{kt}}{1 + B(e^{kt} -1)} $$
+
+## Scatter plots and relationships between variables {#sec-scatter-plots}
+
+Although there is always error in any real data, there may be a relationship between the two variables that is not random: for example, when one goes up, the other one tends to go up as well. These relationships may be complicated, but in this chapter we will focus on the the simplest and most common type of relationship: linear, where a change in one variable is associated with a proportional change in the other, plus an added constant. This is expressed mathematically using the familiar equation for a linear function, with parameters slope ($a$) and intercept ($b$):
+
+$$ 
+y = ax + b
+$$
+
+Let us say you have measured some data for two variables, which we will call, unimaginatively, $x$ and $y$. This data set consists of pairs of numbers: one for $x$, one for $y$, for example, the heart rate and body temperature of a person go together. They cannot be mixed up between different people, as the data will lose all meaning. We can denote this a list of $n$ pairs of numbers: $(x_i, y_i)$ (where $i$ is an integer between 1 and $n$). Since this is a list of pairs of numbers, we can plot them as separate points in the plane using each $x_i$ as the x-coordinate and each $y_i$ as the y-coordinate. This is called a \index{plot!scatter} *scatter plot* of a two-variable data set. For example, two scatter plots of a data set of heart rate and body temperature are shown in @fig-body-temp. In the first one, the body temperature is on the x-axis, which makes it the \index{variable!explanatory} *explanatory* variable; in the second one, the body temperature is on the y-axis, which makes it the \index{variable!response} *response* variable.
+
+```{r}
+#| label: fig-body-temp
+#| fig-cap: 'scatter plot of heart rates and body temperatures: a) with heart rate as the explanatory variable; b) with body temperature as the explanatory variable.'
+#| fig-subcap: 
+#|   - "Body temp (response variable) vs heart rate (explanatory variable)" 
+#|   - "Heart rate (response variable) vs body temp (explanatory variable)" 
+#| layout-ncol: 2
+#| echo: false
+
+my_data<-read.table("https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt", header=TRUE)
+plot(my_data$Temp, my_data$HR,main='heart rates vs. body temps', cex=1.5, cex.axis=1.5,cex.lab=1.5)
+plot(my_data$HR, my_data$Temp,main='body temps vs. heart rates', cex=1.5, cex.axis=1.5,cex.lab=1.5)
+```
+
+```{webr-r}
+my_data<-read.table("https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt", header=TRUE)
+plot(my_data$Temp, my_data$HR, main='heart rates vs. body temps')
+plot(my_data$HR, my_data$Temp, main='body temps vs. heart rates')
+```
+
+
