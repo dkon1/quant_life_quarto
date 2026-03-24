@@ -136,7 +136,7 @@ For each biological model below determine the dimensions of the parameters, base
     B = rt+a
     $$
 
-3.  Molecular concentration $C$ depending on time \$t\$: $$ C = C_0 e^{-kt} $$
+3.  Molecular concentration $C$ depending on time $t$: $$ C = C_0 e^{-kt} $$
 
 4.  Tree height $H$ (length) depending on age $a$ (time): $$ H = \frac{b a}{c + a}$$
 
