@@ -128,16 +128,34 @@ There are also \index{dimensionless quantity} *dimensionless* quantities, or pur
 
 For each biological model below determine the dimensions of the parameters, based on the given dimensions of the variables.
 
-1.  Model of number of mutations $M$ as a function of time $t$: $$ M(t) = M_0 + \mu t$$
+1.  Number of mutations $M$ depending on time $t$: $$ M = M_0 + \mu t$$
 
-2.  Model of molecular concentration $C$ as a function of time $t$: $$ C(t) = C_0 e^{-kt} $$
+2.  Baby weight $B$ depending on time $t$:
 
-3.  Model of tree height $H$ (length) as a function of age $a$ (time): $$ H(a) = \frac{b a}{c + a}$$
+    $$
+    B = rt+a
+    $$
 
-4.  Model of cooperative binding of ligands, with fraction of bound receptors $\theta$ as a function of ligand concentration $L$: $$ \theta (L) = \frac{L^n}{L^n + K_d}$$
+3.  Molecular concentration $C$ depending on time \$t\$: $$ C = C_0 e^{-kt} $$
 
-5.  Model of concentration of a gene product $G$ (concentration) as a function of time $t$: $$ G(t) = G_m (1 - e^{-\alpha t})$$
+4.  Tree height $H$ (length) depending on age $a$ (time): $$ H = \frac{b a}{c + a}$$
 
-6.  Michaelis-Menten model of enzyme kinetics, $v$ is reaction rate (1/time) and $S$ is substrate concentration: $$ v(S) = \frac{v_{max} S}{K_m + S}$$
+5.  Concentration of a gene product $G$ depending on time $t$: $$ G = G_m (1 - e^{-\alpha t})$$
 
-7.  Logistic model of population growth, $P$ is population size and time $t$: $$ P(t) = \frac{A}{1 + Be^{-rt}} $$
+6.  Reaction rate $c$ (concentration/time) depending on concentrations of reactant $A$ and reactant $B$:
+
+    $$
+    c = kAB
+    $$
+
+7.  Enzyme turnover rate $v$ (1/time) depending on concentration of substrate $S$: $$ v = \frac{v_{max} S}{K_m + S}$$
+
+8.  Population $P$ depending on time $t$: $$ P = \frac{Ae^{rt}}{B + e^{rt}} $$
+
+9.  Fraction of bound receptors $\theta$ depending on concentration of ligand $L$: $$ \theta = \frac{L^n}{L^n + K_d}$$
+
+10. Mass of an organism $M$ depending on the basal metabolic rate (energy/time) $B$:
+
+    $$
+    M = aB^n
+    $$

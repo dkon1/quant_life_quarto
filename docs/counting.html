@@ -475,13 +475,25 @@ V_{tot} = V_sRt
 <h4 data-number="1.3.0.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">1.3.0.1</span> exercises</h4>
 <p>For each biological model below determine the dimensions of the parameters, based on the given dimensions of the variables.</p>
 <ol type="1">
-<li><p>Model of number of mutations <span class="math inline">\(M\)</span> as a function of time <span class="math inline">\(t\)</span>: <span class="math display">\[ M(t) = M_0 + \mu t\]</span></p></li>
-<li><p>Model of molecular concentration <span class="math inline">\(C\)</span> as a function of time <span class="math inline">\(t\)</span>: <span class="math display">\[ C(t) = C_0 e^{-kt} \]</span></p></li>
-<li><p>Model of tree height <span class="math inline">\(H\)</span> (length) as a function of age <span class="math inline">\(a\)</span> (time): <span class="math display">\[ H(a) = \frac{b a}{c + a}\]</span></p></li>
-<li><p>Model of cooperative binding of ligands, with fraction of bound receptors <span class="math inline">\(\theta\)</span> as a function of ligand concentration <span class="math inline">\(L\)</span>: <span class="math display">\[ \theta (L) = \frac{L^n}{L^n + K_d}\]</span></p></li>
-<li><p>Model of concentration of a gene product <span class="math inline">\(G\)</span> (concentration) as a function of time <span class="math inline">\(t\)</span>: <span class="math display">\[ G(t) = G_m (1 - e^{-\alpha t})\]</span></p></li>
-<li><p>Michaelis-Menten model of enzyme kinetics, <span class="math inline">\(v\)</span> is reaction rate (1/time) and <span class="math inline">\(S\)</span> is substrate concentration: <span class="math display">\[ v(S) = \frac{v_{max} S}{K_m + S}\]</span></p></li>
-<li><p>Logistic model of population growth, <span class="math inline">\(P\)</span> is population size and time <span class="math inline">\(t\)</span>: <span class="math display">\[ P(t) = \frac{A}{1 + Be^{-rt}} \]</span></p></li>
+<li><p>Number of mutations <span class="math inline">\(M\)</span> depending on time <span class="math inline">\(t\)</span>: <span class="math display">\[ M = M_0 + \mu t\]</span></p></li>
+<li><p>Baby weight <span class="math inline">\(B\)</span> depending on time <span class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[
+B = rt+a
+\]</span></p></li>
+<li><p>Molecular concentration <span class="math inline">\(C\)</span> depending on time $t$: <span class="math display">\[ C = C_0 e^{-kt} \]</span></p></li>
+<li><p>Tree height <span class="math inline">\(H\)</span> (length) depending on age <span class="math inline">\(a\)</span> (time): <span class="math display">\[ H = \frac{b a}{c + a}\]</span></p></li>
+<li><p>Concentration of a gene product <span class="math inline">\(G\)</span> depending on time <span class="math inline">\(t\)</span>: <span class="math display">\[ G = G_m (1 - e^{-\alpha t})\]</span></p></li>
+<li><p>Reaction rate <span class="math inline">\(c\)</span> (concentration/time) depending on concentrations of reactant <span class="math inline">\(A\)</span> and reactant <span class="math inline">\(B\)</span>:</p>
+<p><span class="math display">\[
+c = kAB
+\]</span></p></li>
+<li><p>Enzyme turnover rate <span class="math inline">\(v\)</span> (1/time) depending on concentration of substrate <span class="math inline">\(S\)</span>: <span class="math display">\[ v = \frac{v_{max} S}{K_m + S}\]</span></p></li>
+<li><p>Population <span class="math inline">\(P\)</span> depending on time <span class="math inline">\(t\)</span>: <span class="math display">\[ P = \frac{Ae^{rt}}{B + e^{rt}} \]</span></p></li>
+<li><p>Fraction of bound receptors <span class="math inline">\(\theta\)</span> depending on concentration of ligand <span class="math inline">\(L\)</span>: <span class="math display">\[ \theta = \frac{L^n}{L^n + K_d}\]</span></p></li>
+<li><p>Mass of an organism <span class="math inline">\(M\)</span> depending on the basal metabolic rate (energy/time) <span class="math inline">\(B\)</span>:</p>
+<p><span class="math display">\[
+M = aB^n
+\]</span></p></li>
 </ol>
 
 
