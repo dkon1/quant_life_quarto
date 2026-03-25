@@ -1,4 +1,4 @@
-# Linear regression
+# Linear regression {#sec-linreg}
 
 > The place in which I'll fit will not exist until I make it.\
 > --James Baldwin
@@ -164,7 +164,7 @@ There is another important measure of the quality of linear regression: the \ind
 
 4.  Re-calculate the slopes of the two linear regressions if the explanatory and response variables were reversed. Does changing the order of variable affect the correlation?
 
-## Linear regression using R 
+## Linear regression using R
 
 We now have the tools to compute the parameters of the best-fit line, provided we can calculate the means, variances, and covariance of the two variable data set. Of course, the best way to do all this is to let a computer handle it. The function for calculating linear regression in R is `lm()`, which outputs a bunch of information to a variable called myfit in the script below. The slope, intercept, and other \index{parameter!linear regression}parameters can be printed out using the `summary()` function. In the script below you see a bunch of information, but we are concerned with the ones in the first column correspond to the best fit intercept (-166.2847) and the slope (2.4432). You can check that they correspond to our formulas by computing the covariance, the variances, and the means of the two variables:
 

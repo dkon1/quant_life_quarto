@@ -55,19 +55,19 @@ The mean is the most frequently used statistic, but it is not always interpreted
 
 For the (small) data sets given below, calculate the mean and the median (by hand or using a calculator) and compare the two measures of the center.
 
-1.  Data set of the population of the city of Chicago (in millions) in the last 4 census years (2010, 2000, 1990, 1980): {2.7, 2.9, 2.8, 3.0}.
+1.  Population of the city of Chicago (in millions) in the last 5 census years (2020, 2010, 2000, 1990, 1980): {2.7, 2.7, 2.9, 2.8, 3.0}.
 
-2.  Data set of the numbers of the fish blacknose dace (*Rhinichthys atratulus*) collected in 6 different streams in the Rock Creek watershed in Maryland: {76, 102, 12, 55, 93, 98}.
+2.  Number of the fish blacknose dace (*Rhinichthys atratulus*) collected in 6 different streams in the Rock Creek watershed in Maryland: {76, 102, 12, 55, 93, 98}.
 
-3.  Data set of tuberculosis incidence rates (per 100,000 people) in the 5 largest metropolitan areas in the US in 2012: {5.2, 6.6, 3.2, 5.5, 4.5}.
+3.  Tuberculosis incidence rates (per 100,000 people) in the 5 largest metropolitan areas in the US in 2012: {5.2, 6.6, 3.2, 5.5, 4.5}.
 
-4.  Data set of ages of mothers at birth for five individuals: {19, 20, 22, 32, 39}.
+4.  Ages of mothers at birth for five individuals: {19, 20, 22, 32, 39}.
 
-5.  Data set of ages of fathers at birth for five individuals: {22, 23, 25, 36, 40}.
+5.  Ages of fathers at birth for five individuals: {22, 23, 25, 36, 40}.
 
-6.  Data set of the number of new mutations found on maternal chromosomes for five individuals: {9, 10, 11, 26, 15}.
+6.  Number of new mutations found on maternal chromosomes for five individuals: {9, 10, 11, 26, 15}.
 
-7.  Data set of the number of new mutations found on paternal chromosomes for five individuals: {39, 43, 51, 53, 91}.
+7.  Number of new mutations found on paternal chromosomes for five individuals: {39, 43, 51, 53, 91}.
 
 8.  Consider the hypothetical town with 1000 households with mean and median wealth of \$100,000 and one person with assets for \$100 billion. Calculate the mean value of the combined data set, and compare it to the new median value.
 
@@ -75,9 +75,11 @@ For the (small) data sets given below, calculate the mean and the median (by han
 
 ### spread of a data set
 
-The center of a data set is obviously important, but so is the spread around the center. Sometimes the spread is caused by noise or error, for example in a data set of repeated measurements of the same variable under the same conditions. Other times the variance is due to real changes in the system, or due to inherent randomness of the system, and the size of the spread, as well as the shape of the histogram are important for understanding the mechanism. The simplest way to describe the spread of a numerical data set is to look at the difference between the maximum and minimum values, called the \index{data!range} *range*. However, it is obviously influenced by outliers, since the extreme values are used. To describe the typical spread, we need to use all the values in the data set, and see how far each one is from the center, measured by the mean.
+The center of a data set is obviously important, but so is the spread around the center. Sometimes the spread is caused by noise or error, for example in a data set of repeated measurements of the same variable under the same conditions. Other times the variance is due to real changes in the system, or due to inherent randomness of the system, and the size of the spread, as well as the shape of the histogram are important for understanding the mechanism. The simplest way to describe the spread of a numerical data set is to look at the difference between the maximum and minimum values, called the \index{data!range} *range*. However, it is not a great summary of the spread of the data set, since only the extreme values are used.
 
-There is a problem with the naive approach: if we just add up all the differences of data values from the mean, the positives will cancel the negatives, and we'll get an artificially low spread. One way to correct this is to take the absolute value of the differences before adding them up. However, for somewhat deep mathematical reasons, the standard measure of spread uses not absolute values, but squares of the differences, and then divides that sum not by the number of data points $n$ but by $n-1$.
+A better method for describing the spread is to calculate the *quartiles*, which divide the ordered list of numbers into fourths. Essentially, it is repeating the procedure for calculating the median for each half of the data set; the *first quartile* is the median of the lower half, the second quartile is the median, and the *third quartile* is the median of the upper half of the data. The difference between the third and first quartiles is called the *interquartile range* and is a useful measure of variation of the data set.
+
+The most common measure of spread uses the deviations of each value is from the center, measured by the mean. One simple approach would be to add up all of these deviations together and take the mean, but there is a problem with the naive approach: if we do that, the positives will cancel the negatives, and we'll get an artificially low spread (likely close to zero). One way to correct this is to take the absolute value of the differences before adding them up. However, for somewhat deep mathematical reasons, the standard measure of spread uses not absolute values, but squares of the differences, and then divides that sum not by the number of data points $n$ but by $n-1$.
 
 ::: {#def-sample-variance}
 The *variance* of a data set $X$ with $n$ values is the sum of the squared differences of each value of the variable from the mean, divided by $n-1$: $$
@@ -85,39 +87,37 @@ The *variance* of a data set $X$ with $n$ values is the sum of the squared diffe
 $$
 :::
 
-The variance is a sum of square differences, so its dimension is the square of the dimensions of the measurements in $X$. In order to obtain a measure of the spread comparable to the values of $X$, we take the square root of variance and call it the \index{data!standard deviation} *standard deviation* of the data set $X$:
+The variance is a sum of square differences, so its dimension is the square of the dimensions of the measurements in $X$. Just as the mean is a weighted average of all of the values in the data set, the variance is a weighted average of all the squared deviations of the data from the mean. In order to obtain a measure of the spread comparable to the values of $X$, we take the square root of variance and call it the \index{data!standard deviation} *standard deviation* of the data set $X$:
 
 $$
 \sigma(X) = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2}
 $$ {#eq-std}
 
-Just as the mean is a weighted average of all of the values in the data set, the variance is a weighted average of all the squared deviations of the data from the mean.
+The standard deviation is the single most common measure of spread of a numeric data set, because it represents the average deviation of a data point from the mean. However, like the mean, it is sensitive to outliers and may not be the best representation of spread for highly skewed data. In such cases, the interquartile range might be preferred.
 
 #### exercises:
 
 For the (small) data sets below, calculate the range, variance, and standard deviation (by hand or using a calculator). Compare the range and the standard deviation for each case: which one is larger? by how much?
 
-1.  Data set of the population of the city of Chicago (in millions) in the last 4 census years (2010, 2000, 1990, 1980): {2.7, 2.9, 2.8, 3.0}.
+1.  Population of the city of Chicago (in millions) in the last 5 census years (2020, 2010, 2000, 1990, 1980): {2.7, 2.7, 2.9, 2.8, 3.0}.
 
-2.  Data set of the numbers of the fish blacknose dace (*Rhinichthys atratulus*) collected in 6 different streams in the Rock Creek watershed in Maryland: {76, 102, 12, 55, 93, 98}.
+2.  Number of the fish blacknose dace (*Rhinichthys atratulus*) collected in 6 different streams in the Rock Creek watershed in Maryland: {76, 102, 12, 55, 93, 98}.
 
-3.  Data set of tuberculosis incidence rates (per 100,000 people) in the 5 largest metropolitan areas in the US in 2012: {5.2, 6.6, 3.2, 5.5, 4.5}.
+3.  Tuberculosis incidence rates (per 100,000 people) in the 5 largest metropolitan areas in the US in 2012: {5.2, 6.6, 3.2, 5.5, 4.5}.
 
-4.  Data set of ages of mothers at birth for five individuals: {19, 20, 22, 32, 39}.
+4.  Ages of mothers at birth for five individuals: {19, 20, 22, 32, 39}.
 
-5.  Data set of ages of fathers at birth for five individuals: {22, 23, 25, 36, 40}.
+5.  Ages of fathers at birth for five individuals: {22, 23, 25, 36, 40}.
 
-6.  Data set of the number of new mutations found on maternal chromosomes for five individuals: {9, 10, 11, 26, 15}.
+6.  Number of new mutations found on maternal chromosomes for five individuals: {9, 10, 11, 26, 15}.
 
-7.  Data set of the number of new mutations found on paternal chromosomes for five individuals: {39, 43, 51, 53, 91}.
+7.  Number of new mutations found on paternal chromosomes for five individuals: {39, 43, 51, 53, 91}.
 
-8.  Consider the hypothetical town with 1000 households with mean and median wealth of \$100,000 and one person with assets for \$50 billion. Calculate the mean value of the combined data set, and compare it to the new median value.
-
-9.  (harder) Suppose that a data set has a fixed range (e.g. all values have to lie between 0 and 1). What is the greatest possible standard deviation for any data set within the range? Hint: think about how to place the points as far from the mean as possible. How do the data sets above relate to your prediction?}
+8.  (harder) Suppose that a data set has a fixed range (e.g. all values have to lie between 0 and 1). What is the greatest possible standard deviation for any data set within the range? Hint: think about how to place the points as far from the mean as possible.
 
 ### describing data sets in graphs
 
-Data sets can be presented visually to indicate the frequency of different values. This can be done in a number of ways, depending on the kind of data set. For a data set with only a few values, e.g. a categorical data set, a good way to represent it is with a pie chart. Each category is represented by a slice of the pie with the area of the same share of the pie as the fraction of the data set in the category. There is some evidence, however, that pie charts can be misleading to the eye, so R does not recommend using them.
+Data sets can be presented visually to indicate the frequency of different values. This can be done in a number of ways, depending on the kind of data set. For a data set with only a few values, e.g. a categorical data set, a good way to represent it is with a pie chart. Each category is represented by a slice of the pie with the area of the same share of the pie as the fraction of the data set in the category. There is some evidence, however, that pie charts can be misleading to the eye, so R does not recommend using them. \[@healy_data_2019\]
 
 For a numerical data set it is useful to plot the frequencies of a range of values, which is called a \index{histogram!definition} *histogram*. Its independent axis has the values of the data variable, and the dependent axis has the frequency of those values. If the data set consists of real numbers that range across an interval, that interval is divided into subintervals (usually of equal size), called bins, and the number of measurements in each bin is indicated on the y-axis. In order to be visually informative, there should be a reasonable number (usually no more than a few dozen, although it varies) of bins. The most frequent measurements are represented as the highest bars or points on the histogram. Histograms can denote either the counts of measurements in each bin, or to show the fraction of the total number of measurements in each bin. The only difference between those two kinds of histogram is the scale of the y-axis, and, confusingly, both can be called frequencies.
 
@@ -132,37 +132,44 @@ hist(data$bacillus,breaks=seq(1.2,4.7,0.5),col='gray',main='Bacterial lengths',x
 
 A histogram of the measured lengths of the bacterium *Bacillus subtilis* is shown in @fig-ch3-bacillus. The data set was measured in increments in half a micron, with numbers varying between 1.5 and 4.5 microns. The histogram shows that the most common measurement (the mode) is 2 $\mu m$. Adding up all of the frequencies in the histogram tells us that there are approximately 200 total values in the data set. This allows us to find the median value by counting the frequencies of the first few bins until we get to 100 (the median point), which resides in the bin for 2.5 $\mu m$. It is a little bit more difficult to estimate the mean, but it should be clear that the center of mass of the histogram is also near 2.5 (it is actually 2.49). Finally, the hardest task is estimating the spread of the data set, such as the the standard deviation, based on the histogram. The range of the data set is $4.5-1.5 = 3$, so we know for sure that it is less than 1.5. The histogram shows that the deviations from the mean value of 2.5 range from 2 (rarely) to 0.5 (most prevalent). This should give you an idea that the weighted average of the deviations is less than 1. Indeed, the correct standard deviation is about 0.67.
 
-There are different ways of plotting data sets that have more than one variable. For instance, a data set measured over time is called a time series. If the values are plotted with the corresponding times on the x-axis, then it is called a \index{plot!time} *time plot*. This is useful to show the changes of the values of your variable over time. If the data set doesn't undergo any significant changes over time, it makes more sense to represent it as a pie chart or histogram. More generally, one may plot two variables measured together on a single plot, which is called a \index{plot!scatter} *scatter plot*. We will explore such plots and the relationships between two measured variables in chapter 4.
+There are different ways of plotting data sets that have more than one variable. For instance, a data set measured over time is called a time series. If the values are plotted with the corresponding times on the x-axis, then it is called a \index{plot!time} *time plot*. This is useful to show the changes of the values of your variable over time. If the data set doesn't undergo any significant changes over time, it makes more sense to represent it as a pie chart or histogram.
+
+Another common type of visualization is the *box plot*, which is used to compare two or more numeric variables. The box itself covers the middle 50% of the distribution (from the first to the third quartile), with a line indicating the median (not always in the center of the box - can you see why?), and "whiskers" that usually extend to 1.5 of the interquartile range. @fig-ch2-HR compares the distribution of heart rates of students who have taken this class under two different conditions.
+
+```{r}
+#| fig-cap: "Box plot of heart rates at rest and after exercise"
+#| label: fig-ch2-HR
+#| echo: false
+#| output: true
+heart_rates <- read.csv(file = "https://raw.githubusercontent.com/dkon1/quant_life_quarto/master/data/HR_data_combined.csv")
+boxplot(heart_rates$Rest1, heart_rates$Ex1, main = "Heart rates comparison", ylab = 'rate (beats per minute)', names = c('resting', 'exercise'))
+```
+
+Further, one may plot two numeric variables on two different axes, which is called a \index{plot!scatter} *scatter plot*. We will explore such plots and the relationships between two measured variables in @sec-linreg .
+
+### connection between descriptive statistics and visual plots
+
+Numeric descriptors of data, such as means, medians, or standard deviations, provide summary information to communicate data, but they cannot describe it in full detail. Visualizations such as histograms and box plots do communicate a lot more information to the eye, although they still simplify the information. It is important to connect the numeric summary statistic with the visualizations for a full understanding of a data set. I will thus ask you to estimate summary statistics based on histograms.
+
+The measures of center are fairly straightforward, though distinct. The median is the midpoint, so it can be estimated by roughly adding up the heights of the bins and finding the bin that contains the central point The mean can be thought of as a center of mass of a histogram - where would you put a support under the plot so it is balanced? For symmetric distributions, the median and the mean are very close, but for a data set with a long tail the mean will be pulled in the direction of that tail, relative to the median.
+
+The minimum and maximum are easily seen on a histogram (up to the width of the bins). The quartiles can be estimated in the same way as the median, and from that an approximate interquartile range. However, the standard deviation is harder to estimate quickly from a histogram, so we will use the relationship between the range and standard deviation explored in problem 9 in the previous section. The standard deviation is necessarily smaller than half of the full range of a data set, and is often approximately **close to one quarter of the range**. Of course, the precision of this estimate depends on the exact shape of the distribution, and the interquartile range, the standard deviation, and one quarter of the range may differ significantly depending on how peaked as opposed to spread out the distribution is, and how skewed vs symmetric it is. But for a quick estimate, either of these methods can give a good idea of the standard deviation.
 
 #### exercises
 
-Answer the following questions, based on the histograms in @fig-ch2-HR (mutation data) and in @fig-ch2-mut (heart rate data).
+Answer the following questions, based on the histograms in @fig-ch2-mut (mutation data) and in @fig-ch2-HR2 (heart rate data).
 
 1.  How many people in the mutation data have fathers either younger than 20 or older than 40? How many have more than 80 new mutations? \index{medical!heart rate}
 
 2.  Estimate the median and mean of the two variables in the mutation data set.
 
-3.  State the range of each data set, and estimate the standard deviation of the two variables in the mutation data set.
+3.  State the range of each data set, and estimate the standard deviation of the two variables in the mutation data set, using either the interquartile range or one quarter of the range method.
 
 4.  How many people in the heart rate data have heart rates greater than 80 bpm? How many have body temperature less that 97 F?
 
 5.  Estimate the median and mean of the two variables in the heart rate data set.
 
-6.  State the range of each data set, and estimate the standard deviation of the two variables in the heart rate data set.
-
-```{r}
-#| fig-cap: "Histograms of different numeric variables"
-#| fig-subcap:
-#|   - "Heart rates"
-#|   - "Body temperatures" 
-#| layout-ncol: 2
-#| label: fig-ch2-HR
-#| echo: false
-#| output: true
-my_data<-read.table('data/HR_temp.txt', header=TRUE)
-hist(my_data$HR,col='gray',main='Heart rate data', xlab='heart rate (bpm)')
-hist(my_data$Temp,col='gray',main='Body temperature data', xlab= 'temperature (F)')
-```
+6.  State the range of each data set, and estimate the standard deviation of the two variables in the heart rate data set, using either the interquartile range or one quarter of the range method.
 
 ```{r}
 #| fig-cap: "Histograms of different numeric variables"
@@ -176,4 +183,18 @@ hist(my_data$Temp,col='gray',main='Body temperature data', xlab= 'temperature (F
 my_data<-read.table('data/kong_mutation_data.txt', header=TRUE)
 hist(my_data$PatAge,col='gray',main='Age of father',xlab='age (years)')
 hist(my_data$Mutations,col='gray',main='Number of new mutations',xlab= 'de novo mutations')
+```
+
+```{r}
+#| fig-cap: "Histograms of different numeric variables"
+#| fig-subcap:
+#|   - "Heart rates"
+#|   - "Body temperatures" 
+#| layout-ncol: 2
+#| label: fig-ch2-HR2
+#| echo: false
+#| output: true
+my_data<-read.table('data/HR_temp.txt', header=TRUE)
+hist(my_data$HR,col='gray',main='Heart rate data', xlab='heart rate (bpm)')
+hist(my_data$Temp,col='gray',main='Body temperature data', xlab= 'temperature (F)')
 ```
