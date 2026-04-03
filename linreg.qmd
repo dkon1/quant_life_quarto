@@ -86,39 +86,35 @@ $$
 
 #### exercises
 
-| B($m^2/kg$) | H($^\circ C /min)$ |
-|-------------|--------------------|
-| 7.0         | 0.103              |
-| 5.0         | 0.091              |
-| 3.6         | 0.014              |
-| 3.3         | 0.024              |
-| 2.4         | 0.031              |
-| 2.1         | 0.006              |
+| X   | Y1  | Y2  | Y3  |
+|-----|-----|-----|-----|
+| 0   | 1   | 1   | 0.6 |
+| 1   | 2   | 2   | 2.4 |
+| 2   | 3   | 3   | 2.6 |
+| 3   | 4   | 10  | 4.4 |
 
-: Body leanness (B) and heat loss rate (H) in boys; partial data set from [@sloan_cooling_1973] {#tab-ch4-bh}
+: Simple fake data sets for linear regression {#tbl-ch4-linreg}
 
-Use the data set in @tab-ch4-bh to answer the following questions:
+Use the data sets in @tbl-ch4-linreg to answer the following questions (you may use a calculator or computer to help with arithmetic):
 
 1.  Compute the means and standard deviations of each variable.
 
-2.  Compute the covariance between the two variables.
+2.  Compute the covariance between X and each of the response variables (Y1, Y2, Y3).
 
-3.  Calculate the slope and intercept of the linear regression for the data with $B$ as the explanatory variable.
+3.  Calculate the slopes and intercepts of the linear regression for three pairs of variables (X as explanatory and Y1, Y2, Y3 as response variables).
 
-4.  Make a scatter plot of the data set with $B$ as the explanatory variable and sketch the linear regression line with the parameters you computed.
+4.  Make a scatter plot with X as explanatory and Y1 as response variable with a plot of the linear regression model. How good is the fit based on appearance?
 
-5.  Calculate the slope and intercept of the linear regression the data with $H$ as the explanatory variable.
+5.  Make a scatter plot with X as explanatory and Y2 as response variable with a plot of the linear regression model. How good is the fit based on appearance? How different is the slope of this model compared to the slope for the model for Y1?
 
-6.  Make a scatter plot of the data set, with $H$ as the explanatory variable and sketch the linear regression line with the parameters you computed.
+6.  Make a scatter plot with X as explanatory and Y3 as response variable with a plot of the linear regression model. How good is the fit based on appearance? How different is the slope of this model compared to the slope for the model for Y1?
 
 ### correlation and goodness of fit
 
 The correlation between two random variables is a measure of how much variation in one corresponds to variation in the other. If this sounds very similar to the description of covariance, it's because they are closely related. Essentially, correlation is a normalized covariance, restricted to lie between -1 and 1. Here is the definition:
 
 ::: {#def-corr}
-The (linear) *correlation* of a set of two paired variables (X,Y) is:
-
-$$
+The (linear) *correlation* of a set of two paired variables (X,Y) is: $$
 r = \frac{Cov(X,Y)}{\sqrt{{Var(X)}{Var(Y)}}} =  \frac{Cov(X,Y)}{\sigma_X \sigma_Y}
 $$
 :::
@@ -144,7 +140,7 @@ $$
 \end{aligned}
 $$ {#eq-frac-var}
 
-One should be cautious when interpreting results of a linear regression. First, just because there is no linear relationship does not mean that there is no other relationship. @fig-corr-examples shows some examples of scatter plots and their corresponding correlation coefficients. What it shows is that while a formless blob of a scatter plot will certainly have zero correlation, so will other scatter plots in which there is a definite relationship (e.g. a circle, or a X-shape). The point is that **correlation is always a measure of the linear relationship between variables.**
+One should be cautious when interpreting results of a linear regression. First, just because there is no linear relationship does not mean that there is no other relationship. @fig-corr-examples shows some examples of scatter plots and their corresponding correlation coefficients. What it shows is that while a formless blob of a scatter plot will certainly have zero correlation, so will other scatter plots in which there is a definite relationship (e.g. a circle, or a X-shape). The point is that **correlation is always a measure of the strength of the linear relationship between variables.**
 
 The second caution is well known, as that is the danger of equating correlation with a causal relationship. There are numerous examples of scientists misinterpreting a coincidental correlation as meaningful, or deeming two variables that have a common source as causing one another. For example, one can look at the increase in automobile ownership in the last century and the concurrent improvement in longevity and conclude that automobiles are good for human health. It is well-documented, however, that a sedentary lifestyle and automobile exhaust do not make a person healthy. Instead, increased prosperity has increased both the purchasing power of individuals and enabled advances in medicine that have increase our lifespans. To summarize, one must be careful when interpreting correlation: a weak one does not mean there is no relationship, and a strong one does not mean that one variable causes the changes in the other.
 
@@ -152,17 +148,49 @@ There is another important measure of the quality of linear regression: the \ind
 
 #### exercises
 
-@fig-penguins-hr shows scatter plots of the rate of oxygen consumption (VO) and heart rate (HR) measured in two macaroni penguins running on a treadmill (really). The authors performed linear regression on the data and found the following parameters: $VO =0.23HR - 11.62$ (penguin A) and $VO =0.25HR - 20.93$ (penguin B). The datasets have the standard deviations: $\sigma_{VO} = 6.77$ and $\sigma_{HR} = 28.8$ (penguin A) and $\sigma_{VO} = 8.49$ and $\sigma_{HR} = 30.6$ (penguin B).
+1.  Use the simple data sets in @tbl-ch4-linreg to calculate the correlation coefficients between X and Y1, Y2, and Y3, respectively. Which pair of variables has the highest correlation? Which has the lowest?
+2.  Using the best-fit slope and intercept calculated in exercises in the previous section, calculate the predicted values of Y, Y1, and Y3, and compute the variance of the predicted values. What fraction of variance is explained by the linear regressions in each case, and how does it compare the correlation coefficient?
 
-![Mass-specific rate of oxygen consumption (VO) as a function of heart rate (HR) in two macaroni penguins, (A) a breeding female of mass 3.14 kg and a moulting female of mass 3.99 kg; figure from under CC-BY.](ch8/penguin_HR.png){#fig-penguins-hr}
+@fig-linreg-HRVO2 shows scatter plots of the rate of oxygen consumption (VO) and heart rate (HR) measured in macaroni penguins running on a treadmill (really).
 
-1.  Find the dimensions and units of the slope and the intercept of the linear regression for this data (the units of HR and VO are on the plot).
+```{r}
+#| label: fig-linreg-HRVO2
+#| echo: false
+#| fig-cap: "Linear regression between mass-specific oxygen consumption and heart rate for two groups of Macaroni penguins"
+#| fig-subcap: 
+#|   - "Scatter plot and linear regression line" 
+#|   - "Plot of residuals vs. predicted values" 
+#| layout-ncol: 2
+# plot the data and regression line
+penguins <- read.csv("https://raw.githubusercontent.com/dkon1/quant_life_quarto/master/data/Macaroni_Penguins_Green.csv")
+penguins_MF <- subset(penguins, Group == 'MF')
+myfit <- lm(Mass.Specific.VO2 ~ Heart.Rate, data = penguins_MF)
+plot(penguins_MF$Heart.Rate, penguins_MF$Mass.Specific.VO2, xlab = "heart rate (bpm)" , ylab = "oxygen consumption (mL/kg/min)", main= 'Penguins in group MF (molting females)')
+abline(myfit)
+penguins_BM <- subset(penguins, Group == 'BM')
+myfit <- lm(Mass.Specific.VO2 ~ Heart.Rate, data = penguins_BM)
+plot(penguins_BM$Heart.Rate, penguins_BM$Mass.Specific.VO2, xlab = "heart rate (bpm)" , ylab = "oxygen consumption (mL/kg/min)", main= 'Penguins in group BM (breeding males)')
+abline(myfit)
+```
 
-2.  Data set B has a larger slope than data set A. Does this mean the correlation is higher in data set B than in A? Explain.
+| Group | $\bar {HR}$ | $\bar {VO_2}$ | sd(HR) | sd($VO_2$) | Cov(HR, $VO_2$) |
+|-------|-------------|---------------|--------|------------|-----------------|
+| MF    | 156.2       | 21.3          | 34.0   | 7.4        | 166.1           |
+| BM    | 120.0       | 20.9          | 26.1   | 9.0        | 205.0           |
 
-3.  Calculate the correlation coefficients for the linear regressions of the two penguins; explain how much variance is explained in each case.
+: Summary statistics (mean, standard deviation, and covariance) for the variables HR (heart rate) and mass-specific oxygen consumption ($VO_2$) for two groups Macaroni penguins. {#tbl-pen-summary}
 
-4.  Re-calculate the slopes of the two linear regressions if the explanatory and response variables were reversed. Does changing the order of variable affect the correlation?
+3.  Find the dimensions and units of the slope and the intercept of the linear regression for this data (the units of heart rate and mass-specific oxygen consumption are on the plot).
+
+4.  Based on the scatter plots, which data sets is closer to its line of best fit (has a higher goodness of fit), group MF or BM?
+
+5.  The summary statistics for the variables in the two group of penguins are listed in @tbl-pen-summary. Compute the correlation coefficients between the two variables for both groups, and comment on how it relates to the goodness of fit you observed by eye.
+
+6.  What fraction of the variance of the response variable is explained by the linear model for the BM group and for the FM group?
+
+7.  Based on the statistics in @tbl-pen-summary, compute the best-fit slope and intercept for both groups of penguins based on these statistics, using the heart rate as the **explanatory** variable.
+
+8.  Based on the statistics in @tbl-pen-summary, compute the best-fit slope and intercept for both groups of penguins based on these statistics, using the oxygen consumption as the **explanatory** variable. Why are the slopes not reciprocal to the ones computed in question 7?
 
 ## Linear regression using R
 
@@ -178,7 +206,7 @@ b<-mean(my_data$HR)-a*mean(my_data$Temp)
 print(b)
 ```
 
-Here `Temp` and `HR` are the explanatory and response variables, respectively, and `my_data` is the name of the data frame they are stored in. The best fit parameters are stored in `myfit`, and the line can be plotted using `abline(myfit)`. The script below shows how to calculate a linear regression line and then plot it over a scatter plot in R, and the result is shown in figure \ref{fig:linreg_HRTemp}a.
+Here `Temp` and `HR` are the explanatory and response variables, respectively, and `my_data` is the name of the data frame they are stored in. The best fit parameters are stored in `myfit`, and the line can be plotted using `abline(myfit)`. The script below shows how to calculate a linear regression line and then plot it over a scatter plot in R, and the result is shown in @fig-linreg-HRTemp.
 
 ```{r}
 #| label: fig-linreg-HRTemp
