@@ -50,17 +50,7 @@ Mathematically, a better measure of total error is a sum of squared errors, whic
 
 $$ SSE = \sum_{i=1}^n (y_i -  a x_i - b)^2 $$
 
-Thus we have formulated the goal of fitting the best line to a two-variable data set, also known as linear regression: **find the values of slope and intercept that result in the lowest possible sum of squared errors**. There is a mathematical recipe which produces these values, which will be described in the next section. Any model begins with \index{linear regression!assumptions} assumptions and in order for linear regression to be a faithful representation of a data set, the following must be true:
-
--   the variables have a linear relationship
-
--   all of the measurements are independent of each other
-
--   there is no noise in the measurements of the explanatory variable
-
--   the noise in the measurements of the response variable is normally distributed with mean 0 and identical standard deviation
-
-The reasons why these assumptions are necessary for linear regression to work are beyond the scope of the text, and they are elucidated very well in the book *Numerical Recipes* [@press_numerical_2007]. However, it is important to be aware of them because if they are violated, the resulting linear fit may be meaningless. It's fairly clear that if the first assumption is violated, you are trying to impose a linear relationship on something that is actually curvy. The second assumption of independence is very important and often overlooked. The mathematical reasons for it have to do with properly measuring the goodness of fit, but intuitively it is because measurements that are linked can introduce a new relationship that has to do with the measurements, rather than the relationship between the variables. Violation of this assumption can seriously damage the reliability of the linear regression. The third assumption is often ignored, since usually the explanatory variable is also measured and thus has some noise. The reason for it is that the measure of goodness of fit is based only on the response variable, and there is no consideration of the noise in the explanatory variable. However, a reasonable amount of noise in the explanatory variable is not catastrophic for linear regression. Finally, the last assumption is due to the statistics of maximum-likelihood estimation of the slope and intercept, but again some deviation from perfect normality (bell-shaped distribution) of the noise, or slightly different variation in the noise is to be expected.
+Thus we have formulated the goal of fitting the best line to a two-variable data set, also known as linear regression: **find the values of slope and intercept that result in the lowest possible sum of squared errors**. There is a mathematical recipe which produces these values, which will be described in the next section.
 
 ### best-fit slope and intercept
 
@@ -78,7 +68,7 @@ $$
 a = \frac{Cov(X,Y)}{Var(X)}
 $$
 
-I will not provide a proof that this slope generates the minimal sum of squared errors, but that is indeed the case. To find the intercept of the linear regression, we make use of one other property of the best fit line: in order for it to minimize the SSE, it must pass through the point $(\bar X, \bar Y)$. Again, I will not prove this, but note that the point of the two mean values is the central point of the "cloud" of points in the scatter plot, and if the line missed that central point, the deviations will be larger. Assuming that is the case, we have the following equation for the line: $\bar Y = a\bar X + b$, which we can solve for the \index{linear regression!$y$-intercept} \index{y-intercept!linear regression} intercept $b$:
+I will not provide a proof that this slope generates the minimal sum of squared errors, but that is indeed the case. To find the intercept of the linear regression, we make use of one other property of the best fit line: in order for it to minimize the SSE, it must pass through the point $(\bar X, \bar Y)$. Again, I will not prove this, but note that the point of the two mean values is the central point of the "cloud" of points in the scatter plot, and if the line missed that central point, the deviations will be larger. Assuming that is the case, we have the following equation for the line: $\bar Y = a\bar X + b$, which we can solve for the \index{linear regression!y-intercept} \index{y-intercept!linear regression} intercept $b$:
 
 $$
 b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}
@@ -144,8 +134,6 @@ One should be cautious when interpreting results of a linear regression. First, 
 
 The second caution is well known, as that is the danger of equating correlation with a causal relationship. There are numerous examples of scientists misinterpreting a coincidental correlation as meaningful, or deeming two variables that have a common source as causing one another. For example, one can look at the increase in automobile ownership in the last century and the concurrent improvement in longevity and conclude that automobiles are good for human health. It is well-documented, however, that a sedentary lifestyle and automobile exhaust do not make a person healthy. Instead, increased prosperity has increased both the purchasing power of individuals and enabled advances in medicine that have increase our lifespans. To summarize, one must be careful when interpreting correlation: a weak one does not mean there is no relationship, and a strong one does not mean that one variable causes the changes in the other.
 
-There is another important measure of the quality of linear regression: the \index{plot!residual}\index{linear regression!residual} residual plot. The residuals are the differences between the predicted values of the response variable and the actual value from the data. As stated above, linear regression assumes that there is a linear relationship between the two variables, plus some uncorrelated noise added to the values of the response variable. If that were true, then the plot of the residuals would look like a vaguely spherical blob, with a mean value of 0 and no discernible trend (e.g. no increase of residual for larger $x$ values). Visually assessing residual plots is an essential check on whether linear regression is a reasonable fit to the data in addition to the $r^2$ value.
-
 #### exercises
 
 1.  Use the simple data sets in @tbl-ch4-linreg to calculate the correlation coefficients between X and Y1, Y2, and Y3, respectively. Which pair of variables has the highest correlation? Which has the lowest?
@@ -192,21 +180,96 @@ abline(myfit)
 
 8.  Based on the statistics in @tbl-pen-summary, compute the best-fit slope and intercept for both groups of penguins based on these statistics, using the oxygen consumption as the **explanatory** variable. Why are the slopes not reciprocal to the ones computed in question 7?
 
-## Linear regression using R
+## Residuals and assumptions of linear regression
 
-We now have the tools to compute the parameters of the best-fit line, provided we can calculate the means, variances, and covariance of the two variable data set. Of course, the best way to do all this is to let a computer handle it. The function for calculating linear regression in R is `lm()`, which outputs a bunch of information to a variable called myfit in the script below. The slope, intercept, and other \index{parameter!linear regression}parameters can be printed out using the `summary()` function. In the script below you see a bunch of information, but we are concerned with the ones in the first column correspond to the best fit intercept (-166.2847) and the slope (2.4432). You can check that they correspond to our formulas by computing the covariance, the variances, and the means of the two variables:
+### assumptions of regression
+
+As noted in @sec-counting, all models begins with \index{linear regression!assumptions} assumptions, and linear regression is no exception. Although we have not stated it explicitly, the calculation of the slope and intercept for the best-fit line depends on several conditions being true, specifically: [@whitlock_analysis_2008]
+
+-   the variables have a linear relationship with random noise added
+
+-   there is no noise in the measurements of the explanatory variable
+
+-   the noise in the measurements of the response variable is normally distributed with zero mean and identical standard deviation
+
+-   the measurements are independent of each other
+
+The reasons why these assumptions are necessary for linear regression to work are beyond the scope of the text, and they are elucidated very well in the book *Numerical Recipes* [@press_numerical_2007]. I will give a quick intuitive explanation for each one below without going into mathematical or statistical details.
+
+If the first assumption is violated, you are trying to impose a linear relationship on something that is actually curvy. Some of the trend may be captured by the regression line, but you are leaving more signal behind in the residuals. In that case, it's best to use a nonlinear function for the fit, such as a polynomial, power law, or exponential.
+
+The second assumption of no noise in the explanatory variable is a bit unrealistic, but the reason for it is that the measure of goodness of fit (squared residuals) is based only on the response variable, and there is no consideration of the noise in the explanatory variable. In practice, few variables can be measured without any error or noise, so this assumption is often ignored, but in practice it's a good idea to choose the variable with less noise as the explanatory variable (if such a choice is possible).
+
+The third assumption of identically distributed, normal noise is due to the statistics of maximum-likelihood estimation of the slope and intercept, but some deviation from normality (bell-shaped distribution) of the noise, or slightly different variation in the noise is to be expected. In practice, if the residuals are clearly bimodal, or the noise is much larger for some part of the data than for others, then a different approach is needed, such as dividing the data set into two or more parts to model separately, or using a noise-adjusted linear regression.
+
+The last assumption of independence is very important and often overlooked. The mathematical reasons for it have to do with properly measuring the goodness of fit, but intuitively it is because measurements that are linked can introduce a new relationship that has to do with the measurements, rather than the relationship between the variables. Violation of this assumption can seriously damage the reliability of the linear regression, but it is harder to detect than the other three.
+
+Verifying these assumptions is not as simple as calculating a single test statistic, but it is still important to check that they are not obvisoulty violated, because otherwise the linear fit may be meaningless. In fact, the measure of the goodness of fit, $R^2$ is irrelevant if the assumptions are violated. There is a classic illustration of this through a generated data set called Anscombe's quartet, shown in @fig-anscombe, that was designed to produce the exact same linear regression line (with the slope of 3.0 and intercept of 0.5), with exactly the same r-squared (0.67). The human can see from the scatter plots that these variables have different relationships and different qualities of fit, so why does linear regression give identical results?
 
 ```{r}
-my_data<-read.table("https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt", header=TRUE)
-myfit <- lm(HR ~ Temp, my_data)
-summary(myfit)
-a<-cov(my_data$HR,my_data$Temp)/var(my_data$Temp)
-print(a)
-b<-mean(my_data$HR)-a*mean(my_data$Temp)
-print(b)
+#| label: fig-anscombe
+#| echo: false
+#| fig-cap: "4 Anscombe's data sets with identical linear regression parameters"
+# plot the data and regression line
+require(stats)
+require(graphics)
+
+##-- now some "magic" to do the 4 regressions in a loop:
+ff <- y ~ x
+mods <- setNames(as.list(1:4), paste0("lm", 1:4))
+for(i in 1:4) {
+  ff[2:3] <- lapply(paste0(c("y","x"), i), as.name)
+  ## or   ff[[2]] <- as.name(paste0("y", i))
+  ##      ff[[3]] <- as.name(paste0("x", i))
+  mods[[i]] <- lmi <- lm(ff, data = anscombe)
+ # print(summary(lmi))
+}
+
+## See how close they are (numerically!)
+#sapply(mods, coef)
+#lapply(mods, function(fm) coef(summary(fm)))
+
+## Now, do what you should have done in the first place: PLOTS
+op <- par(mfrow = c(2, 2), mar = 0.1+c(4,4,1,1), oma =  c(0, 0, 2, 0))
+for(i in 1:4) {
+  ff[2:3] <- lapply(paste0(c("y","x"), i), as.name)
+  plot(ff, data = anscombe, col = "red", pch = 21, bg = "orange", cex = 1.2,
+       xlim = c(3, 19), ylim = c(3, 13))
+  abline(mods[[i]], col = "blue", lwd = 2)
+}
+#mtext("Anscombe's 4 Regression data sets", outer = TRUE, cex = 1.5)
+#par(op)
+
 ```
 
-Here `Temp` and `HR` are the explanatory and response variables, respectively, and `my_data` is the name of the data frame they are stored in. The best fit parameters are stored in `myfit`, and the line can be plotted using `abline(myfit)`. The script below shows how to calculate a linear regression line and then plot it over a scatter plot in R, and the result is shown in @fig-linreg-HRTemp.
+The first data set (top left) is the only one for which linear regression is appropriate, because it is a linear trend with identically distributed noise added. Each of the other three data sets are not suited for linear regression for different reasons: the second one (top right) is clearly following a nonlinear (quadratic) trend; the third one (bottom left) has a perfect linear trend with only a single point strongly deviating from it; and the last one (bottom right) has all but one point concentrated at the same x coordinate, which makes the linear regression dependent on that single point.
+
+### plotting the residuals
+
+It's essential to verify that these assumptions are not (seriously) violated for any linear regression before putting trust in its results. The most straightforward way to do so is to plot the residuals (noise), which can help detect violations of at least two of the assumptions (the first and the third). The residuals are the differences between the predicted values of the response variable and the actual value from the data. As stated above, linear regression assumes that there is a linear relationship between the two variables, plus some uncorrelated noise added to the values of the response variable. If that were true, then the plot of the residuals would look like a formless blob, with a mean value of 0 and no discernible trend (e.g. no increase of residual for larger $x$ values). Visually assessing residual plots is an essential check on whether linear regression is a reasonable fit to the data in addition to the $R^2$ value.
+
+To illustrate this, we show scatter plots of data and of residuals side by side. In @fig-linreg-kong the data set from [@kong_rate_2012-1] is plotted, showing the number of *de novo* mutations in 73 offspring as a function of paternal age. The data set is plotted in the first panel, with best-fit line overlayed on the data. The regression has the r-squared of 0.65, indicating a strong linear relationship between the variables. The residuals are plotted in the second panel, showing the errors as a function of predicted values of mutations. Despite a couple of apparent outliers, the residuals plot shows no trend either in the mean or the spread of the residuals, and thus the assumptions of regression are not violated.
+
+```{r}
+#| label: fig-linreg-kong
+#| echo: false
+#| fig-cap: "Linear regression between new mutations and paternal age"
+#| fig-subcap: 
+#|   - "Scatter plot and linear regression line" 
+#|   - "Plot of residuals vs. predicted values" 
+#| layout-ncol: 2
+# plot the data and regression line
+my_data<-read.table("https://raw.githubusercontent.com/dkon1/quant_life_quarto/master/data/kong_mutation_data.txt", header=TRUE)
+myfit <- lm(Mutations ~ PatAge, my_data)
+
+plot(my_data$PatAge, my_data$Mutations, xlab = "age (years)" , ylab = "new mutations")
+abline(myfit)
+# plot the residuals
+plot(myfit$fitted.values, myfit$residuals, xlab = "predicted number of mutations" , ylab = "residuals")
+abline(0,0)
+```
+
+In @fig-linreg-HRTemp shows a plot of heart rates as a function of body temperatures. The data set is plotted in the first panel, with best-fit line overlayed on the data. The regression has the r-squared of 0.06, indicating a weak linear relationship between the variables. The residuals are plotted in the second panel, showing the errors as a function of predicted values of heart rates. The residuals plot looks like a perfect blob, with no trend either in the mean or the spread of the residuals, and thus the assumptions of regression are not violated. Note that the strength of the linear relationship is completely separate from the analysis of residuals: a weak relationship like in this data set may have residuals perfectly compatible with linear regression, while a strong linear relationship may be computed for a data set which actually has a nonlinear trend and thus should be modeled with a different function.
 
 ```{r}
 #| label: fig-linreg-HRTemp
@@ -217,49 +280,46 @@ Here `Temp` and `HR` are the explanatory and response variables, respectively, a
 #|   - "Plot of residuals vs. predicted values" 
 #| layout-ncol: 2
 # plot the data and regression line
-plot(my_data$Temp, my_data$HR, xlab = "body temperature (deg F)" , ylab = "heart rates (bpm)", main= 'scatter plot and linear regression line')
+my_data<-read.table("https://raw.githubusercontent.com/dkon1/quant_life_quarto/main/data/HR_temp.txt", header=TRUE)
+myfit <- lm(HR ~ Temp, my_data)
+plot(my_data$Temp, my_data$HR, xlab = "body temperature (deg F)" , ylab = "heart rates (bpm)")
 abline(myfit)
 # plot the residuals
-plot(myfit$fitted.values, myfit$residuals, xlab = "predicted temp (deg F)" , ylab = "residuals (deg F)", main='residuals plot')
+plot(myfit$fitted.values, myfit$residuals, xlab = "predicted HR (bpm)" , ylab = "residuals (bpm)")
 abline(0,0)
 ```
 
-However, what does this mean about the quality of the fit? Just because we found a line to draw through a scatter plot does not mean that this line is meaningful. In fact, looking at the plot, there does not seem to be much of a relationship between the two variables. There are various statistical measures for the significance of linear regression, the most important one relies on the correlation between the two data sets. Look again at the summary statistics for the data set of heart rates and temperatures. There are several different statistics here, and the one that we care about is the $r^2$, which is reported here as 'Multiple R-squared'. This number tells us that the linear regression accounts for only about 6% of the total variance of the heart rate. In other words, there is no significant linear relationship in this data set.
+#### exercises
 
-As mentioned in section \ref{sec:math8}, the other important check is plotting the residuals of the data set, after the linear fit is subtracted. You see the result in @fig-linreg-HRTemp panel b, showing that the residuals do not have any pronounced pattern. So it is reasonable to conclude that linear regression was a reasonable model to which to fit the data. The low correlation is because data seem to have little to no relationship, not because there is some complicated nonlinear relationship.
+For each of the residuals plotted below, state whether they indicate any violations of assumptions linear regression, and if so, explain which one is violated and how.
 
-Here is an example of a linear regression performed and the line plotted over the basic R plot. Note that `lm()` uses the following syntax to indicate which variable is which: lm(Y \~ X) (where Y is the response variable and X is the explanatory variable.)
-
-```{webr-r}
-data("Galton")
-myfit <- lm(child ~ parent, Galton) 
-summary(myfit)
-print(paste("The best-fit slope is: ", myfit$coefficients[2]))
-print(paste("The best-fit intercept is: ", myfit$coefficients[1]))    
+```{r}
+#| label: fig-anscombe-resids
+#| echo: false
+#| fig-cap: "Four example residual plots"
+#| fig-subcap: 
+#|   - "Data set 1" 
+#|   - "Data set 2"
+#|   - "Data set 3"
+#|   - "Data set 4" 
+#| layout-ncol: 2
+#| layout-nrow: 2
+data("anscombe")
+myfit <- lm(y4 ~ x4, data = anscombe)
+plot(myfit$fitted.values, myfit$residuals, xlab = 'predicted values', ylab='residuals')
+myfit <- lm(y2 ~ x2, data = anscombe)
+plot(myfit$fitted.values, myfit$residuals, xlab = 'predicted values', ylab='residuals')
+myfit <- lm(y1 ~ x1, data = anscombe)
+plot(myfit$fitted.values, myfit$residuals, xlab = 'predicted values', ylab='residuals')
+myfit <- lm(y3 ~ x3, data = anscombe)
+plot(myfit$fitted.values, myfit$residuals, xlab = 'predicted values', ylab='residuals')
 ```
 
-The summary outputs a whole bunch of information that is returned by the `lm()` function, as the object `myfit`. The most important are the intercept and slope, which may be printed out as shown above, and the R-squared parameter, also called the coefficient of determination. The value of R-squared is not accessible directly in `myfit`, but it is printed out in the summary (use multiple R-squared for our assignments.)
+## Regression to the mean {#sec-reg-to-mean}
 
-The actual best-fit line can be plotted as follows over a scatter plot of the data; notice that abline can take myfit as an input and use the slope and intercept:
+The phenomenon called \index{regression to the mean} regression to the mean is initially surprising. Francis Galton first discovered this by comparing the heights of parents and their offspring. He collected a classic data set of the heights of parents and their children, and examined their relationship (this was before scatter plots were used, so he looked at summary tables). It was clear that there was a positive relationship between these variables, that is, taller parents tend to have taller children, as you can see in @fig-linreg-Galton. One can make a linear regression both to predict the children's height from the parents', and the other way around. @fig-linreg-Galton shows Galton's data set along with the linear regression line and the identity like ($y=x$). If each child had exactly the same height as the parents, the scatter plot would lie on the identity line. Instead, the linear regression lines have slope less than 1 for both the plot with the parental heights as the explanatory variable and for the plot with the variables reversed. To make sure that linear regression is appropriate, we plot the residuals of both models in @fig-linreg-Galton-resid. They show no trend or pattern, so we can trust that the linear relationship is reasonable.
 
-```{webr-r}
-#Overlay the best-fit line on the base R plot
-plot(Galton$parent, Galton$child, xlab='mid-parent height (inches)', ylab='child height (inches)')
-abline(myfit)
-```
-
-After performing linear regression it is essential to check that the residuals obey the assumptions of linear regression. The residuals are the difference between the predicted response variable values and the actual values of the response variable, in this case the child height. The residuals are contained in the object myfit as variable residuals:
-
-```{webr-r}
-plot(Galton$parent, myfit$residuals, xlab='mid-parent height (inches)', ylab='residuals (inches)')
-abline(0,0)
-```
-
-It appears that the residuals meet the assumptions of being independent of measurement (shapeless scatter plot), are centered at zero, and look roughly normally distributed, although that can be checked more carefully using other tools.
-
-## Regression to the mean
-
-\label{sec:bio8} The phenomenon called \index{regression to the mean} regression to the mean is initially surprising. Francis Galton first discovered this by comparing the heights of parents and their offspring. Galton took a subset of parents who are taller than average and observed that their children were, on average, shorter than their parents. He also compared the heights of parents who are shorter than average, and found that their children were on average taller than their parents. This suggests the conclusion that in long run everyone will converge closer to the average height - hence "regression to mediocrity", as Galton called it \cite{senn_francis_2011}.
+However, the Galton went further: he took a subset of parents who are taller than average and observed that their children were, on average, shorter than their parents. He also compared the heights of parents who are shorter than average, and found that their children were on average taller than their parents. This suggests the conclusion that in long run everyone will converge closer to the average height - hence "regression to mediocrity", as Galton called it [@senn_francis_2011].
 
 ```{r}
 #| label: fig-linreg-Galton
@@ -281,13 +341,27 @@ abline(myfit,lwd=3)
 abline(0,1,lwd=3,lty=2,col='red')
 ```
 
-But that is not the case! The parents and children in Galton's experiment had a very similar mean and standard deviation. This appears to be a paradox, but it is easily explained using linear regression. Consider two identically distributed random variables $(X,Y)$ with a positive correlation $r$. The slope of the linear regression is $m = r \sigma_Y/\sigma_X$ and since $\sigma_Y=\sigma_X$, the slope is simply $r$. Select a subset with values of $X$ higher than $\bar X$, and consider the mean value of $Y$ for that subset. If the slope $m<1$ (the correlation is not perfect), then the mean value of $Y$ for that subset is less than the mean value of $X$. Similarly, for a subset with values of $X$ lower than $\bar X$, the mean value of $Y$ for that subset is greater than the mean value of $X$, again as long as the slope is less than 1.
+```{r}
+#| label: fig-linreg-Galton-resid
+#| echo: false
+#| fig-cap: "Residuals of the two regression lines in the Galton data set"
+#| fig-subcap: 
+#|   - "Residuals of child height" 
+#|   - "Residuals of parent height" 
+#| layout-ncol: 2
+myfit <- lm(child ~ parent, Galton) 
+plot(myfit$fitted.values, myfit$residuals, xlab='predicted child height (inches)', ylab='residuals (inches)',cex=1.5, cex.axis=1.5,cex.lab=1.5)
+abline(0,0,lwd=3,lty=1)
+myfit <- lm(parent ~child, Galton) 
+plot(myfit$fitted.values, myfit$residuals, xlab='predicted mid-parent height (inches)', ylab='residuals (inches)',cex=1.5, cex.axis=1.5,cex.lab=1.5)
+abline(0,0,lwd=3,lty=2)
+```
 
-Figure \ref{fig:regression2mean} shows Galton's data set (available in R by installing the package 'HistData') along with the linear regression line and the identity like ($y=x$). If each child had exactly the same height as the parents, the scatter plot would lie on the identity line. Instead, the linear regression lines have slope less than 1 for both the plot with the parental heights as the explanatory variable and for the plot with the variables reversed. The correlation coefficient $r$ does not depend on the order of the variables; so using the equation \ref{eq:slope_corr} we can see the difference in slopes is explained by the two data sets having different standard deviations, and reversing the explanatory and response variables results in reciprocation of the ratio of standard deviations. The children's heights have a higher standard deviation, which is likely an artifact of the experiment. In the data set the heights of the two parents were averaged to take them both into account, which substantially reduces the spread between male and female heights. To summarize, although the children of taller parents are shorter on average than their parents, and the children of shorter parents are taller than their parents, the overall standard deviation does not decrease from generation to generation.
+The conclusion that over generations, offspring tend to have less spread than the parents is not correct: the parents and children in Galton's experiment had a very similar mean and standard deviation. This appears to be a paradox, but it is easily explained using linear regression. Consider two identically distributed random variables $(X,Y)$ with a positive correlation $r$. The slope of the linear regression is $a = r \sigma_Y/\sigma_X$ and since $\sigma_Y=\sigma_X$, the slope is simply $r$. Select a subset with values of $X$ higher than $\bar X$, and consider the mean value of $Y$ for that subset. If the slope $a<1$ (the correlation is not perfect), then the mean value of $Y$ for that subset is less than the mean value of $X$. Similarly, for a subset with values of $X$ lower than $\bar X$, the mean value of $Y$ for that subset is greater than the mean value of $X$, again as long as the slope is less than 1.The children's heights have a higher standard deviation, which is likely an artifact of the experiment. In the data set the heights of the two parents were averaged to take them both into account, which substantially reduces the spread between male and female heights. To summarize, although the children of taller parents are shorter on average than their parents, and the children of shorter parents are taller than their parents, the overall standard deviation does not decrease from generation to generation.
 
 ### Discussion questions
 
-Please read the paper on measuring the rate of \index{sequencing!whole genome} de novo mutations in humans and its relationship to paternal age \cite{kong_rate_2012}.
+Please read the paper on measuring the rate of \index{sequencing!whole genome} de novo mutations in humans and its relationship to paternal age [@kong_rate_2012-1].
 
 1.  What types of mutations were observed in the data set? What were the most and the least common?
 
