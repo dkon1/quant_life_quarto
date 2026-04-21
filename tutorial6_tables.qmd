@@ -40,9 +40,8 @@ Let us use the Palmer penguin data set to demonstrate how to count and visualize
 
 ```{webr-r}
 data(penguins)
-type(penguins$species)
-type(penguins$year)
-
+class(penguins$species)
+class(penguins$year)
 ```
 
 The function `table()` is used to count the number of different values in an array. If it is given two vector variables from a data frame, it will count the number of observations that have a specific value of both variables, called a contingency table. For example, the following code produces a count of different species observed in different years in the `penguins` data frame:
