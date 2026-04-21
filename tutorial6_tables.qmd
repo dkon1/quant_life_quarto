@@ -5,7 +5,7 @@
 -   calculate two-way data tables from data
 -   assign matrix variables
 -   perform the chi-squared test for independence
--   perform the ANOVA test for equal means (optional)
+-   perform the ANOVA test for equal means
 
 ## Data tables and the chi-squared test
 
@@ -32,6 +32,49 @@ cat("The second row of the matrix is ")
 print(data_mat[2,])
 cat("The first column of the matrix is ") 
 print(data_mat[,1])
+```
+
+### Visualization of data
+
+Let us use the Palmer penguin data set to demonstrate how to count and visualize categorical data. The data frame `penguins` contains the variables `species` and `year`. The first one is of class "factor", while the second one is integer (e.g. 2008) but we will use it as a categorical variable rather than a numeric one.
+
+```{webr-r}
+data(penguins)
+type(penguins$species)
+type(penguins$year)
+
+```
+
+The function `table()` is used to count the number of different values in an array. If it is given two vector variables from a data frame, it will count the number of observations that have a specific value of both variables, called a contingency table. For example, the following code produces a count of different species observed in different years in the `penguins` data frame:
+
+```{webr-r}
+penguin_table <- table(penguins$species, penguins$year)
+print(penguin_table)
+```
+
+We can read this table to note that 26 Chinstrap penguins were observed in the year 2007, for example. This can be printed out from the table using row and column names instead of indices, like this:
+
+```{webr-r}
+print(penguin_table['Chinstrap', '2007'])
+```
+
+A data table like this can be visualized using a bar plot. Here is an example, which shows the number of the three species for different years. The years labels are shown on the x-axis, which are taken from the column names, and the row names are used as labels for the legend. The colors are defined in the option `col=` .
+
+```{webr-r}
+barplot(penguin_table, legend.text = row.names(penguin_table), col = c('red', 'blue', 'green'))
+```
+
+Another useful calculation is the table of proportions. This is useful for comparing the fraction of different categories of one variable, for different values of the second one. The calculation below for the Palmer penguins first computes the proportions by column (that is, by year) by specifying the option `margin = 2` ; then plots the fractions using a bar plot with the same use of column and row names.
+
+```{webr-r}
+penguin_prop <- prop.table(penguin_table, margin = 2)
+barplot(penguin_prop, legend.text = row.names(penguin_prop), col = c('red', 'blue', 'green'))
+```
+
+The proportion table can be used to answer questions such as, "what fraction of penguins were species Gentoo in the year 2009", essentially the conditional probability of Gentoo, given year 2009.
+
+```{webr-r}
+print(paste("The proportion of Gentoo in 2009 is", penguin_prop["Gentoo", "2009"]))
 ```
 
 ### Chi-squared test
@@ -150,12 +193,11 @@ chisq_result <- chisq.test(data_mat) # run chi-squared test
 The p-value is a variable in the chisq_result object, see code above for example.
 :::
 
-## Example of ANOVA (optional)
+## ANOVA test
 
 Analysis of Variance (ANOVA), desribed in Chpater 10, allows us to test for a relationship between a *numeric* response variable and a *categorical* explanatory variable. In other words, does the mean value of a numeric variable depend on the category of another variable? For example, does the body mass of a penguin in the Palmer Penguins data set depend on the species? The code below produces a boxplot that summarizes the distribution of body masses for different species:
 
 ```{webr-r}
-data(penguins)
 boxplot(body_mass_g ~ species, data = penguins, ylab = 'body mass (g)', main = "Penguin mass for different species")
 ```
 
