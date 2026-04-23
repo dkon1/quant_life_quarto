@@ -633,6 +633,49 @@ X-squared = 429039, df = 3, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p>The results confirm what comparing the percentages suggested: the race of a person in NYC is not independent of whether or not they get stopped and frisked, with only a tiny probability that this disparity could have happened by chance. However, this is only the beginning of the analysis that experts performed for the court trial. Drawing conclusions about motives from the data is tricky, since two variables may be related without a causal connection. Defenders of the practice have argued that the racial disparities reflect differences in criminal activity. The data, however, show that only 6% of the stops result in arrests, and 6% more in court summons, so the vast majority of those stopped and frisked were not engaged in criminal activity.</p>
+<section id="exercises" class="level4" data-number="6.2.2.1">
+<h4 data-number="6.2.2.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.2.2.1</span> exercises</h4>
+<div id="tbl-gen-dis" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-gen-dis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.4: Simulated data containing variables of genotype (A or B) and health (Disease or Healthy)
+</figcaption>
+<div aria-describedby="tbl-gen-dis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Health/Genotype</th>
+<th>Genotype A</th>
+<th>Genotype B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Disease</td>
+<td>40</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td>Healthy</td>
+<td>80</td>
+<td>60</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><a href="#tbl-gen-dis" class="quarto-xref">Table&nbsp;<span>6.4</span></a> shows a simulated contingency table for two variables: genotype and disease.</p>
+<ol type="1">
+<li><p>Calculate the marginal probabilities (proportions) of the individual random variables, i.e.&nbsp;the probability of disease and healthy in the data set, and of Genotype A and B.</p></li>
+<li><p>Calculate the probability of Disease given genotype A and the probability of Disease given genotype B.</p></li>
+<li><p>Calculate the probability of genotype B given Healthy and the probability of genotype B given Disease.</p></li>
+<li><p>Assuming the disease and genotype are independent, calculate the expected number of genotype A and Disease.</p></li>
+<li><p>Under the same assumption, calculate the expected number of genotype B and Disease.</p></li>
+<li><p>Under the same assumption, calculate the expected number of genotype A and Healthy.</p></li>
+<li><p>Under the same assumption, calculate the expected number of genotype B and Healthy.</p></li>
+</ol>
+</section>
 </section>
 </section>
 <section id="analysis-of-variance" class="level2" data-number="6.3">
@@ -742,12 +785,12 @@ P(FP) = P(P \&amp; T); \; P(FN) = P(N \&amp; F)
 <p>The <em>type II error rate</em> or <em>false negative rate</em> is the probability of obtaining the negative result, given a false hypothesis (complementary to sensitivity). <span class="math display">\[FNR = \frac{FN}{TP+FN}\]</span></p>
 </div>
 <p>Notice that knowledge of sensitivity and specificity determine the type I and type II error rates of a test since they are complementary events. Of course, it is desirable for a test to be both very sensitive (reject false null hypotheses, detect disease, convict guilty defendants) and very specific (not reject true null hypotheses, correctly identify healthy patients, acquit innocent defendants), but that is impossible in practice. In fact, making a test highly sensitive (e.g.&nbsp;diagnose every patient with a disease) will make it useless because of it lack of specificity, and vice versa. In statistics, as in life, tradeoffs are required.</p>
-<section id="exercises" class="level4" data-number="6.4.3.1">
-<h4 data-number="6.4.3.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.4.3.1</span> exercises</h4>
+<section id="exercises-1" class="level4" data-number="6.4.3.1">
+<h4 data-number="6.4.3.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">6.4.3.1</span> exercises</h4>
 <div id="tbl-TB-test" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-TB-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;6.4: Data for TB testing using X-ray imaging
+Table&nbsp;6.5: Data for TB testing using X-ray imaging
 </figcaption>
 <div aria-describedby="tbl-TB-test-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
@@ -774,15 +817,13 @@ Table&nbsp;6.4: Data for TB testing using X-ray imaging
 </div>
 </figure>
 </div>
-<p><a href="#tbl-TB-test" class="quarto-xref">Table&nbsp;<span>6.4</span></a> shows the results of using X-ray imaging as a diagnostic test for tuberculosis in patients with known TB status. Use it to answer the questions below.</p>
+<p><a href="#tbl-TB-test" class="quarto-xref">Table&nbsp;<span>6.5</span></a> shows the results of using X-ray imaging as a diagnostic test for tuberculosis in patients with known TB status. Use it to answer the questions below.</p>
 <ol type="1">
 <li><p>Calculate the marginal probabilities of the individual random variables, i.e.&nbsp;the probability of positive and negative X-ray test results, and of TB being present and absent.</p></li>
 <li><p>Find the probability of positive result given that TB is absent (false positive rate) and the probability of a negative result given that TB is absent (specificity).</p></li>
 <li><p>Find the probability of negative result given that TB is present (false negative rate) and the probability of a positive result given that TB is present (sensitivity).</p></li>
 <li><p>Find the probability that a person who tests positive actually has TB (probability of TB present given a positive result).</p></li>
 <li><p>Find the probability that a person who tests negative does not have TB (probability of no TB given a negative result).</p></li>
-<li><p>Assuming the test result and the TB status are independent, calculate the expected probability of both TB being present and a positive X-ray test.}</p></li>
-<li><p>Under the same assumption, calculate the expected probability of both TB being absent and a positive X-ray test.</p></li>
 </ol>
 
 

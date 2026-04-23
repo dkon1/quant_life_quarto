@@ -10,7 +10,6 @@ To determine whether two categorical variables have a relationship, we need to u
 
 In this chapter we will describe the framework of hypothesis testing and apply it to the specific task of deciding whether two categorical variables are independent. After reading it you will know how to:
 
-
 -   compute a categorical data table
 -   compute a table of expected values based on independence
 -   Explain the difference between the truth of the hypothesis and a test result
@@ -18,18 +17,17 @@ In this chapter we will describe the framework of hypothesis testing and apply i
 -   Compute different hypothesis testing error rates
 -   Explain the meaning of p-value
 
-
 ## Contingency tables and independence
 
 What kind of relationship can there be between categorical variables? It cannot be expressed in algebraic form, because without numeric values we cannot talk about a variable increasing or decreasing. Instead, the question is, does one variable being in a particular category have an effect on which category the second variable falls into? Let us say you want to know whether the age of the mother has an effect on the child having trisomy 21 (a.k.a. Down's syndrome), a genetic condition in which an embryo receives three chromosomes 21 instead of the normal two. The age of the mother is a numerical variable, but it can be classified into two categories: less than 35 and 35 or more years of age. The trisomy status of a fetus is clearly a binary, categorical variable: the fetus either has two chromosomes 21 or three.
 
 The data are presented in a two-way or *contingency table*, which is a common way of presenting a data set with two categorical variables. The rows in such tables represent different categories of one variable and the columns represent the categories of the other, and the cells contain the data measurements of their overlaps. @tbl-DS-age is a contingency table for the data set on Down's syndrome and maternal age, in which the rows represent the two categories of maternal age and the columns represent the presence or absence of the syndrome. Each internal cell (as opposed to the total counts on the margins) corresponds to the number of measurement where both variables fall into the specified category, for instance the number of fetuses with the syndrome and a mother under 35 is 28.
 
-| Maternal age | No DS  | DS  | Total  |
+| Maternal age |  No DS |  DS |  Total |
 |-------------:|-------:|----:|-------:|
-| \< 35        | 29,806 | 28  | 29,834 |
-| \>= 35       | 8,135  | 64  | 8,199  |
-| Total        | 37,941 | 92  | 38,033 |
+|        \< 35 | 29,806 |  28 | 29,834 |
+|       \>= 35 |  8,135 |  64 |  8,199 |
+|        Total | 37,941 |  92 | 38,033 |
 
 : Contingency table for maternal age and incidence of Down's syndrome. Numbers represent counts of patients belonging to both categories in the row and the column. DS = Down's syndrome. From [@malone_first-trimester_2005]. {#tbl-DS-age}
 
@@ -39,7 +37,7 @@ Once the data are organized into a contingency table, we can address the main qu
 
 The product rule enables us to extend the notion of independence from events to variables. The concepts of independence is the same in both contexts, since the probability of a value $x$ of a random variable $X$ corresponds to the probability of the event that gets mapped to $x$ by the variable. In order to make independence applicable to variables, the condition must hold true for all possible values of both random variables. That way, knowing the value of one variable has no effect on the probability of the other. In order to make it simpler to calculate, we will use the product rule as the equivalent condition for independence:
 
-:::{#def-rv-indep}
+::: {#def-rv-indep}
 Two random variables $X$ and $Y$ are *independent* if for all possible values of $X$ and $Y$ it is true that $$ P(X=a \land Y=b) = P(X=a)P(Y=b)$$
 :::
 
@@ -51,21 +49,21 @@ These separate probabilities were calculated from the data, and now we can use t
 
 These computed probabilities are based on the assumption that the two variables are independent. To compare the predictions with the data, we need to take one more step: convert the probabilities into counts, or frequencies of each occurrence. Since the probability is a fraction out of all outcomes, to generate the predicted frequency we need to multiply the probability by the total number of data points, in this case pregnant patients. The results of this calculation are seen in @tbl-DS-age-exp with *expected frequencies* shown instead of experimental observations.
 
-| Maternal age | No DS  | DS    | Total  |
-|-------------:|-------:|------:|-------:|
-| \< 35        | 29,761.8 | 72.2 | 29,834 |
-| \>= 35       | 8,179.2  | 19.8 | 8,199  |
-| Total        | 37,941   | 92   | 38,033 |
+| Maternal age |    No DS |   DS |  Total |
+|-------------:|---------:|-----:|-------:|
+|        \< 35 | 29,761.8 | 72.2 | 29,834 |
+|       \>= 35 |  8,179.2 | 19.8 |  8,199 |
+|        Total |   37,941 |   92 | 38,033 |
 
 : Expected frequencies of Down's syndrome for two different age groups of mothers, assuming that age and Down's syndrome are independent. {#tbl-DS-age-exp}
 
 Notice that expected frequencies do not need to be integers, because they are the result of prediction and not a data measurement. Now that we have a prediction, we can compare it with the measurements in @tbl-DS-age. The numbers are substantially different, and we can see that the predicted frequency of Down's syndrome for women under 35 is larger than the frequencies for women at or above 35, due to the larger fraction of patients in the younger age group. We can calculate the differences between the *observed* and *expected* contingency tables to measure how much reality differs from the assumption of independence:
 
-| Maternal age | No DS  | DS    | Total  |
+| Maternal age |  No DS |    DS |  Total |
 |-------------:|-------:|------:|-------:|
-| \< 35        | 44.2   | -44.2 | 29,834 |
-| \>= 35       | -44.2  | 44.2  | 8,199  |
-| Total        | 37,941 | 92    | 38,033 |
+|        \< 35 |   44.2 | -44.2 | 29,834 |
+|       \>= 35 |  -44.2 |  44.2 |  8,199 |
+|        Total | 37,941 |    92 | 38,033 |
 
 : Differences between the observed frequencies of Down's syndrome for different maternal ages and the expected frequencies based on the assumption of independence. {#tbl-DS-age-diff}
 
@@ -95,10 +93,8 @@ The p-value is the most used, misused, and even abused quantity is statistics, s
 
 Now we are ready to address the question raised in the previous chapter of testing the independence hypothesis based on the table of observations and the calculated table of expected counts. In order to measure the difference between what is expected for a data table with two independent variables and the actual observations, we need to gather these differences into a single number. One can devise several ways of doing this, but the accepted measure is called the chi-squared statistic and it is defined as follows:
 
-:::{#def-chisq}
-The chi-squared value for the independence test is calculated on the basis of a two-way table with $m$ rows and $n$ columns as the sum of the differences between the observed counts and the computed expected counts as follows: 
-$$\chi^2= \sum_i \frac{(Observed(i)-Expected(i))^2}{Expected(i)}$$ 
-The number of degrees of freedom of chi-squared is $df = (m-1)(n-1)$.
+::: {#def-chisq}
+The chi-squared value for the independence test is calculated on the basis of a two-way table with $m$ rows and $n$ columns as the sum of the differences between the observed counts and the computed expected counts as follows: $$\chi^2= \sum_i \frac{(Observed(i)-Expected(i))^2}{Expected(i)}$$ The number of degrees of freedom of chi-squared is $df = (m-1)(n-1)$.
 :::
 
 This number describes how far away the data is from what is expected for an independent data set. Therefore, the larger the chi squared statistic, the larger the differences between observed and expected frequency, and thus the null hypothesis of independence is less likely. However, simply obtaining the $\chi^2$ is not enough to say whether the two variables are independent. We need to translate the chi-squared value into the language of probability, that is to ask, what is the probability of obtaining a data set with a particular $\chi^2$ value, if those two variables were independent.
@@ -117,7 +113,6 @@ Like all mathematical models, the chi-squared distribution relies on a set of as
 -   the sample size is sufficiently large
 -   expected cell counts cannot be too small
 -   the observations are independent of each other
-
 
 ### trisomy and pregnancy
 
@@ -154,6 +149,30 @@ print(test.output)
 
 The results confirm what comparing the percentages suggested: the race of a person in NYC is not independent of whether or not they get stopped and frisked, with only a tiny probability that this disparity could have happened by chance. However, this is only the beginning of the analysis that experts performed for the court trial. Drawing conclusions about motives from the data is tricky, since two variables may be related without a causal connection. Defenders of the practice have argued that the racial disparities reflect differences in criminal activity. The data, however, show that only 6% of the stops result in arrests, and 6% more in court summons, so the vast majority of those stopped and frisked were not engaged in criminal activity.
 
+#### exercises
+
+| Health/Genotype | Genotype A | Genotype B |
+|-----------------|------------|------------|
+| Disease         | 40         | 20         |
+| Healthy         | 80         | 60         |
+
+: Simulated data containing variables of genotype (A or B) and health (Disease or Healthy) {#tbl-gen-dis}
+
+@tbl-gen-dis shows a simulated contingency table for two variables: genotype and disease.
+
+1.  Calculate the marginal probabilities (proportions) of the individual random variables, i.e. the probability of disease and healthy in the data set, and of Genotype A and B.
+
+2.  Calculate the probability of Disease given genotype A and the probability of Disease given genotype B.
+
+3.  Calculate the probability of genotype B given Healthy and the probability of genotype B given Disease.
+
+4.  Assuming the disease and genotype are independent, calculate the expected number of genotype A and Disease.
+
+5.  Under the same assumption, calculate the expected number of genotype B and Disease.
+
+6.  Under the same assumption, calculate the expected number of genotype A and Healthy.
+
+7.  Under the same assumption, calculate the expected number of genotype B and Healthy.
 
 ## Analysis of variance
 
@@ -206,9 +225,8 @@ We define two types of variance present in the data (of course, variance is at t
 
 If the null hypothesis were true, then we would expect the variance within groups VR and the variance of the means VR to be equal. This leads us to the ANOVA test statistic:
 
-:::{#def-fstat}
-The F-statistic is calculated as a ratio of the variance of the means $\mu_i$ of the categories (VM) and the variance of the errors (residuals) $\epsilon_{ij}$ within the categories (VR): 
-$$ 
+::: {#def-fstat}
+The F-statistic is calculated as a ratio of the variance of the means $\mu_i$ of the categories (VM) and the variance of the errors (residuals) $\epsilon_{ij}$ within the categories (VR): $$ 
 F = \frac{VM}{VR}
 $$
 :::
@@ -228,8 +246,7 @@ Tests are binary, in that there are only two possible decisions: to reject the h
 Hypothesis testing gives us a positive or negative result, but that does not mean that it is correct. Ideally, we want the test to reject a false null hypothesis, and not reject a true null hypothesis. These results are called, respectively, a *true positive* and a *true negative*. We can think of the hypothesis as a variable that can be either true or false, and of the test result as another variable than can be positive or negative. In the language of probability, the correct test results can be defined as follows:
 
 ::: {#def-true-results}
-For a hypothesis that can be either false (F) or true (T) and a test result that can be either positive (P) or negative (N), the probabilities of a *true positive* and *true negative* are: 
-$$ 
+For a hypothesis that can be either false (F) or true (T) and a test result that can be either positive (P) or negative (N), the probabilities of a *true positive* and *true negative* are: $$ 
 P(TP) = P(P \& F); \; P(TN) = P(N \& T)
 $$
 :::
@@ -237,8 +254,7 @@ $$
 However, hypothesis tests are not infallible, and they can make mistakes of two different types. A test that rejects a true null hypothesis makes a *type I error* or a *false positive* error, while a test that fails to reject a false null hypothesis makes a *type II error* or a false negative error. We can again define the probabilities of the two error types as the overlap of the events:
 
 ::: {#def-error-types}
-For a hypothesis that can be either false (F) or true (T) and a test result that can be either positive (P) or negative (N), the two types of errors are: 
-$$ 
+For a hypothesis that can be either false (F) or true (T) and a test result that can be either positive (P) or negative (N), the two types of errors are: $$ 
 P(FP) = P(P \& T); \; P(FN) = P(N \& F)
 $$
 :::
@@ -255,21 +271,17 @@ $$
 Now that we have classified the four outcomes of hypothesis testing, we can define the measures of quality of a given hypothesis test. This aims to address a practical concern: how much can you trust a test result? One may answer this question by testing on data where the hypothesis is known to be either true or false. For example, if there is a "gold standard" method for determining the presence or absence of disease, one can use that information to measure the quality of a new test. By performing enough tests, we can measure the frequencies of the four testing outcomes and then measure the following two quality metrics:
 
 ::: {#def-sens-spec}
-The *sensitivity* (or power) of a test is the probability of obtaining a positive result, given a false hypothesis. 
-$$ Sens = P(P | F) = \frac{P(TP)}{P(TP) + P(FN)} $$
+The *sensitivity* (or power) of a test is the probability of obtaining a positive result, given a false hypothesis. $$ Sens = P(P | F) = \frac{P(TP)}{P(TP) + P(FN)} $$
 
-The *specificity* of a test is the probability of obtaining the negative result, given a true hypothesis.
-$$ Spec = P(N | T) = \frac{P(TN)}{P(TN) + P(FP)} $$
+The *specificity* of a test is the probability of obtaining the negative result, given a true hypothesis. $$ Spec = P(N | T) = \frac{P(TN)}{P(TN) + P(FP)} $$
 :::
 
 Note that these are conditional probabilities, premised on knowing whether the hypothesis is actually true. On the other hand, there are two kinds of *error rates*:
 
 ::: {#def-hypo-errors}
-The *type I error rate* or *false positive rate* is the probability of obtaining the positive result, given a true hypothesis (complementary to specificity): 
-$$FPR = \frac{FP}{TN+FP}$$
+The *type I error rate* or *false positive rate* is the probability of obtaining the positive result, given a true hypothesis (complementary to specificity): $$FPR = \frac{FP}{TN+FP}$$
 
-The *type II error rate* or *false negative rate* is the probability of obtaining the negative result, given a false hypothesis (complementary to sensitivity). 
-$$FNR = \frac{FN}{TP+FN}$$
+The *type II error rate* or *false negative rate* is the probability of obtaining the negative result, given a false hypothesis (complementary to sensitivity). $$FNR = \frac{FN}{TP+FN}$$
 :::
 
 Notice that knowledge of sensitivity and specificity determine the type I and type II error rates of a test since they are complementary events. Of course, it is desirable for a test to be both very sensitive (reject false null hypotheses, detect disease, convict guilty defendants) and very specific (not reject true null hypotheses, correctly identify healthy patients, acquit innocent defendants), but that is impossible in practice. In fact, making a test highly sensitive (e.g. diagnose every patient with a disease) will make it useless because of it lack of specificity, and vice versa. In statistics, as in life, tradeoffs are required.
@@ -294,7 +306,3 @@ Notice that knowledge of sensitivity and specificity determine the type I and ty
 4.  Find the probability that a person who tests positive actually has TB (probability of TB present given a positive result).
 
 5.  Find the probability that a person who tests negative does not have TB (probability of no TB given a negative result).
-
-6.  Assuming the test result and the TB status are independent, calculate the expected probability of both TB being present and a positive X-ray test.}
-
-7.  Under the same assumption, calculate the expected probability of both TB being absent and a positive X-ray test.
