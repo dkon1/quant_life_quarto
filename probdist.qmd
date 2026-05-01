@@ -1,4 +1,4 @@
-# Probability and independence 
+# Probability and independence
 
 > What is there then that can be taken as true? Perhaps only this one thing, that nothing at all is certain. --Rene Descartes
 
@@ -17,7 +17,6 @@ Stochastic models may not sound very promising: after all, we want to make predi
 -   compute means and variances of distributions
 
 -   use the binomial distribution to model strings of binary trials
-
 
 ## Probability and sample spaces {#sec-basic-prob}
 
@@ -112,8 +111,7 @@ $A \land B$ represents the intersection of events $A$ and $B$, also known as $A$
 
 There are some common misunderstandings about conditional probability, which are usually the result of discrepancies between everyday word usage and precise mathematical terminology. First, the probability of $A$ given $B$ is not the same as probability of $A$ and $B$. These concepts seem interchangeable because the statement "what are the odds of finding a tall person who likes tea?" is hard to distinguish from "what are the odds that a person who is tall likes tea?" The difference in these concepts can be illustrated using a Venn diagram, shown in @fig-cond-prob-tea. Based on the probabilities indicated there, the probability of randomly selecting a person who is both tall and likes tea is $P(A \land B) = 0.1$, while the probability that a tea drinker is tall is $P(A | B) = 0.1/0.3 = 1/3$, which are different values.
 
-A similar misconception is to be cavalier about the order of conditionality. In general, $P(A | B) \neq P(B |A)$, except in special cases. Going back to the illustration in @fig-cond-prob-tea, the probability that a tea drinker is tall $P(A | B) = 1/3$ is the different than the probability that a tall person is a tea drinker $P(B|A) = 0.1/0.5 = 0.2$. **One must take care when interpreting written statements to carefully distinguish what is known a priori and what remains under investigation. In the statement $P(A | B)$, $B$ represents what is known, and $A$ represents what is still to be investigated.**
-
+A similar misconception is to be cavalier about the order of conditionality. In general, $P(A | B) \neq P(B |A)$, except in special cases. Going back to the illustration in @fig-cond-prob-tea, the probability that a tea drinker is tall $P(A | B) = 1/3$ is the different than the probability that a tall person is a tea drinker $P(B|A) = 0.1/0.5 = 0.2$. **One must take care when interpreting written statements to carefully distinguish what is known a priori and what remains under investigation. In the statement** $P(A | B)$, $B$ represents what is known, and $A$ represents what is still to be investigated.
 
 ![Punnet square of a cross of two heterozygous pea plants showing the possible genotypes and phenotypes of offspring (figure by Madprime in public domain via Wikimedia Commons.)](ch6/mendel_flowers.png){#fig-mendel-flowers}
 
@@ -148,7 +146,6 @@ Independence is not a straightforward concept. It may be confused with mutual ex
 A useful way to think about independence is in terms of fractions of outcomes. The probability of $A$ is the fraction of outcomes out of the entire sample space which is in $A$, while the probability of $A$ given $B$ is the fraction of outcomes in $B$ which are also in $A$. The definition of independence equates the two fractions, therefore, if $A$ occupies 1/2 of sample space, in order for $A$ and $B$ to be independent, events in $A$ must constitute 1/2 of the event $B$. In the illustration in @fig-cond-prob-tea, the fraction of tall people is 0.5 of the sample space, but the fraction of tea-drinkers who are tall is $0.1/0.3=1/3$. Since the two fractions are different, $A$ and $B$ are not independent.
 
 ::: {#fig-set-examples layout-ncol="3"}
-
 ![Mutually exclusive](ch6/indep_ex1.png)
 
 ![Partially overlapping](ch6/indep_ex2.png)
@@ -156,8 +153,7 @@ A useful way to think about independence is in terms of fractions of outcomes. T
 ![One contains the other](ch6/indep_ex3.png)
 
 Examples of different configurations of events (liking tea and being tall) inside a sample space.
-
-::: 
+:::
 
 #### exercises
 
@@ -193,7 +189,7 @@ A *random variable* is a number or category associated to each outcome in a samp
 
 A random variable has a set of possible values, and each of those values may come up more or less frequently in an random experiment. The frequency of each measurement corresponds to the probability of the outcomes in the sample space that produce that particular value of the random variable. One can describe the behavior of the random variable in terms of the collection of the probabilities of its outcomes.
 
-:::{#def-prob-dist}
+::: {#def-prob-dist}
 The probability of a random variable $X$ taking some value $a$, written as $P(X=a)$, but usually simplified to $P(a)$ is the probability of the event corresponding to the value $a$ of the random variable. This function $P(a)$ is called the *probability distribution* of the random variable $X$.
 :::
 
@@ -218,33 +214,28 @@ The *expected value* (or mean) of a discrete random variable $X$ with probabilit
 This sum is over all values $\{a_i\}$ that the random variable $X$ can take, multiplied by the probability of the random variable taking that value (meaning the probability of the event in sample space that corresponds to that value). This corresponds to the definition of the mean of a data set given in @sec-descr-stats, if you consider $P(a_i)$ to be the number of times $a_i$ occurs divided by the number of total measurements $N$. As in the case of the histogram and the distribution function, the mean of a sample for a large sample size $N$ approaches the mean of the random variable, which we will discuss in more detail in the next chapter. Sometimes we will use the more concise $\mu_X = E(X)$ to represent the mean (expected) value. Here are some mathematical properties of the expectation:
 
 -   Expectation of a random variable which is constant ($c$) is equal to $c$, since the probability of $c$ is 1: $E(c) = cP(c) = c$
--   Expectation of a constant multiple of a random variable is:
-$$E(cX) = \sum_i c x_iP(x_i) = c \sum_i x_iP(x_i) = c \mu_X$$
 
--   Expectation of a sum of two random variables is the sum of their expectations. 
+-   Expectation of a constant multiple of a random variable is: $$E(cX) = \sum_i c x_iP(x_i) = c \sum_i x_iP(x_i) = c \mu_X$$
+
+-   Expectation of a sum of two random variables is the sum of their expectations.
 
 This is a more complicated argument, so let us break it down. First, all possible values of the random variable $X+Y$ come from going through the possible values of $X$ ($a_i$) and $Y$ ($b_i$), and each combination of values has its own probability (called the joint probability distribution) $P(a_i, b_j)$:
 
-$$E(X+Y) = \sum_i \sum_j (a_i+b_j) P(a_i, b_j)$$ 
+$$E(X+Y) = \sum_i \sum_j (a_i+b_j) P(a_i, b_j)$$
 
 We can split the sum into two terms by the distributive property of multiplication and then take out the values $a_i$ and $b_j$ out of the sum that they do not depend on:
 
-$$E(X+Y) = \sum_i \sum_j a_i P(a_i, b_j) + \sum_i \sum_j b_j P(a_i, b_j)=$$ 
+$$E(X+Y) = \sum_i \sum_j a_i P(a_i, b_j) + \sum_i \sum_j b_j P(a_i, b_j)=$$
 
 $$
 =\sum_i a_i  \sum_j  P(a_i, b_j) +  \sum_j b_j \sum_i P(a_i, b_j) 
-$$ 
-The joint distributions added up over all values of one variable, become single-variable distributions $P_X(a)$ and $P_Y(b)$, so this leaves us with two sums which are the two separate expected values:
+$$ The joint distributions added up over all values of one variable, become single-variable distributions $P_X(a)$ and $P_Y(b)$, so this leaves us with two sums which are the two separate expected values:
 
 $$E(X+Y) =  \sum_i a_i P_X(a_i) +  \sum_j b_j P_Y(b_j) = E(X) + E(Y) $$
 
-**Example.** The expected value of the number of heads out of two coin tosses can be calculated using the probability distribution function we found above: 
-$$ E(X) = 0\times P(0) + 1 \times P(1) + 2 \times P(2) = 0+1/2+2 \times 1/4 = 1$$ 
-The expected number of heads out of 2 is 1, if each head comes up with probability 1/2, which I think you will find intuitive.
+**Example.** The expected value of the number of heads out of two coin tosses can be calculated using the probability distribution function we found above: $$ E(X) = 0\times P(0) + 1 \times P(1) + 2 \times P(2) = 0+1/2+2 \times 1/4 = 1$$ The expected number of heads out of 2 is 1, if each head comes up with probability 1/2, which I think you will find intuitive.
 
-**Example.** The expected value of the number of mutants out of two people can be calculated using the probability distribution function we found above: 
-$$ E(X) = 0 \times P(0) + 1 \times P(1) + 2 \times P(2) = 0+1 \times 0.32+2 \times 0.04 = 0.4$$ 
-The expected number of mutants in a sample of two people is 0.4, which may seem a bit strange. Recall that mean or expected values do not have to coincide with values that are possible, as we discussed in @sec-descr-stats, but are instead a weighted average of values, according to their frequencies or probabilities.
+**Example.** The expected value of the number of mutants out of two people can be calculated using the probability distribution function we found above: $$ E(X) = 0 \times P(0) + 1 \times P(1) + 2 \times P(2) = 0+1 \times 0.32+2 \times 0.04 = 0.4$$ The expected number of mutants in a sample of two people is 0.4, which may seem a bit strange. Recall that mean or expected values do not have to coincide with values that are possible, as we discussed in @sec-descr-stats, but are instead a weighted average of values, according to their frequencies or probabilities.
 
 **Example.** Find the expected value of the number of wins out of two matches for a fringehead which has the probability of winning of 3/4.
 
@@ -256,20 +247,17 @@ Knowledge of the expected value says nothing about how the random variable actua
 
 $$ 
 E(X-\mu_X) =  \sum_i (x_i-\mu_x)P(x_i) = \sum_i x_i P(x_i) - \mu_x \sum_i P(x_i) = \mu_x - \mu_x = 0
-$$ 
-The problem is, if we add up all the differences from the mean, the positive ones end up canceling the negative ones and the expected value of those deviations is exactly zero. This is why it makes sense to square the differences and add them up:
+$$ The problem is, if we add up all the differences from the mean, the positive ones end up canceling the negative ones and the expected value of those deviations is exactly zero. This is why it makes sense to square the differences and add them up:
 
 ::: {#def-var-prob}
 The *variance* of a discrete random variable $X$ with probability distribution $P(x)$ is $$ Var(X) = E((X-\mu_X)^2) = \sum_{i=1}^N (x_i-\mu_x)^2P(x_i)$$
 :::
 
-One useful property of the variance is: 
-$$ Var(X) = \sum_i (x_i^2 - 2x_i\mu_x + \mu_x^2)P(x_i) =$$
+One useful property of the variance is: $$ Var(X) = \sum_i (x_i^2 - 2x_i\mu_x + \mu_x^2)P(x_i) =$$
 
-$$= \sum_i x_i^2 P(x_i) - 2\mu_x\sum_i x_i P(x_i) + \mu_x^2 \sum_i P(x_i) = E(X^2) - E(X)^2 $$ 
+$$= \sum_i x_i^2 P(x_i) - 2\mu_x\sum_i x_i P(x_i) + \mu_x^2 \sum_i P(x_i) = E(X^2) - E(X)^2 $$
 
-So variance can be calculated as the difference between the expectation of the variable squared and the squared expectation. Note that the variance is given in units of the variable squared, so in order to measure the spread of the variable in the same units, we take the square root of the variance and call it the *standard deviation*: 
-$$\sigma_x = \sqrt{Var(X)}$$ 
+So variance can be calculated as the difference between the expectation of the variable squared and the squared expectation. Note that the variance is given in units of the variable squared, so in order to measure the spread of the variable in the same units, we take the square root of the variance and call it the *standard deviation*: $$\sigma_x = \sqrt{Var(X)}$$
 
 While the expectation of a sum of random variables is the sum of their expectations, for any random variables, the same is not true for the variance. However, there is a special condition under which this is true. First, let us write the variance of a sum of two random variables $X$ and $Y$ with respective probability distribution functions $P_X(a)$ and $P_Y(b)$:
 
@@ -288,15 +276,12 @@ $$ = Var(X) + Var(Y)  -2 E[(X-\mu_X)(Y-\mu_Y)] $$
 The last term in that expression should look familiar, as it is equivalent to the definition of covariance for a sample of two numeric variables we saw in the previous chapter @def-sample-cov. We can now define the theoretical covariance for two random variables:
 
 ::: {#def-cov-prob}
-The *covariance* of a pair of discrete random variables $X$ and $Y$ with the joint probability distribution $P(x,y)$ is:
-$$ Cov(X,Y) = E((X-\mu_X)(Y-\mu_Y)) = \sum_i \sum_j (x_i-\mu_x)(y_j-\mu_y)P(x_i,y_j)$$
-where the double sum is added up over all possible pairs of values of the random variables $X$ and $Y$: $(x_i, y_j)$.
+The *covariance* of a pair of discrete random variables $X$ and $Y$ with the joint probability distribution $P(x,y)$ is: $$ Cov(X,Y) = E((X-\mu_X)(Y-\mu_Y)) = \sum_i \sum_j (x_i-\mu_x)(y_j-\mu_y)P(x_i,y_j)$$ where the double sum is added up over all possible pairs of values of the random variables $X$ and $Y$: $(x_i, y_j)$.
 :::
 
-Thus, **if two random variables have zero covariance, their variance is additive $Var(X+Y)=Var(X)+Var(Y)$**. This was a fact that we used in deriving @eq-frac-var in the previous chapter, that the total variance of the data is the variance of the predicted values plus the variance of the residuals.
+Thus, **if two random variables have zero covariance, their variance is additive** $Var(X+Y)=Var(X)+Var(Y)$. This was a fact that we used in deriving @eq-frac-var in the previous chapter, that the total variance of the data is the variance of the predicted values plus the variance of the residuals.
 
-**Example.** The variance of the number of heads out of two coin tosses can be calculated using its probability distribution function and the expected value (1) from above: 
-$$ 
+**Example.** The variance of the number of heads out of two coin tosses can be calculated using its probability distribution function and the expected value (1) from above: $$ 
 Var(X) = (0-1)^2 \times P(0) + (1-1)^2 \times P(1) + (2-1)^2 \times P(2) = 1/4+0+1/4 = 1/2
 $$
 
@@ -304,15 +289,9 @@ Since the variance is 1/2, the standard deviation, or the expected distance from
 
 **Example.** The variance of the number of mutants out of two people can be calculated using its probability distribution function and the expected value (0.4) from above:
 
-$$ E(X) = (0-0.4)^2 \times P(0) + (1-0.4)^2 \times P(1) + (2-0.4)^2 \times P(2) =$$
-$$ = 0.4^2 \times 0.64+0.6^2 \times 0.32+1.6^2 \times 0.04 = 0.32$$ 
-Since the variance is 0.32, the standard deviation, or the expected distance from the mean value is $\sigma= \sqrt{0.32}$.
+$$ E(X) = (0-0.4)^2 \times P(0) + (1-0.4)^2 \times P(1) + (2-0.4)^2 \times P(2) =$$ $$ = 0.4^2 \times 0.64+0.6^2 \times 0.32+1.6^2 \times 0.04 = 0.32$$ Since the variance is 0.32, the standard deviation, or the expected distance from the mean value is $\sigma= \sqrt{0.32}$.
 
-**Example.** We have computed the expected value for the number of wins in two fringehead fights, so now let us find the variance and standard deviation. We already know the possible values of $X$, and the associated probabilities, so we calculate: 
-$$ E(X^2) = 0^2 \times 1/16 + 1^2 \times 6/16 + 2^2 \times 9/16 = 42/16$$ 
-Then the variance is: 
-$$ Var(X) = E(X^2)  - E(X)^2 = 42/12 - 9/4 = (42-27)/16 = 15/16$$ a
-nd the standard deviation is $\sigma = \sqrt{15}/4$ or just under 1.
+**Example.** We have computed the expected value for the number of wins in two fringehead fights, so now let us find the variance and standard deviation. We already know the possible values of $X$, and the associated probabilities, so we calculate: $$ E(X^2) = 0^2 \times 1/16 + 1^2 \times 6/16 + 2^2 \times 9/16 = 42/16$$ Then the variance is: $$ Var(X) = E(X^2)  - E(X)^2 = 42/12 - 9/4 = (42-27)/16 = 15/16$$ a nd the standard deviation is $\sigma = \sqrt{15}/4$ or just under 1.
 
 ##### exercises
 
@@ -334,11 +313,9 @@ Calculate the expected values and variances of the following probability distrib
 
 Perhaps the simplest random variable (besides a constant, which is not really random) is the *uniform random variable*, for which every outcome has equal probability. The distribution of a fair coin is uniform with two values, $H$ or $T$, or 0 and 1, each with probability 1/2. More generally, a discrete uniform random variable has $N$ outcomes and each one has probability $1/N$. This is what people often mean when they use the word random - an experiment where each outcome is equally likely.
 
-We can calculate the expectation and variance of a uniform random variable $U$:
-$$
+We can calculate the expectation and variance of a uniform random variable $U$: $$
 E(U) = \sum_{i=1}^n  a_i P(a_i) = \frac{1}{n}  \sum_{i=1}^n  a_i 
-$$ 
-So the expected value is the mean of all the values of the uniform random variable.
+$$ So the expected value is the mean of all the values of the uniform random variable.
 
 **Example.** In the special case of the uniform distribution of $n+1$ integers between 0 and $n$ ($a_i = i$, for $i=0,..., n$), each value has probability $P = 1/(n+1)$. The expected value is the average of the maximum and minimum values (using the fact that $\sum_{i=0}^n i = n(n+1)/2$): $$ E(U) = \frac{n(n+1)}{2(n+1)} = \frac{n}{2} $$ {#eq-unif-exp}
 
@@ -348,7 +325,7 @@ We can also write down the expression for the variance of the discrete uniform d
 
 $$ 
 Var(U) = E(U^2) - E(U)^2 =  \frac{1}{n} \sum_{i=1}^n  a_i^2  -  \frac{1}{n^2} \left(\sum_{i=1}^n  a_i \right)^2
-$$ 
+$$
 
 **Example.** In the special case of the uniform distribution of $n+1$ integers between 0 and $n$ ($a_i = i$, for $i=0,..., n$), each value has probability $P = 1/(n+1)$. The variance can be calculated using the formula for the sum of squares: $\sum_{i=0}^n i^2 =n(n+1)(2n+1)/6$.
 
@@ -384,9 +361,9 @@ barplot(unif.dist,names.arg=values,cex.axis=1.5,cex.lab=1.5,xlab='uniform RV',yl
 
 We have introduced binary or Bernoulli trials in @sec-basic-prob. Assume that the two values of the random variable $X$ are 0 and 1, with probability $1-p$ and $p$, respectively. Then we can calculate the expectation and variance of a single Bernoulli trial:
 
-$$E(X) = 0 \times (1-p) + 1 \times p = p $$ 
+$$E(X) = 0 \times (1-p) + 1 \times p = p $$
 
-$$ Var(X) = E(X^2) - E(X)^2 = 0^2 \times (1-p) + 1^2 \times p - p^2= p(1-p)$$ 
+$$ Var(X) = E(X^2) - E(X)^2 = 0^2 \times (1-p) + 1^2 \times p - p^2= p(1-p)$$
 
 The first result is likely intuitive, but the second deserves a comment. Note that depending on the probability of 1, the variance, or the spread in outcomes of a Bernoulli trial is different. The highest variance occurs when $p=1/2$, or equal probability of 0 or 1, but when $p$ approaches 0 or 1, the variance approaches 0. Thus, as the probability approaches zero or one the random variable approaches a constant (either always 1 or 0); hence, no variance.
 
@@ -398,7 +375,6 @@ Given $n$ independent Bernoulli trials $X$ with the same probability of success 
 
 Intuitively, independence between two Bernoulli trials (e.g. coin tosses) means that the outcome of one trial does not change the probability of the outcomes of any other trials. This amounts to the assumption that the probability of an outcome followed by another one is the product of the separate probabilities of the two outcomes. For example, if the two outcomes are wins and losses, then $P(\{WL\}) = P(W)P(L)$. This will be used below in the calculation of the variance of the binomial random variable.
 
-
 To find the probability distribution of the binomial random variable, we need to define the event of $k$ wins out of $n$ trials. Consider the case of 4 trials. It is easy to find the event of 4 wins, as it is comprised only of the outcome $\{WWWW\}$. Then, $P(4) = p^4$, based on the independence assumption. The event of winning 3 times consists of four strings: $\{LWWW, WLWW, WWLW, WWWL\}$ so the probability of obtaining 3 wins is the sum of the four probabilities, each equal to $p^3(1-p)$ from the independence assumption above, so $P(3) = 4p^3(1-p)$. The event of winning 2 times is even more cumbersome, and consists of six strings: $\{ LLWW, WLLW, WWLL, WLWL, LWLW, LWWL\}$, so $P(2) = 6p^2(1-p)^2$ by the same reasoning.
 
 Now imagine doing this to calculate 50 wins out of 100 trials. The counting gets ugly very fast. We need a general formula to help us count the number of ways of winning $k$ times out of $n$ trials. We denote this number $\binom{n}{k}$, also known as "$n$ choose $k$" because it corresponds to the number of ways of choosing $k$ distinct objects out of $n$ without regard to order. The connection is as follows: let us label each trial from 1 to $n$. Then to construct a string with $k$ wins, we need to specify which trials resulted in a win (the rest are of course losses). It does not matter in which order those wins are selected - it still results in the same string. Therefore the number of different strings of $n$ binary trials with $k$ successes is the same as the number of ways of selecting $k$ different objects out of $n$ different ones.
@@ -409,7 +385,7 @@ But note that we overcounted, because we considered different strings of wins de
 
 $$
 \binom{n}{k} = \frac{n!}{k! (n-k)!}
-$$ 
+$$
 
 We can now calculate the general probability of winning $k$ times out of $n$ trials. First, each string of $k$ wins and $n-k$ losses has the probability $p^k (1-p)^{n-k}$. Since we now know that the number of such strings is $C^n_k$, the probability is:
 
@@ -423,7 +399,7 @@ The binomial random variable has much simpler formulas for the mean and the vari
 
 $$
 E(B) = E\left[\sum_{i=1}^n X\right] = \sum_{i=1}^n E(X) = \sum_{i=1}^n p = np 
-$$ {#eq-binom-exp} 
+$$ {#eq-binom-exp}
 
 This means that the expected number of heads/successes is the product of the probability of 1 head/success and the number of trials, e.g. if the probability of success is 0.3, then the expected number of successes out of 100 is 30.
 
@@ -431,8 +407,7 @@ Now let us calculate the variance, for which in general the same additive proper
 
 $$
 E((X-\mu_X)(Y-\mu_Y))  =  \sum_i \sum_j (x_i-\mu_X) (y_j-\mu_Y) P(x_i, y_j) =  $$ $$ = \sum_i(x_i-\mu_X)P(x_i) \sum_j (y_j-\mu_Y) P(y_j) 
-$$ 
-We saw in section on variance above that the expected value of deviations from the mean is zero, which gives us:
+$$ We saw in section on variance above that the expected value of deviations from the mean is zero, which gives us:
 
 $$
 E((X-\mu_X)(Y-\mu_Y))  = E(X-\mu_X)E(Y-\mu_Y) = 0
@@ -525,16 +500,12 @@ Suppose that you're screening people for a particular genetic abnormality. It is
 
 To answer this question, one must start by stating your assumptions. First, the people tested must be chosen from the same population, so we can assume a priori each had probability 5% of being a carrier. Second, the people must be selected without bias, that is, selection of one must be unlinked or independent of others. As a counter-example, if your selection included an entire biological family, that would be a biased selection - it may be that the whole family has the mutation, or maybe they don't, but either way probability is no longer determined on a person-by-person basis. If these assumptions are made, then one can calculate the probability of making a selection of 20 people that includes 3 carriers of the mutation, using the binomial distribution.
 
-The formula for the binomial distribution in @eq-binom-rv provides the answer for any given number of mutants. For example, the probability of 3 people out of 20 being carriers for the mutation is: 
-$$P(\mathrm{3 \ out \ of  \ 20}; \ p=0.05) = \binom{20}{3} \times 0.05^3  \times 0.985^{17} = $$
-$$ 
+The formula for the binomial distribution in @eq-binom-rv provides the answer for any given number of mutants. For example, the probability of 3 people out of 20 being carriers for the mutation is: $$P(\mathrm{3 \ out \ of  \ 20}; \ p=0.05) = \binom{20}{3} \times 0.05^3  \times 0.985^{17} = $$ $$ 
 = 1140 \times 0.05^3 \times 0.985^{17} \approx 0.0596
 $$
 
-One may want to ask a different question: what is the probability that there are at least 3 mutants in the sample of 20 people? To most efficient way to calculate this it is to answer the complementary question first: what is the probability that there are fewer than 3 mutants out of 20 people? This corresponds to three values of the random variable: 0, 1, or 2. We can calculate the total probability by adding up the three separate probabilities, since they represent non-overlapping events (one can't have 1 and 2 mutants in a sample simultaneously): 
+One may want to ask a different question: what is the probability that there are at least 3 mutants in the sample of 20 people? To most efficient way to calculate this it is to answer the complementary question first: what is the probability that there are fewer than 3 mutants out of 20 people? This corresponds to three values of the random variable: 0, 1, or 2. We can calculate the total probability by adding up the three separate probabilities, since they represent non-overlapping events (one can't have 1 and 2 mutants in a sample simultaneously):
 
-$$ P(B < 3; \  p=0.05) = P(B=0) + P(B=1) + P(B=2) = $$ 
-$$ = \binom{20}{2} \times 0.05^2  \times 0.985^{18} +\binom{20}{1} \times 0.05^1  \times 0.985^{19} +\binom{20}{0} \times 0.05^0  \times 0.985^{20} \approx $$ 
-$$ \approx 0.925 $$
+$$ P(B < 3; \  p=0.05) = P(B=0) + P(B=1) + P(B=2) = $$ $$ = \binom{20}{2} \times 0.05^2  \times 0.985^{18} +\binom{20}{1} \times 0.05^1  \times 0.985^{19} +\binom{20}{0} \times 0.05^0  \times 0.985^{20} \approx $$ $$ \approx 0.925 $$
 
 The answer to the original question is found by taking the complementary probability $1-0.925=0.075$. Thus the probability of finding at least 3 mutants in a sample of 20 with individual probability 0.0015 is approximately 0.075. The answer is close to the probability of having exactly 3 mutants because the probability of finding more than 3 mutants is very low.
