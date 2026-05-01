@@ -1,0 +1,25 @@
+﻿pi_name,station,sample_name,par_sensor,ice_thick_m,snow_thick_profile_m,percent_trans_ice_snow,percent_trans_ice,kd_water,ice_narrative,snow_narrative,notes
+Bullerjahn/McKay,Sandusky_Bay,Bullerjahn/McKay_Sandusky_Bay,Licor LI-192,0.15,0,NA,14.6,1.84,landfast ice,,
+Chaffin,South_Bass_Island,Chaffin_South_Bass_Island,Licor LI-193SA,0.27,0,NA,19.37,0.73,"clear, solid ice",,Profile done without snow. Very sunny. It was too hard to drill the hole and keep the thin snow in place.
+Doubek,Saint_Martin_Bay_SM-LH,Doubek_Saint_Martin_Bay_SM-LH,SPQA 2083,0.4,0.018,3.35,6.09,0.42,"top 2 cm was ""white ice"", rest was ""black ice""; no obvious impurities or bubbles",about 80% snow cover on the ice in the sampling area,
+Doubek,Whitefish_Bay_WB-LS,Doubek_Whitefish_Bay_WB-LS,SPQA 2083,0.3,0.098,0.35,13.74,1.99,no obvious impurities or bubbles,100% snow cover on the ice in the sampling area,
+Eveleth,Lorain,Eveleth_Lorain,Licor LI-192SA,0.22,0.065,7.92,18.22,1.19,"top 8cm slushy frozen crystals, below that solid ice with visable layering, abundant bubble inclusions, sediment and POM, smooth bottom surface",100% snow cover in sampling area,
+Godwin,SB14,Godwin_SB14,Apogee†SQ-500-SS2,0.48,0.008,11.47,14.77,0.57,,,
+Godwin,SB1,Godwin_SB1,Apogee†SQ-500-SS2,0.39,0.015,20.48,29.67,0.35,,,
+Karpovich,Saginaw_River,Karpovich_Saginaw_River,Apogee†SQ-500-SS2,0.3,0,NA,21.44,NA,Melting; liquid water forming on top; variable thickness across river.,,"There was no snow on the ice at our site, and we didn't collect light data at depths because of the current taking the device downstream."
+McKay,LSC-MB,McKay_LSC-MB,Licor LI-193SA,0.4,0.0125,7.11,13.69,0.44,landfast,"light, thin snow",
+Ozersky,Green_Bay,Ozersky_Green_Bay,Licor LI-192SA,0.5,0,NA,47.59,0.74,"patches of ""white ice"" on the top (~1-2 cm)","no snow on the top, but evidence of white ice/previously melted snow",
+Ozersky,Apostles,Ozersky_Apostles,Licor LI-192SA,0.4,0.1,1.84,31.99,0.17,clear ice without bubbles,everything around station was covered with snow,
+Pearce/Xenopoulos,BQ1,Pearce/Xenopoulos_BQ1,Licor LI-192,0.33,0,NA,16.71,0.65,"Frozen slush layer at the top, blue colour, no snow",Zero snow whatsoever,
+Pearce/Xenopoulos,GB1,Pearce/Xenopoulos_GB1,Licor LI-192,0.45,0,NA,17.48,0.87,"White ice (~6 inches) at top, then hard clear ice below",patchy thin snow cover with open windswept spots with no snow,Snow was negligable
+Rennie,Silver_Harbour_Thunder_Bay,Rennie_Silver_Harbour_Thunder_Bay,Licor LI-192,0.62,0.094,7.06,16.98,0.46,"thick, clear black ice","lots of snow on the ice, 0 bare patches anywhere. big snowstorm the day prior to sampling. highest reading was 14.5cm in a drift",
+Uzarski,Eagle_Bay_Saginaw_Bay,Uzarski_Eagle_Bay_Saginaw_Bay,Licor Li-193,0.38,0,NA,53.93,0.2,"slushy on top, clear through bottom. vertical bubbles & larger circular bubbles. prism effect",,slush was removed prior to profilinf
+Uzarski,Vanderbilt_Park_Saginaw_Bay,Uzarski_Vanderbilt_Park_Saginaw_Bay,Licor Li-193,0.43,0,NA,19.17,0.53,"mostly transparent with vertical striations of air bubbles, top portion of ice more white than clear",Very light dusting,
+Uzarski,Pinconning_Park_Saginaw_Bay,Uzarski_Pinconning_Park_Saginaw_Bay,Licor Li-193,0.33,0,NA,17.6,0.45,4-5 cm white then clear w/ striations,"While snow cover was high, it was an extremely light dusting",
+Vanderploeg,WE6,Vanderploeg_WE6,Licor LI-192SA,0.24,0,NA,47.9,0.91,"clear, one continuos smooth layer",,"Numbers are without snow, couldn't drill a hole and keep the water off the thin dusting of snow well enough to get a profile with snow."
+Vick-Majors,Keweenaw_Bay_KB,Vick-Majors_Keweenaw_Bay_KB,Licor LI-193SA,0.25,0.0238,11.76,18.37,0.32,"clear ice all the way through, no white ice","all snow covered, but windblown and uneven",
+Vick-Majors,Keweenaw_Waterway_KW,Vick-Majors_Keweenaw_Waterway_KW,Licor LI-193SA,0.33,0.0522,1.36,26.03,0.47,"slushy at surface, with white ice and then clear ice at bottom",all snow covered but windblown,
+Currie,CCIW_Hamilton_Harbour,Currie_CCIW_Hamilton_Harbour,Licor LI-192,0,0,NA,NA,0.8,"lots of floating pans, some open spaces to sample",no snow,
+Currie,Bronte_Pier,Currie_Bronte_Pier,Licor LI-192,0,0,NA,NA,4.16,minimal floating chunks,no snow,
+Zastepa,WP_Waverly_Beach_Park,Zastepa_WP_Waverly_Beach_Park,Licor LI-193,0.05,0.02,NA,69.5,0.24,,,
+Zastepa,RW_Ridgeway_Abino_Bay,Zastepa_RW_Ridgeway_Abino_Bay,Licor LI-194,0,0,NA,NA,0.91,,,

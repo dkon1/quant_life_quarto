@@ -1,0 +1,5605 @@
+
+   
+      
+         uid=EDI,o=EDI,dc=edirepository,dc=org
+         all
+      
+      
+         https://orcid.org/0000-0002-0818-8795
+         all
+      
+      
+         public
+         read
+      
+   
+   
+      doi:10.6073/pasta/d362896560d743c616d129e38151b332Data Package for the 2022 Great Lakes Winter Grab
+      
+         Ge Pu
+         Cleveland Water Alliance
+         jeff@clewa.org
+         0000-0002-0818-8795
+      
+      
+         Ted Ozersky
+         University of Minnesota Duluth
+         tozersky@d.umn.edu
+         0000-0002-1842-7745
+      
+      
+         Andrew Bramburger
+         Environment and Climate Change Canada
+         andrew.bramburger@canada.ca
+         0000-0002-0925-9428
+      
+      
+         Hunter Carrick
+         Central Michigan University
+         hunter.carrick@cmich.edu
+      
+      
+         Justin Chaffin
+         The Ohio State University
+         chaffin.46@osu.edu
+         0000-0002-5372-4577
+      
+      
+         Maureen Coleman
+         University of Chicago
+         mlcoleman@uchicago.edu
+         0000-0001-5065-0106
+      
+      
+         Warren Currie
+         Fisheries and Oceans Canada
+         warren.currie@dfo-mpo.gc.ca
+         0000-0001-7050-1802
+      
+      
+         David Depew
+         Environment and Climate Change Canada
+         david.depew@ec.gc.ca
+      
+      
+         Jonathan Doubek
+         Lake Superior State University
+         jdoubek@lssu.edu
+         0000-0003-2651-4715
+      
+      
+         Rachel Eveleth
+         Oberlin College
+         reveleth@oberlin.edu
+         0000-0003-0556-4326
+      
+      
+         Casey Godwin
+         University of Michigan
+         cgodwin@umich.edu
+         0000-0002-4454-7521
+      
+      
+         R. McKay
+         University of Windsor
+         robert.mckay@uwindsor.ca
+         0000-0003-2723-5371
+      
+      
+         Mohiuddin Munawar
+         Fisheries and Oceans Canada
+         mohiuddin.munawar@dfo-mpo.gc.ca
+      
+      
+         Nolan Pearce
+         Trent University
+         nolanpearce@trentu.ca
+         0000-0001-6600-5275
+      
+      
+         Michael Rennie
+         Lakehead University
+         mrennie@lakeheadu.ca
+         0000-0001-7533-4759
+      
+      
+         Kirill Shchapov
+         Cawthron Institute, Nelson, New Zealand
+         shapov89@gmail.com
+         0000-0001-6823-0927
+      
+      
+         Michael Twiss
+         Algoma University
+         michael.twiss@algomau.ca
+         0000-0003-1042-917X
+      
+      
+         Henry Vanderploeg
+         NOAA GLERL
+         henry.vanderploeg@noaa.gov
+         0000-0003-1358-8475
+      
+      
+         Trista Vick-Majors
+         Michigan Technological University
+         tjvickma@mtu.edu
+         0000-0002-6868-4010
+      
+      
+         Marguerite Xenopoulos
+         Trent University
+         mxenopoulos@trentu.ca
+         0000-0003-2307-948X
+      
+      
+         Arthur Zastepa
+         Environment and Climate Change Canada
+         arthur.zastepa@ec.gc.ca
+         0000-0003-1292-932X
+      
+      
+         Kelly Bowen
+         Fisheries and Oceans Canada
+         kelly.bowen@dfo-mpo.gc.ca
+         0000-0002-7886-9262
+         Data Collector/Processor
+      
+      
+         Andrew Camilleri
+         University of Michigan
+         accamill@umich.edu
+         Data Collector/Processor
+      
+      
+         William Cody
+         billcody@metalink.net
+         Data Collector/Processor
+      
+      
+         Mark Fitzpatrick
+         Fisheries and Oceans Canada
+         mark.fitzpatrick@dfo-mpo.gc.ca
+         Data Collector/Processor
+      
+      
+         Paul Glyshaw
+         National Oceanic and Atmospheric Administration
+         paul.glyshaw@noaa.gov
+         0000-0003-1962-2021
+         Data Collector/Processor
+      
+      
+         Heather Niblock
+         Fisheries and Oceans Canada
+         heather.niblock@dfo-mpo.gc.ca
+         Data Collector/Processor
+      
+      
+         Maci Quintanilla
+         Michigan Technological University
+         mequinta@mtu.edu
+         Data Collector/Processor
+      
+      
+         Westrick Westrick
+         Wayne State University
+         judy.westrick@wayne.edu
+         0000-0001-9112-5295
+         Data Collector/Processor
+      
+      2025-09-18
+      
+         WARNINGS: 
+         1. For Ice Thickness data, please use data in "WinterGrab_snow_ice_properties" file instead of data in Table 2 of the manuscript published in Limnology and Oceanography Letters!
+         2: In "WinterGrab_phytoplankton_abundance_McKay", EC1 has two sets of data records because it was sampled both on 2/28 and 3/10, both records are included in this data.
+         ---
+         
+         The data package contains the results from a multi-institutional winter limnology sampling campaign on the Laurentian Great Lakes. Researchers from 19 institutions sampled 49 locations in all five of the Great Lakes over a period of 24 days in February-March 2022. This dataset contains information on diverse physical, chemical, and biological parameters.
+         
+         Great Lakes Winter Grab ArcGIS Storymap showing all locations of sampling sites and select photos:
+         
+         https://storymaps.arcgis.com/stories/8ff1c332dd944ba9a744dc0e0fc18906
+      
+      
+         Winter
+         Limnology
+         Biogeochemistry
+         Plankton
+         Microbes
+         Bacteria
+         Zooplankton
+         Team Science
+         Laurentian Great Lakes
+      
+      This information is released under the Creative Commons license - Attribution - CC BY (https://creativecommons.org/licenses/by/4.0/). The consumer of these data ("Data User" herein) is required to cite it appropriately in any publication that results from its use. The Data User should realize that these data may be actively used by others for ongoing research and that coordination may be necessary to prevent duplicate publication. The Data User is urged to contact the authors of these data if any questions about methodology or results occur. Where appropriate, the Data User is encouraged to consider collaboration or co-authorship with the authors. The Data User should realize that misinterpretation of data may occur if used out of context of the original study. While substantial efforts are made to ensure the accuracy of data and associated documentation, complete accuracy of data sets cannot be guaranteed. All data are made available "as is." The Data User should be aware, however, that data are updated periodically and it is the responsibility of the Data User to check for new versions of the data. The data authors and the repository where these data were obtained shall not be liable for damages resulting from any use or misinterpretation of the data. Thank you.
+      https://doi.org/10.6073/pasta/d362896560d743c616d129e38151b332
+         
+            Forty nine locations across all five of the Great Lakes (and some connecting waters) were sampled as part of Winter Grab. Sampling locations were chosen to represent a gradient of depths, trophic status, and ice cover conditions, while allowing for safe and reasonably easy access
+            
+               -92.416992
+               -74.333496
+               49.095452
+               41.112469
+            
+         
+         
+            
+               
+                  2022-02-04
+               
+               
+                  2022-03-10
+               
+            
+         
+      
+      
+         
+            This data will be updated as required. Data collection period is finished.
+         
+         asNeeded
+      
+      
+         Ge Pu
+         Cleveland Water Alliance
+         gpu100@syr.edu
+         0000-0002-0818-8795
+      
+      
+         Ted Ozersky
+         University of Minnesota Duluth
+         tozersky@d.umn.edu
+         0000-0002-1842-7745
+      
+      
+         Environmental Data Initiative
+         info@edirepository.org
+         https://edirepository.org
+         0330j0z60
+      
+      Environmental Data Initiative
+      
+         
+            
+               The Winter Grab study involved sampling at 49 locations across the Great Lakes. Samples were collected between Feb. 02, 2022 and March 10, 2022, with most sampling taking place in mid-February. Samples were collected from the ice, piers, and US and Canadian Coast Guard vessels. Sites ranged considerably in depth (1-93 m). Thirty two sites were ice-covered and 17 sites were ice-free. Sampling crews documented site conditions, including snow and ice cover, and measured light penetration at 22 locations. Water profiles were collected with CTD sondes, and water and plankton samples were taken from various depths for lab analysis. Samples were analyzed for water chemistry, pigments, cyanotoxins, and planktonic abundance and community composition. Microbial and primary production rate measurements were performed on some of the samples.
+                
+               Phosphorus and nitrogen levels in water samples were analyzed using EPA methods, while alkalinity and chloride were measured via titration and ion selective electrode methods, respectively. Organic matter was characterized using spectrofluorometry, and chlorophyll, phycocyanin, and phycoerythrin concentrations were measured using fluorometry and spectrophotometry. We also measured microcystins and other cyanobacterial metabolites, using ELISA and liquid chromatography-mass spectrometry. Bacterial abundances were determined using flow cytometry. Phytoplankton, microzooplankton, and crustacean zooplankton abundance and community composition were assessed using microscopy. Bacterial and primary production rates were determined through radiolabeled isotope incorporation and photosynthesis-irradiance experiments.
+                
+               Technical validation and quality assurance/control procedures were performed for all published data. Data outliers, accounting for less than 0.5% of all data, were removed based on visual inspection and expert judgment when errors were evident. Metadata consistency was maintained across all files, ensuring uniform use of Principal Investigators' names and sampling station names. The order of data columns was also standardized, following a consistent format: Principal Investigator name, sampling station, sample depth, sample names, parameter values, units, and notes.
+            
+         
+      
+      
+         Great Lakes Winter Grab
+         
+            Ge Pu
+            Cleveland Water Alliance
+            jeff@clewa.org
+            0000-0002-0818-8795
+            Data Manager, Data Lead, Data Checker
+         
+         
+            Ted Ozersky
+            University of Minnesota Duluth
+            tozersky@d.umn.edu
+            0000-0002-1842-7745
+            Project Lead, Data Manager, Data Creator, Data Checker
+         
+         
+            Andrew Bramburger
+            Environment and Climate Change Canada
+            andrew.bramburger@canada.ca
+            0000-0002-0925-9428
+            Data Creator
+         
+         
+            Hunter Carrick
+            Central Michigan University
+            hunter.carrick@cmich.edu
+            Data Creator
+         
+         
+            Justin Chaffin
+            The Ohio State University
+            chaffin.46@osu.edu
+            0000-0002-5372-4577
+            Data Creator
+         
+         
+            Maureen Coleman
+            University of Chicago
+            mlcoleman@uchicago.edu
+            0000-0001-5065-0106
+            Data Creator
+         
+         
+            Warren Currie
+            Fisheries and Oceans Canada
+            warren.currie@dfo-mpo.gc.ca
+            0000-0001-7050-1802
+            Data Creator
+         
+         
+            David Depew
+            Environment and Climate Change Canada
+            david.depew@ec.gc.ca
+            Data Creator
+         
+         
+            Jonathan Doubek
+            Lake Superior State University
+            jdoubek@lssu.edu
+            0000-0003-2651-4715
+            Data Creator
+         
+         
+            Rachel Eveleth
+            Oberlin College
+            reveleth@oberlin.edu
+            0000-0003-0556-4326
+            Data Creator
+         
+         
+            Casey Godwin
+            University of Michigan
+            cgodwin@umich.edu
+            0000-0002-4454-7521
+            Data Creator
+         
+         
+            Robert McKay
+            University of Windsor
+            robert.mckay@uwindsor.ca
+            0000-0003-2723-5371
+            Data Creator
+         
+         
+            Mohiuddin Munawar
+            Fisheries and Oceans Canada
+            mohiuddin.munawar@dfo-mpo.gc.ca
+            Data Creator
+         
+         
+            Nolan Pearce
+            Trent University
+            nolanpearce@trentu.ca
+            0000-0001-6600-5275
+            Data Creator
+         
+         
+            Michael Rennie
+            Lakehead University
+            mrennie@lakeheadu.ca
+            0000-0001-7533-4759
+            Data Creator
+         
+         
+            Kirill Shchapov
+            York University
+            shapov89@gmail.com
+            0000-0001-6823-0927
+            Data Creator, Data Checker
+         
+         
+            Michael Twiss
+            Algoma University
+            michael.twiss@algomau.ca
+            0000-0003-1042-917X
+            Data Creator
+         
+         
+            Henry Vanderploeg
+            NOAA GLERL
+            henry.vanderploeg@noaa.gov
+            0000-0003-1358-8475
+            Data Creator
+         
+         
+            Trista Vick-Majors
+            Michigan Technological University
+            tjvickma@mtu.edu
+            0000-0002-6868-4010
+            Data Creator
+         
+         
+            Marguerite Xenopoulos
+            Trent University
+            mxenopoulos@trentu.ca
+            0000-0003-2307-948X
+            Data Creator
+         
+         
+            Arthur Zastepa
+            Environment and Climate Change Canada
+            arthur.zastepa@ec.gc.ca
+            0000-0003-1292-932X
+            Data Creator
+         
+         
+            Kelly Bowen
+            Fisheries and Oceans Canada
+            kelly.bowen@dfo-mpo.gc.ca
+            0000-0002-7886-9262
+            Data Collector/Processor
+         
+         
+            Andrew Camilleri
+            University of Michigan
+            accamill@umich.edu
+            Data Collector/Processor
+         
+         
+            William Cody
+            billcody@metalink.net
+            Data Collector/Processor
+         
+         
+            Mark Fitzpatrick
+            Fisheries and Oceans Canada
+            mark.fitzpatrick@dfo-mpo.gc.ca
+            Data Collector/Processor
+         
+         
+            Paul Glyshaw
+            National Oceanic and Atmospheric Administration
+            paul.glyshaw@noaa.gov
+            0000-0003-1962-2021
+            Data Collector/Processor
+         
+         
+            Heather Niblock
+            Fisheries and Oceans Canada
+            heather.niblock@dfo-mpo.gc.ca
+            Data Collector/Processor
+         
+         
+            Maci Quintanilla
+            Michigan Technological University
+            mequinta@mtu.edu
+            Data Collector/Processor
+         
+         
+            Westrick Westrick
+            Wayne State University
+            judy.westrick@wayne.edu
+            0000-0001-9112-5295
+            Data Collector/Processor
+         
+         
+            Cooperative Institute for Great Lakes Research
+            No. 1226
+            Winter grab: a multi-institutional Great Lakes winter sampling campaign
+         
+      
+      
+         WinterGrab_alkalinity
+         This file contains alkalinity data for 46 of our 49 sites, determined using titration and expressed as micromole per kilogram.
+         
+            WinterGrab_alkalinity.csv
+            11313
+            0f8e96f40ef39cd1e7a0fbaed892e295
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/ab9477214721b3511a18b780a04a081d
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               Alkalinity concentration in micromole per kilogram. ‘NA’s denote missing data.
+               float
+               
+                  
+                     
+                        micromole per kilogram
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  Missing data
+               
+            
+            
+               unit
+               Unit
+               Unit of Alkalinity concentration
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         124
+      
+      
+         WinterGrab_bacterialproduction_rate
+         This file contains bacterial production rate data for water surface samples at 20 of our 49 sites. Bacterial production was determined using tritium-labeled methyl-thymidine and leucine incorporation and results are given for both, as either nmol thymidine (or leucine)/L/day or in units of ng Carbon/L/d.
+         
+            WinterGrab_bacterialproduction_rate.csv
+            10225
+            6b8908c8bdd52523904fbe9a7fef4000
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/9e44e745a457c5b792bcd08058599889
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample: either bacterial production via leucine incorporation, expressed as either leucine incorporation rate (BP_Leucine_Incorporation) or as carbon production equivalents (BP_C_production_Leucine) or bacterial production via thymidine incorporation, expressed as either thymidine incorporation rate (BP_Thymidine_Incorporation) or as carbon production equivalents (BP_C_production_Thymidine).
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_Name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep above
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               Bacterial production rate expressed as nmol of thymidine or leucine incorporated per liter per day or as ng bacterial carbon produced per liter per day
+               float
+               
+                  
+                     
+                        nmol of thymidine or leucine incorporated per liter per day or as ng bacterial carbon produced per liter per day
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               unit
+               Unit
+               Unit of bacterial production rate in nmol of thymidine or leucine incorporated per liter per day or as ng bacterial carbon produced per liter per day
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         80
+      
+      
+         WinterGrab_chlA_concentration
+         This file contains chlorophyll a concentration results for 47 of our 49 sites. Chlorophyll a concentrations were determined by fluorimetry from acetone-extracted filters and are reported in micrograms/L.
+         
+            WinterGrab_chlA_concentration.csv
+            11700
+            4100cc2f9b0d89a8ed7a774d68d5d766
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/939a3d7006440d9c9f12ff664004f61c
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               Chl a concentration in micrograms per liter
+               float
+               
+                  
+                     
+                        microgramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  Missing data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MicroGM-PER-L
+               
+            
+            
+               unit
+               Unit
+               Unit of Chl a concentration
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               mdl_ug.l
+               MDL_ug.L
+               Minimum detection limit of Chl a concentration in micrograms per liter for the method used
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         131
+      
+      
+         WinterGrab_chloride_concentration
+         This file contains chloride concentration results for 47 of our 49 sites. Chloride concentrations were determined by potentiometry and are reported as parts per million (ppm).
+         
+            WinterGrab_chloride_concentration.csv
+            8939
+            ae933e3a56fef85e3fd8745d69ccb195
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/4005f706b8fcdbded9e23ae9837d0200
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep above
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               Chloride concentration in micrograms per liter
+               float
+               
+                  
+                     
+                        microgramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  nd
+                  sample cracked
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MicroGM-PER-L
+               
+            
+            
+               unit
+               Unit
+               Unit of Chloride concentration
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         96
+      
+      
+         WinterGrab_CTD_profiles
+         This file contains depth-resolved conductivity, temperature, and depth (CTD) sonde profile data for 16 of our 49 sites
+         
+            WinterGrab_CTD_profiles.csv
+            229297
+            8072bf9f2d04765d9c751e0ab41bf734
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/59851407ee1d6f71ee37918218e2e425
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, and Analysis columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               instrument
+               Instrument
+               Name of instrument used to measure various CTD parameters
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               temp_c
+               Temp_C
+               Water temperature measured in Celcius
+               float
+               
+                  
+                     
+                        celsius
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/DEG_C
+               
+            
+            
+               odo_perc_sat
+               ODO_Perc_Sat
+               Dissolved oxygen concentration as percent saturation
+               float
+               
+                  
+                     
+                        percent saturation
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  Missing Data
+               
+            
+            
+               odo_mg_l
+               ODO_mg_L
+               Dissolved oxygen concentration in milligrams per liter
+               float
+               
+                  
+                     
+                        milligramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  Missing Data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MilliGM-PER-L
+               
+            
+            
+               cond_µs_cm
+               Cond_µS_cm
+               Conductivity measured in microsiemens per centimeter
+               float
+               
+                  
+                     
+                        microsiemens per centimeter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  Missing Data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MicroS-PER-CentiM
+               
+            
+            
+               tds_mg_l
+               TDS_mg_L
+               Total dissolved solids measured in miligram per liter
+               float
+               
+                  
+                     
+                        milligramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  Missing Data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MilliGM-PER-L
+               
+            
+            
+               chl_µg_l
+               Chl_µg_L
+               Chl a concentration in micrograms per liter
+               float
+               
+                  
+                     
+                        microgramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  Missing Data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MicroGM-PER-L
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         1892
+      
+      
+         WinterGrab_DOC_DOM_concentration
+         This file contains dissolved organic carbon (DOC) concentrations and several parameters characterizing dissolved organic matter (DOM) in water and ice samples from 27 (water) and 20 (ice) sites out of our 49 study sites.
+         
+            WinterGrab_DOC_DOM_concentration.csv
+            94806
+            670c4b302fb019fd5c754f666dc08c97
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/379b647995acda64f942ef95de1873f3
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  Ice
+                  Sample is from melted ice
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample. DOC: Dissolved organic carbon. Measure of the amount of organic matter that can pass through a 0.22 um filter (mg/L). SUVA254: Specific UV absorbance (254 mn). Higher values reflect greater carbon aromaticity or the number of aromatic rings per unit carbon (L/mg cm). SR: Spectral slope ratio. Higher values reflect lower molecular weight carbon and increased photobleaching (unitless). BA: Beta-alpha ratio. Higher values reflect a greater proportion of recently derived carbon (β) to highly decomposed carbon (α) (unitless). FI: Fluorescence index. Higher values (~1.9) reflect more microbial derived carbon and lower values (~1.4) reflect more terrestrial derived carbon (unitless). HIX: Humification index. Higher values indicate more humic carbon (unitless). C1: Parallel factors analysis component 1 (Williams et al., 2016; Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more ubiquitous humic-like dissolved organic matter. C2: Parallel factors analysis component 2 (Williams et al., 2016; Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more terrestrial humic like dissolved organic matter. C3: Parallel factors analysis component 3 (Williams et al., 2016; Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more terrestrial humic like dissolved organic matter. C4: Parallel factors analysis component 4 (Williams et al., 2016;Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more terrestrial soil fulvic-like dissolved organic matter. C5: Parallel factors analysis component 5 (Williams et al., 2016; Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more microbial humic-like dissolved organic matter. C6: Parallel factors analysis component 6 (Williams et al., 2016; Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more microbial humic-like dissolved organic matter. C7: Parallel factors analysis component 7 (Williams et al., 2016; Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more microbial protein-like dissolved organic matter.
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               Concentrations of Dissolved Organic Carbon and value of Dissolved Organic Matter indices
+               float
+               
+                  
+                     
+                        Fmax; mg.L; L.mg-cm; %
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  Missing Data
+               
+            
+            
+               unit
+               Unit
+               Units of corresponding analysis, see analysis column definition for details. Four units were used in total: Fmax; mg.L; L.mg-cm; %.
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         1200
+      
+      
+         WinterGrab_microbial_loop_abundance
+         This file contains abundances of microbial loop components (bacteria, picoplankton, nanoflagellates) determined by microscopy for 11 of our 49 sites, and expressed as cells/L
+         
+            WinterGrab_microbial_loop_abundance.csv
+            3466
+            3481a2f3f84700530ec08f267bdd026c
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/c73d4353ad22c96b87788d94c153a520
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               bacteria_cells_ml-1
+               Bacteria_cells_mL-1
+               Abundance of bacteria cell per milliliter
+               float
+               
+                  
+                     
+                        cell per milliliter
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               autotrophic_picoplankton_cells_ml-1
+               Autotrophic_PicoPlankton_cells_mL-1
+               Abundance of Autotrophic PicoPlankton cells per milliliter
+               float
+               
+                  
+                     
+                        cells per milliliter
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               heterotrophic_nanoflagellates_cells_ml-1
+               Heterotrophic_NanoFlagellates_cells_mL-1
+               Abundance of Heterotrophic NanoFlagellates cells per milliliter
+               float
+               
+                  
+                     
+                        cells per milliliter
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               bacteria_mg_m-3
+               Bacteria_mg_m-3
+               Abundance of bacteria cells as milligram per cubic meter
+               float
+               
+                  
+                     
+                        milligram per cubic meter
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               autotrophic_picoplankton_mg_m-3
+               Autotrophic_PicoPlankton_mg_m-3
+               Abundance of Autotrophic PicoPlankton cells as milligram per cubic meter
+               float
+               
+                  
+                     
+                        milligram per cubic meter
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               heterotrophic_nanoflagellates_mg_m-3
+               Heterotrophic_NanoFlagellates_mg_m-3
+               Abundance of Heterotrophic NanoFlagellates cells as milligram per cubic meter
+               float
+               
+                  
+                     
+                        milligram per cubic meter
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               total_mg_m-3
+               total_mg_m-3
+               Abundance of microbial loop orgnisms as milligram per cubic meter
+               float
+               
+                  
+                     
+                        milligram per cubic meter
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         14
+      
+      
+         WinterGrab_microcystin_concentration
+         This file contains microcystin concentration data for 20 of our 49 sites, as determined by ELISA and expressed in µg/L.
+         
+            WinterGrab_microcystin_concentration.csv
+            3418
+            4d94ec3b53c5e91bfd3276428d99266a
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/1dd095445b683c5e8286132e6ed8a480
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               microcystin concentration in whole water in micrograms per liter
+               float
+               
+                  
+                     
+                        microgramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  <MDL
+                  nondetection
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MicroGM-PER-L
+               
+            
+            
+               unit
+               Unit
+               Unit of microcystin concentration
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               mdl_ug.l
+               MDL_ug.L
+               Minimum detection limit of NH4 concentration in micrograms per liter
+               float
+               
+                  
+                     
+                        microgramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MicroGM-PER-L
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         33
+      
+      
+         WinterGrab_NH4_concentration
+         This file contains ammonia (NH4) concentration data from 46 of our 49 sampling sites, determined using the Alkaline phenate method and expressed in mg/L
+         
+            WinterGrab_NH4_concentration.csv
+            10141
+            f54a8deb0fd2083d54406f615614733b
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/702d98592a7fd9a34929f966cb86a0c8
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               NH4 concentration in milligrams per liter
+               float
+               
+                  
+                     
+                        milligramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MilliGM-PER-L
+               
+            
+            
+               unit
+               Unit
+               Unit of NH4 concentration
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               mdl_mg.l
+               MDL_mg.L
+               Minimum detection limit of NH4 concentration in milligrams per liter
+               float
+               
+                  
+                     
+                        milligramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MilliGM-PER-L
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         124
+      
+      
+         WinterGrab_NO2_concentration
+         This file contains nitrite (NO2) concentration data for 46 of our 49 sampling sites, determined using cadmium coil reduction followed by sulfanilamide reaction and expressed in mg/L
+         
+            WinterGrab_NO2_concentration.csv
+            10323
+            ce2a669997b70ad7292ce4009f885cd3
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/901845481cfb70e7237b1548746b1300
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  ND
+                  No Data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               NO2 concentration in milligrams per liter
+               float
+               
+                  
+                     
+                        milligramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MilliGM-PER-L
+               
+            
+            
+               unit
+               Unit
+               Unit of NO2 concentration
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               mdl_mg.l
+               MDL_mg.L
+               Minimum detection limit of NO2 concentration in milligrams per liter
+               float
+               
+                  
+                     
+                        milligramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MilliGM-PER-L
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         124
+      
+      
+         WinterGrab_NO3_concentration
+         This file contains nitrate (NO3) concentration data for 46 of our 49 sampling sites, determined using cadmium coil reduction followed by sulfanilamide reaction and expressed in mg/L
+         
+            WinterGrab_NO3_concentration.csv
+            10216
+            79c59da6c925206e362ce0bd869f7e0c
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/d16a74ea0f939bd78ca0100d4a4f0343
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               NO3 concentration in milligrams per liter
+               float
+               
+                  
+                     
+                        milligramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  ND
+                  No Data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MilliGM-PER-L
+               
+            
+            
+               unit
+               Unit
+               Unit of NO3 concentration
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+               
+                  wasnít enough sample
+                  no data
+               
+            
+            
+               mdl_mg.l
+               MDL_mg.L
+               Minimum detection limit of NO3 concentration in milligrams per liter
+               float
+               
+                  
+                     
+                        milligramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MilliGM-PER-L
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         124
+      
+      
+         WinterGrab_PCPE_concentration
+         This file contains phycocyanin (PC) and phycoerythrin (PE) concentration for 21 of our 49 sampling sites. PC and PE concentrations were determined using spectrophotometery and expressed in ug/L
+         
+            WinterGrab_PCPE_concentration.csv
+            5696
+            3fdaae22cc13c42844900dffd3b2e928
+            
+               
+                  1
+                  \n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/affecf42cdecbafdc12bff03c378eec5
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               Phycocyanin (PC) or phycoerythrin (PE) concentration in micrograms per liter
+               float
+               
+                  
+                     
+                        microgramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MicroGM-PER-L
+               
+            
+            
+               unit
+               Unit
+               Unit of PC and PE concentration
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         70
+      
+      
+         WinterGrab_snow_ice_properties
+         This file contains information on ice and snow thickness and properties for 39 of our 49 sampling sites. For Ice Thickness, please use data in "WinterGrab_snow_ice_properties" file instead of data in Table 2 of the manuscript published in Limnology and Oceanography Letters!
+         
+            WinterGrab_snow_ice_properties-2.csv
+            4854
+            901a92211cc97a48295ca444f92ea0d1
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/f68199037a0cb6c8937364d556776f97
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, and Analysis columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               ice_thick_m
+               Ice_thick_m
+               Thickness of ice measured in meter
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  no data
+                  no data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               snow_thick_m
+               Snow_thick_m
+               Thickness of snow measured in meter
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  no data
+                  no data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         49
+      
+      
+         WinterGrab_TDP_concentration
+         This file contains total dissolved phosphorus (TDP) concentration data for 46 of our 49 sampling sites, determined by semi-automated colorimetry and expressed in micrograms/L.
+         
+            WinterGrab_TDP_concentration.csv
+            14726
+            641d4cbc72b3e7fe4874eb24ff100a7f
+            
+               
+                  1
+                  \n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/46287d14e0602358475cabe23323ffef
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               Total Dissolved Phosphorus concentration in micrograms per liter
+               float
+               
+                  
+                     
+                        microgramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  ND
+                  No Data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MicroGM-PER-L
+               
+            
+            
+               unit
+               Unit
+               Unit of Total Dissolved Phosphorus concentration
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               mdl_ug.l
+               MDL_ug.L
+               Minimum detection limit of Total Dissolved Phosphorus concentration in micrograms per liter
+               float
+               
+                  
+                     
+                        microgramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MicroGM-PER-L
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         186
+      
+      
+         WinterGrab_TN_concentration
+         This file contains total nitrogen (TN) concentration data for 46 of our 49 sampling sites, determined using the colorimetric hydrazine method and expressed in milligrams/L.
+         
+            WinterGrab_TN_concentration.csv
+            4653
+            09469dbf6efd351118875260b7acb367
+            
+               
+                  1
+                  \n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/664254ec92066f76c3c528cf3ccb7402
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               Total Dissolved Phosphorus concentration in milligrams per liter
+               float
+               
+                  
+                     
+                        milliliterPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  na
+                  Missing data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MilliL-PER-L
+               
+            
+            
+               unit
+               Unit
+               Unit of Total Dissolved Nitrogen concentration
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         63
+      
+      
+         WinterGrab_TP_concentration
+         This file contains total phosphorus (TP) concentration data for 48 of our 49 sampling sites, determined by semi-automated colorimetry and expressed in micrograms/L. Note: issues with calibration during analysis make these data unsuitable for comparison with TP data from other studies (see methods section for additional information).
+         
+            WinterGrab_TP_concentration.csv
+            8318
+            1c1c528f300bbd7b4700d7236e57cc2b
+            
+               
+                  1
+                  \n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/77b3fea192d1280455cc5606b6c3a451
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               Total Phosphorus concentration in micrograms per liter
+               float
+               
+                  
+                     
+                        microgramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MicroGM-PER-L
+               
+            
+            
+               unit
+               Unit
+               Unit of Total Phosphorus concentration
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               mdl_ug.l
+               MDL_ug.L
+               Minimum detection limit of Total Phosphorus concentration in micrograms per liter
+               float
+               
+                  
+                     
+                        microgramPerLiter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MicroGM-PER-L
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         64
+      
+      
+         WinterGrab_microbial_flowcytometry_abundance
+         This file contains microbe abundance data for 44 of our 49 sampling sites, determined using flow cytometry and expressed in cells/L
+         
+            WinterGrab_microbial_flowcytometry_abundance.csv
+            15849
+            40a7e14ca2fcbce2c353597a2d61fd5a
+            
+               
+                  1
+                  \n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/f53355301aca5f509aec069e018ab3ba
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep above
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               Bacterial cells per milliliter
+               float
+               
+                  
+                     
+                        cells per milliliter
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               unit
+               Unit
+               Unit of bacterial cells
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         167
+      
+      
+         WinterGrab_light_transmission
+         This file contains light (photosynthetically active radiation - PAR) transmission data through ice and snow, PAR attenuation coefficients through the water column, and descriptions of the ice and snow conditions for 22 of our 49 sites.
+         
+            WinterGrab_light_transmission.csv
+            4422
+            071f555df2448ac16c3d6907d9c44100
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/bcfad81dc872e033c96e3a48f1dac313
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name and Station columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               par_sensor
+               PAR_sensor
+               Name (manufacturer and model) of photosynthetically active radiation (PAR) sensor used for each site
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               ice_thick_m
+               Ice_thick_m
+               Thickness of ice measured in meter
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               snow_thick_profile_m
+               Snow_thick_profile_m
+               Snow thickness at light profile location
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               percent_trans_ice_snow
+               percent_trans_ice_snow
+               Percent of PAR transmitted through ice and snow cover at the site. ‘NA’ values are for location with no snow cover
+               float
+               
+                  
+                     
+                        percent
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  Missing Data or Not Avalible
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/PERCENT
+               
+            
+            
+               percent_trans_ice
+               percent_trans_ice
+               Percent of PAR transmitted through ice cover at the site after clearing away the snow (if present)
+               float
+               
+                  
+                     
+                        percent
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  No ice cover
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/PERCENT
+               
+            
+            
+               kd_water
+               Kd_water
+               The light attenuation coefficient for the water column at each site (in m-1)
+               float
+               
+                  
+                     
+                        light attenuation coefficient for the water column at each site (in m-1)
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  Missing Data or Not Available
+               
+            
+            
+               ice_narrative
+               Ice_narrative
+               Description of ice conditions at the site
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               snow_narrative
+               Snow_narrative
+               Description of snow conditions at the site
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         24
+      
+      
+         WinterGrab_PPR
+         This file contains lab-based phytoplankton primary production rate (PPR) parameters from measurements performed on samples from 11 of our 49 study sites
+         
+            WinterGrab_PPR.csv
+            3567
+            64ead73524224973c393871213ac6fef
+            
+               
+                  1
+                  \n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/37cfd8796d267519160bb1ca8914d1ae
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Name of parameter determined in the measurements. Pmax is the maximum photosynthetic rate achieved under optimal light conditions; it is expressed as g C/g Chl a/hr. Alpha is the initial slope of the photosynthesis-irradiance curve; it is expressed as g C/g Chl a/hr/µmol quanta/m2. Beta is the photoinhibition parameter; it is expressed as g C/g Chl a/hr/µmol quanta/m2.
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               rep
+               Rep
+               Replicate number
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, Analysis, and Rep columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               value
+               Value
+               Lab-Based Phytoplankton Primary Production Rate in Pmax (g C/g Chl a/hr) or Alpha and Beta ([g C/g Chl a/hr]/[µmol quanta/m2/s])
+               float
+               
+                  
+                     
+                        Pmax (g C/g Chl a/hr); Alpha and Beta ([g C/g Chl a/hr]/[µmol quanta/m2/s])
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               unit
+               Unit
+               Unit of lab-based phytoplankton primary production rate. Units include: "g C/g Chl a/hr" and "[g C/g Chl a/hr]/[µmol quanta/m2/s]". See "value" column descriptions for more detailed unit explainations.
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         36
+      
+      
+         WinterGrab_ciliated_protist_abundance
+         This file contains abundance data on ciliated protists for 24 of our 49 sampling sites, expressed in cells/mL. These data are in ‘long’ format.
+         
+            WinterGrab_ciliated_protist_abundance.csv
+            59923
+            3de3e5087aafa7117436b4c1e59bdedf
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/75a9cf47b47284a6f8ef250480449c10
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, and Analysis columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               taxon
+               taxon
+               Name of taxon
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               count_cell_ml-1
+               Count_cell_mL-1
+               Abundance of organism in cells/mL
+               float
+               
+                  
+                     
+                        Count_cell_mL-1
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         408
+      
+      
+         WinterGrab_particulate_cyanotoxins_concentration
+         This file contains data on particulate concentrations of 25 cyanotoxin metabolites for 19 of our 49 study sites. Concentrations were determined using liquid chromatography tandem mass spectrometry (LC-MS-MS) for material retained on filters, representing particulate metabolite concentrations, expressed in parts per billion. These data are in ‘long’ format.
+         
+            WinterGrab_particulate_cyanotoxins_concentration.csv
+            102510
+            333982908d71f5ff473d28ccefb108bc
+            
+               
+                  1
+                  \n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/41b4dd733c987a5481dc839fbbf103ed
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, and Analysis columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               metabolite
+               Metabolite
+               Name of metabolite
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               concentration_ppb
+               concentration_ppb
+               Concentration of metabolite in ppb. ‘ND’ means ‘not detected’
+               float
+               
+                  
+                     
+                        ppb
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  ND
+                  Not Detected
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/PPB
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         775
+      
+      
+         WinterGrab_wholewater_cyanotoxins_concentration
+         This file contains data on whole water concentrations of 25 cyanotoxin metabolites for 19 of our 49 study sites. Concentrations were determined using liquid chromatography tandem mass spectrometry (LC-MS-MS) for whole water samples, expressed in parts per billion. These data are in ‘long’ format.
+         
+            WinterGrab_wholewater_cyanotoxins_concentration.csv
+            104536
+            3bea1477befd506c1a0776ff77a3da47
+            
+               
+                  1
+                  \n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/da14bc0f7ceed3d0b07d73e18f968c50
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  ice
+                  Sample is from melted ice
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample. DOC: Dissolved organic carbon. Measure of the amount of organic matter that can pass through a 0.22 um filter (mg/L). SUVA254: Specific UV absorbance (254 mn). Higher values reflect greater carbon aromaticity or the number of aromatic rings per unit carbon (L/mg cm). SR: Spectral slope ratio. Higher values reflect lower molecular weight carbon and increased photobleaching (unitless). BA: Beta-alpha ratio. Higher values reflect a greater proportion of recently derived carbon (β) to highly decomposed carbon (α) (unitless). FI: Fluorescence index. Higher values (~1.9) reflect more microbial derived carbon and lower values (~1.4) reflect more terrestrial derived carbon (unitless). HIX: Humification index. Higher values indicate more humic carbon (unitless). C1: Parallel factors analysis component 1 (Williams et al., 2016; Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more ubiquitous humic-like dissolved organic matter. C2: Parallel factors analysis component 2 (Williams et al., 2016; Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more terrestrial humic like dissolved organic matter. C3: Parallel factors analysis component 3 (Williams et al., 2016; Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more terrestrial humic like dissolved organic matter. C4: Parallel factors analysis component 4 (Williams et al., 2016;Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more terrestrial soil fulvic-like dissolved organic matter. C5: Parallel factors analysis component 5 (Williams et al., 2016; Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more microbial humic-like dissolved organic matter. C6: Parallel factors analysis component 6 (Williams et al., 2016; Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more microbial humic-like dissolved organic matter. C7: Parallel factors analysis component 7 (Williams et al., 2016; Williams and Xenopoulos 2023). Higher values (Fmax, raman units) or proportions (%) indicate more microbial protein-like dissolved organic matter.
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, and Analysis columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               metabolite
+               Metabolite
+               Name of metabolite
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               concentration_ppb
+               concentration_ppb
+               Concentration of metabolite in ppb. ‘ND’ means ‘not detected’
+               float
+               
+                  
+                     
+                        ppb
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  ND
+                  Not Detected
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/PPB
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         800
+      
+      
+         WinterGrab_phytoplankton_abundance_McKay
+         This file contains phytoplankton abundance data for 27 of our 49 sampling sites, determined by the McKay lab (University of Windsor) and expressed in cells/L. These data are in ‘long’ format. EC1 has two sets of data records because it was sampled both on 2/28 and 3/10, both records are included in this data.
+         
+            WinterGrab_phytoplankton_abundance_McKay.csv
+            191045
+            2f4d6450fc1f3e8bcd20ea539daa00a7
+            
+               
+                  1
+                  \n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/89b99b8a18cbe2c984179204638e3131
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, and Analysis columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               taxon
+               taxon
+               Name of taxon
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               count_cell_l-1
+               Count_cell_L-1
+               Abundance of taxon as cells per liter
+               float
+               
+                  
+                     
+                        Count_cell_L-1
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  Not Applicable
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results. EC1 has two sets of data records because it was sampled both on 2/28 and 3/10, both records are included in this data.
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         1595
+      
+      
+         WinterGrab_phytoplankton_abundance_Munawar
+         This file contains phytoplankton abundance data for 27 of our 49 sampling sites, determined by the Munawar lab (Environment and Climate Change Canada) and expressed in cells/mL. These data are in ‘long’ format.
+         
+            WinterGrab_phytoplankton_abundance_Munawar.csv
+            207386
+            4844db910d9a8dc67996eadb35ee4084
+            
+               
+                  1
+                  \n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/f98046702063defd7aaac0f111cab787
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, and Analysis columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               taxon
+               taxon
+               Name of taxon
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               count_cell_l-1
+               Count_cell_L-1
+               Abundance of taxon as cells per liter
+               float
+               
+                  
+                     
+                        Count_cell_L-1
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         1469
+      
+      
+         WinterGrab_phytoplankton_biomass_Munawar
+         This file contains phytoplankton biomass data for 13 of our 49 sampling sites, determined by the Munawar lab (Environment and Climate Change Canada) and expressed as milligrams wet weight per cubic meter. These data are in ‘long’ format.
+         
+            WinterGrab_phytoplankton_biomass_Munawar.csv
+            191762
+            2c88a32fd604d7d640882bff9ca50b5e
+            
+               
+                  1
+                  \n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/c8a9a930bdbfdf3aeeca8d956c9d46a6
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               depth_m
+               Depth_m
+               Depth where sample was taken in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Depth_m, and Analysis columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               taxon
+               taxon
+               Name of taxon
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               biomass_mg_m-3
+               Biomass_mg_m-3
+               Biomass of taxon as milligrams wet weight per cubic meter
+               float
+               
+                  
+                     
+                        Biomass_mg_m-3
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         1469
+      
+      
+         WinterGrab_crustacean_zooplankton_abundance
+         This file contains crustacean zooplankton abundances for 12 of our 49 study sites, in ‘long’ format. Zooplankton abundance was determined by microscopy on zooplankton net tows. Abundances are expressed as individuals per liter.
+         
+            WinterGrab_crustacean_zooplankton_abundance.csv
+            58384
+            94d1b7b33c23d44e21efc49a831b6c01
+            
+               
+                  1
+                  \n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/11e97ed56e4927d0ef4ae0d6f7284a75
+               
+            
+         
+         
+            
+               pi_name
+               PI_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               Station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               tow_depth_m
+               Tow_depth_m
+               Depth interval of the zooplankton tow, from surface (0) to max depth in meters.
+               string
+               
+                  
+                     
+                        
+                           
+                              0-1
+                              0 to 1 meter depth
+                           
+                           
+                              0-17
+                              0 to 17 meter depth
+                           
+                           
+                              0-2.5
+                              0 to 2.5 meter depth
+                           
+                           
+                              0-30
+                              0 to 30 meter depth
+                           
+                           
+                              0-5
+                              0 to 5 meter depth
+                           
+                           
+                              0-7
+                              0 to 7 meter depth
+                           
+                           
+                              0-7.4
+                              0 to 7.4 meter depth
+                           
+                           
+                              0-8.5
+                              0 to 8.5 meter depth
+                           
+                           
+                              0-9
+                              0 to 9 meter depth
+                           
+                        
+                     
+                  
+               
+            
+            
+               net_diameter_m
+               Net_diameter_m
+               Diameter of the opening of zooplankton net used, in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               mesh_size_um
+               Mesh_size_um
+               Mesh size of the zooplankton net used, in μm
+               float
+               
+                  
+                     
+                        micrometer
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/MicroM
+               
+            
+            
+               analysis
+               Analysis
+               Type of analysis performed on the sample
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sample_name
+               Sample_name
+               Unique identifier for each data record with a combination of PI_name, Station, Tow_depth_m, Analysis columns
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               taxon
+               taxon
+               Name of taxon
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               count_l-1
+               count_L-1
+               Abundance of taxon as individuals per liter
+               float
+               
+                  
+                     
+                        count_L-1
+                     
+                     
+                        real
+                     
+                  
+               
+            
+            
+               notes
+               Notes
+               Any notes related to the analysis of each sample or the results
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+         
+         no
+         396
+      
+      
+         WinterGrab_sites
+         Winter Grab sampling site metadata, water depth, ice thickness, and snow thickness. NA means no data.
+         
+            WinterGrab_sites.csv
+            4395
+            a1776527f0d84f5b0e71a6c0175fd8ae
+            
+               
+                  1
+                  \r\n
+                  column
+                  
+                     ,
+                     "
+                  
+               
+            
+            
+               
+                  https://pasta.lternet.edu/package/data/eml/edi/1569/4/afafd2fc60f3a6b19126414e7f031990
+               
+            
+         
+         
+            
+               pi_name
+               pi_name
+               Last name(s) of lead investigators
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               station
+               station
+               Unique alphanumeric identifier for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               longitude
+               longitude
+               Longitude of a sampling location in degrees
+               float
+               
+                  
+                     
+                        degree
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/DEG
+               
+            
+            
+               latitude
+               latitude
+               Longitude of a sampling location in degrees
+               float
+               
+                  
+                     
+                        degree
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/DEG
+               
+            
+            
+               sampling_dates
+               sampling_dates
+               Sampling date for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               sampling_organization
+               sampling_organization
+               Sampling orgnization for a sampling location
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+            
+            
+               water_depth
+               water_depth
+               Depth of water observed at a sampling location in meters
+               string
+               
+                  
+                     
+                        
+                           text
+                        
+                     
+                  
+               
+               
+                  NA
+                  No data
+               
+            
+            
+               ice_thickness
+               ice_thickness
+               Ice thickness observed at a sampling location in meters
+               float
+               
+                  
+                     
+                        meter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  No data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/M
+               
+            
+            
+               snow_thickness
+               snow_thickness
+               Snow thickness observed at a sampling location in meters
+               float
+               
+                  
+                     
+                        centimeter
+                     
+                     
+                        real
+                     
+                  
+               
+               
+                  NA
+                  No data
+               
+               
+                  http://qudt.org/schema/qudt/hasUnit
+                  http://qudt.org/vocab/unit/CentiM
+               
+            
+         
+         no
+         49
+      
+   
+   
+      
+         
+      
+   
+   
+      
+         
+      
+   
+   
+      
+         
+            
+               
+            
+            
+               
+            
+            
+               Dissolved oxygen concentration as percent saturation
+            
+            
+               cells per milliliter
+            
+            
+               cell per milliliter
+            
+            
+               milligram per cubic meter
+            
+            
+               light attenuation coefficient for the water column at each site (in m-1)
+            
+            
+               Abundance of taxon as individuals per liter
+            
+            
+               Abundance of taxon as cells per milliliter
+            
+            
+               Abundance of taxon as cells per liter
+            
+            
+               Biomass of taxon as milligrams wet weight per cubic meter
+            
+            
+               Parts per billion
+            
+            
+               Conductivity measured in microsiemens per centimeter
+            
+            
+               
+            
+            
+               Pmax (g C/g Chl a/hr) is a measure of the maximum photosynthetic potential or productivity rate that can be achieved per unit of chlorophyll a, typically under optimal conditions. This parameter is crucial for comparing the productivity efficiency of different phytoplankton communities or under varying environmental conditions. Alpha (α) is the initial slope of the Photosynthesis-Irradiance (P-I) curve at low light intensities. It represents the photosynthetic efficiency of phytoplankton under low light conditions. A higher α value indicates that phytoplankton are more efficient at utilizing low levels of light for photosynthesis. It reflects the ability of the photosynthetic apparatus to convert light into chemical energy (carbon fixation) when light is not limiting. The unit [g C/g Chl a/hr]/[µmol quanta/m²/s] is often used to express α, as it normalizes the rate of carbon fixation to both chlorophyll content and light intensity. Alpha (α) represents the efficiency of photosynthesis at low light levels, reflecting the organism's ability to capitalize on available light. Beta (β) describes the rate of photoinhibition, or the decrease in photosynthetic rate, at very high light intensities. It represents the decline in photosynthetic activity when light becomes excessive and potentially damaging. A higher β value indicates greater sensitivity to photoinhibition, meaning that the phytoplankton’s photosynthesis decreases more sharply under high light intensity. Conversely, a lower β suggests that the phytoplankton are more tolerant to high light conditions. Beta (β) captures the decrease in photosynthesis under excessive light, indicating how well the organism copes with high light stress.
+            
+         
+      
+   
+   
+      
+         
+      
+   

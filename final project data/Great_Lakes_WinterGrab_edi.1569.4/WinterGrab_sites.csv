@@ -1,0 +1,50 @@
+﻿pi_name,station,longitude,latitude,sampling_dates,sampling_organization,water_depth,ice_thickness,snow_thickness
+Ozersky,Apostles,-90.779,46.837,16-02-2022,University of Minnesota Duluth,36.3,0.4,10
+McGregor_Twiss,BI_Birch_Island,-81.769,46.066,15-02-2022,Algoma University,3,0.46,10
+Maggie_Xenopoulos_&_Nolan_Pearce,BQ1,-77.316,44.151,15-02-2022,Trent University,10,0.33,0
+Currie,Bronte_Pier,-79.706,43.393,22-02-2022,Fisheries and Oceans Canada,4,0,0
+Warren_Currie,CCIW_Hamilton_Harbour,-79.802,43.297,16-02-2022,Fisheries and Oceans Canada,8,0,0
+Uzarski,Eagle_Bay_Saginaw_Bay,-83.877,43.952,22-02-2022,Central Michigan University,0.8,0.38,0
+McKay,EC_1,-82.392,43.09,28-02-2022,University of Windsor,9.5,NA,NA
+McKay,GR001,-83.034,41.894,10/3/22,University of Windsor,9.94,0.14,NA
+McKay,EC_1156,-83.135,42.054,25-02-2022,University of Windsor,11,0,0
+McKay,EC_12,-82.054,43.887,10/3/22,University of Windsor,92.81,0,0
+McKay,EC_1326,-81.936,41.736,27-02-2022,University of Windsor,24.55,0,0
+McKay,EC_3,-82.036,43.254,10/3/22,University of Windsor,10.2,0,0
+McKay,EC_341,-82.291,41.799,27-02-2022,University of Windsor,18.2,0.01,0
+McKay,EC_84,-81.637,41.832,27-02-2022,University of Windsor,27.74,0.01,0
+McKay,EC_9,-82.217,43.633,10/3/22,University of Windsor,63.86,0,0
+McKay,EC_970,-82.973,41.826,10/2/22,University of Windsor,10.98,0.14,0
+McKay,ER_78M,-81.253,42.106,27-02-2022,University of Windsor,24.1,0,0
+McKay,ER_91M,-82.905,41.845,10/2/22,University of Windsor,11.07,0.09,0
+Maggie_Xenopoulos_&_Nolan_Pearce,GB1,-79.818,44.773,16-02-2022,Trent University,7.9,0.45,1.3
+Ozersky,Green_Bay,-87.801,44.64,14-02-2022,University of Minnesota Duluth,5.5,0.5,0
+Vick-Majors,Keweenaw_Bay_KB,-88.462,46.787,20-02-2022,Michigan Technological University,18.6,0.25,2.5
+Vick-Majors,Keweenaw_Waterway_KW,-88.546,47.121,17-02-2022,Michigan Technological University,5.6,0.33,5
+McGregor_Twiss,LC_Little_Current,-81.914,45.981,,Algoma University,1.m,0,0
+Eveleth,Lorain,-82.175,41.473,15-02-2022,Oberlin College,3,0.22,6.5
+McKay_Drouillard,LSC-MB,-82.421,42.467,15-02-2022,University of Windsor,1.4,0.4,1
+McKay_Bullerjahn,NB22-002,-82.404,41.515,4/2/22,University of Windsor/Bowling Green State University,NA,NA,0
+McKay_Bullerjahn,NB22-003,-82.963,41.903,4/2/22,University of Windsor/Bowling Green State University,NA,NA,NA
+McKay_Bullerjahn,NB22-004,-82.789,41.89,5/2/22,University of Windsor/Bowling Green State University,NA,NA,NA
+McKay,NB22-005,-82.078,41.665,10/3/22,University of Windsor,NA,0,0
+McKay,NB22-006,-82.64,41.879,10/3/22,University of Windsor,NA,0,0
+McKay,NB22-007,-82.832,41.893,10/3/22,University of Windsor,NA,0,0
+McKay,NB22-008,-83.114,41.938,10/3/22,University of Windsor,NA,0,0
+Bramburger,Ontario_-_St._Catharines,-79.264,43.21,20-02-2022,Environment and Climate Change Canada,2,0,0
+Depew,Parry_Sound_Georgian_Bay,-80.045,45.342,24-02-2022,Environment and Climate Change Canada,24,0.32,1
+Uzarski,Pinconning_Park_Saginaw_Bay,-83.917,43.85,15-02-2022,Central Michigan University,1.6,0.33,0.5
+McGregor_Twiss,RD_Bay_of_Islands_Whitefish_Falls,-81.824,46.104,15-02-2022,Algoma University,3,0.46,10
+Zastepa,RW_Ridgeway_Abino_Bay,-79.09,42.848,21-02-2022,Environment and Climate Change Canada,1,0,0
+Karpovich,Saginaw_River,-83.871,43.614,16-02-2022,Saginaw Valley State University,8.5,0.3,0
+Doubek,Saint_Martin_Bay_SM-LH,-84.641,46.013,17-02-2022,Lake Superior State University,9.7,0.4,1.82
+Bullerjahn_McKay,Sandusky_Bay,-82.832,41.497,9/2/22,Bowling Green State University/University of Windsor,1,0.15,0
+Godwin,SB1,-83.661,43.64,15-02-2022,Cooperative Institute for Great Lakes Research,3.2,0.39,1.5
+Godwin,SB14,-83.64,43.737,15-02-2022,Cooperative Institute for Great Lakes Research,3.7,0.48,0.8
+Rennie,Silver_Harbour_Thunder_Bay,-88.973,48.508,19-02-2022,Lakehead University,10.5,0.62,9.4
+Chaffin,South_Bass_Island,-82.83,41.66,15-02-2022,Ohio State University,10.2,0.27,1
+Twiss,U17,-74.795,45.006,16-02-2022,Algoma University,10.m,NA,NA
+Uzarski,Vanderbilt_Park_Saginaw_Bay,-83.661,43.61,15-02-2022,Central Michigan University,2.4,0.43,0.4
+Vanderploeg,WE6,-83.386,41.705,14-02-2022,NOAA Great Lakes Environmental Research Laboratory,2.8,0.24,0.8
+Doubek,Whitefish_Bay_WB-LS,-84.83,46.454,22-02-2022,Lake Superior State University,9.9,0.3,9.8
+Zastepa,WP_Waverly_Beach_Park,-78.939,42.883,28-02-2022,Environment and Climate Change Canada,1,0.05,2
