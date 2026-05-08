@@ -1,0 +1,228 @@
+---
+title: "Great Lakes Winter Grab"
+author: "Your Name"
+format: 
+  html:
+    self-contained: true
+editor: visual
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+```
+
+## Overview of data set
+
+This data set from a nearly simultaneous observation of multiple sites in the Great Lakes in the winter of 2022 (it's called Winter Grab). The data sets are shared in many different files, so you will need to read in and combine multiple data frames. There are many different variables scattered across the separate files, which may have relationships that are interesting to explore.
+
+The data is shared and described on the [EDI data portal](https://portal.edirepository.org/nis/mapbrowse?packageid=edi.1569.4), please read the descriptions of the different files and their contents (click on View Full MetaData). I have downloaded the data into a github repository, so you can load the data files directly from this data chunk below. To load a particular file, you can edit the string variable your_choice (the full list is shared below):
+
+```{r}
+your_choice <- "WinterGrab_DOC_DOM_concentration.csv"
+file_name <- paste("https://raw.githubusercontent.com/dkon1/quant_life_quarto/refs/heads/main/final%20project%20data/Great_Lakes_WinterGrab_edi.1569.4/", your_choice, sep = '')
+
+df <- read_csv(file_name)
+```
+
+## Project objectives
+
+The learning objectives for the final project are:
+
+1.  use data wrangling tools from `tidyverse`
+
+2.  formulate clear questions about a specific data set
+
+3.  use statistical methods to answer your research questions
+
+4.  represent data visually in effective plots and summary tables
+
+5.  present a scientific narrative with correct interpretations of the analysis
+
+To earn full credit for the project you will need to a) present a proposal for your project, b) explain it in a verbal consultation, and c) produce a report that accomplishes all five of these objectives at a high level.
+
+### Resources for R data analysis
+
+1.  [Introduction to Statistics with R](https://stats.libretexts.org/Courses/Cerritos_College/Introduction_to_Statistics_with_R) - resource for statistical methods and their implementation in R
+2.  [R for Data Science](https://r4ds.hadley.nz/) - best overall reference for tidyverse and ggplot; see chapters 3, 5, and 7
+3.  [ggplot tutorial](https://uc-r.github.io/ggplot_intro) - another introduction to ggplot
+4.  [Lisa Lendway's tidyverse + ggplot intro](https://ggplot-dplyr-intro.netlify.app/) - another good resource
+
+### Resources for this data set
+
+1.  [Metadata for this project](https://portal.edirepository.org/nis/metadataviewer?packageid=edi.1569.4)
+2.  [The Great Lakes Winter Grab: Limnological data from a multi-institutional winter sampling campaign on the Laurentian Great Lakes](https://aslopubs.onlinelibrary.wiley.com/doi/10.1002/lol2.10447)
+3.  List of data file names:
+
+Here are all the names of the files in the same github folder (the names indicate the main observational variables), you can use any of them in place of the
+
+WinterGrab_alkalinity.csv
+
+WinterGrab_bacterialproduction_rate.csv
+
+WinterGrab_chlA_concentration.csv
+
+WinterGrab_chloride_concentration.csv
+
+WinterGrab_CTD_profiles.csv
+
+WinterGrab_DOC_DOM_concentration.csv
+
+WinterGrab_microbial_loop_abundance.csv
+
+WinterGrab_microcystin_concentration.csv
+
+WinterGrab_NH4_concentration.csv
+
+WinterGrab_NO2_concentration.csv
+
+WinterGrab_NO3_concentration.csv
+
+WinterGrab_PCPE_concentration.csv
+
+WinterGrab_snow_ice_properties-2.csv
+
+WinterGrab_TDP_concentration.csv
+
+WinterGrab_TN_concentration.csv
+
+WinterGrab_TP_concentration.csv
+
+WinterGrab_microbial_flowcytometry_abundance.csv
+
+WinterGrab_light_transmission.csv
+
+WinterGrab_PPR.csv
+
+WinterGrab_ciliated_protist_abundance.csv
+
+WinterGrab_particulate_cyanotoxins_concentration.csv
+
+WinterGrab_wholewater_cyanotoxins_concentration.csv
+
+WinterGrab_phytoplankton_abundance_McKay.csv
+
+WinterGrab_phytoplankton_abundance_Munawar.csv
+
+WinterGrab_phytoplankton_biomass_Munawar.csv
+
+WinterGrab_crustacean_zooplankton_abundance.csv
+
+WinterGrab_sites.csv
+
+------------------------------------------------------------------------
+
+### Step 1: Data exploration and project proposal
+
+The function `glimpse` prints out a short description of each variable in the data set:
+
+```{r}
+glimpse(df)
+```
+
+Other functions are useful for describing data, for example `count` to count the numbers of observations for each value of the variable station:
+
+```{r}
+df |> count(station)
+```
+
+One superpower of the tidyverse is stringing together functions using pipes `|>`, which funnel the output of one function to the next. For example, if you want to compute summary statistics for the `value` variable, separated by station (which would be a huge production in base R), in tidyverse it looks like this:
+
+```{r}
+df |>  # take the data frame (tibble)
+  drop_na(value) |>  # drop observations that have missing values
+  group_by(station) |>  # divide observations by station
+  summarise(count = n(), mean_value= mean(value), sd_value = sd(value))
+```
+
+Understanding and analyzing data starts with using your eyes to examine it. To visualize individual variables, one can use histograms or density plots, for example here is a histogram of the variable AFDW:
+
+```{r}
+df |>  # take the data set (tibble)
+  drop_na(value) |> # drop observations that have missing values of Live_n
+  ggplot() + aes(x=value) + # variable to plot
+  geom_histogram()# histogram of variable
+
+```
+
+One can also visualize two variables together to visually assess their relationship. Scatterplots are used if both variables are numeric, while box plots or similar are appropriate when the response variable is numeric and the explanatory variable is categorical. In this data set, some variables are numeric and some are categorical, so your choice of visualization will depend on the variables you choose to analyze. For example, here is a visualization of the value variables across different stations
+
+```{r}
+df |>  # take the data set (tibble)
+  drop_na(value, depth_m) |>  # drop observations that have missing values of Live_n
+  ggplot() + aes(x=depth_m, y=value) + # selection of explanatory and response variables 
+  geom_boxplot(aes(fill = depth_m)) + coord_flip()  # boxplot in horizontal orientation
+
+```
+
+Building on examples above, explore the data so you can see what is contained in different variables. Try loading different data sets and combining them using the join functions of tidyverse.
+
+```{r}
+
+```
+
+## Step 2: Proposal
+
+Your goal for this stage of the project is to read about the data set, explore different variables, and come up with a simple question that you want to answer and submit a short proposal. It should include the following information:
+
+1.  State a simple statistical question of your choice (e.g. is one variable independent of another? or what is the best-fit `m`odel for one variable as a function of another?) and explain it in biological terms;
+
+2.  State the method you choose to answer this question statistically (e.g. use a chi-squared test, perform linear regression);
+
+3.  State the visualization you will use to illustrate this (e.g. scatter plot, box plot);
+
+4.  Briefly explain the assumptions of the method to make sure you are using a reasonable one for your question.
+
+    YOUR PROPOSAL HERE
+
+------------------------------------------------------------------------
+
+## Step 3: Data cleaning and wrangling
+
+Before you perform your analysis, you need to remove any observations that you don't want to use. For example, some variables have missing observations or have an uninformative value (such as "Unknown" or 0) so you need to filter out those rows. There is also the delicate issue of outliers: are there some values that are so far out that they are suspect and need to be excluded? Consider these questions carefully and make your choice about cleaning your data.
+
+You may also decide to use a subset of the data to answer your question: e.g. only observations in a certain time frame, or for certain species. The tidyverse function `filter` allows you to select observations that match your criteria.
+
+You may also want to perform computations on the data to generate a new variable; for instance, you may be interested in counting the number of different species observed every year, so you would use the tidyverse function `count` to create a new data frame with the information.
+
+Perform data cleaning and manipulation in the code block below and assign the result to a new data frame you can use. Describe your choices and why you made them in the space below:
+
+```{r}
+
+```
+
+YOUR WORDS HERE
+
+------------------------------------------------------------------------
+
+## Step 4: Results
+
+Once you have cleaned and filtered your data, you can perform your analysis and visualization.
+
+First, visualize the relationship that you are exploring, usually between an explanatory or response variable, or show distributions of values in different conditions. Make sure you use the right visualization for the variable type and that the plot is readable and informative!
+
+```{r}
+
+```
+
+Perform statistical analysis or modeling, or any other work to answer the question you posed:
+
+```{r}
+
+```
+
+All models and methods are based on assumptions. Explain what they are and perform a calculation or visualization to make sure there are no violations in your data set. Note that if the assumptions of your method or model are substantially violated, you'll need to address this issue; either by choosing another method, or rethinking your variable selection, removing outliers if it's appropriate, etc.
+
+```{r}
+
+```
+
+YOUR EXPLANATIONS HERE
+
+------------------------------------------------------------------------
+
+## Step 5: Discussion
+
+Write a short summary of what you did: explain what it means for the question, comment on what you learned and how certain you are of the conclusions. This does not need to be a long essay!
+
+YOUR WORDS HERE

@@ -1,0 +1,190 @@
+---
+title: "Image segmentation using local pixel statistics"
+author: "Your Name"
+format: 
+  html:
+    self-contained: true
+editor: visual
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+```
+
+## Overview of data set
+
+Connectomics uses 3D EM datasets to study the nano-scale connections in the brain. In connectomics, 3D models of the neuronal network are built from the 3D electron microscopy datasets, leading to insights into the connectivity of the brain that could not be obtained using any other imaging modality. In order to collect these datasets, prepared brain samples are sliced into 40 nanometer thick sections, and then the slices are imaged individually. The images are then assembled into a sort of digital brain “flip book”. Segmentation of individual neurons allows the 3D model to be built from this flip book.
+
+Being able to identify the membranes around each cell is crucial for segmentation. While cell membranes are easy to identify by eye, it is a difficult machine learning task due to the noisiness of the data. However, it is vital that machine learning methods are developed for this task because 3DEM datasets are often terabytes or petabytes in size, making them too large for segmentation by hand. The following dataset presents 3 different electron microscopy samples:
+
+“Easy” sample: Zebrafish larvae, standard scanning electron microscopy “Medium” sample: Mouse brain, standard scanning electron microscopy “Difficult” sample: Mouse brain, experimental imaging technique, photoemission electron microscopy
+
+These are the image variables for each pixel in a single electron microscopy image:
+
+-   intensity: Mean intensity of a pixel (membranes are darker)
+
+-   local_mean_5x5: Mean intensity of pixels in a 5 by 5 region (membrane pixels are often surrounded by dark pixels)
+
+-   sobel: Sobel operator around a pixel (membranes often have sharp edges)
+
+-   laplacian: Laplacian response around a pixel (membranes often have ridges)
+
+-   dog: Difference of Gaussians (to sort membranes by feature size)
+
+-   annotated: “ground truth” column, in which an expect annotator selected all membrane pixels (yes means membrane)
+
+(Huge thank you to Lola Lambert for creating these data and providing this description!)
+
+The code below loads the the three data sets from a github repository into three data frames (tibble):
+
+```{r}
+easy <- read_csv("https://raw.githubusercontent.com/dkon1/quant_life_quarto/refs/heads/main/final%20project%20data/image_easydatasettruth.csv")
+medium <- read_csv("https://raw.githubusercontent.com/dkon1/quant_life_quarto/refs/heads/main/final%20project%20data/image_mediumdatasettruth.csv")
+hard <- read_csv("https://raw.githubusercontent.com/dkon1/quant_life_quarto/refs/heads/main/final%20project%20data/image_harddatasettruth.csv")
+
+```
+
+## Project objectives
+
+The learning objectives for the final project are:
+
+1.  use data wrangling tools from `tidyverse`
+
+2.  formulate clear questions about a specific data set
+
+3.  use statistical methods to answer your research questions
+
+4.  represent data visually in effective plots and summary tables
+
+5.  present a scientific narrative with correct interpretations of the analysis
+
+To earn full credit for the project you will need to a) present a proposal for your project, b) explain it in a verbal consultation, and c) produce a report that accomplishes all five of these objectives at a high level.
+
+### Resources for R data analysis
+
+1.  [Introduction to Statistics with R](https://stats.libretexts.org/Courses/Cerritos_College/Introduction_to_Statistics_with_R) - resource for statistical methods and their implementation in R
+2.  [R for Data Science](https://r4ds.hadley.nz/) - best overall reference for tidyverse and ggplot; see chapters 3, 5, and 7
+3.  [ggplot tutorial](https://uc-r.github.io/ggplot_intro) - another introduction to ggplot
+4.  [Lisa Lendway's tidyverse + ggplot intro](https://ggplot-dplyr-intro.netlify.app/) - another good resource
+
+### Resources for this data set
+
+1.  [Example of a large connectomics data set](https://www.microns-explorer.org/cortical-mm3)
+
+### Step 1: Data exploration
+
+The function `glimpse` prints out a short description of each variable in the data set:
+
+```{r}
+glimpse(hard)
+```
+
+Other functions are useful for describing data, for example `count` to count the numbers of observations for each value of the variable annotated:
+
+```{r}
+hard |> count(annotated)
+```
+
+One superpower of the tidyverse is stringing together functions using pipes `|>`, which funnel the output of one function to the next. For example, if you want to compute summary stats for the dog variable, separated by annotated (which would be a huge production in base R), in tidyverse it looks like this:
+
+```{r}
+hard |>  # take the data set (tibble)
+  drop_na(dog) |>  # drop observations that have missing values of the variable
+  group_by(annotated) |>  # divide observations by education
+  summarise(count = n(), mean_dog= mean(dog), sd_dog = sd(dog))
+```
+
+Understanding and analyzing data starts with using your eyes to examine it. To visualize individual variables, one can use histograms or density plots, for example here is a histogram of the variable dog:
+
+```{r}
+hard |>  # take the data set (tibble)
+  drop_na(dog) |> # drop observations that have missing values
+  ggplot() + aes(x= dog) + # variable to plot
+  geom_histogram()# histogram of variable
+
+```
+
+One can also visualize two variables together to visually assess their relationship. Scatter plots are used if both variables are numeric, while box plots or similar are appropriate when the response variable is numeric and the explanatory variable is categorical. In this data set, some variables are numeric (length) and some are categorical (section), so your choice of visualization will depend on the variables you choose to analyze. For example, here is a visualization of the relationship between dog and sobel:
+
+```{r}
+hard |>  # take the data set (tibble)
+  drop_na(dog, sobel) |>  # drop observations that have missing values of Live_n
+  ggplot() + aes(x= dog, y= sobel) + # selection of explanatory and response variables 
+  geom_point() # make a scatterplot
+
+```
+
+Building on examples above, explore the data so you can see what is contained in different variables. Try separating the data set in some way, for example by annotated and exploring which variables seem to differ the most.
+
+```{r}
+
+```
+
+------------------------------------------------------------------------
+
+## Step 2: Proposal
+
+Your goal for this stage of the project is to read about the data set, explore different variables, and come up with a simple question that you want to answer and submit a short proposal. It should include the following information:
+
+1.  State a statistical question based on the data set and connect it to a public health question
+
+2.  State the method you choose to answer this question statistically (e.g. use a chi-squared test, perform linear regression)
+
+3.  State the visualization you will use to illustrate the data for your question (e.g. scatterplot, boxplot)
+
+4.  Briefly explain the assumptions of the method and how you will assess whether they are not violated (e.g. examine plot of residuals)
+
+    YOUR TEXT HERE
+
+------------------------------------------------------------------------
+
+## Step 3: Data cleaning and filtering
+
+Before you perform your analysis, you need to remove any observations that you don't want to use. For example, some variables have missing observations or have an uninformative value (such as "Unknown" or 0) so you need to filter out those rows. There is also the delicate issue of outliers: are there some values that are so far out that they are suspect and need to be excluded? Consider these questions carefully and make your choice about cleaning your data.
+
+You may also decide to use a subset of the data to answer your question: e.g. only observations in a certain state, or for a certain race/ethnicity. The tidyverse function `filter` allows you to select observations that match your criteria.
+
+Perform data cleaning and manipulation in the code block below and assign the result to a new data frame you can use. Describe your choices and why you made them in the space below:
+
+```{r}
+
+```
+
+YOUR WORDS HERE
+
+------------------------------------------------------------------------
+
+## Step 4: Results
+
+Once you have cleaned and filtered your data, you can perform your analysis and visualization.
+
+First, visualize the relationship that you are exploring, usually between an explanatory or response variable, or show distributions of values in different conditions. Make sure you use the right visualization for the variable type and that the plot is readable and informative!
+
+```{r}
+
+```
+
+Perform statistical analysis or modeling, or any other work to answer the question you posed:
+
+```{r}
+
+```
+
+All models and methods are based on assumptions. Explain what they are and perform a calculation or visualization to make sure there are no violations in your data set. Note that if the assumptions of your method or model are substantially violated, you'll need to address this issue; either by choosing another method, or rethinking your variable selection, removing outliers if it's appropriate, etc.
+
+```{r}
+
+```
+
+YOUR EXPLANATIONS HERE
+
+Write a short summary of what you did: explain what it means for the question, comment on what you learned and how certain you are of the conclusions. This does not need to be a long essay!
+
+YOUR WORDS HERE
+
+## Step 5: Discussion
+
+Write a short summary of what you did: explain what it means for the question, comment on what you learned and how certain you are of the conclusions. This does not need to be a long essay!
+
+YOUR WORDS HERE

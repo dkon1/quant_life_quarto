@@ -1,0 +1,186 @@
+---
+title: "Gene expression in hypoxic and normal conditions"
+author: "Your Name"
+format: 
+  html:
+    self-contained: true
+editor: visual
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+```
+
+## Overview of data set
+
+In response to stress, an organism's molecular machinery protects itself at the cellular level directly by upregulating and downregulating the expression of particular genes. The cell uses numerous different pathways to accomplish this, but we are able to quantify their overall effect using RNA sequencing (RNA-seq). Following the central dogma, DNA makes RNA, which makes protein. Therefore, we are able to quantify the upregulation or downregulation of particular genes using RNA-seq, which quantifies the amount of a particular RNA present in the cell. By comparing expression levels before and after a stress response, we can identify what the cell uses to maintain its health in a stressful environment.
+
+Organelles are discrete and specific in their function, and it should therefore follow that their unique roles in the cell lead them to have particular roles in the cell's stress response. Indeed, it has been shown that organelles such as the ER, mitochondria, and lysosome have unique stress responses. Particularly, hypoxic stress, which is stress due to low atmospheric oxygen, leads to the downregulation of exosomal, lysosomal, and some mitochondrial genes.
+
+The dataset was obtained from Gene Expression Omnibus; the gene expression levels were measured in Mandarin Fish Fry (MFF-1) cells. The cells were either kept in normoxic conditions (21% O2) or hypoxic conditions (3% O2) for 72 hours, and bulk RNA-sequencing was performed; three samples were measured under each conditions. Organellar localization data were added based on information in UnitProt database for each gene; if not available for MFF, information on homologous genes from zebrafish or humans were used to identify the localization. Add for the source organism that the localization was identified in, the mean of the 3 normoxia samples, the mean of the 3 hypoxia samples, the log2 fold change across hypoxia-normoxia, and the expression variance. The names of the variables are:
+
+|  |  |
+|:---|:---|
+| **Variable name** | **Description** |
+| gene_id | name of the gene |
+| MFF.CY.1 | RNA-seq level of MFF-1 cells under normoxic conditions |
+| MFF.CY.2 | RNA-seq level of MFF-1 cells under normoxic conditions |
+| MFF.CY.3 | RNA-seq level of MFF-1 cells under normoxic conditions |
+| MFF.DY.1 | RNA-seq level of MFF-1 cells under hypoxic conditions |
+| MFF.DY.2 | RNA-seq level of MFF-1 cells under hypoxic conditions |
+| MFF.DY.3 | RNA-seq level of MFF-1 cells under hypoxic conditions |
+| subcellular_locations | Location of the gene in the cell |
+
+(Thank you to Tara Kedda for creating these data and providing this description!)
+
+```{r}
+hypox <- read_csv("https://raw.githubusercontent.com/dkon1/quant_life_quarto/refs/heads/main/final%20project%20data/hypoxic_gene_loc.csv")
+
+```
+
+## Project objectives
+
+The learning objectives for the final project are:
+
+1.  use data wrangling tools from `tidyverse`
+
+2.  formulate clear questions about a specific data set
+
+3.  use statistical methods to answer your research questions
+
+4.  represent data visually in effective plots and summary tables
+
+5.  present a scientific narrative with correct interpretations of the analysis
+
+To earn full credit for the project you will need to a) present a proposal for your project, b) explain it in a verbal consultation, and c) produce a report that accomplishes all five of these objectives at a high level.
+
+### Resources for R data analysis
+
+1.  [Introduction to Statistics with R](https://stats.libretexts.org/Courses/Cerritos_College/Introduction_to_Statistics_with_R) - resource for statistical methods and their implementation in R
+2.  [R for Data Science](https://r4ds.hadley.nz/) - best overall reference for tidyverse and ggplot; see chapters 3, 5, and 7
+3.  [ggplot tutorial](https://uc-r.github.io/ggplot_intro) - another introduction to ggplot
+4.  [Lisa Lendway's tidyverse + ggplot intro](https://ggplot-dplyr-intro.netlify.app/) - another good resource
+
+### Resources for this data set
+
+1.  [Genome Expression Omnibus entry](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE319394.)
+2.  Lakpa, K. L., Khan, N., Afghah, Z., Chen, X. & Geiger, J. D. Lysosomal stress response (LSR): Physiological importance and pathological relevance. J Neuroimmune Pharmacol 16, 219–237 (2021).
+3.  Laird, M. et al. Mitochondrial metabolism regulation and epigenetics in hypoxia. Front Physiol **15**, 1393232 (2024).
+
+### Step 1: Data exploration
+
+The function `glimpse` prints out a short description of each variable in the data set:
+
+```{r}
+glimpse(hypox)
+```
+
+Other functions are useful for describing data, for example `count` to count the numbers of observations for each value of the variable annotated:
+
+```{r}
+hypox |> count(subcellular_locations)
+```
+
+One superpower of the tidyverse is stringing together functions using pipes `|>`, which funnel the output of one function to the next. For example, if you want to compute summary stats for the dog variable, separated by annotated (which would be a huge production in base R), in tidyverse it looks like this:
+
+```{r}
+hypox |>  # take the data set (tibble)
+  drop_na(MFF.CY.1) |>  # drop observations that have missing values of the variable
+  group_by(subcellular_locations) |>  # divide observations by education
+  summarise(count = n(), mean_CY1= mean(MFF.CY.1), sd_dog = sd(MFF.CY.1))
+```
+
+Understanding and analyzing data starts with using your eyes to examine it. To visualize individual variables, one can use histograms or density plots, for example here is a histogram of the variable dog:
+
+```{r}
+hypox |>  # take the data set (tibble)
+  drop_na(MFF.CY.3) |> # drop observations that have missing values
+  ggplot() + aes(x= MFF.CY.3) + # variable to plot
+  geom_histogram()# histogram of variable
+
+```
+
+One can also visualize two variables together to visually assess their relationship. Scatter plots are used if both variables are numeric, while box plots or similar are appropriate when the response variable is numeric and the explanatory variable is categorical. In this data set, some variables are numeric (length) and some are categorical (section), so your choice of visualization will depend on the variables you choose to analyze. For example, here is a visualization of the relationship between dog and sobel:
+
+```{r}
+hypox |>  # take the data set (tibble)
+  drop_na(MFF.CY.3, MFF.DY.3) |>  # drop observations that have missing values in variables
+  ggplot() + aes(x= MFF.CY.3, y= MFF.DY.3) + # selection of explanatory and response variables 
+  geom_point() # make a scatterplot
+
+```
+
+Building on examples above, explore the data so you can see what is contained in different variables. Try separating the data set in some way, for example by annotated and exploring which variables seem to differ the most.
+
+```{r}
+
+```
+
+------------------------------------------------------------------------
+
+## Step 2: Proposal
+
+Your goal for this stage of the project is to read about the data set, explore different variables, and come up with a simple question that you want to answer and submit a short proposal. It should include the following information:
+
+1.  State a statistical question based on the data set and connect it to a public health question
+
+2.  State the method you choose to answer this question statistically (e.g. use a chi-squared test, perform linear regression)
+
+3.  State the visualization you will use to illustrate the data for your question (e.g. scatterplot, boxplot)
+
+4.  Briefly explain the assumptions of the method and how you will assess whether they are not violated (e.g. examine plot of residuals)
+
+    YOUR TEXT HERE
+
+------------------------------------------------------------------------
+
+## Step 3: Data cleaning and filtering
+
+Before you perform your analysis, you need to remove any observations that you don't want to use. For example, some variables have missing observations or have an uninformative value (such as "Unknown" or 0) so you need to filter out those rows. There is also the delicate issue of outliers: are there some values that are so far out that they are suspect and need to be excluded? Consider these questions carefully and make your choice about cleaning your data.
+
+You may also decide to use a subset of the data to answer your question: e.g. only observations in a certain state, or for a certain race/ethnicity. The tidyverse function `filter` allows you to select observations that match your criteria.
+
+Perform data cleaning and manipulation in the code block below and assign the result to a new data frame you can use. Describe your choices and why you made them in the space below:
+
+```{r}
+
+```
+
+YOUR WORDS HERE
+
+------------------------------------------------------------------------
+
+## Step 4: Results
+
+Once you have cleaned and filtered your data, you can perform your analysis and visualization.
+
+First, visualize the relationship that you are exploring, usually between an explanatory or response variable, or show distributions of values in different conditions. Make sure you use the right visualization for the variable type and that the plot is readable and informative!
+
+```{r}
+
+```
+
+Perform statistical analysis or modeling, or any other work to answer the question you posed:
+
+```{r}
+
+```
+
+All models and methods are based on assumptions. Explain what they are and perform a calculation or visualization to make sure there are no violations in your data set. Note that if the assumptions of your method or model are substantially violated, you'll need to address this issue; either by choosing another method, or rethinking your variable selection, removing outliers if it's appropriate, etc.
+
+```{r}
+
+```
+
+YOUR EXPLANATIONS HERE
+
+Write a short summary of what you did: explain what it means for the question, comment on what you learned and how certain you are of the conclusions. This does not need to be a long essay!
+
+YOUR WORDS HERE
+
+## Step 5: Discussion
+
+Write a short summary of what you did: explain what it means for the question, comment on what you learned and how certain you are of the conclusions. This does not need to be a long essay!
+
+YOUR WORDS HERE

@@ -1,0 +1,187 @@
+---
+title: "Global survey on diet"
+author: "Your Name"
+format: 
+  html:
+    self-contained: true
+editor: visual
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+```
+
+## Overview of data set
+
+The data are from the [Global Burden of Disease (GBD)](http://www.healthdata.org/gbd) of the [Institute for Health Metrics and Evaluation (IHME)](http://www.healthdata.org/about) about dietary intake, as well as the guideline data about optimal consumption amounts for different foods. The data contains mean consumption values for both men and women in various countries at the national level in 2017 for various foods that may be problematic for health. Here are the variables in the data set:
+
+|                   |                             |
+|:------------------|:----------------------------|
+| **Variable name** | **Description**             |
+| year_id           | year of survey              |
+| location_name     | specific location or global |
+| rei_name          | type of dietary risk        |
+| age_group_id      | id number of age group      |
+| age_group_name    | description of age group    |
+| sex               | sex descriptor              |
+| parameter         | type of observation         |
+| mean              | mean value                  |
+| upper             | upper bound                 |
+| lower             | lower bound                 |
+| unit              | unit of measurement         |
+
+For example, the mean column in a row with rei_name = “Diet low in fiber” contains the average consumption level per person in that region and of that gender of fiber in grams per day. The code below loads the data set from a github repository into a data frame (tibble) called diet_df:
+
+```{r}
+diet_df <- read_csv("https://raw.githubusercontent.com/dkon1/quant_life_quarto/refs/heads/main/final%20project%20data/dietary_risk_exposure_sep_ages_2017.csv")
+
+```
+
+## Project objectives
+
+The learning objectives for the final project are:
+
+1.  use data wrangling tools from `tidyverse`
+
+2.  formulate clear questions about a specific data set
+
+3.  use statistical methods to answer your research questions
+
+4.  represent data visually in effective plots and summary tables
+
+5.  present a scientific narrative with correct interpretations of the analysis
+
+To earn full credit for the project you will need to a) present a proposal for your project, b) explain it in a verbal consultation, and c) produce a report that accomplishes all five of these objectives at a high level.
+
+### Resources for R data analysis
+
+1.  [Introduction to Statistics with R](https://stats.libretexts.org/Courses/Cerritos_College/Introduction_to_Statistics_with_R) - resource for statistical methods and their implementation in R
+2.  [R for Data Science](https://r4ds.hadley.nz/) - best overall reference for tidyverse and ggplot; see chapters 3, 5, and 7
+3.  [ggplot tutorial](https://uc-r.github.io/ggplot_intro) - another introduction to ggplot
+4.  [Lisa Lendway's tidyverse + ggplot intro](https://ggplot-dplyr-intro.netlify.app/) - another good resource
+
+### Resources for this data set
+
+1.  GBD 2017 Diet Collaborators. Health effects of dietary risks in 195
+    countries, 1990–2017: a systematic analysis for the Global Burden of
+    Disease Study 2017. *The Lancet* 393, 1958–1972 (2019).
+2.  [Global Burdens of Disease](https://www.healthdata.org/research-analysis/gbd)
+3.  [Open Case Studies: Exploring global patterns of dietary behaviors associated with health risk](https://www.opencasestudies.org/ocs-bp-diet)
+
+### Step 1: Data exploration
+
+The function `glimpse` prints out a short description of each variable in the data set:
+
+```{r}
+glimpse(diet_df)
+```
+
+Other functions are useful for describing data, for example `count` to count the numbers of observations for each value of the variable rei_name:
+
+```{r}
+diet_df |> count(rei_name)
+```
+
+One superpower of the tidyverse is stringing together functions using pipes `|>`, which funnel the output of one function to the next. For example, if you want to compute summary stats for the c_protein variable, separated by education (which would be a huge production in base R), in tidyverse it looks like this:
+
+```{r}
+diet_df |>  # take the data set (tibble)
+  drop_na(mean) |>  # drop observations that have missing values of the variable
+  group_by(rei_name) |>  # divide observations by education
+  summarise(count = n(), mean_mean= mean(mean), sd_mean = sd(mean))
+```
+
+Understanding and analyzing data starts with using your eyes to examine it. To visualize individual variables, one can use histograms or density plots, for example here is a histogram of the variable c_protein:
+
+```{r}
+diet_df |>  # take the data set (tibble)
+  drop_na(mean) |> # drop observations that have missing values
+  ggplot() + aes(x= mean) + # variable to plot
+  geom_histogram()# histogram of variable
+
+```
+
+One can also visualize two variables together to visually assess their relationship. Scatter plots are used if both variables are numeric, while box plots or similar are appropriate when the response variable is numeric and the explanatory variable is categorical. In this data set, some variables are numeric (length) and some are categorical (section), so your choice of visualization will depend on the variables you choose to analyze. For example, here is a visualization of the relationship between c_protein and age:
+
+```{r}
+diet_df |>  # take the data set (tibble)
+  drop_na(mean, rei_name) |>  # drop observations that have missing values of variables
+  ggplot() + aes(x= rei_name, y= mean) + # selection of explanatory and response variables 
+  geom_boxplot() + # make a boxplot
+  coord_flip() # make horizontal boxplots
+```
+
+Building on examples above, explore the data so you can see what is contained in different variables. Try separating the data set in some way, for example by work or age.
+
+```{r}
+
+```
+
+------------------------------------------------------------------------
+
+## Step 2: Proposal
+
+Your goal for this stage of the project is to read about the data set, explore different variables, and come up with a simple question that you want to answer and submit a short proposal. It should include the following information:
+
+1.  State a statistical question based on the data set and connect it to a public health question
+
+2.  State the method you choose to answer this question statistically (e.g. use a chi-squared test, perform linear regression)
+
+3.  State the visualization you will use to illustrate the data for your question (e.g. scatterplot, boxplot)
+
+4.  Briefly explain the assumptions of the method and how you will assess whether they are not violated (e.g. examine plot of residuals)
+
+    YOUR TEXT HERE
+
+------------------------------------------------------------------------
+
+## Step 3: Data cleaning and filtering
+
+Before you perform your analysis, you need to remove any observations that you don't want to use. For example, some variables have missing observations or have an uninformative value (such as "Unknown" or 0) so you need to filter out those rows. There is also the delicate issue of outliers: are there some values that are so far out that they are suspect and need to be excluded? Consider these questions carefully and make your choice about cleaning your data.
+
+You may also decide to use a subset of the data to answer your question: e.g. only observations in a certain state, or for a certain race/ethnicity. The tidyverse function `filter` allows you to select observations that match your criteria.
+
+Perform data cleaning and manipulation in the code block below and assign the result to a new data frame you can use. Describe your choices and why you made them in the space below:
+
+```{r}
+
+```
+
+YOUR WORDS HERE
+
+------------------------------------------------------------------------
+
+## Step 4: Results
+
+Once you have cleaned and filtered your data, you can perform your analysis and visualization.
+
+First, visualize the relationship that you are exploring, usually between an explanatory or response variable, or show distributions of values in different conditions. Make sure you use the right visualization for the variable type and that the plot is readable and informative!
+
+```{r}
+
+```
+
+Perform statistical analysis or modeling, or any other work to answer the question you posed:
+
+```{r}
+
+```
+
+All models and methods are based on assumptions. Explain what they are and perform a calculation or visualization to make sure there are no violations in your data set. Note that if the assumptions of your method or model are substantially violated, you'll need to address this issue; either by choosing another method, or rethinking your variable selection, removing outliers if it's appropriate, etc.
+
+```{r}
+
+```
+
+YOUR EXPLANATIONS HERE
+
+Write a short summary of what you did: explain what it means for the question, comment on what you learned and how certain you are of the conclusions. This does not need to be a long essay!
+
+YOUR WORDS HERE
+
+## Step 5: Discussion
+
+Write a short summary of what you did: explain what it means for the question, comment on what you learned and how certain you are of the conclusions. This does not need to be a long essay!
+
+YOUR WORDS HERE
