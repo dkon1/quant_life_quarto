@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>1&nbsp; Arithmetic and variables – Quantifying Life</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -24,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -55,15 +57,14 @@ div.csl-indent {
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dda8909163e0b4f3670ba323ebd66e56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6cbb53fb565b2bbafeaa1df642049805.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -93,7 +94,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -152,9 +153,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantifying Life</a> 
         <div class="sidebar-tools-main">
@@ -368,7 +367,7 @@ Every heart, every heart to love will come<br>
 But like a refugee.<br>
 –Leonard Cohen, <em>Anthem</em></p>
 </blockquote>
-<p>Mathematical modeling begins with a set of <em>assumptions</em>. In fact, one may say that a mathematical model is a bunch of assumptions translated into mathematics. These assumptions may be more or less reasonable, and they may come from different sources. For instance, many physical models are so well-established that we refer to them as laws; we are pretty sure they apply to molecules, cells, and organisms as well as to inanimate objects. Thus we may use physical laws as the foundation on which to build models of biological entities; these are often known as <em>first-principles</em> (theory-based) models. Other times we have experimental evidence which suggests a certain kind of relationship between quantities, perhaps we find that the amount of administered drug and the time until the drug is completely removed from the bloodstream are proportional to each other. This observation can be turned into an <em>empirical</em> (experiment-based) model. Yet another type of model assumption is not based on either theory or experiment, but simply on convenience: e.g.&nbsp;let us assume that the mutation rates in two different loci are independent, and see what the implications are. These are sometimes called <em>toy</em> or <em>cartoon</em> models <span class="citation" data-cites="jungck_mathematical_2010">(<a href="references.html#ref-jungck_mathematical_2010" role="doc-biblioref">Jungck, Gaff, and Weisstein 2010</a>)</span>.</p>
+<p>Mathematical modeling begins with a set of <em>assumptions</em>. In fact, one may say that a mathematical model is a bunch of assumptions translated into mathematics. These assumptions may be more or less reasonable, and they may come from different sources. For instance, many physical models are so well-established that we refer to them as laws; we are pretty sure they apply to molecules, cells, and organisms as well as to inanimate objects. Thus we may use physical laws as the foundation on which to build models of biological entities; these are often known as <em>first-principles</em> (theory-based) models. Other times we have experimental evidence which suggests a certain kind of relationship between quantities, perhaps we find that the amount of administered drug and the time until the drug is completely removed from the bloodstream are proportional to each other. This observation can be turned into an <em>empirical</em> (experiment-based) model. Yet another type of model assumption is not based on either theory or experiment, but simply on convenience: e.g.&nbsp;let us assume that the mutation rates in two different loci are independent, and see what the implications are. These are sometimes called <em>toy</em> or <em>cartoon</em> models <span class="citation" data-cites="jungck_mathematical_2010">(<a href="references.html#ref-jungck_mathematical_2010" role="doc-biblioref">Jungck et al. 2010</a>)</span>.</p>
 <p>This leads to the question: how do you decide whether a model is good? It is surprisingly difficult to give a straightforward answer to this question. Of course, one major goal of a model is to capture some essential features of reality, so in most biological modeling studies you will see a comparison between experimental results and predictions of the model. But it is not enough for a model to be faithful to experimental data! Think of a simple example: suppose your experiment produced 5 data points as a function of time; it is possible to find a polynomial (of fourth degree) that passes exactly through all 5 points, by specifying the coefficients of its 5 terms. This is called <em>data fitting</em> and it has a large role to play in mathematical modeling of biology. However, I think you will agree that in this case we have learned very little: we just substituted 5 values in the data set with 5 values of the coefficients of the mathematical model. To heighten the absurdity, imagine a data set of 1001 points that you have modeled using a 1000-degree polynomial. This is an example of overfitting, or making the model agree with the data by making it overly complex.</p>
 <p>Substituting a complicated model for a complicated real situation does not help understand it. One necessary ingredient of a useful model is <em>simplicity of assumptions</em>. Simplicity in modeling has at least two virtues: simple models can be grasped by our limited minds, and simple assumptions can be tested against evidence. A simple model that fails to reproduce experimental data can be more informative than a complex model that fits the data perfectly. If a simple model fails, you have learned that you are missing something in your assumptions; but a complex model can be right for the wrong reasons, like erroneous assumptions canceling each other, or it may contain needless assumptions. This is why good modeling is a difficult skill that balances simplicity of assumptions against fidelity to empirical data <span class="citation" data-cites="cohen_mathematics_2004">(<a href="references.html#ref-cohen_mathematics_2004" role="doc-biblioref">Cohen 2004</a>)</span>. In this chapter you will learn how to do the following:</p>
 <ul>
@@ -464,9 +463,7 @@ Figure&nbsp;1.2: Illustration of Galen’s conception of the blood system, showi
 <p>What distinguishes a mathematical model from a mathematical equation is that the quantities involved have a real-world meaning. Each quantity represents a measurement, and associated with each one are the <em>units</em> of measurement. The number 173 is not enough to describe the height of a person - you are left to wonder 173 what? meters, centimeters, nanometers, light-years? Obviously, only centimeters make sense as a unit of measurement for human height; but if we were measuring the distance between two animals in a habitat, meters would be a reasonable unit, and it were the distance between molecules in a cell, we would use nanometers. Thus, any quantity in a mathematical model must have associated units, and any graphs of these quantities must be labeled accordingly.</p>
 <p>In addition to units, each variable and parameter has a meaning, which is called the <em>dimension</em> of the quantity. For example, any measurement of length or distance has the same dimension, although the units may vary. The value of a quantity depends on the units of measurement, but its essential dimensionality does not. One can convert a measurement in meters to that in light-years or cubits, but one cannot convert a measurement in number of sheep to seconds - that conversion has no meaning.</p>
 <p>Thus leads us to the fundamental rule of mathematical modeling: <strong>terms that are added or subtracted must have the same dimension</strong>. This gives mathematical modelers a useful tool called <em>dimensional analysis</em>, which involves replacing the quantities in an equation with their dimensions. This serves as a check that all dimensions match, as well as allowing to deduce the dimensions of any parameters for which the dimension was not specified <span class="citation" data-cites="smith_mathematical_1968">(<a href="references.html#ref-smith_mathematical_1968" role="doc-biblioref">Smith 1968</a>)</span>.</p>
-<p><strong>Example.</strong> As we saw in chapter 1, the relationship between the amount blood pumped by a heart in a certain amount of time is expressed in the following equation, where <span class="math inline">\(V_{tot}\)</span> and <span class="math inline">\(V_s\)</span> are the total volume and stroke volume, respectively, <span class="math inline">\(R\)</span> is the heart rate, and <span class="math inline">\(t\)</span> is the time: <span class="math display">\[
-V_{tot} = V_sRt
-\]</span> The dimension of a quantity <span class="math inline">\(X\)</span> is denoted by <span class="math inline">\([X]\)</span>; for example, if <span class="math inline">\(t\)</span> has the dimension of time, we write <span class="math inline">\([t] = time\)</span>. The dimension of volume is <span class="math inline">\([V_{tot}] = length^3\)</span>, the dimension of stroke volume is <span class="math inline">\([V_s] = volume/beat\)</span> and the dimension of time <span class="math inline">\(t\)</span> is time, so we can re-write the equation above in dimensional form:</p>
+<p><strong>Example.</strong> As we saw in chapter 1, the relationship between the amount blood pumped by a heart in a certain amount of time is expressed in the following equation, where <span class="math inline">\(V_{tot}\)</span> and <span class="math inline">\(V_s\)</span> are the total volume and stroke volume, respectively, <span class="math inline">\(R\)</span> is the heart rate, and <span class="math inline">\(t\)</span> is the time: <span class="math display">\[V_{tot} = V_sRt\]</span> The dimension of a quantity <span class="math inline">\(X\)</span> is denoted by <span class="math inline">\([X]\)</span>; for example, if <span class="math inline">\(t\)</span> has the dimension of time, we write <span class="math inline">\([t] = time\)</span>. The dimension of volume is <span class="math inline">\([V_{tot}] = length^3\)</span>, the dimension of stroke volume is <span class="math inline">\([V_s] = volume/beat\)</span> and the dimension of time <span class="math inline">\(t\)</span> is time, so we can re-write the equation above in dimensional form:</p>
 <p><span class="math display">\[length^3 = length^3/ beat \times R \times time\]</span></p>
 <p>Solving this equation for R, we find that it must have the dimensions of <span class="math inline">\([R] = beats/time\)</span>. It can be measured in beats per minute (typical for heart rate), or beats per second, beats per hour, etc. but the <em>dimensionality</em> of the quantity cannot be changed without making the model meaningless.</p>
 <p>There are also <em>dimensionless</em> quantities, or pure numbers, which are not tied to a physical meaning at all. Fundamental mathematical constants, like <span class="math inline">\(\pi\)</span> or <span class="math inline">\(e\)</span>, are classic examples, as are some important quantities in physics, like the Reynolds number in fluid mechanics <span class="citation" data-cites="strogatz_nonlinear_2001">(<a href="references.html#ref-strogatz_nonlinear_2001" role="doc-biblioref">Strogatz 2001</a>)</span>. Quantities with a dimension can be made dimensionless by dividing them by another quantity with the same dimension and “canceling” the dimensions. For instance, we can express the height of a person as a fraction of the mean height of the population; then the height of a tall person will become a number greater than 1, and the height of a short one will become less than 1. This new dimensionless height does not have units of length - they have been divided out by the mean height. This is known as <em>rescaling</em> the quantity, by dividing it by a preferred scale. There is a fundamental difference between rescaling and changing the units of a quantity: when changing the units, e.g.&nbsp;from inches to centimeters, the dimension remains the same, but if one divides the quantity by a scale, it loses its dimension.</p>
@@ -477,27 +474,21 @@ V_{tot} = V_sRt
 <ol type="1">
 <li><p>Number of mutations <span class="math inline">\(M\)</span> depending on time <span class="math inline">\(t\)</span>: <span class="math display">\[ M = M_0 + \mu t\]</span></p></li>
 <li><p>Baby weight <span class="math inline">\(B\)</span> depending on time <span class="math inline">\(t\)</span>:</p>
-<p><span class="math display">\[
-B = rt+a
-\]</span></p></li>
+<p><span class="math display">\[B = rt+a\]</span></p></li>
 <li><p>Molecular concentration <span class="math inline">\(C\)</span> depending on time <span class="math inline">\(t\)</span>: <span class="math display">\[ C = C_0 e^{-kt} \]</span></p></li>
 <li><p>Tree height <span class="math inline">\(H\)</span> (length) depending on age <span class="math inline">\(a\)</span> (time): <span class="math display">\[ H = \frac{b a}{c + a}\]</span></p></li>
 <li><p>Concentration of a gene product <span class="math inline">\(G\)</span> depending on time <span class="math inline">\(t\)</span>: <span class="math display">\[ G = G_m (1 - e^{-\alpha t})\]</span></p></li>
 <li><p>Reaction rate <span class="math inline">\(c\)</span> (concentration/time) depending on concentrations of reactant <span class="math inline">\(A\)</span> and reactant <span class="math inline">\(B\)</span>:</p>
-<p><span class="math display">\[
-c = kAB
-\]</span></p></li>
+<p><span class="math display">\[c = kAB\]</span></p></li>
 <li><p>Enzyme turnover rate <span class="math inline">\(v\)</span> (1/time) depending on concentration of substrate <span class="math inline">\(S\)</span>: <span class="math display">\[ v = \frac{v_{max} S}{K_m + S}\]</span></p></li>
 <li><p>Population <span class="math inline">\(P\)</span> depending on time <span class="math inline">\(t\)</span>: <span class="math display">\[ P = \frac{Ae^{rt}}{B + e^{rt}} \]</span></p></li>
 <li><p>Fraction of bound receptors <span class="math inline">\(\theta\)</span> depending on concentration of ligand <span class="math inline">\(L\)</span>: <span class="math display">\[ \theta = \frac{L^n}{L^n + K_d}\]</span></p></li>
 <li><p>Mass of an organism <span class="math inline">\(M\)</span> depending on the basal metabolic rate (energy/time) <span class="math inline">\(B\)</span>:</p>
-<p><span class="math display">\[
-M = aB^n
-\]</span></p></li>
+<p><span class="math display">\[M = aB^n\]</span></p></li>
 </ol>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-cohen_mathematics_2004" class="csl-entry" role="listitem">
 Cohen, Joel E. 2004. <span>“Mathematics <span>Is</span> <span>Biology</span>’s <span>Next</span> <span>Microscope</span>, <span>Only</span> <span>Better</span>; <span>Biology</span> <span>Is</span> <span>Mathematics</span>’ <span>Next</span> <span>Physics</span>, <span>Only</span> <span>Better</span>.”</span> <em>PLoS Biol</em> 2 (12): e439. <a href="https://doi.org/10.1371/journal.pbio.0020439">https://doi.org/10.1371/journal.pbio.0020439</a>.
 </div>
@@ -508,7 +499,7 @@ Jungck, John R., Holly Gaff, and Anton E. Weisstein. 2010. <span>“Mathematical
 Schultz, Stanley G. 2002. <span>“William <span>Harvey</span> and the <span>Circulation</span> of the <span>Blood</span>: <span>The</span> <span>Birth</span> of a <span>Scientific</span> <span>Revolution</span> and <span>Modern</span>.”</span> <em>Physiology</em> 17 (5): 175–80. <a href="https://doi.org/10.1152/nips.01391.2002">https://doi.org/10.1152/nips.01391.2002</a>.
 </div>
 <div id="ref-smith_mathematical_1968" class="csl-entry" role="listitem">
-Smith, J. Maynard. 1968. <em>Mathematical <span>Ideas</span> in <span>Biology</span></em>. London: Cambridge University Press.
+Smith, J. Maynard. 1968. <em>Mathematical <span>Ideas</span> in <span>Biology</span></em>. Cambridge University Press.
 </div>
 <div id="ref-strogatz_nonlinear_2001" class="csl-entry" role="listitem">
 Strogatz, Steven H. 2001. <em>Nonlinear <span>Dynamics</span> <span>And</span> <span>Chaos</span>: <span>With</span> <span>Applications</span> <span>To</span> <span>Physics</span>, <span>Biology</span>, <span>Chemistry</span>, <span>And</span> <span>Engineering</span></em>. 1st ed. Westview Press.

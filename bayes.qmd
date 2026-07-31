@@ -5,10 +5,10 @@
 
 In the last few chapters we defined the notion of independence and learned how to perform a statistical test to determine how likely a data set of two categorical variables is to have come from two independent random variables. This approach comes from the toolbox of classical "frequentist" statistics, which is taught in every statistics textbook in the world. It reduces statistical inference to a binary choice: reject or not reject the null hypothesis, based on the magic number called the p-value. However, this approach has deep problems, especially when applied mechanically and without understanding its limitations. Perhaps the most important limitation is that p-value based hypothesis testing does not incorporate any knowledge into its decision-making, aside from the given data. This may be reasonable at an early, exploratory stage of an experiment, but usually one has some prior knowledge about the likelihood of the hypothesis being tested. This knowledge cannot influence the data and the calculation of the p-value, of course, but it can have a dramatic effect on the interpretation, or inference one draws from the test. In this chapter you will learn to do the following:
 
--   explain the effect or prior knowledge on interpretation of an experimental result
--   calculate post-test probability based on prior probability, test result, and conditional probabilities of the test being in error
--   use conditional statements to simulate random decisions with a given probability
--   explain why conclusions based on binary p-value testing are frequently wrong
+- explain the effect or prior knowledge on interpretation of an experimental result
+- calculate post-test probability based on prior probability, test result, and conditional probabilities of the test being in error
+- use conditional statements to simulate random decisions with a given probability
+- explain why conclusions based on binary p-value testing are frequently wrong
 
 ## Prior knowledge
 
@@ -32,9 +32,8 @@ The perils of ignoring prior knowledge is illustrated in the xkcd cartoon shown 
 
 In this section we will formalize the process of incorporation of prior knowledge into probabilistic inference by going back to the notion of conditional probability in @sec-cond-prob. First, if you multiply both sides of the definition by $P(B)$, then we obtain the probability of the intersection of events $A$ and $B$: $$P(A \land B) = P(A|B) P(B); \;  P(A \land B) = P(B|A) P(A) $$ Second, we can partition a sample space into two complementary sets, $A$ and $-A$, and then the set of $B$ can be partitioned into two parts, that intersect with $A$ and $-A$, respectively, so that the probability of $B$ is $$P(B) = P(A \land B) + P(-A\land B)$$
 
-The two formulas together lead to a very important result called the *law of total probability* $$
-P(B) =  P(B|A) P(A) + P(B|-A)P(-A)
-$$
+The two formulas together lead to a very important result called the *law of total probability*
+$$P(B) =  P(B|A) P(A) + P(B|-A)P(-A)$$
 
 It may not be clear at first glance why this is useful: after all, we replaced something simple ($P(B)$) with something much more complex on the right hand side. You will see how this formula enables us to calculate quantities that are not otherwise accessible.
 
@@ -46,9 +45,7 @@ There is still more gold in the hills of conditional probability! Take the first
 
 We can rewrite the denominator in Bayes' using the Law of total probability so that it can calculated from conditional probabilities:
 
-$$
-P(A|B) = \frac{P(B|A)P(A)}{P(B|A) P(A) + P(B|-A)P(-A)}
-$$
+$$P(A|B) = \frac{P(B|A)P(A)}{P(B|A) P(A) + P(B|-A)P(-A)}$$
 
 Bayes' formula gives us the probability of $A$ given $B$ from probabilities of $B$ given $A$ and given $-A$, and the prior (baseline) probability of $P(A)$. This is enormously useful when it is easy to calculate the conditionals one way and not the other. Among its many applications, it computes the effect of a test result with given sensitivity and specificity (conditional probabilities) on the probability of the hypothesis being true.
 

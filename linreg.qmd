@@ -5,11 +5,11 @@
 
 In the last two chapters we learned to use data sets which fall into a few categories. We now turn to data which can be measured as a range of numerical values. We can ask a similar question of numerical data that we asked of categorical: how can we tell whether two variables are related? And if they are, what kind of relationship is it? This takes us into the realm of *data fitting*, raising two related questions: what is the best mathematical relationship to describe a data set? and what is the quality of the fit? You will learn to do the following in this chapter:
 
--   define the quality of the fit between a line and a two-variable data set
--   calculate the parameters for the best-fit line based on statistics of the data set
--   use R to calculate and plot best-fit line for a data set
--   understand the meaning of correlation and covariance
--   understand the phenomenon of regression to the mean
+- define the quality of the fit between a line and a two-variable data set
+- calculate the parameters for the best-fit line based on statistics of the data set
+- use R to calculate and plot best-fit line for a data set
+- understand the meaning of correlation and covariance
+- understand the phenomenon of regression to the mean
 
 ## Linear least-squares fitting {#lin-least-sq}
 
@@ -17,24 +17,20 @@ In the last two chapters we learned to use data sets which fall into a few categ
 
 It is easy to find the best-fit line for a data set with only two points: its slope and intercept can be found by solving the two simultaneous linear equations, e.g. if the data set consists of $(3,2.3), (6, 1.7)$, then finding the best fit values of $a$ and $b$ means solving the following two equations:
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 3a + b &=& 2.3 \\
 6a + b &=& 1.7
-\end{aligned}
-$$
+\end{aligned}$$
 
 These equations have a unique solution for each unknown: $a=-0.2$ and $b=2.9$ (you can solve it using basic algebra).
 
 However, a data set with two points is very small and cannot serve as a reasonable guide for finding a relationship between two variables. Let us add one more data point, to increase our sample size to three: $(3,2.3), (6, 1.7), (9, 1.3)$. How do you find the best fit slope and intercept? **Bad idea:** take two points and find a line, that is the slope and the intercept, that passes through the two. It should be clear why this is a bad idea: we are arbitrarily ignoring some of the data, while perfectly fitting two points. So how do we use all the data? Let us write down the equations that a line with slope $a$ and intercept $b$ have to satisfy in order to fit our data points:
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 3a + b &=&  2.3 \\
 6a + b &=& 1.7 \\
 9a + b &=& 1.3
-\end{aligned}
-$$
+\end{aligned}$$
 
 This system has no exact solution, since there are three equations and only two unknowns. We need to find $a$ and $b$ such that they are a *best fit* to the data, not the perfect solution. To do that, we need to define what we mean by the \index{fitting!goodness} *goodness of fit*.
 
@@ -43,8 +39,7 @@ One simple way to asses how close the fit is to the data is to subtract the pred
 A more reasonable approach is to take absolute values of the deviations before adding them up. This is called the total deviation, for $n$ data points with a line fit:
 
 $$ 
-TD = \sum_{i=1}^n |  y_i - a x_i - b | 
-$$
+TD = \sum_{i=1}^n |  y_i - a x_i - b | $$
 
 Mathematically, a better measure of total error is a sum of squared errors, which also has the advantage of adding up non-negative values, but is known as a better measure of the distance between the fit and the data (think of Euclidean distance, which is also a sum of squares) \index{fitting!least squares}:
 
@@ -56,23 +51,18 @@ Thus we have formulated the goal of fitting the best line to a two-variable data
 
 ::: {#def-sample-cov}
 The \index{covariance} *covariance* of a data set of pairs of values $(X,Y)$ is the sum of the products of the corresponding deviations from their respective means: $$ 
-Cov(X,Y) = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar X) (y_i - \bar Y) 
-$$
+Cov(X,Y) = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar X) (y_i - \bar Y) $$
 :::
 
 Intuitively, this means that if two variable tend to deviate in the same direction from their respective means, they have a positive covariance, and if they tend to deviate in opposite directions from their means, they have a negative covariance. In the intermediate case, if sometimes they deviate together and other times they deviate in opposition, the covariance is small or zero. For instance, the covariance between two independent random variables is zero.
 
 It should come as no surprise that the slope of the linear regression depends on the covariance, that is, the degree to which the two variables deviate together from their means. If the covariance is positive, then for larger values of $x$ the corresponding $y$ values tend to be larger, which means the slope of the line is positive. Conversely, if the covariance is negative, so is the slope of the line. And if the two variables are independent, the slope has to be close to zero. The actual formula for the \index{linear regression!slope}\index{slope!linear regression}slope of the linear regression is [@whitlock_analysis_2008]:
 
-$$
-a = \frac{Cov(X,Y)}{Var(X)}
-$$
+$$a = \frac{Cov(X,Y)}{Var(X)}$$
 
 I will not provide a proof that this slope generates the minimal sum of squared errors, but that is indeed the case. To find the intercept of the linear regression, we make use of one other property of the best fit line: in order for it to minimize the SSE, it must pass through the point $(\bar X, \bar Y)$. Again, I will not prove this, but note that the point of the two mean values is the central point of the "cloud" of points in the scatter plot, and if the line missed that central point, the deviations will be larger. Assuming that is the case, we have the following equation for the line: $\bar Y = a\bar X + b$, which we can solve for the \index{linear regression!y-intercept} \index{y-intercept!linear regression} intercept $b$:
 
-$$
-b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}
-$$
+$$b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}$$
 
 #### exercises
 
@@ -83,7 +73,7 @@ $$
 | 2   | 3   | 3   | 2.6 |
 | 3   | 4   | 10  | 4.4 |
 
-: Simple fake data sets for linear regression {#tbl-ch4-linreg}
+: Simple fake data sets for linear regression
 
 Use the data sets in @tbl-ch4-linreg to answer the following questions (you may use a calculator or computer to help with arithmetic):
 
@@ -104,9 +94,8 @@ Use the data sets in @tbl-ch4-linreg to answer the following questions (you may 
 The correlation between two random variables is a measure of how much variation in one corresponds to variation in the other. If this sounds very similar to the description of covariance, it's because they are closely related. Essentially, correlation is a normalized covariance, restricted to lie between -1 and 1. Here is the definition:
 
 ::: {#def-corr}
-The (linear) *correlation* of a set of two paired variables (X,Y) is: $$
-r = \frac{Cov(X,Y)}{\sqrt{{Var(X)}{Var(Y)}}} =  \frac{Cov(X,Y)}{\sigma_X \sigma_Y}
-$$
+The (linear) *correlation* of a set of two paired variables (X,Y) is:
+$$r = \frac{Cov(X,Y)}{\sqrt{{Var(X)}{Var(Y)}}} =  \frac{Cov(X,Y)}{\sigma_X \sigma_Y}$$
 :::
 
 If the two variables are identical, $X=Y$, then the covariance becomes its variance $Cov(X,X) = Var(X)$ and the denominator also becomes the variance, and the correlation is 1. This is also true if $X$ and $Y$ are scalar multiples of each other, as you can see by plugging in $X= cY$ into the covariance formula. On the other extreme, if $X$ and $Y$ are negative multiples of each other, $X = -cY$, the pair is called *anti-correlated* and has the correlation coefficient of -1. All other cases fall in the middle, neither perfect correlation nor perfect anti-correlation. The special case if the two variables are *independent* (which we will properly define in the next chapter) their covariance is zero and the correlation coefficient is also zero.
@@ -115,20 +104,18 @@ If the two variables are identical, $X=Y$, then the covariance becomes its varia
 
 This gives a connection between correlation and slope of linear regression:
 
-$$
-a = r \frac{\sigma_Y}{\sigma_X}
-$$ {#eq-slope-corr}
+$$a = r \frac{\sigma_Y}{\sigma_X}$$
+ {#eq-slope-corr}
 
 Whenever linear regression is reported, one always sees the values of correlation $r$ and squared correlation $r^2$ displayed. The reason for this is that $r^2$ has a very clear meaning of the **the fraction of the variance of the dependent variable** $Y$ explained by the linear regression $Y=aX+b$. Let us unpack what this means.
 
 According to the stated assumptions of linear regression, the response variable $Y$ is assumed to be linear relationship with the explanatory variable $X$, but with independent additive noise (also normally distributed, but it doesn't play a role for this argument). Linear regression captures the linear relationship, and the remaining error (residuals) represent the noise. Thus, each value of $Y$ can be written as $Y = R + \hat Y$ where $R$ is the residual (noise) and the value predicted by the linear regression is $\hat Y =aX+b$. The assumption that $R$ is independent of $Y$ means that $Var(Y) = Var (\hat Y) + Var (R)$ because variance is additive for independent random variables, as we will discuss in detail in chapter 5. By the same reasoning $Cov(X,\hat Y + R) = Cov(X,\hat Y) + Cov(X,R)$. These two covariances can be simplified further: $Cov(X,R) = 0$ because $R$ is independent random noise. $X$ and the predicted $\hat Y$ are perfectly correlated, so $Cov(X,\hat Y) = Cov(X,mX+b) = Var(X) = Var(\hat Y)$. This leads to the derivation of the meaning of $r^2$:
 
-$$
-\begin{aligned}
+$$\begin{aligned}
   r^2 = \frac{Cov(X,Y)^2}{Var(X) Var(Y)} &=   \frac{(Cov(X,\hat Y) + Cov(X,R) )^2}{Var(X) Var(Y)}   = \\
   =\frac{Var(X)Var(\hat Y)}{Var(X) Var(Y)} &=  \frac{Var(\hat Y)}{Var(Y)}
-\end{aligned}
-$$ {#eq-frac-var}
+\end{aligned}$$
+ {#eq-frac-var}
 
 One should be cautious when interpreting results of a linear regression. First, just because there is no linear relationship does not mean that there is no other relationship. @fig-corr-examples shows some examples of scatter plots and their corresponding correlation coefficients. What it shows is that while a formless blob of a scatter plot will certainly have zero correlation, so will other scatter plots in which there is a definite relationship (e.g. a circle, or a X-shape). The point is that **correlation is always a measure of the strength of the linear relationship between variables.**
 
@@ -166,7 +153,7 @@ abline(myfit)
 | MF    | 156.2       | 21.3          | 34.0   | 7.4        | 166.1           |
 | BM    | 120.0       | 20.9          | 26.1   | 9.0        | 205.0           |
 
-: Summary statistics (mean, standard deviation, and covariance) for the variables HR (heart rate) and mass-specific oxygen consumption ($VO_2$) for two groups Macaroni penguins. {#tbl-pen-summary}
+: Summary statistics (mean, standard deviation, and covariance) for the variables HR (heart rate) and mass-specific oxygen consumption ($VO_2$) for two groups Macaroni penguins.
 
 3.  Find the dimensions and units of the slope and the intercept of the linear regression for this data (the units of heart rate and mass-specific oxygen consumption are on the plot).
 
@@ -186,13 +173,13 @@ abline(myfit)
 
 As noted in @sec-counting, all models begins with \index{linear regression!assumptions} assumptions, and linear regression is no exception. Although we have not stated it explicitly, the calculation of the slope and intercept for the best-fit line depends on several conditions being true, specifically: [@whitlock_analysis_2008]
 
--   the variables have a linear relationship with random noise added
+- the variables have a linear relationship with random noise added
 
--   there is no noise in the measurements of the explanatory variable
+- there is no noise in the measurements of the explanatory variable
 
--   the noise in the measurements of the response variable is normally distributed with zero mean and identical standard deviation
+- the noise in the measurements of the response variable is normally distributed with zero mean and identical standard deviation
 
--   the measurements are independent of each other
+- the measurements are independent of each other
 
 The reasons why these assumptions are necessary for linear regression to work are beyond the scope of the text, and they are elucidated very well in the book *Numerical Recipes* [@press_numerical_2007]. I will give a quick intuitive explanation for each one below without going into mathematical or statistical details.
 
@@ -370,3 +357,176 @@ Please read the paper on measuring the rate of \index{sequencing!whole genome} d
 3.  Is linear regression the best representation of the relationship between paternal age and number of mutations? What other model did the authors use to fit the data, and how did it perform?
 
 4.  What do you make of the historical data of paternal ages the authors present at the end of the paper? Can you postulate a testable hypothesis based on this observation?
+
+## Demonstration of regression to the mean
+
+The following interactive simulation allows you to explore the effect of regression to the mean on randomly simulated data.
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 650
+
+library(shiny)
+library(bslib)
+library(ggplot2)
+
+
+# =============================================================================
+# Regression to the mean, illustrated with generated data
+#
+# Heart rate 1 (HR1) ~ Normal(mean = 70, sd = 10), n = 1000.
+# Heart rate 2 (HR2) = r * HR1 + c + noise,  noise ~ Normal(0, s),
+#   where the constant c = 70 * (1 - r) is added so that HR2 has the same mean
+#   as HR1 (equivalently, HR2 = 70 + r * (HR1 - 70) + noise).
+#
+# Sliders set r and s. The app shows a scatterplot with the least-squares line
+# (slope and intercept displayed) and prints the mean of HR1 and HR2 for the
+# people whose HR1 is below the overall HR1 mean, and again for those above it.
+#
+# Regression to the mean: a subgroup selected as extreme on HR1 is, on average,
+# less extreme on HR2 (relative to each variable's own mean and spread) whenever
+# the two are less than perfectly correlated.
+#
+# To run:
+#   install.packages(c("shiny", "ggplot2"))
+#   shiny::runApp("regression_to_mean_app.R")
+# =============================================================================
+
+# Fixed HR1 and unit noise so moving the sliders rescales the SAME data smoothly
+gen_data <- function(r, s, seed, n = 1000) {
+  set.seed(seed)
+  HR1 <- rnorm(n, mean = 70, sd = 10)
+  z   <- rnorm(n, mean = 0, sd = 1)
+  HR2_raw <- r * HR1 + s * z
+  # Constant (y-intercept) that gives HR2 the same mean as HR1.
+  # Its expected value is 70 * (1 - r); computed from the sample so the
+  # realized means are exactly equal.
+  const <- mean(HR1) - mean(HR2_raw)
+  df <- data.frame(HR1 = HR1, HR2 = HR2_raw + const)
+  attr(df, "const") <- const
+  df
+}
+
+plot_rtm <- function(df) {
+  m1 <- mean(df$HR1); m2 <- mean(df$HR2)
+  fit <- lm(HR2 ~ HR1, data = df)
+  b0 <- coef(fit)[1]; b1 <- coef(fit)[2]
+  rho <- cor(df$HR1, df$HR2)
+  
+  ggplot(df, aes(HR1, HR2)) +
+    geom_point(alpha = 0.22, colour = "#3a76c2", size = 1.3) +
+    geom_vline(xintercept = m1, linetype = "dashed", colour = "grey55") +
+    geom_hline(yintercept = m2, linetype = "dashed", colour = "grey55") +
+    geom_smooth(method = "lm", formula = y ~ x, se = FALSE,
+                colour = "#c0392b", linewidth = 1.1) +
+    annotate("label", x = min(df$HR1), y = max(df$HR2), hjust = 0, vjust = 1,
+             size = 4.2, label.size = 0, fill = "#ffffff", alpha = 0.7,
+             label = sprintf("HR2 = %.2f + %.3f x HR1\ncorrelation = %.3f",
+                             b0, b1, rho)) +
+    labs(x = "Heart rate 1 (bpm)", y = "Heart rate 2 (bpm)",
+         subtitle = "Dashed lines mark the mean of each variable") +
+    theme_bw(base_size = 13) +
+    theme(panel.grid.minor = element_blank())
+}
+
+# ---- UI --------------------------------------------------------------------
+ui <- fluidPage(
+  tags$head(tags$style(HTML("
+    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    pre { font-size: 14px; background:#fafafa; border:1px solid #e3e3e3;
+      border-radius:8px; padding:12px 14px; }
+    .note { background:#eef4fb; border-left:4px solid #3a76c2;
+      padding:10px 14px; border-radius:6px; font-size:14px; }
+  "))),
+  
+  titlePanel("Regression to the mean"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      width = 3,
+      sliderInput("r", "r  (HR1 multiplier)",
+                  min = 0, max = 1.5, value = 0.8, step = 0.05),
+      sliderInput("s", "s  (noise standard deviation, bpm)",
+                  min = 0, max = 30, value = 8, step = 0.5),
+      actionButton("regen", "Regenerate data", class = "btn-sm"),
+      helpText("HR1 ~ Normal(70, 10), n = 1000. ",
+               "HR2 = r x HR1 + c + Normal(0, s), where c = 70 x (1 - r) is ",
+               "added so HR1 and HR2 share the same mean. The regression slope ",
+               "is close to r; with any noise the correlation is below 1, which ",
+               "is what produces regression to the mean.")
+    ),
+    
+    mainPanel(
+      width = 9,
+      plotOutput("scatter", height = "420px"),
+      tags$br(),
+      h4("Group means (split at the overall HR1 mean)"),
+      verbatimTextOutput("means"),
+      uiOutput("interp")
+    )
+  )
+)
+
+# ---- Server ----------------------------------------------------------------
+server <- function(input, output, session) {
+  
+  seed <- reactiveVal(2024)
+  observeEvent(input$regen, seed(seed() + 1))
+  
+  df <- reactive(gen_data(input$r, input$s, seed()))
+  
+  stats <- reactive({
+    d <- df()
+    m1 <- mean(d$HR1); m2 <- mean(d$HR2)
+    sd1 <- sd(d$HR1);  sd2 <- sd(d$HR2)
+    below <- d$HR1 < m1
+    list(
+      n = nrow(d), m1 = m1, m2 = m2, sd1 = sd1, sd2 = sd2,
+      const = attr(d, "const"),
+      n_lo = sum(below), n_hi = sum(!below),
+      lo1 = mean(d$HR1[below]),  lo2 = mean(d$HR2[below]),
+      hi1 = mean(d$HR1[!below]), hi2 = mean(d$HR2[!below])
+    )
+  })
+  
+  output$scatter <- renderPlot(plot_rtm(df()))
+  
+  output$means <- renderPrint({
+    s <- stats()
+    cat(sprintf("Constant c added to HR2 (y-intercept) = %5.2f   [ = 70 x (1 - r) ]\n\n",
+                s$const))
+    cat(sprintf("Overall (n = %d):        mean HR1 = %5.2f    mean HR2 = %5.2f\n",
+                s$n, s$m1, s$m2))
+    cat(strrep("-", 62), "\n")
+    cat(sprintf("HR1 below mean (n = %3d): mean HR1 = %5.2f    mean HR2 = %5.2f\n",
+                s$n_lo, s$lo1, s$lo2))
+    cat(sprintf("HR1 above mean (n = %3d): mean HR1 = %5.2f    mean HR2 = %5.2f\n",
+                s$n_hi, s$hi1, s$hi2))
+  })
+  
+  output$interp <- renderUI({
+    s <- stats()
+    lo1z <- (s$lo1 - s$m1) / s$sd1; lo2z <- (s$lo2 - s$m2) / s$sd2
+    hi1z <- (s$hi1 - s$m1) / s$sd1; hi2z <- (s$hi2 - s$m2) / s$sd2
+    rtm  <- abs(lo2z) < abs(lo1z) && abs(hi2z) < abs(hi1z)
+    
+    verdict <- if (rtm)
+      "Each extreme group is nearer the mean on HR2 than on HR1 &mdash; regression to the mean."
+    else
+      "HR2 is not less extreme than HR1 here; try adding noise or setting r &lt; 1."
+    
+    div(class = "note",
+        HTML(sprintf(
+          "HR1 and HR2 now share a mean of about %.1f bpm, so the group means ",
+          s$m1),
+          sprintf("compare directly. The below-average group averages %.1f on HR1 ",
+                  s$lo1),
+          sprintf("but %.1f on HR2; the above-average group averages %.1f on HR1 ",
+                  s$lo2, s$hi1),
+          sprintf("but %.1f on HR2. %s", s$hi2, verdict)))
+  })
+}
+
+shinyApp(ui, server)
+
+```

@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>4&nbsp; Linear regression – Quantifying Life</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -24,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -55,15 +57,19 @@ div.csl-indent {
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dda8909163e0b4f3670ba323ebd66e56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6cbb53fb565b2bbafeaa1df642049805.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<meta name="shinylive:serviceworker_dir" content=".">
+<script src="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/run-python-blocks.js" type="module"></script>
+<link href="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/shinylive.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -93,7 +99,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -152,9 +158,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantifying Life</a> 
         <div class="sidebar-tools-main">
@@ -337,6 +341,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="header-section-number">4.3.1</span> Discussion questions</a></li>
   </ul></li>
+  <li><a href="#demonstration-of-regression-to-the-mean" id="toc-demonstration-of-regression-to-the-mean" class="nav-link" data-scroll-target="#demonstration-of-regression-to-the-mean"><span class="header-section-number">4.4</span> Demonstration of regression to the mean</a></li>
   </ul>
 </nav>
     </div>
@@ -379,27 +384,22 @@ window.Quarto = {
 <section id="sum-of-squared-errors" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="sum-of-squared-errors"><span class="header-section-number">4.1.1</span> sum of squared errors</h3>
 <p>It is easy to find the best-fit line for a data set with only two points: its slope and intercept can be found by solving the two simultaneous linear equations, e.g.&nbsp;if the data set consists of <span class="math inline">\((3,2.3), (6, 1.7)\)</span>, then finding the best fit values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> means solving the following two equations:</p>
-<p><span class="math display">\[
-\begin{aligned}
+<p><span class="math display">\[\begin{aligned}
 3a + b &amp;=&amp; 2.3 \\
 6a + b &amp;=&amp; 1.7
-\end{aligned}
-\]</span></p>
+\end{aligned}\]</span></p>
 <p>These equations have a unique solution for each unknown: <span class="math inline">\(a=-0.2\)</span> and <span class="math inline">\(b=2.9\)</span> (you can solve it using basic algebra).</p>
 <p>However, a data set with two points is very small and cannot serve as a reasonable guide for finding a relationship between two variables. Let us add one more data point, to increase our sample size to three: <span class="math inline">\((3,2.3), (6, 1.7), (9, 1.3)\)</span>. How do you find the best fit slope and intercept? <strong>Bad idea:</strong> take two points and find a line, that is the slope and the intercept, that passes through the two. It should be clear why this is a bad idea: we are arbitrarily ignoring some of the data, while perfectly fitting two points. So how do we use all the data? Let us write down the equations that a line with slope <span class="math inline">\(a\)</span> and intercept <span class="math inline">\(b\)</span> have to satisfy in order to fit our data points:</p>
-<p><span class="math display">\[
-\begin{aligned}
+<p><span class="math display">\[\begin{aligned}
 3a + b &amp;=&amp;  2.3 \\
 6a + b &amp;=&amp; 1.7 \\
 9a + b &amp;=&amp; 1.3
-\end{aligned}
-\]</span></p>
+\end{aligned}\]</span></p>
 <p>This system has no exact solution, since there are three equations and only two unknowns. We need to find <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> such that they are a <em>best fit</em> to the data, not the perfect solution. To do that, we need to define what we mean by the <em>goodness of fit</em>.</p>
 <p>One simple way to asses how close the fit is to the data is to subtract the predicted values of <span class="math inline">\(y\)</span> from the data, as follows: <span class="math inline">\(e_i = y_i - (ax_i + b)\)</span>. The values <span class="math inline">\(e_i\)</span> are called the <em>errors</em> or <em>residuals</em> of the linear fit. If the values predicted by the linear model (<span class="math inline">\(ax_i+b\)</span>) are close to the actual data <span class="math inline">\(y_i\)</span>, then the error will be small. However, if we add it all up, the errors with opposite signs will cancel each other, giving the impression of a good fit simply if the deviations are symmetric.</p>
 <p>A more reasonable approach is to take absolute values of the deviations before adding them up. This is called the total deviation, for <span class="math inline">\(n\)</span> data points with a line fit:</p>
 <p><span class="math display">\[
-TD = \sum_{i=1}^n |  y_i - a x_i - b |
-\]</span></p>
+TD = \sum_{i=1}^n |  y_i - a x_i - b | \]</span></p>
 <p>Mathematically, a better measure of total error is a sum of squared errors, which also has the advantage of adding up non-negative values, but is known as a better measure of the distance between the fit and the data (think of Euclidean distance, which is also a sum of squares) :</p>
 <p><span class="math display">\[ SSE = \sum_{i=1}^n (y_i -  a x_i - b)^2 \]</span></p>
 <p>Thus we have formulated the goal of fitting the best line to a two-variable data set, also known as linear regression: <strong>find the values of slope and intercept that result in the lowest possible sum of squared errors</strong>. There is a mathematical recipe which produces these values, which will be described in the next section.</p>
@@ -408,27 +408,17 @@ TD = \sum_{i=1}^n |  y_i - a x_i - b |
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="best-fit-slope-and-intercept"><span class="header-section-number">4.1.2</span> best-fit slope and intercept</h3>
 <div id="def-sample-cov" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 4.1</strong></span> The <em>covariance</em> of a data set of pairs of values <span class="math inline">\((X,Y)\)</span> is the sum of the products of the corresponding deviations from their respective means: <span class="math display">\[
-Cov(X,Y) = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar X) (y_i - \bar Y)
-\]</span></p>
+Cov(X,Y) = \frac{1}{n-1} \sum_{i=1}^n (x_i - \bar X) (y_i - \bar Y) \]</span></p>
 </div>
 <p>Intuitively, this means that if two variable tend to deviate in the same direction from their respective means, they have a positive covariance, and if they tend to deviate in opposite directions from their means, they have a negative covariance. In the intermediate case, if sometimes they deviate together and other times they deviate in opposition, the covariance is small or zero. For instance, the covariance between two independent random variables is zero.</p>
 <p>It should come as no surprise that the slope of the linear regression depends on the covariance, that is, the degree to which the two variables deviate together from their means. If the covariance is positive, then for larger values of <span class="math inline">\(x\)</span> the corresponding <span class="math inline">\(y\)</span> values tend to be larger, which means the slope of the line is positive. Conversely, if the covariance is negative, so is the slope of the line. And if the two variables are independent, the slope has to be close to zero. The actual formula for the slope of the linear regression is <span class="citation" data-cites="whitlock_analysis_2008">(<a href="references.html#ref-whitlock_analysis_2008" role="doc-biblioref">Whitlock and Schluter 2008</a>)</span>:</p>
-<p><span class="math display">\[
-a = \frac{Cov(X,Y)}{Var(X)}
-\]</span></p>
+<p><span class="math display">\[a = \frac{Cov(X,Y)}{Var(X)}\]</span></p>
 <p>I will not provide a proof that this slope generates the minimal sum of squared errors, but that is indeed the case. To find the intercept of the linear regression, we make use of one other property of the best fit line: in order for it to minimize the SSE, it must pass through the point <span class="math inline">\((\bar X, \bar Y)\)</span>. Again, I will not prove this, but note that the point of the two mean values is the central point of the “cloud” of points in the scatter plot, and if the line missed that central point, the deviations will be larger. Assuming that is the case, we have the following equation for the line: <span class="math inline">\(\bar Y = a\bar X + b\)</span>, which we can solve for the intercept <span class="math inline">\(b\)</span>:</p>
-<p><span class="math display">\[
-b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}
-\]</span></p>
+<p><span class="math display">\[b = \bar Y - \frac{Cov(X,Y) \bar X}{Var(X)}\]</span></p>
 <section id="exercises" class="level4" data-number="4.1.2.1">
 <h4 data-number="4.1.2.1" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.1.2.1</span> exercises</h4>
-<div id="tbl-ch4-linreg" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ch4-linreg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.1: Simple fake data sets for linear regression
-</figcaption>
-<div aria-describedby="tbl-ch4-linreg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
+<caption>Simple fake data sets for linear regression</caption>
 <thead>
 <tr class="header">
 <th>X</th>
@@ -464,10 +454,7 @@ Table&nbsp;4.1: Simple fake data sets for linear regression
 </tr>
 </tbody>
 </table>
-</div>
-</figure>
-</div>
-<p>Use the data sets in <a href="#tbl-ch4-linreg" class="quarto-xref">Table&nbsp;<span>4.1</span></a> to answer the following questions (you may use a calculator or computer to help with arithmetic):</p>
+<p>Use the data sets in <span class="quarto-unresolved-ref">?tbl-ch4-linreg</span> to answer the following questions (you may use a calculator or computer to help with arithmetic):</p>
 <ol type="1">
 <li><p>Compute the means and standard deviations of each variable.</p></li>
 <li><p>Compute the covariance between X and each of the response variables (Y1, Y2, Y3).</p></li>
@@ -482,9 +469,7 @@ Table&nbsp;4.1: Simple fake data sets for linear regression
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="correlation-and-goodness-of-fit"><span class="header-section-number">4.1.3</span> correlation and goodness of fit</h3>
 <p>The correlation between two random variables is a measure of how much variation in one corresponds to variation in the other. If this sounds very similar to the description of covariance, it’s because they are closely related. Essentially, correlation is a normalized covariance, restricted to lie between -1 and 1. Here is the definition:</p>
 <div id="def-corr" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 4.2</strong></span> The (linear) <em>correlation</em> of a set of two paired variables (X,Y) is: <span class="math display">\[
-r = \frac{Cov(X,Y)}{\sqrt{{Var(X)}{Var(Y)}}} =  \frac{Cov(X,Y)}{\sigma_X \sigma_Y}
-\]</span></p>
+<p><span class="theorem-title"><strong>Definition 4.2</strong></span> The (linear) <em>correlation</em> of a set of two paired variables (X,Y) is: <span class="math display">\[r = \frac{Cov(X,Y)}{\sqrt{{Var(X)}{Var(Y)}}} =  \frac{Cov(X,Y)}{\sigma_X \sigma_Y}\]</span></p>
 </div>
 <p>If the two variables are identical, <span class="math inline">\(X=Y\)</span>, then the covariance becomes its variance <span class="math inline">\(Cov(X,X) = Var(X)\)</span> and the denominator also becomes the variance, and the correlation is 1. This is also true if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are scalar multiples of each other, as you can see by plugging in <span class="math inline">\(X= cY\)</span> into the covariance formula. On the other extreme, if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are negative multiples of each other, <span class="math inline">\(X = -cY\)</span>, the pair is called <em>anti-correlated</em> and has the correlation coefficient of -1. All other cases fall in the middle, neither perfect correlation nor perfect anti-correlation. The special case if the two variables are <em>independent</em> (which we will properly define in the next chapter) their covariance is zero and the correlation coefficient is also zero.</p>
 <div id="fig-corr-examples" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -498,23 +483,19 @@ Figure&nbsp;4.1: Correlation coefficient does not tell the whole story when it c
 </figure>
 </div>
 <p>This gives a connection between correlation and slope of linear regression:</p>
-<p><span id="eq-slope-corr"><span class="math display">\[
-a = r \frac{\sigma_Y}{\sigma_X}
-\tag{4.1}\]</span></span></p>
+<p><span class="math display">\[a = r \frac{\sigma_Y}{\sigma_X}\]</span> {#eq-slope-corr}</p>
 <p>Whenever linear regression is reported, one always sees the values of correlation <span class="math inline">\(r\)</span> and squared correlation <span class="math inline">\(r^2\)</span> displayed. The reason for this is that <span class="math inline">\(r^2\)</span> has a very clear meaning of the <strong>the fraction of the variance of the dependent variable</strong> <span class="math inline">\(Y\)</span> explained by the linear regression <span class="math inline">\(Y=aX+b\)</span>. Let us unpack what this means.</p>
 <p>According to the stated assumptions of linear regression, the response variable <span class="math inline">\(Y\)</span> is assumed to be linear relationship with the explanatory variable <span class="math inline">\(X\)</span>, but with independent additive noise (also normally distributed, but it doesn’t play a role for this argument). Linear regression captures the linear relationship, and the remaining error (residuals) represent the noise. Thus, each value of <span class="math inline">\(Y\)</span> can be written as <span class="math inline">\(Y = R + \hat Y\)</span> where <span class="math inline">\(R\)</span> is the residual (noise) and the value predicted by the linear regression is <span class="math inline">\(\hat Y =aX+b\)</span>. The assumption that <span class="math inline">\(R\)</span> is independent of <span class="math inline">\(Y\)</span> means that <span class="math inline">\(Var(Y) = Var (\hat Y) + Var (R)\)</span> because variance is additive for independent random variables, as we will discuss in detail in chapter 5. By the same reasoning <span class="math inline">\(Cov(X,\hat Y + R) = Cov(X,\hat Y) + Cov(X,R)\)</span>. These two covariances can be simplified further: <span class="math inline">\(Cov(X,R) = 0\)</span> because <span class="math inline">\(R\)</span> is independent random noise. <span class="math inline">\(X\)</span> and the predicted <span class="math inline">\(\hat Y\)</span> are perfectly correlated, so <span class="math inline">\(Cov(X,\hat Y) = Cov(X,mX+b) = Var(X) = Var(\hat Y)\)</span>. This leads to the derivation of the meaning of <span class="math inline">\(r^2\)</span>:</p>
-<p><span id="eq-frac-var"><span class="math display">\[
-\begin{aligned}
+<p><span class="math display">\[\begin{aligned}
   r^2 = \frac{Cov(X,Y)^2}{Var(X) Var(Y)} &amp;=   \frac{(Cov(X,\hat Y) + Cov(X,R) )^2}{Var(X) Var(Y)}   = \\
   =\frac{Var(X)Var(\hat Y)}{Var(X) Var(Y)} &amp;=  \frac{Var(\hat Y)}{Var(Y)}
-\end{aligned}
-\tag{4.2}\]</span></span></p>
+\end{aligned}\]</span> {#eq-frac-var}</p>
 <p>One should be cautious when interpreting results of a linear regression. First, just because there is no linear relationship does not mean that there is no other relationship. <a href="#fig-corr-examples" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> shows some examples of scatter plots and their corresponding correlation coefficients. What it shows is that while a formless blob of a scatter plot will certainly have zero correlation, so will other scatter plots in which there is a definite relationship (e.g.&nbsp;a circle, or a X-shape). The point is that <strong>correlation is always a measure of the strength of the linear relationship between variables.</strong></p>
 <p>The second caution is well known, as that is the danger of equating correlation with a causal relationship. There are numerous examples of scientists misinterpreting a coincidental correlation as meaningful, or deeming two variables that have a common source as causing one another. For example, one can look at the increase in automobile ownership in the last century and the concurrent improvement in longevity and conclude that automobiles are good for human health. It is well-documented, however, that a sedentary lifestyle and automobile exhaust do not make a person healthy. Instead, increased prosperity has increased both the purchasing power of individuals and enabled advances in medicine that have increase our lifespans. To summarize, one must be careful when interpreting correlation: a weak one does not mean there is no relationship, and a strong one does not mean that one variable causes the changes in the other.</p>
 <section id="exercises-1" class="level4" data-number="4.1.3.1">
 <h4 data-number="4.1.3.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">4.1.3.1</span> exercises</h4>
 <ol type="1">
-<li>Use the simple data sets in <a href="#tbl-ch4-linreg" class="quarto-xref">Table&nbsp;<span>4.1</span></a> to calculate the correlation coefficients between X and Y1, Y2, and Y3, respectively. Which pair of variables has the highest correlation? Which has the lowest?</li>
+<li>Use the simple data sets in <span class="quarto-unresolved-ref">?tbl-ch4-linreg</span> to calculate the correlation coefficients between X and Y1, Y2, and Y3, respectively. Which pair of variables has the highest correlation? Which has the lowest?</li>
 <li>Using the best-fit slope and intercept calculated in exercises in the previous section, calculate the predicted values of Y, Y1, and Y3, and compute the variance of the predicted values. What fraction of variance is explained by the linear regressions in each case, and how does it compare the correlation coefficient?</li>
 </ol>
 <p><a href="#fig-linreg-HRVO2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> shows scatter plots of the rate of oxygen consumption (VO) and heart rate (HR) measured in macaroni penguins running on a treadmill (really).</p>
@@ -553,13 +534,8 @@ Figure&nbsp;4.2: Linear regression between mass-specific oxygen consumption and 
 </figcaption>
 </figure>
 </div>
-<div id="tbl-pen-summary" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-pen-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;4.2: Summary statistics (mean, standard deviation, and covariance) for the variables HR (heart rate) and mass-specific oxygen consumption (<span class="math inline">\(VO_2\)</span>) for two groups Macaroni penguins.
-</figcaption>
-<div aria-describedby="tbl-pen-summary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
+<caption>Summary statistics (mean, standard deviation, and covariance) for the variables HR (heart rate) and mass-specific oxygen consumption (<span class="math inline">\(VO_2\)</span>) for two groups Macaroni penguins.</caption>
 <colgroup>
 <col style="width: 9%">
 <col style="width: 18%">
@@ -597,16 +573,13 @@ Table&nbsp;4.2: Summary statistics (mean, standard deviation, and covariance) fo
 </tr>
 </tbody>
 </table>
-</div>
-</figure>
-</div>
 <ol start="3" type="1">
 <li><p>Find the dimensions and units of the slope and the intercept of the linear regression for this data (the units of heart rate and mass-specific oxygen consumption are on the plot).</p></li>
 <li><p>Based on the scatter plots, which data sets is closer to its line of best fit (has a higher goodness of fit), group MF or BM?</p></li>
-<li><p>The summary statistics for the variables in the two group of penguins are listed in <a href="#tbl-pen-summary" class="quarto-xref">Table&nbsp;<span>4.2</span></a>. Compute the correlation coefficients between the two variables for both groups, and comment on how it relates to the goodness of fit you observed by eye.</p></li>
+<li><p>The summary statistics for the variables in the two group of penguins are listed in <span class="quarto-unresolved-ref">?tbl-pen-summary</span>. Compute the correlation coefficients between the two variables for both groups, and comment on how it relates to the goodness of fit you observed by eye.</p></li>
 <li><p>What fraction of the variance of the response variable is explained by the linear model for the BM group and for the FM group?</p></li>
-<li><p>Based on the statistics in <a href="#tbl-pen-summary" class="quarto-xref">Table&nbsp;<span>4.2</span></a>, compute the best-fit slope and intercept for both groups of penguins based on these statistics, using the heart rate as the <strong>explanatory</strong> variable.</p></li>
-<li><p>Based on the statistics in <a href="#tbl-pen-summary" class="quarto-xref">Table&nbsp;<span>4.2</span></a>, compute the best-fit slope and intercept for both groups of penguins based on these statistics, using the oxygen consumption as the <strong>explanatory</strong> variable. Why are the slopes not reciprocal to the ones computed in question 7?</p></li>
+<li><p>Based on the statistics in <span class="quarto-unresolved-ref">?tbl-pen-summary</span>, compute the best-fit slope and intercept for both groups of penguins based on these statistics, using the heart rate as the <strong>explanatory</strong> variable.</p></li>
+<li><p>Based on the statistics in <span class="quarto-unresolved-ref">?tbl-pen-summary</span>, compute the best-fit slope and intercept for both groups of penguins based on these statistics, using the oxygen consumption as the <strong>explanatory</strong> variable. Why are the slopes not reciprocal to the ones computed in question 7?</p></li>
 </ol>
 </section>
 </section>
@@ -870,11 +843,185 @@ Figure&nbsp;4.8: Residuals of the two regression lines in the Galton data set
 <li><p>Is linear regression the best representation of the relationship between paternal age and number of mutations? What other model did the authors use to fit the data, and how did it perform?</p></li>
 <li><p>What do you make of the historical data of paternal ages the authors present at the end of the paper? Can you postulate a testable hypothesis based on this observation?</p></li>
 </ol>
+</section>
+</section>
+<section id="demonstration-of-regression-to-the-mean" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="demonstration-of-regression-to-the-mean"><span class="header-section-number">4.4</span> Demonstration of regression to the mean</h2>
+<p>The following interactive simulation allows you to explore the effect of regression to the mean on randomly simulated data.</p>
+<pre class="shinylive-r" data-engine="r"><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 650
+
+library(shiny)
+library(bslib)
+library(ggplot2)
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+# =============================================================================
+# Regression to the mean, illustrated with generated data
+#
+# Heart rate 1 (HR1) ~ Normal(mean = 70, sd = 10), n = 1000.
+# Heart rate 2 (HR2) = r * HR1 + c + noise,  noise ~ Normal(0, s),
+#   where the constant c = 70 * (1 - r) is added so that HR2 has the same mean
+#   as HR1 (equivalently, HR2 = 70 + r * (HR1 - 70) + noise).
+#
+# Sliders set r and s. The app shows a scatterplot with the least-squares line
+# (slope and intercept displayed) and prints the mean of HR1 and HR2 for the
+# people whose HR1 is below the overall HR1 mean, and again for those above it.
+#
+# Regression to the mean: a subgroup selected as extreme on HR1 is, on average,
+# less extreme on HR2 (relative to each variable's own mean and spread) whenever
+# the two are less than perfectly correlated.
+#
+# To run:
+#   install.packages(c("shiny", "ggplot2"))
+#   shiny::runApp("regression_to_mean_app.R")
+# =============================================================================
+
+# Fixed HR1 and unit noise so moving the sliders rescales the SAME data smoothly
+gen_data &lt;- function(r, s, seed, n = 1000) {
+  set.seed(seed)
+  HR1 &lt;- rnorm(n, mean = 70, sd = 10)
+  z   &lt;- rnorm(n, mean = 0, sd = 1)
+  HR2_raw &lt;- r * HR1 + s * z
+  # Constant (y-intercept) that gives HR2 the same mean as HR1.
+  # Its expected value is 70 * (1 - r); computed from the sample so the
+  # realized means are exactly equal.
+  const &lt;- mean(HR1) - mean(HR2_raw)
+  df &lt;- data.frame(HR1 = HR1, HR2 = HR2_raw + const)
+  attr(df, "const") &lt;- const
+  df
+}
+
+plot_rtm &lt;- function(df) {
+  m1 &lt;- mean(df$HR1); m2 &lt;- mean(df$HR2)
+  fit &lt;- lm(HR2 ~ HR1, data = df)
+  b0 &lt;- coef(fit)[1]; b1 &lt;- coef(fit)[2]
+  rho &lt;- cor(df$HR1, df$HR2)
+  
+  ggplot(df, aes(HR1, HR2)) +
+    geom_point(alpha = 0.22, colour = "#3a76c2", size = 1.3) +
+    geom_vline(xintercept = m1, linetype = "dashed", colour = "grey55") +
+    geom_hline(yintercept = m2, linetype = "dashed", colour = "grey55") +
+    geom_smooth(method = "lm", formula = y ~ x, se = FALSE,
+                colour = "#c0392b", linewidth = 1.1) +
+    annotate("label", x = min(df$HR1), y = max(df$HR2), hjust = 0, vjust = 1,
+             size = 4.2, label.size = 0, fill = "#ffffff", alpha = 0.7,
+             label = sprintf("HR2 = %.2f + %.3f x HR1\ncorrelation = %.3f",
+                             b0, b1, rho)) +
+    labs(x = "Heart rate 1 (bpm)", y = "Heart rate 2 (bpm)",
+         subtitle = "Dashed lines mark the mean of each variable") +
+    theme_bw(base_size = 13) +
+    theme(panel.grid.minor = element_blank())
+}
+
+# ---- UI --------------------------------------------------------------------
+ui &lt;- fluidPage(
+  tags$head(tags$style(HTML("
+    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    pre { font-size: 14px; background:#fafafa; border:1px solid #e3e3e3;
+      border-radius:8px; padding:12px 14px; }
+    .note { background:#eef4fb; border-left:4px solid #3a76c2;
+      padding:10px 14px; border-radius:6px; font-size:14px; }
+  "))),
+  
+  titlePanel("Regression to the mean"),
+  
+  sidebarLayout(
+    sidebarPanel(
+      width = 3,
+      sliderInput("r", "r  (HR1 multiplier)",
+                  min = 0, max = 1.5, value = 0.8, step = 0.05),
+      sliderInput("s", "s  (noise standard deviation, bpm)",
+                  min = 0, max = 30, value = 8, step = 0.5),
+      actionButton("regen", "Regenerate data", class = "btn-sm"),
+      helpText("HR1 ~ Normal(70, 10), n = 1000. ",
+               "HR2 = r x HR1 + c + Normal(0, s), where c = 70 x (1 - r) is ",
+               "added so HR1 and HR2 share the same mean. The regression slope ",
+               "is close to r; with any noise the correlation is below 1, which ",
+               "is what produces regression to the mean.")
+    ),
+    
+    mainPanel(
+      width = 9,
+      plotOutput("scatter", height = "420px"),
+      tags$br(),
+      h4("Group means (split at the overall HR1 mean)"),
+      verbatimTextOutput("means"),
+      uiOutput("interp")
+    )
+  )
+)
+
+# ---- Server ----------------------------------------------------------------
+server &lt;- function(input, output, session) {
+  
+  seed &lt;- reactiveVal(2024)
+  observeEvent(input$regen, seed(seed() + 1))
+  
+  df &lt;- reactive(gen_data(input$r, input$s, seed()))
+  
+  stats &lt;- reactive({
+    d &lt;- df()
+    m1 &lt;- mean(d$HR1); m2 &lt;- mean(d$HR2)
+    sd1 &lt;- sd(d$HR1);  sd2 &lt;- sd(d$HR2)
+    below &lt;- d$HR1 &lt; m1
+    list(
+      n = nrow(d), m1 = m1, m2 = m2, sd1 = sd1, sd2 = sd2,
+      const = attr(d, "const"),
+      n_lo = sum(below), n_hi = sum(!below),
+      lo1 = mean(d$HR1[below]),  lo2 = mean(d$HR2[below]),
+      hi1 = mean(d$HR1[!below]), hi2 = mean(d$HR2[!below])
+    )
+  })
+  
+  output$scatter &lt;- renderPlot(plot_rtm(df()))
+  
+  output$means &lt;- renderPrint({
+    s &lt;- stats()
+    cat(sprintf("Constant c added to HR2 (y-intercept) = %5.2f   [ = 70 x (1 - r) ]\n\n",
+                s$const))
+    cat(sprintf("Overall (n = %d):        mean HR1 = %5.2f    mean HR2 = %5.2f\n",
+                s$n, s$m1, s$m2))
+    cat(strrep("-", 62), "\n")
+    cat(sprintf("HR1 below mean (n = %3d): mean HR1 = %5.2f    mean HR2 = %5.2f\n",
+                s$n_lo, s$lo1, s$lo2))
+    cat(sprintf("HR1 above mean (n = %3d): mean HR1 = %5.2f    mean HR2 = %5.2f\n",
+                s$n_hi, s$hi1, s$hi2))
+  })
+  
+  output$interp &lt;- renderUI({
+    s &lt;- stats()
+    lo1z &lt;- (s$lo1 - s$m1) / s$sd1; lo2z &lt;- (s$lo2 - s$m2) / s$sd2
+    hi1z &lt;- (s$hi1 - s$m1) / s$sd1; hi2z &lt;- (s$hi2 - s$m2) / s$sd2
+    rtm  &lt;- abs(lo2z) &lt; abs(lo1z) &amp;&amp; abs(hi2z) &lt; abs(hi1z)
+    
+    verdict &lt;- if (rtm)
+      "Each extreme group is nearer the mean on HR2 than on HR1 &amp;mdash; regression to the mean."
+    else
+      "HR2 is not less extreme than HR1 here; try adding noise or setting r &amp;lt; 1."
+    
+    div(class = "note",
+        HTML(sprintf(
+          "HR1 and HR2 now share a mean of about %.1f bpm, so the group means ",
+          s$m1),
+          sprintf("compare directly. The below-average group averages %.1f on HR1 ",
+                  s$lo1),
+          sprintf("but %.1f on HR2; the above-average group averages %.1f on HR1 ",
+                  s$lo2, s$hi1),
+          sprintf("but %.1f on HR2. %s", s$hi2, verdict)))
+  })
+}
+
+shinyApp(ui, server)
+</code></pre>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-kong_rate_2012-1" class="csl-entry" role="listitem">
-Kong, Augustine, Michael L. Frigge, Gisli Masson, Soren Besenbacher, Patrick Sulem, Gisli Magnusson, Sigurjon A. Gudjonsson, et al. 2012. <span>“Rate of de Novo Mutations and the Importance of Father/’s Age to Disease Risk.”</span> <em>Nature</em> 488 (7412): 471–75. <a href="https://doi.org/10.1038/nature11396">https://doi.org/10.1038/nature11396</a>.
+Kong, Augustine, Michael L. Frigge, Gisli Masson, et al. 2012. <span>“Rate of de Novo Mutations and the Importance of Father/’s Age to Disease Risk.”</span> <em>Nature</em> 488 (7412): 471–75. <a href="https://doi.org/10.1038/nature11396">https://doi.org/10.1038/nature11396</a>.
 </div>
 <div id="ref-press_numerical_2007" class="csl-entry" role="listitem">
 Press, William H., Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. 2007. <em>Numerical Recipes: The Art of Scientific Computing</em>. Cambridge University Press.
@@ -883,10 +1030,9 @@ Press, William H., Saul A. Teukolsky, William T. Vetterling, and Brian P. Flanne
 Senn, Stephen. 2011. <span>“Francis <span>Galton</span> and Regression to the Mean.”</span> <em>Significance</em> 8 (3): 124–26. <a href="https://doi.org/10.1111/j.1740-9713.2011.00509.x">https://doi.org/10.1111/j.1740-9713.2011.00509.x</a>.
 </div>
 <div id="ref-whitlock_analysis_2008" class="csl-entry" role="listitem">
-Whitlock, Michael C., and Dolph Schluter. 2008. <em>The <span>Analysis</span> of <span>Biological</span> <span>Data</span></em>. First Edition, 1st Edition edition. Greenwood Village, Colo: Roberts; Company Publishers.
+Whitlock, Michael C., and Dolph Schluter. 2008. <em>The <span>Analysis</span> of <span>Biological</span> <span>Data</span></em>. First Edition, 1st Edition edition. Roberts; Company Publishers.
 </div>
 </div>
-</section>
 </section>
 
 </main> <!-- /main -->

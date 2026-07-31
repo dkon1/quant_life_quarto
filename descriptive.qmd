@@ -5,13 +5,13 @@
 
 Science begins with experimental measurements, which are then verified by reproducing the results. But no experimental result is perfectly reproducible because all are subject to random noise, whether it is caused by unpredictable processes or is due to measurement error. Describing collections of numbers with noise is the first step to understanding the biological systems that are being measured. In this chapter you will learn to do the following:
 
--   calculate the means and medians of a data set
+- calculate the means and medians of a data set
 
--   calculate variances and standard deviations
+- calculate variances and standard deviations
 
--   produce histograms and box plots and interpret them
+- produce histograms and box plots and interpret them
 
--   connect descriptive stats of data with plots
+- connect descriptive stats of data with plots
 
 ## Mutations and their rates {#sec-mutations}
 
@@ -38,9 +38,8 @@ The value that occurs most frequently in the data set is called its \index{mode}
 The average or \index{mean!data}\index{data!mean} *mean* of a data set is the sum of all the values divided by the number of values. It is also called the *expected value* (particularly in the context of probability, which we will discuss later) because it allows to simply predict the sum of a large number of measurements with a given mean, by multiplying the mean by the number. The mean can be calculated only for a numerical data set, since we cannot add non-numerical values.
 
 ::: {#def-sample-mean}
-The *mean* of a data set $X$, also known as the average or the arithmetic mean is usually indicated with a bar over the variable symbol, and defined as the sum of the values divided by the number of values: $$
-  \bar X  = \frac{1}{n} \sum_{i=1}^n x_i 
-$$
+The *mean* of a data set $X$, also known as the average or the arithmetic mean is usually indicated with a bar over the variable symbol, and defined as the sum of the values divided by the number of values:
+$$  \bar X  = \frac{1}{n} \sum_{i=1}^n x_i $$
 :::
 
 The mean, unlike the median, is not the middle value of the data set, instead it represents the *center of mass* of the measured values [@whitlock_analysis_2008]. Another way of thinking of the mean is as a **weighted sum of the values in the data set**. The weights represent the frequency of occurrence of each numeric value in the data set, which we will further discuss in subsection 3.2.3.
@@ -82,16 +81,14 @@ A better method for describing the spread is to calculate the *quartiles*, which
 The most common measure of spread uses the deviations of each value is from the center, measured by the mean. One simple approach would be to add up all of these deviations together and take the mean, but there is a problem with the naive approach: if we do that, the positives will cancel the negatives, and we'll get an artificially low spread (likely close to zero). One way to correct this is to take the absolute value of the differences before adding them up. However, for somewhat deep mathematical reasons, the standard measure of spread uses not absolute values, but squares of the differences, and then divides that sum not by the number of data points $n$ but by $n-1$.
 
 ::: {#def-sample-variance}
-The *variance* of a data set $X$ with $n$ values is the sum of the squared differences of each value of the variable from the mean, divided by $n-1$: $$
- Var(X) = \frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2
-$$
+The *variance* of a data set $X$ with $n$ values is the sum of the squared differences of each value of the variable from the mean, divided by $n-1$:
+$$ Var(X) = \frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2$$
 :::
 
 The variance is a sum of square differences, so its dimension is the square of the dimensions of the measurements in $X$. Just as the mean is a weighted average of all of the values in the data set, the variance is a weighted average of all the squared deviations of the data from the mean. In order to obtain a measure of the spread comparable to the values of $X$, we take the square root of variance and call it the \index{data!standard deviation} *standard deviation* of the data set $X$:
 
-$$
-\sigma(X) = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2}
-$$ {#eq-std}
+$$\sigma(X) = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2}$$
+ {#eq-std}
 
 The standard deviation is the single most common measure of spread of a numeric data set, because it represents the average deviation of a data point from the mean. However, like the mean, it is sensitive to outliers and may not be the best representation of spread for highly skewed data. In such cases, the interquartile range might be preferred.
 

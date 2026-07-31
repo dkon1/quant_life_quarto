@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>2&nbsp; Describing data sets – Quantifying Life</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -24,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -55,15 +57,14 @@ div.csl-indent {
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dda8909163e0b4f3670ba323ebd66e56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6cbb53fb565b2bbafeaa1df642049805.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -93,7 +94,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -152,9 +153,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantifying Life</a> 
         <div class="sidebar-tools-main">
@@ -392,9 +391,7 @@ Figure&nbsp;2.1: Different types of substitution point mutations are distinguish
 <p>The value that occurs most frequently in the data set is called its <em>mode</em>. For some data sets, particularly those which are symmetric, the mode coincides with the mean (see next paragraph) and the median, but for many others it is distinct. The mode is the most visual of the three statistics, as it can be picked out from the histogram plot of a data set (which is described in subsection 3.2.3) as the value corresponding to the maximum frequency. The mode can also be used for both categorical and numerical data.</p>
 <p>The average or <em>mean</em> of a data set is the sum of all the values divided by the number of values. It is also called the <em>expected value</em> (particularly in the context of probability, which we will discuss later) because it allows to simply predict the sum of a large number of measurements with a given mean, by multiplying the mean by the number. The mean can be calculated only for a numerical data set, since we cannot add non-numerical values.</p>
 <div id="def-sample-mean" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 2.1</strong></span> The <em>mean</em> of a data set <span class="math inline">\(X\)</span>, also known as the average or the arithmetic mean is usually indicated with a bar over the variable symbol, and defined as the sum of the values divided by the number of values: <span class="math display">\[
-  \bar X  = \frac{1}{n} \sum_{i=1}^n x_i
-\]</span></p>
+<p><span class="theorem-title"><strong>Definition 2.1</strong></span> The <em>mean</em> of a data set <span class="math inline">\(X\)</span>, also known as the average or the arithmetic mean is usually indicated with a bar over the variable symbol, and defined as the sum of the values divided by the number of values: <span class="math display">\[  \bar X  = \frac{1}{n} \sum_{i=1}^n x_i \]</span></p>
 </div>
 <p>The mean, unlike the median, is not the middle value of the data set, instead it represents the <em>center of mass</em> of the measured values <span class="citation" data-cites="whitlock_analysis_2008">(<a href="references.html#ref-whitlock_analysis_2008" role="doc-biblioref">Whitlock and Schluter 2008</a>)</span>. Another way of thinking of the mean is as a <strong>weighted sum of the values in the data set</strong>. The weights represent the frequency of occurrence of each numeric value in the data set, which we will further discuss in subsection 3.2.3.</p>
 <p>The mean is the most frequently used statistic, but it is not always interpreted correctly. Very commonly the mean is reported as the most representative value of a data set, but that is often misleading. Here are at least two situations in which the mean can be tricky: 1) data sets with a small number of discrete values; 2) data sets with outliers, or isolated numbers very far from the mean.</p>
@@ -422,14 +419,10 @@ Figure&nbsp;2.1: Different types of substitution point mutations are distinguish
 <p>A better method for describing the spread is to calculate the <em>quartiles</em>, which divide the ordered list of numbers into fourths. Essentially, it is repeating the procedure for calculating the median for each half of the data set; the <em>first quartile</em> is the median of the lower half, the second quartile is the median, and the <em>third quartile</em> is the median of the upper half of the data. The difference between the third and first quartiles is called the <em>interquartile range</em> and is a useful measure of variation of the data set.</p>
 <p>The most common measure of spread uses the deviations of each value is from the center, measured by the mean. One simple approach would be to add up all of these deviations together and take the mean, but there is a problem with the naive approach: if we do that, the positives will cancel the negatives, and we’ll get an artificially low spread (likely close to zero). One way to correct this is to take the absolute value of the differences before adding them up. However, for somewhat deep mathematical reasons, the standard measure of spread uses not absolute values, but squares of the differences, and then divides that sum not by the number of data points <span class="math inline">\(n\)</span> but by <span class="math inline">\(n-1\)</span>.</p>
 <div id="def-sample-variance" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 2.2</strong></span> The <em>variance</em> of a data set <span class="math inline">\(X\)</span> with <span class="math inline">\(n\)</span> values is the sum of the squared differences of each value of the variable from the mean, divided by <span class="math inline">\(n-1\)</span>: <span class="math display">\[
-Var(X) = \frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2
-\]</span></p>
+<p><span class="theorem-title"><strong>Definition 2.2</strong></span> The <em>variance</em> of a data set <span class="math inline">\(X\)</span> with <span class="math inline">\(n\)</span> values is the sum of the squared differences of each value of the variable from the mean, divided by <span class="math inline">\(n-1\)</span>: <span class="math display">\[ Var(X) = \frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2\]</span></p>
 </div>
 <p>The variance is a sum of square differences, so its dimension is the square of the dimensions of the measurements in <span class="math inline">\(X\)</span>. Just as the mean is a weighted average of all of the values in the data set, the variance is a weighted average of all the squared deviations of the data from the mean. In order to obtain a measure of the spread comparable to the values of <span class="math inline">\(X\)</span>, we take the square root of variance and call it the <em>standard deviation</em> of the data set <span class="math inline">\(X\)</span>:</p>
-<p><span id="eq-std"><span class="math display">\[
-\sigma(X) = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2}
-\tag{2.1}\]</span></span></p>
+<p><span class="math display">\[\sigma(X) = \sqrt{\frac{1}{n-1} \sum_{i=1}^n (\bar X - x_i)^2}\]</span> {#eq-std}</p>
 <p>The standard deviation is the single most common measure of spread of a numeric data set, because it represents the average deviation of a data point from the mean. However, like the mean, it is sensitive to outliers and may not be the best representation of spread for highly skewed data. In such cases, the interquartile range might be preferred.</p>
 <section id="exercises-1" class="level4" data-number="2.2.2.1">
 <h4 data-number="2.2.2.1" class="anchored" data-anchor-id="exercises-1"><span class="header-section-number">2.2.2.1</span> exercises:</h4>
@@ -571,12 +564,12 @@ Figure&nbsp;2.5: Histograms of different numeric variables
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-healy_data_2019" class="csl-entry" role="listitem">
-Healy, Kieran. 2019. <em>Data <span>Visualization</span>: <span>A</span> <span>Practical</span> <span>Introduction</span></em>. Princeton, New Jersey ; Oxford, Oxfordshire: Princeton University Press.
+Healy, Kieran. 2019. <em>Data <span>Visualization</span>: <span>A</span> <span>Practical</span> <span>Introduction</span></em>. Princeton University Press.
 </div>
 <div id="ref-whitlock_analysis_2008" class="csl-entry" role="listitem">
-Whitlock, Michael C., and Dolph Schluter. 2008. <em>The <span>Analysis</span> of <span>Biological</span> <span>Data</span></em>. First Edition, 1st Edition edition. Greenwood Village, Colo: Roberts; Company Publishers.
+Whitlock, Michael C., and Dolph Schluter. 2008. <em>The <span>Analysis</span> of <span>Biological</span> <span>Data</span></em>. First Edition, 1st Edition edition. Roberts; Company Publishers.
 </div>
 </div>
 </section>

@@ -10,12 +10,12 @@ To determine whether two categorical variables have a relationship, we need to u
 
 In this chapter we will describe the framework of hypothesis testing and apply it to the specific task of deciding whether two categorical variables are independent. After reading it you will know how to:
 
--   compute a categorical data table
--   compute a table of expected values based on independence
--   Explain the difference between the truth of the hypothesis and a test result
--   Describe four different outcomes of hypothesis testing
--   Compute different hypothesis testing error rates
--   Explain the meaning of p-value
+- compute a categorical data table
+- compute a table of expected values based on independence
+- Explain the difference between the truth of the hypothesis and a test result
+- Describe four different outcomes of hypothesis testing
+- Compute different hypothesis testing error rates
+- Explain the meaning of p-value
 
 ## Contingency tables and independence
 
@@ -29,7 +29,7 @@ The data are presented in a two-way or *contingency table*, which is a common wa
 |       \>= 35 |  8,135 |  64 |  8,199 |
 |        Total | 37,941 |  92 | 38,033 |
 
-: Contingency table for maternal age and incidence of Down's syndrome. Numbers represent counts of patients belonging to both categories in the row and the column. DS = Down's syndrome. From [@malone_first-trimester_2005]. {#tbl-DS-age}
+: Contingency table for maternal age and incidence of Down's syndrome. Numbers represent counts of patients belonging to both categories in the row and the column. DS = Down's syndrome. From [@malone_first-trimester_2005].
 
 Once the data are organized into a contingency table, we can address the main question stated above: does the age of the mother have an effect on whether a fetus inherits three chromosomes 21? Perhaps the first approach that suggests itself is to compare the fraction of mothers carrying a fetus with DS for the two age categories. In this case, the fraction for the under-35 category is $28/29834 \approx 0.00094$, while for the 35-and-over category the fraction is $64/8199 \approx 0.0078$. The two fractions are different by almost a factor of 10, which suggests a real difference between the two categories. However, all data contain an element of randomness and a pinch of error, thus there needs to be quantifiable way of deciding what constitutes a real effect. But to determine if there is a relationship, we first have to define what it means to not have one.
 
@@ -55,7 +55,7 @@ These computed probabilities are based on the assumption that the two variables 
 |       \>= 35 |  8,179.2 | 19.8 |  8,199 |
 |        Total |   37,941 |   92 | 38,033 |
 
-: Expected frequencies of Down's syndrome for two different age groups of mothers, assuming that age and Down's syndrome are independent. {#tbl-DS-age-exp}
+: Expected frequencies of Down's syndrome for two different age groups of mothers, assuming that age and Down's syndrome are independent.
 
 Notice that expected frequencies do not need to be integers, because they are the result of prediction and not a data measurement. Now that we have a prediction, we can compare it with the measurements in @tbl-DS-age. The numbers are substantially different, and we can see that the predicted frequency of Down's syndrome for women under 35 is larger than the frequencies for women at or above 35, due to the larger fraction of patients in the younger age group. We can calculate the differences between the *observed* and *expected* contingency tables to measure how much reality differs from the assumption of independence:
 
@@ -65,7 +65,7 @@ Notice that expected frequencies do not need to be integers, because they are th
 |       \>= 35 |  -44.2 |  44.2 |  8,199 |
 |        Total | 37,941 |    92 | 38,033 |
 
-: Differences between the observed frequencies of Down's syndrome for different maternal ages and the expected frequencies based on the assumption of independence. {#tbl-DS-age-diff}
+: Differences between the observed frequencies of Down's syndrome for different maternal ages and the expected frequencies based on the assumption of independence.
 
 The table of differences shows that the observed frequency of DS in the data set are higher than expected by 44.2 for women above 35 years of age and is lower than expected by the same number for women below age 35. This demonstrates that mathematically speaking, the two variables of age and DS are not independent.
 
@@ -109,10 +109,10 @@ There is no mathematical or statistical method for determining the appropriate s
 
 Like all mathematical models, the chi-squared distribution relies on a set of assumptions. If the assumptions are violated, then the probability distribution does not apply and the p-value does not reflect the actual likelihood of the hypothesis. Here are the assumptions:
 
--   the data is from a simple random sample of the population
--   the sample size is sufficiently large
--   expected cell counts cannot be too small
--   the observations are independent of each other
+- the data is from a simple random sample of the population
+- the sample size is sufficiently large
+- expected cell counts cannot be too small
+- the observations are independent of each other
 
 ### trisomy and pregnancy
 
@@ -156,7 +156,7 @@ The results confirm what comparing the percentages suggested: the race of a pers
 | Disease         | 40         | 20         |
 | Healthy         | 80         | 60         |
 
-: Simulated data containing variables of genotype (A or B) and health (Disease or Healthy) {#tbl-gen-dis}
+: Simulated data containing variables of genotype (A or B) and health (Disease or Healthy)
 
 @tbl-gen-dis shows a simulated contingency table for two variables: genotype and disease.
 
@@ -186,23 +186,21 @@ We speak of **one-way ANOVA** when there is a single axis of variation to our tr
 
 ANOVA tests whether samples are taken from distributions with the same mean:
 
--   Null hypothesis: the means of the different groups are the same.
--   Alternative hypothesis: **At least one sample mean** is not equal to the others.
+- Null hypothesis: the means of the different groups are the same.
+- Alternative hypothesis: **At least one sample mean** is not equal to the others.
 
 Let $Y$ indicate the response variable, and study the simplest case of one-way ANOVA. We have divided the samples in $k$ categories. Let us write an equation for each observation $Y_{ij}$ (the $j$th observation in group $i$):
 
-$$
-Y_{ij} = \mu_i + \epsilon_{ij}
-$$
+$$Y_{ij} = \mu_i + \epsilon_{ij}$$
 
 where $\mu_i$ is the mean of category $i$ and $\epsilon_{ij}$ are the deviations of each observation from the category mean, also called the residuals or noise.
 
 We are making the same assumptions as for linear regression:
 
--   The observations are obtained independently (and randomly) from the population defined by the factor levels (groups)
--   The measurements for each factor level $i$ are independent
--   The residuals $\epsilon_{ij}$ are normally distributed for each factor level $i$
--   These normal distributions have the same variance
+- The observations are obtained independently (and randomly) from the population defined by the factor levels (groups)
+- The measurements for each factor level $i$ are independent
+- The residuals $\epsilon_{ij}$ are normally distributed for each factor level $i$
+- These normal distributions have the same variance
 
 ### Peforming one-way ANOVA
 
@@ -227,8 +225,7 @@ If the null hypothesis were true, then we would expect the variance within group
 
 ::: {#def-fstat}
 The F-statistic is calculated as a ratio of the variance of the means $\mu_i$ of the categories (VM) and the variance of the errors (residuals) $\epsilon_{ij}$ within the categories (VR): $$ 
-F = \frac{VM}{VR}
-$$
+F = \frac{VM}{VR}$$
 :::
 
 If the null hypothesis is true, this number is distributed according to the F-distribution; in other words, if we repeatedly sample from a population with equal means in each category, the F statistic would follow that distribution. This distribution (which I won't write down, but can be computed in R) allows us to calculate the p-value for any data set. A value of F greater than 1 means that the means have more variance than the residuals, and the p-value allows us to decide when that crosses a specific significance threshold.
@@ -247,16 +244,14 @@ Hypothesis testing gives us a positive or negative result, but that does not mea
 
 ::: {#def-true-results}
 For a hypothesis that can be either false (F) or true (T) and a test result that can be either positive (P) or negative (N), the probabilities of a *true positive* and *true negative* are: $$ 
-P(TP) = P(P \& F); \; P(TN) = P(N \& T)
-$$
+P(TP) = P(P \& F); \; P(TN) = P(N \& T)$$
 :::
 
 However, hypothesis tests are not infallible, and they can make mistakes of two different types. A test that rejects a true null hypothesis makes a *type I error* or a *false positive* error, while a test that fails to reject a false null hypothesis makes a *type II error* or a false negative error. We can again define the probabilities of the two error types as the overlap of the events:
 
 ::: {#def-error-types}
 For a hypothesis that can be either false (F) or true (T) and a test result that can be either positive (P) or negative (N), the two types of errors are: $$ 
-P(FP) = P(P \& T); \; P(FN) = P(N \& F)
-$$
+P(FP) = P(P \& T); \; P(FN) = P(N \& F)$$
 :::
 
 | Test result | $H_O = F$ | $H_O=T$ |
@@ -293,7 +288,7 @@ Notice that knowledge of sensitivity and specificity determine the type I and ty
 | Negative    | 1739      | 8          |
 | Positive    | 51        | 22         |
 
-: Data for TB testing using X-ray imaging {#tbl-TB-test}
+: Data for TB testing using X-ray imaging
 
 @tbl-TB-test shows the results of using X-ray imaging as a diagnostic test for tuberculosis in patients with known TB status. Use it to answer the questions below.
 

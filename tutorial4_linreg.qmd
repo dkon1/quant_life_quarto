@@ -4,9 +4,9 @@
 
 In this tutorial you will learn to:
 
--   Make scatterplots with linear regression lines
--   Interpret the output of linear regression
--   Examine the residuals of linear regression
+- Make scatterplots with linear regression lines
+- Interpret the output of linear regression
+- Examine the residuals of linear regression
 
 ### Best-fit parameters
 

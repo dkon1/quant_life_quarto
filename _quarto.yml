@@ -1,12 +1,18 @@
 project:
   type: book
   output-dir: docs
+
 filters:
   - webr
+  - shinylive
+  
+
 execute:
   warning: false
+  
 webr:
   packages: ['palmerpenguins', 'HistData', 'deSolve']
+  
 book:
   title: "Quantifying Life"
   author: "Dmitry Kondrashov"
