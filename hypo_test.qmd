@@ -302,76 +302,7 @@ Notice that knowledge of sensitivity and specificity determine the type I and ty
 
 5.  Find the probability that a person who tests negative does not have TB (probability of no TB given a negative result).
 
-## T-test and hypothesis testing errors
-
-The t-test is a way of testing whether two samples have the same means. The null hypothesis is that $\mu_1 = \mu_2$, and the test calculates a number called the t-statistic, which is a difference of the two sample means divided by the a combination of standard deviations of the two samples:
-
-$$t = \frac{\bar X_1 - \bar X_2}{\sqrt{s_1^2/N_1 + s_2^2/N_2}}$$
-
-The test uses the t-distribution to compute the p-value for the null hypothesis.
-
-For example, consider samples of size $n$ taken from two normal distributions (with unobserved means $\mu_1$, $\mu_2$). We can generate the data using a function:
-
-```{webr-r}
-generate_samples <- function(n, mu1, mu2){ 
-  return(data.frame(sample1 = rnorm(n = n, mean = mu1, sd = 1), 
-                    sample2 = rnorm(n = n, mean = mu2, sd = 1))) 
-  }
-```
-
-In this code chunk we control the sample size of both samples (assuming it's the same) and the two true means of the samples, and perform the Student's t-test to decide whether the means differ significantly:
-
-```{webr-r}
-samp_size <- 100 
-mean1 <- 1
-mean2 <- 2
-my_sample <- generate_samples(samp_size, mean1, mean2)
-# two-tailed (diff in means = 0)
-# Student's (assumes equal variances)
-# (for Welch's t-test, var.equal = FALSE)
-t.test(my_sample$sample1, 
-       my_sample$sample2,
-       var.equal = TRUE)
-```
-
-### Question
-
-1.  For sample size 100, what is the typical p-value for samples with the true mean values of 1 and 2?
-2.  For sample size 100, what is the typical p-value for samples with the true mean values of 1 and 1.5?
-3.  For sample size 100, what is the typical p-value for samples with the true mean values of 1 and 1.1?
-4.  For sample size 100, what is the typical p-value for samples with the true mean values of 1 and 1.01?
-5.  For sample size 100, what is the typical p-value for samples with identical true mean values?
-
-### Comparing heart rates
-
-Let us load the Heart Rates data set we first saw on Day 1, which contains the variables: `Rest1`, `Ex1`, `Rest2`, `Ex2`, and `Year`. Then we print out the number of observations (rows) in the data frame - each row is a different student who responded to the survey.
-
-```{webr-r}
-heart_rates <- read.csv(file = "https://raw.githubusercontent.com/dkon1/quant_life_quarto/master/data/HR_data_combined.csv")
-head(heart_rates)
-cat("Number of observations in heart_rates:", nrow(heart_rates))
-```
-
-This code chunk extracts the values of the heart rates for years 2025 and 2026 and performs the t-test between the values of Ex1 in the two years:
-
-```{webr-r}
-heart_rates2025 <- subset(heart_rates, Year == 2025)
-heart_rates2026 <- subset(heart_rates, Year == 2025)
-
-t.test(heart_rates2025$Ex1, 
-       heart_rates2026$Ex1)
-```
-
-### Questions
-
-1.  Perform the t-test on years 2026 and 2024 and interpret the result.
-2.  Perform the t-test on years 2026 and 2023 and interpret the result.
-3.  Perform the t-test on years 2026 and 2022 and interpret the result.
-4.  Perform the t-test on years 2026 and 2022 and interpret the result.
-5.  Perform the t-test on years 2026 and 2021 and interpret the result.
-6.  Perform the t-test on years 2026 and 2020 and interpret the result.
-
-### T-tests for samples from different distributions
+## Simulation of multiple tests for independence between genotype and disease
 
 ```{shinylive-r}
 #| standalone: true
@@ -380,198 +311,168 @@ t.test(heart_rates2025$Ex1,
 library(shiny)
 library(bslib)
 
-## ---------------------------------------------------------------
-## Two-Sample Comparison Simulator
-## Draws two independent samples from a chosen distribution family
-## (each group with its own parameters), displays side-by-side
-## boxplots, and reports the p-value from a two-sample t-test
-## comparing the group means.
-## ---------------------------------------------------------------
+## -----------------------------------------------------------------
+## Shiny app: simulating many chi-squared tests of independence
+## between genotype (A / B) and phenotype (D = disease / N = normal).
+##
+## Each simulation:
+##   - draws `samp_size` phenotypes for genotype A with P(disease) = probA
+##   - draws `samp_size` phenotypes for genotype B with P(disease) = probB
+##   - cross-tabulates into a 2x2 table and runs chisq.test()
+## Across `n_sims` repetitions we count how many tests are
+## "positive" (p < alpha, reject independence) vs "negative".
+##
+## When probA == probB the null (independence) is TRUE, so the
+## positive rate estimates the Type I error rate (~ alpha).
+## When probA != probB the positive rate estimates the test's POWER.
+## -----------------------------------------------------------------
 
 library(shiny)
 
-## ---------------------------- UI --------------------------------
+dis_states <- c("D", "N")   # 'D' = disease, 'N' = normal
 
+## Run n_sims chi-squared tests; return the vector of p-values ------
+run_sims <- function(n_sims, samp_size, probA, probB) {
+  vapply(seq_len(n_sims), function(i) {
+    gA <- sample(dis_states, samp_size, replace = TRUE, prob = c(probA, 1 - probA))
+    gB <- sample(dis_states, samp_size, replace = TRUE, prob = c(probB, 1 - probB))
+
+    # Force both levels so the table is always 2x2, even if a
+    # category happens not to appear in a given sample.
+    tA <- table(factor(gA, levels = dis_states))
+    tB <- table(factor(gB, levels = dis_states))
+    m  <- cbind(A = tA, B = tB)   # rows = D / N, cols = genotype A / B
+
+    # Extreme probabilities can produce an all-zero row (undefined test);
+    # capture that as NA rather than letting it error out the run.
+    tryCatch(
+      suppressWarnings(chisq.test(m)$p.value),
+      error = function(e) NA_real_
+    )
+  }, numeric(1))
+}
+
+## ---------------------------- UI ---------------------------------
 ui <- fluidPage(
 
-  titlePanel("Two-Sample Comparison: Boxplot & t-test"),
+  titlePanel("Simulating many chi-squared tests: genotype vs. phenotype"),
 
   sidebarLayout(
 
     sidebarPanel(
-
-      selectInput(
-        inputId = "distribution",
-        label   = "Choose a distribution:",
-        choices = c(
-          "Normal"      = "normal",
-          "Uniform"     = "uniform",
-          "Binomial"    = "binomial",
-          "Exponential" = "exponential"
-        ),
-        selected = "normal"
-      ),
-
-      sliderInput(
-        inputId = "n",
-        label   = "Sample size (each group):",
-        min     = 5,
-        max     = 1000,
-        value   = 50,
-        step    = 5
-      ),
-
-      hr(),
-
-      fluidRow(
-        column(
-          width = 6,
-          h4("Group A"),
-
-          conditionalPanel(
-            condition = "input.distribution == 'normal'",
-            numericInput("a_norm_mean", "Mean", value = 0),
-            numericInput("a_norm_sd",   "Std. dev.", value = 1, min = 0.0001)
-          ),
-          conditionalPanel(
-            condition = "input.distribution == 'uniform'",
-            numericInput("a_unif_min", "Minimum", value = 0),
-            numericInput("a_unif_max", "Maximum", value = 1)
-          ),
-          conditionalPanel(
-            condition = "input.distribution == 'binomial'",
-            numericInput("a_binom_size", "Trials (n)", value = 20, min = 1, step = 1),
-            sliderInput("a_binom_prob", "Prob. of success (p)",
-                        min = 0, max = 1, value = 0.5, step = 0.01)
-          ),
-          conditionalPanel(
-            condition = "input.distribution == 'exponential'",
-            numericInput("a_exp_rate", "Rate", value = 1, min = 0.0001)
-          )
-        ),
-
-        column(
-          width = 6,
-          h4("Group B"),
-
-          conditionalPanel(
-            condition = "input.distribution == 'normal'",
-            numericInput("b_norm_mean", "Mean", value = 0.5),
-            numericInput("b_norm_sd",   "Std. dev.", value = 1, min = 0.0001)
-          ),
-          conditionalPanel(
-            condition = "input.distribution == 'uniform'",
-            numericInput("b_unif_min", "Minimum", value = 0.3),
-            numericInput("b_unif_max", "Maximum", value = 1.3)
-          ),
-          conditionalPanel(
-            condition = "input.distribution == 'binomial'",
-            numericInput("b_binom_size", "Trials (n)", value = 20, min = 1, step = 1),
-            sliderInput("b_binom_prob", "Prob. of success (p)",
-                        min = 0, max = 1, value = 0.65, step = 0.01)
-          ),
-          conditionalPanel(
-            condition = "input.distribution == 'exponential'",
-            numericInput("b_exp_rate", "Rate", value = 1.5, min = 0.0001)
-          )
-        )
-      ),
-
-      hr(),
+      sliderInput("probA", "P(disease) for genotype A",
+                  min = 0, max = 1, value = 0.1, step = 0.01),
+      sliderInput("probB", "P(disease) for genotype B",
+                  min = 0, max = 1, value = 0.4, step = 0.01),
+      sliderInput("samp_size", "Sample size per genotype",
+                  min = 10, max = 1000, value = 200, step = 10),
+      sliderInput("alpha", "Significance level (alpha)",
+                  min = 0.001, max = 0.1, value = 0.05, step = 0.001),
+      sliderInput("n_sims", "Number of simulated tests",
+                  min = 10, max = 2000, value = 500, step = 10),
       actionButton("resample", "Draw new samples", icon = icon("dice"))
     ),
 
     mainPanel(
-      plotOutput("boxPlot", height = "420px"),
-      br(),
-      wellPanel(
-        h4("Two-Sample t-test"),
-        verbatimTextOutput("ttestOut")
-      )
+      fluidRow(
+        column(4, wellPanel(
+          h4("Positive"),
+          helpText("p < alpha (reject independence)"),
+          h2(textOutput("n_pos")))),
+        column(4, wellPanel(
+          h4("Negative"),
+          helpText("p >= alpha"),
+          h2(textOutput("n_neg")))),
+        column(4, wellPanel(
+          h4("Positive rate"),
+          helpText(textOutput("rate_label")),
+          h2(textOutput("pos_rate"))))
+      ),
+      plotOutput("pval_hist", height = "340px"),
+      uiOutput("interpretation")
     )
   )
 )
 
 ## -------------------------- SERVER -------------------------------
-
 server <- function(input, output, session) {
 
-  # Draw the two samples. Regenerated when the distribution, sample
-  # size, any relevant parameter changes, or the button is clicked.
-  samples <- reactive({
+  # Re-run the whole batch when any input changes or the button is clicked.
+  pvals <- reactive({
+    input$resample
+    run_sims(input$n_sims, input$samp_size, input$probA, input$probB)
+  })
 
-    input$resample  # dependency: re-draw on button click
+  counts <- reactive({
+    p     <- pvals()
+    valid <- p[!is.na(p)]
+    list(
+      pos     = sum(valid <  input$alpha),
+      neg     = sum(valid >= input$alpha),
+      n_valid = length(valid),
+      n_bad   = sum(is.na(p))
+    )
+  })
 
-    n <- input$n
+  output$n_pos <- renderText(counts()$pos)
+  output$n_neg <- renderText(counts()$neg)
 
-    if (input$distribution == "normal") {
-      a <- rnorm(n, mean = input$a_norm_mean, sd = input$a_norm_sd)
-      b <- rnorm(n, mean = input$b_norm_mean, sd = input$b_norm_sd)
+  output$pos_rate <- renderText({
+    cc <- counts()
+    if (cc$n_valid == 0) return("NA")
+    sprintf("%.1f%%", 100 * cc$pos / cc$n_valid)
+  })
 
-    } else if (input$distribution == "uniform") {
-      a <- runif(n, min = input$a_unif_min, max = input$a_unif_max)
-      b <- runif(n, min = input$b_unif_min, max = input$b_unif_max)
+  output$rate_label <- renderText({
+    if (isTRUE(all.equal(input$probA, input$probB)))
+      "Type I error (null true)"
+    else
+      "Power (real effect)"
+  })
 
-    } else if (input$distribution == "binomial") {
-      a <- rbinom(n, size = input$a_binom_size, prob = input$a_binom_prob)
-      b <- rbinom(n, size = input$b_binom_size, prob = input$b_binom_prob)
+  output$pval_hist <- renderPlot({
+    p <- pvals()
+    p <- p[!is.na(p)]
+    hist(p, breaks = seq(0, 1, 0.05),
+         col = "grey80", border = "white", xlim = c(0, 1),
+         xlab = "p-value",
+         main = "Distribution of p-values across simulations")
+    abline(v = input$alpha, col = "firebrick", lwd = 2, lty = 2)
+    legend("topright",
+           legend = sprintf("alpha = %.2f", input$alpha),
+           col = "firebrick", lwd = 2, lty = 2, bty = "n")
+  })
 
-    } else if (input$distribution == "exponential") {
-      a <- rexp(n, rate = input$a_exp_rate)
-      b <- rexp(n, rate = input$b_exp_rate)
+  output$interpretation <- renderUI({
+    cc   <- counts()
+    same <- isTRUE(all.equal(input$probA, input$probB))
+    msg  <- if (same) {
+      paste0("Genotypes A and B have the SAME disease probability, so genotype ",
+             "and phenotype are truly independent. Positive results here are ",
+             "false positives, and the positive rate should hover near alpha.")
+    } else {
+      paste0("Genotypes A and B have DIFFERENT disease probabilities, so a real ",
+             "association exists. The positive rate estimates the test's power ",
+             "to detect it at this sample size and alpha.")
     }
-
-    list(a = a, b = b)
-  })
-
-  # Run the two-sample (Welch) t-test on the current samples
-  ttestResult <- reactive({
-    s <- samples()
-    t.test(s$a, s$b)
-  })
-
-  output$boxPlot <- renderPlot({
-
-    s <- samples()
-    pval <- ttestResult()$p.value
-
-    dist_label <- switch(
-      input$distribution,
-      normal      = "Normal",
-      uniform     = "Uniform",
-      binomial    = "Binomial",
-      exponential = "Exponential"
-    )
-
-    boxplot(
-      s$a, s$b,
-      names  = c("Group A", "Group B"),
-      col    = c("steelblue", "darkorange"),
-      main   = paste0(
-        dist_label, " samples, n = ", input$n, " each\n",
-        "t-test p-value = ", signif(pval, 4)
-      ),
-      ylab = "Value"
-    )
-
-    # Overlay group means as points
-    points(
-      x   = c(1, 2),
-      y   = c(mean(s$a), mean(s$b)),
-      pch = 18, cex = 1.8, col = "firebrick"
-    )
-    legend("topright", legend = "Group mean", pch = 18, col = "firebrick", bty = "n")
-  })
-
-  output$ttestOut <- renderPrint({
-    ttestResult()
+    bad <- if (cc$n_bad > 0)
+      paste0(" (", cc$n_bad, " test(s) returned an undefined p-value from an ",
+             "all-zero row and were excluded.)")
+    else ""
+    helpText(paste0(msg, bad))
   })
 }
 
-## --------------------------- RUN ---------------------------------
-
 shinyApp(ui = ui, server = server)
+
 
 ```
 
-## 
+### Questions
+
+1.  Set two very different probabilities (e.g. 0.3 and 0.1). At significance level of 0.01, what sample size is sufficient for 90% true positive rate?
+2.  Set two very different probabilities (e.g. 0.3 and 0.1). At significance level of 0.001, what sample size is sufficient for 90% true positive rate?
+3.  Set two closer probabilities (e.g. 0.3 and 0.25). At significance level of 0.01, what sample size is sufficient for 90% true positive rate?
+4.  Set two closer probabilities (e.g. 0.3 and 0.25). At significance level of 0.001, what sample size is sufficient for 90% true positive rate?
+5.  When the two probabilities are equal, what does the p-value distribution look like? What is the false positive rate you observe at different significance levels?
+
