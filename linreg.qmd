@@ -94,8 +94,7 @@ Use the data sets in @tbl-ch4-linreg to answer the following questions (you may 
 The correlation between two random variables is a measure of how much variation in one corresponds to variation in the other. If this sounds very similar to the description of covariance, it's because they are closely related. Essentially, correlation is a normalized covariance, restricted to lie between -1 and 1. Here is the definition:
 
 ::: {#def-corr}
-The (linear) *correlation* of a set of two paired variables (X,Y) is:
-$$r = \frac{Cov(X,Y)}{\sqrt{{Var(X)}{Var(Y)}}} =  \frac{Cov(X,Y)}{\sigma_X \sigma_Y}$$
+The (linear) *correlation* of a set of two paired variables (X,Y) is: $$r = \frac{Cov(X,Y)}{\sqrt{{Var(X)}{Var(Y)}}} =  \frac{Cov(X,Y)}{\sigma_X \sigma_Y}$$
 :::
 
 If the two variables are identical, $X=Y$, then the covariance becomes its variance $Cov(X,X) = Var(X)$ and the denominator also becomes the variance, and the correlation is 1. This is also true if $X$ and $Y$ are scalar multiples of each other, as you can see by plugging in $X= cY$ into the covariance formula. On the other extreme, if $X$ and $Y$ are negative multiples of each other, $X = -cY$, the pair is called *anti-correlated* and has the correlation coefficient of -1. All other cases fall in the middle, neither perfect correlation nor perfect anti-correlation. The special case if the two variables are *independent* (which we will properly define in the next chapter) their covariance is zero and the correlation coefficient is also zero.
@@ -104,8 +103,7 @@ If the two variables are identical, $X=Y$, then the covariance becomes its varia
 
 This gives a connection between correlation and slope of linear regression:
 
-$$a = r \frac{\sigma_Y}{\sigma_X}$$
- {#eq-slope-corr}
+$$a = r \frac{\sigma_Y}{\sigma_X}$$ {#eq-slope-corr}
 
 Whenever linear regression is reported, one always sees the values of correlation $r$ and squared correlation $r^2$ displayed. The reason for this is that $r^2$ has a very clear meaning of the **the fraction of the variance of the dependent variable** $Y$ explained by the linear regression $Y=aX+b$. Let us unpack what this means.
 
@@ -114,8 +112,7 @@ According to the stated assumptions of linear regression, the response variable 
 $$\begin{aligned}
   r^2 = \frac{Cov(X,Y)^2}{Var(X) Var(Y)} &=   \frac{(Cov(X,\hat Y) + Cov(X,R) )^2}{Var(X) Var(Y)}   = \\
   =\frac{Var(X)Var(\hat Y)}{Var(X) Var(Y)} &=  \frac{Var(\hat Y)}{Var(Y)}
-\end{aligned}$$
- {#eq-frac-var}
+\end{aligned}$$ {#eq-frac-var}
 
 One should be cautious when interpreting results of a linear regression. First, just because there is no linear relationship does not mean that there is no other relationship. @fig-corr-examples shows some examples of scatter plots and their corresponding correlation coefficients. What it shows is that while a formless blob of a scatter plot will certainly have zero correlation, so will other scatter plots in which there is a definite relationship (e.g. a circle, or a X-shape). The point is that **correlation is always a measure of the strength of the linear relationship between variables.**
 

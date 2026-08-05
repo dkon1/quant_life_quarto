@@ -32,8 +32,7 @@ The perils of ignoring prior knowledge is illustrated in the xkcd cartoon shown 
 
 In this section we will formalize the process of incorporation of prior knowledge into probabilistic inference by going back to the notion of conditional probability in @sec-cond-prob. First, if you multiply both sides of the definition by $P(B)$, then we obtain the probability of the intersection of events $A$ and $B$: $$P(A \land B) = P(A|B) P(B); \;  P(A \land B) = P(B|A) P(A) $$ Second, we can partition a sample space into two complementary sets, $A$ and $-A$, and then the set of $B$ can be partitioned into two parts, that intersect with $A$ and $-A$, respectively, so that the probability of $B$ is $$P(B) = P(A \land B) + P(-A\land B)$$
 
-The two formulas together lead to a very important result called the *law of total probability*
-$$P(B) =  P(B|A) P(A) + P(B|-A)P(-A)$$
+The two formulas together lead to a very important result called the *law of total probability* $$P(B) =  P(B|A) P(A) + P(B|-A)P(-A)$$
 
 It may not be clear at first glance why this is useful: after all, we replaced something simple ($P(B)$) with something much more complex on the right hand side. You will see how this formula enables us to calculate quantities that are not otherwise accessible.
 

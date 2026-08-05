@@ -112,9 +112,7 @@ In addition to units, each variable and parameter has a meaning, which is called
 
 Thus leads us to the fundamental rule of mathematical modeling: **terms that are added or subtracted must have the same dimension**. This gives mathematical modelers a useful tool called \index{dimensional analysis} *dimensional analysis*, which involves replacing the quantities in an equation with their dimensions. This serves as a check that all dimensions match, as well as allowing to deduce the dimensions of any parameters for which the dimension was not specified [@smith_mathematical_1968].
 
-**Example.** As we saw in chapter 1, the relationship between the amount blood pumped by a heart in a certain amount of time is expressed in the following equation, where $V_{tot}$ and $V_s$ are the total volume and stroke volume, respectively, $R$ is the heart rate, and $t$ is the time:
-$$V_{tot} = V_sRt$$
-The dimension of a quantity $X$ is denoted by $[X]$; for example, if $t$ has the dimension of time, we write $[t] = time$. The dimension of volume is $[V_{tot}] = length^3$, the dimension of stroke volume is $[V_s] = volume/beat$ and the dimension of time $t$ is time, so we can re-write the equation above in dimensional form:
+**Example.** As we saw in chapter 1, the relationship between the amount blood pumped by a heart in a certain amount of time is expressed in the following equation, where $V_{tot}$ and $V_s$ are the total volume and stroke volume, respectively, $R$ is the heart rate, and $t$ is the time: $$V_{tot} = V_sRt$$ The dimension of a quantity $X$ is denoted by $[X]$; for example, if $t$ has the dimension of time, we write $[t] = time$. The dimension of volume is $[V_{tot}] = length^3$, the dimension of stroke volume is $[V_s] = volume/beat$ and the dimension of time $t$ is time, so we can re-write the equation above in dimensional form:
 
 $$length^3 = length^3/ beat \times R \times time$$
 
