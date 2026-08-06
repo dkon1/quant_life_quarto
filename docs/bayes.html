@@ -344,8 +344,10 @@ window.Quarto = {
   <li><a href="#bonferroni-correction" id="toc-bonferroni-correction" class="nav-link" data-scroll-target="#bonferroni-correction"><span class="header-section-number">7.4.1</span> Bonferroni correction</a></li>
   <li><a href="#fdr-correction" id="toc-fdr-correction" class="nav-link" data-scroll-target="#fdr-correction"><span class="header-section-number">7.4.2</span> FDR correction</a></li>
   </ul></li>
-  <li><a href="#gwas-simulation" id="toc-gwas-simulation" class="nav-link" data-scroll-target="#gwas-simulation"><span class="header-section-number">7.5</span> GWAS simulation</a></li>
-  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">7.6</span> Questions</a></li>
+  <li><a href="#gwas-simulation" id="toc-gwas-simulation" class="nav-link" data-scroll-target="#gwas-simulation"><span class="header-section-number">7.5</span> GWAS simulation</a>
+  <ul class="collapse">
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">7.5.1</span> Questions</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -842,9 +844,8 @@ server &lt;- function(input, output, session) {
 
 shinyApp(ui, server)
 </code></pre>
-</section>
-<section id="questions" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="questions"><span class="header-section-number">7.6</span> Questions</h2>
+<section id="questions" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="questions"><span class="header-section-number">7.5.1</span> Questions</h3>
 <ol type="1">
 <li>Set the number of SNPs to 20,000 and the number of truly associated SNPs to 100, with effect size of 0.06 and the sample size of 8000. Report the power of the test and the FDR for the unadjusted, Bonferroni, and FDR methods.</li>
 <li>Keep the same settings, except reduce the effect size to 0.04. Report the power of the test and the FDR for the unadjusted, Bonferroni, and FDR methods.</li>
@@ -868,6 +869,7 @@ Ioannidis, John P. A. 2005. <span>“Why <span>Most</span> <span>Published</span
 Miller, Anthony B., Claus Wall, Cornelia J. Baines, Ping Sun, Teresa To, and Steven A. Narod. 2014. <span>“Twenty Five Year Follow-up for Breast Cancer Incidence and Mortality of the <span>Canadian</span> <span>National</span> <span>Breast</span> <span>Screening</span> <span>Study</span>: Randomised Screening Trial.”</span> <em>BMJ</em> 348 (February): g366. <a href="https://doi.org/10.1136/bmj.g366">https://doi.org/10.1136/bmj.g366</a>.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->

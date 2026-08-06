@@ -451,7 +451,7 @@ shinyApp(ui, server)
 
 ```
 
-## Questions
+### Questions
 
 1.  Set the number of SNPs to 20,000 and the number of truly associated SNPs to 100, with effect size of 0.06 and the sample size of 8000. Report the power of the test and the FDR for the unadjusted, Bonferroni, and FDR methods.
 2.  Keep the same settings, except reduce the effect size to 0.04. Report the power of the test and the FDR for the unadjusted, Bonferroni, and FDR methods.
