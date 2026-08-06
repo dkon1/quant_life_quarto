@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>7&nbsp; Prior knowledge and Bayesian thinking – Quantifying Life</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -27,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -57,14 +55,20 @@ div.csl-indent {
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6cbb53fb565b2bbafeaa1df642049805.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dda8909163e0b4f3670ba323ebd66e56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<meta name="shinylive:serviceworker_dir" content=".">
+<script src="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/load-shinylive-sw.js" type="module"></script>
+<script src="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/run-python-blocks.js" type="module"></script>
+<link href="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/shinylive.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/shinylive-quarto-css/shinylive-quarto.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -94,7 +98,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -153,7 +157,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantifying Life</a> 
         <div class="sidebar-tools-main">
@@ -333,6 +339,13 @@ window.Quarto = {
   <li><a href="#reliability-of-scientific-studies" id="toc-reliability-of-scientific-studies" class="nav-link" data-scroll-target="#reliability-of-scientific-studies"><span class="header-section-number">7.3.2</span> reliability of scientific studies</a></li>
   <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="header-section-number">7.3.3</span> discussion questions</a></li>
   </ul></li>
+  <li><a href="#multiple-hypothesis-testing-and-p-value-corrections" id="toc-multiple-hypothesis-testing-and-p-value-corrections" class="nav-link" data-scroll-target="#multiple-hypothesis-testing-and-p-value-corrections"><span class="header-section-number">7.4</span> Multiple hypothesis testing and p-value corrections</a>
+  <ul class="collapse">
+  <li><a href="#bonferroni-correction" id="toc-bonferroni-correction" class="nav-link" data-scroll-target="#bonferroni-correction"><span class="header-section-number">7.4.1</span> Bonferroni correction</a></li>
+  <li><a href="#fdr-correction" id="toc-fdr-correction" class="nav-link" data-scroll-target="#fdr-correction"><span class="header-section-number">7.4.2</span> FDR correction</a></li>
+  </ul></li>
+  <li><a href="#gwas-simulation" id="toc-gwas-simulation" class="nav-link" data-scroll-target="#gwas-simulation"><span class="header-section-number">7.5</span> GWAS simulation</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions"><span class="header-section-number">7.6</span> Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -538,9 +551,310 @@ Figure&nbsp;7.5: The dependence of post-study probability (positive predictive v
 <li><p>Due to human imperfection, there will always be some bias in conducting and reporting scientific results. What do you expect to be the typical level of bias (u in the paper)?</p></li>
 <li><p>What does Ioannidis propose to remedy the problem of lack of reproducibility of studies? Will you take them into account when reading scientific publications or doing your own research?</p></li>
 </ol>
+</section>
+</section>
+<section id="multiple-hypothesis-testing-and-p-value-corrections" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="multiple-hypothesis-testing-and-p-value-corrections"><span class="header-section-number">7.4</span> Multiple hypothesis testing and p-value corrections</h2>
+<p>Many times in science, one has to perform hypothesis tests on separate, independent questions; e.g.&nbsp;test 20 patients for a disease. This can lead to higher probability of errors in the aggregate: if we test 20 healthy patients using a test with a false positive rate of 0.05 (like using a significance level of 0.05), then the <strong>probability of at least one of the tests being a false positive</strong> is much higher than 0.05, as can be calculated from the binomial distribution:</p>
+<p><span class="math display">\[P(k&gt;0; p=0.05, n=20) = 1 - P(k=0; p=0.05, n=20) = 1-0.95^{20} \approx 0.64\]</span></p>
+<p>This is a particular problem in several situations, for example when multiple groups perform similar studies, but only the ones that return a positive result are published (see our discussion about publication bias in the last chapter). It is also a problem when there are multiple associations between different variables tested in the same study. If one applies a significance level of 0.05 or 0.01, one may end reporting a lot of false positive results (depending on the number of different hypotheses tested). What can be done about it?</p>
+<section id="bonferroni-correction" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="bonferroni-correction"><span class="header-section-number">7.4.1</span> Bonferroni correction</h3>
+<p>The simplest approach is called the Bonferroni correction. The method is straightforward: if you perform <span class="math inline">\(n\)</span> independent test and want to control the probability of making at least one false positive error, then you need to reduce the significance level by the factor of <span class="math inline">\(n\)</span>; <span class="math inline">\(\alpha_B = \alpha /n\)</span>. The result of this adjustment is to make sure the probability of making at least one error out of <span class="math inline">\(n\)</span> tests (what is known as the “Family-wise error rate”) is equal to the significance level <span class="math inline">\(\alpha\)</span>. If you want to be pedantic, it’s only approximately true: for example, in the case of the scenario described above, the probability of at least one error with the Bonferroni correction will be</p>
+<p><span class="math display">\[P(k&gt;0)=1−P(k=0;p=0.05/20,n=20)=1−(1-0.05/20)^{20} ≈ 0.0488\]</span></p>
+<p>The Bonferroni correction is a blunt instrument: it dramatically reduced the number of false positives, but it also makes real effect difficult to detect. For that reason it is considered a <em>conservative</em> method for multiple hypothesis testing, and more sophisticated methods are often preferred.</p>
+</section>
+<section id="fdr-correction" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="fdr-correction"><span class="header-section-number">7.4.2</span> FDR correction</h3>
+<p>A more effective approach aims to control the <em>False Discovery Rate</em> (FDR) instead of the Family-wise error rate. The FDR is defined as the complement of the PPV, that is the fraction of false positives out of all positive results. Essentially, instead of trying to avoid even a single false positive, let’s control the fraction of false positive results.</p>
+<p>One of the best methods is called the Benjamini-Hochberg method, which is far more complicated than Bonferroni. The procedure follows the following steps, given n p-values and a chosen FDR level q (e.g.&nbsp;0.05):</p>
+<ol type="1">
+<li><p>Sort the p-values in ascending order: <span class="math inline">\(p_1 ≤ p_2 ≤ … ≤ p_n\)</span> keeping track of which hypothesis each belongs to.</p></li>
+<li><p>For each rank i, compute the BH critical value (i/n)·q.</p></li>
+<li><p>Find the <strong>largest</strong> rank k for which <span class="math inline">\(p_k ≤ (k/n)·q\)</span>.</p></li>
+<li><p>Reject (declare significant) all hypotheses with rank 1 through k — even any whose own p-value exceeded its individual critical value.</p></li>
+</ol>
+</section>
+</section>
+<section id="gwas-simulation" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="gwas-simulation"><span class="header-section-number">7.5</span> GWAS simulation</h2>
+<p>The following simulates the results of a Genome-wide association study, which tests multiple alleles (SNPs) for association with a trait (e.g.&nbsp;height), and this trait is numeric and is normally distributed. This simulator assumes that a certain number of SNPs (which you can control with a slider) are associated with the trait, that is the height of the people with this SNP are different than for those without it. The mean difference in the height distributions for a SNP with an effect is set by another slider, measured in terms of standard deviations of the trait. You can also control the sample size, that is the number of people in the study.</p>
+<p>The result of a GWAS is a number of independent hypothesis tests (one for each SNP) which all return a p-value. Then a researcher has to decide on the appropriate significance threshold (e.g.&nbsp;0.01 or 0.05), below which the hypothesis is rejected. The simulator allows you to choose between three significance levels, as well as to apply one of two kinds of p-value adjustment: the Bonferroni correction or the FDR (Benjamini-Hochberg) correction.</p>
+<pre class="shinylive-r" data-engine="r"><code>#| '!! shinylive warning !!': |
+#|   shinylive does not work in self-contained HTML documents.
+#|   Please set `embed-resources: false` in your metadata.
+#| standalone: true
+#| viewerHeight: 650
+
+library(shiny)
+library(bslib)
+library(ggplot2)
+
+# =============================================================================
+# Simulated genome-wide association study (GWAS)
+#
+# Sliders set the number of SNPs, how many are truly associated (causal), the
+# per-allele effect size, and the sample size. Each SNP's association test
+# statistic is simulated directly from its non-centrality rather than by fitting
+# a regression, which keeps it fast for tens of thousands of SNPs:
+#
+#   * null SNP:    z ~ N(0, 1)
+#   * causal SNP:  z ~ N(mu, 1),   mu = beta * sqrt(N * 2*MAF*(1-MAF))
+#
+# so power grows with effect size, sample size and allele frequency exactly as
+# in a real study. p = P(chi^2_1 &gt; z^2). A multiple-testing correction
+# (none / Bonferroni / Benjamini-Hochberg FDR) is applied and the corresponding
+# significance threshold is drawn on the Manhattan plot. Causal SNPs are
+# coloured so true positives, missed causal SNPs and false positives are all
+# visible.
+#
+# To run:
+#   install.packages(c("shiny", "ggplot2"))
+#   shiny::runApp("gwas_sim_app.R")
+# =============================================================================
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+M_MAX &lt;- 50000L
+# Approximate human autosome sizes (Mb), chromosomes 1..22, for laying out x.
+CHR_SIZES &lt;- c(249, 243, 198, 191, 181, 171, 159, 145, 138, 134, 135,
+               133, 114, 107, 102, 90, 83, 80, 59, 64, 47, 51)
+
+# ---- A fixed "genome": stable random pieces generated once -------------------
+make_genome &lt;- function(M_max = M_MAX, seed = 42) {
+  set.seed(seed)
+  list(
+    z0  = rnorm(M_max),                       # null noise, per SNP
+    maf = runif(M_max, 0.05, 0.50),           # minor allele frequency
+    sgn = sample(c(-1, 1), M_max, TRUE)       # direction of effect
+  )
+}
+
+# Deterministic genomic layout for the first M SNPs (no randomness, so stable).
+layout_snps &lt;- function(M) {
+  total &lt;- sum(CHR_SIZES)
+  u     &lt;- ((seq_len(M) - 0.5) / M)           # evenly spread across the genome
+  gpos  &lt;- u * total                          # cumulative position (Mb)
+  chr   &lt;- findInterval(gpos, cumsum(CHR_SIZES)) + 1L
+  chr   &lt;- pmin(chr, length(CHR_SIZES))
+  list(gpos = gpos, chr = chr)
+}
+
+# ---- Run one simulation ----------------------------------------------------
+simulate_gwas &lt;- function(genome, M, m_causal, beta, N, alpha, method) {
+  idx &lt;- seq_len(M)
+  z0  &lt;- genome$z0[idx]; maf &lt;- genome$maf[idx]; sgn &lt;- genome$sgn[idx]
+  lay &lt;- layout_snps(M)
+
+  causal &lt;- logical(M)
+  if (m_causal &gt; 0) {
+    ci &lt;- unique(round(seq(1, M, length.out = m_causal)))
+    causal[ci] &lt;- TRUE
+  }
+
+  # Non-centrality shift for causal SNPs; observed z = noise + shift
+  ncp &lt;- beta * sqrt(N * 2 * maf * (1 - maf))
+  z   &lt;- z0
+  z[causal] &lt;- z0[causal] + sgn[causal] * ncp[causal]
+
+  p    &lt;- pchisq(z^2, df = 1, lower.tail = FALSE)
+  padj &lt;- p.adjust(p, method = method)
+  sig  &lt;- padj &lt; alpha
+
+  # Every method reduces to a single raw-p threshold on the Manhattan plot
+  thr_p &lt;- switch(method,
+    none       = alpha,
+    bonferroni = alpha / M,
+    BH         = if (any(sig)) max(p[sig]) else NA_real_
+  )
+
+  df &lt;- data.frame(
+    gpos = lay$gpos, chr = lay$chr,
+    p = p, logp = pmin(-log10(p), 40),   # cap for display
+    causal = causal, sig = sig
+  )
+
+  attr(df, "summary") &lt;- list(
+    M = M, m_causal = sum(causal), n_sig = sum(sig),
+    TP = sum(sig &amp; causal), FP = sum(sig &amp; !causal),
+    FN = sum(!sig &amp; causal),
+    power = if (sum(causal) &gt; 0) sum(sig &amp; causal) / sum(causal) else NA_real_,
+    fdr   = if (sum(sig) &gt; 0) sum(sig &amp; !causal) / sum(sig) else NA_real_,
+    thr_p = thr_p, method = method, alpha = alpha
+  )
+  df
+}
+
+# ---- Manhattan plot --------------------------------------------------------
+COLS &lt;- c(null_odd = "#c3c7cc", null_even = "#9aa0a6",
+          FP = "#d62728", FN = "#ff7f0e", TP = "#2ca02c")
+
+manhattan_plot &lt;- function(df) {
+  s &lt;- attr(df, "summary")
+
+  cat &lt;- ifelse(df$chr %% 2 == 1, "null_odd", "null_even")
+  cat[df$causal &amp; df$sig]   &lt;- "TP"
+  cat[df$causal &amp; !df$sig]  &lt;- "FN"
+  cat[!df$causal &amp; df$sig]  &lt;- "FP"
+  df$cat &lt;- factor(cat, levels = names(COLS))
+
+  bounds &lt;- c(0, cumsum(CHR_SIZES))
+  mids   &lt;- (head(bounds, -1) + tail(bounds, -1)) / 2
+
+  is_null &lt;- df$cat %in% c("null_odd", "null_even")
+  gw_line &lt;- -log10(5e-8)                       # conventional GWAS threshold
+  thr_line &lt;- if (is.finite(s$thr_p)) -log10(s$thr_p) else NA
+
+  p &lt;- ggplot() +
+    geom_point(data = df[is_null, ],
+               aes(gpos, logp, colour = cat), size = 0.55, alpha = 0.75) +
+    geom_point(data = df[df$cat == "FP", ],
+               aes(gpos, logp, colour = cat), size = 1.7) +
+    geom_point(data = df[df$cat == "FN", ],
+               aes(gpos, logp, colour = cat), size = 1.9) +
+    geom_point(data = df[df$cat == "TP", ],
+               aes(gpos, logp, colour = cat), size = 2.1) +
+    geom_hline(yintercept = gw_line, linetype = "dotted", colour = "grey55") +
+    annotate("text", x = 0, y = gw_line, vjust = -0.5, hjust = 0,
+             size = 3, colour = "grey45", label = "genome-wide 5e-8") +
+    scale_colour_manual(
+      values = COLS, drop = FALSE, name = NULL,
+      breaks = c("TP", "FN", "FP"),
+      labels = c("True positive (causal, detected)",
+                 "False negative (causal, missed)",
+                 "False positive (null, detected)")) +
+    scale_x_continuous(breaks = mids, labels = seq_along(CHR_SIZES),
+                       expand = expansion(mult = 0.01)) +
+    labs(x = "Chromosome", y = expression(-log[10](italic(p)))) +
+    guides(colour = guide_legend(override.aes = list(size = 3))) +
+    theme_bw(base_size = 13) +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major.x = element_blank(),
+          legend.position = "bottom")
+
+  if (is.finite(thr_line)) {
+    lab &lt;- paste0(switch(s$method, none = "uncorrected",
+                         bonferroni = "Bonferroni", BH = "BH-FDR"),
+                  " threshold")
+    p &lt;- p +
+      geom_hline(yintercept = thr_line, linetype = "solid",
+                 colour = "#1a1a1a", linewidth = 0.6) +
+      annotate("text", x = max(df$gpos), y = thr_line, vjust = -0.5,
+               hjust = 1, size = 3.2, colour = "#1a1a1a", label = lab)
+  }
+  p
+}
+
+# ---- UI --------------------------------------------------------------------
+ui &lt;- fluidPage(
+  tags$head(tags$style(HTML("
+    body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .metric-card { border:1px solid #e3e3e3; border-radius:10px;
+      padding:10px 14px; margin-bottom:10px; background:#fafafa; }
+    .metric-label { font-size:12px; color:#666; text-transform:uppercase;
+      letter-spacing:.03em; }
+    .metric-value { font-size:22px; font-weight:600; color:#1a1a1a; }
+    .metric-sub { font-size:12px; color:#555; }
+  "))),
+
+  titlePanel("Simulated GWAS: power, false positives, and multiple-testing correction"),
+
+  sidebarLayout(
+    sidebarPanel(
+      width = 3,
+      sliderInput("M", "Number of SNPs tested",
+                  min = 5000, max = M_MAX, value = 20000, step = 5000),
+      sliderInput("mc", "Number of truly associated (causal) SNPs",
+                  min = 0, max = 300, value = 25, step = 1),
+      sliderInput("beta", "Per-allele effect size (SD units)",
+                  min = 0, max = 0.20, value = 0.10, step = 0.005),
+      sliderInput("N", "Sample size",
+                  min = 500, max = 50000, value = 8000, step = 500),
+      tags$hr(),
+      radioButtons("method", "Multiple-testing correction",
+                   choices = c("None (raw p)" = "none",
+                               "Bonferroni" = "bonferroni",
+                               "Benjamini-Hochberg (FDR)" = "BH"),
+                   selected = "bonferroni"),
+      selectInput("alpha", "Significance level (alpha)",
+                  choices = c("0.01" = 0.01, "0.05" = 0.05, "0.10" = 0.10),
+                  selected = 0.05),
+      helpText("Coloured points are causal SNPs (green = detected, orange = ",
+               "missed). Red points are null SNPs that reached significance ",
+               "(false positives). The solid line is the chosen threshold; ",
+               "the dotted line is the conventional 5e-8.")
+    ),
+
+    mainPanel(
+      width = 9,
+      fluidRow(
+        column(3, uiOutput("powerCard")),
+        column(3, uiOutput("fdrCard")),
+        column(3, uiOutput("countsCard")),
+        column(3, uiOutput("thrCard"))
+      ),
+      plotOutput("manhattan", height = "460px")
+    )
+  )
+)
+
+# ---- Server ----------------------------------------------------------------
+server &lt;- function(input, output, session) {
+
+  genome &lt;- reactive(make_genome())          # generated once, cached
+
+  sim &lt;- reactive({
+    simulate_gwas(genome(), input$M, input$mc, input$beta, input$N,
+                  as.numeric(input$alpha), input$method)
+  })
+
+  card &lt;- function(label, value, sub) {
+    div(class = "metric-card",
+        div(class = "metric-label", label),
+        div(class = "metric-value", value),
+        div(class = "metric-sub", sub))
+  }
+  pct &lt;- function(x) if (is.na(x)) "n/a" else sprintf("%.0f%%", 100 * x)
+
+  output$powerCard &lt;- renderUI({
+    s &lt;- attr(sim(), "summary")
+    card("Power (sensitivity)", pct(s$power),
+         sprintf("%d of %d causal detected", s$TP, s$m_causal))
+  })
+  output$fdrCard &lt;- renderUI({
+    s &lt;- attr(sim(), "summary")
+    card("Observed false-discovery", pct(s$fdr),
+         sprintf("%d of %d hits are false", s$FP, s$n_sig))
+  })
+  output$countsCard &lt;- renderUI({
+    s &lt;- attr(sim(), "summary")
+    card("Discoveries", format(s$n_sig, big.mark = ","),
+         sprintf("TP %d | FP %d | FN %d", s$TP, s$FP, s$FN))
+  })
+  output$thrCard &lt;- renderUI({
+    s &lt;- attr(sim(), "summary")
+    val &lt;- if (is.finite(s$thr_p)) formatC(s$thr_p, format = "e", digits = 1) else "none"
+    card("Significance threshold (p)", val,
+         sprintf("alpha = %s, %s SNPs", s$alpha, format(s$M, big.mark = ",")))
+  })
+
+  output$manhattan &lt;- renderPlot(manhattan_plot(sim()))
+}
+
+shinyApp(ui, server)
+</code></pre>
+</section>
+<section id="questions" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="questions"><span class="header-section-number">7.6</span> Questions</h2>
+<ol type="1">
+<li>Set the number of SNPs to 20,000 and the number of truly associated SNPs to 100, with effect size of 0.06 and the sample size of 8000. Report the power of the test and the FDR for the unadjusted, Bonferroni, and FDR methods.</li>
+<li>Keep the same settings, except reduce the effect size to 0.04. Report the power of the test and the FDR for the unadjusted, Bonferroni, and FDR methods.</li>
+<li>Keep the same settings, except increase the effect size to 0.08. Report the power of the test and the FDR for the unadjusted, Bonferroni, and FDR methods.</li>
+<li>Across different scenarios, what difference do you see between the unadjusted and the Bonferroni corrected results?</li>
+<li>Across different scenarios, what difference do you see between the Bonferroni and the FDR-corrected results?</li>
+</ol>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-goodman_toward_1999" class="csl-entry" role="listitem">
 Goodman, Steven N. 1999. <span>“Toward <span>Evidence</span>-<span>Based</span> <span>Medical</span> <span>Statistics</span>. 1: <span>The</span> <span>P</span> <span>Value</span> <span>Fallacy</span>.”</span> <em>Annals of Internal Medicine</em> 130 (12): 995–1004. <a href="https://doi.org/10.7326/0003-4819-130-12-199906150-00008">https://doi.org/10.7326/0003-4819-130-12-199906150-00008</a>.
 </div>
@@ -554,7 +868,6 @@ Ioannidis, John P. A. 2005. <span>“Why <span>Most</span> <span>Published</span
 Miller, Anthony B., Claus Wall, Cornelia J. Baines, Ping Sun, Teresa To, and Steven A. Narod. 2014. <span>“Twenty Five Year Follow-up for Breast Cancer Incidence and Mortality of the <span>Canadian</span> <span>National</span> <span>Breast</span> <span>Screening</span> <span>Study</span>: Randomised Screening Trial.”</span> <em>BMJ</em> 348 (February): g366. <a href="https://doi.org/10.1136/bmj.g366">https://doi.org/10.1136/bmj.g366</a>.
 </div>
 </div>
-</section>
 </section>
 
 </main> <!-- /main -->

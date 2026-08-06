@@ -5,11 +5,11 @@
 
 In the last two chapters we learned to use data sets which fall into a few categories. We now turn to data which can be measured as a range of numerical values. We can ask a similar question of numerical data that we asked of categorical: how can we tell whether two variables are related? And if they are, what kind of relationship is it? This takes us into the realm of *data fitting*, raising two related questions: what is the best mathematical relationship to describe a data set? and what is the quality of the fit? You will learn to do the following in this chapter:
 
-- define the quality of the fit between a line and a two-variable data set
-- calculate the parameters for the best-fit line based on statistics of the data set
-- use R to calculate and plot best-fit line for a data set
-- understand the meaning of correlation and covariance
-- understand the phenomenon of regression to the mean
+-   define the quality of the fit between a line and a two-variable data set
+-   calculate the parameters for the best-fit line based on statistics of the data set
+-   use R to calculate and plot best-fit line for a data set
+-   understand the meaning of correlation and covariance
+-   understand the phenomenon of regression to the mean
 
 ## Linear least-squares fitting {#lin-least-sq}
 
@@ -170,13 +170,13 @@ abline(myfit)
 
 As noted in @sec-counting, all models begins with \index{linear regression!assumptions} assumptions, and linear regression is no exception. Although we have not stated it explicitly, the calculation of the slope and intercept for the best-fit line depends on several conditions being true, specifically: [@whitlock_analysis_2008]
 
-- the variables have a linear relationship with random noise added
+-   the variables have a linear relationship with random noise added
 
-- there is no noise in the measurements of the explanatory variable
+-   there is no noise in the measurements of the explanatory variable
 
-- the noise in the measurements of the response variable is normally distributed with zero mean and identical standard deviation
+-   the noise in the measurements of the response variable is normally distributed with zero mean and identical standard deviation
 
-- the measurements are independent of each other
+-   the measurements are independent of each other
 
 The reasons why these assumptions are necessary for linear regression to work are beyond the scope of the text, and they are elucidated very well in the book *Numerical Recipes* [@press_numerical_2007]. I will give a quick intuitive explanation for each one below without going into mathematical or statistical details.
 

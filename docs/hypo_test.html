@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>6&nbsp; Categorical variables and hypothesis testing – Quantifying Life</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -62,6 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -92,14 +90,15 @@ div.csl-indent {
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6cbb53fb565b2bbafeaa1df642049805.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dda8909163e0b4f3670ba323ebd66e56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <meta name="shinylive:serviceworker_dir" content=".">
 <script src="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/load-shinylive-sw.js" type="module"></script>
 <script src="site_libs/quarto-contrib/shinylive-0.10.12/shinylive/run-python-blocks.js" type="module"></script>
@@ -134,7 +133,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -193,7 +192,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantifying Life</a> 
         <div class="sidebar-tools-main">
@@ -598,10 +599,10 @@ X-squared = 122.86, df = 1, p-value &lt; 2.2e-16</code></pre>
 </section>
 <section id="stop-and-frisk-and-race" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="stop-and-frisk-and-race"><span class="header-section-number">6.2.2</span> stop-and-frisk and race</h3>
-<p>The practice of New York Police Department dubbed “stop-and-frisk” gave police officers to power to stop, question, and search people on the street without a warrant. Since the practice commenced in the early 2000s, it has generated controversy for several reasons. First, the 4th amendment to the U.S. Constitution limits the power of the state to detain and search citizens, by mandating that officials first obtain a warrant based on “probable cause,” while based on the Supreme Court interpretation, police are allowed to stop someone without a warrant provided “the officer has a reasonable suspicion supported by articulable facts” that the person may be engaged in criminal activity. Exactly what these conditions mean and whether officers in NYPD always had reasonable suspicions before stopping is a legal matter, rather than a statistical one, and you can read federal judge Scheindlin’s ruling here <span class="citation" data-cites="noauthor_stop-and-frisk_nodate">(<a href="references.html#ref-noauthor_stop-and-frisk_nodate" role="doc-biblioref"><em>On the <span>Stop</span>-and-<span>Frisk</span> <span>Decision</span></em>, n.d.</a>)</span>.</p>
+<p>The practice of New York Police Department dubbed “stop-and-frisk” gave police officers to power to stop, question, and search people on the street without a warrant. Since the practice commenced in the early 2000s, it has generated controversy for several reasons. First, the 4th amendment to the U.S. Constitution limits the power of the state to detain and search citizens, by mandating that officials first obtain a warrant based on “probable cause,” while based on the Supreme Court interpretation, police are allowed to stop someone without a warrant provided “the officer has a reasonable suspicion supported by articulable facts” that the person may be engaged in criminal activity. Exactly what these conditions mean and whether officers in NYPD always had reasonable suspicions before stopping is a legal matter, rather than a statistical one, and you can read federal judge Scheindlin’s ruling here <span class="citation" data-cites="noauthor_stop-and-frisk_nodate">(<a href="references.html#ref-noauthor_stop-and-frisk_nodate" role="doc-biblioref"><span>“On the <span>Stop</span>-and-<span>Frisk</span> <span>Decision</span>: <span>Floyd</span> v. <span>City</span> of <span>New</span> <span>York</span>”</span> n.d.</a>)</span>.</p>
 <p>The second issue raised by stop-and-frisk is whether it violates the principle of equal protection under the law enshrined in the 14th amendment of the Constitution. The idea that the law and its agents should treat people of different backgrounds the same, that people can be punished for their actions, but not for who they are, is deeply rooted in American law and culture. Critics of stop-and-frisk charge that officers disproportionately stop and search people of African-American and Hispanic background and therefore violate their constitutional rights to equal protection. As part of the trial, statistical evidence was introduced about the number of stops of New Yorkers of different racial backgrounds, how many of those stops resulted in the use of force, and how many uncovered evidence of criminal activity leading to an arrest. Let us analyze the data using our tools to address whether race and somebody being “stopped-and-frisked” are related.</p>
 <p>The data in the summary of judge Scheindlin’s decision is as follows: between 2004 to 2012, out of 4.4 million stops, 52% of the people stopped were black, 31% of the people stopped were Hispanic, and 10% of the people were white. The population of New York according to the 2010 census is approximately 23% black, 29% Hispanic, and 33% white. You may notice that the fractions are suggestive of a higher probability of stops of African-Americans, and lower probability of stops of white individuals, but we cannot use fractions to perform a chi-squared test, because actual counts are necessary to quantify the uncertainty in the testing.</p>
-<p>Below I present data in the form of counts for only the calendar year 2011 <span class="citation" data-cites="noauthor_nypds_nodate">(<a href="references.html#ref-noauthor_nypds_nodate" role="doc-biblioref"><span>“<span>NYPD</span>’s <span>Stop</span> and <span>Frisk</span> <span>Practice</span>,”</span> n.d.</a>)</span>, in the form of a contingency table with two variables: race/ethnicity and being stopped by police without a warrant. I used the census population of New York (http://factfinder2.census.gov) and its breakdown by race (white only, black only, Hispanic, other). The data are presented in table <span class="math inline">\(\ref{tab:stop_frisk_race}\)</span>, and then are input in R and run through a chi-squared independence test.</p>
+<p>Below I present data in the form of counts for only the calendar year 2011 <span class="citation" data-cites="noauthor_nypds_nodate">(<a href="references.html#ref-noauthor_nypds_nodate" role="doc-biblioref"><span>“<span>NYPD</span>’s <span>Stop</span> and <span>Frisk</span> <span>Practice</span>: <span>Unfair</span> and <span>Unjust</span>”</span> n.d.</a>)</span>, in the form of a contingency table with two variables: race/ethnicity and being stopped by police without a warrant. I used the census population of New York (http://factfinder2.census.gov) and its breakdown by race (white only, black only, Hispanic, other). The data are presented in table <span class="math inline">\(\ref{tab:stop_frisk_race}\)</span>, and then are input in R and run through a chi-squared independence test.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>              White   Black Hispanic   Other
@@ -968,18 +969,18 @@ shinyApp(ui = ui, server = server)
 </ol>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-malone_first-trimester_2005" class="csl-entry" role="listitem">
-Malone, Fergal D., Jacob A. Canick, Robert H. Ball, et al. 2005. <span>“First-<span>Trimester</span> or <span>Second</span>-<span>Trimester</span> <span>Screening</span>, or <span>Both</span>, for <span>Down</span>’s <span>Syndrome</span>.”</span> <em>New England Journal of Medicine</em> 353 (19): 2001–11. <a href="https://doi.org/10.1056/NEJMoa043693">https://doi.org/10.1056/NEJMoa043693</a>.
+Malone, Fergal D., Jacob A. Canick, Robert H. Ball, David A. Nyberg, Christine H. Comstock, Radek Bukowski, Richard L. Berkowitz, et al. 2005. <span>“First-<span>Trimester</span> or <span>Second</span>-<span>Trimester</span> <span>Screening</span>, or <span>Both</span>, for <span>Down</span>’s <span>Syndrome</span>.”</span> <em>New England Journal of Medicine</em> 353 (19): 2001–11. <a href="https://doi.org/10.1056/NEJMoa043693">https://doi.org/10.1056/NEJMoa043693</a>.
 </div>
 <div id="ref-noauthor_nypds_nodate" class="csl-entry" role="listitem">
-<span>“<span>NYPD</span>’s <span>Stop</span> and <span>Frisk</span> <span>Practice</span>: <span>Unfair</span> and <span>Unjust</span>.”</span> n.d. In <em>Center for Constitutional Rights</em>. Accessed July 29, 2014. <a href="https://ccrjustice.org/racial-disparity-nypd-stops-and-frisks">https://ccrjustice.org/racial-disparity-nypd-stops-and-frisks</a>.
+<span>“<span>NYPD</span>’s <span>Stop</span> and <span>Frisk</span> <span>Practice</span>: <span>Unfair</span> and <span>Unjust</span>.”</span> n.d. <em>Center for Constitutional Rights</em>. Accessed July 29, 2014. <a href="https://ccrjustice.org/racial-disparity-nypd-stops-and-frisks">https://ccrjustice.org/racial-disparity-nypd-stops-and-frisks</a>.
 </div>
 <div id="ref-noauthor_stop-and-frisk_nodate" class="csl-entry" role="listitem">
-<em>On the <span>Stop</span>-and-<span>Frisk</span> <span>Decision</span>: <span>Floyd</span> v. <span>City</span> of <span>New</span> <span>York</span></em>. n.d. Accessed July 29, 2014. <a href="http://www.nytimes.com/interactive/2013/08/12/nyregion/stop-and-frisk-decision.html">http://www.nytimes.com/interactive/2013/08/12/nyregion/stop-and-frisk-decision.html</a>.
+<span>“On the <span>Stop</span>-and-<span>Frisk</span> <span>Decision</span>: <span>Floyd</span> v. <span>City</span> of <span>New</span> <span>York</span>.”</span> n.d. Accessed July 29, 2014. <a href="http://www.nytimes.com/interactive/2013/08/12/nyregion/stop-and-frisk-decision.html">http://www.nytimes.com/interactive/2013/08/12/nyregion/stop-and-frisk-decision.html</a>.
 </div>
 <div id="ref-whitlock_analysis_2008" class="csl-entry" role="listitem">
-Whitlock, Michael C., and Dolph Schluter. 2008. <em>The <span>Analysis</span> of <span>Biological</span> <span>Data</span></em>. First Edition, 1st Edition edition. Roberts; Company Publishers.
+Whitlock, Michael C., and Dolph Schluter. 2008. <em>The <span>Analysis</span> of <span>Biological</span> <span>Data</span></em>. First Edition, 1st Edition edition. Greenwood Village, Colo: Roberts; Company Publishers.
 </div>
 </div>
 </section>

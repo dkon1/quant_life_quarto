@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>1&nbsp; Arithmetic and variables – Quantifying Life</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -27,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -57,14 +55,15 @@ div.csl-indent {
 <link href="./Kondrashov_Comp.jpeg" rel="icon" type="image/jpeg">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6cbb53fb565b2bbafeaa1df642049805.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dda8909163e0b4f3670ba323ebd66e56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -94,7 +93,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -153,7 +152,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Quantifying Life</a> 
         <div class="sidebar-tools-main">
@@ -367,7 +368,7 @@ Every heart, every heart to love will come<br>
 But like a refugee.<br>
 –Leonard Cohen, <em>Anthem</em></p>
 </blockquote>
-<p>Mathematical modeling begins with a set of <em>assumptions</em>. In fact, one may say that a mathematical model is a bunch of assumptions translated into mathematics. These assumptions may be more or less reasonable, and they may come from different sources. For instance, many physical models are so well-established that we refer to them as laws; we are pretty sure they apply to molecules, cells, and organisms as well as to inanimate objects. Thus we may use physical laws as the foundation on which to build models of biological entities; these are often known as <em>first-principles</em> (theory-based) models. Other times we have experimental evidence which suggests a certain kind of relationship between quantities, perhaps we find that the amount of administered drug and the time until the drug is completely removed from the bloodstream are proportional to each other. This observation can be turned into an <em>empirical</em> (experiment-based) model. Yet another type of model assumption is not based on either theory or experiment, but simply on convenience: e.g.&nbsp;let us assume that the mutation rates in two different loci are independent, and see what the implications are. These are sometimes called <em>toy</em> or <em>cartoon</em> models <span class="citation" data-cites="jungck_mathematical_2010">(<a href="references.html#ref-jungck_mathematical_2010" role="doc-biblioref">Jungck et al. 2010</a>)</span>.</p>
+<p>Mathematical modeling begins with a set of <em>assumptions</em>. In fact, one may say that a mathematical model is a bunch of assumptions translated into mathematics. These assumptions may be more or less reasonable, and they may come from different sources. For instance, many physical models are so well-established that we refer to them as laws; we are pretty sure they apply to molecules, cells, and organisms as well as to inanimate objects. Thus we may use physical laws as the foundation on which to build models of biological entities; these are often known as <em>first-principles</em> (theory-based) models. Other times we have experimental evidence which suggests a certain kind of relationship between quantities, perhaps we find that the amount of administered drug and the time until the drug is completely removed from the bloodstream are proportional to each other. This observation can be turned into an <em>empirical</em> (experiment-based) model. Yet another type of model assumption is not based on either theory or experiment, but simply on convenience: e.g.&nbsp;let us assume that the mutation rates in two different loci are independent, and see what the implications are. These are sometimes called <em>toy</em> or <em>cartoon</em> models <span class="citation" data-cites="jungck_mathematical_2010">(<a href="references.html#ref-jungck_mathematical_2010" role="doc-biblioref">Jungck, Gaff, and Weisstein 2010</a>)</span>.</p>
 <p>This leads to the question: how do you decide whether a model is good? It is surprisingly difficult to give a straightforward answer to this question. Of course, one major goal of a model is to capture some essential features of reality, so in most biological modeling studies you will see a comparison between experimental results and predictions of the model. But it is not enough for a model to be faithful to experimental data! Think of a simple example: suppose your experiment produced 5 data points as a function of time; it is possible to find a polynomial (of fourth degree) that passes exactly through all 5 points, by specifying the coefficients of its 5 terms. This is called <em>data fitting</em> and it has a large role to play in mathematical modeling of biology. However, I think you will agree that in this case we have learned very little: we just substituted 5 values in the data set with 5 values of the coefficients of the mathematical model. To heighten the absurdity, imagine a data set of 1001 points that you have modeled using a 1000-degree polynomial. This is an example of overfitting, or making the model agree with the data by making it overly complex.</p>
 <p>Substituting a complicated model for a complicated real situation does not help understand it. One necessary ingredient of a useful model is <em>simplicity of assumptions</em>. Simplicity in modeling has at least two virtues: simple models can be grasped by our limited minds, and simple assumptions can be tested against evidence. A simple model that fails to reproduce experimental data can be more informative than a complex model that fits the data perfectly. If a simple model fails, you have learned that you are missing something in your assumptions; but a complex model can be right for the wrong reasons, like erroneous assumptions canceling each other, or it may contain needless assumptions. This is why good modeling is a difficult skill that balances simplicity of assumptions against fidelity to empirical data <span class="citation" data-cites="cohen_mathematics_2004">(<a href="references.html#ref-cohen_mathematics_2004" role="doc-biblioref">Cohen 2004</a>)</span>. In this chapter you will learn how to do the following:</p>
 <ul>
@@ -488,7 +489,7 @@ Figure&nbsp;1.2: Illustration of Galen’s conception of the blood system, showi
 </ol>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-cohen_mathematics_2004" class="csl-entry" role="listitem">
 Cohen, Joel E. 2004. <span>“Mathematics <span>Is</span> <span>Biology</span>’s <span>Next</span> <span>Microscope</span>, <span>Only</span> <span>Better</span>; <span>Biology</span> <span>Is</span> <span>Mathematics</span>’ <span>Next</span> <span>Physics</span>, <span>Only</span> <span>Better</span>.”</span> <em>PLoS Biol</em> 2 (12): e439. <a href="https://doi.org/10.1371/journal.pbio.0020439">https://doi.org/10.1371/journal.pbio.0020439</a>.
 </div>
@@ -499,7 +500,7 @@ Jungck, John R., Holly Gaff, and Anton E. Weisstein. 2010. <span>“Mathematical
 Schultz, Stanley G. 2002. <span>“William <span>Harvey</span> and the <span>Circulation</span> of the <span>Blood</span>: <span>The</span> <span>Birth</span> of a <span>Scientific</span> <span>Revolution</span> and <span>Modern</span>.”</span> <em>Physiology</em> 17 (5): 175–80. <a href="https://doi.org/10.1152/nips.01391.2002">https://doi.org/10.1152/nips.01391.2002</a>.
 </div>
 <div id="ref-smith_mathematical_1968" class="csl-entry" role="listitem">
-Smith, J. Maynard. 1968. <em>Mathematical <span>Ideas</span> in <span>Biology</span></em>. Cambridge University Press.
+Smith, J. Maynard. 1968. <em>Mathematical <span>Ideas</span> in <span>Biology</span></em>. London: Cambridge University Press.
 </div>
 <div id="ref-strogatz_nonlinear_2001" class="csl-entry" role="listitem">
 Strogatz, Steven H. 2001. <em>Nonlinear <span>Dynamics</span> <span>And</span> <span>Chaos</span>: <span>With</span> <span>Applications</span> <span>To</span> <span>Physics</span>, <span>Biology</span>, <span>Chemistry</span>, <span>And</span> <span>Engineering</span></em>. 1st ed. Westview Press.
