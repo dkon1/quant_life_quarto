@@ -12,8 +12,6 @@ In the last few chapters we defined the notion of independence and learned how t
 
 ## Prior knowledge
 
-\label{sec:model7}
-
 Suppose that a patient walks into a doctor's office, the doctor orders a pregnancy test, and the results indicate that the patient is pregnant. The doctor consults the published sensitivity and specificity values (that we defined in the last chapter) to discover, for instance, that 99% of positive pregnancy tests are correct. The doctor goes back to congratulate the patient with impending motherhood. Sound very reasonable, doesn't it? Would it still sound reasonable if the doctor knew that the patient does not have a uterus (whatever their gender may be)?
 
 This is a slightly absurd example, of course, but it neatly illustrates the central point of this chapter: prior knowledge has an effect on the inference from a test, no matter how small or large the p-value and the power of the test. For a patient with no uterus, their *prior probability* of being pregnant is 0, and that is not changed by a test, no matter how accurate (of course, no test is 100% accurate). In this case, the positive pregnancy test must have been a false positive, even though it's unlikely, since the other possibility - that of a true positive - is impossible.
